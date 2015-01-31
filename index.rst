@@ -14,5 +14,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   pages/installation
    pages/streams
    pages/extractors
+   pages/ideas_explained.rst
