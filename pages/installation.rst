@@ -16,7 +16,36 @@ This chapter is explaining the many ways to install Graylog2 and aims to help ch
 Virtual machine appliances
 ==========================
 
-———— TBD WHEN VM IMAGES ARE RELEASED ————
+The easiest way to get started with a production ready Graylog setup is using our official virtual machine appliances. We offer
+those for the following platforms:
+
+* `OVA for VMware / Virtualbox <https://github.com/Graylog2/graylog2-images/tree/master/ova>`_
+* `OpenStack <https://github.com/Graylog2/graylog2-images/tree/master/openstack>`_
+* `Amazon Web Services / EC2 <https://github.com/Graylog2/graylog2-images/tree/master/aws>`_
+* `Docker <https://github.com/Graylog2/graylog2-images/tree/master/docker>`_
+
+Please follow the links for specific instructions and downloads. The next chapters explain general principles of the appliances:
+
+Configuring the appliances
+--------------------------
+
+The great thing about the new appliances is the ``graylog2-ctl`` tool that we are shipping with them. We want you to get started
+with pa customised setup as soon as quickly as possible so you can now do things like::
+
+  graylog2-ctl set-email-config <smtp server> [--port=<smtp port> --user=<username> --password=<password>]
+  graylog2-ctl set-admin-password <password>
+  graylog2-ctl set-timezone <zone acronym>
+  graylog2-ctl reconfigure
+
+Scaling out
+-----------
+
+We are also providing an easy way to automatically scale out to more boxes once you grew out of your initial setup. Every appliance
+is always shipping with all required Graylog components and you can at any time decide which role a specific box should take::
+
+  graylog2-ctl reconfigure-as-server
+  graylog2-ctl reconfigure-as-webinterface
+  graylog2-ctl reconfigure-as-datanode
 
 Quick setup application
 =======================
@@ -30,12 +59,83 @@ from starting the quick setup application to signing into your new Graylog setup
 It is important to remember that the quick setup app is **not** meant to create production ready setups. I strongly recommend to
 use one of the other installation methods for a Graylog setup that is intended to run in production.
 
-.. image:: /images/qsa.png
+.. image:: /images/qsa1.png
 
 Using the quick setup application
 ---------------------------------
 
--------------HOW TO---------------
+All you need is a Linux machine with Java installed. The executable comes with a built-in web server that you point your browser to.
+All the rest of the process is controlled from your browser.
+
+Download and start the quick setup application
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Start by downloading the quick setup app from our `downloads page <http://www.graylog.org/download/>`_ Now extract the archive to any
+location you like. All parts of the Graylog2 system will be extracted in subfolders.
+
+Next step is to run the app and opening the URL you are seeing in your browser::
+
+  $ wget http://packages.graylog2.org/releases/graylog2-setup/graylog2-setup-<LATEST-VERSION>.tar.gz
+  $ tar -xzf graylog2-setup-<LATEST-VERSION>.tar.gz
+  $ cd graylog2-setup && ./graylog2 setup
+  Unpacking dependencies, please wait.
+  Unpacking complete.
+  Please open http://127.0.0.1:10000/ in your browser to get started.
+
+Installing and connecting MongoDB
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You should now see the quick setup app in your browser. The first thing to do is installing MongoDB. This is not done automatically
+because it can be very dependent on your local architecture. The quick setup app will point you to the MongoDB downloads and the
+setup usually takes less than a few minutes on most systems.
+
+The quick setup app asks you for connection details to your MongoDB instance. We recommend to run it on the same box and just connecting
+to `127.0.0.1`.
+
+Creating a Graylog2 user account
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the next step you will be asked to create your first Graylog2 user account. This account will get administrator rights and allows you
+to further configure the system later on. **Remember the username and password because you will need it for logging in to your
+new Graylog2 system later.**
+
+Finish setup
+^^^^^^^^^^^^
+
+Now finish the setup by clicking on *Install Graylog2*. You will only be able to click the button if you have successfully completed all
+required steps before.
+
+The quick setup app will start all required services and write some configuration files. This can take some time so please be patient
+with the progress bar.
+
+Usually the progress bar will turn all green after completion and you will be redirected to the final summary page. You are now running
+Graylog!
+
+Check the output of the quick setup app process in your shell to find out how to start Graylog2 after shutting down the quick setup app::
+
+
+  Starting elasticsearch with the following command:
+      [...]
+  Starting graylog2 server with the following command:
+      [...]
+  Starting graylog2 web interface with the following command:
+      [...]
+
+  Terminating this process will stop Graylog2 as well. To run the processes manually, please refer to the output above.
+
+  Happy logging!
+
+Using your new Graylog2 system
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The quick setup app should have given you a link to your new Graylog2 setup. Log in with the username and password you defined before.
+
+**Congratulations!** You are now running Graylog2. Please note that we do not recommend to run a system installed by the quick setup
+app in production. Reason is that you are probably not familiar enough with the system and that you may have to tune some parameters to
+be able to handle huge loads of log messages.
+
+.. image:: /images/qsa2.png
+
 
 The classic setup
 =================
