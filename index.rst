@@ -17,4 +17,5 @@ Contents:
    pages/installation
    pages/streams
    pages/extractors
+   pages/configuring_es
    pages/ideas_explained.rst

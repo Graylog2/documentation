@@ -143,12 +143,209 @@ The classic setup
 We recommend to only run this if you have good reasons not to use one of the other production ready installation methods described
 in this chapter.
 
------------MORE INFO ABOUT CLASSIC SETUP AND WHY OTHERS ARE PREFERRED------------
+Installing Graylog using the classic setup: graylog-server on Linux
+-------------------------------------------------------------------
 
-Installing Graylog using the classic setup
-------------------------------------------
+Prerequisites
+^^^^^^^^^^^^^
 
--------------HOW TO---------------
+You will need to have the following services installed on either the host you are running ``graylog2-server`` on or on dedicated machines:
+
+* [Elasticsearch 1.3.4 or higher](http://www.elasticsearch.org/downloads)
+* MongoDB (as recent stable version as possible, **at least v2.0**)
+
+Most standard MongoDB packages of Linux distributions are outdated. Use the `official MongoDB apt source <http://docs.mongodb.org/manual/tutorial/install-mongodb-on-debian/>`_.
+(Available for many distributions and operating systems)
+
+You also **must** use **Java 7** or higher! Java 6 is not compatible with Graylog2 and will also not receive any more publicly available bug and security
+fixes by Oracle.
+
+A more detailed guide for installing the dependencies will follow. **The only important thing for Elasticsearch is that you configure
+``cluster.name: graylog2`` in it's ``conf/elasticsearch.yml``**.
+
+Downloading and extracting the server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Download the package from the `download pages <https://www.graylog.org/download/>`_
+
+Extract the archive::
+
+  ~$ tar xvfz graylog2-server-VERSION.tgz
+  ~$ cd graylog2-server-VERSION
+
+Configuration
+^^^^^^^^^^^^^
+
+Now copy the example configuration file::
+
+  ~# cp graylog2.conf.example /etc/graylog/server/server.conf
+
+You can leave most variables as they are for a first start. All of them should be well documented.
+
+Configure at least these variables in ``/etc/graylog/server/server.conf``:
+
+ * ``is_master = true``
+    * Set only one ``graylog-server`` node as the master. This node will perform periodical and maintenance actions that slave nodes won't.
+      Every slave node will accept messages just as the master nodes. Nodes will fall back to slave mode if there already is a master in the
+      cluster.
+ * ``password_secret``
+    * You must set a secret that is used for password encryption and salting here. The server will refuse to start if it's not set. Generate
+      a secret with for example ``pwgen -N 1 -s 96``.  If you run multiple ``graylog-server`` nodes, make sure you use the same
+      ``password_secret`` for all of them!
+ * ``root_password_sha2``
+    * A SHA2 hash of a password you will use for your initial login. Set this to a SHA2 hash generated with ``echo -n yourpassword | shasum -a 256``
+      and you will be able to log in to the web interface with username *admin* and password *yourpassword*.
+ * ``elasticsearch_max_docs_per_index = 20000000``
+    * How many log messages to keep per index. This setting multiplied with ``elasticsearch_max_number_of_indices`` results in the maximum number of
+      messages in your Graylog2 setup. It is always better to have several more smaller indices than just a few larger ones.
+ * ``elasticsearch_max_number_of_indices = 20``
+    * How many indices to have in total. If this number is reached, the oldest index will be deleted. **Also take a look at the other retention
+      strategies that allow you to automatically delete messages based on their age.**
+ * ``elasticsearch_shards = 4``
+    * The number of shards for your indices. A good setting here highly depends on the number of nodes in your Elasticsearch cluster. If you have
+      one node, set it to ``1``. Read more about this in the knowledge base article about :doc:`configuring_es`.
+ * ``elasticsearch_replicas = 0``
+     * The number of replicas for your indices. A good setting here highly depends on the number of nodes in your Elasticsearch cluster. If you
+       have one node, set it to ``0``. Read more about this in the knowledge base article about :doc:`configuring_es`.
+ * ``mongodb_*``
+    * Enter your MongoDB connection and authentication information here. Make sure that you connect the web interface to the same database.
+      You don't need to configure ``mongodb_user`` and ``mongodb_password`` if ``mongodb_useauth`` is set to ``false``.
+
+Starting the server
+^^^^^^^^^^^^^^^^^^^
+
+You need to have Java installed. Running the OpenJDK is totally fine and should be available on all platforms. For example on Debian it is::
+
+  ~$ apt-get install openjdk-7-jre
+
+**You need at least Java 7** (Java 6 has reached EOL)
+
+Start the server::
+
+  ~$ cd bin/
+  ~$ ./graylogctl start
+
+The server will try to write a ``node_id`` to the ``graylog-server-node-id`` file. It won't start if it can't write there because of for
+example missing permissions.
+
+See the startup parameters description below to learn more about available startup parameters. Note that you might have to be `root`
+to bind to the popular port 514 for syslog inputs.
+
+You should see a line like this in the debug output of ``graylog-server`` successfully connected to your Elasticsearch cluster::
+
+  2013-10-01 12:13:22,382 DEBUG: org.elasticsearch.transport.netty - [graylog-server] connected to node [[Unuscione, Angelo][thN_gIBkQDm2ab7k-2Zaaw][inet[/10.37.160.227:9300]]]
+
+You can find the ``graylog-server`` logs in ``logs/``.
+
+**Important:** All ``graylog-server`` instances must have synchronised time. We strongly recommend to use
+`NTP <http://en.wikipedia.org/wiki/Network_Time_Protocol>`_ on all machines of your Graylog infrastructure.
+
+Supplying external logging configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The ``graylog-server`` uses log4j for its internal logging and ships with a
+`default log configuration file <https://github.com/Graylog2/graylog2-server/blob/master/graylog2-server/src/main/resources/log4j.xml>`
+which is embedded within the shipped jar.
+
+In case you need to overwrite the configuration ``graylog-server`` uses, you can supply a Java system property specifying the path to
+the configuration file in your ``graylogctl`` script. Append this before the `-jar` paramter::
+
+  -Dlog4j.configuration=file:///tmp/logj4.xml
+
+Substitute the actual path to the file for the ``/tmp/log4j.xml`` in the example.
+
+In case you do not have a log rotation system already in place, you can also configure Graylog2 to rotate logs based on their size to prevent its
+logs to grow without bounds.
+
+One such example ``log4j.xml`` configuration is shown below. Graylog2 includes the ``log4j-extras`` companion classes to support time based and size
+based log rotation. This is the example::
+
+  <?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+  <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+      <appender name="FILE" class="org.apache.log4j.rolling.RollingFileAppender">
+          <rollingPolicy class="org.apache.log4j.rolling.FixedWindowRollingPolicy" >
+              <param name="activeFileName" value="/tmp/server.log" /> <!-- ADAPT -->
+              <param name="fileNamePattern" value="/tmp/server.%i.log" /> <!-- ADAPT -->
+              <param name="minIndex" value="1" /> <!-- ADAPT -->
+              <param name="maxIndex" value="10" /> <!-- ADAPT -->
+          </rollingPolicy>
+          <triggeringPolicy class="org.apache.log4j.rolling.SizeBasedTriggeringPolicy">
+              <param name="maxFileSize" value="5767168" /> <!-- ADAPT: For example 5.5MB in bytes -->
+          </triggeringPolicy>
+          <layout class="org.apache.log4j.PatternLayout">
+              <param name="ConversionPattern" value="%d %-5p: %c - %m%n"/>
+          </layout>
+      </appender>
+
+      <!-- Application Loggers -->
+      <logger name="org.graylog2">
+          <level value="info"/>
+      </logger>
+      <!-- this emits a harmless warning for ActiveDirectory every time which we can't work around :( -->
+      <logger name="org.apache.directory.api.ldap.model.message.BindRequestImpl">
+          <level value="error"/>
+      </logger>
+      <!-- Root Logger -->
+      <root>
+          <priority value="info"/>
+          <appender-ref ref="FILE"/>
+      </root>
+
+  </log4j:configuration>
+
+Command line (CLI) parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+There are a number of CLI parameters you can pass to the call in your ``graylogctl`` script:
+
+* ``-h``, ``--help``: Show help message
+* ``-f CONFIGFILE``, ``--configfile CONFIGFILE``: Use configuration file `CONFIGFILE` for graylog; default: ``/etc/graylog/server/server.conf``
+* ``-t``, ``--configtest``: Validate graylog2 configuration and exit with exit code 0 if the configuration file is syntactically correct, exit code 1 and a description of the error otherwise
+* ``-d``, ``--debug``: Run in debug mode
+* ``-l``, ``--local``: Run in local mode. Automatically invoked if in debug mode. Will not send system statistics, even if enabled and allowed. Only interesting for development and testing purposes.
+* ``-s``, ``--statistics``: Print utilization statistics to STDOUT
+* ``-r``, ``--no-retention``: Do not automatically delete old/outdated indices
+* ``-p PIDFILE``, ``--pidfile PIDFILE``: Set the file containing the PID of graylog to `PIDFILE`; default: `/tmp/graylog.pid`
+* ``-np``, ``--no-pid-file``: Do not write PID file (overrides `-p`/`--pidfile`)
+* ``--version``: Show version of graylog and exit
+
+Problems with IPv6 vs. IPv4?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If your `graylog-server` instance refuses to listen on IPv4 addresses and always chooses for example a `rest_listen_address` like `:::12900`
+you can tell the JVM to prefer the IPv4 stack.
+
+Add the `java.net.preferIPv4Stack` flag in your `graylog2ctl` script or from wherever you are calling the `graylog-server.jar`::
+
+    ~$ sudo -u graylog java -Djava.net.preferIPv4Stack=true -jar graylog-server.jar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Operating system packages
 =========================
