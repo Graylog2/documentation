@@ -143,8 +143,8 @@ The classic setup
 We recommend to only run this if you have good reasons not to use one of the other production ready installation methods described
 in this chapter.
 
-Installing Graylog using the classic setup: graylog-server on Linux
--------------------------------------------------------------------
+Classic setup: graylog-server on Linux
+--------------------------------------
 
 Prerequisites
 ^^^^^^^^^^^^^
@@ -166,7 +166,7 @@ A more detailed guide for installing the dependencies will follow. **The only im
 Downloading and extracting the server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Download the package from the `download pages <https://www.graylog.org/download/>`_
+Download the package from the `download pages <https://www.graylog.org/download/>`_.
 
 Extract the archive::
 
@@ -321,31 +321,161 @@ Add the `java.net.preferIPv4Stack` flag in your `graylog2ctl` script or from whe
 
     ~$ sudo -u graylog java -Djava.net.preferIPv4Stack=true -jar graylog-server.jar
 
+Classic setup: graylog-web-interface on Linux
+---------------------------------------------
 
+Prerequisites
+^^^^^^^^^^^^^
 
+The only thing you need is at least one compatible ``graylog-server`` node. Please use the same version number to make sure that it
+is compatible.
 
+You also **must** use **Java 7**! Java 6 is not compatible with Graylog and will also not receive any more publicly available bug
+and security fixes by Oracle.
 
+Downloading and extracting the web-interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Download the package from the `download pages <https://www.graylog.org/download/>`_.
 
+Extract the archive::
 
+  ~$ tar xvfz graylog-web-interface-VERSION.tgz
+  ~$ cd graylog-web-interface-VERSION
 
+Configuring the web interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Open ``conf/graylog-web-interface.conf`` and set the two following variables:
 
+* ``graylog2-server.uris="http://127.0.0.1:12900/"``: This is the list of ``graylog-server`` nodes the web interface will try to use.
+  You can configure one or multiple, separated by commas. Use the ``rest_listen_uri`` (configured in ``graylog.conf``) of your ``graylog-server`` instances here.
 
+* ``application.secret=""``: A secret for encryption. Use a long, randomly generated string here. (for example generated using ``pwgen -N 1 -s 96``)
 
+Starting the web interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+You need to have Java installed. Running the OpenJDK is totally fine and should be available on all platforms. For example on Debian it is::
 
+  ~$ apt-get install openjdk-7-jre
 
+**You need at least Java 7** (Java 6 has reached EOL)
 
+Now start the web interface::
 
+  ~$ bin/graylog2-web-interface
+  Play server process ID is 5723
+  [info] play - Application started (Prod)
+  [info] play - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
 
+The web interface will listen on port 9000. You should see a login screen right away after pointing your browser to it. Log in with username
+``admin`` and the password you configured at ``root_password_sha2`` in the ``graylog.conf`` of your ``graylog-server``.
 
+Changing the listen port and address works like this::
 
+  ~$ bin/graylog2-web-interface -Dhttp.port=1234 -Dhttp.address=127.0.0.1
 
+Java generally prefers to bind to an IPv6 address if that is supported by your system, while you might want to prefer IPv4. To change Java's
+default preference you can pass ``-Djava.net.preferIPv4Stack=true`` to the startup script::
 
+  ~$ bin/graylog2-web-interface -Djava.net.preferIPv4Stack=true
 
+All those ``-D`` settings can also be added to the ``JAVA_OPTS`` environment variable which is being read by the startup script, too.
 
+You can start the web interface in background for example like this::
 
+  ~$ nohup bin/graylog2-web-interface &
+
+Custom configuration file path
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can put the configuration file into another directory like this:
+
+  ~$ bin/graylog2-web-interface -Dconfig.file=/etc/graylog-web-interface.conf
+
+Create a message input and send a first message
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Log in to the web interface and navigate to *System* -> *Nodes*. Select your ``graylog2-server`` node there and click on *Manage inputs*.
+
+.. image:: /images/create_input.png
+
+Launch a new *Raw/Plaintext UDP* input, listening on port ``9099`` and listening on ``127.0.0.1``. No need to configure anything else for now.
+The list of running inputs on that node should show you your new input right away. Let's send a message in::
+
+  echo "Hello Graylog2, let's be friends." | nc -w 1 -u 127.0.0.1 9099
+
+This has sent a short string to the raw UDP input you just opened. Now search for *friends* using the searchbar on the top and you should already
+see the message you just sent in. Click on it in the table and see it in detail:
+
+.. image:: /images/setup_1.png
+
+You just sent your first message to Graylog2! Why not spawn a syslog input and point some of your servers to it? You could also create some user
+accounts for your colleagues.
+
+HTTPS
+^^^^^
+
+Enabling HTTPS is easy. Just start the web interface like this::
+
+  bin/graylog2-web-interface -Dhttps.port=443
+
+This will generate self-signed certificate. To use proper certificates you must configure a Java key store. Most signing authorities provide
+instructions on how to create a Java keystore and the official keystore utility docs can be found
+`here <http://docs.oracle.com/javase/7/docs/technotes/tools/solaris/keytool.html>`_.
+
+  * ``https.keyStore`` The path to the keystore containing the private key and certificate, if not provided generates a keystore for you
+  * ``https.keyStoreType`` The key store type, defaults to JKS
+  * ``https.keyStorePassword`` The password, defaults to a blank password
+  * ``https.keyStoreAlgorithm`` The key store algorithm, defaults to the platforms default algorithm
+
+To disable HTTP without SSL completely and enforce HTTPS, use this parameter::
+
+  -Dhttp.port=disabled
+
+Configuring logging
+^^^^^^^^^^^^^^^^^^^
+
+The default setting of the web interface is to write its own logs to ``STDOUT``. You can take control of the logging by specifying an own
+`Logback <http://logback.qos.ch/>`_ configuration file to use::
+
+  bin/graylog2-web-interface -Dlogger.file=/etc/graylog-web-interface-log.xml
+
+This is an example Logback configuration file that has a disabled ``STDOUT`` appender and an enabled appender that writes to a file
+(``/var/log/graylog2/web/graylog2-web-interface.log``), keeps 30 days of logs in total and creates a new log file if a file should have
+reached a size of 100MB::
+
+  <configuration>
+
+      <!--
+      <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+          <encoder>
+              <pattern>%date %-5level [%thread] - [%logger]- %msg%n</pattern>
+          </encoder>
+      </appender>
+      -->
+
+      <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+          <file>/var/log/graylog2/web/graylog2-web-interface.log</file>
+          <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+              <FileNamePattern>/var/log/graylog2/web/graylog2-web-interface.log.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+              <MaxHistory>30</MaxHistory>
+              <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                  <maxFileSize>100MB</maxFileSize>
+              </timeBasedFileNamingAndTriggeringPolicy>
+          </rollingPolicy>
+          <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+              <pattern>%date [%thread] %-5level %logger{36} - %msg%n</pattern>
+          </encoder>
+      </appender>
+
+      <root level="INFO">
+          <!--<appender-ref ref="STDOUT" />-->
+          <appender-ref ref="ROLLING_FILE" />
+      </root>
+
+  </configuration>
 
 Operating system packages
 =========================

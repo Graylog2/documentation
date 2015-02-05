@@ -50,7 +50,7 @@ Another difference is that searches for complex stream rule sets are always comp
 *tagged* with stream IDs when processed. A search for Graylog2 internally always looks like this, no matter how many stream
 rules you have configured::
 
-    streams:[STREAM_ID]
+  streams:[STREAM_ID]
 
 Building a query with all rules would cause significantly higher load on the message storage.
 
