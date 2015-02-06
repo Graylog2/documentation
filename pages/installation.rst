@@ -11,7 +11,7 @@ Graylog can be installed in many different ways so you can pick whatever works b
 of the other, more flexible installation methods to build a production ready setup. (Note: The `Virtual machine appliances`_
 are suitable for production usage because they are prepared to scale out to multiple servers when required.)
 
-This chapter is explaining the many ways to install Graylog2 and aims to help choosing the one that fits your needs.
+This chapter is explaining the many ways to install Graylog and aims to help choosing the one that fits your needs.
 
 Virtual machine appliances
 ==========================
@@ -71,7 +71,7 @@ Download and start the quick setup application
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Start by downloading the quick setup app from our `downloads page <http://www.graylog.org/download/>`_ Now extract the archive to any
-location you like. All parts of the Graylog2 system will be extracted in subfolders.
+location you like. All parts of the Graylog system will be extracted in subfolders.
 
 Next step is to run the app and opening the URL you are seeing in your browser::
 
@@ -92,17 +92,17 @@ setup usually takes less than a few minutes on most systems.
 The quick setup app asks you for connection details to your MongoDB instance. We recommend to run it on the same box and just connecting
 to `127.0.0.1`.
 
-Creating a Graylog2 user account
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Creating a Graylog user account
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the next step you will be asked to create your first Graylog2 user account. This account will get administrator rights and allows you
+In the next step you will be asked to create your first Graylog user account. This account will get administrator rights and allows you
 to further configure the system later on. **Remember the username and password because you will need it for logging in to your
-new Graylog2 system later.**
+new Graylog system later.**
 
 Finish setup
 ^^^^^^^^^^^^
 
-Now finish the setup by clicking on *Install Graylog2*. You will only be able to click the button if you have successfully completed all
+Now finish the setup by clicking on *Install Graylog*. You will only be able to click the button if you have successfully completed all
 required steps before.
 
 The quick setup app will start all required services and write some configuration files. This can take some time so please be patient
@@ -111,7 +111,7 @@ with the progress bar.
 Usually the progress bar will turn all green after completion and you will be redirected to the final summary page. You are now running
 Graylog!
 
-Check the output of the quick setup app process in your shell to find out how to start Graylog2 after shutting down the quick setup app::
+Check the output of the quick setup app process in your shell to find out how to start Graylog after shutting down the quick setup app::
 
 
   Starting elasticsearch with the following command:
@@ -121,16 +121,16 @@ Check the output of the quick setup app process in your shell to find out how to
   Starting graylog2 web interface with the following command:
       [...]
 
-  Terminating this process will stop Graylog2 as well. To run the processes manually, please refer to the output above.
+  Terminating this process will stop Graylog as well. To run the processes manually, please refer to the output above.
 
   Happy logging!
 
-Using your new Graylog2 system
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Using your new Graylog system
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The quick setup app should have given you a link to your new Graylog2 setup. Log in with the username and password you defined before.
+The quick setup app should have given you a link to your new Graylog setup. Log in with the username and password you defined before.
 
-**Congratulations!** You are now running Graylog2. Please note that we do not recommend to run a system installed by the quick setup
+**Congratulations!** You are now running Graylog. Please note that we do not recommend to run a system installed by the quick setup
 app in production. Reason is that you are probably not familiar enough with the system and that you may have to tune some parameters to
 be able to handle huge loads of log messages.
 
@@ -157,7 +157,7 @@ You will need to have the following services installed on either the host you ar
 Most standard MongoDB packages of Linux distributions are outdated. Use the `official MongoDB apt source <http://docs.mongodb.org/manual/tutorial/install-mongodb-on-debian/>`_.
 (Available for many distributions and operating systems)
 
-You also **must** use **Java 7** or higher! Java 6 is not compatible with Graylog2 and will also not receive any more publicly available bug and security
+You also **must** use **Java 7** or higher! Java 6 is not compatible with Graylog and will also not receive any more publicly available bug and security
 fixes by Oracle.
 
 A more detailed guide for installing the dependencies will follow. **The only important thing for Elasticsearch is that you configure
@@ -197,7 +197,7 @@ Configure at least these variables in ``/etc/graylog/server/server.conf``:
       and you will be able to log in to the web interface with username *admin* and password *yourpassword*.
  * ``elasticsearch_max_docs_per_index = 20000000``
     * How many log messages to keep per index. This setting multiplied with ``elasticsearch_max_number_of_indices`` results in the maximum number of
-      messages in your Graylog2 setup. It is always better to have several more smaller indices than just a few larger ones.
+      messages in your Graylog setup. It is always better to have several more smaller indices than just a few larger ones.
  * ``elasticsearch_max_number_of_indices = 20``
     * How many indices to have in total. If this number is reached, the oldest index will be deleted. **Also take a look at the other retention
       strategies that allow you to automatically delete messages based on their age.**
@@ -254,10 +254,10 @@ the configuration file in your ``graylogctl`` script. Append this before the `-j
 
 Substitute the actual path to the file for the ``/tmp/log4j.xml`` in the example.
 
-In case you do not have a log rotation system already in place, you can also configure Graylog2 to rotate logs based on their size to prevent its
+In case you do not have a log rotation system already in place, you can also configure Graylog to rotate logs based on their size to prevent its
 logs to grow without bounds.
 
-One such example ``log4j.xml`` configuration is shown below. Graylog2 includes the ``log4j-extras`` companion classes to support time based and size
+One such example ``log4j.xml`` configuration is shown below. Graylog includes the ``log4j-extras`` companion classes to support time based and size
 based log rotation. This is the example::
 
   <?xml version="1.0" encoding="UTF-8"?>
@@ -404,14 +404,14 @@ Log in to the web interface and navigate to *System* -> *Nodes*. Select your ``g
 Launch a new *Raw/Plaintext UDP* input, listening on port ``9099`` and listening on ``127.0.0.1``. No need to configure anything else for now.
 The list of running inputs on that node should show you your new input right away. Let's send a message in::
 
-  echo "Hello Graylog2, let's be friends." | nc -w 1 -u 127.0.0.1 9099
+  echo "Hello Graylog, let's be friends." | nc -w 1 -u 127.0.0.1 9099
 
 This has sent a short string to the raw UDP input you just opened. Now search for *friends* using the searchbar on the top and you should already
 see the message you just sent in. Click on it in the table and see it in detail:
 
 .. image:: /images/setup_1.png
 
-You just sent your first message to Graylog2! Why not spawn a syslog input and point some of your servers to it? You could also create some user
+You just sent your first message to Graylog! Why not spawn a syslog input and point some of your servers to it? You could also create some user
 accounts for your colleagues.
 
 HTTPS
@@ -487,10 +487,10 @@ and configuring new software a matter of a single command and a few minutes of t
 
 Graylog offers official ``DEB`` and ``RPM`` package repositories for Ubuntu 12.04, Ubuntu 14.04, Debian 7 and CentOS 6.
 
-The repositories can be setup by installing a single package. Once that's done the Graylog2 packages can be installed via ``apt-get`` or
+The repositories can be setup by installing a single package. Once that's done the Graylog packages can be installed via ``apt-get`` or
 ``yum``.
 
-**Make sure to install and configure MongoDB and Elasticsearch before starting the Graylog2 services.**
+**Make sure to install and configure MongoDB and Elasticsearch before starting the Graylog services.**
 
 Ubuntu 14.04
 ------------
