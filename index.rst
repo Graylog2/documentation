@@ -12,10 +12,11 @@ Link to other formats that we offer: PDF, epub, mobi, ...
 Contents:
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
 
    pages/architecture
    pages/installation
+   pages/sending_data
    pages/streams
    pages/extractors
    pages/configuring_es
