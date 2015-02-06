@@ -10,15 +10,15 @@ to discover the Elasticsearch nodes using multicast. This is great for developme
 in production.
 
 Cluster Name
-------------
+^^^^^^^^^^^^
 
-You need to tell graylog-server which Elasticsearch cluster to join. The Elasticsearch cluster default name is *elasticsearch*
+You need to tell ``graylog-server`` which Elasticsearch cluster to join. The Elasticsearch cluster default name is *elasticsearch*
 and configured for every Elasticsearch node in its ``elasticsearch.yml`` configuration file as ``cluster.name``. Configure the same
 name in every ``graylog2.conf`` as ``elasticsearch_cluster_name``. We recommend to call the cluster ``graylog2-production``, not
 ``elasticsearch``.
 
 Discovery mode
---------------
+^^^^^^^^^^^^^^
 
 The default discovery mode is multicast. Graylog2 will try to find other Elasticsearch nodes automatically. This usually works fine
 when everything is running on the same hosts but quickly gets problematic when running in a bigger network topology. We recommend
