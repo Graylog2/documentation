@@ -2,8 +2,8 @@
 Configuring and tuning Elasticsearch
 ************************************
 
-Configuration: graylog.conf
----------------------------
+Configuration of graylog-server nodes
+-------------------------------------
 
 The most important settings to make a successful connection are the cluster name and the discovery mode. Graylog2 is able
 to discover the Elasticsearch nodes using multicast. This is great for development but we recommend to use classic unicast
@@ -33,8 +33,8 @@ The default Elasticsearch communication port is 9300 (not to confuse with 9200 a
 as ``transport.tcp.port`` in ``elasticsearch.yml``. Make sure that Elasticsearch binds to an interface that Graylog2 can connect to.
 (see ``network.host``)
 
-Configuration of Elasticsearch
-------------------------------
+Configuration of Elasticsearch nodes
+------------------------------------
 
 Disable dynamic scripting
 ^^^^^^^^^^^^^^^^^^^^^^^^^
