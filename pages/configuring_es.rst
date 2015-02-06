@@ -40,8 +40,7 @@ Disable dynamic scripting
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Elasticsearch prior to version 1.2 had an insecure default configuration which could lead to a remote code execution.
-(see `here <http://bouk.co/blog/elasticsearch-rce/>`_ and `here <https://groups.google.com/forum/#!msg/graylog2/-icrS0rIA-Q/cCTJaNjVrQAJ>`_
- for details)
+(see `here <http://bouk.co/blog/elasticsearch-rce/>`_ and `here <https://groups.google.com/forum/#!msg/graylog2/-icrS0rIA-Q/cCTJaNjVrQAJ>`_ for details)
 
 Make sure to add ``script.disable_dynamic: true`` to the ``elasticsearch.yml`` file to disable the dynamic scripting feature and
 prevent possible remote code executions.
