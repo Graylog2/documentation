@@ -20,4 +20,5 @@ Contents:
    pages/streams
    pages/extractors
    pages/configuring_es
+   pages/dashboards
    pages/ideas_explained.rst
