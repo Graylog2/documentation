@@ -129,6 +129,61 @@ Our recommended way to forward Windows log data (for example EventLog) to Graylo
 `nxlog community edition <http://nxlog.org/products/nxlog-community-edition>`_. It comes with a native Graylog GELF
 output that nicely structures your log messages.
 
+Heroku
+======
+
+Heroku allows you to forward the logs of your application to a custom syslog server by creating a so called
+`Syslog drain <https://devcenter.heroku.com/articles/logging#syslog-drains>`_. The drain sends all logs to the configured
+server(s) via TCP. Following example shows you how to configure your Graylog2 to receive the Heroku logs and extract the
+different fields into a structured log message.
+
+Creating a Graylog input for Heroku log messages
+------------------------------------------------
+
+Create a new **RAW/Plaintext TCP** input as shown below.
+
+.. image:: /images/heroku_1.png
+
+.. image:: /images/heroku_2.png
+
+The Graylog2 `Extractor library <https://www.graylog.org/resources/data-sources/>`_ contains a set of
+`extractors to parse the Heroku log format <https://www.graylog.org/resource/extractor/53795f36e4b0b8f13c3d2ce5/>`_.
+You can import that set into the newly created input so all parts of the log messages will be extracted into separate fields:
+
+Open the extractor management for the input.
+
+.. image:: /images/heroku_3.png
+
+Go to the extractor import.
+
+.. image:: /images/heroku_4.png
+
+Paste the extractor JSON string into the form and submit.
+
+.. image:: /images/heroku_5.png
+
+That is all that is needed on the Graylog2 side. Make sure your firewall setup allows incoming connections on the inputs port!
+
+.. image:: /images/heroku_6.png
+
+Configuring Heroku to send data to your Graylog setup
+-----------------------------------------------------
+
+Heroku has a detailed `documentation <https://devcenter.heroku.com/articles/logging#syslog-drains>`_ regarding the Syslog drains feature.
+The following example shows everything that is needed to setup the drain for you application::
+
+  $ cd path/to/your/heroku/app
+  $ heroku drains
+  No drains for this app
+  $ heroku drains:add syslog://graylog2.example.com:5556
+  Successfully added drain syslog://graylog2.example.com:5556
+  $ heroku drains
+  syslog://graylog2.example.com:5556 (d.8cf52d32-7d79-4653-baad-8cb72bb23ee1)
+
+The `Heroku CLI tool <https://devcenter.heroku.com/articles/heroku-command>`_ needs to be installed for this to work.
+
+You Heroku application logs should now show up in the search results of your Graylog2 instance.
+
 Others
 ======
 
