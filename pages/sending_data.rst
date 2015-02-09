@@ -21,11 +21,8 @@ were downloaded from `here <https://www.graylog.org/resources/data-sources/>`_ c
 
 You can load and even create own content packs from the *System -> Content Packs* section of your Graylog web interface.
 
-Supported log formats
-=====================
-
 Syslog
-------
+======
 
 Graylog is able to accept and parse `RFC 5424 <http://www.ietf.org/rfc/rfc5424.txt>`_ and
 `RFC 3164 <http://www.ietf.org/rfc/rfc3164.txt>`_  compliant syslog messages and supports TCP transport with both
@@ -36,42 +33,99 @@ in most architectures.
 in wrong or completely failing parsing. In that case you might have to go with a combination of *raw/plaintext* message inputs that
 do not attempt to do any parsing and :doc:`extractors`.
 
-Rule of thumb is that messages forwarded by `rsyslog` or `syslog-ng` are usually parsed flawlessly.
+Rule of thumb is that messages forwarded by ``rsyslog`` or ``syslog-ng`` are usually parsed flawlessly.
 
-Follow our specific [syslog guide](/resources/documentation/sending/syslog) to learn how to configure your daemons.
+Sending syslog from Linux hosts
+-------------------------------
 
-### GELF
+rsyslog
+^^^^^^^
+
+Forwarding syslog messages with rsyslog is easy. The only important thing to get the most out of your logs is following
+`RFC 5424 <http://www.ietf.org/rfc/rfc5424.txt>`_. The following examples configures your ``rsyslog`` daemon to send
+RFC 5424 date to Graylog syslog inputs:
+
+UDP::
+
+  $template GRAYLOGRFC5424,"<%PRI%>%PROTOCOL-VERSION% %TIMESTAMP:::date-rfc3339% %HOSTNAME% %APP-NAME% %PROCID% %MSGID% %STRUCTURED-DATA% %msg%\n"
+  *.* @graylog.example.org:514;GRAYLOGRFC5424
+
+TCP::
+
+  $template GRAYLOGRFC5424,"<%PRI%>%PROTOCOL-VERSION% %TIMESTAMP:::date-rfc3339% %HOSTNAME% %APP-NAME% %PROCID% %MSGID% %STRUCTURED-DATA% %msg%\n"
+  *.* @@graylog.example.org:514;GRAYLOGRFC5424
+
+(The difference between UDP and TCP is using ``@`` instead of ``@@`` as target descriptor.)
+
+syslog-ng
+^^^^^^^^^
+
+Configuring syslog-ng to send syslog to Graylog2 is equally simple. Use the ``syslog`` function to send
+`RFC 5424 <http://www.ietf.org/rfc/rfc5424.txt>`_ formatted syslog messages via TCP to the remote Graylog host::
+
+  # Define TCP syslog destination.
+  destination d_net {
+      syslog("graylog.example.org" port(514));
+  };
+  # Tell syslog-ng to send data from source s_src to the newly defined syslog destination.
+  log {
+      source(s_src); # Defined in the default syslog-ng configuration.
+      destination(d_net);
+  };
+
+Sending syslog from OSX hosts
+-----------------------------
+
+Sending log messages from OSX syslog daemons is easy. Just define a ``graylog-server`` instance as UDP log target by
+adding this line in your ``/etc/syslog.conf``::
+
+  *.* @graylog.example.org:514
+
+Now restart ``syslogd``::
+
+  $ sudo launchctl unload /System/Library/LaunchDaemons/com.apple.syslogd.plist
+  $ sudo launchctl load /System/Library/LaunchDaemons/com.apple.syslogd.plist
+
+Important: If ``syslogd`` was running as another use you might end up with multiple ``syslogd`` instances and strange
+behaviour of the whole system. Please check that only one ``syslogd`` process is running::
+
+  $ ps aux | grep syslog
+  lennart         58775   0.0  0.0  2432768    592 s004  S+    6:10PM   0:00.00 grep syslog
+  root            58759   0.0  0.0  2478772   1020   ??  Ss    6:09PM   0:00.01 /usr/sbin/syslogd
+
+That's it! Your OSX syslog messages should now appear in your Graylog system.
+
+GELF
+====
 
 The Graylog Extended Log Format (GELF) is a log format that avoids the shortcomings of classic plain syslog and is perfect
 to logging from your application layer. It comes with optional compression, chunking and most importantly a clearly defined
-structure. There are [dozens of GELF libraries](/supported-sources) for many frameworks and programming languages to get
-you started.
+structure. There are `dozens of GELF libraries <https://www.graylog.org/resources/data-sources/>`_ for many frameworks and
+programming languages to get you started.
 
-Read more about GELF [here](/resources/gelf).
+Read more about GELF `on graylog2.org <https://www.graylog.org/resources/gelf-2/>`_.
 
-### Others
+Microsoft Windows
+=================
+
+Our recommended way to forward Windows log data (for example EventLog) to Graylog is to use the open source
+`nxlog community edition <http://nxlog.org/products/nxlog-community-edition>`_. It comes with a native Graylog GELF
+output that nicely structures your log messages. 
+
+Others
+======
 
 The built-in *raw/plaintext* inputs allow you to parse any text that you can send via TCP or UDP. No parsing is applied at
-all by default until you build your own parser using custom [extractors](/resources/documentation/general/extractors). This
-is a good way to support any text-based logging format.
+all by default until you build your own parser using custom :doc:`extractors`. This is a good way to support any text-based
+logging format.
 
-You can also [write your own message input plugin](/resources/documentation/general/plugins) if you need extreme flexibility.
+You can also write :doc:`plugins` if you need extreme flexibility.
 
-## Reading from files
+Reading from files
+==================
 
-Graylog2 is currently not providing an out-of-the-box way to read log messages from files. We do however recommend two
-fantastic tools to do that job that both come with native Graylog2 (GELF) outputs:
+Graylog is currently not providing an out-of-the-box way to read log messages from files. We do however recommend two
+fantastic tools to do that job for you. Both come with native Graylog (GELF) outputs:
 
-  * [fluentd](http://www.fluentd.org/guides/recipes/graylog2)
-  * [logstash](http://logstash.net/docs/1.4.2/outputs/gelf)
-
-## graylog2-radio
-
-Our `graylog2-radio` component is a lightweight `graylog2-server` instance that is, just like any fully featured
-`graylog2-server` instance, controlled from the Graylog2 web interface. It is spawning message inputs and writing
-received messages to a message broker like RabbitMQ or Kafka without doing any further processing. Connected
-`graylog2-server` instances will read the queued messages and process them like any other received log message. This
-is great to buffer load spikes or distribute load evenly across multiple `graylog2-server` instances.
-
-The message inputs spawned on `graylog2-radio` are not different to those spawned on `graylog2-server` instances. Read
-more about this topic [here](/resources/documentation/setup/radio).
+  * `fluentd <http://www.fluentd.org/guides/recipes/graylog2>`_
+  * `logstash <http://logstash.net/docs/1.4.2/outputs/gelf>`_

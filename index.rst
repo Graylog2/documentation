@@ -21,4 +21,5 @@ Contents:
    pages/extractors
    pages/configuring_es
    pages/dashboards
+   pages/plugins
    pages/ideas_explained.rst
