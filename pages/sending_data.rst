@@ -95,8 +95,8 @@ behaviour of the whole system. Please check that only one ``syslogd`` process is
 
 That's it! Your OSX syslog messages should now appear in your Graylog system.
 
-GELF
-====
+GELF / Sending from applications
+================================
 
 The Graylog Extended Log Format (GELF) is a log format that avoids the shortcomings of classic plain syslog and is perfect
 to logging from your application layer. It comes with optional compression, chunking and most importantly a clearly defined
@@ -230,19 +230,6 @@ You need to apply a workaround if you want custom logging on Heroku. The reason 
 that overwrites your custom one. The workaround is to add a file that makes Heroku think that the logger is already in your application::
 
     $ touch vendor/plugins/rails_log_stdout/heroku_fix
-
-
-Java applications
-=================
-
-
-
-
-
-
-
-
-
 
 Raw/Plaintext inputs
 ====================
