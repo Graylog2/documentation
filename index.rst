@@ -16,10 +16,11 @@ Contents:
 
    pages/architecture
    pages/installation
+   pages/configuring_es
    pages/sending_data
    pages/streams
    pages/extractors
-   pages/configuring_es
+   pages/drools
    pages/dashboards
    pages/plugins
    pages/ideas_explained.rst
