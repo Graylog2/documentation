@@ -18,9 +18,11 @@ Contents:
    pages/installation
    pages/configuring_es
    pages/sending_data
+   pages/queries
    pages/streams
    pages/extractors
    pages/drools
    pages/dashboards
+   pages/index_model
    pages/plugins
-   pages/ideas_explained.rst
+   pages/ideas_explained
