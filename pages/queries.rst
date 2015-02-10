@@ -112,3 +112,18 @@ The time frame selector defines in what time range to search in. It offers three
 is vital for search speed: If you know you are only interested in messages of the last hour, only search in that time frame.
 This will make Graylog search in relevant indices only and greatly reduce system load and required resources. You can read
 more about this here: :doc:`index_model`
+
+Search result highlighting
+==========================
+
+Graylog supports search result highlighting since v0.20.2:
+
+.. image:: /images/search_result_highlighting.png
+
+Enabling/Disabling search result highlighting
+---------------------------------------------
+
+Using search result highlighting will result in slightly higher resource consumption of searches. You can enable and disable
+it using a configuration parameter in the ``graylog.conf`` of your ``graylog-server`` nodes::
+
+    allow_highlighting = true
