@@ -20,9 +20,10 @@ Contents:
    pages/sending_data
    pages/queries
    pages/streams
+   pages/dashboards
    pages/extractors
    pages/drools
-   pages/dashboards
    pages/index_model
    pages/plugins
+   pages/external_dashboards
    pages/ideas_explained
