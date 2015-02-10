@@ -63,7 +63,6 @@ In the following script we turn the PID and the src IP into additional fields::
            m.addField("_pid", Long.valueOf(matcher.group(1)));
            m.addField("_src", matcher.group(2));
         }
-    end
   end
 
 Another example: Adding additional fields and changing the message itself
@@ -105,6 +104,4 @@ IP addrress of squid, which not very useful. This rule overwrites the source and
               m.addField("_status",matcher.group(4));
               m.addField("_size",matcher.group(5));
           }
-
-      end
   end
