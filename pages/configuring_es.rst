@@ -2,6 +2,13 @@
 Configuring and tuning Elasticsearch
 ************************************
 
+Our recommendation is to have a dedicated Elasticsearch cluster for your
+Graylog setup. If you are using a shared Elasticsearch setup, a problem with
+indices unrelated to Graylog might turn the cluster status to yellow or red.
+
+Configuration
+=============
+
 Configuration of graylog-server nodes
 -------------------------------------
 
@@ -73,3 +80,33 @@ Tuning Elasticsearch
 
 Graylog2 is already setting specific configuration per index it creates. This is enough tuning for a lot of use cases and setups. A more
 detailed guide on deeper tuning of Elasticsearch is following.
+
+Cluster Status explained
+========================
+
+Elasticsearch provides a classification for the cluster health:
+
+RED
+---
+
+The red status indicates that some or all of the primary shards are not
+available. In this state, no searches can be performed until all primary shards
+are restored.
+
+YELLOW
+------
+
+The yellow status means that all of the primary shards are available but some
+or all shard replicas are not.
+
+With only one Elasticsearch node, the cluster state cannot become green because
+shard replicas cannot be assigned. This can be solved by adding another
+Elasticsearch node to the cluster.
+
+If the cluster is supposed to have only one node it is okay to be in the
+yellow state.
+
+GREEN
+-----
+
+The cluster is fully operational. All primary and replica shards are available.
