@@ -25,6 +25,7 @@ Contents:
    pages/drools
    pages/load_balancers
    pages/index_model
+   pages/indexer_failures
    pages/plugins
    pages/external_dashboards
    pages/ideas_explained
