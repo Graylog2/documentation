@@ -23,6 +23,7 @@ Contents:
    pages/dashboards
    pages/extractors
    pages/drools
+   pages/load_balancers
    pages/index_model
    pages/plugins
    pages/external_dashboards
