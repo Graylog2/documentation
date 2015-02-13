@@ -49,7 +49,7 @@ including AMQP or Kafka brokers completely and directly send messages to the `gr
 If you used Graylog radio for load balancing, you should now put a classic load balancer in front of your
 `graylog-server` nodes.
 
-**This has proven to work fine in our large scale customer setups and greatly reduce complexity of the setup.**
+**This has proven to work fine in our large scale customer setups and greatly reduced complexity of the setup.**
 
 The Kafka and AMQP inputs are still supported and can be used to build an own custom setup using
 message brokers if you want to keep using that. A reason to do this might be that Graylog is not the
