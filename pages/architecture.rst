@@ -39,15 +39,19 @@ REST/HTTP to check if they are alive and take dead nodes out of the cluster.
 Highly available setup with Graylog Radio
 ------------------------------------------
 
-This is a big setup that allows to shut down or lose big parts of the system without losing
-messages. The messages are written to ``graylog-radio`` nodes behind a load balancer. Radio
-nodes are configured from the web interface and write the received messages to a Kafka
-cluster (AMQP is supported, too).
+From version v1.0 on we are not longer recommending to use Graylog Radio because we are now running an
+embedded Kafka node in each `graylog-server` instance that is spooling all incoming messages to disk
+immediately and is able to buffer load spikes just as good as Graylog radio was - but with less
+dependencies and maintenance overhead.
 
-.. image:: /images/big_radio_setup.png
+If you are running a setup with Graylog radio we recommed to shut down the Graylog Radio architecture
+including AMQP or Kafka brokers completely and directly send messages to the `graylog-server` nodes.
+If you used Graylog radio for load balancing, you should now put a classic load balancer in front of your
+`graylog-server` nodes.
 
-The ``graylog-server`` nodes read messages from the Kafka cluster and distribute the load
-automatically and very even. Messages just queue up on the Kafka broker disks until they
-are read if no ``graylog-server`` node is running or message processing is stopped on all
-of them. This way you can even shut down the whole Elasticsearch cluster if you want and
-never lose any messages.
+**This has proven to work fine in our large scale customer setups and greatly reduce complexity of the setup.**
+
+The Kafka and AMQP inputs are still supported and can be used to build an own custom setup using
+message brokers if you want to keep using that. A reason to do this might be that Graylog is not the
+only subscriber to the messages on the bus. However we would then recommed to use Graylog forwarders
+to either write to a message bus after processing or write to other systems directly.
