@@ -6,8 +6,8 @@ A short history of Graylog
 ==========================
 
 The Graylog project was started by Lennart Koopmann some time around 2009. Back then the most prominent log management software
-vendor issued a quote for a one year license of their product that was so high that he decided to write a log management system
-himself. Now you might call this a bit over optimisting (*I'll build this in two weeks*, end of quote) but the situation was
+vendor issued a quote for a one year license of their product that was so expensive that he decided to write a log management system
+himself. Now you might call this a bit over optimistic (*I'll build this in two weeks*, end of quote) but the situation was
 hopeless: There was basically no other product on the market and especially no open source alternatives.
 
 The log management market today
@@ -22,17 +22,17 @@ The wrong architecture
 The probably most successful log management software, Splunk, has the most advanced architecture on the market **because it
 was built for log management from the beginning**. Software that stores and analyzes log data must have a very specific
 architecture to do it efficiently. It is more than just a database or a full text search engine because it has to deal with both
-text data and metric data on a time axis. Searches are always bound to a timeframe (relative or absolute) and only going back
+text data and metrics data on a time axis. Searches are always bound to a timeframe (relative or absolute) and only going back
 into the past because future log data has not been written yet. **A general purpose database or full text search engine that could
 also store and index the private messages of your online platform for search will never be able to effectively manage your log data.**
 Adding a specialized frontend on top of it makes it look like it could do the job in a good way but is basically just putting lipstick
 on the wrong stack.
 
-A log management system has to be constructed of several services that take care of processing, indexing and data access. The most
+A log management system has to be constructed of several services that take care of processing, indexing, and data access. The most
 important reason is that you need to scale parts of it horizontally with your changing use cases and usually the different parts
-of the system require different hardware. All services must be tightly integrated to allow efficient management and configuration
-of the system in a whole. A data ingestion or forwarder tool is hard to tedious to manage if the configuration **has** to be stored
-on the client machines and is not possible via for example REST APIs controlled by a simple interface. A system adminstrator must
+of the system have different hardware requirements. All services must be tightly integrated to allow efficient management and configuration
+of the system as a whole. A data ingestion or forwarder tool is hard to tedious to manage if the configuration **has** to be stored
+on the client machines and is not possible via for example REST APIs controlled by a simple interface. A system adminstrator needs to
 be able to log into the web interface of a log management product and select log files of a remote host (that has a forwarder running)
 for ingestion into the tool.
 
@@ -67,7 +67,7 @@ but never by the license that somebody bought.**
 
 It is also a law of the market that you have to build your volume pricing model on the amount of data that is usually collected
 **today**. The amount of generated data has increased dramatically and vendors are nailed to their pricing model from 2008. This
-is why you get quotes that fill you with sadness in todays world.
+is why you get quotes that fill you with sadness in today's world.
 
 Blackboxes
 ----------
