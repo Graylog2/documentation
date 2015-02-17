@@ -5,8 +5,8 @@ Streams
 What are streams?
 *****************
 
-The Graylog2 streams are a mechanism to route messages into categories in realtime while they are processed. You define rules that
-instruct Graylog2 which message to route where. Imagine sending these three messages to Graylog2::
+The Graylog streams are a mechanism to route messages into categories in realtime while they are processed. You define rules that
+instruct Graylog which message to route into which streams. Imagine sending these three messages to Graylog::
 
   message: INSERT failed (out of disk space)
   level: 3 (error)
@@ -47,7 +47,7 @@ Imagine forwarding your database errors to another system or writing them to a f
 storage. Realtime streams do this much better.
 
 Another difference is that searches for complex stream rule sets are always comparably cheap to perform because a message is
-*tagged* with stream IDs when processed. A search for Graylog2 internally always looks like this, no matter how many stream
+*tagged* with stream IDs when processed. A search for Graylog internally always looks like this, no matter how many stream
 rules you have configured::
 
   streams:[STREAM_ID]
@@ -55,7 +55,7 @@ rules you have configured::
 Building a query with all rules would cause significantly higher load on the message storage.
 
 How do I create a stream?
-============================
+=========================
 
 #. Navigate to the streams section from the top navigation bar
 #. Click "Create stream"
@@ -75,8 +75,8 @@ messages per minute or when the field *milliseconds* had a too high standard dev
 Hit *Manage alerts* in the stream *Action* dropdown to see already configured alerts, alerts that were fired in the past or
 to configure new alert conditions.
 
-Graylog2 ships with default *alert callbacks* and can be extended with
-`plugins <http://www.graylog.org/resources/documentation/general/plugins>`_
+Graylog ships with default *alert callbacks* and can be extended with
+`plugins <https://www.graylog.org/resources/documentation/general/plugins>`_
 
 What is the difference between alert callbacks and alert receivers?
 ===================================================================
@@ -97,7 +97,7 @@ The stream output system allows you to forward every message that is routed into
 Outputs are managed globally (like message inputs) and not for single streams. You can create new outputs and activate them
 for as many streams as you like. This way you can configure a forwarding destination once and select multiple streams to use it.
 
-Graylog2 ships with default outputs and can be extended with
+Graylog ships with default outputs and can be extended with
 `plugins <http://www.graylog.org/resources/documentation/general/plugins>`_.
 
 Use cases
@@ -115,7 +115,7 @@ These are a few example use cases for streams:
 How are streams processed internally?
 *************************************
 
-The most important thing to know about Graylog2 stream matching is that there is no duplication of messages. Every message that comes
+The most important thing to know about Graylog stream matching is that there is no duplication of stored messages. Every message that comes
 in is matched against all rules of a stream. The internal ID of every stream that has *all* rules matching is appended to the ``streams``
 array of the processed message.
 
@@ -133,8 +133,8 @@ of a message only, so the amount of time spent for the classification of a messa
 throughput the system can handle.
 
 There are certain scenarios when a stream rule takes very long to match. When this happens for a number of messages, message processing
-can stall, messages waiting for processing accumulate in memory and the whole system could become non-responsive. Messages are lost
-manual intervention is necessary. This is the worst case scenario.
+can stall, messages waiting for processing accumulate in memory and the whole system could become non-responsive. Messages are lost and
+manual intervention would be necessary. This is the worst case scenario.
 
 To prevent this, the runtime of stream rule matching is limited. When it is taking longer than the configured runtime limit, the process
 of matching this exact message against the rules of this specific stream is aborted. Message processing in general and for this specific
@@ -181,12 +181,12 @@ Programmatic access via the REST API
 
 Many organisations already run monitoring infrastructure that are able to alert operations staff when incidents are detected.
 These systems are often capable of either polling for information on a regular schedule or being pushed new alerts - this article describes how to
-use the Graylog2 Stream Alert API to poll for currently active alerts in order to further process them in third party products.
+use the Graylog Stream Alert API to poll for currently active alerts in order to further process them in third party products.
 
 Checking for currently active alert/triggered conditions
 ========================================================
 
-Graylog2 stream alerts can currently be configured to send emails when one or more oft the associated alert conditions evaluate to true. While
+Graylog stream alerts can currently be configured to send emails when one or more oft the associated alert conditions evaluate to true. While
 sending email solves many immediate problems when it comes to alerting, it can be helpful to gain programmatic access to the currently active alerts.
 
 Each stream which has alerts configured also has a list of active alerts, which can potentially be empty if there were no alerts so far.
@@ -274,7 +274,7 @@ Using regular expressions for stream matching
 =============================================
 
 Stream rules support matching field values using regular expressions.
-Graylog2 uses the `Java Pattern class <http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html>`_ to execute regular expressions.
+Graylog uses the `Java Pattern class <http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html>`_ to execute regular expressions.
 
 For the individual elements of regular expression syntax, please refer to Oracle's documentation, however the syntax largely follows the familiar
 regular expression languages in widespread use today and will be familiar to most.
