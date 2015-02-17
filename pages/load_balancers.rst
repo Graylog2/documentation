@@ -46,7 +46,7 @@ servers can take the load seamlessly.
 By using the load balancer status API described above one can already perform such a task. However, it would still be
 guesswork when the Graylog server is done processing all the messages it already accepted.
 
-For this purpose Graylog2 supports a graceful shutdown command, also accessible via the web interface and API. It will
+For this purpose Graylog supports a graceful shutdown command, also accessible via the web interface and API. It will
 set the load balancer status to ``DEAD``, stop all inputs, turn on messages processing (should it have been disabled
-manually previously) and flush all messages in memory to Elasticsearch. After all buffers and caches are processed,
+manually previously), and flush all messages in memory to Elasticsearch. After all buffers and caches are processed,
 it will shut itself down safely.
