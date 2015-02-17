@@ -15,8 +15,8 @@ part of the system.
 Content packs
 =============
 
-Content packs are bundles of Graylog input, extractor, stream, dashboard and output configurations that can provide full support
-for a data source. Some content packs are shipped with Graylog by default and some are available from this web site. Packs that
+Content packs are bundles of Graylog input, extractor, stream, dashboard, and output configurations that can provide full support
+for a data source. Some content packs are shipped with Graylog by default and some are available from the website. Content packs that
 were downloaded from `here <https://www.graylog.org/resources/data-sources/>`_ can be imported using the Graylog web interface.
 
 You can load and even create own content packs from the *System -> Content Packs* section of your Graylog web interface.
@@ -60,7 +60,7 @@ TCP::
 syslog-ng
 ^^^^^^^^^
 
-Configuring syslog-ng to send syslog to Graylog2 is equally simple. Use the ``syslog`` function to send
+Configuring syslog-ng to send syslog to Graylog is equally simple. Use the ``syslog`` function to send
 `RFC 5424 <http://www.ietf.org/rfc/rfc5424.txt>`_ formatted syslog messages via TCP to the remote Graylog host::
 
   # Define TCP syslog destination.
@@ -73,10 +73,10 @@ Configuring syslog-ng to send syslog to Graylog2 is equally simple. Use the ``sy
       destination(d_net);
   };
 
-Sending syslog from OSX hosts
------------------------------
+Sending syslog from MacOS X hosts
+---------------------------------
 
-Sending log messages from OSX syslog daemons is easy. Just define a ``graylog-server`` instance as UDP log target by
+Sending log messages from MacOS X syslog daemons is easy. Just define a ``graylog-server`` instance as UDP log target by
 adding this line in your ``/etc/syslog.conf``::
 
   *.* @graylog.example.org:514
@@ -86,14 +86,14 @@ Now restart ``syslogd``::
   $ sudo launchctl unload /System/Library/LaunchDaemons/com.apple.syslogd.plist
   $ sudo launchctl load /System/Library/LaunchDaemons/com.apple.syslogd.plist
 
-Important: If ``syslogd`` was running as another use you might end up with multiple ``syslogd`` instances and strange
+**Important:** If ``syslogd`` was running as another user you might end up with multiple ``syslogd`` instances and strange
 behaviour of the whole system. Please check that only one ``syslogd`` process is running::
 
   $ ps aux | grep syslog
   lennart         58775   0.0  0.0  2432768    592 s004  S+    6:10PM   0:00.00 grep syslog
   root            58759   0.0  0.0  2478772   1020   ??  Ss    6:09PM   0:00.01 /usr/sbin/syslogd
 
-That's it! Your OSX syslog messages should now appear in your Graylog system.
+That's it! Your MacOS X syslog messages should now appear in your Graylog system.
 
 GELF / Sending from applications
 ================================
@@ -134,7 +134,7 @@ Heroku
 
 Heroku allows you to forward the logs of your application to a custom syslog server by creating a so called
 `Syslog drain <https://devcenter.heroku.com/articles/logging#syslog-drains>`_. The drain sends all logs to the configured
-server(s) via TCP. Following example shows you how to configure your Graylog2 to receive the Heroku logs and extract the
+server(s) via TCP. Following example shows you how to configure Graylog to receive the Heroku logs and extract the
 different fields into a structured log message.
 
 Creating a Graylog input for Heroku log messages
@@ -146,7 +146,7 @@ Create a new **RAW/Plaintext TCP** input as shown below.
 
 .. image:: /images/heroku_2.png
 
-The Graylog2 `Extractor library <https://www.graylog.org/resources/data-sources/>`_ contains a set of
+The Graylog `Extractor library <https://www.graylog.org/resources/data-sources/>`_ contains a set of
 `extractors to parse the Heroku log format <https://www.graylog.org/resource/extractor/53795f36e4b0b8f13c3d2ce5/>`_.
 You can import that set into the newly created input so all parts of the log messages will be extracted into separate fields:
 
@@ -162,7 +162,7 @@ Paste the extractor JSON string into the form and submit.
 
 .. image:: /images/heroku_5.png
 
-That is all that is needed on the Graylog2 side. Make sure your firewall setup allows incoming connections on the inputs port!
+That is all that is needed on the Graylog side. Make sure your firewall setup allows incoming connections on the inputs port!
 
 .. image:: /images/heroku_6.png
 
@@ -182,7 +182,7 @@ The following example shows everything that is needed to setup the drain for you
 
 The `Heroku CLI tool <https://devcenter.heroku.com/articles/heroku-command>`_ needs to be installed for this to work.
 
-You Heroku application logs should now show up in the search results of your Graylog2 instance.
+You Heroku application logs should now show up in the search results of your Graylog instance.
 
 Ruby on Rails
 =============
@@ -210,8 +210,8 @@ Now configure both in your Rails application. Usually ``config/environments/prod
 
 This configuration will also send all explicit ``Rails.logger`` calls (e.g. ``Rails.logger.error "Something went wrong"``) to Graylog.
 
-Log only explicit logger calls into Graylog2
---------------------------------------------
+Log only explicit logger calls into Graylog
+-------------------------------------------
 
 If you don't want to log information about every request, but only explicit ``Rails.logger`` calls, it is enough to only configure the Rails logger.
 
