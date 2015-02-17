@@ -9,9 +9,9 @@ Using dashboards allows you to build pre-defined views on your data to always ha
 just one click away.
 
 Sometimes it takes domain knowledge to be able to figure out the search queries
-to get the correct results for your specific applications. Somebody with the required domain knowledge
-can define the search query once and then display the results on a dashboard to share with co-workers,
-managers or even sales and marketing departments.
+to get the correct results for your specific applications. People with the required domain knowledge
+can define the search query once and then display the results on a dashboard to share them with co-workers,
+managers, or even sales and marketing departments.
 
 This guide will take you through the process of creating dashboards and storing information on them.
 At the end you will have a dashboard with automatically updating information that you can share with
@@ -34,8 +34,8 @@ but not too long title so people can easily see what to expect on the dashboard.
 a bit longer and could contain more detailed information about the displayed data or how it is collected.
 
 Hit the *Create* button to create the dashboard. You should now see your new dashboard on the dashboards
-overview page. Click on the title of your new dashboard to see it. We will be adding widgets to it
-in the next step.
+overview page. Click on the title of your new dashboard to see it. Next, we will be adding widgets to the
+dashboard we have just created.
 
 .. image:: /images/dashboards_2.jpg
 
@@ -73,7 +73,7 @@ Widgets from streams
 ====================
 
 You can of course also add widgets from stream search results. Every widget added this way will always
-be bound to streams. If you have a stream that catches every SSH login you can just search for everything
+be bound to streams. If you have a stream that contains every SSH login you can just search for everything
 (``*``) in that stream and store the result count as *SSH logins* on a dashboard.
 
 Result
@@ -101,10 +101,9 @@ Widget cache times
 ------------------
 
 Widget values are cached in ``graylog-server`` by default. **This means that the cost of value computation
-does not grow with every new device or even browser tab displaying a dashboard.** There might be some
-widgets that need to show real-time information (set cache time to 1 second) and some widgets that can be
-always a bit out of date (like *Top SSH users this month*, cache time 10 minutes) to save expensive
-computation resources.
+does not grow with every new device or even browser tab displaying a dashboard.** Some widgets might need
+to show real-time information (set cache time to 1 second) and some widgets might be updated way less often
+(like *Top SSH users this month*, cache time 10 minutes) to save expensive computation resources.
 
 Repositioning widgets
 ---------------------
@@ -118,13 +117,13 @@ automatically saved when dropping a widget.
 Dashboard permissions
 =====================
 
-Graylog users with administrator rights are always allowed to view and edit all dashboards. Users with *reader* rights
+Graylog users with administrator permissions are always allowed to view and edit all dashboards. Users with *reader* permissions
 are by default not allowed to view or edit **any** dashboard.
 
 .. image:: /images/dashboards_8.png
 
 Navigate to *System* -> *Users* and select a *reader* user you wish to give dashboard permissions. Hit the *edit* button
-and assign dashboard *view* and *edit* rights in the edit user dialogue. Don't forget to save the user!
+and assign dashboard *view* and *edit* permissions in the edit user dialogue. Don't forget to save the user!
 
 That's it!
 ----------
