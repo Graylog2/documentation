@@ -2,58 +2,59 @@
 Extractors
 **********
 
-The problem to solve
-********************
+The problem explained
+*********************
 
 Syslog (`RFC3146 <http://tools.ietf.org/html/rfc3146>`_, `RFC5424 <http://tools.ietf.org/html/rfc5424>`_) is the de facto
-standard logging protocol since the 80s and was originally developed as part of the sendmail project. It comes with some
+standard logging protocol since the 1980s and was originally developed as part of the sendmail project. It comes with some
 annoying shortcomings that we tried to improve in `GELF <http://www.graylog.org/gelf>`_ for application logging.
 
 Because syslog has a clear specification in its RFCs it should be possible to parse it relatively easy. Unfortunately
 there are a lot of devices (especially routers and firewalls) out there that send logs looking like syslog but actually
 breaking several rules stated in the RFCs. We tried to write a parser that reads all of them as good as possible and
 failed. Such a loosely defined text message usually breaks the compatibility in the first date field already. Some
-devices leave out hostnames completely, some use localized timezone names (MESZ instead of CEST) and some just omit the
-current year.
+devices leave out hostnames completely, some use localized timezone names (e. g. "MESZ" instead of "CEST"),
+and some just omit the current year in the timestamp field.
 
 Then there are devices out there that at least do not claim to send syslog when they don't but have another completely
 separate log format that needs to be parsed specifically.
 
 We decided not to write custom message inputs and parsers for all those thousands of devices, formats, firmwares and
-configuration parameters out there but came up with the concept of *Extractors* in the *v0.20.0* series of Graylog.
+configuration parameters out there but came up with the concept of *Extractors* introduced the *v0.20.0* series of Graylog.
 
 Graylog extractors explained
 ****************************
 
-The extractors allow you to instruct ``graylog-server`` nodes about how to extract data from any text in the received
+The extractors allow you to instruct Graylog nodes about how to extract data from any text in the received
 message (no matter from which format or if an already extracted field) to message fields. You may already know why
 structuring data into fields is important if you are using Graylog: There are a lot of analysis possibilities with
 full text searches but the real power of log analytics unveils when you can run queries like
-``http_response_code:>=500 AND user_id:9001`` to get all HTTP 500s that were triggered by a specific user.
+``http_response_code:>=500 AND user_id:9001`` to get all internal server errors that were triggered by a specific user.
 
 Wouldn't it be nice to be able to search for all blocked packages of a given source IP or to get a quickterms analysis
 of recently failed SSH login usernames? Hard to do when all you have is just a single long text message.
 
-Creating extractors is possible via either Graylog REST API calls or directly from the web interface using a wizard. Select
-a message input and hit *Manage extractors* in the actions menu. The wizard allows you to load a message to try your extractor
-configuration against. You can extract data using for example regular expressions, grok patterns, substrings or even
-by splitting the message into tokens by separator characters. The wizard looks like this and should be pretty intuitive:
+Creating extractors is possible via either Graylog REST API calls or from the web interface using a wizard. Select
+a message input on the *System* -> *Inputs* page and hit *Manage extractors* in the actions menu. The wizard allows
+you to load a message to test your extractor configuration against. You can extract data using for example regular
+expressions, Grok patterns, substrings, or even by splitting the message into tokens by separator characters.
+The wizard looks like this and should be pretty intuitive:
 
 .. image:: /images/extractors_1.png
 
 You can also choose to apply so called *converters* on the extracted value to for example convert a string consisting
-of numbers to an integer/double (important for range searches later), anonymize IP addresses, lowercase/uppercase a
-string, build a hash value or much more.
+of numbers to an integer or double value (important for range searches later), anonymize IP addresses, lower-/uppercase a
+string, build a hash value, and much more.
 
 The extractor directory
 ***********************
 
-The `data source library <https://www.graylog2.org/supported-sources>`_ contains a lot of extractors that you can easily
+The `data source library <https://www.graylog.org/supported-sources>`_ provides access to a lot of extractors that you can easily
 import into your Graylog setup.
 
-Just copy the JSON extractor export into the import dialog of an input of the fitting type (Every extractor set entry in
-the directory tells you what type of input to spawn. For example syslog, GELF or plaintext.) and you are good to go.
-The next message coming in should already include the extracted fields with possibly converted values.
+Just copy the JSON extractor export into the import dialog of a message input of the fitting type (every extractor set entry in
+the directory tells you what type of input to spawn, e. g. syslog, GELF, or Raw/plaintext) and you are good to go.
+The next messages coming in should already include the extracted fields with possibly converted values.
 
 A message sent by Heroku and received by Graylog with the imported *Heroku* extractor set on a plaintext TCP input
 looks like this: (look at the extracted fields in the message detail view)
