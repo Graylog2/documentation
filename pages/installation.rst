@@ -29,13 +29,13 @@ Please follow the links for specific instructions and downloads. The next chapte
 Configuring the appliances
 --------------------------
 
-The great thing about the new appliances is the ``graylog2-ctl`` tool that we are shipping with them. We want you to get started
-with pa customised setup as soon as quickly as possible so you can now do things like::
+The great thing about the new appliances is the ``graylog-ctl`` tool that we are shipping with them. We want you to get started
+with a customised setup as soon as quickly as possible so you can now do things like::
 
-  graylog2-ctl set-email-config <smtp server> [--port=<smtp port> --user=<username> --password=<password>]
-  graylog2-ctl set-admin-password <password>
-  graylog2-ctl set-timezone <zone acronym>
-  graylog2-ctl reconfigure
+  graylog-ctl set-email-config <smtp server> [--port=<smtp port> --user=<username> --password=<password>]
+  graylog-ctl set-admin-password <password>
+  graylog-ctl set-timezone <zone acronym>
+  graylog-ctl reconfigure
 
 Scaling out
 -----------
@@ -43,9 +43,9 @@ Scaling out
 We are also providing an easy way to automatically scale out to more boxes once you grew out of your initial setup. Every appliance
 is always shipping with all required Graylog components and you can at any time decide which role a specific box should take::
 
-  graylog2-ctl reconfigure-as-server
-  graylog2-ctl reconfigure-as-webinterface
-  graylog2-ctl reconfigure-as-datanode
+  graylog-ctl reconfigure-as-server
+  graylog-ctl reconfigure-as-webinterface
+  graylog-ctl reconfigure-as-datanode
 
 Quick setup application
 =======================
@@ -56,7 +56,7 @@ be presented with an interactive wizard that asks you for some simple configurat
 between required components are tested to guarantee that the single steps succeeded. It usually takes no longer than five minutes
 from starting the quick setup application to signing into your new Graylog setup.
 
-It is important to remember that the quick setup app is **not** meant to create production ready setups. I strongly recommend to
+It is important to remember that the quick setup app is **not** meant to create production ready setups. We strongly recommend to
 use one of the other installation methods for a Graylog setup that is intended to run in production.
 
 .. image:: /images/qsa1.png
@@ -70,8 +70,8 @@ All the rest of the process is controlled from your browser.
 Download and start the quick setup application
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Start by downloading the quick setup app from our `downloads page <http://www.graylog.org/download/>`_ Now extract the archive to any
-location you like. All parts of the Graylog system will be extracted in subfolders.
+Start by downloading the quick setup app from our `downloads page <https://www.graylog.org/download/>`_ Now extract the archive in any
+location you like. All parts of the Graylog system will be extracted in subdirectories.
 
 Next step is to run the app and opening the URL you are seeing in your browser::
 
@@ -137,38 +137,36 @@ be able to handle huge loads of log messages.
 .. image:: /images/qsa2.png
 
 
-The classic setup
-=================
+The manual setup
+================
 
 We recommend to only run this if you have good reasons not to use one of the other production ready installation methods described
 in this chapter.
 
-Classic setup: graylog-server on Linux
+Manual setup: graylog-server on Linux
 --------------------------------------
 
 Prerequisites
 ^^^^^^^^^^^^^
 
-You will need to have the following services installed on either the host you are running ``graylog2-server`` on or on dedicated machines:
+You will need to have the following services installed on either the host you are running ``graylog-server`` on or on dedicated machines:
 
 * [Elasticsearch 1.3.4 or higher](http://www.elasticsearch.org/downloads)
 * MongoDB (as recent stable version as possible, **at least v2.0**)
 
-Most standard MongoDB packages of Linux distributions are outdated. Use the `official MongoDB apt source <http://docs.mongodb.org/manual/tutorial/install-mongodb-on-debian/>`_.
-(Available for many distributions and operating systems)
+Most standard MongoDB packages of Linux distributions are outdated. Use the `official MongoDB APT repository <http://docs.mongodb.org/manual/tutorial/install-mongodb-on-debian/>`_
+(available for many distributions and operating systems)
 
-You also **must** use **Java 7** or higher! Java 6 is not compatible with Graylog and will also not receive any more publicly available bug and security
+You also **must** install **Java 7** or higher! Java 6 is not compatible with Graylog and will also not receive any more publicly available bug and security
 fixes by Oracle.
 
 A more detailed guide for installing the dependencies will follow. **The only important thing for Elasticsearch is that you configure
-``cluster.name: graylog2`` in it's ``conf/elasticsearch.yml``**.
+``cluster.name: graylog`` in it's ``conf/elasticsearch.yml``**.
 
 Downloading and extracting the server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Download the package from the `download pages <https://www.graylog.org/download/>`_.
-
-Extract the archive::
+Download the tar archive from the `download pages <https://www.graylog.org/download/>`_ and extract it on your system::
 
   ~$ tar xvfz graylog2-server-VERSION.tgz
   ~$ cd graylog2-server-VERSION
@@ -182,7 +180,7 @@ Now copy the example configuration file::
 
 You can leave most variables as they are for a first start. All of them should be well documented.
 
-Configure at least these variables in ``/etc/graylog/server/server.conf``:
+Configure at least the following variables in ``/etc/graylog/server/server.conf``:
 
  * ``is_master = true``
     * Set only one ``graylog-server`` node as the master. This node will perform periodical and maintenance actions that slave nodes won't.
@@ -218,7 +216,7 @@ You need to have Java installed. Running the OpenJDK is totally fine and should 
 
   ~$ apt-get install openjdk-7-jre
 
-**You need at least Java 7** (Java 6 has reached EOL)
+**You need at least Java 7** as Java 6 has reached EOL.
 
 Start the server::
 
@@ -235,17 +233,17 @@ You should see a line like this in the debug output of ``graylog-server`` succes
 
   2013-10-01 12:13:22,382 DEBUG: org.elasticsearch.transport.netty - [graylog-server] connected to node [[Unuscione, Angelo][thN_gIBkQDm2ab7k-2Zaaw][inet[/10.37.160.227:9300]]]
 
-You can find the ``graylog-server`` logs in ``logs/``.
+You can find the ``graylog-server`` logs in the directory ``logs/``.
 
 **Important:** All ``graylog-server`` instances must have synchronised time. We strongly recommend to use
-`NTP <http://en.wikipedia.org/wiki/Network_Time_Protocol>`_ on all machines of your Graylog infrastructure.
+`NTP <http://en.wikipedia.org/wiki/Network_Time_Protocol>`_ or similar mechanisms on all machines of your Graylog infrastructure.
 
 Supplying external logging configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``graylog-server`` uses log4j for its internal logging and ships with a
-`default log configuration file <https://github.com/Graylog2/graylog2-server/blob/master/graylog2-server/src/main/resources/log4j.xml>`
-which is embedded within the shipped jar.
+The ``graylog-server`` uses Log4j for its internal logging and ships with a
+`default log configuration file <https://github.com/Graylog2/graylog2-server/blob/1.0.0/graylog2-server/src/main/resources/log4j.xml>`
+which is embedded within the shipped JAR.
 
 In case you need to overwrite the configuration ``graylog-server`` uses, you can supply a Java system property specifying the path to
 the configuration file in your ``graylogctl`` script. Append this before the `-jar` paramter::
@@ -301,15 +299,15 @@ Command line (CLI) parameters
 There are a number of CLI parameters you can pass to the call in your ``graylogctl`` script:
 
 * ``-h``, ``--help``: Show help message
-* ``-f CONFIGFILE``, ``--configfile CONFIGFILE``: Use configuration file `CONFIGFILE` for graylog; default: ``/etc/graylog/server/server.conf``
-* ``-t``, ``--configtest``: Validate graylog2 configuration and exit with exit code 0 if the configuration file is syntactically correct, exit code 1 and a description of the error otherwise
+* ``-f CONFIGFILE``, ``--configfile CONFIGFILE``: Use configuration file `CONFIGFILE` for Graylog; default: ``/etc/graylog/server/server.conf``
+* ``-t``, ``--configtest``: Validate the Graylog configuration and exit with exit code 0 if the configuration file is syntactically correct, exit code 1 and a description of the error otherwise
 * ``-d``, ``--debug``: Run in debug mode
 * ``-l``, ``--local``: Run in local mode. Automatically invoked if in debug mode. Will not send system statistics, even if enabled and allowed. Only interesting for development and testing purposes.
 * ``-s``, ``--statistics``: Print utilization statistics to STDOUT
 * ``-r``, ``--no-retention``: Do not automatically delete old/outdated indices
 * ``-p PIDFILE``, ``--pidfile PIDFILE``: Set the file containing the PID of graylog to `PIDFILE`; default: `/tmp/graylog.pid`
 * ``-np``, ``--no-pid-file``: Do not write PID file (overrides `-p`/`--pidfile`)
-* ``--version``: Show version of graylog and exit
+* ``--version``: Show version of Graylog and exit
 
 Problems with IPv6 vs. IPv4?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -321,7 +319,7 @@ Add the `java.net.preferIPv4Stack` flag in your `graylog2ctl` script or from whe
 
     ~$ sudo -u graylog java -Djava.net.preferIPv4Stack=true -jar graylog-server.jar
 
-Classic setup: graylog-web-interface on Linux
+Manual setup: graylog-web-interface on Linux
 ---------------------------------------------
 
 Prerequisites
@@ -360,11 +358,11 @@ You need to have Java installed. Running the OpenJDK is totally fine and should 
 
   ~$ apt-get install openjdk-7-jre
 
-**You need at least Java 7** (Java 6 has reached EOL)
+**You need at least Java 7** as Java 6 has reached EOL.
 
 Now start the web interface::
 
-  ~$ bin/graylog2-web-interface
+  ~$ bin/graylog-web-interface
   Play server process ID is 5723
   [info] play - Application started (Prod)
   [info] play - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
@@ -374,30 +372,30 @@ The web interface will listen on port 9000. You should see a login screen right 
 
 Changing the listen port and address works like this::
 
-  ~$ bin/graylog2-web-interface -Dhttp.port=1234 -Dhttp.address=127.0.0.1
+  ~$ bin/graylog-web-interface -Dhttp.port=1234 -Dhttp.address=127.0.0.1
 
 Java generally prefers to bind to an IPv6 address if that is supported by your system, while you might want to prefer IPv4. To change Java's
 default preference you can pass ``-Djava.net.preferIPv4Stack=true`` to the startup script::
 
-  ~$ bin/graylog2-web-interface -Djava.net.preferIPv4Stack=true
+  ~$ bin/graylog-web-interface -Djava.net.preferIPv4Stack=true
 
 All those ``-D`` settings can also be added to the ``JAVA_OPTS`` environment variable which is being read by the startup script, too.
 
 You can start the web interface in background for example like this::
 
-  ~$ nohup bin/graylog2-web-interface &
+  ~$ nohup bin/graylog-web-interface &
 
 Custom configuration file path
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can put the configuration file into another directory like this:
 
-  ~$ bin/graylog2-web-interface -Dconfig.file=/etc/graylog-web-interface.conf
+  ~$ bin/graylog-web-interface -Dconfig.file=/etc/graylog-web-interface.conf
 
 Create a message input and send a first message
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Log in to the web interface and navigate to *System* -> *Nodes*. Select your ``graylog2-server`` node there and click on *Manage inputs*.
+Log in to the web interface and navigate to *System* -> *Nodes*. Select your ``graylog-server`` node there and click on *Manage inputs*.
 
 .. image:: /images/create_input.png
 
@@ -411,7 +409,7 @@ see the message you just sent in. Click on it in the table and see it in detail:
 
 .. image:: /images/setup_1.png
 
-You just sent your first message to Graylog! Why not spawn a syslog input and point some of your servers to it? You could also create some user
+You have just sent your first message to Graylog! Why not spawn a syslog input and point some of your servers to it? You could also create some user
 accounts for your colleagues.
 
 HTTPS
@@ -419,7 +417,7 @@ HTTPS
 
 Enabling HTTPS is easy. Just start the web interface like this::
 
-  bin/graylog2-web-interface -Dhttps.port=443
+  bin/graylog-web-interface -Dhttps.port=443
 
 This will generate self-signed certificate. To use proper certificates you must configure a Java key store. Most signing authorities provide
 instructions on how to create a Java keystore and the official keystore utility docs can be found
@@ -440,7 +438,7 @@ Configuring logging
 The default setting of the web interface is to write its own logs to ``STDOUT``. You can take control of the logging by specifying an own
 `Logback <http://logback.qos.ch/>`_ configuration file to use::
 
-  bin/graylog2-web-interface -Dlogger.file=/etc/graylog-web-interface-log.xml
+  bin/graylog-web-interface -Dlogger.file=/etc/graylog-web-interface-log.xml
 
 This is an example Logback configuration file that has a disabled ``STDOUT`` appender and an enabled appender that writes to a file
 (``/var/log/graylog2/web/graylog2-web-interface.log``), keeps 30 days of logs in total and creates a new log file if a file should have
