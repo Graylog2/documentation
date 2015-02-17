@@ -2,23 +2,24 @@
 Message rewriting with Drools
 *****************************
 
-Graylog uses `Drools Expert <http://www.jboss.org/drools/drools-expert>`_ to evaluate all incoming messages against a user defined
-rule file. Each message will be evaluated prior to being written to the outputs.
+Graylog can optionally use `Drools Expert <http://www.jboss.org/drools/drools-expert>`_ to evaluate all incoming messages against a user defined
+rules file. Each message will be evaluated prior to being written to the outputs.
 
-The rule file location is defined in the graylog configuration file::
+The rule file location is defined in the Graylog configuration file::
 
   # Drools Rule File (Use to rewrite incoming log messages)
   rules_file = /etc/graylog.d/rules/graylog.drl
 
-The rule file is located on the file system with a .drl file extension. The Graylog2 DRL file can contain multiple rules, queries
-and functions, as well as some resource declarations like imports, globals and attributes that are assigned and used by your rules
-and queries. For more information on the DRL rule syntax please read the `Drools User Guide <http://docs.jboss.org/drools/release/5.5.0.Final/drools-expert-docs/html/ch04.html>`_.
+The rules file is located on the file system with a ``.drl`` file extension. The rules file can contain multiple rules, queries and functions,
+as well as some resource declarations like imports, globals, and attributes that are assigned and used by your rules and queries.
+
+For more information on the DRL rules syntax please read the `Drools User Guide <http://docs.jboss.org/drools/release/5.5.0.Final/drools-expert-docs/html/ch04.html>`_.
 
 Getting Started
 ===============
 
   #. Uncomment the ``rules_file`` line in the Graylog configuration file.
-  #. Copy the `sample rules file <https://github.com/Graylog2/graylog2-server/blob/master/misc/graylog2.drl>`_ to the location specified in your Graylog configuration file.
+  #. Copy the `sample rules file <https://github.com/Graylog2/graylog2-server/blob/1.0.0/misc/graylog2.drl>`_ to the location specified in your Graylog configuration file.
   #. Modify the rules file to parse/rewrite/filter messages as needed.
 
 Example rules file
@@ -68,8 +69,8 @@ In the following script we turn the PID and the src IP into additional fields::
 Another example: Adding additional fields and changing the message itself
 -------------------------------------------------------------------------
 
-We send Squid access messages to Graylog using Syslog. Problem is that the *host* field of the message was set to the
-IP addrress of squid, which not very useful. This rule overwrites the source and adds other fields::
+We send Squid access logs to Graylog using Syslog. The problem is that the *host* field of the message was set to the
+IP addrress of the Squid proxy, which not very useful. This rule overwrites the source and adds other fields::
 
   import org.graylog2.plugin.Message
   import java.util.regex.Matcher
