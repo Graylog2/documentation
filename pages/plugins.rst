@@ -5,16 +5,15 @@ Plugins
 General information
 ===================
 
-Graylog comes with a stable plugin API for the following plugin types since v1.0:
+Graylog comes with a stable plugin API for the following plugin types since Graylog 1.0:
 
 * **Inputs:** Accept/write any messages into Graylog
 * **Outputs:** Forward messages to other endpoints in real-time
 * **Services:** Run at startup and able to implement any functionality
-* **Alarm Callbacks:** Called when a stream's alert condition is triggered
+* **Alarm Callbacks:** Called when a stream alert condition has been triggered
 * **Filters:** Transform/drop incoming messages during processing
 * **REST API Resources:** A REST resource to expose as part of the ``graylog-server`` REST API
 * **Periodical:** Called at periodical intervals during server runtime
-
 
 The first for writing a plugin is creating a skeleton that is the same for each type of plugin. The next chapter
 is explaining how to do this and will then go over to chapters explaining plugin types in detail.
@@ -23,9 +22,9 @@ Creating a plugin skeleton
 ==========================
 
 The easiest way to get started is to use our `maven archetype <http://maven.apache.org/guides/introduction/introduction-to-archetypes.html>`_
-that will create a complete plugin project infrastructure will all required classes, build files and configurations using an interactive wizard.
+that will create a complete plugin project infrastructure will all required classes, build definitions, and configurations using an interactive wizard.
 
-Maven is a Java build tool that comes pre-installed on many operating systems or can be installed using most package managers. Make sure that it
+Maven is a Java widely used build tool that comes pre-installed on many operating systems or can be installed using most package managers. Make sure that it
 is installed with at least version 3 before you go on.
 
 Use it like this::
@@ -44,7 +43,7 @@ an alarm callback plugin that creates a JIRA ticket for each alarm that is trigg
 Note that you do not have to tell the archetype wizard what kind of plugin you want to build because it is creating the generic plugin
 skeleton for you but nothing that is related to the actual implementation. More on this in the example plugin chapters later.
 
-You now have a new folder called ``jira-alarmcallback`` that includes a complete plugin skeleton including maven build files. Every Java IDE
+You now have a new folder called ``jira-alarmcallback`` that includes a complete plugin skeleton including Maven build files. Every Java IDE
 out there can now import the project automatically without any required further configuration.
 
 In `IntelliJ IDEA <https://www.jetbrains.com/idea/>`_ for example you can just use the *File -> Open* dialog to open the skeleton as a fully
@@ -53,15 +52,15 @@ configured Java project.
 Change some default values
 --------------------------
 
-Open the ``JiraAlarmCallbackMetaData.java`` file and change the default values there to something that more sense. Especially the author name etc
-should be changed.
+Open the ``JiraAlarmCallbackMetaData.java`` file and customize the default values like the plugin description, the website URI, and so on.
+Especially the author name etc. should be changed.
 
 Now go on with implementing the actual login in one of the example plugin chapters below.
 
 Example Alarm Callback plugin
 =============================
 
-Let's assume you still want to build the mentioned Jira AlarmCallback plugin. First open the ``JiraAlarmCallback.java`` file and let it implement
+Let's assume you still want to build the mentioned JIRA AlarmCallback plugin. First open the ``JiraAlarmCallback.java`` file and let it implement
 the ``AlarmCallback`` interface::
 
   public class JiraAlarmCallback implements AlarmCallback
