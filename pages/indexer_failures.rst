@@ -5,17 +5,17 @@ Indexer failures and dead letters
 Indexer failures
 ================
 
-Every ``graylog2-server`` instance is constantly keeping track about every indexing
+Every ``graylog-server`` instance is constantly keeping track about every indexing
 operation it performs. This is important for making sure that you are not silently
 losing any messages. The web interface can show you a number of write operations
-that failed and also a list of failed operations. (Like any other information in the
+that failed and also a list of failed operations. Like any other information in the
 web interface this is also available via the REST APIs so you can hook it into your
-own monitoring systems.)
+own monitoring systems.
 
 .. image:: /images/indexerfailures_1.png
 
-The failure informations are stored in a capped MongoDB collection that is limited
-in size. A lot (many tens of thousands) of failure messages should fit in there but
+Information about the indexing failure is stored in a capped MongoDB collection that
+is limited in size. A lot (many tens of thousands) of failure messages should fit in there but
 it should not be considered a complete collection of all errors ever thrown.
 
 Dead letters
