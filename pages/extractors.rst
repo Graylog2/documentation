@@ -88,6 +88,45 @@ you need them their use is documented on the same Javadoc page by Oracle. One co
 in your regular expression is to make use of what is called non-capturing groups. Those are parentheses which only group
 alternatives, but do not make Graylog extract the data they match and are indicated by ``(?:)``.
 
+Using Grok patterns to extract data
+***********************************
+
+Graylog also supports the extracting data using the popular Grok language to allow you to make use of your existing patterns.
+
+Grok is a set of regular expressions that can be combined to more complex patterns, allowing to name different parts of the
+matched groups.
+
+By using Grok patterns, you can extract multiple fields from a message field in a single extractor, which often simplifies
+specifying extractors.
+
+Simple regular expressions are often sufficient to extract a single word or number from a log line, but if you know the entire
+structure of a line beforehand, for example for an access log, or the format of a firewall log, using Grok is advantageous.
+
+For example a firewall log line could contain::
+
+  len=50824 src=172.17.22.108 sport=829 dst=192.168.70.66 dport=513
+
+We can now create the following patterns on the ``System/Grok Patterns`` page in the web interface::
+
+  BASE10NUM (?<![0-9.+-])(?>[+-]?(?:(?:[0-9]+(?:\.[0-9]+)?)|(?:\.[0-9]+)))
+  NUMBER (?:%{BASE10NUM})
+  IPV6 ((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?
+  IPV4 (?<![0-9])(?:(?:25[0-5]|2[0-4][0-9]|[0-1]?[0-9]{1,2})[.](?:25[0-5]|2[0-4][0-9]|[0-1]?[0-9]{1,2})[.](?:25[0-5]|2[0-4][0-9]|[0-1]?[0-9]{1,2})[.](?:25[0-5]|2[0-4][0-9]|[0-1]?[0-9]{1,2}))(?![0-9])
+  IP (?:%{IPV6}|%{IPV4})
+
+Then, in the extractor configuration, we can use these patterns to extract the relevant fields from the line::
+
+  len=%{NUMBER:length} src=%{IP:srcip} sport=%{NUMBER:srcport} dst=%{IP:dstip} dport=%{NUMBER:dstport}
+
+This will add the relevant extracted fields to our log message, allowing Graylog to search on those individual fields, which
+can lead to more effective search queries by allowing to specifically look for packets that came from a specific source IP
+instead of also matching destination IPs if one would only search for the IP across all fields.
+
+There are many resources are the web with useful patterns, and one very helpful tool is the `Grok Debugger <http://grokdebug.herokuapp.com/>`_,
+which allows you to test your patterns while you develop them.
+
+Graylog uses `Java Grok <http://grok.nflabs.com/>`_ to parse and run Grok patterns.
+
 Normalization
 *************
 
