@@ -2,9 +2,9 @@
 Configuring and tuning Elasticsearch
 ************************************
 
-Our recommendation is to have a dedicated Elasticsearch cluster for your
-Graylog setup. If you are using a shared Elasticsearch setup, a problem with
-indices unrelated to Graylog might turn the cluster status to yellow or red.
+We strongly recommend to use a dedicated Elasticsearch cluster for your Graylog setup.
+If you are using a shared Elasticsearch setup, a problem with indices unrelated to Graylog might turn the cluster status to yellow or red
+and impact the availability and performance of your Graylog setup.
 
 Configuration
 =============
@@ -12,23 +12,23 @@ Configuration
 Configuration of graylog-server nodes
 -------------------------------------
 
-The most important settings to make a successful connection are the cluster name and the discovery mode. Graylog2 is able
-to discover the Elasticsearch nodes using multicast. This is great for development but we recommend to use classic unicast
-in production.
+The most important settings to make a successful connection are the Elasticsearch cluster name and the discovery mode. Graylog is able
+to discover the Elasticsearch nodes using multicast. This is great for development and proof of concepts but we recommend to use
+classic unicast discovery in production.
 
 Cluster Name
 ^^^^^^^^^^^^
 
 You need to tell ``graylog-server`` which Elasticsearch cluster to join. The Elasticsearch cluster default name is *elasticsearch*
-and configured for every Elasticsearch node in its ``elasticsearch.yml`` configuration file as ``cluster.name``. Configure the same
-name in every ``graylog2.conf`` as ``elasticsearch_cluster_name``. We recommend to call the cluster ``graylog2-production``, not
-``elasticsearch``.
+and configured for every Elasticsearch node in its ``elasticsearch.yml`` configuration file with the setting ``cluster.name``.
+Configure the same name in every ``graylog.conf`` as ``elasticsearch_cluster_name``.
+We recommend to call the cluster ``graylog-production`` and not ``elasticsearch``.
 
 Discovery mode
 ^^^^^^^^^^^^^^
 
-The default discovery mode is multicast. Graylog2 will try to find other Elasticsearch nodes automatically. This usually works fine
-when everything is running on the same hosts but quickly gets problematic when running in a bigger network topology. We recommend
+The default discovery mode is multicast. Graylog will try to find other Elasticsearch nodes automatically. This usually works fine
+when everything is running on the same system but gets problematic quickly when running in a bigger network topology. We recommend
 to use unicast for production setups. Configure it like this::
 
   # Disable multicast
@@ -36,9 +36,9 @@ to use unicast for production setups. Configure it like this::
   # List of Elasticsearch nodes to connect to
   elasticsearch_discovery_zen_ping_unicast_hosts = es-node-1.example.org:9300,es-node-2.example.org:9300
 
-The default Elasticsearch communication port is 9300 (not to confuse with 9200 as standard for HTTP communication) and configured
-as ``transport.tcp.port`` in ``elasticsearch.yml``. Make sure that Elasticsearch binds to an interface that Graylog2 can connect to.
-(see ``network.host``)
+The default Elasticsearch communication port is 9300/tcp (not to confuse with the HTTP interface running on port 9200/tcp by default)
+and configured with the setting ``transport.tcp.port`` in ``elasticsearch.yml``. Make sure that Elasticsearch binds to an interface
+that Graylog can connect to (see ``network.host``).
 
 Configuration of Elasticsearch nodes
 ------------------------------------
@@ -56,15 +56,15 @@ Control access to Elasticsearch ports
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Since Elasticsearch has no authentication mechanism at time of this writing, make sure to restrict access to the Elasticsearch
-ports (default: 9200 and 9300). Otherwise the data is readable by anyone who can reach the machine.
+ports (default: 9200/tcp and 9300/tcp). Otherwise the data is readable by anyone who has access to the machine over network.
 
 Open file limits
 ^^^^^^^^^^^^^^^^
 
 Because Elasticsearch has to keep a lot of files open simultaneously it requires a higher open file limit that the usual operating
-system defaults allow. **Set it to at least 64000.**
+system defaults allow. **Set it to at least 64000 open file descriptors.**
 
-Graylog2 will show a notification in the web interface when there is a node in the Elasticsearch cluster that has a too low open file limit.
+Graylog will show a notification in the web interface when there is a node in the Elasticsearch cluster which has a too low open file limit.
 
 Read about how to raise the open file limit in the corresponding `Elasticsearch documentation page <http://www.elasticsearch.org/tutorials/too-many-open-files/>`_.
 
@@ -78,7 +78,7 @@ running on a dedicated host) to leave enough space for the system caches that El
 Tuning Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^
 
-Graylog2 is already setting specific configuration per index it creates. This is enough tuning for a lot of use cases and setups. A more
+Graylog is already setting specific configuration per index it creates. This is enough tuning for a lot of use cases and setups. A more
 detailed guide on deeper tuning of Elasticsearch is following.
 
 Cluster Status explained
