@@ -75,7 +75,7 @@ location you like. All parts of the Graylog system will be extracted in subdirec
 
 Next step is to run the app and opening the URL you are seeing in your browser::
 
-  $ wget http://packages.graylog2.org/releases/graylog-setup/graylog-setup-<LATEST-VERSION>.tar.gz
+  $ wget http://packages.graylog2.org/releases/graylog2-setup/graylog-setup-<LATEST-VERSION>.tar.gz
   $ tar -xzf graylog-setup-<LATEST-VERSION>.tar.gz
   $ cd graylog-setup && ./bin/graylog setup
   Unpacking dependencies, please wait.
