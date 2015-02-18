@@ -75,9 +75,9 @@ location you like. All parts of the Graylog system will be extracted in subdirec
 
 Next step is to run the app and opening the URL you are seeing in your browser::
 
-  $ wget http://packages.graylog2.org/releases/graylog2-setup/graylog2-setup-<LATEST-VERSION>.tar.gz
-  $ tar -xzf graylog2-setup-<LATEST-VERSION>.tar.gz
-  $ cd graylog2-setup && ./graylog2 setup
+  $ wget http://packages.graylog2.org/releases/graylog-setup/graylog-setup-<LATEST-VERSION>.tar.gz
+  $ tar -xzf graylog-setup-<LATEST-VERSION>.tar.gz
+  $ cd graylog-setup && ./bin/graylog setup
   Unpacking dependencies, please wait.
   Unpacking complete.
   Please open http://127.0.0.1:10000/ in your browser to get started.
@@ -116,9 +116,9 @@ Check the output of the quick setup app process in your shell to find out how to
 
   Starting elasticsearch with the following command:
       [...]
-  Starting graylog2 server with the following command:
+  Starting graylog server with the following command:
       [...]
-  Starting graylog2 web interface with the following command:
+  Starting graylog web interface with the following command:
       [...]
 
   Terminating this process will stop Graylog as well. To run the processes manually, please refer to the output above.
