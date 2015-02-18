@@ -13,7 +13,7 @@ your terminal. For example it is the perfect companion during a deployment of yo
 the deployment output and show information of a stream that is catching all errors or exceptions on your
 systems.
 
-.. image:: /images/cli_dashboard.gif
+.. image:: /images/cli_dashboard.png
 
 The CLI stream dashboard documentation `is available on GitHub <https://github.com/Graylog2/cli-dashboard>`_.
 
