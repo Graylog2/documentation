@@ -51,7 +51,7 @@ If you have been using Graylog Radio for load balancing, you should now put a cl
 of your `graylog-server` nodes.
 
 **This approach has been proven to work great in large high-throughput setups of several of our large scale
- customers and immensely reduced complexity of their setups.**
+customers and immensely reduced complexity of their setups.**
 
 The Kafka and AMQP inputs are still supported and can be used to build a custom setup using message brokers,
 if you want to keep using that. A reason for this might be that Graylog is not the only subscriber to the
