@@ -144,7 +144,7 @@ We recommend to only run this if you have good reasons not to use one of the oth
 in this chapter.
 
 Manual setup: graylog-server on Linux
---------------------------------------
+-------------------------------------
 
 Prerequisites
 ^^^^^^^^^^^^^
@@ -294,7 +294,7 @@ based log rotation. This is the example::
   </log4j:configuration>
 
 Command line (CLI) parameters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are a number of CLI parameters you can pass to the call in your ``graylogctl`` script:
 
@@ -320,7 +320,7 @@ Add the `java.net.preferIPv4Stack` flag in your `graylog2ctl` script or from whe
     ~$ sudo -u graylog java -Djava.net.preferIPv4Stack=true -jar graylog-server.jar
 
 Manual setup: graylog-web-interface on Linux
----------------------------------------------
+--------------------------------------------
 
 Prerequisites
 ^^^^^^^^^^^^^
@@ -352,7 +352,7 @@ Open ``conf/graylog-web-interface.conf`` and set the two following variables:
 * ``application.secret=""``: A secret for encryption. Use a long, randomly generated string here. (for example generated using ``pwgen -N 1 -s 96``)
 
 Starting the web interface
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You need to have Java installed. Running the OpenJDK is totally fine and should be available on all platforms. For example on Debian it is::
 
@@ -568,3 +568,11 @@ Microsoft Windows
 Unfortunately there is no officially supported way to run Graylog on Microsoft Windows operating systems even though all parts run on the
 Java Virtual Machine. We recommend to run the `Virtual machine appliances`_ on a Windows host. It should be technically possible
 to run Graylog on Windows but it is most probably not worth the time to work your way around the cliffs.
+
+Should you require running Graylog on Windows, you need to disable the message journal in ``graylog-server`` by changing the following setting in the ``graylog.conf``::
+
+  message_journal_enabled = false
+
+Due to restrictions of how Windows handles file locking the journal will not work correctly. This will be improved in future versions.
+
+**Please note that this impacts Graylog's ability to buffer messages, so we strongly recommend running the Linux-based OVAs on Windows.**
