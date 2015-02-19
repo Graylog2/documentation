@@ -6,8 +6,8 @@
 Welcome to the Graylog documentation
 ====================================
 
-Have a nice overview here that asks people to participate and stuff.
-Link to other formats that we offer: PDF, epub, mobi, ...
+Note: There are multiple options for reading this documentation. See link to the lower left.
+
 
 Contents:
 
