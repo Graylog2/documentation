@@ -75,7 +75,7 @@ location you like. All parts of the Graylog system will be extracted in subdirec
 
 Next step is to run the app and opening the URL you are seeing in your browser::
 
-  $ wget http://packages.graylog2.org/releases/graylog2-setup/graylog-setup-<LATEST-VERSION>.tar.gz
+  $ wget https://packages.graylog2.org/releases/graylog2-setup/graylog-setup-<LATEST-VERSION>.tar.gz
   $ tar -xzf graylog-setup-<LATEST-VERSION>.tar.gz
   $ cd graylog-setup && ./bin/graylog setup
   Unpacking dependencies, please wait.
@@ -168,8 +168,8 @@ Downloading and extracting the server
 
 Download the tar archive from the `download pages <https://www.graylog.org/download/>`_ and extract it on your system::
 
-  ~$ tar xvfz graylog2-server-VERSION.tgz
-  ~$ cd graylog2-server-VERSION
+  ~$ tar xvfz graylog-VERSION.tgz
+  ~$ cd graylog-VERSION
 
 Configuration
 ^^^^^^^^^^^^^
@@ -493,44 +493,44 @@ The repositories can be setup by installing a single package. Once that's done t
 Ubuntu 14.04
 ------------
 
-Download and install `graylog2-0.92-repository-ubuntu14.04_latest.deb <https://packages.graylog2.org/repo/packages/graylog2-0.92-repository-ubuntu14.04_latest.deb>`_
+Download and install `graylog-1.0-repository-ubuntu14.04_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.0-repository-ubuntu14.04_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
-  $ sudo dpkg -i graylog2-0.92-repository-ubuntu14.04_latest.deb
+  $ sudo dpkg -i graylog-1.0-repository-ubuntu14.04_latest.deb
   $ sudo apt-get install apt-transport-https
   $ sudo apt-get update
-  $ sudo apt-get install graylog2-server graylog2-web
+  $ sudo apt-get install graylog-server graylog-web
 
 Ubuntu 12.04
 ------------
 
-Download and install `graylog2-0.92-repository-ubuntu12.04_latest.deb <https://packages.graylog2.org/repo/packages/graylog2-0.92-repository-ubuntu12.04_latest.deb>`_
+Download and install `graylog-1.0-repository-ubuntu12.04_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.0-repository-ubuntu12.04_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
-  $ sudo dpkg -i graylog2-0.92-repository-ubuntu12.04_latest.deb
+  $ sudo dpkg -i graylog-1.0-repository-ubuntu12.04_latest.deb
   $ sudo apt-get install apt-transport-https
   $ sudo apt-get update
-  $ sudo apt-get install graylog2-server graylog2-web
+  $ sudo apt-get install graylog-server graylog-web
 
 Debian 7
 --------
 
-Download and install `graylog2-0.92-repository-debian7_latest.deb <https://packages.graylog2.org/repo/packages/graylog2-0.92-repository-debian7_latest.deb>`_
+Download and install `graylog-1.0-repository-debian7_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.0-repository-debian7_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
-  $ sudo dpkg -i graylog2-0.92-repository-debian7_latest.deb
+  $ sudo dpkg -i graylog-1.0-repository-debian7_latest.deb
   $ sudo apt-get install apt-transport-https
   $ sudo apt-get update
-  $ sudo apt-get install graylog2-server graylog2-web
+  $ sudo apt-get install graylog-server graylog-web
 
 CentOS 6
 --------
 
-Download and install `graylog2-0.92-repository-el6_latest.rpm <https://packages.graylog2.org/repo/packages/graylog2-0.92-repository-el6_latest.rpm>`_
+Download and install `graylog-1.0-repository-el6_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-1.0-repository-el6_latest.rpm>`_
 via ``rpm(8)``::
 
-  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog2-{{gl2MajorVersion}}-repository-el6_latest.rpm
-  $ yum install graylog2-server graylog2-web
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-1.0-repository-el6_latest.rpm
+  $ yum install graylog-server graylog-web
 
 Please open an `issue <https://github.com/Graylog2/fpm-recipes/issues>`_ in the `Github repository <https://github.com/Graylog2/fpm-recipes>`_ if you
 run into any packaging related issues. **Thank you!**
