@@ -6,7 +6,7 @@
 Welcome to the Graylog documentation
 ====================================
 
-Note: There are multiple options for reading this documentation. See link to the lower left.
+NOTE: There are multiple options for reading this documentation. See link to the lower left.
 
 
 Contents:
