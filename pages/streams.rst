@@ -107,7 +107,7 @@ These are a few example use cases for streams:
 
 * Forward a subset of messages to other data analysis or BI systems to reduce their license costs.
 * Monitor exception or error rates in your whole environment and broken down per subsystem.
-* Get a list of all failed SSH logins and use the *quickvalues* to analyze which usernames where affected.
+* Get a list of all failed SSH logins and use the *quickvalues* to analyze which user names where affected.
 * Catch all HTTP POST requests to ``/login`` that were answered with a HTTP 302 and route them into a stream called
   *Successful user logins*. Now get a chart of when users logged in and use the *quickvalues* to get a list of users that performed
   the most logins in the search time frame.

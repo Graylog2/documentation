@@ -24,7 +24,7 @@ Minimum setup
 -------------
 
 This is a minimum Graylog setup that can be used for smaller, non-critical, or test setups.
-None of the componentes is redundant but it is easy and quick to setup.
+None of the components is redundant but it is easy and quick to setup.
 
 .. image:: /images/simple_setup.png
 
@@ -45,7 +45,7 @@ high-performant message journal (from the Apache Kafka project) in every `graylo
 spooling all incoming messages to disk immediately and is able to buffer load spikes just at least as good as
 Graylog Radio was, but with less dependencies and maintenance overhead.
 
-If you are running a setup with Graylog Radio we recommed to shut down the Graylog Radio architecture
+If you are running a setup with Graylog Radio we recommend to shut down the Graylog Radio architecture
 including AMQP or Kafka brokers completely and directly send messages to the `graylog-server` nodes.
 If you have been using Graylog Radio for load balancing, you should now put a classic load balancer in front
 of your `graylog-server` nodes.
@@ -55,5 +55,5 @@ of your `graylog-server` nodes.
 
 The Kafka and AMQP inputs are still supported and can be used to build a custom setup using message brokers,
 if you want to keep using that. A reason for this might be that Graylog is not the only subscriber to the
-messages on the bus. However we would recommed to use Graylog forwarders to either write to a message bus
+messages on the bus. However we would recommend to use Graylog forwarders to either write to a message bus
 after processing or write to other systems directly.

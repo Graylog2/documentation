@@ -47,7 +47,7 @@ Keeping the metadata in synchronisation
 
 Graylog will on notify you when the stored metadata about index time ranges has run out of sync.
 This can for example happen when you delete indices by hand. The system will offer you to just
-re-generate all time range informations. This may take a few seconds but is an easy task for Graylog.
+re-generate all time range information. This may take a few seconds but is an easy task for Graylog.
 
 You can easily re-build the information yourself after manually deleting indices or doing other
 changes that might cause synchronisation problems::

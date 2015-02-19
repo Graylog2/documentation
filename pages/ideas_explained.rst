@@ -22,7 +22,7 @@ The wrong architecture
 The probably most successful log management software, Splunk, has the most advanced architecture on the market **because it
 was built for log management from the beginning**. Software that stores and analyzes log data must have a very specific
 architecture to do it efficiently. It is more than just a database or a full text search engine because it has to deal with both
-text data and metrics data on a time axis. Searches are always bound to a timeframe (relative or absolute) and only going back
+text data and metrics data on a time axis. Searches are always bound to a time frame (relative or absolute) and only going back
 into the past because future log data has not been written yet. **A general purpose database or full text search engine that could
 also store and index the private messages of your online platform for search will never be able to effectively manage your log data.**
 Adding a specialized frontend on top of it makes it look like it could do the job in a good way but is basically just putting lipstick
@@ -72,8 +72,8 @@ is why you get quotes that fill you with sadness in today's world.
 Blackboxes
 ----------
 
-Closed source systems tend to become blackboxes that you cannot extend or adapt to fit the needs of your use case. This is an important
-thing to consider especially for log mangement software. The use cases can range from simple syslog centralzation to ultra flexible
+Closed source systems tend to become black boxes that you cannot extend or adapt to fit the needs of your use case. This is an important
+thing to consider especially for log management software. The use cases can range from simple syslog centralization to ultra flexible
 data bus requirements. A closed source system will always make you depending on the vendor because there is no way to adapt. As your
 setup reaches a certain point of flexibility you might hit a wall earlier than expected.
 

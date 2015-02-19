@@ -89,7 +89,7 @@ This is an example configuration request::
           ConfigurationField.Optional.NOT_OPTIONAL)); // required, must be filled out
   configurationRequest.addField(new BooleanField(
           "use_https", "HTTPs", true,
-          "Use HTTP for API communciation?"));
+          "Use HTTP for API communication?"));
 
 **public String getName()**
 
