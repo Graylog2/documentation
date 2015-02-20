@@ -103,7 +103,7 @@ to logging from your application layer. It comes with optional compression, chun
 structure. There are `dozens of GELF libraries <https://www.graylog.org/resources/data-sources/>`_ for many frameworks and
 programming languages to get you started.
 
-Read more about GELF `on graylog2.org <https://www.graylog.org/resources/gelf-2/>`_.
+Read more about GELF `on graylog.org <https://www.graylog.org/resources/gelf-2/>`_.
 
 GELF via HTTP
 -------------
@@ -175,10 +175,10 @@ The following example shows everything that is needed to setup the drain for you
   $ cd path/to/your/heroku/app
   $ heroku drains
   No drains for this app
-  $ heroku drains:add syslog://graylog2.example.com:5556
-  Successfully added drain syslog://graylog2.example.com:5556
+  $ heroku drains:add syslog://graylog.example.com:5556
+  Successfully added drain syslog://graylog.example.com:5556
   $ heroku drains
-  syslog://graylog2.example.com:5556 (d.8cf52d32-7d79-4653-baad-8cb72bb23ee1)
+  syslog://graylog.example.com:5556 (d.8cf52d32-7d79-4653-baad-8cb72bb23ee1)
 
 The `Heroku CLI tool <https://devcenter.heroku.com/articles/heroku-command>`_ needs to be installed for this to work.
 

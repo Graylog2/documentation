@@ -176,7 +176,7 @@ Configuration
 
 Now copy the example configuration file::
 
-  ~# cp graylog2.conf.example /etc/graylog/server/server.conf
+  ~# cp graylog.conf.example /etc/graylog/server/server.conf
 
 You can leave most variables as they are for a first start. All of them should be well documented.
 
@@ -315,7 +315,7 @@ Problems with IPv6 vs. IPv4?
 If your `graylog-server` instance refuses to listen on IPv4 addresses and always chooses for example a `rest_listen_address` like `:::12900`
 you can tell the JVM to prefer the IPv4 stack.
 
-Add the `java.net.preferIPv4Stack` flag in your `graylog2ctl` script or from wherever you are calling the `graylog-server.jar`::
+Add the `java.net.preferIPv4Stack` flag in your `graylogctl` script or from wherever you are calling the `graylog-server.jar`::
 
     ~$ sudo -u graylog java -Djava.net.preferIPv4Stack=true -jar graylog-server.jar
 
@@ -441,7 +441,7 @@ The default setting of the web interface is to write its own logs to ``STDOUT``.
   bin/graylog-web-interface -Dlogger.file=/etc/graylog-web-interface-log.xml
 
 This is an example Logback configuration file that has a disabled ``STDOUT`` appender and an enabled appender that writes to a file
-(``/var/log/graylog2/web/graylog2-web-interface.log``), keeps 30 days of logs in total and creates a new log file if a file should have
+(``/var/log/graylog/web/graylog-web-interface.log``), keeps 30 days of logs in total and creates a new log file if a file should have
 reached a size of 100MB::
 
   <configuration>
@@ -455,9 +455,9 @@ reached a size of 100MB::
       -->
 
       <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-          <file>/var/log/graylog2/web/graylog2-web-interface.log</file>
+          <file>/var/log/graylog/web/graylog-web-interface.log</file>
           <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-              <FileNamePattern>/var/log/graylog2/web/graylog2-web-interface.log.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+              <FileNamePattern>/var/log/graylog/web/graylog-web-interface.log.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
               <MaxHistory>30</MaxHistory>
               <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                   <maxFileSize>100MB</maxFileSize>
