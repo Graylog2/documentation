@@ -486,7 +486,7 @@ and configuring new software a matter of a single command and a few minutes of t
 Graylog offers official ``DEB`` and ``RPM`` package repositories for Ubuntu 12.04, Ubuntu 14.04, Debian 7 and CentOS 6.
 
 The repositories can be setup by installing a single package. Once that's done the Graylog packages can be installed via ``apt-get`` or
-``yum``.
+``yum``. The packages can also be downloaded with a web browser at https://packages.graylog2.org/ if needed.
 
 **Make sure to install and configure MongoDB and Elasticsearch before starting the Graylog services.**
 
