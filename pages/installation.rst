@@ -70,8 +70,8 @@ All the rest of the process is controlled from your browser.
 Download and start the quick setup application
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Start by downloading the quick setup app from our `downloads page <https://www.graylog.org/download/>`_ Now extract the archive in any
-location you like. All parts of the Graylog system will be extracted in subdirectories.
+Start by `downloading <https://packages.graylog2.org/releases/graylog2-setup/graylog-setup-1.0.0.tar.gz>`_ the quick setup app.
+Now extract the archive in any location you like. All parts of the Graylog system will be extracted in subdirectories.
 
 Next step is to run the app and opening the URL you are seeing in your browser::
 
