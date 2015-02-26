@@ -19,10 +19,10 @@ Virtual machine appliances
 The easiest way to get started with a production ready Graylog setup is using our official virtual machine appliances. We offer
 those for the following platforms:
 
-* `OVA for VMware / Virtualbox <https://github.com/Graylog2/graylog2-images/tree/master/ova>`_
-* `OpenStack <https://github.com/Graylog2/graylog2-images/tree/master/openstack>`_
-* `Amazon Web Services / EC2 <https://github.com/Graylog2/graylog2-images/tree/master/aws>`_
-* `Docker <https://github.com/Graylog2/graylog2-images/tree/master/docker>`_
+* `OVA for VMware / Virtualbox <https://www.graylog.org/links/images-ova/>`_
+* `OpenStack <https://www.graylog.org/links/images-openstack/>`_
+* `Amazon Web Services / EC2 <https://www.graylog.org/links/images-aws/>`_
+* `Docker <https://www.graylog.org/links/images-docker/>`_
 
 Please follow the links for specific instructions and downloads. The next chapters explain general principles of the appliances:
 
