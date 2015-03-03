@@ -97,7 +97,7 @@ IP addrress of the Squid proxy, which not very useful. This rule overwrites the 
           Matcher matcher = Pattern.compile("squid\\[\\d+\\]: (\\d+.\\d+) *(\\d+) *(\\d+.\\d+.\\d+.\\d+) *(\\w+\\/\\w+) (\\d+) (\\w+) (.*)").matcher(m.getMessage());
 
           if (matcher.find()) {
-              m.setFacility("squid");
+              m.addField("facility", "squid");
               InetAddress addr = InetAddress.getByName(matcher.group(3));
               String host = addr.getHostName();
               m.addField("source",host);
