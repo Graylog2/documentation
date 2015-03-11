@@ -37,6 +37,26 @@ with a customised setup as soon as quickly as possible so you can now do things 
   graylog-ctl set-timezone <zone acronym>
   graylog-ctl reconfigure
 
+Assign a static IP
+------------------
+
+Per default the appliance make use of DHCP to setup the network. If you want to access Graylog under a static IP please
+edit the file `/etc/network/interfaces` like this (just the important lines)::
+
+  auto eth0
+    iface eth0 inet static
+    address <static IP address>
+    netmask <netmask>
+    gateway <default gateway>
+    pre-up sleep 2
+
+Activate the new IP and reconfigure Graylog to make use of it::
+
+  $ sudo ifdown eth0 && sudo ifup eth0
+  $ sudo graylog-ctl reconfigure
+
+Wait some time till all services are restarted and running again. Afterwards you should be able to access Graylog with the new IP.
+
 Scaling out
 -----------
 
