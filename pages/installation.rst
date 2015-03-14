@@ -335,9 +335,9 @@ Problems with IPv6 vs. IPv4?
 If your `graylog-server` instance refuses to listen on IPv4 addresses and always chooses for example a `rest_listen_address` like `:::12900`
 you can tell the JVM to prefer the IPv4 stack.
 
-Add the `java.net.preferIPv4Stack` flag in your `graylogctl` script or from wherever you are calling the `graylog-server.jar`::
+Add the `java.net.preferIPv4Stack` flag in your `graylogctl` script or from wherever you are calling the `graylog.jar`::
 
-    ~$ sudo -u graylog java -Djava.net.preferIPv4Stack=true -jar graylog-server.jar
+    ~$ sudo -u graylog java -Djava.net.preferIPv4Stack=true -jar graylog.jar
 
 Manual setup: graylog-web-interface on Linux
 --------------------------------------------
