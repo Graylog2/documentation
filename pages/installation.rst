@@ -181,7 +181,7 @@ You also **must** install **Java 7** or higher! Java 6 is not compatible with Gr
 fixes by Oracle.
 
 A more detailed guide for installing the dependencies will follow. **The only important thing for Elasticsearch is that you configure
-``cluster.name: graylog`` in it's ``conf/elasticsearch.yml``**.
+``cluster.name: graylog`` in its ``conf/elasticsearch.yml``**.
 
 Downloading and extracting the server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
