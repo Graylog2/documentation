@@ -180,8 +180,8 @@ Most standard MongoDB packages of Linux distributions are outdated. Use the `off
 You also **must** install **Java 7** or higher! Java 6 is not compatible with Graylog and will also not receive any more publicly available bug and security
 fixes by Oracle.
 
-A more detailed guide for installing the dependencies will follow. **The only important thing for Elasticsearch is that you configure
-``cluster.name: graylog`` in its ``conf/elasticsearch.yml``**.
+A more detailed guide for installing the dependencies will follow. **The only important thing for Elasticsearch is that you set
+the exactly same cluster name (e. g. ``cluster.name: graylog``) that is being used by Graylog in the Elasticsearch configuration (``conf/elasticsearch.yml``)**.
 
 Downloading and extracting the server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
