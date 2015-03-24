@@ -516,6 +516,7 @@ Ubuntu 14.04
 Download and install `graylog-1.0-repository-ubuntu14.04_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.0-repository-ubuntu14.04_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
+  $ wget https://packages.graylog2.org/repo/packages/graylog-1.0-repository-ubuntu14.04_latest.deb
   $ sudo dpkg -i graylog-1.0-repository-ubuntu14.04_latest.deb
   $ sudo apt-get install apt-transport-https
   $ sudo apt-get update
@@ -527,6 +528,7 @@ Ubuntu 12.04
 Download and install `graylog-1.0-repository-ubuntu12.04_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.0-repository-ubuntu12.04_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
+  $ wget https://packages.graylog2.org/repo/packages/graylog-1.0-repository-ubuntu12.04_latest.deb
   $ sudo dpkg -i graylog-1.0-repository-ubuntu12.04_latest.deb
   $ sudo apt-get install apt-transport-https
   $ sudo apt-get update
@@ -538,6 +540,7 @@ Debian 7
 Download and install `graylog-1.0-repository-debian7_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.0-repository-debian7_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
+  $ wget https://packages.graylog2.org/repo/packages/graylog-1.0-repository-debian7_latest.deb
   $ sudo dpkg -i graylog-1.0-repository-debian7_latest.deb
   $ sudo apt-get install apt-transport-https
   $ sudo apt-get update
