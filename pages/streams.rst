@@ -186,7 +186,7 @@ use the Graylog Stream Alert API to poll for currently active alerts in order to
 Checking for currently active alert/triggered conditions
 ========================================================
 
-Graylog stream alerts can currently be configured to send emails when one or more oft the associated alert conditions evaluate to true. While
+Graylog stream alerts can currently be configured to send emails when one or more of the associated alert conditions evaluate to true. While
 sending email solves many immediate problems when it comes to alerting, it can be helpful to gain programmatic access to the currently active alerts.
 
 Each stream which has alerts configured also has a list of active alerts, which can potentially be empty if there were no alerts so far.
