@@ -568,7 +568,7 @@ all three of them:
 
 * https://supermarket.chef.io/cookbooks/graylog2
 * https://forge.puppetlabs.com/graylog2/graylog2
-* https://galaxy.ansible.com/list#/roles/1508
+* https://galaxy.ansible.com/list#/roles/3162
 
 There are also official `Vagrant <https://www.vagrantup.com>`_ images if you want to spin up a local virtual machine quickly.
 (Note that the pre-built `Virtual machine appliances`_ are a preferred way to run Graylog in production)
