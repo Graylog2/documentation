@@ -57,6 +57,12 @@ TCP::
 
 (The difference between UDP and TCP is using ``@`` instead of ``@@`` as target descriptor.)
 
+Alternatively, the rsyslog built-in template `RSYSLOG_SyslogProtocol23Format <http://www.rsyslog.com/doc/v5-stable/configuration/templates.html#string-based-templates>`_ sends log messages in the same format as above. This exists in rsyslog versions of at least 5.10 or later.
+
+The UDP examples above becomes::
+
+  *.* @graylog.example.org:514;RSYSLOG_SyslogProtocol23Format
+
 syslog-ng
 ^^^^^^^^^
 
