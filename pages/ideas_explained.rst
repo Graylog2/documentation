@@ -16,8 +16,8 @@ The log management market today
 Things have changed a bit since 2009. Now there are viable open source projects with serious products and a growing list of
 SaaS offerings for log management.
 
-The wrong architecture
-----------------------
+Architectural considerations
+----------------------------
 
 The probably most successful log management software, Splunk, has the most advanced architecture on the market **because it
 was built for log management from the beginning**. Software that stores and analyzes log data must have a very specific
@@ -55,8 +55,8 @@ data.
 
 .. image:: /images/architecture_comparison.png
 
-The wrong license model
------------------------
+Unlimited data collection
+-------------------------
 
 Volume based license models are making your job unnecessary hard. Price is a big factor here but it is even worse that volume based
 license models make you (or your manager makes you) try to save volume. This means that you will be finding yourself thinking about
