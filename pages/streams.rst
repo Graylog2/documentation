@@ -145,8 +145,8 @@ to protect the overall stability and performance of message processing. Obviousl
 the total loss of one or more messages is worse than a loss of stream classification for these.
 
 There are scenarios where this might not be applicable or even detrimental. If there is a high fluctuation of the message load including
-situations where the message load is much higher than the system can handle, overall stream matching can take longer than then configured
-timeout. If this happens repeatedly, all streams get disabled. This is a clear indicator that your system is over-utilized and not able
+situations where the message load is much higher than the system can handle, overall stream matching can take longer than the configured
+timeout. If this happens repeatedly, all streams get disabled. This is a clear indicator that your system is overutilized and not able
 to handle the peak message load.
 
 How to configure the timeout values if the defaults do not match
