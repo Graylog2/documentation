@@ -29,16 +29,23 @@ Discovery mode
 
 The default discovery mode is multicast. Graylog will try to find other Elasticsearch nodes automatically. This usually works fine
 when everything is running on the same system but gets problematic quickly when running in a bigger network topology. We recommend
-to use unicast for production setups. Configure it like this::
+to use unicast for production setups. Configure Zen unicast discovery in Graylog with the following lines in your configuration file::
 
   # Disable multicast
   elasticsearch_discovery_zen_ping_multicast_enabled = false
   # List of Elasticsearch nodes to connect to
   elasticsearch_discovery_zen_ping_unicast_hosts = es-node-1.example.org:9300,es-node-2.example.org:9300
 
-The default Elasticsearch communication port is 9300/tcp (not to confuse with the HTTP interface running on port 9200/tcp by default)
-and configured with the setting ``transport.tcp.port`` in ``elasticsearch.yml``. Make sure that Elasticsearch binds to an interface
-that Graylog can connect to (see ``network.host``).
+Also make sure to configure `Zen unicast discovery <http://www.elastic.co/guide/en/elasticsearch/reference/1.3/modules-discovery-zen.html#unicast>`_ in
+the Elasticsearch configuration file by adding the ``discovery.zen.ping.multicast.enabled`` and ``discovery.zen.ping.unicast.hosts`` setting with the
+list of Elasticsearch nodes to ``elasticsearch.yml``::
+
+  discovery.zen.ping.multicast.enabled: false
+  discovery.zen.ping.unicast.hosts: ["es-node-1.example.org:9300" , "es-node-2.example.org:9300"]
+
+The Elasticsearch default communication port is *9300/tcp* (not to be confused with the HTTP interface running on port *9200/tcp* by default).
+The communication port can be changed in the Elasticsearch configuration file (``elasticsearch.yml``) with the configuration setting ``transport.tcp.port``.
+Make sure that Elasticsearch binds to a network interface that Graylog can connect to (see ``network.host``).
 
 Configuration of Elasticsearch nodes
 ------------------------------------
