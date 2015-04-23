@@ -50,6 +50,10 @@ dashboards:
   * Search result histogram charts
   * Field value charts
   * Quickvalue results
+  
+  Once you can see the results of your search, you will see a small blue icon next to the right of the 
+  result count and histogram title. Hovering over this will show "Add to dashboard" and clicking the icon
+  will prompt you with a list of dashboards you've created. Select a dashboard to add the widget to it.
 
 Examples
 ========
