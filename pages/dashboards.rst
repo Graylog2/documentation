@@ -62,13 +62,18 @@ It is strongly recommended to read the getting started guide on basic searches a
 will make the following examples more obvious for you.
 
   * **Top log sources today**
+
     * Example search: ``*``, timeframe: Last 24 hours
     * Expand the ``source`` field in the the sidebar and hit *Quick values*
     * Add quick values to dashboard
+
   * **Number of exceptions in a given app today**
+
     * Example search: ``source:myapp AND Exception``, timeframe: Last 24 hours
     * Add search result count to dashboard
+
   * **Response time chart of a given app**
+
     * Example search: ``source:myapp2``, any timeframe you want
     * Expand a field representing the response time of requests in the sidebar and hit *Generate chart*
     * Add chart to dahsboard
