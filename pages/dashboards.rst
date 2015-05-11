@@ -50,6 +50,10 @@ dashboards:
   * Search result histogram charts
   * Field value charts
   * Quickvalue results
+  
+  Once you can see the results of your search, you will see a small blue icon next to the right of the 
+  result count and histogram title. Hovering over this will show "Add to dashboard" and clicking the icon
+  will prompt you with a list of dashboards you've created. Select a dashboard to add the widget to it.
 
 Examples
 ========
@@ -58,13 +62,18 @@ It is strongly recommended to read the getting started guide on basic searches a
 will make the following examples more obvious for you.
 
   * **Top log sources today**
+
     * Example search: ``*``, timeframe: Last 24 hours
     * Expand the ``source`` field in the the sidebar and hit *Quick values*
     * Add quick values to dashboard
+
   * **Number of exceptions in a given app today**
+
     * Example search: ``source:myapp AND Exception``, timeframe: Last 24 hours
     * Add search result count to dashboard
+
   * **Response time chart of a given app**
+
     * Example search: ``source:myapp2``, any timeframe you want
     * Expand a field representing the response time of requests in the sidebar and hit *Generate chart*
     * Add chart to dahsboard
