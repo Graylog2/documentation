@@ -299,5 +299,8 @@ Reading from files
 Graylog is currently not providing an out-of-the-box way to read log messages from files. We do however recommend two
 fantastic tools to do that job for you. Both come with native Graylog (GELF) outputs:
 
-  * `fluentd <http://www.fluentd.org/guides/recipes/graylog2>`_
+  * `fluentd <http://www.fluentd.org/guides/recipes/graylog2>`_ 
   * `logstash <http://logstash.net/docs/1.4.2/outputs/gelf>`_
+
+**NOTE:** fluentd doesn't yet support sub-second time resolution which makes searching and
+ordering more difficult, see issue `#461 <http://goessner.net/articles/JsonPath/>`_ 
