@@ -75,8 +75,39 @@ messages per minute or when the field *milliseconds* had a too high standard dev
 Hit *Manage alerts* in the stream *Action* dropdown to see already configured alerts, alerts that were fired in the past or
 to configure new alert conditions.
 
+You can configure the interval for alert checks in your `graylog.conf` using the `alert_check_interval` variable. The default
+is to check for alerts every 60 seconds.
+
 Graylog ships with default *alert callbacks* and can be extended with
 `plugins <https://www.graylog.org/resources/documentation/general/plugins>`_
+
+Alert condition types explained
+===============================
+
+Message count condition
+^^^^^^^^^^^^^^^^^^^^^^^
+
+This condition triggers whenever the stream received more than X messages in the last Y minutes. Perfect for example to
+be alerted when there are many exceptions on your platform. Create a stream that catches every error message and be alerted
+when that stream exceeds normal throughput levels.
+
+Field value condition
+^^^^^^^^^^^^^^^^^^^^^
+
+Triggers whenever the result of a statistical computation of a numerical message field in the stream is higher or lower than
+a given threshold. Perfect to monitor for performance problems: Be alerted whenever the standard deviation of the response time
+of your application was higher than X in the last Y minutes.
+
+Field string value condition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This condition triggers whenever the stream received at least one message since the last alert run that has a field set to
+a given value. Get an alert when a message with the field `type` set to `security` arrives in the stream.
+
+**Important:** We do not recommend to run this on analyzed fields like `message` or `full_message` because it is broken down
+to terms and you might get unexpected alerts. For example a check for `security` would also alert if a message with the field
+set to `no security` is received because it was broken down to `no` and `security`. This only happens on the analyzed
+`message` and `full_message` in Graylog.
 
 What is the difference between alert callbacks and alert receivers?
 ===================================================================
