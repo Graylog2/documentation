@@ -181,11 +181,11 @@ text data and tries to build a date from that as good as it can.
 
 Examples:
 
-* **Mar 12**, converted at 12:27:00 local time in the year 2014: 2014-03-12T12:27:00.000
+* **Mar 12**, converted at 12:27:00 UTC in the year 2014: 2014-03-12T12:27:00.000
 * **2014-3-12 12:27**: 2014-03-12T12:27:00.000
 * **Mar 12 2pm**: 2014-03-12T14:00:00.000
 
-Note that the flexible date converter always uses the local timezone unless you have timezone information in the parsed text.
+Note that the flexible date converter always uses UTC as timezone unless you have timezone information in the parsed text.
 
 Standard date converter format string table
 -------------------------------------------

@@ -76,7 +76,7 @@ will make the following examples more obvious for you.
 
     * Example search: ``source:myapp2``, any timeframe you want
     * Expand a field representing the response time of requests in the sidebar and hit *Generate chart*
-    * Add chart to dahsboard
+    * Add chart to dashboard
 
 Widgets from streams
 ====================
