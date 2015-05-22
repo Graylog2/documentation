@@ -170,23 +170,6 @@ Use a standard extractor rule to select the timestamp and apply the *Date* conve
 .. image:: /images/dateparser_1.png
 .. image:: /images/dateparser_2.png
 
-The flexible date converter
-===========================
-
-Now imagine you had one of those devices that send messages that are not so easy to parse because they do not follow a strict
-timestamp format. Some network devices for example like to send days of the month without adding a padding 0 for the first 9 days.
-You'll have dates like ``Mar 9`` and ``Mar 10`` and end up having problems defining a parser string for that. Or maybe you have
-something else that is really exotic like just *last wednesday* as timestamp. The flexible date converter is accepting any
-text data and tries to build a date from that as good as it can.
-
-Examples:
-
-* **Mar 12**, converted at 12:27:00 UTC in the year 2014: 2014-03-12T12:27:00.000
-* **2014-3-12 12:27**: 2014-03-12T12:27:00.000
-* **Mar 12 2pm**: 2014-03-12T14:00:00.000
-
-Note that the flexible date converter always uses UTC as timezone unless you have timezone information in the parsed text.
-
 Standard date converter format string table
 -------------------------------------------
 
@@ -223,3 +206,22 @@ Z       time zone offset/id           zone          -0800; -08:00; America/Los_A
 '       escape for text               delimiter
 ''      single quote                  literal       '
 ======  ============================  ============  ===================================
+
+The flexible date converter
+===========================
+
+Now imagine you had one of those devices that send messages that are not so easy to parse because they do not follow a strict
+timestamp format. Some network devices for example like to send days of the month without adding a padding 0 for the first 9 days.
+You'll have dates like ``Mar 9`` and ``Mar 10`` and end up having problems defining a parser string for that. Or maybe you have
+something else that is really exotic like just *last wednesday* as timestamp. The flexible date converter is accepting any
+text data and tries to build a date from that as good as it can.
+
+Examples:
+
+* **Mar 12**, converted at 12:27:00 UTC in the year 2014: 2014-03-12T12:27:00.000
+* **2014-3-12 12:27**: 2014-03-12T12:27:00.000
+* **Mar 12 2pm**: 2014-03-12T14:00:00.000
+
+Note that the flexible date converter is using UTC as timezone by default unless you have timezone information in the parsed text
+or have configured another time zone when adding the flexible date converter to an extractor (see this `comprehensive list of time zones <http://joda-time.sourceforge.net/timezones.html>`_
+available for the flexible date converter).
