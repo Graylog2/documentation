@@ -13,7 +13,7 @@ Because syslog has a clear specification in its RFCs it should be possible to pa
 there are a lot of devices (especially routers and firewalls) out there that send logs looking like syslog but actually
 breaking several rules stated in the RFCs. We tried to write a parser that reads all of them as good as possible and
 failed. Such a loosely defined text message usually breaks the compatibility in the first date field already. Some
-devices leave out hostnames completely, some use localized timezone names (e. g. "MESZ" instead of "CEST"),
+devices leave out hostnames completely, some use localized time zone names (e. g. "MESZ" instead of "CEST"),
 and some just omit the current year in the timestamp field.
 
 Then there are devices out there that at least do not claim to send syslog when they don't but have another completely
@@ -222,6 +222,6 @@ Examples:
 * **2014-3-12 12:27**: 2014-03-12T12:27:00.000
 * **Mar 12 2pm**: 2014-03-12T14:00:00.000
 
-Note that the flexible date converter is using UTC as timezone by default unless you have timezone information in the parsed text
+Note that the flexible date converter is using UTC as time zone by default unless you have time zone information in the parsed text
 or have configured another time zone when adding the flexible date converter to an extractor (see this `comprehensive list of time zones <http://joda-time.sourceforge.net/timezones.html>`_
 available for the flexible date converter).
