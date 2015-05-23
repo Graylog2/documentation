@@ -7,7 +7,7 @@ somewhere in ``opt`` manually for each server while others have already jumped o
 fully automated reproducible setups.
 
 Graylog can be installed in many different ways so you can pick whatever works best for you. We recommend to start with the
-`Virtual machine appliances`_ or the `Quick setup application`_ for the fastest way to get started and then pick one
+`Virtual machine appliances`_ for the fastest way to get started and then pick one
 of the other, more flexible installation methods to build a production ready setup. (Note: The `Virtual machine appliances`_
 are suitable for production usage because they are prepared to scale out to multiple servers when required.)
 
