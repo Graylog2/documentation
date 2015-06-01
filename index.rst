@@ -18,6 +18,7 @@ Contents:
    pages/installation
    pages/configuring_es
    pages/sending_data
+   pages/collector
    pages/queries
    pages/streams
    pages/dashboards
