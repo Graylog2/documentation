@@ -111,7 +111,8 @@ outputs {
   }
 }\
 
-***Correctly Configured Collector Log Sample***
+Correctly Configured Collector Log Sample
+*****************************************
 
 
 2015-05-12T16:00:10.841+0200 INFO  [main] o.graylog.collector.cli.commands.Run - Starting Collector v0.2.0-SNAPSHOT (commit a2ad8c8)
