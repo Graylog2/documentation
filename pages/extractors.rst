@@ -154,7 +154,7 @@ Grok directly supports converting field values by adding ``;datatype`` at the en
 
   len=%{NUMBER:length;int} src=%{IP:srcip} sport=%{NUMBER:srcport} dst=%{IP:dstip} dport=%{NUMBER:dstport}
 
-The currently supported data types, and their corresponding Java types, are:
+The currently supported data types, and their corresponding ranges and values, are:
 
 ========  ===================================================================================================  =====================================================
 Type      Range                                                                                                Example
