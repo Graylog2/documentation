@@ -114,6 +114,7 @@ We can now create the following patterns on the ``System/Grok Patterns`` page in
   IPV6 ((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?
   IPV4 (?<![0-9])(?:(?:25[0-5]|2[0-4][0-9]|[0-1]?[0-9]{1,2})[.](?:25[0-5]|2[0-4][0-9]|[0-1]?[0-9]{1,2})[.](?:25[0-5]|2[0-4][0-9]|[0-1]?[0-9]{1,2})[.](?:25[0-5]|2[0-4][0-9]|[0-1]?[0-9]{1,2}))(?![0-9])
   IP (?:%{IPV6}|%{IPV4})
+  DATA .*?
 
 Then, in the extractor configuration, we can use these patterns to extract the relevant fields from the line::
 
@@ -122,6 +123,58 @@ Then, in the extractor configuration, we can use these patterns to extract the r
 This will add the relevant extracted fields to our log message, allowing Graylog to search on those individual fields, which
 can lead to more effective search queries by allowing to specifically look for packets that came from a specific source IP
 instead of also matching destination IPs if one would only search for the IP across all fields.
+
+If the Grok pattern creates many fields, which can happen if you make use of heavily nested patterns, you can tell Graylog to skip
+certain fields (and the output of their subpatterns) by naming a field with the special keyword ``UNWANTED``.
+
+Let's say you want to parse a line like::
+
+  type:44 bytes:34 errors:122
+
+but you are only interested in the second number ``bytes``. You could use a pattern like::
+
+  type:%{BASE10NUM:type} bytes:%{BASE10NUM:bytes} errors:%{BASE10NUM:errors}
+
+However, this would create three fields named ``type``, ``bytes``, and ``errors``. Even not naming the first and last patterns would
+still create a field names ``BASE10NUM``. In order to ignore fields, but still require matching them use ``UNWANTED``::
+
+  type:%{BASE10NUM:UNWANTED} bytes:%{BASE10NUM:bytes} errors:%{BASE10NUM:UNWANTED}
+
+This now creates only a single field called ``bytes`` while making sure the entire pattern must match.
+
+If you already know the data type of the extracted fields, you can make use of the type conversion feature built into the Graylog
+Grok library. Going back to the earlier example::
+
+  len=50824 src=172.17.22.108 sport=829 dst=192.168.70.66 dport=513
+
+We know that the content of the field ``len`` is an integer and would like to make sure it is stored with that data type, so we can
+later create field graphs with it or access the field's statistical values, like average etc.
+
+Grok directly supports converting field values by adding ``;datatype`` at the end of the pattern, like::
+
+  len=%{NUMBER:length;int} src=%{IP:srcip} sport=%{NUMBER:srcport} dst=%{IP:dstip} dport=%{NUMBER:dstport}
+
+The currently supported data types, and their corresponding Java types, are:
+
+========  ===================================================================================================  =====================================================
+Type      Range                                                                                                Example
+========  ===================================================================================================  =====================================================
+byte      -128 ... 127                                                                                         ``%{NUMBER:fieldname;byte}``
+short     -32768 ... 32767                                                                                     ``%{NUMBER:fieldname;short}``
+int       -2^31 ... 2^31 -1                                                                                    ``%{NUMBER:fieldname;int}``
+long      -2^63 ... 2^63 -1                                                                                    ``%{NUMBER:fieldname;long}``
+
+float     32-bit IEEE 754                                                                                      ``%{NUMBER:fieldname;float}``
+double    64-bit IEEE 754                                                                                      ``%{NUMBER:fieldname;double}``
+
+boolean   `true`, `false`                                                                                      ``%{DATA:fieldname;boolean}``
+
+string    Any UTF-8 string                                                                                     ``%{DATA:fieldname;string}``
+
+date      See `SimpleDateFormat <http://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html>`_   ``%{DATA:timestamp;date;dd/MMM/yyyy:HH:mm:ss Z}``
+datetime  Alias for `date`
+========  ===================================================================================================  =====================================================
+
 
 There are many resources are the web with useful patterns, and one very helpful tool is the `Grok Debugger <http://grokdebug.herokuapp.com/>`_,
 which allows you to test your patterns while you develop them.
