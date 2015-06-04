@@ -2,6 +2,9 @@
 The Graylog collector
 *********************
 
+The Graylog collector is a lightweight process that allows you to forward data from log files to a Graylog cluster. It reads contents of local files or
+Windows EventLog directly and sends it over the network using the `GELF format <https://www.graylog.org/resources/gelf-2/>`_.
+
 Installation
 ************
 
@@ -10,46 +13,48 @@ Installation
 #. Unzip collector tgz file to target location
 #. cp collector.conf.example to collector.conf
 #. Update server-url in collector.conf to correct Graylog server address (required for registration)
-#. Update file input configuration with the correct log files 
+#. Update file input configuration with the correct log files
 #. Update outputs->gelf-tcp with the correct Graylog server address (required for sending GELF messages)
 
 **Note:** The collector will not start properly if you do not set the URL or the correct input log files and GELF output configuration
 
 **Windows**
 
-**OSX**
-
-#. Unzip collector tgz file to target location
-#. Navigate to target location
-#. cp config/collector.conf.example to config/collector.conf
-#. Update server-url in collector.conf to correct Graylog server address (required for registration)
-#. Update file input configuration with the correct log files 
-#. Update outputs->gelf-tcp with the correct Graylog server address (required for sending GELF messages)
+TBA.
 
 Running the Collector
 *********************
 
-You will need a configuration before starting the collector. An configuration file example can be found below. 
+You will need a configuration before starting the collector. An configuration file example can be found below.
 
-**Linux/Unix**
+Linux/Unix
+^^^^^^^^^^
 
-The collector needs a configuration file and can be started with the following command.
-Example: 
-$ bin/graylog-collector run -f ../config/collector.conf
+The collector needs a configuration file (see "Example configuration" below) and can be started with the following command.
 
-**Windows**
+Example::
 
-**OSX**
+  $ bin/graylog-collector run -f ../config/collector.conf
 
-**Troubleshooting**
+Windows
+^^^^^^^
 
-Check standard output for error messages
+TBA.
+
+Troubleshooting
+^^^^^^^^^^^^^^^
+
+Check the standard output of the collector process for any error messages or warnings. Messages not arriving in your Graylog
+cluster? Check possible firewalls and the network connection.
 
 Command Line Options
 ********************
 
-**Linux/Unix**
-::
+Linux/Unix
+^^^^^^^^^^
+
+The collector offers the following command line options::
+
   usage: graylog-collector <command> [<args>]
 
   The most commonly used graylog-collector commands are:
@@ -60,21 +65,24 @@ Command Line Options
 
       version   Show version information on STDOUT
 
-  See 'graylog-collector help <command>' for more information on a specific command.
+   See 'graylog-collector help <command>' for more information on a specific command.
 
-  NAME
+   NAME
           graylog-collector run - Start the collector
 
-  SYNOPSIS
+   SYNOPSIS
           graylog-collector run -f <configFile>
 
-  OPTIONS
+   OPTIONS
           -f <configFile>
               Path to configuration file.
 
 
-**Example Configuration**
-::
+Example Configuration
+^^^^^^^^^^^^^^^^^^^^^
+
+This is an example configuration file::
+
   message-buffer-size = 128
 
   inputs {
@@ -110,10 +118,12 @@ Command Line Options
     }
   }
 
-Correctly Configured Collector Log Sample
-*****************************************
+Notice how inputs can choose which outputs to forward data with.
 
-::
+Correctly Configured Collector Log Sample
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This is the `STDOUT` output of a collector starting up with no problems::
 
   2015-05-12T16:00:10.841+0200 INFO  [main] o.graylog.collector.cli.commands.Run - Starting Collector v0.2.0-SNAPSHOT (commit a2ad8c8)
   2015-05-12T16:00:11.489+0200 INFO  [main] o.g.collector.utils.CollectorId - Collector ID: cf4734f7-01d6-4974-a957-cb71bbd826b7
