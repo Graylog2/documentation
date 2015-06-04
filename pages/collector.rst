@@ -8,7 +8,8 @@ Windows EventLog directly and sends it over the network using the `GELF format <
 Installation
 ************
 
-**Linux/Unix**
+Linux/Unix
+^^^^^^^^^^
 
 #. Unzip collector tgz file to target location
 #. cp collector.conf.example to collector.conf
@@ -18,9 +19,61 @@ Installation
 
 **Note:** The collector will not start properly if you do not set the URL or the correct input log files and GELF output configuration
 
-**Windows**
+Windows
+^^^^^^^
 
-TBA.
+Download a collector release zip file from the Graylog homepage. Unzip the collector zip file to target location.
+
+.. image:: /images/collector_win_install_1.png
+
+Change into the extracted collector directory and create a collector configuration file in ``config\collector.conf``.
+
+.. image:: /images/collector_win_install_2.png
+
+The following configuration file shows a good starting point for Windows systems. It collects the *Application*, *Security*, and *System* event logs.
+Replace the ``x.x.x.x`` with the IP address of your Graylog server.
+
+Example::
+
+  server-url = "http://x.x.x.x:12900/"
+
+  message-buffer-size = 128
+
+  inputs {
+    win-eventlog-application {
+      type = "windows-eventlog"
+      source-name = "Application"
+      poll-interval = 1s
+    }
+    win-eventlog-system {
+      type = "windows-eventlog"
+      source-name = "System"
+      poll-interval = 1s
+    }
+    win-eventlog-security {
+      type = "windows-eventlog"
+      source-name = "Security"
+      poll-interval = 1s
+    }
+  }
+
+  outputs {
+    gelf-tcp {
+      type = "gelf"
+      host = "x.x.x.x"
+      port = 12201
+    }
+  }
+
+Start a ``cmd.exe``, change to the collector installation path and execute the following commands to install the collector as Windows service.
+
+Commands::
+
+  C:\> cd graylog-collector-0.2.2
+  C:\graylog-collector-0.2.2> bin\graylog-collector-service.bat install GraylogCollector
+  C:\graylog-collector-0.2.2> bin\graylog-collector-service.bat start GraylogCollector
+
+.. image:: /images/collector_win_install_3.png
 
 Running the Collector
 *********************
@@ -39,7 +92,17 @@ Example::
 Windows
 ^^^^^^^
 
-TBA.
+You probably want to run the collector as Windows service as described in the Windows installation section above.
+If you want to run it from the command line, run the following commands.
+
+Make sure you have a valid configuration file in ``config\collector.conf``.
+
+Commands::
+
+  C:\> cd graylog-collector-0.2.2
+  C:\graylog-collector-0.2.2> bin\graylog-collector.bat run -f config\collector.conf
+
+.. image:: /images/collector_win_run_1.png
 
 Troubleshooting
 ^^^^^^^^^^^^^^^
