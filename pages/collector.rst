@@ -197,3 +197,20 @@ This is the `STDOUT` output of a collector starting up with no problems::
   2015-05-12T16:00:11.516+0200 INFO  [main] o.graylog.collector.cli.commands.Run - Service RUNNING: GelfOutput{port='12201', id='gelf-tcp', client-send-buffer-size='32768', host='127.0.0.1', inputs='', client-reconnect-delay='1000', client-connect-timeout='5000', client-tcp-no-delay='true', client-queue-size='512'}
   2015-05-12T16:00:11.516+0200 INFO  [main] o.graylog.collector.cli.commands.Run - Service RUNNING: HeartbeatService [RUNNING]
   2015-05-12T16:00:11.516+0200 INFO  [main] o.graylog.collector.cli.commands.Run - Service RUNNING: StdoutOutput{id='console', inputs=''}
+
+Troubleshooting
+***************
+
+Unable to send heartbeat
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+The collector registers with your Graylog server on a regular basis to make sure it shows up on the Collectors page in the Graylog web interface.
+This registration can fail if the collector cannot connect to the server via HTTP on port ``12900``::
+
+  2015-06-06T10:45:14.964+0200 WARN  [HeartbeatService RUNNING] collector.heartbeat.HeartbeatService - Unable to send heartbeat to Graylog server: ConnectException: Connection refused
+
+**Possible solutions**
+
+* Make sure the server REST API is configured to listen on a reachable IP address.
+  Change the "rest_listen_uri" setting in the Graylog server config to this: ``rest_listen_uri = http://0.0.0.0:12900/``
+* Correctly configure any firewalls between the collector and the server to allow HTTP traffic to port ``12900``.
