@@ -31,11 +31,11 @@ Change into the extracted collector directory and create a collector configurati
 .. image:: /images/collector_win_install_2.png
 
 The following configuration file shows a good starting point for Windows systems. It collects the *Application*, *Security*, and *System* event logs.
-Replace the ``x.x.x.x`` with the IP address of your Graylog server.
+Replace the ``<your-graylog-server-ip>`` with the IP address of your Graylog server.
 
 Example::
 
-  server-url = "http://x.x.x.x:12900/"
+  server-url = "http://<your-graylog-server-ip>:12900/"
 
   message-buffer-size = 128
 
@@ -60,7 +60,7 @@ Example::
   outputs {
     gelf-tcp {
       type = "gelf"
-      host = "x.x.x.x"
+      host = "<your-graylog-server-ip>"
       port = 12201
     }
   }
@@ -146,6 +146,8 @@ Example Configuration
 
 This is an example configuration file::
 
+  server-url = "http://<your-graylog-server-ip>:12900/"
+
   message-buffer-size = 128
 
   inputs {
@@ -167,7 +169,7 @@ This is an example configuration file::
   outputs {
     gelf-tcp {
       type = "gelf"
-      host = "127.0.0.1"
+      host = "<your-graylog-server-ip>"
       port = 12201
       client-queue-size = 512
       client-connect-timeout = 5000
