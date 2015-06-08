@@ -2,7 +2,7 @@
 The Graylog collector
 *********************
 
-The Graylog collector is a lightweight Java application that allows you to forward data from log files to a Graylog cluster. The collector can read local log files and also 
+The Graylog collector is a lightweight Java application that allows you to forward data from log files to a Graylog cluster. The collector can read local log files and also
 Windows Events natively, it then can forward the log messages over the network `GELF format <https://www.graylog.org/resources/gelf-2/>`_.
 
 Installation
@@ -31,11 +31,11 @@ Change into the extracted collector directory and create a collector configurati
 .. image:: /images/collector_win_install_2.png
 
 The following configuration file shows a good starting point for Windows systems. It collects the *Application*, *Security*, and *System* event logs.
-Replace the ``x.x.x.x`` with the IP address of your Graylog server.
+Replace the ``<your-graylog-server-ip>`` with the IP address of your Graylog server.
 
 Example::
 
-  server-url = "http://x.x.x.x:12900/"
+  server-url = "http://<your-graylog-server-ip>:12900/"
 
   message-buffer-size = 128
 
@@ -60,7 +60,7 @@ Example::
   outputs {
     gelf-tcp {
       type = "gelf"
-      host = "x.x.x.x"
+      host = "<your-graylog-server-ip>"
       port = 12201
     }
   }
@@ -78,7 +78,7 @@ Commands::
 Running the Collector
 *********************
 
-You will need a configuration file before starting the collector. An example configuration file can be found below. 
+You will need a configuration file before starting the collector. An example configuration file can be found below.
 
 Linux/Unix
 ^^^^^^^^^^
@@ -104,7 +104,7 @@ Commands::
 
 Collector Status
 ^^^^^^^^^^^^^^^^
-Once the collector has been deployed successfully, you can check on the status from the Graylog UI. 
+Once the collector has been deployed successfully, you can check on the status from the Graylog UI.
 
 #. Log into Graylog Web Interface
 #. Navigate to System / Collectors
@@ -156,6 +156,8 @@ Example Configuration
 
 This is an example configuration file::
 
+  server-url = "http://<your-graylog-server-ip>:12900/"
+
   message-buffer-size = 128
 
   inputs {
@@ -177,7 +179,7 @@ This is an example configuration file::
   outputs {
     gelf-tcp {
       type = "gelf"
-      host = "127.0.0.1"
+      host = "<your-graylog-server-ip>"
       port = 12201
       client-queue-size = 512
       client-connect-timeout = 5000
@@ -207,4 +209,20 @@ This is the `STDOUT` output of a healthy collector starting::
   2015-05-12T16:00:11.516+0200 INFO  [main] o.graylog.collector.cli.commands.Run - Service RUNNING: GelfOutput{port='12201', id='gelf-tcp', client-send-buffer-size='32768', host='127.0.0.1', inputs='', client-reconnect-delay='1000', client-connect-timeout='5000', client-tcp-no-delay='true', client-queue-size='512'}
   2015-05-12T16:00:11.516+0200 INFO  [main] o.graylog.collector.cli.commands.Run - Service RUNNING: HeartbeatService [RUNNING]
   2015-05-12T16:00:11.516+0200 INFO  [main] o.graylog.collector.cli.commands.Run - Service RUNNING: StdoutOutput{id='console', inputs=''}
->>>>>>> 1.1
+
+Troubleshooting
+***************
+
+Unable to send heartbeat
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+The collector registers with your Graylog server on a regular basis to make sure it shows up on the Collectors page in the Graylog web interface.
+This registration can fail if the collector cannot connect to the server via HTTP on port ``12900``::
+
+  2015-06-06T10:45:14.964+0200 WARN  [HeartbeatService RUNNING] collector.heartbeat.HeartbeatService - Unable to send heartbeat to Graylog server: ConnectException: Connection refused
+
+**Possible solutions**
+
+* Make sure the server REST API is configured to listen on a reachable IP address.
+  Change the "rest_listen_uri" setting in the Graylog server config to this: ``rest_listen_uri = http://0.0.0.0:12900/``
+* Correctly configure any firewalls between the collector and the server to allow HTTP traffic to port ``12900``.
