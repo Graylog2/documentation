@@ -107,7 +107,7 @@ a given value. Get an alert when a message with the field `type` set to `securit
 **Important:** We do not recommend to run this on analyzed fields like `message` or `full_message` because it is broken down
 to terms and you might get unexpected alerts. For example a check for `security` would also alert if a message with the field
 set to `no security` is received because it was broken down to `no` and `security`. This only happens on the analyzed
-`message` and `full_message` in Graylog.
+`message` and `full_message` in Graylog. Please also take note that only a single alert is raised for this condition during the alerting interval, although multiple messages containing the given value may have been received since the last alert.
 
 What is the difference between alert callbacks and alert receivers?
 ===================================================================
