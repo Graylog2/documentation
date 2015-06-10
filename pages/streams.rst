@@ -112,13 +112,11 @@ set to `no security` is received because it was broken down to `no` and `securit
 What is the difference between alert callbacks and alert receivers?
 ===================================================================
 
-There are two type of actions to be triggered when an alert is fired: Alert callbacks or an email to a list of alert
-receivers.
+There are two groups of entities configuring what happens when an alert is fired: Alarm callbacks and alert receivers.
 
-Alert callbacks are single actions that are just called once. For example: The *Email Alert Callback* is triggering
-an email to exactly one receiver and the *HTTP Alert Callback* is calling a HTTP endpoint once.
+Alarm callbacks are a list of events that are being processed when an alert is triggered. There could be an arbitrary number of alarm callbacks configured here. If there is no alarm callback configured at all, a default email transport will be used to notify about the alert. If one or more alarm callbacks are configured (which might include the email alarm callback or not) then all of them are executed for every alert.
 
-The alert receivers in difference will all receive an email about the same alert.
+If the email alarm callback is used because it appears once or multiple times in the alarm callback list, or the alarm callback list is empty so the email transport is used per default, then the list of alert receivers is used to determine which recipients should receive the alert nofications. Every Graylog user (which has an email address configured in their account) or email address in that list gets a copy of the alerts sent out.
 
 Outputs
 *******
