@@ -81,7 +81,7 @@ Prerequisites
 
 You will need to have the following services installed on either the host you are running ``graylog-server`` on or on dedicated machines:
 
-* `Elasticsearch 1.3.7 or later <https://www.elastic.co/downloads/elasticsearch>`_
+* `Elasticsearch 1.5.0 or later <https://www.elastic.co/downloads/elasticsearch>`_
 * MongoDB (as recent stable version as possible, **at least v2.0**)
 
 Most standard MongoDB packages of Linux distributions are outdated. Use the `official MongoDB APT repository <http://docs.mongodb.org/manual/tutorial/install-mongodb-on-debian/>`_
@@ -418,7 +418,7 @@ Graylog offers official ``DEB`` and ``RPM`` package repositories for Ubuntu 12.0
 The repositories can be setup by installing a single package. Once that's done the Graylog packages can be installed via ``apt-get`` or
 ``yum``. The packages can also be downloaded with a web browser at https://packages.graylog2.org/ if needed.
 
-**Make sure to install and configure Java (>= 7), MongoDB and Elasticsearch before starting the Graylog services.**
+**Make sure to install and configure Java (>= 7), MongoDB and Elasticsearch (>= 1.5) before starting the Graylog services.**
 
 Ubuntu 14.04
 ------------
