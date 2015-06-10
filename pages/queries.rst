@@ -113,6 +113,22 @@ is vital for search speed: If you know you are only interested in messages of th
 This will make Graylog search in relevant indices only and greatly reduce system load and required resources. You can read
 more about this here: :doc:`index_model`
 
+Keyword time frame selector
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Graylog offers a keyword time frame selector that allows you to specify the time frame for the search in natural language like *last hour* or *last 90 days*. The web interface shows a preview of the two actual timestamps that will be used for the search.
+
+.. image:: /images/queries_keyword_time_selector.png
+
+Here are a few examples for possible values.
+
+* "last month" searches between one month ago and now
+* "4 hours ago" searches between four hours ago and now
+* "1st of april to 2 days ago" searches between 1st of April and 2 days ago
+* "yesterday midnight +0200 to today midnight +0200" searches between yesterday midnight and today midnight in timezone +0200 - will be 22:00 in UTC
+
+The time frame is parsed using the `natty natural language parser <http://natty.joestelmach.com/>`_. Please consult its documentation for details.
+
 Search result highlighting
 ==========================
 
