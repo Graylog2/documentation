@@ -50,3 +50,24 @@ For this purpose Graylog supports a graceful shutdown command, also accessible v
 set the load balancer status to ``DEAD``, stop all inputs, turn on messages processing (should it have been disabled
 manually previously), and flush all messages in memory to Elasticsearch. After all buffers and caches are processed,
 it will shut itself down safely.
+
+Web Interface
+=============
+
+It is possible to use the Graylog web interface behind a load balancer for high availability purposes.
+
+However, in order to make the various metrics work in Graylog's web interface, you need to enable sticky sessions in your
+load balancer, or configure the second instance to be a failover instance only, which only gets requests in case the
+first instance is no longer reachable.
+
+There are various terms used for sticky sessions. Session persistence or session management are also in use.
+
+Please refer to your vendor's documentation to learn about how to enable sticky sessions.
+
+Information for some popular load balancers and their settings can be found through the following links:
+
+* `Amazon Web Services ELB <http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-sticky-sessions.html>`_
+* `HAProxy <http://blog.haproxy.com/2012/03/29/load-balancing-affinity-persistence-sticky-sessions-what-you-need-to-know/>`_
+* `F5 BIG-IP <https://support.f5.com/kb/en-us/products/lc_9_x/manuals/product/lc_config_10_2/lc_persist_profiles.html>`_
+* `KEMP <https://support.kemptechnologies.com/hc/en-us/articles/202040855-What-is-persistence->`_
+
