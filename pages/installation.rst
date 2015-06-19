@@ -172,7 +172,7 @@ Supplying external logging configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ``graylog-server`` uses Log4j for its internal logging and ships with a
-`default log configuration file <https://github.com/Graylog2/graylog2-server/blob/1.1.2/graylog2-server/src/main/resources/log4j.xml>`
+`default log configuration file <https://github.com/Graylog2/graylog2-server/blob/1.1.3/graylog2-server/src/main/resources/log4j.xml>`
 which is embedded within the shipped JAR.
 
 In case you need to overwrite the configuration ``graylog-server`` uses, you can supply a Java system property specifying the path to
