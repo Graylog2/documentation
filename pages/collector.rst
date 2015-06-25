@@ -2,8 +2,8 @@
 The Graylog collector
 *********************
 
-The Graylog collector is a lightweight process that allows you to forward data from log files to a Graylog cluster. It reads contents of local files or
-Windows EventLog directly and sends it over the network using the `GELF format <https://www.graylog.org/resources/gelf-2/>`_.
+The Graylog collector is a lightweight Java application that allows you to forward data from log files to a Graylog cluster. The collector can read local log files and also
+Windows Events natively, it then can forward the log messages over the network `GELF format <https://www.graylog.org/resources/gelf-2/>`_.
 
 Installation
 ************
@@ -78,12 +78,10 @@ Commands::
 Running the Collector
 *********************
 
-You will need a configuration before starting the collector. An configuration file example can be found below.
+You will need a configuration file before starting the collector. An example configuration file can be found below.
 
 Linux/Unix
 ^^^^^^^^^^
-
-The collector needs a configuration file (see "Example configuration" below) and can be started with the following command.
 
 Example::
 
@@ -103,6 +101,18 @@ Commands::
   C:\graylog-collector-0.2.2> bin\graylog-collector.bat run -f config\collector.conf
 
 .. image:: /images/collector_win_run_1.png
+
+Collector Status
+^^^^^^^^^^^^^^^^
+Once the collector has been deployed successfully, you can check on the status from the Graylog UI.
+
+#. Log into Graylog Web Interface
+#. Navigate to System / Collectors
+#. Click Collectors
+.. image:: /images/collector_menu.png
+
+#. Collector Status
+.. image:: /images/collector_status.png
 
 Troubleshooting
 ^^^^^^^^^^^^^^^
@@ -183,12 +193,12 @@ This is an example configuration file::
     }
   }
 
-Notice how inputs can choose which outputs to forward data with.
+*Note: Individual inputs can be mapped to individual outputs*
 
 Correctly Configured Collector Log Sample
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This is the `STDOUT` output of a collector starting up with no problems::
+This is the `STDOUT` output of a healthy collector starting::
 
   2015-05-12T16:00:10.841+0200 INFO  [main] o.graylog.collector.cli.commands.Run - Starting Collector v0.2.0-SNAPSHOT (commit a2ad8c8)
   2015-05-12T16:00:11.489+0200 INFO  [main] o.g.collector.utils.CollectorId - Collector ID: cf4734f7-01d6-4974-a957-cb71bbd826b7
