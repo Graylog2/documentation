@@ -1,87 +1,13 @@
-******************
-Installing Graylog
-******************
-
-Modern server architectures and configurations are managed in many different ways. Some people still put new software
-somewhere in ``opt`` manually for each server while others have already jumped on the configuration management train and
-fully automated reproducible setups.
-
-Graylog can be installed in many different ways so you can pick whatever works best for you. We recommend to start with the
-`Virtual machine appliances`_ for the fastest way to get started and then pick one
-of the other, more flexible installation methods to build a production ready setup. (Note: The `Virtual machine appliances`_
-are suitable for production usage because they are prepared to scale out to multiple servers when required.)
-
-This chapter is explaining the many ways to install Graylog and aims to help choosing the one that fits your needs.
-
-Virtual machine appliances
-==========================
-
-The easiest way to get started with a production ready Graylog setup is using our official virtual machine appliances. We offer
-those for the following platforms:
-
-* `OVA for VMware / Virtualbox <https://www.graylog.org/links/images-ova/>`_
-* `OpenStack <https://www.graylog.org/links/images-openstack/>`_
-* `Amazon Web Services / EC2 <https://www.graylog.org/links/images-aws/>`_
-* `Docker <https://www.graylog.org/links/images-docker/>`_
-
-Please follow the links for specific instructions and downloads. The next chapters explain general principles of the appliances:
-
-Configuring the appliances
---------------------------
-
-The great thing about the new appliances is the ``graylog-ctl`` tool that we are shipping with them. We want you to get started
-with a customised setup as soon as quickly as possible so you can now do things like::
-
-  graylog-ctl set-email-config <smtp server> [--port=<smtp port> --user=<username> --password=<password>]
-  graylog-ctl set-admin-password <password>
-  graylog-ctl set-timezone <zone acronym>
-  graylog-ctl reconfigure
-
-Assign a static IP
-------------------
-
-Per default the appliance make use of DHCP to setup the network. If you want to access Graylog under a static IP please
-edit the file `/etc/network/interfaces` like this (just the important lines)::
-
-  auto eth0
-    iface eth0 inet static
-    address <static IP address>
-    netmask <netmask>
-    gateway <default gateway>
-    pre-up sleep 2
-
-Activate the new IP and reconfigure Graylog to make use of it::
-
-  $ sudo ifdown eth0 && sudo ifup eth0
-  $ sudo graylog-ctl reconfigure
-
-Wait some time till all services are restarted and running again. Afterwards you should be able to access Graylog with the new IP.
-
-Scaling out
------------
-
-We are also providing an easy way to automatically scale out to more boxes once you grew out of your initial setup. Every appliance
-is always shipping with all required Graylog components and you can at any time decide which role a specific box should take::
-
-  graylog-ctl reconfigure-as-server
-  graylog-ctl reconfigure-as-webinterface
-  graylog-ctl reconfigure-as-datanode
-
-The manual setup
-================
-
-We recommend to only run this if you have good reasons not to use one of the other production ready installation methods described
-in this chapter.
-
-Manual setup: graylog-server on Linux
--------------------------------------
+************
+Manual Setup
+************
 
 Prerequisites
 ^^^^^^^^^^^^^
 
 You will need to have the following services installed on either the host you are running ``graylog-server`` on or on dedicated machines:
 
-* `Elasticsearch 1.5.0 or later <https://www.elastic.co/downloads/elasticsearch>`_
+* `Elasticsearch 1.3.7 or later <https://www.elastic.co/downloads/elasticsearch>`_
 * MongoDB (as recent stable version as possible, **at least v2.0**)
 
 Most standard MongoDB packages of Linux distributions are outdated. Use the `official MongoDB APT repository <http://docs.mongodb.org/manual/tutorial/install-mongodb-on-debian/>`_
@@ -131,10 +57,10 @@ Configure at least the following variables in ``/etc/graylog/server/server.conf`
       strategies that allow you to automatically delete messages based on their age.**
  * ``elasticsearch_shards = 4``
     * The number of shards for your indices. A good setting here highly depends on the number of nodes in your Elasticsearch cluster. If you have
-      one node, set it to ``1``. Read more about this in the knowledge base article about :doc:`configuring_es`.
+      one node, set it to ``1``.
  * ``elasticsearch_replicas = 0``
      * The number of replicas for your indices. A good setting here highly depends on the number of nodes in your Elasticsearch cluster. If you
-       have one node, set it to ``0``. Read more about this in the knowledge base article about :doc:`configuring_es`.
+       have one node, set it to ``0``.
  * ``mongodb_*``
     * Enter your MongoDB connection and authentication information here. Make sure that you connect the web interface to the same database.
       You don't need to configure ``mongodb_user`` and ``mongodb_password`` if ``mongodb_useauth`` is set to ``false``.
@@ -172,7 +98,7 @@ Supplying external logging configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ``graylog-server`` uses Log4j for its internal logging and ships with a
-`default log configuration file <https://github.com/Graylog2/graylog2-server/blob/1.1.4/graylog2-server/src/main/resources/log4j.xml>`
+`default log configuration file <https://github.com/Graylog2/graylog2-server/blob/1.0.0/graylog2-server/src/main/resources/log4j.xml>`_
 which is embedded within the shipped JAR.
 
 In case you need to overwrite the configuration ``graylog-server`` uses, you can supply a Java system property specifying the path to
@@ -404,108 +330,3 @@ reached a size of 100MB::
       </root>
 
   </configuration>
-
-Operating system packages
-=========================
-
-Until configuration management systems made their way into broader markets and many datacenters, one of the most common ways to install
-software on Linux servers was to use operating system packages. Debian has ``DEB``, Red Hat has ``RPM`` and many other distributions are
-based on those or come with own package formats. Online repositories of software packages and corresponding package managers make installing
-and configuring new software a matter of a single command and a few minutes of time.
-
-Graylog offers official ``DEB`` and ``RPM`` package repositories for Ubuntu 12.04, Ubuntu 14.04, Debian 7 and CentOS 6.
-
-The repositories can be setup by installing a single package. Once that's done the Graylog packages can be installed via ``apt-get`` or
-``yum``. The packages can also be downloaded with a web browser at https://packages.graylog2.org/ if needed.
-
-**Make sure to install and configure Java (>= 7), MongoDB and Elasticsearch (>= 1.5) before starting the Graylog services.**
-
-Ubuntu 14.04
-------------
-
-Download and install `graylog-1.1-repository-ubuntu14.04_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.1-repository-ubuntu14.04_latest.deb>`_
-via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
-
-  $ wget https://packages.graylog2.org/repo/packages/graylog-1.1-repository-ubuntu14.04_latest.deb
-  $ sudo dpkg -i graylog-1.1-repository-ubuntu14.04_latest.deb
-  $ sudo apt-get install apt-transport-https
-  $ sudo apt-get update
-  $ sudo apt-get install graylog-server graylog-web
-
-Ubuntu 12.04
-------------
-
-Download and install `graylog-1.1-repository-ubuntu12.04_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.1-repository-ubuntu12.04_latest.deb>`_
-via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
-
-  $ wget https://packages.graylog2.org/repo/packages/graylog-1.1-repository-ubuntu12.04_latest.deb
-  $ sudo dpkg -i graylog-1.1-repository-ubuntu12.04_latest.deb
-  $ sudo apt-get install apt-transport-https
-  $ sudo apt-get update
-  $ sudo apt-get install graylog-server graylog-web
-
-Debian 7
---------
-
-Download and install `graylog-1.1-repository-debian7_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.1-repository-debian7_latest.deb>`_
-via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
-
-  $ wget https://packages.graylog2.org/repo/packages/graylog-1.1-repository-debian7_latest.deb
-  $ sudo dpkg -i graylog-1.1-repository-debian7_latest.deb
-  $ sudo apt-get install apt-transport-https
-  $ sudo apt-get update
-  $ sudo apt-get install graylog-server graylog-web
-
-CentOS 6
---------
-
-Download and install `graylog-1.1-repository-el6_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-1.1-repository-el6_latest.rpm>`_
-via ``rpm(8)``::
-
-  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-1.1-repository-el6_latest.rpm
-  $ yum install graylog-server graylog-web
-
-Please open an `issue <https://github.com/Graylog2/fpm-recipes/issues>`_ in the `Github repository <https://github.com/Graylog2/fpm-recipes>`_ if you
-run into any packaging related issues. **Thank you!**
-
-
-Chef, Puppet, Ansible, Vagrant
-==============================
-
-The DevOps movement turbocharged market adoption of the newest generation of configuration management and orchestration tools like
-`Chef <https://www.chef.io>`_, `Puppet <http://puppetlabs.com>`_ or `Ansible <http://www.ansible.com>`_. Graylog offers official scripts for
-all three of them:
-
-* https://supermarket.chef.io/cookbooks/graylog2
-* https://forge.puppetlabs.com/graylog2/graylog2
-* https://galaxy.ansible.com/list#/roles/3162
-
-There are also official `Vagrant <https://www.vagrantup.com>`_ images if you want to spin up a local virtual machine quickly.
-(Note that the pre-built `Virtual machine appliances`_ are a preferred way to run Graylog in production)
-
-* https://github.com/Graylog2/graylog2-images/tree/master/vagrant
-
-Amazon Web Services
-===================
-
-The `Virtual machine appliances`_ are supporting Amazon Web Services EC2 AMIs as platform.
-
-Docker
-======
-
-The `Virtual machine appliances`_ are supporting Docker as runtime.
-
-Microsoft Windows
-=================
-
-Unfortunately there is no officially supported way to run Graylog on Microsoft Windows operating systems even though all parts run on the
-Java Virtual Machine. We recommend to run the `Virtual machine appliances`_ on a Windows host. It should be technically possible
-to run Graylog on Windows but it is most probably not worth the time to work your way around the cliffs.
-
-Should you require running Graylog on Windows, you need to disable the message journal in ``graylog-server`` by changing the following setting in the ``graylog.conf``::
-
-  message_journal_enabled = false
-
-Due to restrictions of how Windows handles file locking the journal will not work correctly. This will be improved in future versions.
-
-**Please note that this impacts Graylog's ability to buffer messages, so we strongly recommend running the Linux-based OVAs on Windows.**
