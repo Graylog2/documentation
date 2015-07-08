@@ -53,10 +53,10 @@ via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is i
 CentOS 6
 --------
 
-Download and install `graylog-1.0-repository-el6_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-1.0-repository-el6_latest.rpm>`_
+Download and install `graylog-1.0-repository-el6_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-1.1-repository-el6_latest.rpm>`_
 via ``rpm(8)``::
 
-  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-1.0-repository-el6_latest.rpm
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-1.1-repository-el6_latest.rpm
   $ yum install graylog-server graylog-web
 
 Please open an `issue <https://github.com/Graylog2/fpm-recipes/issues>`_ in the `Github repository <https://github.com/Graylog2/fpm-recipes>`_ if you
