@@ -182,7 +182,7 @@ replacement. The following steps prevent the deletion of the data directory::
 Production readiness
 ====================
 
-You can use this image for small production setups but please consider to harden the security of the box before.
+You can use the Graylog appliances (OVA, Docker, AWS, ...) for small production setups but please consider to harden the security of the box before.
 
  * Set another password for the default ubuntu user
  * Disable remote password logins in /etc/ssh/sshd_config and deploy proper ssh keys
