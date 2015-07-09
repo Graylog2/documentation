@@ -24,6 +24,7 @@ This chapter is explaining the many ways to install Graylog and aims to help cho
    installation/operating_system_packages
    installation/docker
    installation/config_management_tools
+   installation/openstack
    installation/aws
    installation/windows
    installation/manual_setup
