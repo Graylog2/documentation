@@ -106,13 +106,13 @@ Collector Status
 ^^^^^^^^^^^^^^^^
 Once the collector has been deployed successfully, you can check on the status from the Graylog UI.
 
+.. image:: /images/collector_status.png
+
+You can reach the collector status overview page this way:
+
 #. Log into Graylog Web Interface
 #. Navigate to System / Collectors
 #. Click Collectors
-.. image:: /images/collector_menu.png
-
-#. Collector Status
-.. image:: /images/collector_status.png
 
 Troubleshooting
 ^^^^^^^^^^^^^^^
