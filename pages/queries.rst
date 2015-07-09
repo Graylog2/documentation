@@ -137,7 +137,7 @@ Graylog supports search result highlighting since v0.20.2:
 .. image:: /images/search_result_highlighting.png
 
 Enabling/Disabling search result highlighting
----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Using search result highlighting will result in slightly higher resource consumption of searches. You can enable and disable
 it using a configuration parameter in the ``graylog.conf`` of your ``graylog-server`` nodes::
