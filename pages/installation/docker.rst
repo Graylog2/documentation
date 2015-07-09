@@ -12,6 +12,13 @@ This will create a container with all Graylog services running::
   $ docker pull graylog2/allinone
   $ docker run -t -p 9000:9000 -p 12201:12201 graylog2/allinone
 
+Using the beta container
+------------------------
+
+You can also run a pre-release or beta version of Graylog using Docker. Just replace `graylog2/allinone` with `graylog2/allinone-beta`.
+Note that you will have to replace this not only in the `docker run` command above but also in subsequent commands of this documentation.
+We only recommend to run beta versions if you are an experienced Graylog user and know what you are doing.
+
 Usage
 -----
 
