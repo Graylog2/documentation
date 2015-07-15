@@ -97,23 +97,21 @@ Example::
 
   server-url = "http://<your-graylog-server-ip>:12900/"
 
-  message-buffer-size = 128
-
   inputs {
     win-eventlog-application {
       type = "windows-eventlog"
       source-name = "Application"
-      poll-interval = 1s
+      poll-interval = "1s"
     }
     win-eventlog-system {
       type = "windows-eventlog"
       source-name = "System"
-      poll-interval = 1s
+      poll-interval = "1s"
     }
     win-eventlog-security {
       type = "windows-eventlog"
       source-name = "Security"
-      poll-interval = 1s
+      poll-interval = "1s"
     }
   }
 
@@ -134,6 +132,278 @@ Commands::
   C:\graylog-collector-0.2.2> bin\graylog-collector-service.bat start GraylogCollector
 
 .. image:: /images/collector_win_install_3.png
+
+Configuration
+*************
+
+You will need a configuration file before starting the collector. The configuration file is written in the `HOCON format <https://github.com/typesafehub/config/blob/master/HOCON.md>`_ which is a human-optimized version of JSON. Here is a minimal configuration example that collects logs from the ``/var/log/syslog`` file and sends them to a Graylog server::
+
+  server-url = "http://10.0.0.1:12900/"
+
+  inputs {
+    syslog {
+      type = "file"
+      path = "/var/log/syslog"
+    }
+  }
+
+  outputs {
+    graylog-server {
+      type = "gelf"
+      host = "10.0.0.1"
+      port = 12201
+    }
+  }
+
+There are a few global settings available as well as several sections which configure different subsystems of the collector.
+
+Global Settings
+^^^^^^^^^^^^^^^
+
+``server-url`` - The API URL of the Graylog server
+  Used to send a heartbeat to the Graylog server.
+
+  (default: ``"http://localhost:12900"``)
+``enable-registration`` - Enable heartbeat registration
+  Enables the heartbeat registration with the Graylog server. The collector will not contact the Graylog server API for heartbeat registration if this is set to ``false``.
+
+  (default: ``true``)
+``collector-id`` - Unique collector ID setting
+  The ID used to identify this collector. Can be either a string which is used as ID, or the location of a file if prefixed with ``file:``. If the file does not exist, an ID will be generated and written to that file. If it exists, it is expected to contain a single string without spaces which will be used for the ID.
+
+  (default: ``"file:config/collector-id"``)
+
+Input Settings
+^^^^^^^^^^^^^^
+
+The input settings need to be nested in a ``input { }`` block. Each input has an ID and a type::
+
+  inputs {
+    syslog {         // => The input ID
+      type = "file"  // => The input type
+      ...
+    }
+  }
+
+An input ID needs to be unique among all configured inputs. If there are two inputs with the same ID, the last one wins.
+
+The following input types are available.
+
+File Input
+""""""""""
+
+The file input follows files in the file system and reads log data from them.
+
+``type``
+  This needs to be set to ``"file"``.
+``path``
+  The path to a file that should be followed.
+
+  Please make sure to escape the ``\`` character in Windows paths: ``path = "C:\\Program Files\\Apache2\\logs\\www.example.com.access.log"``
+
+  (default: none)
+``path-glob-root``
+  The globbing root directory that should be monitored. See below for an explanation on globbing.
+
+  Please make sure to escape the ``\`` character in Windows paths: ``path = "C:\\Program Files\\Apache2\\logs\\www.example.com.access.log"``
+
+  (default: none)
+``path-glob-pattern``
+  The globbing patttern. See below for an explanation on globbing.
+
+  (default: none)
+``content-splitter``
+  The content splitter implementation that should be used to detect the end of a log message.
+
+  Available content splitters: ``NEWLINE``, ``PATTERN``
+
+  See below for an explanation on content splitters.
+
+  (default: ``"NEWLINE"``)
+``content-splitter-pattern``
+  The pattern that should be used for the ``PATTERN`` content splitter.
+
+  (default: none)
+``charset``
+  Charset of the content in the configured file(s).
+
+  Can be one of the `Supported Charsets <https://docs.oracle.com/javase/8/docs/technotes/guides/intl/encoding.doc.html>`_ of the JVM.
+
+  (default: ``"UTF-8"``)
+``reader-interval``
+  The interval in which the collector tries to read from every configured file. You might set this to a higher value like ``1s`` if you have files which do not change very often to avoid unnecessary work.
+
+  (default: ``"100ms"``)
+
+**Globbing / Wildcards**
+
+You might want to configure the collector to read from lots of different files or files which have a different name each time they are rotated. (i.e. time/date in a filename) The file input supports this via the ``path-glob-root`` and ``path-glob-pattern`` settings.
+
+A usual glob/wildcard string you know from other tools might be ``/var/log/apache2/**/*.{access,error}.log``. This means you are interested in all log files which names end with ``.access.log`` or ``.error.log`` and which are in a sub directory of ``/var/log/apache2``. Example: ``/var/log/apache2/example.com/www.example.com.access.log``
+
+For compatibility reasons you have to split this string into two parts. The root and the pattern.
+
+Examples::
+
+  // /var/log/apache2/**/*.{access,error}.log
+  path-glob-root = "/var/log/apache2"
+  path-glob-pattern = "**/*.{access,error}.log"
+
+  // C:\Program Files\Apache2\logs\*.access.log
+  path-glob-root = "C:\\Program Files\\Apache2\\logs" // Make sure to escape the \ character in Windows paths!
+  path-glob-pattern = "*.access.log"
+
+The file input will monitor the ``path-glob-root`` for new files and checks them against the ``path-glob-pattern`` to decide if they should be followed or not.
+
+All available special characters for the glob pattern are documented in the `Java docs for the getPathMatcher() method <http://docs.oracle.com/javase/7/docs/api/java/nio/file/FileSystem.html#getPathMatcher(java.lang.String)>`_.
+
+**Content Splitter**
+
+One common problem when reading from plain text log files is to decide when a log message is complete. By default, the file input considers each line in a file to be a separate log message::
+
+  Jul 15 10:27:08 tumbler anacron[32426]: Job `cron.daily' terminated  # <-- Log message 1
+  Jul 15 10:27:08 tumbler anacron[32426]: Normal exit (1 job run)      # <-- Log message 2
+
+But there are several cases where this is not correct. Java stack traces are a good example::
+
+  2015-07-10T11:16:34.486+01:00 WARN  [InputBufferImpl] Unable to process event RawMessageEvent{raw=null, uuid=bde580a0-26ec-11e5-9a46-005056b26ca9, encodedLength=350}, sequence 19847516
+  java.lang.NullPointerException
+          at org.graylog2.shared.buffers.JournallingMessageHandler$Converter.apply(JournallingMessageHandler.java:89)
+          at org.graylog2.shared.buffers.JournallingMessageHandler$Converter.apply(JournallingMessageHandler.java:72)
+          at com.google.common.collect.Lists$TransformingRandomAccessList$1.transform(Lists.java:617)
+          at com.google.common.collect.TransformedIterator.next(TransformedIterator.java:48)
+          at java.util.AbstractCollection.toArray(AbstractCollection.java:141)
+          at java.util.ArrayList.<init>(ArrayList.java:177)
+          at com.google.common.collect.Lists.newArrayList(Lists.java:144)
+          at org.graylog2.shared.buffers.JournallingMessageHandler.onEvent(JournallingMessageHandler.java:61)
+          at org.graylog2.shared.buffers.JournallingMessageHandler.onEvent(JournallingMessageHandler.java:36)
+          at com.lmax.disruptor.BatchEventProcessor.run(BatchEventProcessor.java:128)
+          at com.codahale.metrics.InstrumentedExecutorService$InstrumentedRunnable.run(InstrumentedExecutorService.java:176)
+          at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+          at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+          at java.lang.Thread.run(Thread.java:745)
+  2015-07-10T11:18:18.000+01:00 WARN  [InputBufferImpl] Unable to process event RawMessageEvent{raw=null, uuid=bde580a0-26ec-11e5-9a46-005056b26ca9, encodedLength=350}, sequence 19847516
+  java.lang.NullPointerException
+          ...
+          ...
+
+This should be one message but using a newline separator here will not work because it would generate one log message for each line.
+
+To solve this problem, the file input can be configured to use a ``PATTERN`` content splitter. It creates separate log messages based on a regular expression instead of newline characters. A configuration for the stack trace example above could look like this::
+
+  inputs {
+    graylog-server-logs {
+      type = "file"
+      path = "/var/log/graylog-server/server.log"
+      content-splitter = "PATTERN"
+      content-splitter-pattern = "^\\d{4}-\\d{2}-\\d{2}T" // Make sure to escape the \ character!
+    }
+  }
+
+This instructs the file input to split messages on a timestamp at the beginning of a line. So the first stack trace in the message above will be considered complete once a new timestamp is detected.
+
+Windows Eventlog Input
+""""""""""""""""""""""
+
+The Windows eventlog input can read event logs from Windows systems.
+
+``type``
+  This needs to be set to ``"windows-eventlog"``.
+``source-name``
+  The Windows event log system has several different sources from which events can be read.
+
+  Common source names: ``Application``, ``System``, ``Security``
+
+  (default: ``"Application"``)
+``poll-interval``
+  This controls how often the Windows event log should be polled for new events.
+
+  (default: ``"1s"``)
+
+Example::
+
+  inputs {
+    win-eventlog-application {
+      type = "windows-eventlog"
+      source-name = "Application"
+      poll-interval = "1s"
+    }
+  }
+
+Output Settings
+^^^^^^^^^^^^^^^
+
+The output settings need to be nested in a ``output { }`` block. Each output has an ID and a type::
+
+  outputs {
+    graylog-server { // => The output ID
+      type = "gelf"  // => The output type
+      ...
+    }
+  }
+
+An output ID needs to be unique among all configured outputs. If there are two outputs with the same ID, the last one wins.
+
+The following output types are available.
+
+GELF Output
+"""""""""""
+
+The GELF output sends log messages to a GELF TCP input on a Graylog server.
+
+``type``
+  This needs to be set to ``"gelf"``.
+``host``
+  Hostname or IP address of the Graylog server.
+
+  (default: none)
+``port``
+  Port of the GELF TCP input on the Graylog server host.
+
+  (default: none)
+``client-tls``
+  Enables TLS for the connection to the GELF TCP input. Requires a TLS-enabled GELF TCP input on the Graylog server.
+  (default: false)
+``client-tls-cert-chain-file``
+  Path to a TLS certificate chain file. If not set, the default certificate chain of the JVM will be used.
+
+  (default: none)
+``client-tls-verify-cert``
+  Verify the TLS certificate of the GELF TCP input on the Graylog server.
+
+  You might have to disable this if you are using a self-signed certificate for the GELF input and do not have any certificate chain file.
+
+  (default: ``true``)
+``client-queue-size``
+  The `GELF client library <https://github.com/Graylog2/gelfclient>`_ that is used for this output has an internal queue of messages. This option configures the size of this queue.
+
+  (default: ``512``)
+``client-connect-timeout``
+  TCP connection timeout to the GELF input on the Graylog server.
+
+  (default: ``5000``)
+``client-reconnect-delay``
+  The delay before the output tries to reconnect to the GELF input on the Graylog server.
+
+  (default: ``1000``)
+``client-tcp-no-delay``
+  Sets the ``TCP_NODELAY`` option on the TCP socket that connects to the GELF input.
+
+  (default: ``true``)
+``client-send-buffer-size``
+  Sets the TCP send buffer size for the connection to the GELF input.
+
+  It uses the JVM default for the operating system if set to ``-1``.
+
+  (default: ``-1``)
+
+STDOUT Output
+"""""""""""""
+
+The STDOUT output prints the string representation of each message to STDOUT. This can be useful for debugging purposes but should be disabled in production.
+
+``type``
+  This needs to be set to ``"stdout"``.
 
 Running the Collector
 *********************
