@@ -11,6 +11,8 @@ Installation
 Linux/Unix
 ^^^^^^^^^^
 
+You need to have Java >= 7 installed to run the collector.
+
 #. Unzip collector tgz file to target location
 #. cp collector.conf.example to collector.conf
 #. Update server-url in collector.conf to correct Graylog server address (required for registration)
@@ -21,6 +23,8 @@ Linux/Unix
 
 Windows
 ^^^^^^^
+
+You need to have Java >= 7 installed to run the collector.
 
 Download a collector release zip file from the Graylog homepage. Unzip the collector zip file to target location.
 
