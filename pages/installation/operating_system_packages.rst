@@ -7,7 +7,11 @@ software on Linux servers was to use operating system packages. Debian has ``DEB
 based on those or come with own package formats. Online repositories of software packages and corresponding package managers make installing
 and configuring new software a matter of a single command and a few minutes of time.
 
-Graylog offers official ``DEB`` and ``RPM`` package repositories for Ubuntu 12.04, Ubuntu 14.04, Debian 7 and CentOS 6.
+Graylog offers official ``DEB`` and ``RPM`` package repositories for the following operating systems.
+
+* Ubuntu 12.04, 14.04
+* Debian 7, 8
+* CentOS 6, 7
 
 The repositories can be setup by installing a single package. Once that's done the Graylog packages can be installed via ``apt-get`` or
 ``yum``. The packages can also be downloaded with a web browser at https://packages.graylog2.org/ if needed.
@@ -50,6 +54,18 @@ via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is i
   $ sudo apt-get update
   $ sudo apt-get install graylog-server graylog-web
 
+Debian 8
+--------
+
+Download and install `graylog-1.1-repository-debian8_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.1-repository-debian8_latest.deb>`_
+via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
+
+  $ wget https://packages.graylog2.org/repo/packages/graylog-1.1-repository-debian8_latest.deb
+  $ sudo dpkg -i graylog-1.1-repository-debian8_latest.deb
+  $ sudo apt-get install apt-transport-https
+  $ sudo apt-get update
+  $ sudo apt-get install graylog-server graylog-web
+
 CentOS 6
 --------
 
@@ -57,6 +73,15 @@ Download and install `graylog-1.0-repository-el6_latest.rpm <https://packages.gr
 via ``rpm(8)``::
 
   $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-1.1-repository-el6_latest.rpm
+  $ yum install graylog-server graylog-web
+
+CentOS 7
+--------
+
+Download and install `graylog-1.0-repository-el7_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-1.1-repository-el7_latest.rpm>`_
+via ``rpm(8)``::
+
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-1.1-repository-el7_latest.rpm
   $ yum install graylog-server graylog-web
 
 Please open an `issue <https://github.com/Graylog2/fpm-recipes/issues>`_ in the `Github repository <https://github.com/Graylog2/fpm-recipes>`_ if you
