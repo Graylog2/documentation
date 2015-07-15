@@ -405,6 +405,84 @@ The STDOUT output prints the string representation of each message to STDOUT. Th
 ``type``
   This needs to be set to ``"stdout"``.
 
+Input/Output Routing
+^^^^^^^^^^^^^^^^^^^^
+
+Every message that gets read by the configured inputs will be routed to every configured output. If you have two file inputs and two GELF outputs, every message will be received by both outputs. You might want to send some logs to only one output or have one output only accept logs from a certain input, tough.
+
+The collector provides two options for inputs and outputs which can be used to influence the message routing.
+
+Inputs have a ``outputs`` option and outputs have a ``inputs`` option. Both take a comma separated list of input/output IDs.
+
+Example::
+
+  inputs {
+    apache-logs {
+      type = "file"
+      path-glob-root = "/var/log/apache2"
+      path-glob-pattern = "*.{access,error}.log"
+      outputs = "gelf-1,gelf-2"
+    }
+    auth-log {
+      type = "file"
+      path = "/var/log/auth.log"
+    }
+    syslog {
+      type = "file"
+      path = "/var/log/syslog"
+    }
+  }
+
+  outputs {
+    gelf-1 {
+      type = "gelf"
+      host = "10.0.0.1"
+      port = 12201
+    }
+    gelf-2 {
+      type = "gelf"
+      host = "10.0.0.1"
+      port = 12202
+    }
+    console {
+      type = "stdout"
+      inputs = "syslog"
+    }
+  }
+
+Routing for this config:
+
+* ``apache-logs`` messages will only go to ``gelf-1`` and ``gelf-2`` outputs.
+* ``auth-log`` messages will go to ``gelf-1`` and ``gelf-2`` outputs.
+* ``syslog`` messages will go to all outputs.
+* ``console`` output will only receive messages from ``syslog`` input.
+
+================ ====== ====== =======
+inputs | outputs gelf-1 gelf-2 console
+================ ====== ====== =======
+apache-logs      ✔      ✔      ✗
+auth-log         ✔      ✔      ✗
+syslog           ✔      ✔      ✔
+================ ====== ====== =======
+
+This is pretty powerful but might get confusing when inputs and outputs have the routing fields. This is how it is implemented in pseudo-code::
+
+  var message = Object(message)
+  var output = Object(gelf-output)
+
+  if empty(output.inputs) AND empty(message.outputs)
+
+    // No output routing configured, write the message to the output.
+    output.write(message)
+
+  else if output.inputs.contains(message.inputId) OR message.outputs.contains(output.id)
+
+    // Either the input that generated the message has the output ID in its "outputs" field
+    // or the output has the ID of the input that generated the message in its "inputs" field.
+    output.write(message)
+
+  end
+
 Running the Collector
 *********************
 
