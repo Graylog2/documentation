@@ -22,8 +22,9 @@ This chapter is explaining the many ways to install Graylog and aims to help cho
 
    installation/virtual_machine_appliances
    installation/operating_system_packages
-   installation/docker
    installation/config_management_tools
+   installation/docker
+   installation/vagrant
    installation/openstack
    installation/aws
    installation/windows
