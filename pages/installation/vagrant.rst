@@ -4,7 +4,7 @@ Vagrant
 
 Requirements
 ------------
-You need a recent `vagrant` version, take a look [here](https://www.vagrantup.com/downloads.html).
+You need a recent `vagrant` version, take a look `here https://www.vagrantup.com/downloads.html`_.
 
 Installation
 ------------
