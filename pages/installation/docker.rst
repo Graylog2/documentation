@@ -5,7 +5,7 @@ Docker
 Requirements
 ------------
 
-You need a recent `docker` version installed, take a look [here](https://docs.docker.com/installation/) for instructions.
+You need a recent `docker` version installed, take a look `here https://docs.docker.com/installation/`_ for instructions.
 
 This will create a container with all Graylog services running::
 
