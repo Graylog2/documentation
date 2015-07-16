@@ -1,26 +1,29 @@
-*******************
-Amazon Web Services
-*******************
+*******
+Vagrant
+*******
 
-AMIs
-----
+Requirements
+------------
+You need a recent `vagrant` version, take a look [here](https://www.vagrantup.com/downloads.html).
 
-Select your AMI and AZ `here <https://github.com/Graylog2/graylog2-images/tree/master/aws>`.
+Installation
+------------
+
+These steps will create a Vagrant virtual machine with all Graylog services running::
+
+  $ wget https://raw.githubusercontent.com/Graylog2/graylog2-images/master/vagrant/Vagrantfile
+  $ vagrant up
 
 Usage
 -----
 
-  * Click on *Launch instance* for your AWS region to start Graylog into.
-  * Choose an instance type with at least 4GB memory
-  * Finish the wizard and spin up the VM.
-  * Login to the instance as user `ubuntu`
-  * Run `sudo graylog-ctl reconfigure`
-  * Open port 80 and ports for receiving log messages in the security group of the appliance
+After starting the virtual machine, your Graylog instance is ready to use.
+You can reach the web interface by pointing your browser to the IP address of your localhost: `http://<host IP>:9000`
 
-Open `http://<vm ip>` in your browser to access the Graylog web interface. Default username and password is `admin`.
+The default login is Username: `admin`, Password: `admin`.
 
 Basic configuration
--------------------
+===================
 
 We are shipping the ``graylog-ctl`` tool with the virtual machine appliances to get you started
 with a customised setup as quickly as possible. Run these (optional) commands to configure the
