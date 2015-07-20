@@ -13,6 +13,62 @@ Linux/Unix
 
 You need to have Java >= 7 installed to run the collector.
 
+Operating System Packages
+"""""""""""""""""""""""""
+
+We offer official package repositories for the following operating systems.
+
+* Ubuntu 12.04, 14.04
+* Debian 8
+* CentOS 7
+
+Please open an `issue <https://github.com/Graylog2/fpm-recipes/issues>`_ in the `Github repository <https://github.com/Graylog2/fpm-recipes>`_ if you
+run into any packaging related issues. **Thank you!**
+
+**Ubuntu 14.04**
+
+Download and install `graylog-collector-latest-repository-ubuntu14.04_latest.deb <https://packages.graylog2.org/repo/packages/graylog-collector-latest-repository-ubuntu14.04_latest.deb>`_
+via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
+
+  $ wget https://packages.graylog2.org/repo/packages/graylog-collector-latest-repository-ubuntu14.04_latest.deb
+  $ sudo dpkg -i graylog-collector-latest-repository-ubuntu14.04_latest.deb
+  $ sudo apt-get install apt-transport-https
+  $ sudo apt-get update
+  $ sudo apt-get install graylog-collector
+
+**Ubuntu 12.04**
+
+Download and install `graylog-collector-latest-repository-ubuntu12.04_latest.deb <https://packages.graylog2.org/repo/packages/graylog-collector-latest-repository-ubuntu12.04_latest.deb>`_
+via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
+
+  $ wget https://packages.graylog2.org/repo/packages/graylog-collector-latest-repository-ubuntu12.04_latest.deb
+  $ sudo dpkg -i graylog-collector-latest-repository-ubuntu12.04_latest.deb
+  $ sudo apt-get install apt-transport-https
+  $ sudo apt-get update
+  $ sudo apt-get install graylog-collector
+
+**Debian 8**
+
+Download and install `graylog-collector-latest-repository-debian8_latest.deb <https://packages.graylog2.org/repo/packages/graylog-collector-latest-repository-debian8_latest.deb>`_
+via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
+
+  $ wget https://packages.graylog2.org/repo/packages/graylog-collector-latest-repository-debian8_latest.deb
+  $ sudo dpkg -i graylog-collector-latest-repository-debian8_latest.deb
+  $ sudo apt-get install apt-transport-https
+  $ sudo apt-get update
+  $ sudo apt-get install graylog-collector
+
+**CentOS 7**
+
+Download and install `graylog-collector-latest-repository-el7_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-collector-latest-repository-el7_latest.rpm>`_
+via ``rpm(8)``::
+
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-collector-latest-repository-el7_latest.rpm
+  $ sudo yum install graylog-collector
+
+Manual Setup
+""""""""""""
+
 #. Unzip collector tgz file to target location
 #. cp collector.conf.example to collector.conf
 #. Update server-url in collector.conf to correct Graylog server address (required for registration)
