@@ -405,6 +405,30 @@ The STDOUT output prints the string representation of each message to STDOUT. Th
 ``type``
   This needs to be set to ``"stdout"``.
 
+Static Message Fields
+^^^^^^^^^^^^^^^^^^^^^
+
+Sometimes it is useful to be able to add some static field to a message. This can help selecting extractors to run on the server, simplify stream routing and can make searching/filtering for those messages easier.
+
+Every collector input can be configured with a ``message-fields`` option which takes key-value pairs. The key needs to be a string, the value can be a string or a number.
+
+Example::
+
+    inputs {
+      apache-logs {
+        type = "file"
+        path = "/var/log/apache2/access.log"
+        message-fields = {
+          "program" = "apache2"
+          "priority" = 3
+        }
+      }
+    }
+
+Each static message field will end up in the GELF message and shows up in the web interface as a separate field.
+
+An input might overwrite a message field defined in the input configuration. For example the file input always sets a ``source_file`` field with the path to the file where the message has been read from. If you configure a ``source_file`` message field, it will be overwritten by the input.
+
 Input/Output Routing
 ^^^^^^^^^^^^^^^^^^^^
 
