@@ -69,6 +69,7 @@ via ``rpm(8)``::
 Manual Setup
 """"""""""""
 
+#. Download the latest collector release. (find download links in the `collector repository README <https://github.com/Graylog2/collector#binary-download>`_)
 #. Unzip collector tgz file to target location
 #. cp collector.conf.example to collector.conf
 #. Update server-url in collector.conf to correct Graylog server address (required for registration)
