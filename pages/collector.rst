@@ -433,7 +433,7 @@ An input might overwrite a message field defined in the input configuration. For
 Input/Output Routing
 ^^^^^^^^^^^^^^^^^^^^
 
-Every message that gets read by the configured inputs will be routed to every configured output. If you have two file inputs and two GELF outputs, every message will be received by both outputs. You might want to send some logs to only one output or have one output only accept logs from a certain input, tough.
+Every message that gets read by the configured inputs will be routed to every configured output. If you have two file inputs and two GELF outputs, every message will be received by both outputs. You might want to send some logs to only one output or have one output only accept logs from a certain input, though.
 
 The collector provides two options for inputs and outputs which can be used to influence the message routing.
 
