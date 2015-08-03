@@ -87,9 +87,9 @@ Disable TLS/SSL for mail delivery::
 
   GRAYLOG_SMTP_SERVER="mailserver.com --no-tls --no-ssl"
 
-Set SMTP server with port, authentication and changed sender address::
+Set SMTP server with port, authentication, backlink URL and changed sender address::
 
-  GRAYLOG_SMTP_SERVER="example.com --port=465 --user=username@mailserver.com --password=SecretPassword --from-email=graylog@example.com"
+  GRAYLOG_SMTP_SERVER="example.com --port=465 --user=username@mailserver.com --password=SecretPassword --from-email=graylog@example.com --web-url=http://my.graylog.host"
 
 Set a static server node ID::
 
