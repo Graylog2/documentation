@@ -61,6 +61,7 @@ You can also use the NOT operator::
 
 **Note that leading wildcards are disabled to avoid excessive memory consumption!** You can enable them in
 your ``graylog-server.conf``: ``allow_leading_wildcard_searches = true``
+
 **Note that 'message', 'full_message', and 'source' are the only fields that can be searched via wildcard by default.
 
 **Fuzziness:** You can search for similar but not equal terms::
