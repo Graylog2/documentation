@@ -51,6 +51,8 @@ You can also use the NOT operator::
   "ssh login" AND NOT source:example.org
   NOT example.org
 
+**Note that AND, OR, and NOT are case sensitive and must be typed in all upper-case.
+
 **Wildcards:** Use `?` to replace a single character or `*` to replace zero or more characters::
 
   source:*.org
@@ -59,6 +61,7 @@ You can also use the NOT operator::
 
 **Note that leading wildcards are disabled to avoid excessive memory consumption!** You can enable them in
 your ``graylog-server.conf``: ``allow_leading_wildcard_searches = true``
+**Note that 'message', 'full_message', and 'source' are the only fields that can be searched via wildcard by default.
 
 **Fuzziness:** You can search for similar but not equal terms::
 
