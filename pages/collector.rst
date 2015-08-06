@@ -1,3 +1,5 @@
+.. _graylog-collector:
+
 *********************
 The Graylog collector
 *********************
