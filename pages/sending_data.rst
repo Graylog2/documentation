@@ -131,9 +131,8 @@ was accepted for processing.
 Microsoft Windows
 =================
 
-Our recommended way to forward Windows log data (for example EventLog) to Graylog is to use the open source
-`nxlog community edition <http://nxlog.org/products/nxlog-community-edition>`_. It comes with a native Graylog GELF
-output that nicely structures your log messages.
+Our recommended way to forward Windows log data (for example EventLog) to Graylog is to use our own
+:ref:`log collector <graylog-collector>`. It comes with native support for reading Windows event logs.
 
 Heroku
 ======
