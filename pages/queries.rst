@@ -1,5 +1,5 @@
 *************************
-The search query language
+Search query language
 *************************
 
 Syntax
