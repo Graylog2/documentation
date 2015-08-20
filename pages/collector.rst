@@ -73,7 +73,7 @@ Manual Setup
 
 #. Download the latest collector release. (find download links in the `collector repository README <https://github.com/Graylog2/collector#binary-download>`_)
 #. Unzip collector tgz file to target location
-#. cp collector.conf.example to collector.conf
+#. cp ``config/collector.conf.example`` to ``config/collector.conf``
 #. Update server-url in collector.conf to correct Graylog server address (required for registration)
 #. Update file input configuration with the correct log files
 #. Update outputs->gelf-tcp with the correct Graylog server address (required for sending GELF messages)
@@ -139,7 +139,11 @@ Commands::
 Configuration
 *************
 
-You will need a configuration file before starting the collector. The configuration file is written in the `HOCON format <https://github.com/typesafehub/config/blob/master/HOCON.md>`_ which is a human-optimized version of JSON. Here is a minimal configuration example that collects logs from the ``/var/log/syslog`` file and sends them to a Graylog server::
+You will need a configuration file before starting the collector. The configuration file is written in the `HOCON format <https://github.com/typesafehub/config/blob/master/HOCON.md>`_ which is a human-optimized version of JSON.
+
+If you choose the operating system installation method, the configuration file defaults to ``/etc/graylog/collector/collector.conf``. For the manual installation method you have to pass the path to the configuration to the start script. (see :ref:`Running Graylog Collector <running-graylog-collector>`)
+
+Here is a minimal configuration example that collects logs from the ``/var/log/syslog`` file and sends them to a Graylog server::
 
   server-url = "http://10.0.0.1:12900/"
 
@@ -510,17 +514,37 @@ This is pretty powerful but might get confusing when inputs and outputs have the
 
   end
 
+.. _running-graylog-collector:
+
 Running Graylog Collector
 *********************
 
-You will need a configuration file before starting the collector. An example configuration file can be found below.
+You will need a configuration file before starting the collector. See the configuration documentation above for detailed instructions on how to configure it.
 
 Linux/Unix
 ^^^^^^^^^^
 
+The start method for the collector depends on the installation method your choose.
+
+**Operating System Package**
+
+We ship startup scripts in our OS packages that use the startup method of the particular operating system.
+
+====== =========== ==========================================
+OS     Init System Example
+====== =========== ==========================================
+Ubuntu upstart     ``sudo start graylog-collector``
+Debian systemd     ``sudo systemctl start graylog-collector``
+CentOS systemd     ``sudo systemctl start graylog-collector``
+====== =========== ==========================================
+
+**Manual Setup**
+
+If you use the manual setup, the location of the start script depends on where you extracted the collector.
+
 Example::
 
-  $ bin/graylog-collector run -f ../config/collector.conf
+  $ bin/graylog-collector run -f config/collector.conf
 
 Windows
 ^^^^^^^
