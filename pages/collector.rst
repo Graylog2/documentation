@@ -610,50 +610,6 @@ The collector offers the following command line options::
               Path to configuration file.
 
 
-Example Configuration
-^^^^^^^^^^^^^^^^^^^^^
-
-This is an example configuration file::
-
-  server-url = "http://<your-graylog-server-ip>:12900/"
-
-  message-buffer-size = 128
-
-  inputs {
-    local-syslog {
-      type = "file"
-      path = "/var/log/syslog"
-    }
-    apache-access {
-      type = "file"
-      path = "/var/log/apache2/access.log"
-      outputs = "gelf-tcp,console"
-    }
-    test-log {
-      type = "file"
-      path = "logs/file.log"
-    }
-  }
-
-  outputs {
-    gelf-tcp {
-      type = "gelf"
-      host = "<your-graylog-server-ip>"
-      port = 12201
-      client-queue-size = 512
-      client-connect-timeout = 5000
-      client-reconnect-delay = 1000
-      client-tcp-no-delay = true
-      client-send-buffer-size = 32768
-      inputs = "test-log"
-    }
-    console {
-      type = "stdout"
-    }
-  }
-
-*Note: Individual inputs can be mapped to individual outputs*
-
 Correctly Configured Collector Log Sample
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
