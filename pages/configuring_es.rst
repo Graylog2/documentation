@@ -82,6 +82,22 @@ It is strongly recommended to raise the standard size of heap memory allocated t
 variable to for example ``24g`` to allocate 24GB. We recommend to use around 50% of the available system memory for Elasticsearch (when
 running on a dedicated host) to leave enough space for the system caches that Elasticsearch uses a lot.
 
+Merge throttling
+^^^^^^^^^^^^^^^^
+
+Elasticsearch is throttling the merging of Lucene segments to allow extremely fast searches. This throttling however has default values
+that are very conservative and can lead to slow ingestion rates when used with Graylog. You would see the message journal growing without
+a real indication of CPU or memory stress on the Elasticsearch nodes. It usually goes along with Elasticsearch INFO log messages like this::
+
+  now throttling indexing
+
+When running on fast IO like SSDs or a SAN we recommend to increase the value of the ``indices.store.throttle.max_bytes_per_sec`` in your
+``elasticsearch.yml`` to 150MB::
+
+  indices.store.throttle.max_bytes_per_sec: 150mb
+
+Play around with this setting until you reach the best performance.
+
 Tuning Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^
 
