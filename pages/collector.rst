@@ -85,7 +85,7 @@ Windows
 
 You need to have Java >= 7 installed to run the collector.
 
-Download a collector release zip file from the Graylog homepage. Unzip the collector zip file to target location.
+Download a release zip file from the `collector repository README <https://github.com/Graylog2/collector#binary-download>`_. Unzip the collector zip file to target location.
 
 .. image:: /images/collector_win_install_1.png
 
