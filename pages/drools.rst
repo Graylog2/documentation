@@ -19,7 +19,7 @@ Getting Started
 ===============
 
   #. Uncomment the ``rules_file`` line in the Graylog configuration file.
-  #. Copy the `sample rules file <https://github.com/Graylog2/graylog2-server/blob/1.0.0/misc/graylog2.drl>`_ to the location specified in your Graylog configuration file.
+  #. Copy the `sample rules file <https://github.com/Graylog2/graylog2-server/blob/1.2/misc/graylog2.drl>`_ to the location specified in your Graylog configuration file.
   #. Modify the rules file to parse/rewrite/filter messages as needed.
 
 Example rules file

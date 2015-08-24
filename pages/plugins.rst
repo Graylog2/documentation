@@ -36,7 +36,7 @@ an alarm callback plugin that creates a JIRA ticket for each alarm that is trigg
 
   groupId: com.acmecorp
   artifactId: jira-alarmcallback
-  version: 1.0.0-SNAPSHOT
+  version: 1.0.0
   package: com.acmecorp
   pluginClassName: JiraAlarmCallback
 
