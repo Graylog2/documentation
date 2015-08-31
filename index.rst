@@ -29,5 +29,6 @@ Contents:
    pages/indexer_failures
    pages/plugins
    pages/external_dashboards
+   pages/marketplace
    pages/faq
    pages/ideas_explained
