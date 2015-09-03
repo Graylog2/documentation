@@ -30,6 +30,11 @@ via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is i
   $ sudo apt-get update
   $ sudo apt-get install graylog-server graylog-web
 
+After the installation successfully completed, Graylog can be started with the following commands::
+
+  $ sudo start graylog-server
+  $ sudo start graylog-web
+
 Ubuntu 12.04
 ------------
 
@@ -41,6 +46,11 @@ via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is i
   $ sudo apt-get install apt-transport-https
   $ sudo apt-get update
   $ sudo apt-get install graylog-server graylog-web
+
+After the installation successfully completed, Graylog can be started with the following commands::
+
+  $ sudo start graylog-server
+  $ sudo start graylog-web
 
 Debian 7
 --------
@@ -54,6 +64,11 @@ via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is i
   $ sudo apt-get update
   $ sudo apt-get install graylog-server graylog-web
 
+After the installation successfully completed, Graylog can be started with the following commands::
+
+  $ sudo service graylog-server start
+  $ sudo service graylog-web start
+
 Debian 8
 --------
 
@@ -66,6 +81,11 @@ via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is i
   $ sudo apt-get update
   $ sudo apt-get install graylog-server graylog-web
 
+After the installation successfully completed, Graylog can be started with the following commands::
+
+  $ sudo systemctl start graylog-server
+  $ sudo systemctl start graylog-web
+
 CentOS 6
 --------
 
@@ -75,6 +95,11 @@ via ``rpm(8)``::
   $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-1.2-repository-el6_latest.rpm
   $ sudo yum install graylog-server graylog-web
 
+After the installation successfully completed, Graylog can be started with the following commands::
+
+  $ sudo service graylog-server start
+  $ sudo service graylog-web start
+
 CentOS 7
 --------
 
@@ -83,6 +108,14 @@ via ``rpm(8)``::
 
   $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-1.2-repository-el7_latest.rpm
   $ sudo yum install graylog-server graylog-web
+
+After the installation successfully completed, Graylog can be started with the following commands::
+
+  $ sudo systemctl start graylog-server
+  $ sudo systemctl start graylog-web
+
+Feedback
+--------
 
 Please open an `issue <https://github.com/Graylog2/fpm-recipes/issues>`_ in the `Github repository <https://github.com/Graylog2/fpm-recipes>`_ if you
 run into any packaging related issues. **Thank you!**
