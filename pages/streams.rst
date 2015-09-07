@@ -80,8 +80,7 @@ to configure new alert conditions.
 You can configure the interval for alert checks in your `graylog.conf` using the `alert_check_interval` variable. The default
 is to check for alerts every 60 seconds.
 
-Graylog ships with default *alert callbacks* and can be extended with
-`plugins <https://www.graylog.org/resources/documentation/general/plugins>`_
+Graylog ships with default *alert callbacks* and can be extended with :doc:`plugins`.
 
 Alert condition types explained
 ===============================
@@ -129,7 +128,7 @@ Three configuration options are available for the alert callback to customize th
 
 .. image:: /images/stream_alert_callback_email_form.png
 
-The *E-Mail Body* and *E-Mail Subject* are `jmte <https://code.google.com/p/jmte/>`_ templates. jmte is a minimal template engine that supports variables, loops and conditions. See the `jmte documentation <http://jmte.googlecode.com/svn/trunk/doc/index.html>`_ for a language reference.
+The *E-Mail Body* and *E-Mail Subject* are `jmte <https://github.com/DJCordhose/jmte>`_ templates. jmte is a minimal template engine that supports variables, loops and conditions. See the `jmte documentation <http://jmte.googlecode.com/svn/trunk/doc/index.html>`_ for a language reference.
 
 We expose the following objects to the templates.
 
@@ -169,8 +168,7 @@ The stream output system allows you to forward every message that is routed into
 Outputs are managed globally (like message inputs) and not for single streams. You can create new outputs and activate them
 for as many streams as you like. This way you can configure a forwarding destination once and select multiple streams to use it.
 
-Graylog ships with default outputs and can be extended with
-`plugins <http://www.graylog.org/resources/documentation/general/plugins>`_.
+Graylog ships with default outputs and can be extended with :doc:`plugins`.
 
 Use cases
 *********
@@ -376,4 +374,4 @@ Only new messages are routed into the current set of streams.
 Can I write own outputs or alert callbacks methods?
 ===================================================
 
-Yes. Please refer to the `plugins <http://www.graylog.org/resources/documentation/general/plugins>`_ documentation page.
+Yes. Please refer to the :doc:`plugins` documentation page.
