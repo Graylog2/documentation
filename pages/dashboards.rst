@@ -37,23 +37,30 @@ Hit the *Create* button to create the dashboard. You should now see your new das
 overview page. Click on the title of your new dashboard to see it. Next, we will be adding widgets to the
 dashboard we have just created.
 
-.. image:: /images/dashboards_2.jpg
+.. image:: /images/dashboards_2.png
 
 Adding widgets
 --------------
 
 You should have your empty dashboard in front of you. Let's add some widgets! You can add search result
-information to dashboards with just one click. The following search result types can be added to
+information to dashboards with a couple of clicks. The following search result types can be added to
 dashboards:
 
   * Search result counts
   * Search result histogram charts
+  * Statistical values
   * Field value charts
-  * Quickvalue results
-  
-  Once you can see the results of your search, you will see a small blue icon next to the right of the 
-  result count and histogram title. Hovering over this will show "Add to dashboard" and clicking the icon
-  will prompt you with a list of dashboards you've created. Select a dashboard to add the widget to it.
+  * Stacked charts (by merging several field value charts)
+  * Quick value results
+
+All counts over relative time ranges can display additional trend information, and quick value widgets
+can be represented as a pie chart and/or table.
+
+Once you can see the results of your search, you will see buttons with the "Add to dashboard" text, that
+will allow you to select the dashboard where the widget will be displayed, and configure the widget.
+
+.. image:: /images/dashboards_3.png
+.. image:: /images/dashboards_4.png
 
 Examples
 ========
@@ -86,25 +93,30 @@ be bound to streams. If you have a stream that contains every SSH login you can 
 (``*``) in that stream and store the result count as *SSH logins* on a dashboard.
 
 Result
-------
+======
 
-You should now see widgets on your dashboard. You will learn how to modify the dashboard, change cache
-times and widget positioning in the next chapter.
+You should now see widgets on your dashboard. You will learn how to modify the dashboard, and edit widgets
+in the next chapter.
+
+.. image:: /images/dashboards_1.png
 
 Modifying dashboards
 ====================
 
-You need to *unlock* dashboards to make any changes to them. Hit the lock icon in the top right corner of a
-dashboard to unlock it. You should now see new icons in the widget appearing.
+You need to *unlock* dashboards to make any changes to them. Hit the "Unlock/Edit" button in the top right
+corner of a dashboard to unlock it. You should now see different icons at the bottom of each widget, that
+allow you to perform more actions.
 
 Unlocked dashboard widgets explained
 ------------------------------------
 
-Unlocked dashboard widgets have three buttons that should be pretty self-explanatory.
+Unlocked dashboard widgets have two buttons that should be pretty self-explanatory.
 
   * Delete widget
-  * Change cache time of widget
-  * Change title of widget
+  * Edit widget configuration
+  * Change widget size (when you hover over the widget)
+
+.. image:: /images/dashboards_5.png
 
 Widget cache times
 ------------------
@@ -121,18 +133,24 @@ Just grab a widget with your mouse in unlocked dashboard mode and move it around
 adopt and re-position intelligently to make place for the widget you are moving. The positions are
 automatically saved when dropping a widget.
 
-.. image:: /images/dashboards_6.jpg
+Resizing widgets
+----------------
+
+When hovering over a widget, you will see that a gray arrow appears in its bottom-right corner. You can use that
+icon to resize widgets. Their contents will adapt to the new size automatically!
+
+.. image:: /images/dashboards_7.png
 
 Dashboard permissions
 =====================
 
-Graylog users with administrator permissions are always allowed to view and edit all dashboards. Users with *reader* permissions
+Graylog users in the *Admin* role are always allowed to view and edit all dashboards. Users in the *Reader* role
 are by default not allowed to view or edit **any** dashboard.
 
-.. image:: /images/dashboards_8.png
+.. image:: /images/dashboards_6.png
 
-Navigate to *System* -> *Users* and select a *reader* user you wish to give dashboard permissions. Hit the *edit* button
-and assign dashboard *view* and *edit* permissions in the edit user dialogue. Don't forget to save the user!
+Navigate to *System* -> *Roles* and create a new role that grant the permissions you wish. You can then assign
+that new role to any users you wish to give dashboard permissions in the *System* -> *Users* page.
 
 That's it!
 ----------
