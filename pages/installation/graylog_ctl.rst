@@ -174,7 +174,7 @@ Upgrade Graylog
 ===============
 
 Always perform a full backup or snapshot of the appliance before proceeding. Only upgrade
-if the release notes say the next version is a drop-in replacement.
+if the release notes say the next version is a drop-in replacement::
 
   wget https://packages.graylog2.org/releases/graylog2-omnibus/ubuntu/graylog_latest.deb
   sudo graylog-ctl stop
