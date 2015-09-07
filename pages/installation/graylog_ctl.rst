@@ -150,9 +150,11 @@ Assign a static IP
 ==================
 
 Per default the appliance make use of DHCP to setup the network. If you want to access Graylog under a static IP please
-edit the file ``/etc/network/interfaces`` like this (just the important lines)::
+follow these instructions::
 
   $ sudo ifdown eth0
+
+Edit the file ``/etc/network/interfaces`` like this (just the important lines)::
 
   auto eth0
     iface eth0 inet static
