@@ -181,6 +181,21 @@ if the release notes say the next version is a drop-in replacement::
   sudo dpkg -G -i graylog_latest.deb
   sudo graylog-ctl reconfigure
 
+Advanced Settings
+=================
+
+To change certain parameters used by `graylog-ctl` during a reconfigure run you can override all default parameters found `here <https://github.com/Graylog2/omnibus-graylog2/blob/1.2/files/graylog-cookbooks/graylog/attributes/default.rb>`_.
+If you want to change the username used by Graylog for example, edit the file `/etc/graylog/graylog-settings.json` like this::
+
+  "custom_attributes": {
+    "user": {
+      "username": "log-user"
+    }
+  }
+
+Afterwards run `sudo graylog-ctl reconfigure` and `sudo graylog-ctl restart`. In this way you can change things like the path to the data
+directory or memory settings for Graylog and Elasticsearch
+
 Production readiness
 ====================
 
