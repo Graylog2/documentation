@@ -38,7 +38,7 @@ user.
 
 Even though the system defaults are often enough to display correct times, in case your team is spread across different
 timezones, each user can be assigned and change their respective timezone setting. You can find the current timezone settings
-for the various components on the ``System / Overview`` page of your Graylog web interface.
+for the various components on the *System* -> *Overview* page of your Graylog web interface.
 
 Initial Roles
 =============
@@ -47,9 +47,11 @@ Each user needs to be assigned at least one role, which governs the basic set of
 Normal users, which do not need to create inputs, outputs or perform administrative tasks like managing access control etc,
 should be assigned the built in ``Reader`` role in addition to the custom roles which grant access to streams and dashboards.
 
+.. _roles:
+
 Roles
 *****
-In Graylog roles are named collections of individual permissions which can be assigned to users. Previous Graylog versions
+In Graylog, roles are named collections of individual permissions which can be assigned to users. Previous Graylog versions
 could only assign individual permissions to each user in the system, making updating stream or dashboard permissions for
 a large group of users difficult to deal with.
 
@@ -67,7 +69,7 @@ Roles cannot be deleted as long as users are still assigned to them, to prevent 
 
 Create a role
 =============
-In order to create a new role, choose the green ``Add new role`` button on the ``System / Roles`` page.
+In order to create a new role, choose the green *Add new role* button on the *System* -> *Roles* page.
 
 This will display a dialog allowing you to describe the new role and select the permissions it grants.
 
@@ -90,7 +92,7 @@ Editing a role
 Administrators can edit roles to add or remove access to new streams and dashboards in the system. The two built in ``Admin``
 and ``Reader`` roles cannot be edited or deleted because they are vital for Graylog's permission system.
 
-Simply choose the ``edit`` button on the ``System / Roles`` page and change the settings of the role in the following page:
+Simply choose the *edit* button on the *System* -> *Roles* page and change the settings of the role in the following page:
 
 .. image:: /images/edit_role.png
 
@@ -100,3 +102,63 @@ Deleting a role
 ===============
 Deleting roles checks whether a role still has users assigned to it, to avoid accidentally locking users out.
 If you want to remove a role, please remove it from all users first.
+
+External authentication
+***********************
+
+LDAP / Active Directory
+=======================
+It is possible to use an external LDAP or Active Directory server to perform user authentication in Graylog. Since version 1.2,
+you can also use LDAP groups to perform authorization by mapping them to Graylog roles.
+
+Configuration
+-------------
+To set up your LDAP or Active Directory server, go to *System* -> *Users* -> *Configure LDAP*. Once LDAP is enabled, you need to
+provide some details about the server. Please test the server connection before continuing to the next steps.
+
+User mapping
+------------
+In order to be able to look for users in the LDAP server you configured, Graylog needs to know some more details about it:
+the base tree to limit user search queries, the pattern used to look for users, and the field containing the full name of the
+user. You can test the configuration any time by using the login test form that you can find at the bottom of that page.
+
+.. image:: /images/login_test.png
+
+The login test information will indicate if Graylog was able to load the given user (and perform authentication, if a password was
+provided), and it will display all LDAP attributes belonging to the user, as you can see in the screenshot.
+
+That's it for the basic LDAP configuration. Don't forget to save your settings at this point!
+
+Group mapping
+-------------
+You can additionally control the default permissions for users logging in with LDAP or Active Directory by mapping LDAP groups
+into Graylog roles. That is extremely helpful if you already use LDAP groups to authorize users in your organization, as you can
+control the default permissions members of LDAP groups will have.
+
+Once you configure group mapping, Graylog will rely on your LDAP groups to assign roles into users. That means that each time an
+LDAP user logs into Graylog, their roles will be assigned based on the LDAP groups their belong to.
+
+In first place, you need to fill in the details in the *Group Mapping* section under *System* -> *Users* -> *Configure LDAP*, by
+giving the base where to limit group searches, a pattern used to look for groups, and the group name attribute.
+
+Then you need to select which default user role will be assigned to any users authenticated with the LDAP server should have. It
+is also possible to assign additional roles to any users logging in with LDAP. Please refer to :ref:`roles` for more details
+about user roles.
+
+**Note:** Graylog only synchronizes with LDAP when users log in. After changing the default and additional roles for LDAP users,
+you may need to modify existing users manually or delete them in order to force them to log in again.
+
+You can test the group mapping information by using the login test form, as it will display LDAP groups that the test user belongs to.
+Save the LDAP settings once you are satisfied with the results.
+
+.. image:: /images/ldap_group_mapping.png
+
+Finally, in order to map LDAP groups into roles, you need to go to *System* -> *Users* -> *LDAP group mapping*. That page will
+load all available LDAP groups using the configuration you previously provided, and will allow you to select a Graylog role
+that defines the permissions that group will have inside Graylog.
+
+**Note:** Remember that Graylog only synchronizes with LDAP when users log in, so you may need to modify existing users manually
+after changing the LDAP group mapping.
+
+**Note:** Loading LDAP groups may take some time in some configurations, specially if you have many groups.
+
