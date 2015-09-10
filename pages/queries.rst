@@ -148,6 +148,27 @@ Here are a few examples for possible values.
 
 The time frame is parsed using the `natty natural language parser <http://natty.joestelmach.com/>`_. Please consult its documentation for details.
 
+Saved searches
+==============
+Sometimes you may want to search a specific search configuration to be used later. Graylog provides a saved search functionality
+to accomplish exactly that.
+
+Once you submitted your search, selected the fields you want to show from the search sidebar, and chosen a resolution for the histogram, click on
+the *Save search criteria* button on the sidebar.
+
+.. image:: /images/saved_search_create.png
+
+Give a name to the current search and click on save. When you want to use the saved search later on, you only need to select it from the saved search
+selector.
+
+.. image:: /images/saved_search_selector.png
+
+Of course, you can always update the selected fields or name of your saved search. To do so, select the saved search from the saved search selector,
+update the field selection or histogram resolution, and click on *Saved search* -> *Update search criteria*. It is also possible to delete the saved
+search by selecting *Saved search* -> *Delete saved search*.
+
+.. image:: /images/saved_search_update.png
+
 Search result highlighting
 ==========================
 
