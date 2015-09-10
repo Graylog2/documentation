@@ -119,8 +119,14 @@ Alarm callbacks are a list of events that are being processed when an alert is t
 
 If the email alarm callback is used because it appears once or multiple times in the alarm callback list, or the alarm callback list is empty so the email transport is used per default, then the list of alert receivers is used to determine which recipients should receive the alert nofications. Every Graylog user (which has an email address configured in their account) or email address in that list gets a copy of the alerts sent out.
 
-Email Alert Callback
-====================
+Alert callbacks types explained
+===============================
+In this section we explain what the default alert callbacks included in Graylog do, and how to configure them.
+Alert callbacks are meant to be extensible through :doc:`plugins`, you can find more types in the
+`Integrations library <https://www.graylog.org/resources/integrations/>`_ or even create your own.
+
+Email alert callback
+^^^^^^^^^^^^^^^^^^^^
 
 The email alert callback can be used to send an email to the configured alert receivers when the conditions are triggered.
 
@@ -159,6 +165,107 @@ We expose the following objects to the templates.
   * ``message.fields`` map of key value pairs for all the fields defined in the message
 
   The ``message.fields`` fields can be useful to get access to arbitrary fields that are defined in the message. For example ``message.fields.full_message`` would return the ``full_message`` of a GELF message.
+
+HTTP alert callback
+^^^^^^^^^^^^^^^^^^^
+The HTTP alert callback lets you configure an endpoint that will be called when the alert is triggered.
+
+Graylog will send a POST request to the callback URL including information about the alert. Here is an example of the payload included in a callback::
+
+  {
+      "check_result": {
+          "result_description": "Stream had 2 messages in the last 1 minutes with trigger condition more than 1 messages. (Current grace time: 1 minutes)",
+          "triggered_condition": {
+              "id": "5e7a9c8d-9bb1-47b6-b8db-4a3a83a25e0c",
+              "type": "MESSAGE_COUNT",
+              "created_at": "2015-09-10T09:44:10.552Z",
+              "creator_user_id": "admin",
+              "grace": 1,
+              "parameters": {
+                  "grace": 1,
+                  "threshold": 1,
+                  "threshold_type": "more",
+                  "backlog": 5,
+                  "time": 1
+              },
+              "description": "time: 1, threshold_type: more, threshold: 1, grace: 1",
+              "type_string": "MESSAGE_COUNT",
+              "backlog": 5
+          },
+          "triggered_at": "2015-09-10T09:45:54.749Z",
+          "triggered": true,
+          "matching_messages": [
+              {
+                  "index": "graylog2_7",
+                  "message": "WARN: System is failing",
+                  "fields": {
+                      "gl2_remote_ip": "127.0.0.1",
+                      "gl2_remote_port": 56498,
+                      "gl2_source_node": "41283fec-36b4-4352-a859-7b3d79846b3c",
+                      "gl2_source_input": "55f15092bee8e2841898eb53"
+                  },
+                  "id": "b7b08150-57a0-11e5-b2a2-d6b4cd83d1d5",
+                  "stream_ids": [
+                      "55f1509dbee8e2841898eb64"
+                  ],
+                  "source": "127.0.0.1",
+                  "timestamp": "2015-09-10T09:45:49.284Z"
+              },
+              {
+                  "index": "graylog2_7",
+                  "message": "ERROR: This is an example error message",
+                  "fields": {
+                      "gl2_remote_ip": "127.0.0.1",
+                      "gl2_remote_port": 56481,
+                      "gl2_source_node": "41283fec-36b4-4352-a859-7b3d79846b3c",
+                      "gl2_source_input": "55f15092bee8e2841898eb53"
+                  },
+                  "id": "afd71342-57a0-11e5-b2a2-d6b4cd83d1d5",
+                  "stream_ids": [
+                      "55f1509dbee8e2841898eb64"
+                  ],
+                  "source": "127.0.0.1",
+                  "timestamp": "2015-09-10T09:45:36.116Z"
+              }
+          ]
+      },
+      "stream": {
+          "creator_user_id": "admin",
+          "outputs": [],
+          "matching_type": "AND",
+          "description": "test stream",
+          "created_at": "2015-09-10T09:42:53.833Z",
+          "disabled": false,
+          "rules": [
+              {
+                  "field": "gl2_source_input",
+                  "stream_id": "55f1509dbee8e2841898eb64",
+                  "id": "55f150b5bee8e2841898eb7f",
+                  "type": 1,
+                  "inverted": false,
+                  "value": "55f15092bee8e2841898eb53"
+              }
+          ],
+          "alert_conditions": [
+              {
+                  "creator_user_id": "admin",
+                  "created_at": "2015-09-10T09:44:10.552Z",
+                  "id": "5e7a9c8d-9bb1-47b6-b8db-4a3a83a25e0c",
+                  "type": "message_count",
+                  "parameters": {
+                      "grace": 1,
+                      "threshold": 1,
+                      "threshold_type": "more",
+                      "backlog": 5,
+                      "time": 1
+                  }
+              }
+          ],
+          "id": "55f1509dbee8e2841898eb64",
+          "title": "test",
+          "content_pack": null
+      }
+  }
 
 Outputs
 *******
