@@ -267,6 +267,20 @@ Graylog will send a POST request to the callback URL including information about
       }
   }
 
+Alert callback history
+======================
+Sometimes sending alert callbacks may fail for some reason. Graylog provides an alert callback history for those ocasions,
+helping you to debug and fix any problems that may arise.
+
+.. image:: /images/alert_callback_history.png
+
+To check the status of alert callbacks, go to the *Streams* page, and click on the *Manage alerts* button next to the stream
+containing the alert callbacks. You can find the alert callback history at the bottom of that page, in the *Triggered alerts*
+section.
+
+On the list of alerts, clicking on *Show callbacks* will open a list of all the callbacks involved in the alert, including
+their status and configuration at the time the alert was triggered.
+
 Outputs
 *******
 
