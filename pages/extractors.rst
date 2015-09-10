@@ -75,7 +75,7 @@ However, one key question that is often raised is matching a string in case inse
 are case sensitive by default. Certain flags, such as the one to ignore case sensitivity can either be set in the code,
 or as an inline flag in the regular expression.
 
-To for example create an extractor that matches the browser name in the following user agent string::
+For example, to create an extractor that matches the browser name in the following user agent string::
 
   Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.107 Safari/537.36
 
@@ -180,6 +180,32 @@ There are many resources are the web with useful patterns, and one very helpful 
 which allows you to test your patterns while you develop them.
 
 Graylog uses `Java Grok <http://grok.nflabs.com/>`_ to parse and run Grok patterns.
+
+Using the JSON extractor
+************************
+Since version 1.2, Graylog also supports extracting data from messages sent in JSON format.
+
+Using the JSON extractor is easy: once a Graylog input receives messages in JSON format, you can create an extractor
+by going to *System* -> *Inputs* and clicking on the *Manage extractors* button for that input. Next, you need to load a
+message to extract data from, and select the field containing the JSON document. The following page let you add some extra
+information to tell Graylog how it should extract the information. Let's illustrate how a message would be extracted
+with an example message::
+
+ {"level": "ERROR", "details": {"message": "This is an example error message", "controller": "IndexController", "tags": ["one", "two", "three"]}}
+
+Using the default settings, that message would be extracted into these fields:
+
+details.tags
+  one, two, three
+level
+  ERROR
+details.controller
+  IndexController
+details.message
+  This is an example error message
+
+In the create extractor page, you can also customize how to separate list of elements, keys, and key/values. It is also possible
+to flatten JSON structures or expand them into multiple fields, as shown in the example above.
 
 Normalization
 *************
