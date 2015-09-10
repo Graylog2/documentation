@@ -46,15 +46,16 @@ You can also choose to apply so called *converters* on the extracted value to fo
 of numbers to an integer or double value (important for range searches later), anonymize IP addresses, lower-/uppercase a
 string, build a hash value, and much more.
 
-The extractor directory
-***********************
+Import extractors
+*****************
+The recommended way of importing extractors in Graylog is using :ref:`content_packs`. The
+`Graylog Marketplace <http://marketplace.graylog.org>`_ provides access to many content packs that you can easily
+download and import into your Graylog setup.
 
-The `data source library <https://www.graylog.org/supported-sources>`_ provides access to a lot of extractors that you can easily
-import into your Graylog setup.
-
-Just copy the JSON extractor export into the import dialog of a message input of the fitting type (every extractor set entry in
-the directory tells you what type of input to spawn, e. g. syslog, GELF, or Raw/plaintext) and you are good to go.
-The next messages coming in should already include the extracted fields with possibly converted values.
+You can still import extractors from JSON if you want to. Just copy the JSON extractor export into the import dialog
+of a message input of the fitting type (every extractor set entry in the directory tells you what type of input to
+spawn, e. g. syslog, GELF, or Raw/plaintext) and you are good to go. The next messages coming in should already
+include the extracted fields with possibly converted values.
 
 A message sent by Heroku and received by Graylog with the imported *Heroku* extractor set on a plaintext TCP input
 looks like this: (look at the extracted fields in the message detail view)

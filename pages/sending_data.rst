@@ -12,6 +12,8 @@ Message inputs are the Graylog parts responsible for accepting log messages. The
 (or the REST API) in the *System -> Inputs* section and are launched and configured without the need to restart any
 part of the system.
 
+.. _content_packs:
+
 Content packs
 =============
 
