@@ -1,9 +1,12 @@
-*************************
+*********
+Searching
+*********
+
 Search query language
-*************************
+=====================
 
 Syntax
-======
+^^^^^^
 
 The search syntax is very close to the Lucene syntax. By default all message fields are included in the search if you don't specify a message
 field to search in.
@@ -99,7 +102,7 @@ It is also possible to combine unbounded range operators::
   http_response_code:(>=400 AND <500)
 
 Escaping
-========
+^^^^^^^^
 
 The following characters must be escaped with a backslash::
 
@@ -116,6 +119,18 @@ The time frame selector defines in what time range to search in. It offers three
 is vital for search speed: If you know you are only interested in messages of the last hour, only search in that time frame.
 This will make Graylog search in relevant indices only and greatly reduce system load and required resources. You can read
 more about this here: :doc:`index_model`
+
+.. image:: /images/queries_time_range_selector.png
+
+Relative time frame selector
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The relative time frame selector lets you look for messages from the selected option to the time you hit the search button. The selector
+offers a wide set of relative time frames that fit most of your search needs.
+
+Absolute time frame selector
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+When you know exactly the boundaries of your search, you want to use the absolute time frame selector. Simply introduce the dates and
+times for the search manually or click in the input field to open up a calendar where you can choose the day with your mouse.
 
 Keyword time frame selector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
