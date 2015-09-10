@@ -17,7 +17,7 @@ Content packs
 
 Content packs are bundles of Graylog input, extractor, stream, dashboard, and output configurations that can provide full support
 for a data source. Some content packs are shipped with Graylog by default and some are available from the website. Content packs that
-were downloaded from `here <https://www.graylog.org/resources/data-sources/>`_ can be imported using the Graylog web interface.
+were downloaded from `here <http://marketplace.graylog.org>`_ can be imported using the Graylog web interface.
 
 You can load and even create own content packs from the *System -> Content Packs* section of your Graylog web interface.
 
@@ -106,10 +106,10 @@ GELF / Sending from applications
 
 The Graylog Extended Log Format (GELF) is a log format that avoids the shortcomings of classic plain syslog and is perfect
 to logging from your application layer. It comes with optional compression, chunking and most importantly a clearly defined
-structure. There are `dozens of GELF libraries <https://www.graylog.org/resources/data-sources/>`_ for many frameworks and
+structure. There are `dozens of GELF libraries <http://marketplace.graylog.org>`_ for many frameworks and
 programming languages to get you started.
 
-Read more about GELF `on graylog.org <https://www.graylog.org/resources/gelf-2/>`_.
+Read more about GELF `on graylog.org <https://www.graylog.org/resources/gelf/>`_.
 
 GELF via HTTP
 -------------

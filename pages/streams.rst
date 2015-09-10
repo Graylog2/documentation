@@ -123,7 +123,7 @@ Alert callbacks types explained
 ===============================
 In this section we explain what the default alert callbacks included in Graylog do, and how to configure them.
 Alert callbacks are meant to be extensible through :doc:`plugins`, you can find more types in the
-`Integrations library <https://www.graylog.org/resources/integrations/>`_ or even create your own.
+`Graylog Marketplace <http://marketplace.graylog.org>`_ or even create your own.
 
 Email alert callback
 ^^^^^^^^^^^^^^^^^^^^
