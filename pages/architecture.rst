@@ -40,7 +40,7 @@ nodes via REST/HTTP to check if they are alive and take dead nodes out of the cl
 Highly available setup with Graylog Radio
 ------------------------------------------
 
-Beginning with Graylog 1.0 on we do no longer recommend running Graylog Radio because we are now using a
+Beginning with Graylog 1.0 on, we no longer recommend running Graylog Radio because we are now using a
 high-performant message journal (from the Apache Kafka project) in every `graylog-server` instance which is
 spooling all incoming messages to disk immediately and is able to buffer load spikes just at least as good as
 Graylog Radio was, but with less dependencies and maintenance overhead.
