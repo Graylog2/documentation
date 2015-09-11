@@ -157,8 +157,9 @@ Finally, in order to map LDAP groups into roles, you need to go to *System* -> *
 load all available LDAP groups using the configuration you previously provided, and will allow you to select a Graylog role
 that defines the permissions that group will have inside Graylog.
 
+**Note:** Loading LDAP groups may take some time in certain configurations, specially if you have many groups. In those cases,
+creating a better filter for groups may help with the loading times.
+
 **Note:** Remember that Graylog only synchronizes with LDAP when users log in, so you may need to modify existing users manually
 after changing the LDAP group mapping.
-
-**Note:** Loading LDAP groups may take some time in some configurations, specially if you have many groups.
 
