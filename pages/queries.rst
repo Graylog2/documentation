@@ -1,9 +1,12 @@
-*************************
+*********
+Searching
+*********
+
 Search query language
-*************************
+=====================
 
 Syntax
-======
+^^^^^^
 
 The search syntax is very close to the Lucene syntax. By default all message fields are included in the search if you don't specify a message
 field to search in.
@@ -99,7 +102,7 @@ It is also possible to combine unbounded range operators::
   http_response_code:(>=400 AND <500)
 
 Escaping
-========
+^^^^^^^^
 
 The following characters must be escaped with a backslash::
 
@@ -117,6 +120,18 @@ is vital for search speed: If you know you are only interested in messages of th
 This will make Graylog search in relevant indices only and greatly reduce system load and required resources. You can read
 more about this here: :doc:`index_model`
 
+.. image:: /images/queries_time_range_selector.png
+
+Relative time frame selector
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The relative time frame selector lets you look for messages from the selected option to the time you hit the search button. The selector
+offers a wide set of relative time frames that fit most of your search needs.
+
+Absolute time frame selector
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+When you know exactly the boundaries of your search, you want to use the absolute time frame selector. Simply introduce the dates and
+times for the search manually or click in the input field to open up a calendar where you can choose the day with your mouse.
+
 Keyword time frame selector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -132,6 +147,88 @@ Here are a few examples for possible values.
 * "yesterday midnight +0200 to today midnight +0200" searches between yesterday midnight and today midnight in timezone +0200 - will be 22:00 in UTC
 
 The time frame is parsed using the `natty natural language parser <http://natty.joestelmach.com/>`_. Please consult its documentation for details.
+
+Saved searches
+==============
+Sometimes you may want to search a specific search configuration to be used later. Graylog provides a saved search functionality
+to accomplish exactly that.
+
+Once you submitted your search, selected the fields you want to show from the search sidebar, and chosen a resolution for the histogram, click on
+the *Save search criteria* button on the sidebar.
+
+.. image:: /images/saved_search_create.png
+
+Give a name to the current search and click on save. When you want to use the saved search later on, you only need to select it from the saved search
+selector.
+
+.. image:: /images/saved_search_selector.png
+
+Of course, you can always update the selected fields or name of your saved search. To do so, select the saved search from the saved search selector,
+update the field selection or histogram resolution, and click on *Saved search* -> *Update search criteria*. It is also possible to delete the saved
+search by selecting *Saved search* -> *Delete saved search*.
+
+.. image:: /images/saved_search_update.png
+
+Analysis
+========
+Graylog provides several tools to analyze your search results. It is possible to save these analysis into dashboards, so you can check them over
+time in a more convenient way. To analyze a field from your search results, expand the field in the search sidebar and click on the button of the
+analysis you want to perform.
+
+.. image:: /images/search_analysis.png
+
+
+.. _field_statistics:
+
+Field statistics
+^^^^^^^^^^^^^^^^
+Compute different statistics on your fields, to help you better summarize and understand the data in them.
+
+The statistical information consist of: total, mean, minimum, maximum, standard deviation, variance, sum, and cardinality. On non-numeric fields,
+you can only see the total amount of messages containing that field, and the cardinality of the field, i.e. the number of unique values it has.
+
+.. image:: /images/field_statistics.png
+
+
+.. _quick_values:
+
+Quick values
+^^^^^^^^^^^^
+Quick values helps you to find out the distribution of values for a field. Alongside a graphic representation of the common values contained
+in a field, Graylog will display a table with all different values, allowing you to see the number of times they appear. You can include any value
+in your search query by clicking on the magnifying glass icon located in the value row.
+
+.. image:: /images/quick_values.png
+
+
+.. _field_graphs:
+
+Field graphs
+^^^^^^^^^^^^
+You can create field graphs for any numeric field, by clicking on the *Generate chart* button in the search sidebar. Using the options in the
+*Customize* menu on top of the field graph, you can change the statistical function used in the graph, the kind of graph to use to represent
+the values, the graph interpolation, as well as the time resolution.
+
+.. image:: /images/field_graph.png
+
+Once you have customized some field graphs, you can also combine them by dragging them from the hamburger icon on the top corner of the graph,
+and dropping them into another field graph. You can see the location of the hamburger icon and the end result in the the following
+screenshots:
+
+.. image:: /images/stacked_graph_1.png
+.. image:: /images/stacked_graph_2.png
+
+Field graphs appear every time you perform a search, allowing you to compare data, or combine graphs coming from different streams.
+
+Export results as CSV
+=====================
+It is also possible to export the results of your search as a CSV document. To do so, select all fields you want to export in the search
+sidebar, click on the *More actions* button, and select *Export as CSV*.
+
+.. image:: /images/export_as_csv.png
+
+**Hint**: Some Graylog inputs keep the original message in the the `full_message` field. If you need to export the original message, you
+can do so by clicking on the *List all fields* link at the bottom of the sidebar, and then selecting the `full_message` field.
 
 Search result highlighting
 ==========================

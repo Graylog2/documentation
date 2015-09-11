@@ -46,15 +46,16 @@ You can also choose to apply so called *converters* on the extracted value to fo
 of numbers to an integer or double value (important for range searches later), anonymize IP addresses, lower-/uppercase a
 string, build a hash value, and much more.
 
-The extractor directory
-***********************
+Import extractors
+*****************
+The recommended way of importing extractors in Graylog is using :ref:`content_packs`. The
+`Graylog Marketplace <http://marketplace.graylog.org>`_ provides access to many content packs that you can easily
+download and import into your Graylog setup.
 
-The `data source library <https://www.graylog.org/supported-sources>`_ provides access to a lot of extractors that you can easily
-import into your Graylog setup.
-
-Just copy the JSON extractor export into the import dialog of a message input of the fitting type (every extractor set entry in
-the directory tells you what type of input to spawn, e. g. syslog, GELF, or Raw/plaintext) and you are good to go.
-The next messages coming in should already include the extracted fields with possibly converted values.
+You can still import extractors from JSON if you want to. Just copy the JSON extractor export into the import dialog
+of a message input of the fitting type (every extractor set entry in the directory tells you what type of input to
+spawn, e. g. syslog, GELF, or Raw/plaintext) and you are good to go. The next messages coming in should already
+include the extracted fields with possibly converted values.
 
 A message sent by Heroku and received by Graylog with the imported *Heroku* extractor set on a plaintext TCP input
 looks like this: (look at the extracted fields in the message detail view)
@@ -75,7 +76,7 @@ However, one key question that is often raised is matching a string in case inse
 are case sensitive by default. Certain flags, such as the one to ignore case sensitivity can either be set in the code,
 or as an inline flag in the regular expression.
 
-To for example create an extractor that matches the browser name in the following user agent string::
+For example, to create an extractor that matches the browser name in the following user agent string::
 
   Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.107 Safari/537.36
 
@@ -180,6 +181,32 @@ There are many resources are the web with useful patterns, and one very helpful 
 which allows you to test your patterns while you develop them.
 
 Graylog uses `Java Grok <http://grok.nflabs.com/>`_ to parse and run Grok patterns.
+
+Using the JSON extractor
+************************
+Since version 1.2, Graylog also supports extracting data from messages sent in JSON format.
+
+Using the JSON extractor is easy: once a Graylog input receives messages in JSON format, you can create an extractor
+by going to *System* -> *Inputs* and clicking on the *Manage extractors* button for that input. Next, you need to load a
+message to extract data from, and select the field containing the JSON document. The following page let you add some extra
+information to tell Graylog how it should extract the information. Let's illustrate how a message would be extracted
+with an example message::
+
+ {"level": "ERROR", "details": {"message": "This is an example error message", "controller": "IndexController", "tags": ["one", "two", "three"]}}
+
+Using the default settings, that message would be extracted into these fields:
+
+details.tags
+  one, two, three
+level
+  ERROR
+details.controller
+  IndexController
+details.message
+  This is an example error message
+
+In the create extractor page, you can also customize how to separate list of elements, keys, and key/values. It is also possible
+to flatten JSON structures or expand them into multiple fields, as shown in the example above.
 
 Normalization
 *************

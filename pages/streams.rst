@@ -23,7 +23,7 @@ instruct Graylog which message to route into which streams. Imagine sending thes
 One of the many things that you could do with streams is creating a stream called *Database errors* that is catching every error
 message from one of your database hosts.
 
-Create a new stream with these rules: (stream rules are AND connected)
+Create a new stream with these rules, selecting the option to match all rules:
 
 * Field ``level`` must be greater than ``4``
 * Field ``source`` must match regular expression ``^database-host-\d+``
@@ -31,13 +31,12 @@ Create a new stream with these rules: (stream rules are AND connected)
 This will route every new message with a ``level`` higher than *WARN* and a ``source`` that matches the database host regular
 expression into the stream.
 
-A message will be routed into every stream that has all its rules matching. This means that a message can be part of many streams
+A message will be routed into every stream that has all (or any) of its rules matching. This means that a message can be part of many streams
 and not just one.
 
 The stream is now appearing in the streams list and a click on its title will show you all database errors.
 
-The next parts of this document cover how to be alerted in case of too many errors, some specific error types that should never
-happen or how to forward the errors to another system or endpoint.
+Streams can be used to be alerted in case certain condition happens. We cover more topics related to alerts in :ref:`alerts`.
 
 What's the difference to saved searches?
 ========================================
@@ -57,14 +56,17 @@ Building a query with all rules would cause significantly higher load on the mes
 How do I create a stream?
 =========================
 
-#. Navigate to the streams section from the top navigation bar
-#. Click "Create stream"
+#. Navigate to the streams section from the top navigation bar.
+#. Click "Create stream".
 #. Save the stream after entering a name and a description. For example *All error messages* and
-   *Catching all error messages from all sources*
-#. The stream is now saved but **not yet activated**. Add stream rules in the next dialogue. Try it against some messages by
-   entering a message ID on the same page. Save the rules when the right messages are matched or not matched.
-#. The stream is marked as *paused* in the list of streams. Activate the stream by hitting *Resume this stream* in the *Action*
-   dropdown.
+   *Catching all error messages from all sources*. The stream is now saved but **not yet activated**.
+#. Click on "Edit rules" for the stream you just created. That will open a page where you can manage and test stream rules.
+#. Indicate whether any or all of the rules must be true to include a message in the stream.
+#. Add stream rules, by indicating the field that you want to check, and the condition that should satisfy. Try the rules against
+   some messages by loading them from an input or manually giving a message ID. Once you are satisfied with the results, click on "I'm done".
+#. The stream is still paused, click on the "Start stream" button to activate the stream.
+
+.. _alerts:
 
 Alerts
 ******
@@ -78,8 +80,7 @@ to configure new alert conditions.
 You can configure the interval for alert checks in your `graylog.conf` using the `alert_check_interval` variable. The default
 is to check for alerts every 60 seconds.
 
-Graylog ships with default *alert callbacks* and can be extended with
-`plugins <https://www.graylog.org/resources/documentation/general/plugins>`_
+Graylog ships with default *alert callbacks* and can be extended with :doc:`plugins`.
 
 Alert condition types explained
 ===============================
@@ -118,8 +119,14 @@ Alarm callbacks are a list of events that are being processed when an alert is t
 
 If the email alarm callback is used because it appears once or multiple times in the alarm callback list, or the alarm callback list is empty so the email transport is used per default, then the list of alert receivers is used to determine which recipients should receive the alert nofications. Every Graylog user (which has an email address configured in their account) or email address in that list gets a copy of the alerts sent out.
 
-Email Alert Callback
-====================
+Alert callbacks types explained
+===============================
+In this section we explain what the default alert callbacks included in Graylog do, and how to configure them.
+Alert callbacks are meant to be extensible through :doc:`plugins`, you can find more types in the
+`Graylog Marketplace <http://marketplace.graylog.org>`_ or even create your own.
+
+Email alert callback
+^^^^^^^^^^^^^^^^^^^^
 
 The email alert callback can be used to send an email to the configured alert receivers when the conditions are triggered.
 
@@ -127,7 +134,7 @@ Three configuration options are available for the alert callback to customize th
 
 .. image:: /images/stream_alert_callback_email_form.png
 
-The *E-Mail Body* and *E-Mail Subject* are `jmte <https://code.google.com/p/jmte/>`_ templates. jmte is a minimal template engine that supports variables, loops and conditions. See the `jmte documentation <http://jmte.googlecode.com/svn/trunk/doc/index.html>`_ for a language reference.
+The *E-Mail Body* and *E-Mail Subject* are `jmte <https://github.com/DJCordhose/jmte>`_ templates. jmte is a minimal template engine that supports variables, loops and conditions. See the `jmte documentation <http://jmte.googlecode.com/svn/trunk/doc/index.html>`_ for a language reference.
 
 We expose the following objects to the templates.
 
@@ -159,6 +166,121 @@ We expose the following objects to the templates.
 
   The ``message.fields`` fields can be useful to get access to arbitrary fields that are defined in the message. For example ``message.fields.full_message`` would return the ``full_message`` of a GELF message.
 
+HTTP alert callback
+^^^^^^^^^^^^^^^^^^^
+The HTTP alert callback lets you configure an endpoint that will be called when the alert is triggered.
+
+Graylog will send a POST request to the callback URL including information about the alert. Here is an example of the payload included in a callback::
+
+  {
+      "check_result": {
+          "result_description": "Stream had 2 messages in the last 1 minutes with trigger condition more than 1 messages. (Current grace time: 1 minutes)",
+          "triggered_condition": {
+              "id": "5e7a9c8d-9bb1-47b6-b8db-4a3a83a25e0c",
+              "type": "MESSAGE_COUNT",
+              "created_at": "2015-09-10T09:44:10.552Z",
+              "creator_user_id": "admin",
+              "grace": 1,
+              "parameters": {
+                  "grace": 1,
+                  "threshold": 1,
+                  "threshold_type": "more",
+                  "backlog": 5,
+                  "time": 1
+              },
+              "description": "time: 1, threshold_type: more, threshold: 1, grace: 1",
+              "type_string": "MESSAGE_COUNT",
+              "backlog": 5
+          },
+          "triggered_at": "2015-09-10T09:45:54.749Z",
+          "triggered": true,
+          "matching_messages": [
+              {
+                  "index": "graylog2_7",
+                  "message": "WARN: System is failing",
+                  "fields": {
+                      "gl2_remote_ip": "127.0.0.1",
+                      "gl2_remote_port": 56498,
+                      "gl2_source_node": "41283fec-36b4-4352-a859-7b3d79846b3c",
+                      "gl2_source_input": "55f15092bee8e2841898eb53"
+                  },
+                  "id": "b7b08150-57a0-11e5-b2a2-d6b4cd83d1d5",
+                  "stream_ids": [
+                      "55f1509dbee8e2841898eb64"
+                  ],
+                  "source": "127.0.0.1",
+                  "timestamp": "2015-09-10T09:45:49.284Z"
+              },
+              {
+                  "index": "graylog2_7",
+                  "message": "ERROR: This is an example error message",
+                  "fields": {
+                      "gl2_remote_ip": "127.0.0.1",
+                      "gl2_remote_port": 56481,
+                      "gl2_source_node": "41283fec-36b4-4352-a859-7b3d79846b3c",
+                      "gl2_source_input": "55f15092bee8e2841898eb53"
+                  },
+                  "id": "afd71342-57a0-11e5-b2a2-d6b4cd83d1d5",
+                  "stream_ids": [
+                      "55f1509dbee8e2841898eb64"
+                  ],
+                  "source": "127.0.0.1",
+                  "timestamp": "2015-09-10T09:45:36.116Z"
+              }
+          ]
+      },
+      "stream": {
+          "creator_user_id": "admin",
+          "outputs": [],
+          "matching_type": "AND",
+          "description": "test stream",
+          "created_at": "2015-09-10T09:42:53.833Z",
+          "disabled": false,
+          "rules": [
+              {
+                  "field": "gl2_source_input",
+                  "stream_id": "55f1509dbee8e2841898eb64",
+                  "id": "55f150b5bee8e2841898eb7f",
+                  "type": 1,
+                  "inverted": false,
+                  "value": "55f15092bee8e2841898eb53"
+              }
+          ],
+          "alert_conditions": [
+              {
+                  "creator_user_id": "admin",
+                  "created_at": "2015-09-10T09:44:10.552Z",
+                  "id": "5e7a9c8d-9bb1-47b6-b8db-4a3a83a25e0c",
+                  "type": "message_count",
+                  "parameters": {
+                      "grace": 1,
+                      "threshold": 1,
+                      "threshold_type": "more",
+                      "backlog": 5,
+                      "time": 1
+                  }
+              }
+          ],
+          "id": "55f1509dbee8e2841898eb64",
+          "title": "test",
+          "content_pack": null
+      }
+  }
+
+Alert callback history
+======================
+Sometimes sending alert callbacks may fail for some reason. Graylog provides an alert callback history for those ocasions,
+helping you to debug and fix any problems that may arise.
+
+.. image:: /images/alert_callback_history.png
+
+To check the status of alert callbacks, go to the *Streams* page, and click on the *Manage alerts* button next to the stream
+containing the alert callbacks. You can find the alert callback history at the bottom of that page, in the *Triggered alerts*
+section.
+
+On the list of alerts, clicking on *Show callbacks* will open a list of all the callbacks involved in the alert, including
+their status and configuration at the time the alert was triggered.
+
 Outputs
 *******
 
@@ -167,8 +289,7 @@ The stream output system allows you to forward every message that is routed into
 Outputs are managed globally (like message inputs) and not for single streams. You can create new outputs and activate them
 for as many streams as you like. This way you can configure a forwarding destination once and select multiple streams to use it.
 
-Graylog ships with default outputs and can be extended with
-`plugins <http://www.graylog.org/resources/documentation/general/plugins>`_.
+Graylog ships with default outputs and can be extended with :doc:`plugins`.
 
 Use cases
 *********
@@ -374,4 +495,4 @@ Only new messages are routed into the current set of streams.
 Can I write own outputs or alert callbacks methods?
 ===================================================
 
-Yes. Please refer to the `plugins <http://www.graylog.org/resources/documentation/general/plugins>`_ documentation page.
+Yes. Please refer to the :doc:`plugins` documentation page.
