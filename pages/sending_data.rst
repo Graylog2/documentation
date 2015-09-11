@@ -144,34 +144,25 @@ Heroku allows you to forward the logs of your application to a custom syslog ser
 server(s) via TCP. Following example shows you how to configure Graylog to receive the Heroku logs and extract the
 different fields into a structured log message.
 
-Creating a Graylog input for Heroku log messages
-------------------------------------------------
+Configuring Graylog to receive Heroku log messages
+--------------------------------------------------
+The `Graylog Marketplace <http://marketplace.graylog.org>`_ contains a
+`content pack for Heroku logs <https://marketplace.graylog.org/addons/e28c42a5-eba1-4302-a7b7-cde6485ab341>`_, including extractors to parse
+the Heroku log format. You can download and use that :ref:`content pack <content_packs>` to configure Graylog to be able to receive Heroku logs.
 
-Create a new **RAW/Plaintext TCP** input as shown below.
+Go to *System* -> *Content packs*, and click on *Import content pack*. Select the content pack downloaded from the Graylog Marketplace,
+and click *Upload*
 
 .. image:: /images/heroku_1.png
 
+On the same page, select *Heroku* on the *SaaS* category on the left column, and click on *Apply*.
+
 .. image:: /images/heroku_2.png
 
-The Graylog `Extractor library <https://www.graylog.org/resources/data-sources/>`_ contains a set of
-`extractors to parse the Heroku log format <https://www.graylog.org/resource/extractor/53795f36e4b0b8f13c3d2ce5/>`_.
-You can import that set into the newly created input so all parts of the log messages will be extracted into separate fields:
-
-Open the extractor management for the input.
+That's it! You can verify that there is a new input for Heroku, containing a set of extractors to parse your log messages. Make sure your
+firewall setup allows incoming connections on the inputs port!
 
 .. image:: /images/heroku_3.png
-
-Go to the extractor import.
-
-.. image:: /images/heroku_4.png
-
-Paste the extractor JSON string into the form and submit.
-
-.. image:: /images/heroku_5.png
-
-That is all that is needed on the Graylog side. Make sure your firewall setup allows incoming connections on the inputs port!
-
-.. image:: /images/heroku_6.png
 
 Configuring Heroku to send data to your Graylog setup
 -----------------------------------------------------
