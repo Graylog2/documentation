@@ -169,6 +169,48 @@ search by selecting *Saved search* -> *Delete saved search*.
 
 .. image:: /images/saved_search_update.png
 
+Analysis
+========
+Graylog provides several tools to analyze your search results. It is possible to save these analysis into dashboards, so you can check them over
+time in a more convenient way. To analyze a field from your search results, expand the field in the search sidebar and click on the button of the
+analysis you want to perform.
+
+.. image:: /images/search_analysis.png
+
+Field statistics
+^^^^^^^^^^^^^^^^
+Compute different statistics on your fields, to help you better summarize and understand the data in them.
+
+The statistical information consist of: total, mean, minimum, maximum, standard deviation, variance, sum, and cardinality. On non-numeric fields,
+you can only see the total amount of messages containing that field, and the cardinality of the field, i.e. the number of unique values it has.
+
+.. image:: /images/field_statistics.png
+
+Quick values
+^^^^^^^^^^^^
+Quick values helps you to find out the distribution of values for a field. Alongside a graphic representation of the common values contained
+in a field, Graylog will display a table with all different values, allowing you to see the number of times they appear. You can include any value
+in your search query by clicking on the magnifying glass icon located in the value row.
+
+.. image:: /images/quick_values.png
+
+Field graphs
+^^^^^^^^^^^^
+You can create field graphs for any numeric field, by clicking on the *Generate chart* button in the search sidebar. Using the options in the
+*Customize* menu on top of the field graph, you can change the statistical function used in the graph, the kind of graph to use to represent
+the values, the graph interpolation, as well as the time resolution.
+
+.. image:: /images/field_graph.png
+
+Once you have customized some field graphs, you can also combine them by dragging them from the hamburger icon on the top corner of the graph,
+and dropping them into another field graph. You can see the location of the hamburger icon and the end result in the the following
+screenshots:
+
+.. image:: /images/stacked_graph_1.png
+.. image:: /images/stacked_graph_2.png
+
+Field graphs appear every time you perform a search, allowing you to compare data, or combine graphs coming from different streams.
+
 Search result highlighting
 ==========================
 
