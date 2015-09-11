@@ -50,11 +50,10 @@ dashboards:
   * Search result histogram charts
   * Statistical values
   * Field value charts
-  * Stacked charts (by merging several field value charts)
-  * Quick value results
+  * Stacked charts
+  * Quick values results
 
-All counts over relative time ranges can display additional trend information, and quick value widgets
-can be represented as a pie chart and/or table.
+You can learn more about the different widget types in :ref:`widget_types`.
 
 Once you can see the results of your search, you will see buttons with the "Add to dashboard" text, that
 will allow you to select the dashboard where the widget will be displayed, and configure the widget.
@@ -99,6 +98,66 @@ You should now see widgets on your dashboard. You will learn how to modify the d
 in the next chapter.
 
 .. image:: /images/dashboards_1.png
+
+.. _widget_types:
+
+Widget types explained
+======================
+Graylog supports a wide variety of widgets that allow you to quickly visualize data from your logs.
+This section intends to give you some information to better understand each widget type, and how they can
+help you to see relevant details from the many logs you receive.
+
+Search result counts
+--------------------
+This kind of widget includes a count of the number of search results for a given search. It can help you to
+quickly visualize things like the number of exceptions an application logs, or the number of requests
+your site receives.
+
+All search result counts created with a relative time frame can additionally display trend information. The
+trend is calculated by comparing the count for the given time frame, with the one resulting from going further
+back the same amount of time. For example, to calculate the trend in a search result count with a relative
+search of *5 minutes ago*, Graylog will count the messages in the last 5 minutes, and compare that with the
+count of the previous 5 minutes.
+
+Search result histogram charts
+------------------------------
+The search result histogram displays a chart using the time frame of your search, graphing the number of search
+result counts over time. It may help you to visualize how the number of request to your site change over time,
+or to see how many downloads a file has over time.
+
+Changing the graph resolution, you can decide how much time each bar of the graph represents.
+
+Statistical values
+------------------
+You can add to your dashboard any statistical value calculated for a field. This may help you to see the mean
+time response for your application, or how many unique servers are handling requests to your application, by
+using the cardinality value of that field. Please refer to :ref:`field_statistics` for more information on
+the available statistical functions and how to display them in your searches.
+
+As with search result counts, you can also add trend information to statistical value widgets created with
+a relative time frame.
+
+Field value charts
+------------------
+To draw an statistical value over time, you can use a field value chart. They could help you to see the evolution
+of the number of unique users visiting your site in the last week. In the :ref:`field_graphs` section we
+explain how to create these charts and ways you can customize them.
+
+Stacked charts
+--------------
+Stacked charts group several field value charts under the same axes. They let you compare different values in
+a compact way, like the number of visits to two different websites. As explained in :ref:`field_graphs`, stacked
+charts are basically field value charts represented in the same axes.
+
+Quick values results
+--------------------
+In order to show a list of values a certain field contains and their distribution, you can use a quick value
+widget. This may help you to see the percentage of failed requests in your application, or which parts of your
+application experience more problems. Please refer to :ref:`quick_values` to see how to request this information
+in your search result page.
+
+The quick values information can be represented as a pie chart and/or as a table, so you can choose what is the
+best fit for your needs.
 
 Modifying dashboards
 ====================

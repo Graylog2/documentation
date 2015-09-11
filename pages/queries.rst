@@ -177,6 +177,9 @@ analysis you want to perform.
 
 .. image:: /images/search_analysis.png
 
+
+.. _field_statistics:
+
 Field statistics
 ^^^^^^^^^^^^^^^^
 Compute different statistics on your fields, to help you better summarize and understand the data in them.
@@ -186,6 +189,9 @@ you can only see the total amount of messages containing that field, and the car
 
 .. image:: /images/field_statistics.png
 
+
+.. _quick_values:
+
 Quick values
 ^^^^^^^^^^^^
 Quick values helps you to find out the distribution of values for a field. Alongside a graphic representation of the common values contained
@@ -193,6 +199,9 @@ in a field, Graylog will display a table with all different values, allowing you
 in your search query by clicking on the magnifying glass icon located in the value row.
 
 .. image:: /images/quick_values.png
+
+
+.. _field_graphs:
 
 Field graphs
 ^^^^^^^^^^^^
