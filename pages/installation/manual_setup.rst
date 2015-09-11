@@ -2,12 +2,15 @@
 Manual Setup
 ************
 
+Graylog server on Linux
+=======================
+
 Prerequisites
 ^^^^^^^^^^^^^
 
 You will need to have the following services installed on either the host you are running ``graylog-server`` on or on dedicated machines:
 
-* `Elasticsearch 1.3.7 or later <https://www.elastic.co/downloads/elasticsearch>`_
+* `Elasticsearch 1.7 or later <https://www.elastic.co/downloads/elasticsearch>`_
 * MongoDB (as recent stable version as possible, **at least v2.0**)
 
 Most standard MongoDB packages of Linux distributions are outdated. Use the `official MongoDB APT repository <http://docs.mongodb.org/manual/tutorial/install-mongodb-on-debian/>`_
@@ -175,8 +178,8 @@ Add the `java.net.preferIPv4Stack` flag in your `graylogctl` script or from wher
 
     ~$ sudo -u graylog java -Djava.net.preferIPv4Stack=true -jar graylog.jar
 
-Manual setup: graylog-web-interface on Linux
---------------------------------------------
+Graylog web interface on Linux
+==============================
 
 Prerequisites
 ^^^^^^^^^^^^^
