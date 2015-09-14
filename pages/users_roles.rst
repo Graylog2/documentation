@@ -163,3 +163,8 @@ creating a better filter for groups may help with the loading times.
 **Note:** Remember that Graylog only synchronizes with LDAP when users log in, so you may need to modify existing users manually
 after changing the LDAP group mapping.
 
+Troubleshooting
+---------------
+
+LDAP referrals for groups can be a problem during group mapping, in these cases please manage the user groups manually.
+In order to do this, the LDAP group settings must not be set.
