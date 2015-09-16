@@ -109,7 +109,7 @@ Example procedure for an OVA appliance on VMWare:
 +=================================================+==================================================+
 | shutdown the VM                                 | Preparation for creating a consistend snapshot   |
 +-------------------------------------------------+--------------------------------------------------+
-| take a snapshot through VMWare                  | Use the VMWare GUI to create a snapshot of       |
+| take a snapshot through VMWare                  | Use the VMWare GUI to create a snapshot          |
 |                                                 | of the VM in case something goes wrong           |
 +-------------------------------------------------+--------------------------------------------------+
 | attach an additional hard drive                 | Use the VMWare GUI to attach another harddrive   |
@@ -118,35 +118,35 @@ Example procedure for an OVA appliance on VMWare:
 +-------------------------------------------------+--------------------------------------------------+
 | start the VM again                              |                                                  |
 +-------------------------------------------------+--------------------------------------------------+
-| sudo graylog-ctl stop                           | Stop all running services to prevent disk        |
+| | sudo graylog-ctl stop                         | Stop all running services to prevent disk        |
 |                                                 | access                                           |
 +-------------------------------------------------+--------------------------------------------------+
-| sudo lshw -class disk                           | Check for the `logical name` of the new hard     |
+| | sudo lshw -class disk                         | Check for the `logical name` of the new hard     |
 |                                                 | drive. Usually this is `/dev/sdb`                |
 +-------------------------------------------------+--------------------------------------------------+
-| sudo parted -a optimal /dev/sdb mklabel gpt     | Partition and format new disk                    |
-| sudo parted -a optimal -- /dev/sdb unit \       |                                                  |
-             compact mkpart primary ext3 "1" "-1" |                                                  |
-| sudo mkfs.ext4 /dev/sdb1                        |                                                  |
+| | sudo parted -a optimal /dev/sdb mklabel gpt   | Partition and format new disk                    |
+| | sudo parted -a optimal -- /dev/sdb unit \\    |                                                  |
+| |          compact mkpart primary ext3 "1" "-1" |                                                  |
+| | sudo mkfs.ext4 /dev/sdb1                      |                                                  |
 +-------------------------------------------------+--------------------------------------------------+
-| sudo mkdir /mnt/tmp                             | Mount disk to temporary mount point              |
-| sudo mount /dev/sdb1 /mnt/tmp                   |                                                  |
+| | sudo mkdir /mnt/tmp                           | Mount disk to temporary mount point              |
+| | sudo mount /dev/sdb1 /mnt/tmp                 |                                                  |
 +-------------------------------------------------+--------------------------------------------------+
-| cd /var/opt/graylog/data                        | Copy current data to new disk                    |
-| sudo cp -ax * /mnt/tmp/                         |                                                  |
+| | cd /var/opt/graylog/data                      | Copy current data to new disk                    |
+| | sudo cp -ax * /mnt/tmp/                       |                                                  |
 +-------------------------------------------------+--------------------------------------------------+
-| sudo diff -qr --suppress-common-lines \         | Compare both folders                             |
-|            /var/opt/graylog/data /mnt/tmp       | Output should be: `Only in /mnt/tmp: lost+found` |
+| | sudo diff -qr --suppress-common-lines \\      | Compare both folders.                            |
+| |           /var/opt/graylog/data /mnt/tmp      | Output should be: `Only in /mnt/tmp: lost+found` |
 +-------------------------------------------------+--------------------------------------------------+
-| sudo rm -rf /var/opt/graylog/data/*             | Delete old data                                  |
+| | sudo rm -rf /var/opt/graylog/data/*           | Delete old data                                  |
 +-------------------------------------------------+--------------------------------------------------+
-| sudo umount /mnt/tmp                            | Mount new disk over data folder                  |
-| sudo mount /dev/sdb1 /var/opt/graylog/data      |                                                  |
+| | sudo umount /mnt/tmp                          | Mount new disk over data folder                  |
+| | sudo mount /dev/sdb1 /var/opt/graylog/data    |                                                  |
 +-------------------------------------------------+--------------------------------------------------+
-| sudo nano /etc/fstab                            | Make change permanent                            |
-| /dev/sdb1       /var/opt/graylog/data  ext4     |                                                  | 
-                               defaults       0 0 |                                                  |
-| sudo shutdown -r now                            |                                                  |
+| | sudo nano /etc/fstab                          | Make change permanent                            |
+| | /dev/sdb1       /var/opt/graylog/data  ext4\  |                                                  | 
+| |                          defaults       0 0   |                                                  |
+| | sudo shutdown -r now                          |                                                  |
 +-------------------------------------------------+--------------------------------------------------+
 
 Install Graylog plugins
