@@ -29,3 +29,4 @@ Contents:
    pages/plugins
    pages/external_dashboards
    pages/ideas_explained
+   pages/changelog
