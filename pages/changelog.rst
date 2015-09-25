@@ -2,6 +2,100 @@
 Changelog
 *********
 
+Graylog 1.2.1
+=============
+
+Released: 2015-09-22
+
+https://www.graylog.org/graylog-1-2-1-is-now-available/
+
+* Fixed various issues around importing and applying content packs `Graylog2/graylog2-server#1423 <https://github.com/Graylog2/graylog2-server/issues/1423>`_, `Graylog2/graylog2-server#1434 <https://github.com/Graylog2/graylog2-server/issues/1434>`_, `Graylog2/graylog2-web-interface#1605 <https://github.com/Graylog2/graylog2-web-interface/issues/1605>`_, `Graylog2/graylog2-web-interface#1614 <https://github.com/Graylog2/graylog2-web-interface/pull/1614>`_
+* Fixed loading existing alarm callbacks that had been created with Graylog 1.0.x or earlier `Graylog2/graylog2-server#1428 <https://github.com/Graylog2/graylog2-server/issues/1428>`_
+* Fixed compatibility problem with Elasticsearch 1.5.x and earlier `Graylog2/graylog2-server#1426 <https://github.com/Graylog2/graylog2-server/issues/1426>`_
+* Fixed handling of statistical functions in field graphs `Graylog2/graylog2-web-interface#1604 <https://github.com/Graylog2/graylog2-web-interface/issues/1604>`_
+* Use correct title when adding quick values to a dashboard `Graylog2/graylog2-web-interface#1603 <https://github.com/Graylog2/graylog2-web-interface/issues/1603>`_
+
+
+Graylog 1.2.0
+=============
+
+Released: 2015-09-14
+
+https://www.graylog.org/announcing-graylog-1-2-ga-release-includes-30-new-features/
+
+* Make sure existing role assignments survive on LDAP account sync. `Graylog2/graylog2-server#1405 <https://github.com/Graylog2/graylog2-server/issues/1405>`_ | `Graylog2/graylog2-server#1406 <https://github.com/Graylog2/graylog2-server/pull/1406>`_
+* Use memberOf query for ActiveDirectory to speed up LDAP queries. `Graylog2/graylog2-server#1407 <https://github.com/Graylog2/graylog2-server/pull/1407>`_
+* Removed disable_index_range_calculation configuration option. `Graylog2/graylog2-server#1411 <https://github.com/Graylog2/graylog2-server/pull/1411>`_
+* Avoid potentially long-running Elasticsearch cluster-level operations by only saving an index range if it actually changed. `Graylog2/graylog2-server#1412 <https://github.com/Graylog2/graylog2-server/pull/1412>`_
+* Allow editing the roles of LDAP users. `Graylog2/graylog2-web-interface#1598 <https://github.com/Graylog2/graylog2-web-interface/pull/1598>`_
+* Improved quick values widget. `Graylog2/graylog2-web-interface#1487 <https://github.com/Graylog2/graylog2-web-interface/issues/1487>`_
+
+
+Graylog 1.2.0-rc.4
+==================
+
+Released: 2015-09-08
+
+https://www.graylog.org/announcing-graylog-1-2-rc-4/
+
+* Deprecated MongoDB storage of internal metrics feature.
+* Added customizable LDAP filter for user groups lookup. `Graylog2/graylog2-server#951 <https://github.com/Graylog2/graylog2-server/issues/951>`_
+* Allow usage of count and cardinality statistical functions in dashboard widgets. `Graylog2/graylog2-server#1376 <https://github.com/Graylog2/graylog2-server/issues/1376>`_
+* Disabled index range recalculation on every index rotation. `Graylog2/graylog2-server#1388 <https://github.com/Graylog2/graylog2-server/pull/1388>`_
+* Added automatic migration of user permissions to admin or reader roles. `Graylog2/graylog2-server#1389 <https://github.com/Graylog2/graylog2-server/pull/1389>`_
+* Fixed widget problem with invalid timestamps. `Graylog2/graylog2-web-interface#1390 <https://github.com/Graylog2/graylog2-web-interface/issues/1390>`_
+* Added config option to enable TLS certificate validation in REST client. `Graylog2/graylog2-server#1393 <https://github.com/Graylog2/graylog2-server/pull/1393>`_
+* Fixed rule matching issue in stream routing engine. `Graylog2/graylog2-server#1397 <https://github.com/Graylog2/graylog2-server/pull/1397>`_
+* Changed default titles for stream widgets. `Graylog2/graylog2-web-interface#1476 <https://github.com/Graylog2/graylog2-web-interface/issues/1476>`_
+* Changed data filters to be case insensitive. `Graylog2/graylog2-web-interface#1585 <https://github.com/Graylog2/graylog2-web-interface/issues/1585>`_
+* Improved padding for stack charts. `Graylog2/graylog2-web-interface#1568 <https://github.com/Graylog2/graylog2-web-interface/issues/1568>`_
+* Improved resiliency when Elasticsearch is not available. `Graylog2/graylog2-web-interface#1518 <https://github.com/Graylog2/graylog2-web-interface/issues/1518>`_
+* Redirect to user edit form after updating a user. `Graylog2/graylog2-web-interface#1588 <https://github.com/Graylog2/graylog2-web-interface/issues/1588>`_
+* Improved dashboard widgets error handling. `Graylog2/graylog2-web-interface#1590 <https://github.com/Graylog2/graylog2-web-interface/pull/1590>`_
+* Fixed timing issue in streams UI. `Graylog2/graylog2-web-interface#1490 <https://github.com/Graylog2/graylog2-web-interface/issues/1490>`_
+* Improved indices overview page. `Graylog2/graylog2-web-interface#1593 <https://github.com/Graylog2/graylog2-web-interface/pull/1593>`_
+* Fixed browser back button behavior. `Graylog2/graylog2-web-interface#1594 <https://github.com/Graylog2/graylog2-web-interface/pull/1594>`_
+* Fixed accidental type conversion for number configuration fields in alarmcallback plugins. `Graylog2/graylog2-web-interface#1596 <https://github.com/Graylog2/graylog2-web-interface/issues/1596>`_
+* Fixed data type problem for extracted timestamps via grok. `Graylog2/graylog2-server#1403 <https://github.com/Graylog2/graylog2-server/pull/1403>`_
+
+
+Graylog 1.2.0-rc.2
+==================
+
+Released: 2015-08-31
+
+https://www.graylog.org/announcing-graylog-1-2-rc/
+
+* Implement global Elasticsearch timeout and add ``elasticsearch_request_timeout`` configuration setting. `Graylog2/graylog2-server#1220 <https://github.com/Graylog2/graylog2-server/issues/1220>`_
+* Fixed lots of documentation links. `Graylog2/graylog2-server#1238 <https://github.com/Graylog2/graylog2-server/pull/1238>`_
+* Groovy shell server removed. `Graylog2/graylog2-server#1266 <https://github.com/Graylog2/graylog2-server/pull/1266>`_
+* Lots of index range calculation fixes. `Graylog2/graylog2-server#1274 <https://github.com/Graylog2/graylog2-server/pull/1274>`_
+* New Raw AMQP input. `Graylog2/graylog2-server#1280 <https://github.com/Graylog2/graylog2-server/pull/1280>`_
+* New Syslog AMQP input. `Graylog2/graylog2-server#1280 <https://github.com/Graylog2/graylog2-server/pull/1280>`_
+* Updated bundled Elasticsearch to 1.7.1.
+* The fields in configuration dialogs for inputs and outputs are now ordered. `Graylog2/graylog2-server#1282 <https://github.com/Graylog2/graylog2-server/issues/1282>`_
+* Allow server startup without working Elasticsearch cluster. `Graylog2/graylog2-server#1136 <https://github.com/Graylog2/graylog2-server/issues/1136>`_, `Graylog2/graylog2-server#1289 <https://github.com/Graylog2/graylog2-server/pull/1289>`_
+* Added OR operator to stream matching. `Graylog2/graylog2-server#1292 <https://github.com/Graylog2/graylog2-server/pull/1292>`_, `Graylog2/graylog2-web#1552 <https://github.com/Graylog2/graylog2-web-interface/pull/1552>`_
+* New stream router engine with better stream matching performance. `Graylog2/graylog2-server#1305 <https://github.com/Graylog2/graylog2-server/pull/1305>`_, `Graylog2/graylog2-server#1309 <https://github.com/Graylog2/graylog2-server/pull/1309>`_
+* Grok pattern import/export support for content packs. `Graylog2/graylog2-server#1300 <https://github.com/Graylog2/graylog2-server/pull/1300>`_, `Graylog2/graylog2-web#1527 <https://github.com/Graylog2/graylog2-web-interface/pull/1527>`_
+* Added MessageListCodec interface for codec implementations that can decode multiple messages from one raw message. `Graylog2/graylog2-server#1307 <https://github.com/Graylog2/graylog2-server/pull/1307>`_
+* Added keepalive configuration option for all TCP transports. `Graylog2/graylog2-server#1287 <https://github.com/Graylog2/graylog2-server/issues/1287>`_, `Graylog2/graylog2-server#1318 <https://github.com/Graylog2/graylog2-server/pull/1318>`_
+* Support for roles and LDAP groups. `Graylog2/graylog2-server#1321 <https://github.com/Graylog2/graylog2-server/issues/1321>`_, `Graylog2/graylog2-server#951 <https://github.com/Graylog2/graylog2-server/issues/951>`_
+* Added timezone configuration option to date converter. `Graylog2/graylog2-server#1320 <https://github.com/Graylog2/graylog2-server/issues/1320>`_, `Graylog2/graylog2-server#1324 <https://github.com/Graylog2/graylog2-server/pull/1324>`_
+* Added alarmcallback history feature. `Graylog2/graylog2-server#1313 <https://github.com/Graylog2/graylog2-server/pull/1313>`_, `Graylog2/graylog2-web#1537 <https://github.com/Graylog2/graylog2-web-interface/pull/1537>`_
+* Added more configuration options to GELF output. (TCP settings, TLS support) `Graylog2/graylog2-server#1337 <https://github.com/Graylog2/graylog2-server/pull/1337>`_, `Graylog2/graylog2-server#979 <https://github.com/Graylog2/graylog2-server/issues/979>`_
+* Store timestamp and some other internal fields in Elasticsearch as doc values. Removed "elasticsearch_store_timestamps_as_doc_values" option from configuration file. `Graylog2/graylog2-server#1335 <https://github.com/Graylog2/graylog2-server/issues/1335>`_, `Graylog2/graylog2-server#1342 <https://github.com/Graylog2/graylog2-server/pull/1342>`_
+* Added TLS support for GELF HTTP input. `Graylog2/graylog2-server#1348 <https://github.com/Graylog2/graylog2-server/pull/1348>`_
+* Added JSON extractor. `Graylog2/graylog2-server#632 <https://github.com/Graylog2/graylog2-server/issues/632>`_, `Graylog2/graylog2-server#1355 <https://github.com/Graylog2/graylog2-server/pull/1355>`_, `Graylog2/graylog2-web#1555 <https://github.com/Graylog2/graylog2-web-interface/pull/1555>`_
+* Added support for TLS client certificate authentication to all TCP based inputs. `Graylog2/graylog2-server#1357 <https://github.com/Graylog2/graylog2-server/pull/1357>`_, `Graylog2/graylog2-server#1363 <https://github.com/Graylog2/graylog2-server/pull/1363>`_
+* Added stacked chart widget. `Graylog2/graylog2-server#1284 <https://github.com/Graylog2/graylog2-server/pull/1284>`_, `Graylog2/graylog2-web#1513 <https://github.com/Graylog2/graylog2-web-interface/pull/1513>`_
+* Added cardinality option to field histograms. `Graylog2/graylog2-web#1529 <https://github.com/Graylog2/graylog2-web-interface/pull/1529>`_, `Graylog2/graylog2-server#1303 <https://github.com/Graylog2/graylog2-server/pull/1303>`_
+* Lots of dashboard improvements. `Graylog2/graylog2-web#1550 <https://github.com/Graylog2/graylog2-web-interface/pull/1550>`_
+* Replaced Gulp with Webpack. `Graylog2/graylog2-web#1548 <https://github.com/Graylog2/graylog2-web-interface/pull/1548>`_
+* Updated to Play 2.3.10.
+
+
+
 Graylog 1.1.6
 =============
 
