@@ -2,6 +2,251 @@
 Changelog
 *********
 
+Graylog 1.1.6
+=============
+
+Released: 2015-08-06
+
+https://www.graylog.org/graylog-1-1-6-released/
+
+* Fix edge case in <em>SyslogOctetCountFrameDecoder</em> which caused the Syslog TCP input to reset connections (`Graylog2/graylog2-server#1105 <https://github.com/Graylog2/graylog2-server/issues/1105>`_, `Graylog2/graylog2-server#1339 <https://github.com/Graylog2/graylog2-server/issues/1339>`_)
+* Properly log errors in the Netty channel pipeline (`Graylog2/graylog2-server#1340 <https://github.com/Graylog2/graylog2-server/issues/1340>`_)
+* Prevent creation of invalid alert conditions (`Graylog2/graylog2-server#1332 <https://github.com/Graylog2/graylog2-server/issues/1332>`_)
+* Upgrade to `Elasticsearch 1.6.2 <https://www.elastic.co/blog/elasticsearch-1-7-1-and-1-6-2-released>`_
+
+
+Graylog 1.1.5
+=============
+
+Released: 2015-07-27
+
+https://www.graylog.org/graylog-1-1-5-released/
+
+* Improve handling of exceptions in the JournallingMessageHandler (`Graylog2/graylog2-server#1286 <https://github.com/Graylog2/graylog2-server/pull/1286>`_)
+* Upgrade to Elasticsearch 1.6.1 (`Graylog2/graylog2-server#1312 <https://github.com/Graylog2/graylog2-server/pull/1312>`_)
+* Remove hard-coded limit for UDP receive buffer size (`Graylog2/graylog2-server#1290 <https://github.com/Graylog2/graylog2-server/pull/1290>`_)
+* Ensure that <tt>elasticsearch_index_prefix</tt> is lowercase (`commit 2173225 <https://github.com/Graylog2/graylog2-server/commit/21732256ac36f9567be1605f533ebbba7f363468>`_ )
+* Add configuration option for time zone to <em>Date</em> converter (`Graylog2/graylog2-server#1320 <https://github.com/Graylog2/graylog2-server/issues/1320>`_)
+* Fix NPE if the disk journal is disabled on a node (`Graylog2/graylog2-web-interface#1520 <https://github.com/Graylog2/graylog2-web-interface/pull/1520>`_)
+* Statistic and Chart error: Adding time zone offset caused overflow (`Graylog2/graylog2-server#1257 <https://github.com/Graylog2/graylog2-server/issues/1257>`_)
+* Ignore stream alerts and throughput on serialize (`Graylog2/graylog2-server#1309 <https://github.com/Graylog2/graylog2-server/pull/1309>`_)
+* Fix dynamic keyword time-ranges for dashboard widgets created from content packs (`Graylog2/graylog2-server#1308 <https://github.com/Graylog2/graylog2-server/pull/1308>`_)
+* Upgraded Anonymous Usage Statistics plugin to version 1.1.1
+
+
+Graylog 1.1.4
+=============
+
+Released: 2015-06-30
+
+https://www.graylog.org/graylog-v1-1-4-is-now-available/
+
+* Make heartbeat timeout option for AmqpTransport optional. `Graylog2/graylog2-server#1010 <https://github.com/Graylog2/graylog2-server/issues/1010>`_
+* Export as CSV on stream fails with "Invalid range type provided." `Graylog2/graylog2-web-interface#1504 <https://github.com/Graylog2/graylog2-web-interface/issues/1504>`_
+
+
+Graylog 1.1.3
+=============
+
+Released: 2015-06-19
+
+https://www.graylog.org/graylog-v1-1-3-is-now-available/
+
+* Log error message early if there is a MongoDB connection error. `Graylog2/graylog2-server#1249 <https://github.com/Graylog2/graylog2-server/issues/1249>`_
+* Fixed field content value alert condition. `Graylog2/graylog2-server#1245 <https://github.com/Graylog2/graylog2-server/issues/1245>`_
+* Extend warning about SO_RCVBUF size to UDP inputs. `Graylog2/graylog2-server#1243 <https://github.com/Graylog2/graylog2-server/issues/1243>`_
+* Scroll on button dropdowns. `Graylog2/graylog2-web-interface#1477 <https://github.com/Graylog2/graylog2-web-interface/issues/1477>`_
+* Normalize graph widget numbers before drawing them. `Graylog2/graylog2-web-interface#1479 <https://github.com/Graylog2/graylog2-web-interface/issues/1479>`_
+* Fix highlight result checkbox position on old Firefox. `Graylog2/graylog2-web-interface#1440 <https://github.com/Graylog2/graylog2-web-interface/issues/1440>`_
+* Unescape terms added to search bar. `Graylog2/graylog2-web-interface#1484 <https://github.com/Graylog2/graylog2-web-interface/issues/1484>`_
+* Load another message in edit extractor page not working. `Graylog2/graylog2-web-interface#1488 <https://github.com/Graylog2/graylog2-web-interface/issues/1488>`_
+* Reader users aren't able to export search results as CSV. `Graylog2/graylog2-web-interface#1492 <https://github.com/Graylog2/graylog2-web-interface/issues/1492>`_
+* List of streams not loaded on message details page. `Graylog2/graylog2-web-interface#1496 <https://github.com/Graylog2/graylog2-web-interface/issues/1496>`_
+
+
+Graylog 1.1.2
+=============
+
+Released: 2015-06-10
+
+https://www.graylog.org/graylog-v1-1-2-is-now-available/
+
+* Get rid of NoSuchElementException if index alias doesn't exist. `Graylog2/graylog2-server#1218 <https://github.com/Graylog2/graylog2-server/issues/1218>`_
+* Make Alarm Callbacks API compatible to Graylog 1.0.x again. `Graylog2/graylog2-server#1221 <https://github.com/Graylog2/graylog2-server/issues/1221>`_`Graylog2/graylog2-server#1222 <https://github.com/Graylog2/graylog2-server/issues/1222>`_ `Graylog2/graylog2-server#1224 <https://github.com/Graylog2/graylog2-server/issues/1224>`_
+* Fixed issues with natural language parser for keyword time range. `Graylog2/graylog2-server#1226 <https://github.com/Graylog2/graylog2-server/issues/1226>`_
+* Unable to write Graylog metrics to MongoDB `Graylog2/graylog2-server#1228 <https://github.com/Graylog2/graylog2-server/issues/1228>`_
+* Unable to delete user. `Graylog2/graylog2-server#1209 <https://github.com/Graylog2/graylog2-server/issues/1209>`_
+* Unable to unpause streams, dispite editing permissions. `Graylog2/graylog2-web-interface#1456 <https://github.com/Graylog2/graylog2-web-interface/issues/1456>`_
+* Choose quick values widget size dynamically. `Graylog2/graylog2-web-interface#1422 <https://github.com/Graylog2/graylog2-web-interface/issues/1422>`_
+* Default field sort order is not guaranteed after reload. `Graylog2/graylog2-web-interface#1436 <https://github.com/Graylog2/graylog2-web-interface/issues/1436>`_
+* Toggling all fields in search list throws error and breaks pagination. `Graylog2/graylog2-web-interface#1434 <https://github.com/Graylog2/graylog2-web-interface/issues/1434>`_
+* Improve multi-line log messages support. `Graylog2/graylog2-web-interface#612 <https://github.com/Graylog2/graylog2-web-interface/issues/612>`_
+* NPE when clicking a message from a deleted input on a stopped node. `Graylog2/graylog2-web-interface#1444 <https://github.com/Graylog2/graylog2-web-interface/issues/1444>`_
+* Auto created search syntax must use quotes for values with whitespaces in them.`Graylog2/graylog2-web-interface#1448 <https://github.com/Graylog2/graylog2-web-interface/issues/1448>`_
+* Quick Values doesn't update for new field. `Graylog2/graylog2-web-interface#1438 <https://github.com/Graylog2/graylog2-web-interface/issues/1438>`_
+* New Quick Values list too large. `Graylog2/graylog2-web-interface#1442 <https://github.com/Graylog2/graylog2-web-interface/issues/1442>`_
+* Unloading referenced alarm callback plugin breaks alarm callback listing. `Graylog2/graylog2-web-interface#1450 <https://github.com/Graylog2/graylog2-web-interface/issues/1450>`_
+* Add to search button doesn't work as expected for "level" field. `Graylog2/graylog2-web-interface#1453 <https://github.com/Graylog2/graylog2-web-interface/issues/1453>`_
+* Treat "*" query as empty query. `Graylog2/graylog2-web-interface#1420 <https://github.com/Graylog2/graylog2-web-interface/issues/1420>`_
+* Improve title overflow on widgets. `Graylog2/graylog2-web-interface#1430 <https://github.com/Graylog2/graylog2-web-interface/issues/1430>`_
+* Convert NaN to 0 on histograms. `Graylog2/graylog2-web-interface#1417 <https://github.com/Graylog2/graylog2-web-interface/issues/1417>`_
+* "&lt;&gt;" values in fields are unescaped and don't display in Quick Values. `Graylog2/graylog2-web-interface#1455 <https://github.com/Graylog2/graylog2-web-interface/issues/1455>`_
+* New quickvalues are not showing number of terms. `Graylog2/graylog2-web-interface#1411 <https://github.com/Graylog2/graylog2-web-interface/issues/1411>`_
+* Default index for split &amp; index extractor results in an error. `Graylog2/graylog2-web-interface#1464 <https://github.com/Graylog2/graylog2-web-interface/issues/1464>`_
+* Improve behaviour when field graph fails to load. `Graylog2/graylog2-web-interface#1276 <https://github.com/Graylog2/graylog2-web-interface/issues/1276>`_
+* Unable to unpause streams, dispite editing permissions. `Graylog2/graylog2-web-interface#1456 <https://github.com/Graylog2/graylog2-web-interface/issues/1456>`_
+* Wrong initial size of quick values pie chart. `Graylog2/graylog2-web-interface#1469 <https://github.com/Graylog2/graylog2-web-interface/issues/1469>`_
+* Problems refreshing data on quick values pie chart. `Graylog2/graylog2-web-interface#1470 <https://github.com/Graylog2/graylog2-web-interface/issues/1470>`_
+* Ignore streams with no permissions on message details. `Graylog2/graylog2-web-interface#1472 <https://github.com/Graylog2/graylog2-web-interface/issues/1472>`_
+
+
+Graylog 1.1.1
+=============
+
+Released: 2015-06-05
+
+https://www.graylog.org/graylog-v1-1-1-is-now-available/
+
+* Fix problem with missing alarmcallbacks. `Graylog2/graylog2-server#1214 <https://github.com/Graylog2/graylog2-server/issues/1214>`_
+* Add additional newline between messages to alert email. `Graylog2/graylog2-server#1216 <https://github.com/Graylog2/graylog2-server/issues/1216>`_
+* Fix incorrect index range calculation. `Graylog2/graylog2-server#1217 <https://github.com/Graylog2/graylog2-server/issues/1217>`_ `Graylog2/graylog2-web-interface#1266 <https://github.com/Graylog2/graylog2-web-interface/issues/1266>`_
+* Fix sidebar auto-height on old Firefox versions. `Graylog2/graylog2-web-interface#1410 <https://github.com/Graylog2/graylog2-web-interface/issues/1410>`_
+* Fix "create one now" link on stream list page. `Graylog2/graylog2-web-interface#1424 <https://github.com/Graylog2/graylog2-web-interface/issues/1424>`_
+* Do not update StreamThroughput when unmounted. `Graylog2/graylog2-web-interface#1428 <https://github.com/Graylog2/graylog2-web-interface/issues/1428>`_
+* Fix position of alert annotations in search result histogram. `Graylog2/graylog2-web-interface#1421 <https://github.com/Graylog2/graylog2-web-interface/issues/1421>`_
+* Fix NPE when searching. `Graylog2/graylog2-web-interface#1212 <https://github.com/Graylog2/graylog2-web-interface/issues/1212>`_
+* Hide unlock dashboard link for reader users. `Graylog2/graylog2-web-interface#1429 <https://github.com/Graylog2/graylog2-web-interface/issues/1429>`_
+* Open radio documentation link on a new window. `Graylog2/graylog2-web-interface#1427 <https://github.com/Graylog2/graylog2-web-interface/issues/1427>`_
+* Use radio node page on message details. `Graylog2/graylog2-web-interface#1423 <https://github.com/Graylog2/graylog2-web-interface/issues/1423>`_
+
+
+Graylog 1.1.0
+=============
+
+Released: 2015-06-04
+
+https://www.graylog.org/graylog-1-1-is-now-generally-available/
+
+* Properly set ``node_id`` on message input `Graylog2/graylog2-server#1210 <https://github.com/Graylog2/graylog2-server/issues/1210>`_
+* Fixed handling of booleans in configuration forms in the web interface
+* Various design fixes in the web interface
+
+
+Graylog 1.1.0-rc.3
+==================
+
+Released: 2015-06-02
+
+https://www.graylog.org/graylog-v1-1-rc3-is-now-available/
+
+* Unbreak server startup with collector thresholds set. `Graylog2/graylog2-server#1194 <https://github.com/Graylog2/graylog2-server/issues/1194>`_
+* Adding verbal alert description to alert email templates and subject line defaults. `Graylog2/graylog2-server#1158 <https://github.com/Graylog2/graylog2-server/issues/1158>`_
+* Fix message backlog in default body template in FormattedEmailAlertSender. `Graylog2/graylog2-server#1163 <https://github.com/Graylog2/graylog2-server/issues/1163>`_
+* Make RawMessageEvent's fields volatile to guard against cross-cpu visibility issues. `Graylog2/graylog2-server#1207 <https://github.com/Graylog2/graylog2-server/issues/1207>`_
+* Set default for "disable_index_range_calculation" to "true".
+* Passing in value to text area fields in configuration forms. `Graylog2/graylog2-web-interface#1340 <https://github.com/Graylog2/graylog2-web-interface/issues/1340>`_
+* Stream list has no loading spinner. `Graylog2/graylog2-web-interface#1309 <https://github.com/Graylog2/graylog2-web-interface/issues/1309>`_
+* Showing a helpful notification when there are no active/inactive collectors. `Graylog2/graylog2-web-interface#1302 <https://github.com/Graylog2/graylog2-web-interface/issues/1302>`_
+* Improve behavior when field graphs are stacked. `Graylog2/graylog2-web-interface#1348 <https://github.com/Graylog2/graylog2-web-interface/issues/1348>`_
+* Keep new lines added by users on alert callbacks. `Graylog2/graylog2-web-interface#1270 <https://github.com/Graylog2/graylog2-web-interface/issues/1270>`_
+* Fix duplicate metrics reporting if two components subscribed to the same metric on the same page.`Graylog2/graylog2-server#1199 <https://github.com/Graylog2/graylog2-server/issues/1199>`_
+* Make sidebar visible on small screens. `Graylog2/graylog2-web-interface#1390 <https://github.com/Graylog2/graylog2-web-interface/issues/1390>`_
+* Showing warning and disabling edit button for output if plugin is missing. `Graylog2/graylog2-web-interface#1185 <https://github.com/Graylog2/graylog2-web-interface/issues/1185>`_
+* Using formatted fields in old message loader. `Graylog2/graylog2-web-interface#1393 <https://github.com/Graylog2/graylog2-web-interface/issues/1393>`_
+* Several styling and UX improvements
+
+
+Graylog 1.1.0-rc.1
+==================
+
+Released: 2015-05-27
+
+https://www.graylog.org/graylog-v1-1-rc1-is-now-available/
+
+* Unable to send email alerts. `Graylog2/graylog2-web-interface#1346 <https://github.com/Graylog2/graylog2-web-interface/issues/1346>`_
+* "Show messages from this collector view" displays no messages. `Graylog2/graylog2-web-interface#1334 <https://github.com/Graylog2/graylog2-web-interface/issues/1334>`_
+* Exception error in search page when using escaped characters. `Graylog2/graylog2-web-interface#1356 <https://github.com/Graylog2/graylog2-web-interface/issues/1356>`_
+* Wrong timestamp on stream rule editor. `Graylog2/graylog2-web-interface#1328 <https://github.com/Graylog2/graylog2-web-interface/issues/1328>`_
+* Quickvalue values are not linked to update search query. `Graylog2/graylog2-web-interface#1296 <https://github.com/Graylog2/graylog2-web-interface/issues/1296>`_
+* Stream list has no loading spinner. `Graylog2/graylog2-web-interface#1309 <https://github.com/Graylog2/graylog2-web-interface/issues/1309>`_
+* Collector list with only inactive collectors is confusing. `Graylog2/graylog2-web-interface#1302 <https://github.com/Graylog2/graylog2-web-interface/issues/1302>`_
+* Update sockjs-client to 1.0.0. `Graylog2/graylog2-web-interface#1344 <https://github.com/Graylog2/graylog2-web-interface/issues/1344>`_
+* Scroll to search bar when new query term is added. `Graylog2/graylog2-web-interface#1284 <https://github.com/Graylog2/graylog2-web-interface/issues/1284>`_
+* Scroll to quick values if not visible. `Graylog2/graylog2-web-interface#1284 <https://github.com/Graylog2/graylog2-web-interface/issues/1284>`_
+* Scroll to newly created field graphs. `Graylog2/graylog2-web-interface#1284 <https://github.com/Graylog2/graylog2-web-interface/issues/1284>`_
+* Problems with websockets and even xhr streaming. `Graylog2/graylog2-web-interface#1344 <https://github.com/Graylog2/graylog2-web-interface/issues/1344>`_ `Graylog2/graylog2-web-interface#1353 <https://github.com/Graylog2/graylog2-web-interface/issues/1353>`_ `Graylog2/graylog2-web-interface#1338 <https://github.com/Graylog2/graylog2-web-interface/issues/1338>`_ `Graylog2/graylog2-web-interface#1322 <https://github.com/Graylog2/graylog2-web-interface/issues/1322>`_
+* Add to search bar not working on sources tab.`Graylog2/graylog2-web-interface#1350 <https://github.com/Graylog2/graylog2-web-interface/issues/1350>`_
+* Make field graphs work with streams. `Graylog2/graylog2-web-interface#1352 <https://github.com/Graylog2/graylog2-web-interface/issues/1352>`_
+* Improved page design on outputs page. `Graylog2/graylog2-web-interface#1236 <https://github.com/Graylog2/graylog2-web-interface/issues/1236>`_
+* Set startpage button missing for dashboards. `Graylog2/graylog2-web-interface#1345 <https://github.com/Graylog2/graylog2-web-interface/issues/1345>`_
+* Generating chart for http response code is broken. `Graylog2/graylog2-web-interface#1358 <https://github.com/Graylog2/graylog2-web-interface/issues/1358>`_
+
+
+Graylog 1.1.0-beta.3
+====================
+
+Released: 2015-05-27
+
+https://www.graylog.org/graylog-1-1-beta-3-is-now-available/
+
+* Kafka inputs now support syslog, GELF and raw messages `Graylog2/graylog2-server#322 <https://github.com/Graylog2/graylog2-server/issues/322>`_
+* Configurable timezone for the flexdate converter in extractors. `Graylog2/graylog2-server#1166 <https://github.com/Graylog2/graylog2-server/issues/1166>`_
+* Allow decimal values for greater/smaller stream rules. `Graylog2/graylog2-server#1101 <https://github.com/Graylog2/graylog2-server/issues/1101>`_
+* New configuration file option to control the default widget cache time. `Graylog2/graylog2-server#1170 <https://github.com/Graylog2/graylog2-server/issues/1170>`_
+* Expose heartbeat configuration for AMQP inputs. `Graylog2/graylog2-server#1010 <https://github.com/Graylog2/graylog2-server/issues/1010>`_
+* New alert condition to alert on field content. `Graylog2/graylog2-server#537 <https://github.com/Graylog2/graylog2-server/issues/537>`_
+* Add <code>-Dwebsockets.enabled=false</code> option for the web interface to disable websockets. `Graylog2/graylog2-web-interface#1322 <https://github.com/Graylog2/graylog2-web-interface/issues/1322>`_
+* Clicking the Graylog logo redirects to the custom startpage now. `Graylog2/graylog2-web-interface#1315 <https://github.com/Graylog2/graylog2-web-interface/issues/1315>`_
+* Improved reset and filter feature in sources tab. `Graylog2/graylog2-web-interface#1337 <https://github.com/Graylog2/graylog2-web-interface/issues/1337>`_
+* Fixed issue with stopping Kafka based inputs. `Graylog2/graylog2-server#1171 <https://github.com/Graylog2/graylog2-server/issues/1171>`_
+* System throughput resource was always returning 0. `Graylog2/graylog2-web-interface#1313 <https://github.com/Graylog2/graylog2-web-interface/issues/1313>`_
+* MongoDB configuration problem with replica sets. `Graylog2/graylog2-server#1173 <https://github.com/Graylog2/graylog2-server/issues/1173>`_
+* Syslog parser did not strip empty structured data fields. `Graylog2/graylog2-server#1161 <https://github.com/Graylog2/graylog2-server/issues/1161>`_
+* Input metrics did not update after input has been stopped and started again. `Graylog2/graylog2-server#1187 <https://github.com/Graylog2/graylog2-server/issues/1187>`_
+* NullPointerException with existing inputs in database fixed. `Graylog2/graylog2-web-interface#1312 <https://github.com/Graylog2/graylog2-web-interface/issues/1312>`_
+* Improved browser input validation for several browsers. `Graylog2/graylog2-web-interface#1318 <https://github.com/Graylog2/graylog2-web-interface/issues/1318>`_
+* Grok pattern upload did not work correctly. `Graylog2/graylog2-web-interface#1321 <https://github.com/Graylog2/graylog2-web-interface/issues/1321>`_
+* Internet Explorer 9 fixes. `Graylog2/graylog2-web-interface#1319 <https://github.com/Graylog2/graylog2-web-interface/issues/1319>`_ `Graylog2/graylog2-web-interface#1320 <https://github.com/Graylog2/graylog2-web-interface/issues/1320>`_
+* Quick values feature did not work with reader users. `Graylog2/graylog2-server#1169 <https://github.com/Graylog2/graylog2-server/issues/1169>`_
+* Replay link for keyword widgets was broken. `Graylog2/graylog2-web-interface#1323 <https://github.com/Graylog2/graylog2-web-interface/issues/1323>`_
+* Provide visual feedback when expanding message details. `Graylog2/graylog2-web-interface#1283 <https://github.com/Graylog2/graylog2-web-interface/issues/1283>`_
+* Allow filtering of saved searches again. `Graylog2/graylog2-web-interface#1277 <https://github.com/Graylog2/graylog2-web-interface/issues/1277>`_
+* Add back “Show details” link for global input metrics. `Graylog2/graylog2-server#1168 <https://github.com/Graylog2/graylog2-server/issues/1168>`_
+* Provide visual feedback when dashboard widgets are loading. `Graylog2/graylog2-web-interface#1324 <https://github.com/Graylog2/graylog2-web-interface/issues/1324>`_
+* Restore preview for keyword time range selector. `Graylog2/graylog2-web-interface#1280 <https://github.com/Graylog2/graylog2-web-interface/issues/1280>`_
+* Fixed issue where widgets loading data looked empty. `Graylog2/graylog2-web-interface#1324 <https://github.com/Graylog2/graylog2-web-interface/issues/1324>`_
+
+
+Graylog 1.1.0-beta.2
+====================
+
+Released: 2015-05-20
+
+https://www.graylog.org/graylog-1-1-beta-is-now-available/
+
+* CSV output streaming support including full text message
+* Simplified MongoDB configuration with URI support
+* Improved tokenizer for extractors
+* Configurable UDP buffer size for incoming messages
+* Enhanced Grok support with type conversions (integers, doubles and dates)
+* Elasticsearch 1.5.2 support
+* Added support for integrated Log Collector
+* Search auto-complete
+* Manual widget resize
+* Auto resize of widgets based on screen size
+* Faster search results
+* Moved search filter for usability
+* Updated several icons to text boxes for usability
+* Search highlight toggle
+* Pie charts (Stacked charts are coming too!)
+* Improved stream management
+* Output plugin and Alarm callback edit support
+* Dashboard widget search edit
+* Dashboard widget direct search button
+* Dashboard background update support for better performance
+* Log collector status UI
+
+
 Graylog 1.0.2
 =============
 
