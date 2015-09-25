@@ -32,3 +32,4 @@ Contents:
    pages/marketplace
    pages/faq
    pages/ideas_explained
+   pages/changelog
