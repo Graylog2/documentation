@@ -48,12 +48,12 @@ start your container like this::
 
   $ docker run -t -p 9000:9000 -p 12201:12201 -e GRAYLOG_PASSWORD=SeCuRePwD graylog2/allinone
 
-===================== ============================================================================================
+===================== =============================================================================================
 Variable Name         Configuration Option
-===================== ============================================================================================
+===================== =============================================================================================
 GRAYLOG_PASSWORD      Set admin password
 GRAYLOG_USERNAME      Set username for admin user (default: admin)
-GRAYLOG_TIMEZONE      Set `timezone (TZ) <http://en.wikipedia.org/wiki/List_of_tz_database_time_zones>` you are in
+GRAYLOG_TIMEZONE      Set `timezone (TZ) <http://en.wikipedia.org/wiki/List_of_tz_database_time_zones>`_ you are in
 GRAYLOG_SMTP_SERVER   Hostname/IP address of your SMTP server for sending alert mails
 GRAYLOG_RETENTION     Configure how long or how many logs should be stored
 GRAYLOG_NODE_ID       Set server node ID (default: random)
@@ -62,7 +62,7 @@ GRAYLOG_MASTER        IP address of a remote master container (see multi contain
 GRAYLOG_SERVER        Run only server components
 GRAYLOG_WEB           Run web interface only
 ES_MEMORY             Set memory used by Elasticsearch (syntax: 1024m). Defaults to 60% of host memory
-===================== ============================================================================================
+===================== =============================================================================================
 
 Examples
 --------
