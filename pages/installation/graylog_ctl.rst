@@ -150,7 +150,7 @@ Example procedure for an OVA appliance on VMWare:
 | |                                               |                                                  |
 | | sudo mount /dev/sdb1 /var/opt/graylog/data    |                                                  |
 +-------------------------------------------------+--------------------------------------------------+
-| | echo "/dev/sdb1 /var/opt/graylog/data ext4 \\ | Make change permanent                            |
+| | echo "/dev/sdb1 /var/opt/graylog/data ext4    | Make change permanent                            |
 | | defaults 0 0" \| sudo tee -a /etc/fstab       |                                                  |
 | |                                               |                                                  |
 | | sudo shutdown -r now                          |                                                  |
