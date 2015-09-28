@@ -125,6 +125,9 @@ Example procedure for an OVA appliance on VMWare:
 |                                                 | drive. Usually this is `/dev/sdb`                |
 +-------------------------------------------------+--------------------------------------------------+
 | | sudo parted -a optimal /dev/sdb mklabel gpt   | Partition and format new disk                    |
+| |                                               |                                                  |
+| | (A reboot may be necessary at this point)     |                                                  |
+| |                                               |                                                  |
 | | sudo parted -a optimal -- /dev/sdb unit \\    |                                                  |
 | |          compact mkpart primary ext3 "1" "-1" |                                                  |
 | | sudo mkfs.ext4 /dev/sdb1                      |                                                  |
@@ -143,9 +146,8 @@ Example procedure for an OVA appliance on VMWare:
 | | sudo umount /mnt/tmp                          | Mount new disk over data folder                  |
 | | sudo mount /dev/sdb1 /var/opt/graylog/data    |                                                  |
 +-------------------------------------------------+--------------------------------------------------+
-| | sudo nano /etc/fstab                          | Make change permanent                            |
-| | /dev/sdb1       /var/opt/graylog/data  ext4\  |                                                  | 
-| |                          defaults       0 0   |                                                  |
+| | sudo echo "/dev/sdb1 /var/opt/graylog/data"\\ | Make change permanent                            |
+| | "ext4 defaults 0 0" >> /etc/fstab             |                                                  |
 | | sudo shutdown -r now                          |                                                  |
 +-------------------------------------------------+--------------------------------------------------+
 
