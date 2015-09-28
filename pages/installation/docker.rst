@@ -10,7 +10,9 @@ You need a recent `docker` version installed, take a look `here <https://docs.do
 This will create a container with all Graylog services running::
 
   $ docker pull graylog2/allinone
-  $ docker run -t -p 9000:9000 -p 12201:12201 graylog2/allinone
+  $ docker run -t -p 9000:9000 -p 12201:12201 -p 12201:12201/udp graylog2/allinone
+
+To run the container in the background replace `-t` with `-d`.
 
 Using the beta container
 ------------------------
@@ -46,7 +48,7 @@ You can configure the most important aspects of your Graylog instance through en
 to set a variable add a `-e VARIABLE_NAME` option to your `docker run` command. For example to set another admin password
 start your container like this::
 
-  $ docker run -t -p 9000:9000 -p 12201:12201 -e GRAYLOG_PASSWORD=SeCuRePwD graylog2/allinone
+  $ docker run -t -p 9000:9000 -p 12201:12201 -p 12201:12201/udp -e GRAYLOG_PASSWORD=SeCuRePwD graylog2/allinone
 
 ===================== =============================================================================================
 Variable Name         Configuration Option
@@ -123,7 +125,7 @@ Persist data
 ------------
 In order to persist log data and configuration settings mount the Graylog data directory outside the container::
 
-  $ docker run -t -p 9000:9000 -p 12201:12201 -e GRAYLOG_NODE_ID=some-rand-omeu-uidasnodeid -e GRAYLOG_SERVER_SECRET=somesecretsaltstring -v /graylog/data:/var/opt/graylog/data -v /graylog/logs:/var/log/graylog graylog2/allinone
+  $ docker run -t -p 9000:9000 -p 12201:12201 -p 12201:12201/udp -e GRAYLOG_NODE_ID=some-rand-omeu-uidasnodeid -e GRAYLOG_SERVER_SECRET=somesecretsaltstring -v /graylog/data:/var/opt/graylog/data -v /graylog/logs:/var/log/graylog graylog2/allinone
 
 Please make sure that you always use the same node-ID and server secret. Otherwise your users can't login or inputs will not be started after creating a new container on old data.
 
@@ -149,7 +151,7 @@ To setup two containers, one for the web interface and one for the server compon
 
 Start the `master` with Graylog server parts::
 
-  $ docker run -t -p 12900:12900 -p 12201:12201 -p 4001:4001 -e GRAYLOG_SERVER=true graylog2/allinone
+  $ docker run -t -p 12900:12900 -p 12201:12201 -p 12201:12201/udp -p 4001:4001 -e GRAYLOG_SERVER=true graylog2/allinone
 
 The configuration port 4001 is now accessible through the host IP address.
 
