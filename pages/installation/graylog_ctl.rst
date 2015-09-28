@@ -146,8 +146,8 @@ Example procedure for an OVA appliance on VMWare:
 | | sudo umount /mnt/tmp                          | Mount new disk over data folder                  |
 | | sudo mount /dev/sdb1 /var/opt/graylog/data    |                                                  |
 +-------------------------------------------------+--------------------------------------------------+
-| | sudo echo "/dev/sdb1 /var/opt/graylog/data"\\ | Make change permanent                            |
-| | "ext4 defaults 0 0" >> /etc/fstab             |                                                  |
+| | echo "/dev/sdb1 /var/opt/graylog/data ext4 \\ | Make change permanent                            |
+| | defaults 0 0" \| sudo tee -a /etc/fstab       |                                                  |
 | | sudo shutdown -r now                          |                                                  |
 +-------------------------------------------------+--------------------------------------------------+
 
