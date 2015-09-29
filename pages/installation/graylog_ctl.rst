@@ -125,14 +125,20 @@ Example procedure for an OVA appliance on VMWare:
 |                                                 | drive. Usually this is `/dev/sdb`                |
 +-------------------------------------------------+--------------------------------------------------+
 | | sudo parted -a optimal /dev/sdb mklabel gpt   | Partition and format new disk                    |
+| |                                               |                                                  |
+| | (A reboot may be necessary at this point)     |                                                  |
+| |                                               |                                                  |
 | | sudo parted -a optimal -- /dev/sdb unit \\    |                                                  |
 | |          compact mkpart primary ext3 "1" "-1" |                                                  |
+| |                                               |                                                  |
 | | sudo mkfs.ext4 /dev/sdb1                      |                                                  |
 +-------------------------------------------------+--------------------------------------------------+
 | | sudo mkdir /mnt/tmp                           | Mount disk to temporary mount point              |
+| |                                               |                                                  |
 | | sudo mount /dev/sdb1 /mnt/tmp                 |                                                  |
 +-------------------------------------------------+--------------------------------------------------+
 | | cd /var/opt/graylog/data                      | Copy current data to new disk                    |
+| |                                               |                                                  |
 | | sudo cp -ax * /mnt/tmp/                       |                                                  |
 +-------------------------------------------------+--------------------------------------------------+
 | | sudo diff -qr --suppress-common-lines \\      | Compare both folders.                            |
@@ -141,11 +147,12 @@ Example procedure for an OVA appliance on VMWare:
 | | sudo rm -rf /var/opt/graylog/data/*           | Delete old data                                  |
 +-------------------------------------------------+--------------------------------------------------+
 | | sudo umount /mnt/tmp                          | Mount new disk over data folder                  |
+| |                                               |                                                  |
 | | sudo mount /dev/sdb1 /var/opt/graylog/data    |                                                  |
 +-------------------------------------------------+--------------------------------------------------+
-| | sudo nano /etc/fstab                          | Make change permanent                            |
-| | /dev/sdb1       /var/opt/graylog/data  ext4\  |                                                  | 
-| |                          defaults       0 0   |                                                  |
+| | echo "/dev/sdb1 /var/opt/graylog/data ext4 \\ | Make change permanent                            |
+| | defaults 0 0" \| sudo tee -a /etc/fstab       |                                                  |
+| |                                               |                                                  |
 | | sudo shutdown -r now                          |                                                  |
 +-------------------------------------------------+--------------------------------------------------+
 
