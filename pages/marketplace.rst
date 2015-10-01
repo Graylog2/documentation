@@ -2,8 +2,6 @@
 Graylog Marketplace
 *******************
 
-**The Graylog Marketplace is currently in BETA.**
-
 The `Graylog Marketplace <http://marketplace.graylog.org>`_ is the central directory
 of add-ons for Graylog. It contains plugins, content packs, GELF libraries and
 more content built by Graylog developers and community members.
