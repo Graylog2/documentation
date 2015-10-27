@@ -16,7 +16,7 @@ https://www.graylog.org/graylog-1-2-2-is-now-available/
 * Fixed email alerts for users with multiple email addresses. (LDAP setups) `Graylog2/graylog2-server#1439 <https://github.com/Graylog2/graylog2-server/issues/1439>`_, `Graylog2/graylog2-server#1492 <https://github.com/Graylog2/graylog2-server/issues/1492>`_
 * Improve index range handling performance. `Graylog2/graylog2-server#1465 <https://github.com/Graylog2/graylog2-server/issues/1465>`_, `Graylog2/graylog2-server#1493 <https://github.com/Graylog2/graylog2-server/issues/1493>`_
 * Fixed JSON extractor with null values. `Graylog2/graylog2-server#1475 <https://github.com/Graylog2/graylog2-server/issues/1475>`_, `Graylog2/graylog2-server#1505 <https://github.com/Graylog2/graylog2-server/issues/1505>`_
-* Fixed role assignment when updating user via REST API. `Graylog2/graylog2-server#1456 <https://github.com/Graylog2/graylog2-server/issues/1456>`, `Graylog2/graylog2-server#1507 <https://github.com/Graylog2/graylog2-server/issues/1507>`_
+* Fixed role assignment when updating user via REST API. `Graylog2/graylog2-server#1456 <https://github.com/Graylog2/graylog2-server/issues/1456>`_, `Graylog2/graylog2-server#1507 <https://github.com/Graylog2/graylog2-server/issues/1507>`_
 
 
 Graylog 1.2.1
