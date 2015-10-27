@@ -2,6 +2,23 @@
 Changelog
 *********
 
+Graylog 1.2.2
+=============
+
+Released: 2015-10-27
+
+https://www.graylog.org/graylog-1-2-2-is-now-available/
+
+* Fixed a whitespace issue in the extractor UI. `Graylog2/graylog2-web-interface#1650 <https://github.com/Graylog2/graylog2-web-interface/issues/1650>`_
+* Fixed the index description on the indices page. `Graylog2/graylog2-web-interface#1653 <https://github.com/Graylog2/graylog2-web-interface/issues/1653>`_
+* Fixed a memory leak in the GELF UDP handler code. (Analysis and fix contributed by @lightpriest and @onyxmaster on GitHub. Thank you!) `Graylog2/graylog2-server#1462 <https://github.com/Graylog2/graylog2-server/issues/1462>`_, `Graylog2/graylog2-server#1488 <https://github.com/Graylog2/graylog2-server/issues/1488>`_
+* Improved the LDAP group handling code to handle more LDAP setups. `Graylog2/graylog2-server#1433 <https://github.com/Graylog2/graylog2-server/issues/1433>`_, `Graylog2/graylog2-server#1453 <https://github.com/Graylog2/graylog2-server/issues/1453>`_, `Graylog2/graylog2-server#1491 <https://github.com/Graylog2/graylog2-server/issues/1491>`_, `Graylog2/graylog2-server#1494 <https://github.com/Graylog2/graylog2-server/issues/1494>`_
+* Fixed email alerts for users with multiple email addresses. (LDAP setups) `Graylog2/graylog2-server#1439 <https://github.com/Graylog2/graylog2-server/issues/1439>`_, `Graylog2/graylog2-server#1492 <https://github.com/Graylog2/graylog2-server/issues/1492>`_
+* Improve index range handling performance. `Graylog2/graylog2-server#1465 <https://github.com/Graylog2/graylog2-server/issues/1465>`_, `Graylog2/graylog2-server#1493 <https://github.com/Graylog2/graylog2-server/issues/1493>`_
+* Fixed JSON extractor with null values. `Graylog2/graylog2-server#1475 <https://github.com/Graylog2/graylog2-server/issues/1475>`_, `Graylog2/graylog2-server#1505 <https://github.com/Graylog2/graylog2-server/issues/1505>`_
+* Fixed role assignment when updating user via REST API. `Graylog2/graylog2-server#1456 <https://github.com/Graylog2/graylog2-server/issues/1456>`, `Graylog2/graylog2-server#1507 <https://github.com/Graylog2/graylog2-server/issues/1507>`_
+
+
 Graylog 1.2.1
 =============
 
