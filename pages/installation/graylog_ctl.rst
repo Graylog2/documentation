@@ -228,8 +228,8 @@ Upgrade Graylog
 ===============
 
 Always perform a full backup or snapshot of the appliance before proceeding. Only upgrade
-if the release notes say the next version is a drop-in replacement::
-Look for the Graylog version you want to install `here <https://packages.graylog2.org/omnibus>`_ , `graylog_latest` always links to the newest version.
+if the release notes say the next version is a drop-in replacement.
+Look for the Graylog version you want to install `here <https://packages.graylog2.org/omnibus>`_ , `graylog_latest` always links to the newest version::
 
   wget https://packages.graylog2.org/releases/graylog2-omnibus/ubuntu/graylog_latest.deb
   sudo graylog-ctl stop
