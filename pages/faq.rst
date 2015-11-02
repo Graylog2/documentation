@@ -10,7 +10,7 @@ Do I need to buy a license to use Graylog?
 
 We believe software should be open and accessible to all.  You should not have to pay to analyze your own data, no matter how much you have.
 
-Graylog is licensed under the GNU General Public License.  We do not require license fees for production or non-production use.
+Graylog is licensed under the 'GNU General Public License <http://www.gnu.org/licenses/gpl-3.0.en.html>'_.  We do not require license fees for production or non-production use.
 
 How long do you support older versions of the Graylog product?
 --------------------------------------------------------------
@@ -45,11 +45,15 @@ Installation / Setup
 How do I find out if a specific log source is supported?
 --------------------------------------------------------
 
-We support many log sources – and more are coming everyday.  For a complete list, check out Graylog Marketplace, the central repository of Graylog extensions. There are 4 types of content on the Marketplace:
-Content Pack: A file that can be uploaded into your Graylog system that sets up streams, inputs, extractors, dashboards, etc. to support a given log source or use case.
-GELF Library: A library for a programming language or logging framework that supports sending log messages in GELF format for easy integration and pre-structured messages.
-Plug-Ins: Code that extends Graylog to support a specific use case that it doesn’t support out of the box.
-Other Solutions: Any other content or guide that helps you integrate Graylog with an external system or device. For example, how to configure a specific device to support a format Graylog understands out of the box.
+We support many log sources – and more are coming everyday.  For a complete list, check out 'Graylog Marketplace <https://marketplace.graylog.org/>'_, the central repository of Graylog extensions. There are 4 types of content on the Marketplace:
+
+* Plug-Ins: Code that extends Graylog to support a specific use case that it doesn’t support out of the box.
+
+* Content Pack: A file that can be uploaded into your Graylog system that sets up streams, inputs, extractors, dashboards, etc. to support a given log source or use case.
+
+* GELF Library: A library for a programming language or logging framework that supports sending log messages in GELF format for easy integration and pre-structured messages.
+
+* Other Solutions: Any other content or guide that helps you integrate Graylog with an external system or device. For example, how to configure a specific device to support a format Graylog understands out of the box.
 
 Can I install the Graylog Server on Windows?
 --------------------------------------------
@@ -62,12 +66,12 @@ Functionality
 Can Graylog automatically clean old data?
 -----------------------------------------
 
-Absolutely, please see here.
+Absolutely, please see 'here <http://docs.graylog.org/en/1.2/pages/index_model.html?highlight=retention>'_.
 
 Does Graylog support LDAP / AD and its groups?
 ----------------------------------------------
 
-Yup, we’re all over this too.  See this.
+Yup, we’re all over this too.  See 'this <http://docs.graylog.org/en/1.2/pages/users_roles.html?highlight=ldap#external-authentication>'_.
 
 Do we have a user audit log for compliance?
 -------------------------------------------
@@ -85,9 +89,9 @@ Graylog & Integrations
 I want to archive my log data. Can I write to another database, for example HDFS / Hadoop, from Graylog?
 --------------------------------------------------------------------------------------------------------
 
-Yes, you can output data from Graylog to a different database. We currently have an HDFS output plug-in in the Marketplace - thank you sivasamyk!
+Yes, you can output data from Graylog to a different database. We currently have an HDFS output 'plug-in <https://marketplace.graylog.org/addons/99259226-6ba3-48c8-a710-9598b65eda0e>'_ in the Marketplace - thank you 'sivasamyk <https://github.com/sivasamyk>'_!
 
-It’s also easy and fun to write your own, which you can then add to Graylog Marketplace for others to use.
+It’s also easy and fun to 'write your own <http://docs.graylog.org/en/1.2/pages/plugins.html#creating-a-plugin-skeleton>'_, which you can then add to Graylog Marketplace for others to use.
 
 I don’t want to use Elasticsearch as my backend storage system – can I use another database, like MySQL, Oracle, etc?
 ---------------------------------------------------------------------------------------------------------------------
@@ -113,13 +117,13 @@ Support
 I think I’ve found a bug, how do I report it?
 ----------------------------------------------
 
-Think you spotted a bug? Oh no! Please report it in our issue trackers so we can take a look at it.  All issue trackers are hosted on GitHub, tightly coupled to our code and milestones. Don’t hesitate to open issues – we’ll just close them if there is nothing to do. We have GitHub repos for the web interface and the server.
+Think you spotted a bug? Oh no! Please report it in our issue trackers so we can take a look at it.  All issue trackers are hosted on "GitHub <https://github.com/Graylog2>'_, tightly coupled to our code and milestones. Don’t hesitate to open issues – we’ll just close them if there is nothing to do. We have GitHub repos for the 'web interface <https://github.com/Graylog2/graylog2-web-interface/issues>'_ and the 'server <https://github.com/Graylog2/graylog2-server/issues>'_.
 
 I’m having issues installing or configuring Graylog, where can I go for support?
 --------------------------------------------------------------------------------
 
-Check out our Google Group mailing list – you can search for your problem which may already have an answer, or post a new question.
+Check out our Google Group 'mailing list <https://groups.google.com/forum/?hl=en#!forum/graylog2>'_ – you can search for your problem which may already have an answer, or post a new question.
 
-Another source is the #Graylog IRC chat channel on Freenode.  Our developers and a lot of community members hang out here. Just join the channel and add any questions, suggestions or general topics you have.
+Another source is the '#Graylog IRC chat channel on Freenode <https://webchat.freenode.net/?channels=%23graylog>'_.  Our developers and a lot of community members hang out here. Just join the channel and add any questions, suggestions or general topics you have.
 
-If you’re looking for professional commercial support from the Graylog team, we do that too.  Please get in touch here for more details.
+If you’re looking for professional commercial support from the Graylog team, we do that too.  Please 'get in touch here <https://www.graylog.org/support-packages/>'_ for more details.
