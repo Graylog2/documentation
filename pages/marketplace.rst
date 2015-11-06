@@ -55,7 +55,7 @@ We recommend to consult `ChooseALicense.com <http://choosealicense.com>`_ if you
 unsure which license to use.
 
 4 Types of Add-Ons
-=====================
+==================
 
 Plug-Ins: Code that extends Graylog to support a specific use case that it doesn’t support out of the box.
 
