@@ -27,7 +27,7 @@ Contents:
    pages/load_balancers
    pages/index_model
    pages/indexer_failures
-   pages/users_roles
+   pages/users_and_roles
    pages/plugins
    pages/external_dashboards
    pages/marketplace
