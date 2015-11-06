@@ -54,6 +54,17 @@ You cannot submit content that does not contain a ``LICENSE`` or ``COPYING`` fil
 We recommend to consult `ChooseALicense.com <http://choosealicense.com>`_ if you are
 unsure which license to use.
 
+4 Types of Add-Ons
+==================
+
+Plug-Ins: Code that extends Graylog to support a specific use case that it doesn’t support out of the box.
+
+Content Pack: A file that can be uploaded into your Graylog system that sets up streams, inputs, extractors, dashboards, etc. to support a given log source or use case.
+
+GELF Library: A library for a programming language or logging framework that supports sending log messages in GELF format for easy integration and pre-structured messages.
+
+Other Solutions: Any other content or guide that helps you integrate Graylog with an external system or device. For example, how to configure a specific device to support a format Graylog understands out of the box.
+
 Contributing plug-ins
 =====================
 
