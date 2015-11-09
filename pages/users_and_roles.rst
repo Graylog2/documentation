@@ -1,3 +1,5 @@
+.. _usersandrolestoc:
+
 ***************
 Users and Roles
 ***************
