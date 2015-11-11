@@ -15,6 +15,7 @@ Contents:
    :maxdepth: 2
 
    pages/architecture
+   pages/getting_started
    pages/installation
    pages/configuring_es
    pages/sending_data
