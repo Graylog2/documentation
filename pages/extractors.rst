@@ -208,6 +208,29 @@ details.message
 In the create extractor page, you can also customize how to separate list of elements, keys, and key/values. It is also possible
 to flatten JSON structures or expand them into multiple fields, as shown in the example above.
 
+Automatically extract all key=value pairs
+*****************************************
+
+Sometimes you will receive messages like this::
+
+    This is a test message with some key/value pairs. key1=value1 some_other_key=foo
+
+You might want to extract all ``key=value`` pairs into Graylog message fields without having to specify all possible key names or
+even their order. This is how you can easily do this:
+
+Create a new extractor of type "Copy Input" and select to read from the field ``message``. (Or any other string field that contains
+``key=value`` pairs.) Configure the extractor to store the (copied) field value to the same field. In this case ``message``. The
+trick is to add the "Key=Value pairs to fields" converter as last step. Because we use the "Copy Input" extractor, the converter
+will run over the complete field you selected and convert all ``key=value`` pairs it can find.
+
+This is a screenshot of the complete extractor configuration:
+
+.. image:: /images/keyvalue_converter_1.png
+
+... and this is the resulting message:
+
+.. image:: /images/keyvalue_converter_2.png
+
 Normalization
 *************
 
