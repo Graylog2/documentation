@@ -34,6 +34,16 @@ Graylog uses MongoDB to store your configuration data, not your log data. Only m
 
 We have plans to introduce a database abstraction layer in the future. This will give you the flexibility to run MongoDB, MySQL or any other database to store metadata.
 
+Can you guide me on how to replicate MongoDB for High Availability?
+-------------------------------------------------------------------
+
+MongoDB actually supplies this information as part of their documentation.  Check out
+:
+
+* About `MongoDB Replica Sets <https://docs.mongodb.org/manual/replication/>`_.
+
+* How to `convert a standalone MongoDB node to a replica set <https://docs.mongodb.org/manual/tutorial/convert-standalone-to-replica-set/>`_.
+
 Which load balancers do you recommend we use with Graylog?
 ----------------------------------------------------------
 
