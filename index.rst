@@ -25,6 +25,7 @@ Contents:
    pages/dashboards
    pages/extractors
    pages/drools
+   pages/blacklisting
    pages/load_balancers
    pages/index_model
    pages/indexer_failures
