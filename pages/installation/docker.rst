@@ -173,6 +173,13 @@ It is also possible to swap the certificate with your own files. To achieve this
 If you put a file called `/somepath/ca/graylog.crt` respectively `/somepath/ca/graylog.key` in place before starting the container, Graylog
 will pick up those files and make use of your own certificate.
 
+Problems
+--------
+
+In case you see warnings regarding open file limit, try to set ulimit from the outside of the container::
+
+  $ docker run --ulimit nofile=64000:64000 ...
+
 Build
 -----
 
