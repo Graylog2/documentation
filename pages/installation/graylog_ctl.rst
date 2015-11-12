@@ -116,7 +116,7 @@ Example procedure for an OVA appliance on VMWare:
 |                                                 | suitable for the amount of logs you want to      |
 |                                                 | store                                            |
 +-------------------------------------------------+--------------------------------------------------+
-| start the VM again:                             |                                                  |
+| start the VM again and follow these steps:      |                                                  |
 +-------------------------------------------------+--------------------------------------------------+
 | | sudo graylog-ctl stop                         | Stop all running services to prevent disk        |
 |                                                 | access                                           |
