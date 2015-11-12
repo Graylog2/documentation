@@ -150,7 +150,11 @@ Assign a static IP
 ==================
 
 Per default the appliance make use of DHCP to setup the network. If you want to access Graylog under a static IP please
-edit the file ``/etc/network/interfaces`` like this (just the important lines)::
+follow these instructions::
+
+  $ sudo ifdown eth0
+
+Edit the file ``/etc/network/interfaces`` like this (just the important lines)::
 
   auto eth0
     iface eth0 inet static
@@ -161,7 +165,7 @@ edit the file ``/etc/network/interfaces`` like this (just the important lines)::
 
 Activate the new IP and reconfigure Graylog to make use of it::
 
-  $ sudo ifdown eth0 && sudo ifup eth0
+  $ sudo ifup eth0
   $ sudo graylog-ctl reconfigure
 
 Wait some time until all services are restarted and running again. Afterwards you should be able to access Graylog with the new IP.
@@ -169,12 +173,10 @@ Wait some time until all services are restarted and running again. Afterwards yo
 Upgrade Graylog
 ===============
 
-Upgrading is currently in development. Please be careful here, the default behavior of the package was to remove all data during an upgrade process.
-Always perform a full backup or snapshot of the appliance before proceeding. Only upgrade if the release notes say the next version is a drop-in
-replacement. The following steps prevent the deletion of the data directory::
+Always perform a full backup or snapshot of the appliance before proceeding. Only upgrade
+if the release notes say the next version is a drop-in replacement::
 
   wget https://packages.graylog2.org/releases/graylog2-omnibus/ubuntu/graylog_latest.deb
-  sudo rm /var/lib/dpkg/info/graylog.postrm
   sudo graylog-ctl stop
   sudo dpkg -G -i graylog_latest.deb
   sudo graylog-ctl reconfigure
