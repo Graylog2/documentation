@@ -108,3 +108,8 @@ IP addrress of the Squid proxy, which not very useful. This rule overwrites the 
               m.addField("_size",matcher.group(5));
           }
   end
+
+Blacklisting messages
+=====================
+
+You can also use Drools rules to blacklist messages. How to do this is described :ref:`here <blacklisting>`.
