@@ -20,13 +20,6 @@ For our commercial support customers, we support older versions of Graylog up to
 Architecture
 ============
 
-Isn’t Java slow? Does it need a lot of memory?
------------------------------------------------
-
-This is a concern that we hear from time to time. We understand Java has a bad reputation from slow and laggy desktop/GUI applications that eat a lot of memory. However, we are usually able to prove this assumption wrong. Well written Java code for server systems is very efficient and does not need a lot of memory resources.
-
-Give it a try, you might be surprised!
-
 What is MongoDB used for?
 -------------------------
 
@@ -44,13 +37,30 @@ MongoDB actually supplies this information as part of their documentation.  Chec
 
 * How to `convert a standalone MongoDB node to a replica set <https://docs.mongodb.org/manual/tutorial/convert-standalone-to-replica-set/>`_.
 
+I have datacenters across the world and do not want logs forwarding from everywhere to a central location due to bandwidth, etc.  How do I handle this?
+---------------------------------------------------------------------------------------------------------------------------
+
+You can have multiple graylog-server instances in a federated structure, and forward select messages to a centralized GL server.
+
 Which load balancers do you recommend we use with Graylog?
 ----------------------------------------------------------
 
 You can use any.  We have clients running AWS ELB, HAProxy, F5 BIG-IP, and KEMP.
 
+Isn’t Java slow? Does it need a lot of memory?
+-----------------------------------------------
+
+This is a concern that we hear from time to time. We understand Java has a bad reputation from slow and laggy desktop/GUI applications that eat a lot of memory. However, we are usually able to prove this assumption wrong. Well written Java code for server systems is very efficient and does not need a lot of memory resources.
+
+Give it a try, you might be surprised!
+
 Installation / Setup
 ====================
+
+Should I download the OVA appliances or the separate packages?
+--------------------------------------------------------------
+
+If you are downloading Graylog for the first time to evaluate it, go for the appliance.  It is really easy, and can be quickly setup so you can understand if Graylog is right for you.  If you are wanting to use Graylog at some scale in production, and do things like high availabilty (Mongo replication) we recommend you go for the separate packages.
 
 How do I find out if a specific log source is supported?
 --------------------------------------------------------
@@ -76,12 +86,12 @@ Functionality
 Can Graylog automatically clean old data?
 -----------------------------------------
 
-Absolutely, please see `here <http://docs.graylog.org/en/1.2/pages/index_model.html?highlight=retention>`_.
+Absolutely we have data retention features, please see `here <http://docs.graylog.org/en/1.2/pages/index_model.html?highlight=retention>`_.
 
 Does Graylog support LDAP / AD and its groups?
 ----------------------------------------------
 
-Yup, we’re all over this too.  See `this <http://docs.graylog.org/en/1.2/pages/users_roles.html?highlight=ldap#external-authentication>`_.
+Yup, we’re all over this too with read/write roles and group permissions.  To start, see `this <http://docs.graylog.org/en/1.2/pages/users_roles.html?highlight=ldap#external-authentication>`_.  If you want to get very granular, you can go through our Rest API.
 
 Do we have a user audit log for compliance?
 -------------------------------------------
@@ -93,8 +103,21 @@ It seems like Graylog has no reporting functionality?
 
 That’s correct. We currently don’t have built-in reporting functionality that sends automated reports. However, you can use our REST API to generate and send you own reports. A cron job and the scripting language of your choice should do the trick.
 
+Can I filter inbound messages before they are processed by the Graylog server?
+------------------------------------------------------------------------------
+
+Yes, check out our page on how to use `blacklisting <http://docs.graylog.org/en/latest/pages/blacklisting.html>`_.
+
 Graylog & Integrations
 ======================
+
+What is the best way to integrate my applications to Graylog?
+-------------------------------------------------------------
+We recommend that you use `GELF <http://docs.graylog.org/en/latest/pages/sending_data.html?highlight=gelf#gelf-sending-from-applications>`_.  It's easy for your application developers and eliminates the need to store the messages locally.  Also, GELF can just send what app person wants so you don't have to build extractors or do any extra processing in Graylog.
+
+I have a log source that creates dynamic syslog messages based on events and subtypes and grok patterns are difficult to use - what is the best way to handle this?
+----------------------------------------------------------------------------------------------------------------------------
+Not a problem!  Use our `key=value extractor <http://docs.graylog.org/en/1.2/pages/extractors.html#automatically-extract-all-key-value-pairs>`_.
 
 I want to archive my log data. Can I write to another database, for example HDFS / Hadoop, from Graylog?
 --------------------------------------------------------------------------------------------------------
