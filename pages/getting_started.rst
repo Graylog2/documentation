@@ -2,8 +2,8 @@
 Getting Started
 ***************
 
-Take it easy.  The fastest way to evaluate Graylog is to download the virtual appliance file and run it in VMWare or VirtualBox.
-It is a piece of cake -- you got this.
+The fastest way to evaluate Graylog is to download the virtual appliance file and run it in VMWare or VirtualBox.
+It's a piece of cake -- you got this.
 
 Install & Configure
 -------------------
@@ -18,22 +18,22 @@ Go `here <https://www.graylog.org/links/images-ova/>`_ and download the virtual 
 Import the VM
 ^^^^^^^^^^^^^^
 
-These screenshots are for VMWare. VirtualBox is nearly the same, so don't sweat it if that's what you are using.
-Basically, select *File -> Import...* and choose the ``graylog.ova`` file you downloaded and follow the prompts.
+These screenshots are for VMWare (VirtualBox is nearly the same).
+Select *File -> Import...*, choose the ``graylog.ova`` file you downloaded, and follow the prompts.
 
 .. image:: /images/gs_2-import-vm.png
 
 Run the image
 ^^^^^^^^^^^^^^
 
-This is just what you are going to see when you run the image.  Here is where all of the Graylog server processes (more on that later) and the database will run.  We can split them apart later for performance, but just to get a quick overview there is no need.  Don't close this window just yet, we're going to need the IP that's right above your login prompt.
+This is what you will see when you run the image.  This is where all the Graylog server processes (more on that later) and the database will run.  We can split them apart later for performance, but there's no need to do that right now for a quick overview.  Don't close this window just yet, we're going to need the IP for the next step.
 
 .. image:: /images/gs_3-gl-server.png
 
 Connect to the Web Console
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Go to a web browser on your host machine, and type the IP address you saw in the previous screen.  You should get a Graylog Web Console login page.  Enter ``admin/admin`` to login.
+Go to a web browser on your host machine and type the IP address you saw in the previous screen.  You should get a Graylog Web Console login page.  Enter ``admin/admin`` to login.
 
 .. image:: /images/gs_4-gl-webconsole.png
 
@@ -80,7 +80,7 @@ Configure Graylog Input
 
 Now you are now sending data to Graylog, so you need to configure an input.  This will tell Graylog to accept the log messages.
 
-Go to the Graylog console you have in your browser and click *System -> Inputs*.  Then Pick Syslog UDP, and click *Launch* new input.  Fill out the circles with the values in the screen shown below.
+Go back to the Graylog console open in your browser and click *System -> Inputs*.  Then select Syslog UDP and click *Launch* new input.  Fill out the circles with the values in the screen shown below.
 
 .. image:: /images/gs_8-inputstart.png
 
@@ -91,7 +91,7 @@ After that, you should see the Syslog UDP input appear on the screen.
 
 .. image:: /images/gs_9-inputlist.png
 
-Click *Show received messages* button on this screen, and you should have messages at the bottom.
+Click *Show received messages* button on this screen, and you should have messages at the bottom. It may take a few minutes before you have messages coming in.
 
 .. image:: /images/gs_10-messages.png
 
@@ -117,27 +117,27 @@ If You Don't Have Messages
 Create Your Dashboard
 ---------------------
 
+You should be at a screen like the one below. If you dozed off or went to cook some meatballs, go to System -> Inputs, select the Syslog UDP input you created, and hit Show messages.
+
 Now it’s go-time.
 
-You’ve got data coming in, let’s see it up on a screen. Let’s use the histogram we see and create and add that to the dashboard.  I know this data doesn't mean anything in real life -- it's just an example -- don’t start to tune out.  Let’s just use this to get something on the dashboard.
-
-You should be at a screen like the one below.  If you dozed off or went to cook some meatballs, go to *System -> Inputs*, and select the *Syslog UDP* input you created and hit *Show messages*. Now you are all caught up!
+You’ve got data coming in, let’s start adding information to a dashboard to better visualize the data we want to see.
 
 Add a Dashboard
 ^^^^^^^^^^^^^^^^^^
 
-Click *Add count to dashboard*, and it will say *No Dashboards, create one?*   Yes!  Click that.
+Let’s start by adding the message count data to a dashboard. Click *Add count to dashboard*, and it will say *No Dashboards, create one?*   Yes!  Click that.
 
 .. image:: /images/gs_11-createdash.png
 
-Give your dashboard a title, and a description.
+Give your new dashboard a title and description.
 
 .. image:: /images/gs_12-titledash.png
 
 Add a Dashboard Widget
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Now it will let you create a widget.  I like to put a timeframe in the title, and trends are always a big bowl of sunshine.
+Now it will let you create a widget. In this case, we are creating a widget from our search result of message count in the last 8 hours. I like to put a timeframe in the title, and trends are always a big bowl of sunshine.
 
 .. image:: /images/gs_13-createwidget.png
 
@@ -155,11 +155,9 @@ And you'll end up with the widget you created!
 Extra Credit - One more
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Let’s do one for root activity, because it sounds like it may actually be useful.  Click *Search*.  Yeah yeah, we know Search does not sound like “create widget”.  But, that Search button allows us to do a lot in Graylog.  You’ll see.  #rollwithit
+Let’s add a widget for root activity, because that sounds like it may actually be useful. We need to start with a search query for root. Click *Search*. Type root in the search and select your timeframe. Once the search results come in, click *Add count to the dashboard*. Give your chart a title and hit *Create*.
 
 .. image:: /images/gs_16-search.png
-
-Fill out root in the search, and add the count to the dashboard.  Then give your chart a title and hit *Create*.
 
 .. image:: /images/gs_17-crwidget.png
 
@@ -167,31 +165,35 @@ The new widget is now on the screen.  Goob job - you’ve got this!
 
 .. image:: /images/gs_18-dashboard2.png
 
-Go play around, if you want to know how to create more exciting charts and graphs, check the section below.
+Go play around. If you want to know how to create more exciting charts and graphs, check out the section below.
 
 Extra Credit - Graphs
 ^^^^^^^^^^^^^^^^^^^^^
 
-The search screen is the start of this, check out this example in which I’ve clicked *Search*, then opened message, and then clicked *Quick Values*.  I know, not real world useful with this data, but see how it easy it is?  This can also be added to your dashboard.
+Let’s start by searching for all messages within the last 1 hour. To do this, click Search, select Search in the last 1 hour, and leave the search bar blank. Once the search results populate, expand the messages field and select *Quick Values*. Click *Add to dashboard* to add this entire pie chart and data table to your dashboard.
 
 .. image:: /images/gs_19-graphdash.png
 
 I like to track password changes, privilege assignments, root activity, system events, user logins, etc.  Go knock yourself out and show your co-workers.
 
+Once you have a few widgets in your dashboard, go into unlock / edit mode to quickly edit any widget, rearrange them on your dashboard, or delete. Make sure to click Lock to save!
+
 
 Get Alerted
 -----------
 
-I know, we’re all lazy, and busy.  Nobody wants to just stare at a dashboard all day like it’s the World Cup.  That’s for management.
+I know, we’re all lazy, and busy. Nobody wants to just stare at a dashboard all day like it’s the World Cup. That’s for management.
 
-Let’s configure some proactive alerts.
+Let’s configure some proactive alerts to let us know when something needs our attention.
 
 Create a Stream
 ^^^^^^^^^^^^^^^
 
-Click *Alerts*, no…wait, I mean… click *Streams*.  Because that’s what makes sense, right?  Don’t worry, I'll explain it. #rollwithit
+In order to set up an alert, we need to set up a stream. Streams process incoming messages in real time based on conditions that you set. Click *Streams*.
 
 .. image:: /images/gs_20-crstream.png
+
+Let’s create a stream for all incoming security/authentication error messages.  Click Create Stream.
 
 Type in a Title and Description.
 
@@ -199,7 +201,7 @@ Type in a Title and Description.
 
 Create a Stream Rule
 ^^^^^^^^^^^^^^^^^^^^
-So the Stream is processing all inbound messages data that matches the rule *in real time*.  We are going to configure it to do this with our Syslog UDP input for any security alert.
+Next, we are going to configure the stream to process our Syslog UDP input messages for any security alerts.
 
 Hit the *Edit rules* button.
 
@@ -207,24 +209,29 @@ Hit the *Edit rules* button.
 
 Pick the Syslog UDP Input, and click Add stream rule.
 
-Then, type in the values shown below and hit save.  Now we have configured this stream to process in real time all the messages that come in from the security/authorization facility.  Let’s create the alert.
-
 .. image:: /images/gs_23-streamrule.png
 
+Then, type in the values shown below and hit save.
+
+Then click I’m done!
+
+We have just configured this stream to process in real time all the messages that come in from the security/authorization facility. 
+
+Now let’s create the alert.
 
 Create the Alert
 ^^^^^^^^^^^^^^^^
-You now have a trigger and either output it to a 3rd party application or database, or create an alert to ping you when a message that matches our rule comes in.  Let’s hit *Manage Alerts*.
+You can now either output your new stream to a 3rd party application or database, or trigger an alert to ping you in real time when a message that matches our stream rule comes in. Let’s create an alert that will email us when there are more than 2 messages in the last 2 minutes . Click *Manage Alerts*.
 
 .. image:: /images/gs_24-alert.png
 
-Add a new alert condition.  Let’s do it based on message count, and read through the screenshot (you can just put 2’s in everything like I did).  This says if more than 2 messages in the last 2 minutes come, it will trigger an email.  Not for real life here, but I hope this gives you a picture on how it works.
+In the Add new alert condition section, let’s configure and add a new alert. Select message count condition, and configure the rest based on my screenshot (input 2’s in every field). Then click Add alert condition.
 
 .. image:: /images/gs_25-alertcondition.png
 
 Send a Test Email
 ^^^^^^^^^^^^^^^^^
-Then add email as a call back type, as well as an email address on the receivers.  After you’ve added a callback type and receiver, hit the blue ‘Send test alert’ button.
+In the Callbacks section,  select email alert callback, and input your email address in the Receivers section. After you’ve added a callback type and receiver, hit the blue ‘Send test alert’ button.
 
 .. image:: /images/gs_26-alertemail.png
 
