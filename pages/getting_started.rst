@@ -26,7 +26,7 @@ Select *File -> Import...*, choose the ``graylog.ova`` file you downloaded, and 
 Run the image
 ^^^^^^^^^^^^^^
 
-This is what you will see when you run the image.  This is where all the Graylog server processes (more on that later) and the database will run.  We can split them apart later for performance, but there's no need to do that right now for a quick overview.  Don't close this window just yet, we're going to need the IP for the next step.
+This is what you'll see when you run the image.  This is where all the Graylog server processes (more on that later) and the database will run.  We can split them apart later for performance, but there's no need to do that right now for a quick overview.  Don't close this window just yet, we're going to need the IP for the next step.
 
 .. image:: /images/gs_3-gl-server.png
 
@@ -48,7 +48,7 @@ Get Messages In
 Log into the VM
 ^^^^^^^^^^^^^^^
 
-We are going to use rsyslog from the Graylog server image because we already have it.  So, go to the image and login with ``ubuntu/ubuntu``.
+We’re going to use rsyslog because we already have it from the Graylog server image. So, go to the image and login with ``ubuntu/ubuntu``.
 
 .. image:: /images/gs_6-glslogin.png
 
@@ -57,7 +57,7 @@ Modify rsyslog.conf
 
 Go to the /etc directory, and use vi, vim (`CheatSheet <http://www.fprintf.net/vimCheatSheet.html>`_), or the editor of your choice to modify the ``/etc/rsyslog.conf`` file.  There are excellent resources on the web for `rsyslog configuration <http://www.rsyslog.com/doc/v8-stable/tutorials/reliable_forwarding.html>`_.
 
-Add at the bottom of the file so messages will forward::
+At the bottom of the file, add the following so messages will forward:
 
   *.* @127.0.0.1:5140
 
@@ -95,7 +95,7 @@ Click *Show received messages* button on this screen, and you should have messag
 
 .. image:: /images/gs_10-messages.png
 
-BOOM!  Now you have messages coming in, and this is where the fun starts.
+BOOM! Now that you have messages coming in, this is where the fun starts.
 
 *Skip the next section if you are all good.*
 
@@ -121,12 +121,12 @@ You should be at a screen like the one below. If you dozed off or went to cook s
 
 Now it’s go-time.
 
-You’ve got data coming in, let’s start adding information to a dashboard to better visualize the data we want to see.
+You’ve got data coming in, let’s add information to a dashboard to better visualize the data we want to see.
 
 Add a Dashboard
 ^^^^^^^^^^^^^^^^^^
 
-Let’s start by adding the message count data to a dashboard. Click *Add count to dashboard*, and it will say *No Dashboards, create one?*   Yes!  Click that.
+We'll start by adding the message count data to a dashboard. Click *Add count to dashboard*, and it will say *No Dashboards, create one?*   Yes!  Click that.
 
 .. image:: /images/gs_11-createdash.png
 
@@ -155,9 +155,11 @@ And you'll end up with the widget you created!
 Extra Credit - One more
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Let’s add a widget for root activity, because that sounds like it may actually be useful. We need to start with a search query for root. Click *Search*. Type root in the search and select your timeframe. Once the search results come in, click *Add count to the dashboard*. Give your chart a title and hit *Create*.
+Let’s add a widget for root activity, because that sounds like it may actually be useful. We need to start with a search query for root. Click *Search*. Type root in the search and select your timeframe. Once the search results come in, click *Add count to the dashboard*.
 
 .. image:: /images/gs_16-search.png
+
+Give your chart a title and hit *Create*.
 
 .. image:: /images/gs_17-crwidget.png
 
@@ -170,7 +172,7 @@ Go play around. If you want to know how to create more exciting charts and graph
 Extra Credit - Graphs
 ^^^^^^^^^^^^^^^^^^^^^
 
-Let’s start by searching for all messages within the last 1 hour. To do this, click Search, select Search in the last 1 hour, and leave the search bar blank. Once the search results populate, expand the messages field and select *Quick Values*. Click *Add to dashboard* to add this entire pie chart and data table to your dashboard.
+Let’s start by searching for all messages within the last 1 hour. To do this, click *Search*, select Search in the last 1 hour, and leave the search bar blank. Once the search results populate, expand the messages field in the Search results sidebar and select *Quick Values*. Click *Add to dashboard* to add this entire pie chart and data table to your dashboard.
 
 .. image:: /images/gs_19-graphdash.png
 
@@ -189,7 +191,7 @@ Let’s configure some proactive alerts to let us know when something needs our 
 Create a Stream
 ^^^^^^^^^^^^^^^
 
-In order to set up an alert, we need to set up a stream. Streams process incoming messages in real time based on conditions that you set. Click *Streams*.
+In order to set up an alert, we need to first create a stream. Streams process incoming messages in real time based on conditions that you set. Click *Streams*.
 
 .. image:: /images/gs_20-crstream.png
 
