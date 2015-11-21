@@ -37,6 +37,8 @@ MongoDB actually supplies this information as part of their documentation.  Chec
 
 * How to `convert a standalone MongoDB node to a replica set <https://docs.mongodb.org/manual/tutorial/convert-standalone-to-replica-set/>`_.
 
+After you've done this, add all MongoDB nodes into the replica_set configuration in all graylog-server.conf files.
+
 I have datacenters across the world and do not want logs forwarding from everywhere to a central location due to bandwidth, etc.  How do I handle this?
 ---------------------------------------------------------------------------------------------------------------------------
 
@@ -50,9 +52,14 @@ You can use any.  We have clients running AWS ELB, HAProxy, F5 BIG-IP, and KEMP.
 Isn’t Java slow? Does it need a lot of memory?
 -----------------------------------------------
 
-This is a concern that we hear from time to time. We understand Java has a bad reputation from slow and laggy desktop/GUI applications that eat a lot of memory. However, we are usually able to prove this assumption wrong. Well written Java code for server systems is very efficient and does not need a lot of memory resources.
+This is a concern that we hear from time to time. We understand Java has a bad reputation from slow and laggy desktop/GUI applications that eat a lot of memory. However, we are usually able to prove this assumption wrong. Well written Java code for server systems is very efficient and does not need a lot of memory resources.  
 
 Give it a try, you might be surprised!
+
+Does Graylog encrypt log data?
+------------------------------
+
+All log data is stored in Elasticsearch. They recommend you use *dm-crypt* at the file system level. Please see `here <https://discuss.elastic.co/t/how-should-i-encrypt-data-at-rest-with-elasticsearch/96>`_.
 
 Installation / Setup
 ====================
