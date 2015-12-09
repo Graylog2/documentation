@@ -2,6 +2,42 @@
 Changelog
 *********
 
+Graylog 1.3.0
+=============
+
+Released: 2015-12-09
+
+https://www.graylog.org/graylog-1-3-ga-is-ready/
+
+* Allow index range calculation for a single index. `Graylog2/graylog2-server#1451 <https://github.com/Graylog2/graylog2-server/issues/1451>`_ `Graylog2/graylog2-server#1455 <https://github.com/Graylog2/graylog2-server/issues/1455>`_
+* Performance improvements for index ranges.
+* Make internal server logs accessible via REST API. `Graylog2/graylog2-server#1452 <https://github.com/Graylog2/graylog2-server/issues/1452>`_
+* Make specific configuration values accessible via REST API. `Graylog2/graylog2-server#1484 <https://github.com/Graylog2/graylog2-server/issues/1484>`_
+* Added Replace Extractor. `Graylog2/graylog2-server#1485 <https://github.com/Graylog2/graylog2-server/issues/1485>`_
+* Added a default set of Grok patterns. `Graylog2/graylog2-server#1495 <https://github.com/Graylog2/graylog2-server/issues/1495>`_
+* Log operating system details on server startup. `Graylog2/graylog2-server#1244 <https://github.com/Graylog2/graylog2-server/issues/1244>`_ `Graylog2/graylog2-server#1553 <https://github.com/Graylog2/graylog2-server/issues/1553>`_
+* Allow reader users to set a dashboard as start page. `Graylog2/graylog2-web-interface#1681 <https://github.com/Graylog2/graylog2-web-interface/issues/1681>`_
+* Auto content pack loader – download and install content packs automatically
+* Appliance pre-configured for log ingestion and analysis
+* Show a getting started guide on first install. `Graylog2/graylog2-web-interface#1662 <https://github.com/Graylog2/graylog2-web-interface/issues/1662>`_
+* Include role permissions in “/roles/{rolename}/members” REST API endpoint. `Graylog2/graylog2-server#1549 <https://github.com/Graylog2/graylog2-server/issues/1549>`_
+* Fixed NullPointerException in GELF output. `Graylog2/graylog2-server#1538 <https://github.com/Graylog2/graylog2-server/issues/1538>`_
+* Fixed NullPointerException in GELF input handling. `Graylog2/graylog2-server#1544 <https://github.com/Graylog2/graylog2-server/issues/1544>`_
+* Use the root user’s timezone for LDAP users by default. `Graylog2/graylog2-server#1000 <https://github.com/Graylog2/graylog2-server/issues/1000>`_ `Graylog2/graylog2-server#1554 <https://github.com/Graylog2/graylog2-server/issues/1554>`_
+* Fix display of JSON messages. `Graylog2/graylog2-web-interface#1686 <https://github.com/Graylog2/graylog2-web-interface/issues/1686>`_
+* Improve search robustness with missing Elasticsearch indices. `Graylog2/graylog2-server#1547 <https://github.com/Graylog2/graylog2-server/issues/1574>`_ `Graylog2/graylog2-server#1533 <https://github.com/Graylog2/graylog2-server/issues/1533>`_
+* Fixed race condition between index creation and index mapping configuration. `Graylog2/graylog2-server#1502 <https://github.com/Graylog2/graylog2-server/issues/1502>`_ `Graylog2/graylog2-server#1563 <https://github.com/Graylog2/graylog2-server/issues/1563>`_
+* Fixed concurrency problem in GELF input handling. `Graylog2/graylog2-server#1561 <https://github.com/Graylog2/graylog2-server/issues/1561>`_
+* Fixed issue with widget value calculation. `Graylog2/graylog2-server#1588 <https://github.com/Graylog2/graylog2-server/issues/1588>`_
+* Do not extend user sessions when updating widgets. `Graylog2/graylog2-web-interface#1655 <https://github.com/Graylog2/graylog2-web-interface/issues/1655>`_
+* Fixed compatibility mode for Internet Explorer. `Graylog2/graylog2-web-interface#1661 <https://github.com/Graylog2/graylog2-web-interface/issues/1661>`_ `Graylog2/graylog2-web-interface#1668 <https://github.com/Graylog2/graylog2-web-interface/issues/1668>`_
+* Fixed whitespace issue in extractor example. `Graylog2/graylog2-web-interface#1650 <https://github.com/Graylog2/graylog2-web-interface/issues/1650>`_
+* Fixed several issues on the indices page. `Graylog2/graylog2-web-interface#1691 <https://github.com/Graylog2/graylog2-web-interface/issues/1691>`_ `Graylog2/graylog2-web-interface#1692 <https://github.com/Graylog2/graylog2-web-interface/issues/1692>`_
+* Fixed permission issue for stream alert management. `Graylog2/graylog2-web-interface#1659 <https://github.com/Graylog2/graylog2-web-interface/issues/1659>`_
+* Fixed deletion of LDAP group mappings when updating LDAP settings. `Graylog2/graylog2-server#1513 <https://github.com/Graylog2/graylog2-server/issues/1513>`_
+* Fixed dangling role references after deleting a role `Graylog2/graylog2-server#1608 <https://github.com/Graylog2/graylog2-server/issues/1608>`_
+* Support LDAP Group Mapping for Sun Directory Server (new since beta.2) `Graylog2/graylog2-server#1583 <https://github.com/Graylog2/graylog2-server/issues/1583>`_
+
 Graylog 1.2.2
 =============
 
