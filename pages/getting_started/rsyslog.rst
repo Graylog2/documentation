@@ -11,13 +11,13 @@ We’re going to use rsyslog because we already have it from the Graylog server 
 Modify rsyslog.conf
 ^^^^^^^^^^^^^^^^^^^
 
-Go to the /etc directory, and use vi, vim (`CheatSheet <http://www.fprintf.net/vimCheatSheet.html>`_), or the editor of your choice to modify the ``/etc/rsyslog.conf`` file.  There are excellent resources on the web for `rsyslog configuration <http://www.rsyslog.com/doc/v8-stable/tutorials/reliable_forwarding.html>`_.
+Go to the ``/etc`` directory, and use ``vi``, ``vim`` (`vim Cheat Sheet <http://www.fprintf.net/vimCheatSheet.html>`_), or the editor of your choice to modify the ``/etc/rsyslog.conf`` file.  There are excellent resources on the web for `rsyslog configuration <http://www.rsyslog.com/doc/v8-stable/tutorials/reliable_forwarding.html>`_.
 
-At the bottom of the file, add the following so messages will forward:
+At the bottom of the file, add the following so messages will forward::
 
   *.* @127.0.0.1:5140
 
-In case you wanted to know, @ means UDP, 127.0.0.1 is localhost, and 5140 is the port.
+In case you wanted to know, ``@`` means UDP, ``127.0.0.1`` is localhost, and ``5140`` is the port.
 
 .. image:: /images/gs_7-rsyslogadd.png
 
