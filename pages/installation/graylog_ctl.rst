@@ -239,7 +239,7 @@ Look for the Graylog version you want to install `here <https://packages.graylog
 Advanced Settings
 =================
 
-To change certain parameters used by `graylog-ctl` during a reconfigure run you can override all default parameters found `here <https://github.com/Graylog2/omnibus-graylog2/blob/1.2/files/graylog-cookbooks/graylog/attributes/default.rb>`_.
+To change certain parameters used by `graylog-ctl` during a reconfigure run you can override all default parameters found `here <https://github.com/Graylog2/omnibus-graylog2/blob/1.3/files/graylog-cookbooks/graylog/attributes/default.rb>`_.
 If you want to change the username used by Graylog for example, edit the file `/etc/graylog/graylog-settings.json` like this::
 
   "custom_attributes": {
