@@ -93,12 +93,12 @@ Functionality
 Can Graylog automatically clean old data?
 -----------------------------------------
 
-Absolutely we have data retention features, please see `here <http://docs.graylog.org/en/1.2/pages/index_model.html?highlight=retention>`_.
+Absolutely we have data retention features, please see `here <http://docs.graylog.org/en/1.3/pages/index_model.html?highlight=retention>`_.
 
 Does Graylog support LDAP / AD and its groups?
 ----------------------------------------------
 
-Yup, we’re all over this too with read/write roles and group permissions.  To start, see `this <http://docs.graylog.org/en/1.2/pages/users_roles.html?highlight=ldap#external-authentication>`_.  If you want to get very granular, you can go through our Rest API.
+Yup, we’re all over this too with read/write roles and group permissions.  To start, see `this <http://docs.graylog.org/en/1.3/pages/users_roles.html?highlight=ldap#external-authentication>`_.  If you want to get very granular, you can go through our Rest API.
 
 Do we have a user audit log for compliance?
 -------------------------------------------
@@ -124,14 +124,14 @@ We recommend that you use `GELF <http://docs.graylog.org/en/latest/pages/sending
 
 I have a log source that creates dynamic syslog messages based on events and subtypes and grok patterns are difficult to use - what is the best way to handle this?
 ----------------------------------------------------------------------------------------------------------------------------
-Not a problem!  Use our `key=value extractor <http://docs.graylog.org/en/1.2/pages/extractors.html#automatically-extract-all-key-value-pairs>`_.
+Not a problem!  Use our `key=value extractor <http://docs.graylog.org/en/1.3/pages/extractors.html#automatically-extract-all-key-value-pairs>`_.
 
 I want to archive my log data. Can I write to another database, for example HDFS / Hadoop, from Graylog?
 --------------------------------------------------------------------------------------------------------
 
 Yes, you can output data from Graylog to a different database. We currently have an HDFS output `plug-in <https://marketplace.graylog.org/addons/99259226-6ba3-48c8-a710-9598b65eda0e>`_ in the Marketplace - thank you `sivasamyk <https://github.com/sivasamyk>`_!
 
-It’s also easy and fun to `write your own <http://docs.graylog.org/en/1.2/pages/plugins.html#creating-a-plugin-skeleton>`_, which you can then add to Graylog Marketplace for others to use.
+It’s also easy and fun to `write your own <http://docs.graylog.org/en/1.3/pages/plugins.html#creating-a-plugin-skeleton>`_, which you can then add to Graylog Marketplace for others to use.
 
 I don’t want to use Elasticsearch as my backend storage system – can I use another database, like MySQL, Oracle, etc?
 ---------------------------------------------------------------------------------------------------------------------
