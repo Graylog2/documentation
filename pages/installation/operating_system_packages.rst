@@ -21,11 +21,11 @@ The repositories can be setup by installing a single package. Once that's done t
 Ubuntu 14.04
 ------------
 
-Download and install `graylog-1.2-repository-ubuntu14.04_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.2-repository-ubuntu14.04_latest.deb>`_
+Download and install `graylog-1.3-repository-ubuntu14.04_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.3-repository-ubuntu14.04_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
-  $ wget https://packages.graylog2.org/repo/packages/graylog-1.2-repository-ubuntu14.04_latest.deb
-  $ sudo dpkg -i graylog-1.2-repository-ubuntu14.04_latest.deb
+  $ wget https://packages.graylog2.org/repo/packages/graylog-1.3-repository-ubuntu14.04_latest.deb
+  $ sudo dpkg -i graylog-1.3-repository-ubuntu14.04_latest.deb
   $ sudo apt-get install apt-transport-https
   $ sudo apt-get update
   $ sudo apt-get install graylog-server graylog-web
@@ -38,11 +38,11 @@ After the installation successfully completed, Graylog can be started with the f
 Ubuntu 12.04
 ------------
 
-Download and install `graylog-1.2-repository-ubuntu12.04_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.2-repository-ubuntu12.04_latest.deb>`_
+Download and install `graylog-1.3-repository-ubuntu12.04_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.3-repository-ubuntu12.04_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
-  $ wget https://packages.graylog2.org/repo/packages/graylog-1.2-repository-ubuntu12.04_latest.deb
-  $ sudo dpkg -i graylog-1.2-repository-ubuntu12.04_latest.deb
+  $ wget https://packages.graylog2.org/repo/packages/graylog-1.3-repository-ubuntu12.04_latest.deb
+  $ sudo dpkg -i graylog-1.3-repository-ubuntu12.04_latest.deb
   $ sudo apt-get install apt-transport-https
   $ sudo apt-get update
   $ sudo apt-get install graylog-server graylog-web
@@ -55,11 +55,11 @@ After the installation successfully completed, Graylog can be started with the f
 Debian 7
 --------
 
-Download and install `graylog-1.2-repository-debian7_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.2-repository-debian7_latest.deb>`_
+Download and install `graylog-1.3-repository-debian7_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.3-repository-debian7_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
-  $ wget https://packages.graylog2.org/repo/packages/graylog-1.2-repository-debian7_latest.deb
-  $ sudo dpkg -i graylog-1.2-repository-debian7_latest.deb
+  $ wget https://packages.graylog2.org/repo/packages/graylog-1.3-repository-debian7_latest.deb
+  $ sudo dpkg -i graylog-1.3-repository-debian7_latest.deb
   $ sudo apt-get install apt-transport-https
   $ sudo apt-get update
   $ sudo apt-get install graylog-server graylog-web
@@ -72,11 +72,11 @@ After the installation successfully completed, Graylog can be started with the f
 Debian 8
 --------
 
-Download and install `graylog-1.2-repository-debian8_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.2-repository-debian8_latest.deb>`_
+Download and install `graylog-1.3-repository-debian8_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.3-repository-debian8_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
-  $ wget https://packages.graylog2.org/repo/packages/graylog-1.2-repository-debian8_latest.deb
-  $ sudo dpkg -i graylog-1.2-repository-debian8_latest.deb
+  $ wget https://packages.graylog2.org/repo/packages/graylog-1.3-repository-debian8_latest.deb
+  $ sudo dpkg -i graylog-1.3-repository-debian8_latest.deb
   $ sudo apt-get install apt-transport-https
   $ sudo apt-get update
   $ sudo apt-get install graylog-server graylog-web
@@ -89,10 +89,10 @@ After the installation successfully completed, Graylog can be started with the f
 CentOS 6
 --------
 
-Download and install `graylog-1.2-repository-el6_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-1.2-repository-el6_latest.rpm>`_
+Download and install `graylog-1.3-repository-el6_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-1.3-repository-el6_latest.rpm>`_
 via ``rpm(8)``::
 
-  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-1.2-repository-el6_latest.rpm
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-1.3-repository-el6_latest.rpm
   $ sudo yum install graylog-server graylog-web
 
 After the installation successfully completed, Graylog can be started with the following commands::
@@ -103,10 +103,10 @@ After the installation successfully completed, Graylog can be started with the f
 CentOS 7
 --------
 
-Download and install `graylog-1.2-repository-el7_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-1.2-repository-el7_latest.rpm>`_
+Download and install `graylog-1.3-repository-el7_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-1.3-repository-el7_latest.rpm>`_
 via ``rpm(8)``::
 
-  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-1.2-repository-el7_latest.rpm
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-1.3-repository-el7_latest.rpm
   $ sudo yum install graylog-server graylog-web
 
 After the installation successfully completed, Graylog can be started with the following commands::
