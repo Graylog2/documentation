@@ -2,6 +2,15 @@
 Changelog
 *********
 
+Graylog 1.3.1
+=============
+
+Released: 2015-12-XX
+
+* Add option to AMQP transports to bind the queue to the exchange `Graylog2/graylog2-server#1599 <https://github.com/Graylog2/graylog2-server/issues/1599>`_ `Graylog2/graylog2-server#1633 <https://github.com/Graylog2/graylog2-server/pull/1633>`_
+* Install a Graylog index template instead of set mappings on index creation `Graylog2/graylog2-server#1624 <https://github.com/Graylog2/graylog2-server/issues/1624>`_ `Graylog2/graylog2-server#1628 <https://github.com/Graylog2/graylog2-server/pull/1628>`_
+
+
 Graylog 1.3.0
 =============
 
@@ -37,6 +46,7 @@ https://www.graylog.org/graylog-1-3-ga-is-ready/
 * Fixed deletion of LDAP group mappings when updating LDAP settings. `Graylog2/graylog2-server#1513 <https://github.com/Graylog2/graylog2-server/issues/1513>`_
 * Fixed dangling role references after deleting a role `Graylog2/graylog2-server#1608 <https://github.com/Graylog2/graylog2-server/issues/1608>`_
 * Support LDAP Group Mapping for Sun Directory Server (new since beta.2) `Graylog2/graylog2-server#1583 <https://github.com/Graylog2/graylog2-server/issues/1583>`_
+
 
 Graylog 1.2.2
 =============
