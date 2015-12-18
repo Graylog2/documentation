@@ -2,10 +2,22 @@
 Changelog
 *********
 
+Graylog 1.3.2
+=============
+
+Released: 2015-12-18
+
+https://www.graylog.org/graylog-1-3-2-is-now-available/
+
+* Deserializing a blacklist filter (``FilterDescription``) leads to ``StackOverflowError`` `Graylog2/graylog2-server#1641 <https://github.com/Graylog2/graylog2-server/issues/1641>`_
+
+
 Graylog 1.3.1
 =============
 
-Released: 2015-12-XX
+Released: 2015-12-17
+
+https://www.graylog.org/graylog-1-3-1-is-now-available/
 
 * Add option to AMQP transports to bind the queue to the exchange `Graylog2/graylog2-server#1599 <https://github.com/Graylog2/graylog2-server/issues/1599>`_ `Graylog2/graylog2-server#1633 <https://github.com/Graylog2/graylog2-server/pull/1633>`_
 * Install a Graylog index template instead of set mappings on index creation `Graylog2/graylog2-server#1624 <https://github.com/Graylog2/graylog2-server/issues/1624>`_ `Graylog2/graylog2-server#1628 <https://github.com/Graylog2/graylog2-server/pull/1628>`_
