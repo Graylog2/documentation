@@ -19,23 +19,31 @@ The following commands are changing the configuration of Graylog:
 +-------------------------------------------------+---------------------------------------------+
 | Command                                         | Description                                 |
 +=================================================+=============================================+
-| sudo graylog-ctl set-admin-password <password>  | Set a new admin password                    |
+|| sudo graylog-ctl set-admin-password <password> | Set a new admin password                    |
 +-------------------------------------------------+---------------------------------------------+
-| sudo graylog-ctl set-admin-username <username>  | Set a different username for the admin user |
+|| sudo graylog-ctl set-admin-username <username> | Set a different username for the admin user |
 +-------------------------------------------------+---------------------------------------------+
-| sudo graylog-ctl set-email-config <smtp server> | Configure SMTP settings to send alert mails |
-| [--port=<smtp port> --user=<username>           |                                             |
-| --password=<password> --no-tls --no-ssl]        |                                             |
+|| sudo graylog-ctl set-email-config <smtp server>| Configure SMTP settings to send alert mails |
+|| [--port=<smtp port>                            |                                             |
+|| --user=<username>                              |                                             |
+|| --password=<password>                          |                                             |
+|| --from-email=<sender-address>                  |                                             |
+|| --web-url=<grayog web-interface url>           |                                             |
+|| --no-tls --no-ssl]                             |                                             |
 +-------------------------------------------------+---------------------------------------------+
-| sudo graylog-ctl set-timezone <zone acronym>    | Set Graylog's timezone. Make sure system    |
-|                                                 | time is also set correctly with             |
-|                                                 | ``sudo dpkg-reconfigure tzdata``            |
+|| sudo graylog-ctl set-timezone <zone acronym>   | Set Graylog's timezone. Make sure system    |
+||                                                | time is also set correctly with             |
+||                                                | ``sudo dpkg-reconfigure tzdata``            |
 +-------------------------------------------------+---------------------------------------------+
-| sudo graylog-ctl set-retention --size=<Gb> OR   | Configure message retention                 |
-| --time=<hours> --indices=<number>               |                                             |
-| [--journal=<Gb>]                                |                                             |
+|| sudo graylog-ctl set-retention --size=<Gb> OR  | Configure message retention                 |
+|| --time=<hours> --indices=<number>              |                                             |
+|| [--journal=<Gb>]                               |                                             |
 +-------------------------------------------------+---------------------------------------------+
-| sudo graylog-ctl enforce-ssl                    | Enforce HTTPs for the web interface         |
+|| sudo graylog-ctl enforce-ssl                   | Enforce HTTPS for the web interface         |
++-------------------------------------------------+---------------------------------------------+
+|| sudo graylog-ctl set-node-id <id>              | Override random server node id              |
++-------------------------------------------------+---------------------------------------------+
+|| sudo grayog-ctl set-server-secret <secret>     | Override server secret used for encryption  |
 +-------------------------------------------------+---------------------------------------------+
 
 **After setting one or more of these options re-run**::
@@ -62,7 +70,7 @@ Typically the first VM you spin up is used for this task. Automatically an insta
 settings for other hosts.
 
 For example to split the web interface from the rest of the setup, spin up two VMs from the same graylog image. On the first only start
-``graylog-server``, ``elasticsearch`` and ``mongodb``::
+`graylog-server`, `elasticsearch` and `mongodb`::
 
   vm1> sudo graylog-ctl set-admin-password sEcReT
   vm1> sudo graylog-ctl reconfigure-as-backend
@@ -77,6 +85,9 @@ you can proceed in the same way::
 
   vm3> sudo graylog-ctl set-cluster-master <ip-of-vm1>
   vm3> sudo graylog-ctl reconfigure-as-datanode
+
+In case you want to add a second Graylog server you have to set the same server secret on all machines.
+The secret is stored in the file ``/etc/graylog/graylog-secrets`` and can be set with the ``set-server-secret`` sub-command on further nodes.
 
 The following configuration modes do exist:
 
@@ -240,7 +251,7 @@ Advanced Settings
 =================
 
 To change certain parameters used by `graylog-ctl` during a reconfigure run you can override all default parameters found `here <https://github.com/Graylog2/omnibus-graylog2/blob/1.3/files/graylog-cookbooks/graylog/attributes/default.rb>`_.
-If you want to change the username used by Graylog for example, edit the file `/etc/graylog/graylog-settings.json` like this::
+If you want to change the username used by Graylog for example, edit the file ``/etc/graylog/graylog-settings.json`` like this::
 
   "custom_attributes": {
     "user": {
@@ -248,8 +259,38 @@ If you want to change the username used by Graylog for example, edit the file `/
     }
   }
 
-Afterwards run `sudo graylog-ctl reconfigure` and `sudo graylog-ctl restart`. In this way you can change things like the path to the data
-directory or memory settings for Graylog and Elasticsearch
+Afterwards run ``sudo graylog-ctl reconfigure`` and ``sudo graylog-ctl restart``. The first command renders all changed configuration files and the later makes
+sure that all services restart to activate the change.
+
+There are a couple of other use cases of this, e.g. change the default data directories used by Graylog to ``/data`` (make sure this is writeable by the graylog user)::
+
+  "custom_attributes": {
+      "elasticsearch": {
+        "data_directory": "/data/elasticsearch"
+      },
+      "mongodb": {
+        "data_directory": "/data/mongodb"
+      },
+      "etcd": {
+        "data_directory": "/data/etcd"
+      },
+      "graylog-server": {
+        "journal_directory": "/data/journal"
+      }
+    }
+
+Or change the default memory settings used by `graylog-server` or `elasticsearch`::
+
+  "custom_attributes": {
+       "graylog-server": {
+         "memory": "1700m"
+       },
+       "elasticsearch": {
+         "memory": "2200m"
+       }
+     }
+
+Again, run ``reconfigure`` and ``restart`` afterwards to activate the changes.
 
 Production readiness
 ====================
