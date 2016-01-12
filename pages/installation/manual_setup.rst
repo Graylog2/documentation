@@ -10,8 +10,9 @@ Prerequisites
 
 You will need to have the following services installed on either the host you are running ``graylog-server`` on or on dedicated machines:
 
-* `Elasticsearch 1.7 or later <https://www.elastic.co/downloads/elasticsearch>`_ (Elasticsearch 2.x is currently not supported)
-* MongoDB (as recent stable version as possible, **at least v2.0**)
+* `Elasticsearch 1.7.1 or later <https://www.elastic.co/downloads/elasticsearch>`_ (Elasticsearch 2.x is currently not supported)
+* `MongoDB 2.0 or later <https://docs.mongodb.org/manual/administration/install-on-linux/>`_ (latest stable version is recommended)
+* Oracle Java SE 7 or later (Oracle Java SE 8 is supported, OpenJDK 7 and OpenJDK 8 also work; latest stable update is recommended)
 
 Most standard MongoDB packages of Linux distributions are outdated. Use the `official MongoDB APT repository <http://docs.mongodb.org/manual/tutorial/install-mongodb-on-debian/>`_
 (available for many distributions and operating systems)
