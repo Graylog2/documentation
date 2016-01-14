@@ -2,6 +2,21 @@
 Changelog
 *********
 
+Graylog 1.3.3
+=============
+
+Released: 2016-01-14
+
+https://www.graylog.org/graylog-1-3-3-is-now-available/
+
+* Absolute and relative time spans give different results `Graylog2/graylog2-server#1572 <https://github.com/Graylog2/graylog2-server/issues/1572>`_ `Graylog2/graylog2-server#1463 <https://github.com/Graylog2/graylog2-server/issues/1463>`_ `Graylog2/graylog2-server#1672 <https://github.com/Graylog2/graylog2-server/issues/1672>`_ `Graylog2/graylog2-server#1679 <https://github.com/Graylog2/graylog2-server/pull/1679>`_
+* Search result count widget not caching `Graylog2/graylog2-server#1640 <https://github.com/Graylog2/graylog2-server/issues/1640>`_ `Graylog2/graylog2-server#1681 <https://github.com/Graylog2/graylog2-server/pull/1681>`_
+* Field Value Condition Alert, does not permit decimal values `Graylog2/graylog2-server#1657 <https://github.com/Graylog2/graylog2-server/issues/1657>`_
+* Correctly handle null values in nested structures in JsonExtractor `Graylog2/graylog2-server#1676 <https://github.com/Graylog2/graylog2-server/issues/1676>`_ `Graylog2/graylog2-server#1677 <https://github.com/Graylog2/graylog2-server/pull/1677>`_
+* Add ``Content-Type`` and ``X-Graylog2-No-Session-Extension`` to CORS headers `Graylog2/graylog2-server#1682 <https://github.com/Graylog2/graylog2-server/issues/1682>`_ `Graylog2/graylog2-server#1685 <https://github.com/Graylog2/graylog2-server/pull/1685>`_
+* Discard Message Output `Graylog2/graylog2-server#1688 <https://github.com/Graylog2/graylog2-server/pull/1688>`_
+
+
 Graylog 1.3.2
 =============
 
