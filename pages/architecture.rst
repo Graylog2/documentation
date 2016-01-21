@@ -37,6 +37,10 @@ nodes via REST/HTTP to check if they are alive and take dead nodes out of the cl
 
 .. image:: /images/extended_setup.png
 
+Graylog Architecture Deep Dive
+------------------------------
+If you are really interested in the Graylog architecture at a more detailed level - whether you want to understand more for planning your architecture design, performance tuning, or just because you love stuff like that, our cheeky engineering team has put together this `deep architecture guide <http://www.slideshare.net/Graylog/graylog-engineering-design-your-architecture>`_.  It's not for the faint at heart, but we hope you love it.
+
 Highly available setup with Graylog Radio
 ------------------------------------------
 
