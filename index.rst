@@ -34,5 +34,6 @@ Contents:
    pages/external_dashboards
    pages/marketplace
    pages/faq
+   pages/gelf
    pages/ideas_explained
    pages/changelog
