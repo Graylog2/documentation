@@ -24,6 +24,8 @@ and configured for every Elasticsearch node in its ``elasticsearch.yml`` configu
 Configure the same name in every ``graylog.conf`` as ``elasticsearch_cluster_name``.
 We recommend to call the cluster ``graylog-production`` and not ``elasticsearch``.
 
+The ``elasticsearch.yml`` file is typically located in ``/etc/elasticsearch/``.
+
 Discovery mode
 ^^^^^^^^^^^^^^
 
