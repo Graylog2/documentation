@@ -17,7 +17,7 @@ Graylog comes with a stable plugin API for the following plugin types since Gray
 * **REST API Resources:** A REST resource to expose as part of the ``graylog-server`` REST API
 * **Periodical:** Called at periodical intervals during server runtime
 
-The first for writing a plugin is creating a skeleton that is the same for each type of plugin. The next chapter
+The first step for writing a plugin is creating a skeleton that is the same for each type of plugin. The next chapter
 is explaining how to do this and will then go over to chapters explaining plugin types in detail.
 
 Creating a plugin skeleton
