@@ -11,8 +11,6 @@ There are a few rules of thumb when scaling resources for Graylog:
   sized fairly small.
 * ``graylog-web-interface`` nodes are mostly waiting for HTTP answers of the rest of the system
   and can also be rather small.
-* ``graylog-radio`` nodes act as workers. They don't know each other and you can shut them down
-  at any point in time without changing the cluster state at all.
 
 Also keep in mind that messages are **only** stored in Elasticsearch. If you have data loss on
 Elasticsearch, the messages are gone - except if you have created backups of the indices.
@@ -40,24 +38,3 @@ nodes via REST/HTTP to check if they are alive and take dead nodes out of the cl
 Graylog Architecture Deep Dive
 ------------------------------
 If you are really interested in the Graylog architecture at a more detailed level - whether you want to understand more for planning your architecture design, performance tuning, or just because you love stuff like that, our cheeky engineering team has put together this `deep architecture guide <http://www.slideshare.net/Graylog/graylog-engineering-design-your-architecture>`_.  It's not for the faint at heart, but we hope you love it.
-
-Highly available setup with Graylog Radio
-------------------------------------------
-
-Beginning with Graylog 1.0 on, we no longer recommend running Graylog Radio because we are now using a
-high-performant message journal (from the Apache Kafka project) in every `graylog-server` instance which is
-spooling all incoming messages to disk immediately and is able to buffer load spikes just at least as good as
-Graylog Radio was, but with less dependencies and maintenance overhead.
-
-If you are running a setup with Graylog Radio we recommend to shut down the Graylog Radio architecture
-including AMQP or Kafka brokers completely and directly send messages to the `graylog-server` nodes.
-If you have been using Graylog Radio for load balancing, you should now put a classic load balancer in front
-of your `graylog-server` nodes.
-
-**This approach has been proven to work great in large high-throughput setups of several of our large scale
-customers and immensely reduced complexity of their setups.**
-
-The Kafka and AMQP inputs are still supported and can be used to build a custom setup using message brokers,
-if you want to keep using that. A reason for this might be that Graylog is not the only subscriber to the
-messages on the bus. However we would recommend to use Graylog forwarders to either write to a message bus
-after processing or write to other systems directly.
