@@ -176,9 +176,12 @@ will pick up those files and make use of your own certificate.
 Problems
 --------
 
-In case you see warnings regarding open file limit, try to set ulimit from the outside of the container::
+* In case you see warnings regarding open file limit, try to set ulimit from the outside of the container::
 
   $ docker run --ulimit nofile=64000:64000 ...
+
+* The `devicemapper` storage driver can produce problems with Graylogs disk journal on some systems.
+  In this case please pick another driver like `aufs` or `overlay`. Have a look `here <https://docs.docker.com/engine/userguide/storagedriver/selectadriver>`_
 
 Build
 -----
