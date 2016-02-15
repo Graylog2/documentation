@@ -72,7 +72,7 @@ A GELF message is a GZIP’d or ZLIB’d JSON string with the following fields:
       * the file (with path if you want) that caused the error (string); optional, deprecated. Send as additional field instead.
 
   * **_[additional field]** ``string (UTF-8)`` or ``number``
-      * every field you send and prefix with a _ (underscore) will be treated as an additional field. Allowed characters in field names are any word character (letter, number, underscore), dashes and dots. The verifying regular expression is: ^[\w\.\-]*$ Libraries SHOULD not allow to send id as additional field (``_id``). Graylog server nodes omit this field automatically.
+      * every field you send and prefix with an underscore (``_``) will be treated as an additional field. Allowed characters in field names are any word character (letter, number, underscore), dashes and dots. The verifying regular expression is: ``^[\w\.\-]*$``. Libraries SHOULD not allow to send id as additional field (``_id``). Graylog server nodes omit this field automatically.
 
 Example payload
 ===============
