@@ -32,6 +32,8 @@ Pick the Syslog UDP Input, and click Add stream rule.
 
 Then, type in the values shown below and hit save.
 
+.. image:: /images/gs_28-streamrule-form.png
+
 Then click I’m done!
 
 We have just configured this stream to process in real time all the messages that come in from the security/authorization facility. 
