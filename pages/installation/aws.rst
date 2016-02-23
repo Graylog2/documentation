@@ -11,7 +11,7 @@ Usage
 -----
 
   * Click on *Launch instance* for your AWS region to start Graylog into.
-  * Choose an instance type with at least 4GB memory
+  * Choose an instance type **with at least 4GB memory**
   * Finish the wizard and spin up the VM.
   * Login to the instance as user `ubuntu`
   * Run `sudo graylog-ctl reconfigure`
