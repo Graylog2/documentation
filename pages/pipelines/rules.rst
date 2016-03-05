@@ -37,7 +37,7 @@ Picking up from the previous example in the :doc:`pipelines` section, let's look
     then
     end
 
-Firstly, apart from naming the rule, their structure follows a simple *if, then* pattern. In the *when* clause we specify
+Firstly, apart from naming the rule, their structure follows a simple *when, then* pattern. In the *when* clause we specify
 a boolean expression which is evaluated in the context of the current message in the pipeline. These are the conditions
 that are being used by the pipeline processor to determine whether to run a rule and collectively whether to continue in a
 pipeline.
@@ -75,4 +75,46 @@ being used in a condition) and ``ip`` (a subset of ``InetAddress``), but plugins
 to add additional types as they see fit. The rule processor takes care of ensuring that values and functions agree on the types
 being used.
 
-Conventionally functions that convert types start with the prefix ``to``, please refer to the :doc:`functions` for a list.
+Conventionally functions that convert types start with the prefix ``to``, please refer to the :doc:`functions` index for a list.
+
+Conditions
+==========
+
+In Graylog's rules the **when** clause is a boolean expression, which is evaluated against the processed message.
+
+Expressions support the common boolean operators ``AND`` (or ``&&``), ``OR`` (``||``), ``NOT`` (``!``) and comparison operators
+(``<``, ``<=``, ``>``, ``>=``, ``==``, ``!=``).
+
+Additionally any function that returns a value can be called (e.g. ``route_to_stream`` does not return a value) but the resulting
+expression must eventually be a boolean.
+
+The condition must not be empty, but can instead simply use the boolean literal ``true`` in case you always want to execute the
+actions inside the rule.
+
+If a condition calls a function which is not present, e.g. due to a missing plugin, the call evaluates to false instead.
+
+
+Actions
+=======
+
+A rule's **then** clause contains a list of actions which are evaluated in the order they appear.
+
+There are two different types of actions:
+
+# Function calls
+# Variable assignments
+
+Function calls look exactly like they do in conditions and all of the functions in the system can be used, including the
+functions that do not return a value.
+
+Variable assignments have the following form::
+
+    let name = value;
+
+They are useful to avoid recomputing expensive parsing of data, holding on to temporary values or making rules more readable.
+
+Variables need to be defined before they can used and can be accessed using the ``name.field`` notation in any place where
+a value is required.
+
+The list of actions can also be empty, turning the rule into a pure condition which can be useful in combination with stages
+to guide the processing flow.
