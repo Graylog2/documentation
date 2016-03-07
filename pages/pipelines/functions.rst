@@ -90,4 +90,300 @@ Function Index
 The following list describes the built in functions that ship with Graylog. Additional third party functions are available via
 other plugins in the marketplace.
 
-**Function index table forthcoming**
+
+.. list-table:: Built-in Functions
+    :header-rows: 1
+    :widths: 7 20
+
+    * - Name
+      - Description
+    * - `tobool`_
+      - Converts the single parameter to a boolean value using its string value.
+    * - `todouble`_
+      - Converts the first parameter to a double floating point value.
+    * - `tolong`_
+      - Converts the first parameter to a long integer value.
+    * - `tostring`_
+      - Converts the first parameter to its string representation.
+    * - `abbreviate`_
+      - Abbreviates a String using ellipses.
+    * - `capitalize`_
+      - Capitalizes a String changing the first letter to title case.
+    * - `uncapitalize`_
+      - Uncapitalizes a String changing the first letter to lower case.
+    * - `uppercase`_
+      - Converts a String to upper case.
+    * - `lowercase`_
+      - Converts a String to lower case.
+    * - `swapcase`_
+      - Swaps the case of a String.
+    * - `contains`_
+      - Checks if a string contains another string.
+    * - `substring`_
+      - Returns a substring of ``value`` with the given start and end offsets.
+    * - `regex`_
+      - Match a regular expression against a string, with matcher groups.
+    * - `md5`_
+      - Returns the hex encoded MD5 digest of the given string.
+    * - `sha1`_
+      - Returns the hex encoded SHA1 digest of the given string.
+    * - `sha256`_
+      - Returns the hex encoded SHA256 digest of the given string.
+    * - `sha512`_
+      - Returns the hex encoded SHA512 digest of the given string.
+    * - `now`_
+      - Returns the current date and time.
+    * - `parse_date`_
+      - Parses a date and time from the given string, according to a strict pattern.
+    * - `flex_parse_date`_
+      - Attempts to parse a date and time using the Natty date parser.
+    * - `format_date`_
+      - Formats a date and time according to a given formatter pattern.
+    * - `parse_json`_
+      - Parse a string into a JSON tree.
+    * - `select_jsonpath`_
+      - Selects one or more named JSON Path expressions from a JSON tree.
+    * - `toip`_
+      - Converts the given string to an IP object.
+    * - `cidr_match`_
+      - Checks whether the given IP matches a CIDR pattern.
+    * - `from_input`_
+      - Checks whether the current message was received by the given input.
+    * - `route_to_stream`_
+      - Assigns the current message to the specified stream.
+    * - `create_message`_
+      - **Currently incomplete** Creates a new message which will be evaluated by the entire processing pipeline.
+    * - `drop_message`_
+      - This currently processed message will be removed from the processing pipeline after the rule finishes.
+    * - `has_field`_
+      - Checks whether the currently processed message contains the named field.
+    * - `remove_field`_
+      - Removes the named field from the currently processed message.
+    * - `set_field`_
+      - Sets the name field to the given value in the currently processed message.
+    * - `set_fields`_
+      - Sets multiple fields to the given values in the currently processed message.
+
+tobool
+------
+``tobool(any)``
+
+Converts the single parameter to a boolean value using its string value.
+
+todouble
+--------
+``todouble(any, [default: double])``
+
+Converts the first parameter to a double floating point value.
+
+tolong
+------
+``tolong(any, [default: long])``
+
+Converts the first parameter to a long integer value.
+
+tostring
+--------
+``tostring(any, [default: string])``
+
+Converts the first parameter to its string representation.
+
+abbreviate
+----------
+``abbreviate(value: string, width: long)``
+
+Abbreviates a String using ellipses, the width defines the maximum length of the resulting string.
+
+capitalize
+----------
+``capitalize(value: string)``
+
+Capitalizes a String changing the first letter to title case.
+
+uncapitalize
+------------
+``uncapitalize(value: string)``
+
+Uncapitalizes a String changing the first letter to lower case.
+
+
+uppercase
+---------
+``uppercase(value: string, [locale: string])``
+
+Converts a String to upper case. The locale (IETF BCP 47 language tag) defaults to "en".
+
+lowercase
+---------
+``lowercase(value: string, [locale: string])``
+
+Converts a String to lower case. The locale (IETF BCP 47 language tag) defaults to "en".
+
+swapcase
+--------
+``swapcase(value: string)``
+
+Swaps the case of a String changing upper and title case to lower case, and lower case to upper case.
+
+contains
+--------
+``contains(value: string, search: string, [ignore_case: boolean])``
+
+Checks if ``value`` contains ``search``, optionally ignoring the case of the search pattern.
+
+substring
+---------
+``substring(value: string, start: long, [end: long])``
+
+Returns a substring of ``value`` starting at the ``start`` offset (zero based indices), optionally ending at
+the ``end`` offset. Both offsets can be negative, indicating positions relative to the end of ``value``.
+
+regex
+-----
+``regex(pattern: string, value: string, [group_names: array[string])``
+
+Match the regular expression in ``pattern`` against ``value``. Returns a match object, with the boolean property
+``matches`` to indicate whether the regular expression matched and, if requested, the matching groups as ``groups``.
+The groups can optionally be named using the ``group_names`` array. If not named, the groups names are strings starting with ``"0"``.
+
+md5
+---
+``md5(value: string)``
+
+Creates the hex encoded MD5 digest of the ``value``.
+
+sha1
+----
+``sha1(value: string)``
+
+Creates the hex encoded SHA1 digest of the ``value``.
+
+sha256
+------
+``sha256(value: string)``
+
+Creates the hex encoded SHA256 digest of the ``value``.
+
+sha512
+------
+``sha512(value: string)``
+
+Creates the hex encoded SHA512 digest of the ``value``.
+
+now
+---
+``now([timezone: string])``
+
+Returns the current date and time. Uses the default time zone ``UTC``.
+
+parse_date
+----------
+``parse_date(value: string, pattern: string, [timezone: string])``
+
+Parses the ``value`` into a date and time object, using the ``pattern``. If no timezone is detected in the pattern, the optional
+timezone parameter is used as the assumed timezone. If omitted the timezone defaults to ``UTC``.
+
+flex_parse_date
+---------------
+``flex_parse_date(value: string, [default: DateTime], [timezone: string])``
+
+Uses the `Natty date parser <http://natty.joestelmach.com/>`_ to parse a date and time ``value``. If no timezone is detected in
+the pattern, the optional timezone parameter is used as the assumed timezone. If omitted the timezone defaults to ``UTC``.
+
+In case the parser fails to detect a valid date and time the ``default`` date and time is being returned, otherwise the expression
+fails to evaluate and will be aborted.
+
+format_date
+-----------
+``format_date(value: DateTime, format: string, [timezone: string])``
+
+Returns the given date and time ``value`` formatted according to the ``format`` string. If no timezone is given,
+it defaults to ``UTC``.
+
+
+parse_json
+----------
+``parse_json(value: string)``
+
+Parses the ``value`` string as JSON, returning the resulting JSON tree.
+
+select_jsonpath
+---------------
+``select_jsonpath(json: JsonNode, paths: Map<string, string>)``
+
+Evaluates the given ``paths`` against the ``json`` tree and returns the map of the resulting values.
+
+toip
+----
+``toip(ip: string)``
+
+Converts the given ``ip`` string to an IpAddress object.
+
+cidr_match
+----------
+``cidr_match(cidr: string, ip: IpAddress)``
+
+Checks whether the given ``ip`` address object matches the ``cidr`` pattern.
+
+
+from_input
+----------
+``from_input(id: string | name: string)``
+
+Checks whether the currently processed message was received on the given input. The input can be looked up by either
+specifying its ``name`` (the comparison ignores the case) or the ``id``.
+
+route_to_stream
+---------------
+``route_to_stream(id: string | name: string)``
+
+Routes the current message to the given stream. The stream can be looked up by either
+specifying its ``name`` or the ``id``.
+
+This causes the message to be evaluated on the pipelines connected to that stream, unless the stream has already been
+processed for this message.
+
+create_message
+--------------
+**Currently incomplete**
+
+``create_message([message: string], [source: string], [timestamp: DateTime])``
+
+Creates a new message with from the given parameters. If any of them is omitted, its value is taken from the currently
+processed message. If ``timestamp`` is omitted, the timestamp of the created message will be the timestamp at that moment.
+
+drop_message
+------------
+``drop_message()``
+
+The processing pipeline will remove the currently processed message after the rule is finished executing.
+
+This can be used to implement flexible blacklisting based on various conditions.
+
+
+has_field
+---------
+``has_field(field: string)``
+
+Checks whether the currently processed message contains a field with the name ``field``.
+
+remove_field
+------------
+``remove_field(field: string)``
+
+Removes the given field with the name ``field`` from the currently processed message, unless the field is reserved.
+
+set_field
+---------
+``set_field(field: string, value: any)``
+
+Sets the given field named ``field`` to the new ``value``. The ``field`` name must be valid, and specifically cannot include
+a ``.`` character. It is trimmed of leading and trailing whitespace. String values are trimmed of whitespace as well.
+
+set_fields
+----------
+``set_fields(fields: Map<string, any>)``
+
+Sets all of the given name-value pairs in ``field`` in the currently processed message. This is a convenience function
+acting like `set_field`_. It can be helpful for using the result of a function like `select_jsonpath`_ or `regex`_ in the
+currently processed message especially when the key names are the result of a regular expression.
