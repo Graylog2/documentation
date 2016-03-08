@@ -335,18 +335,18 @@ specifying its ``name`` (the comparison ignores the case) or the ``id``.
 
 route_to_stream
 ---------------
-``route_to_stream(id: string | name: string)``
+``route_to_stream(id: string | name: string, [message: Message])``
 
-Routes the current message to the given stream. The stream can be looked up by either
+Routes the ``messsage`` to the given stream. The stream can be looked up by either
 specifying its ``name`` or the ``id``.
+
+If ``message`` is omitted, this function uses the currently processed message.
 
 This causes the message to be evaluated on the pipelines connected to that stream, unless the stream has already been
 processed for this message.
 
 create_message
 --------------
-**Currently incomplete**
-
 ``create_message([message: string], [source: string], [timestamp: DateTime])``
 
 Creates a new message with from the given parameters. If any of them is omitted, its value is taken from the currently
@@ -354,36 +354,46 @@ processed message. If ``timestamp`` is omitted, the timestamp of the created mes
 
 drop_message
 ------------
-``drop_message()``
+``drop_message(message: Message)``
 
-The processing pipeline will remove the currently processed message after the rule is finished executing.
+The processing pipeline will remove the given ``message`` after the rule is finished executing.
+
+If ``message`` is omitted, this function uses the currently processed message.
 
 This can be used to implement flexible blacklisting based on various conditions.
 
 
 has_field
 ---------
-``has_field(field: string)``
+``has_field(field: string, [message: Message])``
 
-Checks whether the currently processed message contains a field with the name ``field``.
+Checks whether the given ``message`` contains a field with the name ``field``.
+
+If ``message`` is omitted, this function uses the currently processed message.
 
 remove_field
 ------------
-``remove_field(field: string)``
+``remove_field(field: string, [message: Message])``
 
-Removes the given field with the name ``field`` from the currently processed message, unless the field is reserved.
+Removes the given field with the name ``field`` from the given ``message``, unless the field is reserved.
+
+If ``message`` is omitted, this function uses the currently processed message.
 
 set_field
 ---------
-``set_field(field: string, value: any)``
+``set_field(field: string, value: any, [message: Message])``
 
 Sets the given field named ``field`` to the new ``value``. The ``field`` name must be valid, and specifically cannot include
 a ``.`` character. It is trimmed of leading and trailing whitespace. String values are trimmed of whitespace as well.
 
+If ``message`` is omitted, this function uses the currently processed message.
+
 set_fields
 ----------
-``set_fields(fields: Map<string, any>)``
+``set_fields(fields: Map<string, any>, [message: Message])``
 
-Sets all of the given name-value pairs in ``field`` in the currently processed message. This is a convenience function
+Sets all of the given name-value pairs in ``field`` in the given message. This is a convenience function
 acting like `set_field`_. It can be helpful for using the result of a function like `select_jsonpath`_ or `regex`_ in the
 currently processed message especially when the key names are the result of a regular expression.
+
+If ``message`` is omitted, this function uses the currently processed message.
