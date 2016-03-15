@@ -33,7 +33,7 @@ Picking up from the previous example in the :doc:`pipelines` section, let's look
 
     rule "from firewall subnet"
     when
-        cidr_match("10.10.10.0/24", toip($message.gl2_remote_ip))
+        cidr_match("10.10.10.0/24", to_ip($message.gl2_remote_ip))
     then
     end
 
@@ -53,7 +53,7 @@ and an IP address. In this case we reference a field from the currently processe
 The field ``gl2_remote_ip`` is always set by Graylog upon receiving a messages, so we do not check whether that field exists, otherwise
 we would have used another ``has_field`` function call to make sure it is there.
 
-However, note the call to ``toip`` around the field reference. This is necessary because the field is stored as a *string* internally.
+However, note the call to ``to_ip`` around the field reference. This is necessary because the field is stored as a *string* internally.
 In order to successfully match the CIDR pattern, we need to convert it to an IP address.
 
 This is an important feature of Graylog's rule language, it enforces type safety to ensure that you end up with the data in the
