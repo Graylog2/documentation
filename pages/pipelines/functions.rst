@@ -25,7 +25,7 @@ Let's look at a small example to illustrate these properties::
         has_field("transaction_date")
     then
         // the following date format assumes there's no time zone in the string
-        let new_date = parse_date(tostring($message.transaction_date), "yyyy-MM-dd HH:mm:ss");
+        let new_date = parse_date(to_string($message.transaction_date), "yyyy-MM-dd HH:mm:ss");
         set_field("transaction_year", new_date.year);
     end
 
@@ -53,9 +53,9 @@ contains the time zone ID the transaction was done in (hopefully no application 
     then
         // the following date format assumes there's no time zone in the string
         let new_date = parse_date(
-                            tostring($message.transaction_date),
+                            to_string($message.transaction_date),
                             "yyyy-MM-dd HH:mm:ss",
-                            tostring($message.transaction_timezone)
+                            to_string($message.transaction_timezone)
                     );
         set_field("transaction_year", new_date.year);
     end
@@ -75,9 +75,9 @@ In our case the alternative version of calling ``parse_date`` would look like th
     then
         // the following date format assumes there's no time zone in the string
         let new_date = parse_date(
-                            value: tostring($message.transaction_date),
+                            value: to_string($message.transaction_date),
                             pattern: "yyyy-MM-dd HH:mm:ss",
-                            timezone: tostring($message.transaction_timezone)
+                            timezone: to_string($message.transaction_timezone)
                     );
         set_field("transaction_year", new_date.year);
     end
@@ -97,13 +97,13 @@ other plugins in the marketplace.
 
     * - Name
       - Description
-    * - `tobool`_
+    * - `to_bool`_
       - Converts the single parameter to a boolean value using its string value.
-    * - `todouble`_
+    * - `to_double`_
       - Converts the first parameter to a double floating point value.
-    * - `tolong`_
+    * - `to_long`_
       - Converts the first parameter to a long integer value.
-    * - `tostring`_
+    * - `to_string`_
       - Converts the first parameter to its string representation.
     * - `abbreviate`_
       - Abbreviates a String using ellipses.
@@ -143,7 +143,7 @@ other plugins in the marketplace.
       - Parse a string into a JSON tree.
     * - `select_jsonpath`_
       - Selects one or more named JSON Path expressions from a JSON tree.
-    * - `toip`_
+    * - `to_ip`_
       - Converts the given string to an IP object.
     * - `cidr_match`_
       - Checks whether the given IP matches a CIDR pattern.
@@ -164,27 +164,27 @@ other plugins in the marketplace.
     * - `set_fields`_
       - Sets multiple fields to the given values in the currently processed message.
 
-tobool
-------
-``tobool(any)``
+to_bool
+-------
+``to_bool(any)``
 
 Converts the single parameter to a boolean value using its string value.
 
-todouble
---------
-``todouble(any, [default: double])``
+to_double
+---------
+``to_double(any, [default: double])``
 
 Converts the first parameter to a double floating point value.
 
-tolong
-------
-``tolong(any, [default: long])``
+to_long
+-------
+``to_long(any, [default: long])``
 
 Converts the first parameter to a long integer value.
 
-tostring
---------
-``tostring(any, [default: string])``
+to_string
+---------
+``to_string(any, [default: string])``
 
 Converts the first parameter to its string representation.
 
@@ -313,9 +313,9 @@ select_jsonpath
 
 Evaluates the given ``paths`` against the ``json`` tree and returns the map of the resulting values.
 
-toip
-----
-``toip(ip: string)``
+to_ip
+-----
+``to_ip(ip: string)``
 
 Converts the given ``ip`` string to an IpAddress object.
 
