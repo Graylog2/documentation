@@ -15,36 +15,35 @@ Configuration commands
 
 The following commands are changing the configuration of Graylog:
 
-
-+-------------------------------------------------+---------------------------------------------+
-| Command                                         | Description                                 |
-+=================================================+=============================================+
-|| sudo graylog-ctl set-admin-password <password> | Set a new admin password                    |
-+-------------------------------------------------+---------------------------------------------+
-|| sudo graylog-ctl set-admin-username <username> | Set a different username for the admin user |
-+-------------------------------------------------+---------------------------------------------+
-|| sudo graylog-ctl set-email-config <smtp server>| Configure SMTP settings to send alert mails |
-|| [--port=<smtp port>                            |                                             |
-|| --user=<username>                              |                                             |
-|| --password=<password>                          |                                             |
-|| --from-email=<sender-address>                  |                                             |
-|| --web-url=<grayog web-interface url>           |                                             |
-|| --no-tls --no-ssl]                             |                                             |
-+-------------------------------------------------+---------------------------------------------+
-|| sudo graylog-ctl set-timezone <zone acronym>   | Set Graylog's timezone. Make sure system    |
-||                                                | time is also set correctly with             |
-||                                                | ``sudo dpkg-reconfigure tzdata``            |
-+-------------------------------------------------+---------------------------------------------+
-|| sudo graylog-ctl set-retention --size=<Gb> OR  | Configure message retention                 |
-|| --time=<hours> --indices=<number>              |                                             |
-|| [--journal=<Gb>]                               |                                             |
-+-------------------------------------------------+---------------------------------------------+
-|| sudo graylog-ctl enforce-ssl                   | Enforce HTTPS for the web interface         |
-+-------------------------------------------------+---------------------------------------------+
-|| sudo graylog-ctl set-node-id <id>              | Override random server node id              |
-+-------------------------------------------------+---------------------------------------------+
-|| sudo grayog-ctl set-server-secret <secret>     | Override server secret used for encryption  |
-+-------------------------------------------------+---------------------------------------------+
++-----------------------------------------------------+---------------------------------------------+
+| Command                                             | Description                                 |
++=====================================================+=============================================+
+|| ``sudo graylog-ctl set-admin-password <password>`` | Set a new admin password                    |
++-----------------------------------------------------+---------------------------------------------+
+|| ``sudo graylog-ctl set-admin-username <username>`` | Set a different username for the admin user |
++-----------------------------------------------------+---------------------------------------------+
+|| ``sudo graylog-ctl set-email-config``              | Configure SMTP settings to send alert mails |
+|| ``<smtp server> [--port=<smtp port>``              |                                             |
+|| ``--user=<username>``                              |                                             |
+|| ``--password=<password>``                          |                                             |
+|| ``--from-email=<sender-address>``                  |                                             |
+|| ``--web-url=<grayog web-interface url>``           |                                             |
+|| ``--no-tls --no-ssl]``                             |                                             |
++-----------------------------------------------------+---------------------------------------------+
+|| ``sudo graylog-ctl set-timezone <zone acronym>``   | Set Graylog's timezone. Make sure system    |
+||                                                    | time is also set correctly with             |
+||                                                    | ``sudo dpkg-reconfigure tzdata``            |
++-----------------------------------------------------+---------------------------------------------+
+|| ``sudo graylog-ctl set-retention --size=<Gb>`` OR  | Configure message retention                 |
+|| ``--time=<hours> --indices=<number>``              |                                             |
+|| ``[--journal=<Gb>]``                               |                                             |
++-----------------------------------------------------+---------------------------------------------+
+|| ``sudo graylog-ctl enforce-ssl``                   | Enforce HTTPS for the web interface         |
++-----------------------------------------------------+---------------------------------------------+
+|| ``sudo graylog-ctl set-node-id <id>``              | Override random server node id              |
++-----------------------------------------------------+---------------------------------------------+
+|| ``sudo grayog-ctl set-server-secret <secret>``     | Override server secret used for encryption  |
++-----------------------------------------------------+---------------------------------------------+
 
 **After setting one or more of these options re-run**::
 
@@ -91,21 +90,21 @@ The secret is stored in the file ``/etc/graylog/graylog-secrets`` and can be set
 
 The following configuration modes do exist:
 
-+-------------------------------------------------+---------------------------------------------+
-| Command                                         | Services                                    |
-+=================================================+=============================================+
-| sudo graylog-ctl reconfigure                    | Run all services on this box                |
-+-------------------------------------------------+---------------------------------------------+
-| sudo graylog-ctl reconfigure-as-backend         | Run graylog-server, elasticsearch and       |
-|                                                 | mongodb                                     |
-+-------------------------------------------------+---------------------------------------------+
-| sudo graylog-ctl reconfigure-as-webinterface    | Run only the web interface                  |
-+-------------------------------------------------+---------------------------------------------+
-| sudo graylog-ctl reconfigure-as-datanode        | Run only elasticsearch                      |
-+-------------------------------------------------+---------------------------------------------+
-| sudo graylog-ctl reconfigure-as-server          | Run graylog-server and mongodb              |
-|                                                 | (no elasticsearch)                          |
-+-------------------------------------------------+---------------------------------------------+
++-----------------------------------------------------+---------------------------------------------+
+| Command                                             | Services                                    |
++=====================================================+=============================================+
+| ``sudo graylog-ctl reconfigure``                    | Run all services on this box                |
++-----------------------------------------------------+---------------------------------------------+
+| ``sudo graylog-ctl reconfigure-as-backend``         | Run graylog-server, elasticsearch and       |
+|                                                     | mongodb                                     |
++-----------------------------------------------------+---------------------------------------------+
+| ``sudo graylog-ctl reconfigure-as-webinterface``    | Run only the web interface                  |
++-----------------------------------------------------+---------------------------------------------+
+| ``sudo graylog-ctl reconfigure-as-datanode``        | Run only elasticsearch                      |
++-----------------------------------------------------+---------------------------------------------+
+| ``sudo graylog-ctl reconfigure-as-server``          | Run graylog-server and mongodb              |
+|                                                     | (no elasticsearch)                          |
++-----------------------------------------------------+---------------------------------------------+
 
 Extend disk space
 =================
@@ -115,57 +114,57 @@ sure to move old data to the new drive before and give the graylog user permissi
 
 Example procedure for an OVA appliance on VMWare:
 
-+-------------------------------------------------+--------------------------------------------------+
-| Action                                          | Explanation                                      |
-+=================================================+==================================================+
-| shutdown the VM                                 | Preparation for creating a consistend snapshot   |
-+-------------------------------------------------+--------------------------------------------------+
-| take a snapshot through VMWare                  | Use the VMWare GUI to create a snapshot          |
-|                                                 | of the VM in case something goes wrong           |
-+-------------------------------------------------+--------------------------------------------------+
-| attach an additional hard drive                 | Use the VMWare GUI to attach another harddrive   |
-|                                                 | suitable for the amount of logs you want to      |
-|                                                 | store                                            |
-+-------------------------------------------------+--------------------------------------------------+
-| start the VM again and follow these steps:      |                                                  |
-+-------------------------------------------------+--------------------------------------------------+
-| | sudo graylog-ctl stop                         | Stop all running services to prevent disk        |
-|                                                 | access                                           |
-+-------------------------------------------------+--------------------------------------------------+
-| | sudo lshw -class disk                         | Check for the `logical name` of the new hard     |
-|                                                 | drive. Usually this is `/dev/sdb`                |
-+-------------------------------------------------+--------------------------------------------------+
-| | sudo parted -a optimal /dev/sdb mklabel gpt   | Partition and format new disk                    |
-| |                                               |                                                  |
-| | (A reboot may be necessary at this point)     |                                                  |
-| |                                               |                                                  |
-| | sudo parted -a optimal -- /dev/sdb unit \\    |                                                  |
-| |          compact mkpart primary ext3 "1" "-1" |                                                  |
-| |                                               |                                                  |
-| | sudo mkfs.ext4 /dev/sdb1                      |                                                  |
-+-------------------------------------------------+--------------------------------------------------+
-| | sudo mkdir /mnt/tmp                           | Mount disk to temporary mount point              |
-| |                                               |                                                  |
-| | sudo mount /dev/sdb1 /mnt/tmp                 |                                                  |
-+-------------------------------------------------+--------------------------------------------------+
-| | cd /var/opt/graylog/data                      | Copy current data to new disk                    |
-| |                                               |                                                  |
-| | sudo cp -ax * /mnt/tmp/                       |                                                  |
-+-------------------------------------------------+--------------------------------------------------+
-| | sudo diff -qr --suppress-common-lines \\      | Compare both folders.                            |
-| |           /var/opt/graylog/data /mnt/tmp      | Output should be: `Only in /mnt/tmp: lost+found` |
-+-------------------------------------------------+--------------------------------------------------+
-| | sudo rm -rf /var/opt/graylog/data/*           | Delete old data                                  |
-+-------------------------------------------------+--------------------------------------------------+
-| | sudo umount /mnt/tmp                          | Mount new disk over data folder                  |
-| |                                               |                                                  |
-| | sudo mount /dev/sdb1 /var/opt/graylog/data    |                                                  |
-+-------------------------------------------------+--------------------------------------------------+
-| | echo "/dev/sdb1 /var/opt/graylog/data ext4 \\ | Make change permanent                            |
-| | defaults 0 0" \| sudo tee -a /etc/fstab       |                                                  |
-| |                                               |                                                  |
-| | sudo shutdown -r now                          |                                                  |
-+-------------------------------------------------+--------------------------------------------------+
++-----------------------------------------------------+--------------------------------------------------+
+| Action                                              | Explanation                                      |
++=====================================================+==================================================+
+| shutdown the VM                                     | Preparation for creating a consistend snapshot   |
++-----------------------------------------------------+--------------------------------------------------+
+| take a snapshot through VMWare                      | Use the VMWare GUI to create a snapshot          |
+|                                                     | of the VM in case something goes wrong           |
++-----------------------------------------------------+--------------------------------------------------+
+| attach an additional hard drive                     | Use the VMWare GUI to attach another harddrive   |
+|                                                     | suitable for the amount of logs you want to      |
+|                                                     | store                                            |
++-----------------------------------------------------+--------------------------------------------------+
+| start the VM again and follow these steps:          |                                                  |
++-----------------------------------------------------+--------------------------------------------------+
+| | ``sudo graylog-ctl stop``                         | Stop all running services to prevent disk        |
+|                                                     | access                                           |
++-----------------------------------------------------+--------------------------------------------------+
+| | ``sudo lshw -class disk``                         | Check for the `logical name` of the new hard     |
+|                                                     | drive. Usually this is `/dev/sdb`                |
++-----------------------------------------------------+--------------------------------------------------+
+| | sudo parted -a optimal /dev/sdb mklabel gpt       | Partition and format new disk                    |
+| |                                                   |                                                  |
+| | (A reboot may be necessary at this point)         |                                                  |
+| |                                                   |                                                  |
+| | ``sudo parted -a optimal -- /dev/sdb unit \\``    |                                                  |
+| |          ``compact mkpart primary ext3 "1" "-1"`` |                                                  |
+| |                                                   |                                                  |
+| | ``sudo mkfs.ext4 /dev/sdb1``                      |                                                  |
++-----------------------------------------------------+--------------------------------------------------+
+| | ``sudo mkdir /mnt/tmp``                           | Mount disk to temporary mount point              |
+| |                                                   |                                                  |
+| | ``sudo mount /dev/sdb1 /mnt/tmp``                 |                                                  |
++-----------------------------------------------------+--------------------------------------------------+
+| | ``cd /var/opt/graylog/data``                      | Copy current data to new disk                    |
+| |                                                   |                                                  |
+| | ``sudo cp -ax * /mnt/tmp/``                       |                                                  |
++-----------------------------------------------------+--------------------------------------------------+
+| | ``sudo diff -qr --suppress-common-lines \\``      | Compare both folders.                            |
+| |           ``/var/opt/graylog/data /mnt/tmp``      | Output should be: `Only in /mnt/tmp: lost+found` |
++-----------------------------------------------------+--------------------------------------------------+
+| | ``sudo rm -rf /var/opt/graylog/data/*``           | Delete old data                                  |
++-----------------------------------------------------+--------------------------------------------------+
+| | ``sudo umount /mnt/tmp``                          | Mount new disk over data folder                  |
+| |                                                   |                                                  |
+| | ``sudo mount /dev/sdb1 /var/opt/graylog/data``    |                                                  |
++-----------------------------------------------------+--------------------------------------------------+
+| | ``echo "/dev/sdb1 /var/opt/graylog/data ext4 \\`` | Make change permanent                            |
+| | ``defaults 0 0" \| sudo tee -a /etc/fstab``       |                                                  |
+| |                                                   |                                                  |
+| | ``sudo shutdown -r now``                          |                                                  |
++-----------------------------------------------------+--------------------------------------------------+
 
 Install Graylog plugins
 =======================
@@ -250,7 +249,7 @@ Look for the Graylog version you want to install `here <https://packages.graylog
 Advanced Settings
 =================
 
-To change certain parameters used by `graylog-ctl` during a reconfigure run you can override all default parameters found `here <https://github.com/Graylog2/omnibus-graylog2/blob/1.3/files/graylog-cookbooks/graylog/attributes/default.rb>`_.
+To change certain parameters used by `graylog-ctl` during a reconfigure run you can override all default parameters found  in the `attributes <https://github.com/Graylog2/omnibus-graylog2/blob/1.3/files/graylog-cookbooks/graylog/attributes/default.rb>`_ file.
 If you want to change the username used by Graylog for example, edit the file ``/etc/graylog/graylog-settings.json`` like this::
 
   "custom_attributes": {
