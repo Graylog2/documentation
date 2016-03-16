@@ -7,7 +7,7 @@ software on Linux servers was to use operating system packages. Debian has ``DEB
 based on those or come with own package formats. Online repositories of software packages and corresponding package managers make installing
 and configuring new software a matter of a single command and a few minutes of time.
 
-Graylog offers official ``DEB`` and ``RPM`` package repositories for the following operating systems.
+Graylog offers official ``DEB`` and ``RPM`` package repositories. The packages have been tested on the following operating systems:
 
 * Ubuntu 12.04, 14.04
 * Debian 7, 8
@@ -16,103 +16,67 @@ Graylog offers official ``DEB`` and ``RPM`` package repositories for the followi
 The repositories can be setup by installing a single package. Once that's done the Graylog packages can be installed via ``apt-get`` or
 ``yum``. The packages can also be downloaded with a web browser at https://packages.graylog2.org/ if needed.
 
-**Make sure to install and configure Java (>= 8), MongoDB and Elasticsearch 2.x before starting the Graylog services.**
+**Make sure to install and configure Java (>= 8), MongoDB (>= 2.4) and Elasticsearch (>= 2.x) before starting the Graylog services.**
 
-Ubuntu 14.04
-------------
+DEB / APT
+---------
 
-Download and install `graylog-1.3-repository-ubuntu14.04_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.3-repository-ubuntu14.04_latest.deb>`_
+Download and install `graylog-repository-2.0_latest.deb <https://packages.graylog2.org/repo/packages/graylog-repository-2.0_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
-  $ wget https://packages.graylog2.org/repo/packages/graylog-1.3-repository-ubuntu14.04_latest.deb
-  $ sudo dpkg -i graylog-1.3-repository-ubuntu14.04_latest.deb
+  $ wget https://packages.graylog2.org/repo/packages/graylog-repository-2.0_latest.deb
+  $ sudo dpkg -i graylog-repository-2.0_latest.deb
   $ sudo apt-get install apt-transport-https
   $ sudo apt-get update
-  $ sudo apt-get install graylog-server graylog-web
+  $ sudo apt-get install graylog-server
 
-After the installation successfully completed, Graylog can be started with the following commands::
+After the installation completed successfully, Graylog can be started with the following commands. Make sure to use the correct command for your operating system.
 
-  $ sudo start graylog-server
-  $ sudo start graylog-web
+=================== =========== =======================================
+OS                  Init System Command
+=================== =========== =======================================
+Ubuntu 14.04, 12.04 upstart     ``sudo start graylog-server``
+Debian 7            SysV        ``sudo service graylog-server start``
+Debian 8            systemd     ``sudo systemctl start graylog-server``
+=================== =========== =======================================
 
-Ubuntu 12.04
-------------
+The packages are configured to **not** start any Graylog services during boot. You can use the following commands to start Graylog when the operating system is booting.
 
-Download and install `graylog-1.3-repository-ubuntu12.04_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.3-repository-ubuntu12.04_latest.deb>`_
-via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
+=================== =========== ==================================================
+OS                  Init System Command
+=================== =========== ==================================================
+Ubuntu 14.04, 12.04 upstart     ``sudo rm -f /etc/init/graylog-server.override``
+Debian 7            SysV        ``sudo update-rc.d graylog-server defaults 95 10``
+Debian 8            systemd     ``sudo systemctl enable graylog-server``
+=================== =========== ==================================================
 
-  $ wget https://packages.graylog2.org/repo/packages/graylog-1.3-repository-ubuntu12.04_latest.deb
-  $ sudo dpkg -i graylog-1.3-repository-ubuntu12.04_latest.deb
-  $ sudo apt-get install apt-transport-https
-  $ sudo apt-get update
-  $ sudo apt-get install graylog-server graylog-web
 
-After the installation successfully completed, Graylog can be started with the following commands::
+RPM / YUM / DNF
+---------------
 
-  $ sudo start graylog-server
-  $ sudo start graylog-web
-
-Debian 7
---------
-
-Download and install `graylog-1.3-repository-debian7_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.3-repository-debian7_latest.deb>`_
-via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
-
-  $ wget https://packages.graylog2.org/repo/packages/graylog-1.3-repository-debian7_latest.deb
-  $ sudo dpkg -i graylog-1.3-repository-debian7_latest.deb
-  $ sudo apt-get install apt-transport-https
-  $ sudo apt-get update
-  $ sudo apt-get install graylog-server graylog-web
-
-After the installation successfully completed, Graylog can be started with the following commands::
-
-  $ sudo service graylog-server start
-  $ sudo service graylog-web start
-
-Debian 8
---------
-
-Download and install `graylog-1.3-repository-debian8_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.3-repository-debian8_latest.deb>`_
-via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
-
-  $ wget https://packages.graylog2.org/repo/packages/graylog-1.3-repository-debian8_latest.deb
-  $ sudo dpkg -i graylog-1.3-repository-debian8_latest.deb
-  $ sudo apt-get install apt-transport-https
-  $ sudo apt-get update
-  $ sudo apt-get install graylog-server graylog-web
-
-After the installation successfully completed, Graylog can be started with the following commands::
-
-  $ sudo systemctl start graylog-server
-  $ sudo systemctl start graylog-web
-
-CentOS 6
---------
-
-Download and install `graylog-1.3-repository-el6_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-1.3-repository-el6_latest.rpm>`_
+Download and install `graylog-repository-2.0_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-repository-2.0_latest.rpm>`_
 via ``rpm(8)``::
 
-  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-1.3-repository-el6_latest.rpm
-  $ sudo yum install graylog-server graylog-web
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-repository-2.0_latest.rpm
+  $ sudo yum install graylog-server
 
-After the installation successfully completed, Graylog can be started with the following commands::
+After the installation completed successfully, Graylog can be started with the following commands. Make sure to use the correct command for your operating system.
 
-  $ sudo service graylog-server start
-  $ sudo service graylog-web start
+=================== =========== =======================================
+OS                  Init System Command
+=================== =========== =======================================
+CentOS 6            SysV        ``sudo service graylog-server start``
+CentOS 7            systemd     ``sudo systemctl start graylog-server``
+=================== =========== =======================================
 
-CentOS 7
---------
+The packages are configured to **not** start any Graylog services during boot. You can use the following commands to start Graylog when the operating system is booting.
 
-Download and install `graylog-1.3-repository-el7_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-1.3-repository-el7_latest.rpm>`_
-via ``rpm(8)``::
-
-  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-1.3-repository-el7_latest.rpm
-  $ sudo yum install graylog-server graylog-web
-
-After the installation successfully completed, Graylog can be started with the following commands::
-
-  $ sudo systemctl start graylog-server
-  $ sudo systemctl start graylog-web
+=================== =========== ==================================================
+OS                  Init System Command
+=================== =========== ==================================================
+CentOS 6            SysV        ``sudo update-rc.d graylog-server defaults 95 10``
+CentOS 7            systemd     ``sudo systemctl enable graylog-server``
+=================== =========== ==================================================
 
 Feedback
 --------
