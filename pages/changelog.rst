@@ -7,7 +7,7 @@ Graylog 1.3.4
 
 Released: 2016-03-16
 
-https://www.graylog.org/graylog-1-3-4-is-now-available/
+https://www.graylog.org/blog/49-graylog-1-3-4-is-now-available
 
 * Fix security issue which allowed redirecting users to arbitrary sites on login `Graylog2/graylog2-web-interface#1729 <https://github.com/Graylog2/graylog2-web-interface/pull/1729>`_
 * Fix issue with time-based index rotation strategy `Graylog2/graylog2-server#725 <https://github.com/Graylog2/graylog2-server/issues/725>`_ `Graylog2/graylog2-server#1693 <https://github.com/Graylog2/graylog2-server/pull/1693>`_
