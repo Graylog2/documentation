@@ -2,6 +2,23 @@
 Changelog
 *********
 
+Graylog 1.3.4
+=============
+
+Released: 2016-03-16
+
+https://www.graylog.org/graylog-1-3-4-is-now-available/
+
+* Fix security issue which allowed redirecting users to arbitrary sites on login `Graylog2/graylog2-web-interface#1729 <https://github.com/Graylog2/graylog2-web-interface/pull/1729>`_
+* Fix issue with time-based index rotation strategy `Graylog2/graylog2-server#725 <https://github.com/Graylog2/graylog2-server/issues/725>`_ `Graylog2/graylog2-server#1693 <https://github.com/Graylog2/graylog2-server/pull/1693>`_
+* Fix issue with ``IndexFailureServiceImpl`` `Graylog2/graylog2-server#1747 <https://github.com/Graylog2/graylog2-server/issues/1747>`_
+* Add default Content-Type to ``GettingStartedResource`` `Graylog2/graylog2-server#1700 <https://github.com/Graylog2/graylog2-server/issues/1700>`_
+* Improve OS platform detection `Graylog2/graylog2-server#1737 <https://github.com/Graylog2/graylog2-server/issues/1737>`_
+* Add prefixes ``GRAYLOG_`` (environment variables) and  ``graylog.`` (system properties) for overriding configuration settings `Graylog2/graylog2-server@48ed88d <https://github.com/Graylog2/graylog2-server/commit/48ed88d4a7897152f7daa16f0d77e03b824d7b48>`_
+* Fix URL to Graylog Marketplace on Extractor/Content Pack pages `Graylog2/graylog2-server#1817 <https://github.com/Graylog2/graylog2-server/issues/1817>`_
+* Use monospace font on message values `Graylog2/graylog2-web-interface@3cce368 <https://github.com/Graylog2/graylog2-web-interface/commit/3cce368bd7360c0e95dc0b635cb99f0a47daa6ac>`_
+
+
 Graylog 1.3.3
 =============
 
