@@ -239,9 +239,9 @@ Upgrade Graylog
 
 Always perform a full backup or snapshot of the appliance before proceeding. Only upgrade
 if the release notes say the next version is a drop-in replacement.
-Look for the Graylog version you want to install `here <http://packages.graylog2.org/appliances/ubuntu>`_ , `graylog_latest` always links to the newest version::
+Look for the Graylog version you want to install `here <https://packages.graylog2.org/appliances/ubuntu>`_ , `graylog_latest` always links to the newest version::
 
-  wget http://packages.graylog2.org/appliances/ubuntu/graylog_latest.deb
+  wget https://packages.graylog2.org/appliances/ubuntu/graylog_latest.deb
   sudo graylog-ctl stop
   sudo dpkg -G -i graylog_latest.deb
   sudo graylog-ctl reconfigure
