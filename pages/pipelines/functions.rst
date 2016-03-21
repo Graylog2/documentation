@@ -123,8 +123,16 @@ other plugins in the marketplace.
       - Returns a substring of ``value`` with the given start and end offsets.
     * - `regex`_
       - Match a regular expression against a string, with matcher groups.
+    * - `crc32`_
+      - Returns the hex encoded CRC32 digest of the given string.
+    * - `crc32c`_
+      - Returns the hex encoded CRC32C (RFC 3720, Section 12.1) digest of the given string.
     * - `md5`_
       - Returns the hex encoded MD5 digest of the given string.
+    * - `murmur3_32`_
+      - Returns the hex encoded MurmurHash3 (32-bit) digest of the given string.
+    * - `murmur3_128`_
+      - Returns the hex encoded MurmurHash3 (128-bit) digest of the given string.
     * - `sha1`_
       - Returns the hex encoded SHA1 digest of the given string.
     * - `sha256`_
@@ -246,11 +254,35 @@ Match the regular expression in ``pattern`` against ``value``. Returns a match o
 ``matches`` to indicate whether the regular expression matched and, if requested, the matching groups as ``groups``.
 The groups can optionally be named using the ``group_names`` array. If not named, the groups names are strings starting with ``"0"``.
 
+crc32
+-----
+``crc32(value: string)``
+
+Creates the hex encoded CRC32 digest of the ``value``.
+
+crc32c
+------
+``crc32c(value: string)``
+
+Creates the hex encoded CRC32C (RFC 3720, Section 12.1) digest of the ``value``.
+
 md5
 ---
 ``md5(value: string)``
 
 Creates the hex encoded MD5 digest of the ``value``.
+
+murmur3_32
+----------
+``murmur3_32(value: string)``
+
+Creates the hex encoded MurmurHash3 (32-bit) digest of the ``value``.
+
+murmur3_128
+-----------
+``murmur3_128(value: string)``
+
+Creates the hex encoded MurmurHash3 (128-bit) digest of the ``value``.
 
 sha1
 ----
