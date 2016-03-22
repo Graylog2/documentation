@@ -16,16 +16,23 @@ Graylog offers official ``DEB`` and ``RPM`` package repositories. The packages h
 The repositories can be setup by installing a single package. Once that's done the Graylog packages can be installed via ``apt-get`` or
 ``yum``. The packages can also be downloaded with a web browser at https://packages.graylog2.org/ if needed.
 
-**Make sure to install and configure Java (>= 8), MongoDB (>= 2.4) and Elasticsearch (>= 2.x) before starting the Graylog services.**
+Prerequisites
+-------------
+
+Make sure to install and configure the following software before installing and starting any Graylog services:
+
+* Java (>= 8)
+* MongoDB (>= 2.4)
+* Elasticsearch (>= 2.x)
 
 DEB / APT
 ---------
 
-Download and install `graylog-repository-2.0_latest.deb <https://packages.graylog2.org/repo/packages/graylog-repository-2.0_latest.deb>`_
+Download and install `graylog-2.0-repository_latest.deb <https://packages.graylog2.org/repo/packages/graylog-2.0-repository_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
-  $ wget https://packages.graylog2.org/repo/packages/graylog-repository-2.0_latest.deb
-  $ sudo dpkg -i graylog-repository-2.0_latest.deb
+  $ wget https://packages.graylog2.org/repo/packages/graylog-2.0-repository_latest.deb
+  $ sudo dpkg -i graylog-2.0-repository_latest.deb
   $ sudo apt-get install apt-transport-https
   $ sudo apt-get update
   $ sudo apt-get install graylog-server
@@ -54,10 +61,10 @@ Debian 8            systemd     ``sudo systemctl enable graylog-server``
 RPM / YUM / DNF
 ---------------
 
-Download and install `graylog-repository-2.0_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-repository-2.0_latest.rpm>`_
+Download and install `graylog-2.0-repository_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-2.0-repository_latest.rpm>`_
 via ``rpm(8)``::
 
-  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-repository-2.0_latest.rpm
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-2.0-repository_latest.rpm
   $ sudo yum install graylog-server
 
 After the installation completed successfully, Graylog can be started with the following commands. Make sure to use the correct command for your operating system.
