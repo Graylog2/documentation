@@ -159,11 +159,9 @@ There are a number of CLI parameters you can pass to the call in your ``graylogc
 
 * ``-h``, ``--help``: Show help message
 * ``-f CONFIGFILE``, ``--configfile CONFIGFILE``: Use configuration file `CONFIGFILE` for Graylog; default: ``/etc/graylog/server/server.conf``
-* ``-t``, ``--configtest``: Validate the Graylog configuration and exit with exit code 0 if the configuration file is syntactically correct, exit code 1 and a description of the error otherwise
 * ``-d``, ``--debug``: Run in debug mode
 * ``-l``, ``--local``: Run in local mode. Automatically invoked if in debug mode. Will not send system statistics, even if enabled and allowed. Only interesting for development and testing purposes.
 * ``-s``, ``--statistics``: Print utilization statistics to STDOUT
-* ``-r``, ``--no-retention``: Do not automatically delete old/outdated indices
 * ``-p PIDFILE``, ``--pidfile PIDFILE``: Set the file containing the PID of graylog to `PIDFILE`; default: `/tmp/graylog.pid`
 * ``-np``, ``--no-pid-file``: Do not write PID file (overrides `-p`/`--pidfile`)
 * ``--version``: Show version of Graylog and exit
