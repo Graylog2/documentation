@@ -15,7 +15,7 @@ Go to the ``/etc`` directory, and use ``vi``, ``vim`` (`vim Cheat Sheet <http://
 
 At the bottom of the file, add the following so messages will forward::
 
-  *.* @127.0.0.1:5140
+  *.* @127.0.0.1:5140;RSYSLOG_SyslogProtocol23Format
 
 In case you wanted to know, ``@`` means UDP, ``127.0.0.1`` is localhost, and ``5140`` is the port.
 
