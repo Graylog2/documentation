@@ -106,6 +106,72 @@ Tuning Elasticsearch
 Graylog is already setting specific configuration per index it creates. This is enough tuning for a lot of use cases and setups. A more
 detailed guide on deeper tuning of Elasticsearch is following.
 
+Avoiding split-brain and shard shuffling
+========================================
+
+Split-brain events
+------------------
+
+Elasticsearch sacrifices consistency in order to ensure availability, and partition tolerance. The reasoning behind that is that short periods of misbehaviour are less problematic than short periods of unavailability. In other words, when Elasticsearch nodes in a cluster are unable to replicate changes to data, they will keep serving applications such as Graylog. When the nodes are able to replicate their data, they will attempt to converge the replicas and to achieve *eventual consistency*.
+
+Elasticsearch tackles the previous by electing master nodes, which are in charge of database operations such as creating new indices, moving shards around the cluster nodes, and so forth. Master nodes coordinate their actions actively with others, ensuring that the data can be converged by non-masters. The cluster nodes that are not master nodes are not allowed to make changes that would break the cluster.
+
+The previous mechanism can in some circumstances fail, causing a **split-brain event**. When an Elasticsearch cluster is split into two sides, both thinking they are the master, data consistency is lost as the masters work independently on the data. As a result the nodes will respond differently to same queries. This is considered a catastrophic event, because the data from two masters can not be rejoined automatically, and it takes quite a bit of manual work to remedy the situation.
+
+Avoiding split-brain events
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Elasticsearch nodes take a simple majority vote over who is master. If the majority agrees that they are the master, then most likely the disconnected minority has also come to conclusion that they can not be the master, and everything is just fine. This mechanism requires at least 3 nodes to work reliably however, because one or two nodes can not form a majority. 
+
+The minimum amount of master nodes required to elect a master must be configured manually in ``elasticsearch.yml``::
+
+  # At least NODES/2+1 on clusters with NODES > 2, where NODES is the number of master nodes in the cluster
+  discovery.zen.minimum_master_nodes: 2
+
+The configuration values should typically for example:
+
++--------------+------------------------+----------------------------------------------------------------------+
+| Master nodes | minimum_master_nodes   | Comments                                                             |
++==============+========================+======================================================================+
+| 1            | 1                      |                                                                      |
++--------------+------------------------+----------------------------------------------------------------------+
+| 2            | 1                      | With 2 the other node going down would stop the cluster from working!|
++--------------+------------------------+----------------------------------------------------------------------+
+| 3            | 2                      |                                                                      |
++--------------+------------------------+----------------------------------------------------------------------+
+| 4            | 3                      |                                                                      |
++--------------+------------------------+----------------------------------------------------------------------+
+| 5            | 3                      |                                                                      |
++--------------+------------------------+----------------------------------------------------------------------+
+| 6            | 4                      |                                                                      |
++--------------+------------------------+----------------------------------------------------------------------+
+
+Some of the master nodes may be *dedicated master nodes*, meaning they are configured just to handle lightweight operational (cluster management) responsibilities. They will not handle or store any of the cluster's data. The function of such nodes is similar to so called *witness servers* on other database products, and setting them up on dedicated witness sites will greatly reduce the chance of Elasticsearch cluster instability. 
+
+A dedicated master node has the following configuration in ``elasticsearch.yml``::
+
+ node.data: false
+ node.master: true
+
+Shard shuffling
+---------------
+
+When cluster status changes, for example because of node restarts or availability issues, Elasticsearch will start automatically rebalancing the data in the cluster. The cluster works on making sure that the amount of shards and replicas will conform to the cluster configuration. This is a problem if the status changes are just temporary. Moving shards and replicas around in the cluster takes considerable amount of resources, and should be done only when necessary.
+
+Avoiding unnecessary shuffling
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Elasticsearch has couple configuration options, which are designed to allow short times of unavailability before starting the recovery process with shard shuffling. There are 3 settings that may be configured in ``elasticsearch.yml``::
+
+  # Recover only after the given number of nodes have joined the cluster. Can be seen as "minimum number of nodes to attempt recovery at all".
+  gateway.recover_after_nodes: 8
+  # Time to wait for additional nodes after recover_after_nodes is met.
+  gateway.recover_after_time: 5m
+  # Inform ElasticSearch how many nodes form a full cluster. If this number is met, start up immediately.
+  gateway.expected_nodes: 10
+
+The configuration options should be set up so that only *minimal* node unavailability is tolerated. For example server restarts are common, and should be done in managed manner. The logic is that if you lose large part of your cluster, you probably should start re-shuffling the shards and replicas without tolerating the situation. 
+
 Cluster Status explained
 ========================
 
