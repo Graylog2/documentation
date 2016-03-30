@@ -278,7 +278,7 @@ Enabling HTTPS is easy. Just start the web interface like this::
 
 This will generate self-signed certificate. To use proper certificates you must configure a Java key store. Most signing authorities provide
 instructions on how to create a Java keystore and the official keystore utility docs can be found
-`here <http://docs.oracle.com/javase/7/docs/technotes/tools/solaris/keytool.html>`_.
+`here <https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html>`_.
 
   * ``https.keyStore`` The path to the keystore containing the private key and certificate, if not provided generates a keystore for you
   * ``https.keyStoreType`` The key store type, defaults to JKS
