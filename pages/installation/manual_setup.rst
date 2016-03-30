@@ -204,8 +204,8 @@ Enabling HTTPS is easy. Just start the web interface TLS support in the ``/etc/g
 
 This will generate self-signed certificate. To use proper certificates you must configure a Java key store. Most signing authorities provide
 instructions on how to create a Java keystore and the official keystore utility docs can be found
-`here <http://docs.oracle.com/javase/8/docs/technotes/tools/solaris/keytool.html>`_.
+`here <https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html>`_.
 
-  * ``web_tls_cert_file`` The X.509 certificate file to use for securing the web interface port.
-  * ``web_tls_key_file`` The private key to use for securing the web interface port.
-  * ``web_tls_key_password`` The password, defaults to a blank password
+* ``web_tls_cert_file`` The X.509 certificate file to use for securing the web interface port.
+* ``web_tls_key_file`` The private key to use for securing the web interface port.
+* ``web_tls_key_password`` The password, defaults to a blank password
