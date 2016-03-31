@@ -17,8 +17,11 @@ To run the container in the background replace `-t` with `-d`.
 Using the beta container
 ------------------------
 
-You can also run a pre-release or beta version of Graylog using Docker. Just replace `graylog2/allinone` with `graylog2/allinone-beta`.
-Note that you will have to replace this not only in the `docker run` command above but also in subsequent commands of this documentation.
+You can also run a pre-release or beta version of Graylog using Docker. The pre-releases are included in the `graylog2/server` image.
+Follow this `guide <https://hub.docker.com/r/graylog2/server/>`_ and pick a alpha/beta tag like::
+
+  $ docker run --link some-mongo:mongo --link some-elasticsearch:elasticsearch -d graylog-server:2.0.0-beta.1-1
+ 
 We only recommend to run beta versions if you are an experienced Graylog user and know what you are doing.
 
 Usage
