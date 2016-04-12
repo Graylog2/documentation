@@ -332,7 +332,6 @@ format_date
 Returns the given date and time ``value`` formatted according to the ``format`` string. If no timezone is given,
 it defaults to ``UTC``.
 
-
 parse_json
 ----------
 ``parse_json(value: string)``
@@ -393,7 +392,6 @@ The processing pipeline will remove the given ``message`` after the rule is fini
 If ``message`` is omitted, this function uses the currently processed message.
 
 This can be used to implement flexible blacklisting based on various conditions.
-
 
 has_field
 ---------
