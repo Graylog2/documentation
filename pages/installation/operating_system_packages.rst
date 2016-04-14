@@ -24,9 +24,9 @@ Ubuntu 14.04
 Download and install `graylog-1.3-repository-ubuntu14.04_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.3-repository-ubuntu14.04_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
+  $ sudo apt-get install apt-transport-https
   $ wget https://packages.graylog2.org/repo/packages/graylog-1.3-repository-ubuntu14.04_latest.deb
   $ sudo dpkg -i graylog-1.3-repository-ubuntu14.04_latest.deb
-  $ sudo apt-get install apt-transport-https
   $ sudo apt-get update
   $ sudo apt-get install graylog-server graylog-web
 
@@ -41,9 +41,9 @@ Ubuntu 12.04
 Download and install `graylog-1.3-repository-ubuntu12.04_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.3-repository-ubuntu12.04_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
+  $ sudo apt-get install apt-transport-https
   $ wget https://packages.graylog2.org/repo/packages/graylog-1.3-repository-ubuntu12.04_latest.deb
   $ sudo dpkg -i graylog-1.3-repository-ubuntu12.04_latest.deb
-  $ sudo apt-get install apt-transport-https
   $ sudo apt-get update
   $ sudo apt-get install graylog-server graylog-web
 
@@ -58,9 +58,9 @@ Debian 7
 Download and install `graylog-1.3-repository-debian7_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.3-repository-debian7_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
+  $ sudo apt-get install apt-transport-https
   $ wget https://packages.graylog2.org/repo/packages/graylog-1.3-repository-debian7_latest.deb
   $ sudo dpkg -i graylog-1.3-repository-debian7_latest.deb
-  $ sudo apt-get install apt-transport-https
   $ sudo apt-get update
   $ sudo apt-get install graylog-server graylog-web
 
@@ -75,9 +75,9 @@ Debian 8
 Download and install `graylog-1.3-repository-debian8_latest.deb <https://packages.graylog2.org/repo/packages/graylog-1.3-repository-debian8_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
+  $ sudo apt-get install apt-transport-https
   $ wget https://packages.graylog2.org/repo/packages/graylog-1.3-repository-debian8_latest.deb
   $ sudo dpkg -i graylog-1.3-repository-debian8_latest.deb
-  $ sudo apt-get install apt-transport-https
   $ sudo apt-get update
   $ sudo apt-get install graylog-server graylog-web
 
