@@ -31,9 +31,9 @@ DEB / APT
 Download and install `graylog-2.0-repository_latest.deb <https://packages.graylog2.org/repo/packages/graylog-2.0-repository_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
+  $ sudo apt-get install apt-transport-https
   $ wget https://packages.graylog2.org/repo/packages/graylog-2.0-repository_latest.deb
   $ sudo dpkg -i graylog-2.0-repository_latest.deb
-  $ sudo apt-get install apt-transport-https
   $ sudo apt-get update
   $ sudo apt-get install graylog-server
 
