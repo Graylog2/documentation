@@ -6,12 +6,14 @@ Configuring and using the web interface
 
 When your Graylog instance/cluster is up and running, the next thing you usually want to do is check out our web interface, which offers you great capabilities for searching and analyzing your indexed data and configuring your Graylog environment. Per default you can access it using your browser on ``http://<graylog-server>:9000``.
 
+
 Overview
 ========
 
 The Graylog web interface was rewritten in JavaScript for 2.0 to be a client-side single-page browser application. This means its code is running solely in your browser, fetching all data via HTTP(S) from the REST API of your Graylog server. Therefore there is a second HTTP listener which is serving the assets for the web interface (all JavaScript, fonts, images, CSS files) to the clients.
 
 **Both the web interface port (defaulting to 9000) and the REST API port (defaulting to 12900) must be accessible by everyone using the web interface.**
+
 
 Configuration Options
 =====================
@@ -56,8 +58,27 @@ The web interface is fetching all information it is showing from the REST API of
   - If ``web_endpoint_uri`` is defined in the Graylog configuration file, this is used if the aforementioned header is not set.
   - If both are not defined, ``rest_transport_uri`` is used.
 
+
 Browser Compatibility
 =====================
+
+Writing the web interface as a single-page application is a challenging task. We want to provide the best possible experience to everyone, which often means using modern web technology only available in recent browsers, while keeping a reasonable compatibility with old and less-capable browsers. These browsers are officially supported in Graylog 2.0:
+
++-------------------+----------------------+-----------------+
+| Browser           | OS                   | Minimum Version |
++===================+======================+=================+
+| Chrome            | Windows, OS X, Linux | 50              |
++-------------------+----------------------+-----------------+
+| Firefox           | Windows, OS X, Linux | 45 / 38 ESR     |
++-------------------+----------------------+-----------------+
+| Internet Explorer | Windows              | 11              |
++-------------------+----------------------+-----------------+
+| Microsoft Edge    | Windows              | 25              |
++-------------------+----------------------+-----------------+
+| Safari            | OS X                 | 9               |
++-------------------+----------------------+-----------------+
+
+Please take into account that you need to enable Javascript in order to use Graylog web interface.  
 
 
 SSL Setup
@@ -69,6 +90,7 @@ We highly recommend securing your Graylog installation using SSL/TLS to make sur
   - Enable TLS for the web interface endpoint (``web_enable_tls``)
 
 You also need to make sure that you have proper certificates in place, which are valid and trusted by the clients. Not enabling TLS for either one of them will result in a browser error about mixed content and the web interface will cease to work.
+
 
 Certificate/Key file format
 ---------------------------
@@ -87,8 +109,10 @@ If you want to run a load balancer/reverse proxy in front of Graylog, you need t
 
 To help you with your specific environment, these are some example configurations for common scenarios:
 
+
 NGINX:
 ------
+
 
 AWS Elastic Load Balancing:
 ---------------------------
