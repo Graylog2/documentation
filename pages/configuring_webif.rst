@@ -57,6 +57,8 @@ We highly recommend securing your Graylog installation using SSL/TLS to make sur
   - Enable TLS for the Graylog REST API (``rest_enable_tls``)
   - Enable TLS for the web interface endpoint (``web_enable_tls``)
 
+You also need to make sure that you have proper certificates in place, which are valid and trusted by the clients. Not enabling TLS for either one of them will result in a browser error about mixed content and the web interface will cease to work.
 
 Making the web interface work with load balancers/proxies
 =========================================================
+
