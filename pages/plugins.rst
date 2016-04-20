@@ -26,8 +26,7 @@ Creating a plugin skeleton
 The easiest way to get started is to use our `maven archetype <http://maven.apache.org/guides/introduction/introduction-to-archetypes.html>`_
 that will create a complete plugin project infrastructure will all required classes, build definitions, and configurations using an interactive wizard.
 
-Maven is a Java widely used build tool that comes pre-installed on many operating systems or can be installed using most package managers. Make sure that it
-is installed with at least version 3 before you go on.
+Maven is a widely used build tool for Java, that comes pre-installed on many operating systems or can be installed using most package managers. Make sure that you have at least version 3 before you go on.
 
 Use it like this::
 
@@ -119,6 +118,22 @@ Register your new plugin using the ``configure()`` method::
   protected void configure() {
       addAlarmCallback(JiraAlarmCallback.class);
   }
+
+Creating a plugin for the web interface
+=======================================
+
+Sometimes your plugin is not only supposed to work under the hoods inside a Graylog server as an input, output, alarm callback, etc. but you also want to contribute previously nonexisting functionality to Graylog's web interface. Since version 2.0 this is now possible. When using the most recent `Graylog maven archetype <https://github.com/Graylog2/graylog-plugin-archetype>` to create the plugin skeleton, you are already good to go for this.
+
+Graylog web plugins are bundles of mainly JavaScript files, but you can also include basically any file usable in your browser, that you want to use in your plugin, i.e. images, stylesheets, fonts, even audio or video files. During the build process all of these are assembled into modular chunks by `webpack <http://webpack.github.io>` and included in the jar file of your plugin.
+
+Web Plugin structure
+--------------------
+
+These are the relevant files and directories in your plugin directory for the web part of it:
+
+  **webpack.config.js** This is the configuration file for the `webpack <http://webpack.github.io>` module bundler. Most of it is already preconfigured by our `PluginWebpackConfig` class, so the file is very small. You can override/extend every configuration option by passing a webpack snippet though.
+  
+  **build.config.js.sample** In this file you can customize some of the parameters of the build. There is one mandatory parameter named `web_src_path` which defines the absolute or relative location to a checkout of the `Graylog source repository <https://github.com/Graylog2/graylog2-server>`.
 
 Building plugins
 ================
