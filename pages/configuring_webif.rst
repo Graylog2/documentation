@@ -9,7 +9,7 @@ When your Graylog instance/cluster is up and running, the next thing you usually
 Overview
 ========
 
-The Graylog web interface was rewritten in JavaScript for 2.0 to be a client-side single-page browser application. This means its code is running solely in your browser, fetching all data via HTTP from the REST API of your Graylog server. Therefore there is a second HTTP listener which is serving the assets for the web interface (all JavaScript, fonts, images, CSS files) to the clients.
+The Graylog web interface was rewritten in JavaScript for 2.0 to be a client-side single-page browser application. This means its code is running solely in your browser, fetching all data via HTTP(S) from the REST API of your Graylog server. Therefore there is a second HTTP listener which is serving the assets for the web interface (all JavaScript, fonts, images, CSS files) to the clients.
 
 **Both the web interface port (defaulting to 9000) and the REST API port (defaulting to 12900) must be accessible by everyone using the web interface.**
 
@@ -45,6 +45,15 @@ If our default settings do not work for you, there is a number of options in the
 | ``web_thread_pool_size``| 16                      | Number of threads used for web interface listener.                   |
 +-------------------------+-------------------------+----------------------------------------------------------------------+
 
+How does the web interface connects to the Graylog server?
+==========================================================
+
+The web interface is fetching all information it is showing from the REST API of the Graylog server. Therefore it needs to connect to it using HTTP(S). There are several ways how you can define which way the web interface connects to the Graylog server:
+
+  - If the HTTP(S) client going to the web interface port sends a ``X-Graylog-Server-URL`` header, which contains a valid URL, then this is overriding everything else.
+  - If ``web_endpoint_uri`` is defined in the Graylog configuration file, this is used if the aforementioned header is not set.
+  - If both are not defined, ``rest_transport_uri`` is used.
+
 Browser Compatibility
 =====================
 
@@ -59,6 +68,15 @@ We highly recommend securing your Graylog installation using SSL/TLS to make sur
 
 You also need to make sure that you have proper certificates in place, which are valid and trusted by the clients. Not enabling TLS for either one of them will result in a browser error about mixed content and the web interface will cease to work.
 
+Certificate/Key file format
+---------------------------
+
+When you are configuring TLS, you need to make sure that your certificate/key files are in the right format, which is X.509 for certificates and PKCS#8 for the private keys. Both must to be stored in PEM format.
+
 Making the web interface work with load balancers/proxies
 =========================================================
 
+If you want to run a load balancer/reverse proxy in front of Graylog, you need to make sure that:
+
+  - The REST API port is still accessible for clients
+  - The address for the Graylog server
