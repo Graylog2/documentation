@@ -81,4 +81,11 @@ This setting controls the batch size for re-indexing archive data into
 Elasticsearch. When set to ``1000``, the restore job will re-index the
 archived data in document batches of 1000.
 
+You can use this setting to control the speed of the restore process and also
+how much load it will generate on the Elasticsearch cluster. The **higher**
+the batch size, the **faster** the restore will progress and the **more** load
+will be put on your Elasticsearch cluster in addition to the normal message
+processing.
 
+Make sure to tune this **carefully** to avoid any negative impact on your
+message indexing throughput and search speed!
