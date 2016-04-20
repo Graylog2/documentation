@@ -18,10 +18,11 @@ Download NXlog and follow the `instructions <https://nxlog.org/products/nxlog-co
 
     $ sudo /etc/init.d/nxlog stop
     $ sudo update-rc.d -f nxlog remove
+    $ sudo gpasswd -a nxlog adm
 
 Same on a Windows host::
 
-    $ C:\Program Files (x86)\nxlog\nxlog -u
+    & 'C:\Program Files (x86)\nxlog\nxlog.exe' -u
 
 From now on NXlog will not start automatically and the Sidecar can start the collector process without any issues.
 The Sidecar binary itself doesn't have any dependencies beside an installation of the used collector backend.
@@ -32,8 +33,8 @@ Linux/Unix
 We offer Debian/Ubuntu packages directly in the `releases <https://github.com/Graylog2/collector-sidecar/releases>`_ section.
 Download and install the latest version via ``dpkg(1)``::
 
-    $ wget https://github.com/Graylog2/collector-sidecar/releases/download/0.0.2/collector-sidecar_0.0.2-1_amd64.deb
-    $ sudo dpkg -i collector-sidecar_0.0.2-1_amd64.deb
+    $ wget https://github.com/Graylog2/collector-sidecar/releases/download/0.0.3/collector-sidecar_0.0.3-1_amd64.deb
+    $ sudo dpkg -i collector-sidecar_0.0.3-1_amd64.deb
 
 To register and enable a system service use the ``-service`` option::
 
@@ -45,8 +46,8 @@ Windows
 
 Windows installation works in the same way. Download the Windows package and register the Sidecar services::
 
-    $ C:\Program Files (x86)\graylog\collector-sidecar\graylog-collector-sidecar.exe -service install
-    $ C:\Program Files (x86)\graylog\collector-sidecar\graylog-collector-sidecar.exe -service start
+    & 'C:\Program Files (x86)\graylog\collector-sidecar\graylog-collector-sidecar.exe' -service install
+    & 'C:\Program Files (x86)\graylog\collector-sidecar\graylog-collector-sidecar.exe' -service start
 
 Configuration
 *************
@@ -132,6 +133,9 @@ matter if there inputs or outputs defined.
 Debug
 *****
 
-In case you want to debug a Sidecar setup, start the process in the foreground and monitor the output of the process::
+The Sidecar is writing to the local syslog so take a look into `/var/log/syslog` on most systems. The output of the
+running collectors is written to the ``log_path`` directory.
+
+You can also start the Sidecar in foreground and monitor the output of the process::
 
     $ graylog-collector-sidecar -c /etc/graylog/collector-sidecar/collector_sidecar.yml
