@@ -12,7 +12,7 @@ Overview
 
 The Graylog web interface was rewritten in JavaScript for 2.0 to be a client-side single-page browser application. This means its code is running solely in your browser, fetching all data via HTTP(S) from the REST API of your Graylog server. Therefore there is a second HTTP listener which is serving the assets for the web interface (all JavaScript, fonts, images, CSS files) to the clients.
 
-**Both the web interface port (defaulting to 9000) and the REST API port (defaulting to 12900) must be accessible by everyone using the web interface.**
+**Both the web interface port (9000 by default) and the REST API port (12900 by default) must be accessible by everyone using the web interface.**
 
 
 Configuration Options
@@ -78,7 +78,7 @@ Writing the web interface as a single-page application is a challenging task. We
 | Safari            | OS X                 | 9               |
 +-------------------+----------------------+-----------------+
 
-Please take into account that you need to enable Javascript in order to use Graylog web interface.  
+Please take into account that you need to enable JavaScript in order to use Graylog web interface.  
 
 
 SSL Setup
