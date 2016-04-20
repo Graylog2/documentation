@@ -20,6 +20,7 @@ Contents:
    pages/configuring_webif
    pages/configuring_es
    pages/sending_data
+   pages/collector_sidecar
    pages/collector
    pages/queries
    pages/streams
