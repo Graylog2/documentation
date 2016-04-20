@@ -45,6 +45,8 @@ If our default settings do not work for you, there is a number of options in the
 | ``web_thread_pool_size``| 16                      | Number of threads used for web interface listener.                   |
 +-------------------------+-------------------------+----------------------------------------------------------------------+
 
+.. _webif_connecting_to_server:
+
 How does the web interface connects to the Graylog server?
 ==========================================================
 
@@ -79,4 +81,14 @@ Making the web interface work with load balancers/proxies
 If you want to run a load balancer/reverse proxy in front of Graylog, you need to make sure that:
 
   - The REST API port is still accessible for clients
-  - The address for the Graylog server
+  - The address for the Graylog server's REST API is properly set (as explained in :ref:`webif_connecting_to_server`), so it is resolvable and accessible for any client of the web interface.
+  - You are either using only HTTP or only HTTPS (no mixed content) for both the web interface endpoint and the REST API endpoint.
+  - If you use SSL, your certificates must be valid and trusted by your clients.
+
+To help you with your specific environment, these are some example configurations for common scenarios:
+
+NGINX:
+------
+
+AWS Elastic Load Balancing:
+---------------------------
