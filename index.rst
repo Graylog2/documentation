@@ -17,6 +17,7 @@ Contents:
    pages/architecture
    pages/getting_started
    pages/installation
+   pages/configuring_webif
    pages/configuring_es
    pages/sending_data
    pages/collector
