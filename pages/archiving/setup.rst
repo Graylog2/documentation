@@ -18,11 +18,11 @@ not need any changes in the Graylog server configuration file.
 
 In the web interface menu navigate to "System/Archives" for the configuration.
 
-.. image:: /images/archiving-setup-1.png
+.. image:: /images/archiving-setup-config.png
 
 The "Configuration" section on the page shows the current configuration values. You can change the configuration by pressing "Update configuration".
 
-.. image:: /images/archiving-setup-2.png
+.. image:: /images/archiving-setup-config-dialog.png
 
 Archive Options
 ---------------
@@ -108,7 +108,7 @@ Index retention strategies can be configured in the system menu under
 "System/Indices". Click "Update configuration" to change the index rotation
 and retention strategies.
 
-.. image:: /images/archiving-setup-3.png
+.. image:: /images/archiving-setup-index-retention-config.png
 
 As with the regular index retention strategies, you can configure a max
 number of Elasticsearch indices. Once there are more indices than the
