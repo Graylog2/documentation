@@ -29,6 +29,7 @@ Contents:
    pages/drools
    pages/blacklisting
    pages/pipelines
+   pages/archiving
    pages/load_balancers
    pages/index_model
    pages/indexer_failures
