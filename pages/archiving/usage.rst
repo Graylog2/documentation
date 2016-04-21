@@ -92,6 +92,12 @@ REST API browser on your Graylog server for details.
 Restoring Archives
 ==================
 
+.. note:: The restore process adds load to your Elasticsearch cluster because
+          all messages are basically **re-indexed**. Please make sure to keep
+          this in mind and test with smaller archives to see how your cluster
+          behaves. Also use the :ref:`Restore Index Batch Size <archive-config-option-restore-batch-size>`
+          setting to control the Elasticsearch batch size on re-index.
+
 The archive plugin offer two ways to restore archived indices.
 
 * :ref:`Web Interface <archive-restore-web-interface>`
@@ -175,3 +181,65 @@ archived index into the Elasticsearch cluster::
 
 The returned JSON payload contains the archive metadata and the system job
 description that runs the index restore process.
+
+Restore into a separate cluster
+-------------------------------
+
+As said earlier, restoring archived indices slow down your indexing speed
+because of added load. If you want to completely avoid adding more load to
+your Elasticsearch cluster, you can restore the archived indices on a
+different cluster.
+
+To do that, you only have to transfer the archived indices to a different
+machine and put them into the configured :ref:`Archive Path <archive-config-option-archive-path>`.
+
+Each index archive is in a separate directory, so if you only want to transfer
+one index to a different machine, you only have to copy the corresponding
+directory into the archive path.
+
+Example::
+
+  $ tree /tmp/graylog-archive
+    /tmp/graylog-archive
+    ├── graylog_171
+    │   ├── archive-metadata.json
+    │   └── archive-segment-0.gz
+    ├── graylog_201
+    │   ├── archive-metadata.json
+    │   └── archive-segment-0.gz
+    ├── graylog_268
+    │   ├── archive-metadata.json
+    │   └── archive-segment-0.gz
+    ├── graylog_293
+    │   ├── archive-metadata.json
+    │   └── archive-segment-0.gz
+    ├── graylog_307
+    │   ├── archive-metadata.json
+    │   └── archive-segment-0.gz
+    ├── graylog_386
+    │   ├── archive-metadata.json
+    │   └── archive-segment-0.gz
+    └── graylog_81
+        ├── archive-metadata.json
+        └── archive-segment-0.gz
+    7 directories, 14 files
+
+Searching in Restored Indices
+=============================
+
+Once an index has been restored from an archive it will be used by search
+queries automatically.
+
+Every message that gets restored into an Elasticsearch index gets a special
+``gl2_archive_restored`` field with value ``true``. This allows you to only
+search in restored messages by using a query like::
+
+    _exists_:gl2_archive_restored AND <your search query>
+
+Example:
+
+.. image:: /images/archiving-usage-search.png
+
+If you want to exclude all restored messages from you query you can use::
+
+    _missing_:gl2_archive_restored AND <your search query>

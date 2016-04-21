@@ -42,6 +42,8 @@ There are several configuration options to configure the archive plugin.
     * - Restore index batch size
       - Elasticsearch batch size when restoring archive files.
 
+.. _archive-config-option-archive-path:
+
 Archive Path
 ^^^^^^^^^^^^
 
@@ -75,6 +77,8 @@ Example::
        archive-segment-0.gz
        archive-segment-1.gz
        archive-segment-2.gz
+
+.. _archive-config-option-restore-batch-size:
 
 Restore Index Batch Size
 ^^^^^^^^^^^^^^^^^^^^^^^^
