@@ -92,6 +92,8 @@ processing.
 Make sure to tune this **carefully** to avoid any negative impact on your
 message indexing throughput and search speed!
 
+.. _archive-config-index-retention:
+
 Index Retention
 ---------------
 

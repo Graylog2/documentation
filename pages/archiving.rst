@@ -26,3 +26,4 @@ you to temporarily import the archive so you can analyze the messages again in G
    :titlesonly:
 
    archiving/setup
+   archiving/usage
