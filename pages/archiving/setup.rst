@@ -24,8 +24,10 @@ The "Configuration" section on the page shows the current configuration values. 
 
 .. image:: /images/archiving-setup-2.png
 
-Options
--------
+Archive Options
+---------------
+
+There are several configuration options to configure the archive plugin.
 
 .. list-table:: Configuration Options
     :header-rows: 1
@@ -89,3 +91,26 @@ processing.
 
 Make sure to tune this **carefully** to avoid any negative impact on your
 message indexing throughput and search speed!
+
+Index Retention
+---------------
+
+Graylog is using configurable index retention strategies to delete old
+indices. By default indices can be *closed* or *deleted* if you have more
+than the configured limit.
+
+The archive plugin offers a new index retention strategy that you can configure
+to automatically archive an index before closing or deleting it.
+
+Index retention strategies can be configured in the system menu under
+"System/Indices". Click "Update configuration" to change the index rotation
+and retention strategies.
+
+.. image:: /images/archiving-setup-3.png
+
+As with the regular index retention strategies, you can configure a max
+number of Elasticsearch indices. Once there are more indices than the
+configured limit, the oldest ones will be archived to the *Archive Path* and
+then closed or deleted. You can also decide to not do anything (*NONE*) after
+archiving an index. In that case **no cleanup of old indices will happen**
+and you have to take care of that yourself!
