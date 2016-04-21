@@ -80,6 +80,7 @@ Writing the web interface as a single-page application is a challenging task. We
 
 Please take into account that you need to enable JavaScript in order to use Graylog web interface.  
 
+.. _ssl_setup:
 
 SSL Setup
 =========
@@ -107,11 +108,79 @@ If you want to run a load balancer/reverse proxy in front of Graylog, you need t
   - You are either using only HTTP or only HTTPS (no mixed content) for both the web interface endpoint and the REST API endpoint.
   - If you use SSL, your certificates must be valid and trusted by your clients.
 
-To help you with your specific environment, these are some example configurations for common scenarios:
+To help you with your specific environment, here are some example configurations for common scenarios:
 
+
+Using a Layer 3 load balancer (forwarding TCP Ports):
+-----------------------------------------------------
+
+For the following example we're assuming that your Graylog server is running on IP 1.2.3.4. Your external IP (the one external clients are using to access the Graylog instance) is 2.3.4.5.
+
+#. Configure your load balancer to forward connections going to ``2.3.4.5:80`` to ``1.2.3.4:9000`` and ``2.3.4.5:12900`` to ``1.2.3.4:12900``.
+#. Set ``web_endpoint_uri`` in your Graylog server config to ``http://2.3.4.5:12900``.
+#. Start the Graylog server as usual
+#. Access the web interface on ``http://2.3.4.5``.
+#. Read up on :ref:`ssl_setup`.
 
 NGINX:
 ------
+
+For the following samples we are assuming that your Graylog instance is running on ``graylog.internal.example.org`` using the default ports of 12900 for the REST API and 9000 for the web interface. SSL is disabled for both. You want to expose the Graylog web interface as ``https://graylog.example.org``. The configuration for TLS certificates, keys and ciphers is omitted from the sample config for brevity's sake.
+
+If you want to use nginx to proxy access to a Graylog server, you have several options:
+
+**REST API and Web Interface on one port (using HTTPS/SSL)**::
+
+  server
+  {
+    listen      443 ssl spdy;
+    server_name graylog.example.org;
+
+    location /
+    {
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header    Host $http_host;
+        proxy_set_header    X-Graylog-Server-URL https://graylog.example.org/api
+        proxy_pass      http://graylog.internal.example.org:9000;
+    }
+
+    location /api
+    {
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header    Host $http_host;
+        proxy_pass      http://graylog.internal.example.org:12900/;
+    }
+  }
+
+
+**REST API and web interface on separate ports (using HTTPS/SSL)**::
+
+  server
+  {
+    listen      443 ssl spdy;
+    server_name graylog.example.org;
+
+    location /
+    {
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header    X-Graylog-Server-URL https://graylog.example.org:129000
+        proxy_set_header    Host $http_host;
+        proxy_pass      http://graylog.internal.example.org:9000;
+    }
+  }
+
+  server
+  {
+    listen      12900 ssl spdy;
+    server_name graylog.example.org;
+
+    location /
+    {
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header    Host $http_host;
+        proxy_pass      http://graylog.internal.example.org:12900/;
+    }
+  }
 
 
 AWS Elastic Load Balancing:
