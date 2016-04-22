@@ -17,8 +17,10 @@ Contents:
    pages/architecture
    pages/getting_started
    pages/installation
+   pages/configuring_webif
    pages/configuring_es
    pages/sending_data
+   pages/collector_sidecar
    pages/collector
    pages/queries
    pages/streams
@@ -27,6 +29,7 @@ Contents:
    pages/drools
    pages/blacklisting
    pages/pipelines
+   pages/archiving
    pages/load_balancers
    pages/index_model
    pages/indexer_failures
