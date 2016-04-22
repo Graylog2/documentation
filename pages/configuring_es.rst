@@ -82,7 +82,7 @@ Heap size
 
 It is strongly recommended to raise the standard size of heap memory allocated to Elasticsearch. Just set the ``ES_HEAP_SIZE`` environment
 variable to for example ``24g`` to allocate 24GB. We recommend to use around 50% of the available system memory for Elasticsearch (when
-running on a dedicated host) to leave enough space for the system caches that Elasticsearch uses a lot.
+running on a dedicated host) to leave enough space for the system caches that Elasticsearch uses a lot. But please take care that you `don't cross 32 GB! <https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html#compressed_oops>`_
 
 Merge throttling
 ^^^^^^^^^^^^^^^^
