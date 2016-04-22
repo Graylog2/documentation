@@ -119,6 +119,7 @@ Register your new plugin using the ``configure()`` method::
       addAlarmCallback(JiraAlarmCallback.class);
   }
 
+
 Creating a plugin for the web interface
 =======================================
 
@@ -147,6 +148,8 @@ This will generate a ``.jar`` file in ``target/`` that is the complete plugin fi
 
   $ ls target/jira-alarmcallback-1.0.0-SNAPSHOT.jar
   target/jira-alarmcallback-1.0.0-SNAPSHOT.jar
+
+.. _installing_and_loading_plugins:
 
 Installing and loading plugins
 ==============================

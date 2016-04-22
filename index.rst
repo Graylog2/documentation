@@ -30,6 +30,7 @@ Contents:
    pages/blacklisting
    pages/pipelines
    pages/archiving
+   pages/geolocation
    pages/load_balancers
    pages/index_model
    pages/indexer_failures
