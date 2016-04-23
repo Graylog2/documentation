@@ -144,7 +144,7 @@ If you want to use nginx to proxy access to a Graylog server, you have several o
         proxy_pass      http://graylog.internal.example.org:9000;
     }
 
-    location /api
+    location /api/
     {
         proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header    Host $http_host;
