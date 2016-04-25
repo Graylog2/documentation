@@ -191,14 +191,15 @@ For the following samples we are assuming that your Graylog instance is running 
 
    rest_listen_uri = http://127.0.0.1:12900/
    web_listen_uri = http://127.0.0.1:9000/
-   web_endpoint_uri = https://graylog.example.org/api/
- 
+   
+   
 **REST API and Web Interface on one port (using HTTPS/SSL)**::
    
    Listen 443
    <VirtualHost *:443>
        ServerName graylog.example.org
        #Your SSL config <-- You should change this
+       RequestHeader set X-Graylog-Server-URL "https://graylog.example.org/api/"
        <Location />
            ProxyPass http://127.0.0.1:9000/
            ProxyPassReverse http://127.0.0.1:9000/
