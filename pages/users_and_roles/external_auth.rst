@@ -62,5 +62,13 @@ after changing the LDAP group mapping.
 Troubleshooting
 ---------------
 
-LDAP referrals for groups can be a problem during group mapping, in these cases please manage the user groups manually.
-In order to do this, the LDAP group settings must not be set.
+LDAP referrals for groups can be a problem during group mapping. Referral issues are most likely to come up with larger AD setups. The Active Directory servers literally refer to other servers in search results, and it is the client's responsibility to follow all referrals. Support for that is currently not implemented in Graylog.
+
+Referral issues can be detected by warnings in the server logs about group mapping failing, for example::
+
+  2016-04-11T15:52:06.045Z WARN  [LdapConnector] Unable to iterate over user's groups, 
+  unable to perform group mapping. Graylog does not support LDAP referrals at the moment. 
+  Please see http://docs.graylog.org/en/2.0/pages
+
+These issues may be resolved by either managing the groups manually, or configuring the LDAP connection to work against the `global catalog <https://technet.microsoft.com/en-us/library/cc728188(v=ws.10).aspx>`_. The first solution means simply that the LDAP group settings must not be set, and the groups are managed locally. The global catalog solution requires using the 3268/TCP, or 3269/TCP (TLS) port of eligible Active Directory server. The downside is that using the global catalog service consumes slightly more server resources. 
+
