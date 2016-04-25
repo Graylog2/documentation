@@ -1,6 +1,6 @@
 language: python
 python:
   - "2.7"
-install: "pip install -q -r sphinx"
+install: "pip install -q -r requirements.txt"
 script: sphinx-build -n -b html -d _build/doctrees . _build/html
 
