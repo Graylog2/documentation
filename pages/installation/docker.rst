@@ -5,7 +5,7 @@ Docker
 Requirements
 ------------
 
-You need a recent `docker` version installed, take a look `here <https://docs.docker.com/installation/>`_ for instructions.
+You need a recent `docker` version installed, take a look `here <https://docs.docker.com/installation/>`__ for instructions.
 
 This will create a container with all Graylog services running::
 
@@ -184,7 +184,7 @@ Problems
   $ docker run --ulimit nofile=64000:64000 ...
 
 * The `devicemapper` storage driver can produce problems with Graylogs disk journal on some systems.
-  In this case please pick another driver like `aufs` or `overlay`. Have a look `here <https://docs.docker.com/engine/userguide/storagedriver/selectadriver>`_
+  In this case please pick another driver like `aufs` or `overlay`. Have a look `here <https://docs.docker.com/engine/userguide/storagedriver/selectadriver>`__
 
 Build
 -----

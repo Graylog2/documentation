@@ -38,7 +38,7 @@ to use unicast for production setups. Configure Zen unicast discovery in Graylog
   # List of Elasticsearch nodes to connect to
   elasticsearch_discovery_zen_ping_unicast_hosts = es-node-1.example.org:9300,es-node-2.example.org:9300
 
-Also make sure to configure `Zen unicast discovery <http://www.elastic.co/guide/en/elasticsearch/reference/1.3/modules-discovery-zen.html#unicast>`_ in
+Also make sure to configure `Zen unicast discovery <http://www.elastic.co/guide/en/elasticsearch/reference/1.3/modules-discovery-zen.html#unicast>`__ in
 the Elasticsearch configuration file by adding the ``discovery.zen.ping.multicast.enabled`` and ``discovery.zen.ping.unicast.hosts`` setting with the
 list of Elasticsearch nodes to ``elasticsearch.yml``::
 
@@ -56,7 +56,7 @@ Disable dynamic scripting
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Elasticsearch prior to version 1.2 had an insecure default configuration which could lead to a remote code execution.
-(see `here <http://bouk.co/blog/elasticsearch-rce/>`_ and `here <https://groups.google.com/forum/#!msg/graylog2/-icrS0rIA-Q/cCTJaNjVrQAJ>`_ for details)
+(see `here <http://bouk.co/blog/elasticsearch-rce/>`__ and `here <https://groups.google.com/forum/#!msg/graylog2/-icrS0rIA-Q/cCTJaNjVrQAJ>`__ for details)
 
 Make sure to add ``script.disable_dynamic: true`` to the ``elasticsearch.yml`` file to disable the dynamic scripting feature and
 prevent possible remote code executions.
@@ -75,14 +75,14 @@ system defaults allow. **Set it to at least 64000 open file descriptors.**
 
 Graylog will show a notification in the web interface when there is a node in the Elasticsearch cluster which has a too low open file limit.
 
-Read about how to raise the open file limit in the corresponding `Elasticsearch documentation page <http://www.elasticsearch.org/tutorials/too-many-open-files/>`_.
+Read about how to raise the open file limit in the corresponding `Elasticsearch documentation page <http://www.elasticsearch.org/tutorials/too-many-open-files/>`__.
 
 Heap size
 ^^^^^^^^^
 
 It is strongly recommended to raise the standard size of heap memory allocated to Elasticsearch. Just set the ``ES_HEAP_SIZE`` environment
 variable to for example ``24g`` to allocate 24GB. We recommend to use around 50% of the available system memory for Elasticsearch (when
-running on a dedicated host) to leave enough space for the system caches that Elasticsearch uses a lot. But please take care that you `don't cross 32 GB! <https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html#compressed_oops>`_
+running on a dedicated host) to leave enough space for the system caches that Elasticsearch uses a lot. But please take care that you `don't cross 32 GB! <https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html#compressed_oops>`__
 
 Merge throttling
 ^^^^^^^^^^^^^^^^

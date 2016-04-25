@@ -19,15 +19,15 @@ Content packs
 
 Content packs are bundles of Graylog input, extractor, stream, dashboard, and output configurations that can provide full support
 for a data source. Some content packs are shipped with Graylog by default and some are available from the website. Content packs that
-were downloaded from `the marketplace <http://marketplace.graylog.org>`_ can be imported using the Graylog web interface.
+were downloaded from `the Graylog Marketplace <http://marketplace.graylog.org>`__ can be imported using the Graylog web interface.
 
 You can load and even create own content packs from the *System -> Content Packs* section of your Graylog web interface.
 
 Syslog
 ======
 
-Graylog is able to accept and parse `RFC 5424 <http://www.ietf.org/rfc/rfc5424.txt>`_ and
-`RFC 3164 <http://www.ietf.org/rfc/rfc3164.txt>`_  compliant syslog messages and supports TCP transport with both
+Graylog is able to accept and parse `RFC 5424 <http://www.ietf.org/rfc/rfc5424.txt>`__ and
+`RFC 3164 <http://www.ietf.org/rfc/rfc3164.txt>`__  compliant syslog messages and supports TCP transport with both
 the octet counting or termination character methods. UDP is also supported and the recommended way to send log messages
 in most architectures.
 
@@ -40,7 +40,7 @@ Rule of thumb is that messages forwarded by ``rsyslog`` or ``syslog-ng`` are usu
 Sending syslog from Linux hosts
 -------------------------------
 
-Sending syslog data from Linux hosts is `described on the Graylog Marketplace <https://marketplace.graylog.org/addons/a47beb3b-0bd9-4792-a56a-33b27b567856>`_.
+Sending syslog data from Linux hosts is `described on the Graylog Marketplace <https://marketplace.graylog.org/addons/a47beb3b-0bd9-4792-a56a-33b27b567856>`__.
 
 Sending syslog from MacOS X hosts
 ---------------------------------
@@ -69,10 +69,10 @@ GELF / Sending from applications
 
 The Graylog Extended Log Format (GELF) is a log format that avoids the shortcomings of classic plain syslog and is perfect
 to logging from your application layer. It comes with optional compression, chunking and most importantly a clearly defined
-structure. There are `dozens of GELF libraries <http://marketplace.graylog.org>`_ for many frameworks and
+structure. There are `dozens of GELF libraries <http://marketplace.graylog.org>`__ for many frameworks and
 programming languages to get you started.
 
-Read more about GELF `on graylog.org <https://www.graylog.org/resources/gelf/>`_.
+Read more about GELF `on graylog.org <https://www.graylog.org/resources/gelf/>`__.
 
 GELF via HTTP
 -------------
@@ -95,20 +95,20 @@ Microsoft Windows
 =================
 
 Sending syslog data from Windows is
-`described on the Graylog Marketplace <https://marketplace.graylog.org/addons/0bf65c6f-6fe8-4420-9c30-249706c9e55c>`_.
+`described on the Graylog Marketplace <https://marketplace.graylog.org/addons/0bf65c6f-6fe8-4420-9c30-249706c9e55c>`__.
 
 Heroku
 ======
 
 Heroku allows you to forward the logs of your application to a custom syslog server by creating a so called
-`Syslog drain <https://devcenter.heroku.com/articles/logging#syslog-drains>`_. The drain sends all logs to the configured
+`Syslog drain <https://devcenter.heroku.com/articles/logging#syslog-drains>`__. The drain sends all logs to the configured
 server(s) via TCP. Following example shows you how to configure Graylog to receive the Heroku logs and extract the
 different fields into a structured log message.
 
 Configuring Graylog to receive Heroku log messages
 --------------------------------------------------
-The `Graylog Marketplace <http://marketplace.graylog.org>`_ contains a
-`content pack for Heroku logs <https://marketplace.graylog.org/addons/e28c42a5-eba1-4302-a7b7-cde6485ab341>`_, including extractors to parse
+The `Graylog Marketplace <http://marketplace.graylog.org>`__ contains a
+`content pack for Heroku logs <https://marketplace.graylog.org/addons/e28c42a5-eba1-4302-a7b7-cde6485ab341>`__, including extractors to parse
 the Heroku log format. You can download and use that :ref:`content pack <content_packs>` to configure Graylog to be able to receive Heroku logs.
 
 Go to *System* -> *Content packs*, and click on *Import content pack*. Select the content pack downloaded from the Graylog Marketplace,
@@ -128,7 +128,7 @@ firewall setup allows incoming connections on the inputs port!
 Configuring Heroku to send data to your Graylog setup
 -----------------------------------------------------
 
-Heroku has a detailed `documentation <https://devcenter.heroku.com/articles/logging#syslog-drains>`_ regarding the Syslog drains feature.
+Heroku has a detailed `documentation <https://devcenter.heroku.com/articles/logging#syslog-drains>`__ regarding the Syslog drains feature.
 The following example shows everything that is needed to setup the drain for you application::
 
   $ cd path/to/your/heroku/app
@@ -139,7 +139,7 @@ The following example shows everything that is needed to setup the drain for you
   $ heroku drains
   syslog://graylog.example.com:5556 (d.8cf52d32-7d79-4653-baad-8cb72bb23ee1)
 
-The `Heroku CLI tool <https://devcenter.heroku.com/articles/heroku-command>`_ needs to be installed for this to work.
+The `Heroku CLI tool <https://devcenter.heroku.com/articles/heroku-command>`__ needs to be installed for this to work.
 
 You Heroku application logs should now show up in the search results of your Graylog instance.
 
@@ -152,8 +152,8 @@ Log all requests and logger calls into Graylog
 -----------------------------------------------
 
 The recommended way to send structured information (i.e. HTTP return code, action, controller, ... in additional fields) about every request and
-explicit ``Rails.logger`` calls is easily accomplished using the `GELF gem <https://rubygems.org/gems/gelf>`_ and
-`lograge <https://github.com/roidrage/lograge>`_. Lograge builds one combined log entry for every request (instead of several lines like the
+explicit ``Rails.logger`` calls is easily accomplished using the `GELF gem <https://rubygems.org/gems/gelf>`__ and
+`lograge <https://github.com/roidrage/lograge>`__. Lograge builds one combined log entry for every request (instead of several lines like the
 standard Rails logger) and has a Graylog output since version 0.2.0.
 
 Start by adding Lograge and the GELF gem to your Gemfile::
@@ -244,7 +244,7 @@ from a list of releases where the field ``state`` has the value ``uploaded``::
     $.releases[0].download_count
 
 
-You can `learn more about JSONPath here <http://goessner.net/articles/JsonPath/>`_.
+You can `learn more about JSONPath here <http://goessner.net/articles/JsonPath/>`__.
 
 Reading from files
 ==================
@@ -252,5 +252,5 @@ Reading from files
 Graylog is currently not providing an out-of-the-box way to read log messages from files. We do however recommend two
 fantastic tools to do that job for you. Both come with native Graylog (GELF) outputs:
 
-  * `fluentd <http://www.fluentd.org/guides/recipes/graylog2>`_
-  * `logstash <http://logstash.net/docs/1.4.2/outputs/gelf>`_
+  * `fluentd <http://www.fluentd.org/guides/recipes/graylog2>`__
+  * `logstash <http://logstash.net/docs/1.4.2/outputs/gelf>`__

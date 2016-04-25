@@ -54,7 +54,7 @@ You can also use the NOT operator::
   "ssh login" AND NOT source:example.org
   NOT example.org
 
-**Note that AND, OR, and NOT are case sensitive and must be typed in all upper-case.
+**Note that AND, OR, and NOT are case sensitive and must be typed in all upper-case.**
 
 **Wildcards:** Use `?` to replace a single character or `*` to replace zero or more characters::
 

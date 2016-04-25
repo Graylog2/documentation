@@ -15,7 +15,7 @@ systems.
 
 .. image:: /images/cli_dashboard.png
 
-The CLI stream dashboard documentation `is available on GitHub <https://github.com/Graylog2/cli-dashboard>`_.
+The CLI stream dashboard documentation `is available on GitHub <https://github.com/Graylog2/cli-dashboard>`__.
 
 Browser stream dashboard
 ========================
@@ -26,4 +26,4 @@ on large screens in your office.
 
 .. image:: /images/browser_dashboard.png
 
-The browser stream dashboard documentation `is available on GitHub <https://github.com/Graylog2/graylog2-stream-dashboard>`_.
+The browser stream dashboard documentation `is available on GitHub <https://github.com/Graylog2/graylog2-stream-dashboard>`__.
