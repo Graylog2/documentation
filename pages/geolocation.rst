@@ -70,12 +70,14 @@ Verify the geolocation configuration (Optional)
 To ensure the geolocation resolution is working as expected, you can do the following:
 
 1. Create a TCP Raw/Plaintext input:
+
 .. image:: /images/geolocation_5.png
 
 2. Send a message only containing an IP to the newly created input. As an example, we will be using the `nc` command:
 ``nc -w0 <graylog_host> 5555 <<< '8.8.8.8'``
 
 3. Verify that the message contains a ``message_geolocation`` field:
+
 .. image:: /images/geolocation_6.png
 
 4. Delete the input if you don't need it any more
