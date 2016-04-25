@@ -182,6 +182,34 @@ If you want to use nginx to proxy access to a Graylog server, you have several o
     }
   }
 
+Apache:
+------- 
+
+For the following samples we are assuming that your Graylog instance is running on ``graylog.internal.example.org`` using the default ports of 12900 for the REST API and 9000 for the web interface. Apache is running on the same server as Graylog. SSL is disabled for both. You want to expose the Graylog web interface as ``https://graylog.example.org``. 
+
+**URI Configs in Graylog server conf**::
+
+   rest_listen_uri = http://127.0.0.1:12900/
+   web_listen_uri = http://127.0.0.1:9000/
+   
+   
+**REST API and Web Interface on one port (using HTTPS/SSL)**::
+   
+   Listen 443
+   <VirtualHost *:443>
+       ServerName graylog.example.org
+       #Your SSL config <-- You should change this
+       RequestHeader set X-Graylog-Server-URL "https://graylog.example.org/api/"
+       <Location />
+           ProxyPass http://127.0.0.1:9000/
+           ProxyPassReverse http://127.0.0.1:9000/
+       </Location>
+       <Location /api/>
+           ProxyPass http://127.0.0.1:12900/
+           ProxyPassReverse http://127.0.0.1:12900/
+       </Location>
+   </VirtualHost>
+
 
 AWS Elastic Load Balancing:
 ---------------------------
