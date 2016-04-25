@@ -517,7 +517,7 @@ This is pretty powerful but might get confusing when inputs and outputs have the
 .. _running-graylog-collector:
 
 Running Graylog Collector
-*********************
+*************************
 
 You will need a configuration file before starting the collector. See the configuration documentation above for detailed instructions on how to configure it.
 
