@@ -1,21 +1,26 @@
-## The Graylog documentation
+# The Graylog documentation
 
-#### Building locally
+## Building locally
 
-Install [Sphinx](http://sphinx-doc.org)
+Create and enter the Python virtual environment:
 
-    $ easy_install -U Sphinx
+    # virtualenv .
+    # source ./bin/activate
 
-Install [the theme we are using](https://github.com/snide/sphinx_rtd_theme):
+Install [Sphinx](http://sphinx-doc.org), [the theme we are using](https://github.com/snide/sphinx_rtd_theme), and [sphinx-autobuild](https://github.com/GaretJax/sphinx-autobuild):
 
-    $ pip install sphinx_rtd_theme
+    # pip install -r requirements.txt
 
-On Fedora 22:
+Build the static documentation and open them in your browser:
 
-    $ sudo dnf install -y python-sphinx python-sphinx_rtd_theme
-    
-Build the docs and open them in your browser:
+    # make html
+    # open _build/html/index.html
 
-    $ cd documentation
-    $ make html
-    $ open _build/html/index.html
+Build the documentation and automatically build them on any change:
+
+    # make livehtml
+    # open http://127.0.0.1:8080/
+
+### Fedora Linux 22 and higher
+
+    # sudo dnf install -y python-sphinx python-sphinx_rtd_theme
