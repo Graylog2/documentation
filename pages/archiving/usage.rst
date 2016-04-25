@@ -26,7 +26,7 @@ On the "Create Archive for Index" section of the page is a form where you
 can select an index and archive it by pressing "Archive Index".
 
 Using this will just archive the index to disk and does not close it or
-delete it. This is a greate way to test the archiving feature without
+delete it. This is a great way to test the archiving feature without
 changing your :ref:`index retention configuration <archive-config-index-retention>`.
 
 .. _archive-create-index-retention:
