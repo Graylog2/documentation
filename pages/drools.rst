@@ -4,6 +4,8 @@
 Message rewriting with Drools
 *****************************
 
+.. note:: Since Graylog 2.0 you can use the :doc:`processing pipelines <pipelines>` for more flexible message rewriting.
+
 Graylog can optionally use `Drools Expert <http://www.jboss.org/drools/drools-expert>`_ to evaluate all incoming messages against a user defined
 rules file. Each message will be evaluated prior to being written to the outputs.
 

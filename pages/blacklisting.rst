@@ -4,6 +4,8 @@
 Blacklisting
 ************
 
+.. note:: Since Graylog 2.0 you can use the :doc:`processing pipelines <pipelines>` for blacklisting.
+
 If you have messages coming into Graylog that should be discarded before being written to Elasticsearch
 or forwarded to another system you can use :ref:`Drools rules <drools>` to perform custom filtering.
 
