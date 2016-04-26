@@ -7,7 +7,7 @@ Virtual Machine Appliances
 Download
 ========
 
-Download the OVA image from `here <https://github.com/Graylog2/graylog2-images/tree/master/ova>`_
+Download the OVA image from `here <https://packages.graylog2.org/appliances/ova>`_
 and save it to your disk locally.
 
 Run the image
