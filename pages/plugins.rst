@@ -25,20 +25,29 @@ is explaining how to do this and will then go over to chapters explaining plugin
 Creating a plugin skeleton
 ==========================
 
-The easiest way to get started is to use our `maven archetype <http://maven.apache.org/guides/introduction/introduction-to-archetypes.html>`_
-that will create a complete plugin project infrastructure will all required classes, build definitions, and configurations using an interactive wizard.
+The easiest way to get started is to use our `Graylog meta project <https://github.com/graylog2/graylog-project>`_,
+which will create a complete plugin project infrastructure will all required classes, build definitions, and configurations. Using the meta project allows you to have the `Graylog server project <https://github.com/graylog2/graylog2-server>`_ and your own plugins (or 3rd party plugins) in the same project, which means that you can run and debug everything in your favorite IDE or navigate seamlessly in the code base.
 
 Maven is a widely used build tool for Java, that comes pre-installed on many operating systems or can be installed using most package managers. Make sure that you have at least version 3 before you go on.
 
 Use it like this::
 
-  $ mvn archetype:generate -DarchetypeGroupId=org.graylog -DarchetypeArtifactId=graylog-plugin-archetype
+  $ git clone git@github.com:Graylog2/graylog-project.git
 
-It wil ask you a few questions about the plugin you are planning to build. Let's say you work for a company called ACMECorp and want to build
+
+This will create a checkout of the meta project in your current work dir. Now change to the ``graylog-project`` directory and execute the step which to download the necessary base modules::
+
+  $ scripts/bootstrap
+
+
+Now you can bootstrap the plugin you want to write from here, by doing::
+
+  $ scripts/bootstrap-plugin jira-alarmcallback
+
+It will ask you a few questions about the plugin you are planning to build. Let's say you work for a company called ACMECorp and want to build
 an alarm callback plugin that creates a JIRA ticket for each alarm that is triggered::
 
   groupId: com.acmecorp
-  artifactId: jira-alarmcallback
   version: 1.0.0
   package: com.acmecorp
   pluginClassName: JiraAlarmCallback
@@ -46,11 +55,17 @@ an alarm callback plugin that creates a JIRA ticket for each alarm that is trigg
 Note that you do not have to tell the archetype wizard what kind of plugin you want to build because it is creating the generic plugin
 skeleton for you but nothing that is related to the actual implementation. More on this in the example plugin chapters later.
 
-You now have a new folder called ``jira-alarmcallback`` that includes a complete plugin skeleton including Maven build files. Every Java IDE
+You now have a new folder called ``graylog-plugin-jira-alarmcallback`` that includes a complete plugin skeleton including Maven build files. Every Java IDE
 out there can now import the project automatically without any required further configuration.
 
-In `IntelliJ IDEA <https://www.jetbrains.com/idea/>`_ for example you can just use the *File -> Open* dialog to open the skeleton as a fully
-configured Java project.
+In `IntelliJ IDEA <https://www.jetbrains.com/idea/>`_ for example you can just use the *File -> Open* dialog to open the ``graylog-project`` directory as a fully configured Java project, which should include the Graylog server and your plugin as submodules.
+
+Please pay close attention to the `README file <https://github.com/Graylog2/graylog-project/blob/master/README.md>`_ of the Graylog meta project and follow any further instructions listed there to set up your IDE properly.
+
+If you want to continue working on the command line, you can do the following to compile the server and your plugin::
+
+  $ mvn package
+
 
 Change some default values
 --------------------------
