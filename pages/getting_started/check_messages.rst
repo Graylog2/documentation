@@ -20,10 +20,10 @@ If You Don't Have Messages
 2.  Check the syslog UDP configuration and make sure that is right - remember we changed the default port to 5140.
 
 3.  Check to see if rsyslog messages are being forwarded to the port.  You can use the `tcpdump <http://manpages.ubuntu.com/manpages/hardy/man8/tcpdump.8.html>`_ command to do this:
-::
-  $sudo tcpdump -i lo host 127.0.0.1 and udp port 5140
+
+``$ sudo tcpdump -i lo host 127.0.0.1 and udp port 5140``
 
 4.  Check to see if the server is listening on the host:
-::
-  $sudo netstat -peanut | grep ":5140"
+
+``$ sudo netstat -peanut | grep ":5140"``
 
