@@ -20,7 +20,7 @@ Build the static documentation and open them in your browser:
 Build the documentation and automatically build them on any change:
 
     # make livehtml
-    # open http://127.0.0.1:8080/
+    # open http://127.0.0.1:8000/
 
 ### Fedora Linux 22 and higher
 
