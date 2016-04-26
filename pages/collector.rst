@@ -1,8 +1,10 @@
 .. _graylog-collector:
 
 *********************
-Graylog Collector
+Graylog Collector (deprecated)
 *********************
+
+.. note:: The Graylog Collector is deprecated and can be replaced with the :doc:`collector_sidecar`.
 
 Graylog Collector is a lightweight Java application that allows you to forward data from log files to a Graylog cluster. The collector can read local log files and also
 Windows Events natively, it then can forward the log messages over the network using the `GELF format <https://www.graylog.org/resources/gelf/>`_.
