@@ -93,7 +93,7 @@ Functionality
 Can Graylog automatically clean old data?
 -----------------------------------------
 
-Absolutely we have data retention features, please see `here <http://docs.graylog.org/en/1.3/pages/index_model.html?highlight=retention>`__.
+Absolutely we have data retention features, please see :doc:`here <index_model>`.
 
 Does Graylog support LDAP / AD and its groups?
 ----------------------------------------------
@@ -113,25 +113,25 @@ That’s correct. We currently don’t have built-in reporting functionality tha
 Can I filter inbound messages before they are processed by the Graylog server?
 ------------------------------------------------------------------------------
 
-Yes, check out our page on how to use `blacklisting <http://docs.graylog.org/en/latest/pages/blacklisting.html>`__.
+Yes, check out our page on how to use :doc:`blacklisting <blacklisting>`.
 
 Graylog & Integrations
 ======================
 
 What is the best way to integrate my applications to Graylog?
 -------------------------------------------------------------
-We recommend that you use `GELF <http://docs.graylog.org/en/latest/pages/sending_data.html?highlight=gelf#gelf-sending-from-applications>`__.  It's easy for your application developers and eliminates the need to store the messages locally.  Also, GELF can just send what app person wants so you don't have to build extractors or do any extra processing in Graylog.
+We recommend that you use :doc:`GELF <sending_data>`.  It's easy for your application developers and eliminates the need to store the messages locally.  Also, GELF can just send what app person wants so you don't have to build extractors or do any extra processing in Graylog.
 
 I have a log source that creates dynamic syslog messages based on events and subtypes and grok patterns are difficult to use - what is the best way to handle this?
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Not a problem!  Use our `key=value extractor <http://docs.graylog.org/en/1.3/pages/extractors.html#automatically-extract-all-key-value-pairs>`__.
+Not a problem!  Use our :doc:`key=value extractor <extractors>`.
 
 I want to archive my log data. Can I write to another database, for example HDFS / Hadoop, from Graylog?
 --------------------------------------------------------------------------------------------------------
 
 Yes, you can output data from Graylog to a different database. We currently have an HDFS output `plug-in <https://marketplace.graylog.org/addons/99259226-6ba3-48c8-a710-9598b65eda0e>`__ in the Marketplace - thank you `sivasamyk <https://github.com/sivasamyk>`__!
 
-It’s also easy and fun to `write your own <http://docs.graylog.org/en/1.3/pages/plugins.html#creating-a-plugin-skeleton>`__, which you can then add to Graylog Marketplace for others to use.
+It’s also easy and fun to :doc:`write your own <plugins>`, which you can then add to Graylog Marketplace for others to use.
 
 I don’t want to use Elasticsearch as my backend storage system – can I use another database, like MySQL, Oracle, etc?
 ---------------------------------------------------------------------------------------------------------------------
@@ -166,4 +166,4 @@ Check out our Google Group `mailing list <https://groups.google.com/forum/?hl=en
 
 Another source is the `#Graylog IRC chat channel on Freenode <https://webchat.freenode.net/?channels=%23graylog>`__.  Our developers and a lot of community members hang out here. Just join the channel and add any questions, suggestions or general topics you have.
 
-If you’re looking for professional commercial support from the Graylog team, we do that too.  Please `get in touch here <https://www.graylog.org/support-packages/>`__ for more details.
+If you’re looking for professional commercial support from the Graylog team, we do that too.  Please `get in touch here <https://www.graylog.org/professional-support>`__ for more details.
