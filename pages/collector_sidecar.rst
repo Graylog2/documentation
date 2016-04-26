@@ -10,6 +10,8 @@ The Sidecar is then fetching the configuration meant for the target host, render
 automatically, performs an update and restarts the necessary process.
 
 
+.. image:: /images/sidecar_overview.png
+
 Installation
 ************
 
