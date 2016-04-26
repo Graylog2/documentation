@@ -1,8 +1,8 @@
 .. _graylog-collector:
 
-*********************
+******************************
 Graylog Collector (deprecated)
-*********************
+******************************
 
 .. note:: The Graylog Collector is deprecated and can be replaced with the :doc:`collector_sidecar`.
 
