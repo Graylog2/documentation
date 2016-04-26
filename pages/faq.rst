@@ -98,7 +98,7 @@ Absolutely we have data retention features, please see `here <http://docs.graylo
 Does Graylog support LDAP / AD and its groups?
 ----------------------------------------------
 
-Yup, we’re all over this too with read/write roles and group permissions.  To start, see `this <http://docs.graylog.org/en/1.3/pages/users_roles.html?highlight=ldap#external-authentication>`__.  If you want to get very granular, you can go through our Rest API.
+Yup, we’re all over this too with read/write roles and group permissions.  To start, see :doc:`this <users_and_roles/external_auth>`.  If you want to get very granular, you can go through the Graylog REST API.
 
 Do we have a user audit log for compliance?
 -------------------------------------------
