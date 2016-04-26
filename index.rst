@@ -26,9 +26,9 @@ Contents:
    pages/streams
    pages/dashboards
    pages/extractors
+   pages/pipelines
    pages/drools
    pages/blacklisting
-   pages/pipelines
    pages/archiving
    pages/geolocation
    pages/load_balancers
