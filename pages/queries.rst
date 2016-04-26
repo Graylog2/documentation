@@ -122,6 +122,8 @@ more about this here: :doc:`index_model`
 
 .. image:: /images/queries_time_range_selector.png
 
+.. _relative-time-frame-selector:
+
 Relative time frame selector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The relative time frame selector lets you look for messages from the selected option to the time you hit the search button. The selector
@@ -244,3 +246,63 @@ Using search result highlighting will result in slightly higher resource consump
 it using a configuration parameter in the ``graylog.conf`` of your ``graylog-server`` nodes::
 
     allow_highlighting = true
+
+
+Search configuration
+====================
+
+Graylog allows customizing the options allowed to search queries, like limiting the time range users can select or configuring the list of displayed relative time ranges.
+
+.. image:: /images/queries_search_configuration.png
+
+All search configuration settings can be customized using the web interface on the *System* -> *Configurations* page in the *Search configuration* section.
+
+
+Query time range limit
+^^^^^^^^^^^^^^^^^^^^^^
+
+Sometimes the amount of data stored in Graylog is quite big and spans a wide time range (e. g. multiple years). In order to prevent normal users from accidentally running search queries which could use up lots of resources, it is possible to limit the time range that users are allowed to search in.
+
+Using this feature, the time range of a search query exceeding the configured query time range limit will automatically be adapted to the given limit.
+
+.. image:: /images/queries_query_time_range_limit.png
+
+.. _iso_8601_duration:
+
+The query time range limit is a *duration* formatted according to ISO 8601 following the basic format ``P<date>T<time>`` with the following rules:
+
+========== ===========
+Designator Description
+========== ===========
+``P``      Duration designator (for period) placed at the start of the duration representation
+``Y``      Year designator that follows the value for the number of years
+``M``      Month designator that follows the value for the number of months
+``W``      Week designator that follows the value for the number of weeks
+``D``      Day designator that follows the value for the number of days
+``T``      Time designator that precedes the time components of the representation
+``H``      Hour designator that follows the value for the number of hours
+``M``      Minute designator that follows the value for the number of minutes
+``S``      Second designator that follows the value for the number of seconds
+========== ===========
+
+Examples:
+
+================= ===========
+ISO 8601 duration Description
+================= ===========
+``P30D``          30 days
+``PT1H``          1 hour
+``P1DT12H``       1 day and 12 hours
+================= ===========
+
+More details about the format of ISO 8601 durations can be found `on Wikipedia <https://en.wikipedia.org/wiki/ISO_8601#Durations>`_.
+
+
+Relative time ranges
+^^^^^^^^^^^^^^^^^^^^
+
+The list of time ranges displayed in the :ref:`relative-time-frame-selector` can be configured, too. It consists of a list of ISO 8601 durations which the users can select on the search page.
+
+The format of the ISO 8601 durations can be looked up :ref:`here <iso_8601_duration>`.
+
+.. image:: /images/queries_relative_timerange_options.png
