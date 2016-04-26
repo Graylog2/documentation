@@ -20,6 +20,18 @@ Graylog comes with a stable plugin API for the following plugin types since Gray
 The first step for writing a plugin is creating a skeleton that is the same for each type of plugin. The next chapter
 is explaining how to do this and will then go over to chapters explaining plugin types in detail.
 
+.. _plugin_prerequisites:
+
+Prerequisites
+=============
+
+What you need in your development environment before starting is:
+
+  * `git <https://git-scm.com>`_
+  * `maven <https://maven.apache.org>`_
+
+There are lots of different ways to get those on your local machine, unfortunately we cannot list all of them, so please refer to your operating system-specific documentation,
+
 .. _creating_plugin_skeleton:
 
 Creating a plugin skeleton
@@ -140,7 +152,7 @@ Register your new plugin using the ``configure()`` method::
 Creating a plugin for the web interface
 =======================================
 
-Sometimes your plugin is not only supposed to work under the hoods inside a Graylog server as an input, output, alarm callback, etc. but you also want to contribute previously nonexisting functionality to Graylog's web interface. Since version 2.0 this is now possible. When using the most recent `Graylog maven archetype <https://github.com/Graylog2/graylog-plugin-archetype>` to create the plugin skeleton, you are already good to go for this.
+Sometimes your plugin is not only supposed to work under the hoods inside a Graylog server as an input, output, alarm callback, etc. but you also want to contribute previously nonexisting functionality to Graylog's web interface. Since version 2.0 this is now possible. When using the most recent `Graylog meta project <https://github.com/Graylog2/graylog-project>` to bootstrap the plugin skeleton, you are already good to go for this. Otherwise please see our chapter about :ref:`creating_plugin_skeleton`.
 
 Graylog web plugins are bundles of mainly JavaScript files, but you can also include basically any file usable in your browser, that you want to use in your plugin, i.e. images, stylesheets, fonts, even audio or video files. During the build process all of these are assembled into modular chunks by `webpack <http://webpack.github.io>` and included in the jar file of your plugin.
 
@@ -149,7 +161,7 @@ Prerequisites
 
 The Graylog web interface is written in JavaScript, based on `React <https://facebook.github.io/react/>`_. It is built using `webpack <http://webpack.github.io>`_, which is bundling all JavaScript code into chunks digestable by your browser and `NPM <https://www.npmjs.com>`_, which is managing our external (and own) dependencies. This might be overwhelming at first if you are not accustomed to JS-development, but fortunately we have set up a lot to make writing plugins easier for you!
 
-If you use our proposed way for :ref:`creating_plugin_skeleton`, you are already good to go for building a plugin with a web part. All you need for the start is `Maven <http://maven.apache.org>`_. Everything else is fetched at build time!
+If you use our proposed way for :ref:`creating_plugin_skeleton`, and followed the part about the :ref:`plugin_prerequisites`, you are already good to go for building a plugin with a web part. Everything else is fetched at build time!
 
 Web Plugin structure
 --------------------
