@@ -2,7 +2,7 @@
 Rules
 *****
 
-**Warning: this documentation is work in progress**
+.. warning:: This documentation is work in progress
 
 Overview
 ========
