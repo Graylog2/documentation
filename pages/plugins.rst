@@ -154,14 +154,33 @@ Creating a plugin for the web interface
 
 Sometimes your plugin is not only supposed to work under the hoods inside a Graylog server as an input, output, alarm callback, etc. but you also want to contribute previously nonexisting functionality to Graylog's web interface. Since version 2.0 this is now possible. When using the most recent `Graylog meta project <https://github.com/Graylog2/graylog-project>` to bootstrap the plugin skeleton, you are already good to go for this. Otherwise please see our chapter about :ref:`creating_plugin_skeleton`.
 
-Graylog web plugins are bundles of mainly JavaScript files, but you can also include basically any file usable in your browser which you want to use in your plugin, i.e. images, stylesheets, fonts, even audio or video files. During the build process all of these are assembled into modular chunks by `webpack <http://webpack.github.io>` and included in the jar file of your plugin.
+The Graylog web interface is written in JavaScript, based on `React <https://facebook.github.io/react/>`_. It is built using `webpack <http://webpack.github.io>`_, which is bundling all JavaScript code (and other files you use, like stylesheets, fonts, images, even audio or video files if you need them) into chunks digestable by your browser and npm_, which is managing our external (and own) dependencies. During the build process all of this will be bundled and included in the jar file of your plugin.
+
+This might be overwhelming at first if you are not accustomed to JS-development, but fortunately we have set up a lot to make writing plugins easier for you!
 
 Prerequisites
 -------------
 
-The Graylog web interface is written in JavaScript, based on `React <https://facebook.github.io/react/>`_. It is built using `webpack <http://webpack.github.io>`_, which is bundling all JavaScript code into chunks digestable by your browser and npm_, which is managing our external (and own) dependencies. This might be overwhelming at first if you are not accustomed to JS-development, but fortunately we have set up a lot to make writing plugins easier for you!
+If you use our proposed way for :ref:`creating_plugin_skeleton`, and followed the part about the :ref:`plugin_prerequisites`, you are already good to go for building a plugin with a web part. **All you need is a running Graylog server on your machine.** Everything else is fetched at build time!
 
-If you use our proposed way for :ref:`creating_plugin_skeleton`, and followed the part about the :ref:`plugin_prerequisites`, you are already good to go for building a plugin with a web part. Everything else is fetched at build time!
+How to start development
+------------------------
+
+Getting up and running with a web development environment is as easy as this::
+
+  $ git clone https://github.com/Graylog2/graylog-project.git
+  [...]
+  $ cd graylog-project
+  $ scripts/bootstrap
+  [...]
+  $ scripts/bootstrap-plugin your-plugin
+  [...]
+  $ scripts/start-web-dev
+  [...]
+  $ open http://localhost:8080
+
+
+This clones the meta project repository, bootstraps the required modules and starts the web server. It even tries to open a browser window going to it (probably working on Mac OS X only).
 
 Web Plugin structure
 --------------------
@@ -179,9 +198,6 @@ These are the relevant files and directories in your plugin directory for the we
 
   src/web
     This is where the actual code for thw web part of your plugin goes to. For the start there is a simple ``index.jsx`` file, which shows you how to register your plugin and the parts it provides with the Graylog web interface. We will get to this in detail later.
-
-How to start development
-------------------------
 
 Best practices for web plugin development
 =========================================
