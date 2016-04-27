@@ -11,8 +11,9 @@ map with those geolocation.
 Setup
 =====
 The `Graylog Map Widget <https://github.com/Graylog2/graylog-plugin-map-widget>`_ is the plugin
-providing geolocation capabilities to Graylog. It is compatible, and **installed by default** on
-version 2.0.0 and higher.
+providing geolocation capabilities to Graylog. The plugin is compatible with Graylog 2.0.0 and
+higher, and it is installed by default, although **some configuration is still required on your
+side**. This section explains how to configure the plugin in detail.
 
 In case you need to reinstall the plugin for some reason, you can find it inside the Graylog
 tarball in our `downloads page <https://www.graylog.org/download/>`_. Follow the instructions in
