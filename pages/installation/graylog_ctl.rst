@@ -44,6 +44,9 @@ The following commands are changing the configuration of Graylog:
 +-----------------------------------------------------+---------------------------------------------+
 || ``sudo grayog-ctl set-server-secret <secret>``     | Override server secret used for encryption  |
 +-----------------------------------------------------+---------------------------------------------+
+|| ``sudo graylog-ctl disable-internal-logging``      | Disable sending internal logs (e. g. nginx) |
+||                                                    | from the virtual machine to Graylog         |
++-----------------------------------------------------+---------------------------------------------+
 
 **After setting one or more of these options re-run**::
 
