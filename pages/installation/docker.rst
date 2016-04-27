@@ -5,7 +5,7 @@ Docker
 Requirements
 ------------
 
-You need a recent `docker` version installed, take a look `here <https://docs.docker.com/installation/>`_ for instructions.
+You need a recent `docker` version installed, take a look `here <https://docs.docker.com/installation/>`__ for instructions.
 
 This will create three containers with all Graylog services running::
 
@@ -102,7 +102,7 @@ Make sure that the service user can write to `/graylog`, than the complete compo
       - "9000:9000"
       - "12900:12900"
 
-Copy the basic configuration files from `here <https://github.com/Graylog2/graylog2-images/tree/2.0/docker/config>`_ to
+Copy the basic configuration files from `here <https://github.com/Graylog2/graylog2-images/tree/2.0/docker/config>`__ to
 `/graylog/config` on the host system. Create a unique node ID with `uuidgen > /graylog/config/node-id` and start all services with::
 
   $ docker-compose up
@@ -110,7 +110,7 @@ Copy the basic configuration files from `here <https://github.com/Graylog2/grayl
 Configuration
 -------------
 
-Every configuration option can be set via environment variables, take a look `here <https://github.com/Graylog2/graylog2-server/blob/master/misc/graylog.conf>`_ for an overview.
+Every configuration option can be set via environment variables, take a look `here <https://github.com/Graylog2/graylog2-server/blob/master/misc/graylog.conf>`__ for an overview.
 Simply prefix the parameter name with `GRAYLOG_` and put it all in upper case.
 Another option would be to store the configuration file outside of the container and edit it directly.
 
