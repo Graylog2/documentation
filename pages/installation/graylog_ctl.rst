@@ -34,10 +34,6 @@ The following commands are changing the configuration of Graylog:
 ||                                                    | time is also set correctly with             |
 ||                                                    | ``sudo dpkg-reconfigure tzdata``            |
 +-----------------------------------------------------+---------------------------------------------+
-|| ``sudo graylog-ctl set-retention --size=<Gb>`` OR  | Configure message retention                 |
-|| ``--time=<hours> --indices=<number>``              |                                             |
-|| ``[--journal=<Gb>]``                               |                                             |
-+-----------------------------------------------------+---------------------------------------------+
 || ``sudo graylog-ctl enforce-ssl``                   | Enforce HTTPS for the web interface         |
 +-----------------------------------------------------+---------------------------------------------+
 || ``sudo graylog-ctl set-node-id <id>``              | Override random server node id              |
@@ -186,32 +182,6 @@ Install custom SSL certificates
 During the first reconfigure run self signed SSL certificates are generated. You can replace this certificate with your own to prevent security
 warnings in your browser. Just drop the key and combined certificate file here: ``/opt/graylog/conf/nginx/ca/graylog.crt`` respectively
 ``/opt/graylog/conf/nginx/ca/graylog.key``. Afterwards restart nginx with ``sudo graylog-ctl restart nginx``.
-
-Configure Message Retention
-===========================
-
-Graylog is keeping a defined amount of messages. It is possible to decide whether you want to have a set storage size or a set time period of
-messages. Additionally Graylog writes a so called Journal. This is used to buffer messages in case of a unreachable Elasticsearch backend.
-To configure those settings use the set-retention command.
-
-Retention by disk size::
-
-  sudo graylog-ctl set-retention --size=3 --indices=10
-  sudo graylog-ctl reconfigure
-
-Indices would be rotated when they reach a size of 3Gb and Graylog would keep up to 10 indices, resulting in 30Gb maximum disk space.
-
-Retention by time::
-
-  sudo graylog-ctl set-retention --time=24  --indices=30
-  sudo graylog-ctl reconfigure
-
-Indices would be rotated after 24 hours and 30 indices would be kept, resulting in 30 days of stored logs.
-
-Both commands can be extended with the --journal switch to set the maximum journal size in Gb::
-
-  sudo graylog-ctl set-retention --time=24  --indices=30 --journal=5
-  sudo graylog-ctl reconfigure
 
 Assign a static IP
 ==================
