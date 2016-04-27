@@ -21,8 +21,8 @@ tarball in our `downloads page <https://www.graylog.org/download/>`_. Follow the
 
 .. _configure_geolocation:
 
-Configure the geolocation database
------------------------------------
+Configure the database
+----------------------
 
 In first place, you need to download a geolocation database. We currently support **MaxMind City
 databases** in the **MaxMind DB format**, as the
@@ -47,15 +47,23 @@ the geolocation database you use. Once you are all set, click on save to store t
 .. image:: /images/geolocation_2.png
 
 
+.. _configure_message_processor:
+
+Configure the message processor
+-------------------------------
+
 The last step before being able to resolve locations from IPs in your logs, is to activate the GeoIP Resolver
 processor. In the same *System -> Configurations* page, update the configuration in the *Message Processors
-Configuration* section, enabling the GeoIP Resolver, and moving it to the last position, as seen in the
-screenshot:
+Configuration* section.
 
 .. image:: /images/geolocation_3.png
+
+In that screen, you need to **enable the GeoIP Resolver**, and you must also **set the GeopIP Resolver as
+the last message processor to run**, if you want to be able to resolve geolocation from fields coming from
+extractors.
+
 .. image:: /images/geolocation_4.png
 
-That will enable Graylog to resolve IPs geolocation from fields coming from extractors.
 
 That's it, at this point Graylog will start looking for fields **containing exclusively** an IPv4 or IPv6
 address, and extracting their geolocation into a ``<field>_geolocation`` field.
@@ -65,7 +73,7 @@ in your messages into their own fields. Check out the :ref:`extractors` document
 
 
 Verify the geolocation configuration (Optional)
-------------------------------------------------
+-----------------------------------------------
 
 To ensure the geolocation resolution is working as expected, you can do the following:
 
@@ -135,6 +143,6 @@ Yes, as long as it contains geolocation information in the ``latitude,longitude`
 
 Not all fields containing IP addresses are resolved. Why does this happen?
 --------------------------------------------------------------------------
-Most likely it is a misconfiguration issue. Please ensure that the IPs you want to get geolocation
-information from are in their own fields, and also ensure that the GeoIP Resolver is enabled, and in the
-right order, as explained in :ref:`configure_geolocation`.
+Most likely it is a misconfiguration issue. Please ensure that **the IPs you want to get geolocation
+information from are in their own fields**, and also ensure that **the GeoIP Resolver is enabled, and in the
+right order** in the *Message Processors Configuration*, as explained in :ref:`configure_message_processor`.
