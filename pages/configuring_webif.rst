@@ -209,7 +209,3 @@ For the following samples we are assuming that your Graylog instance is running 
            ProxyPassReverse http://127.0.0.1:12900/
        </Location>
    </VirtualHost>
-
-
-AWS Elastic Load Balancing:
----------------------------
