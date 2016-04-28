@@ -202,11 +202,11 @@ Enabling HTTPS is easy. Just start the web interface TLS support in the ``/etc/g
 
   web_enable_tls=true
 
-This will generate self-signed certificate. To use proper certificates you must provide a PEM-encoded private key and a X.509 certificate PKCS#8 format.
+This will generate self-signed certificate. To use proper certificates you must provide a PEM-encoded private key in PKCS#8 format and a X.509 certificate.
 Most certificate authorities provide instructions on how to create such keys and certificates.
 
 The OpenSSL documentation also provides `examples on how to handle PKCS#8 files <https://www.openssl.org/docs/manmaster/apps/pkcs8.html#EXAMPLES>`_.
 
-* ``web_tls_cert_file`` The X.509 certificate file to use for securing the web interface port.
-* ``web_tls_key_file`` The private key to use for securing the web interface port.
+* ``web_tls_cert_file`` The X.509 certificate file (PEM-encoded) to use for securing the web interface port.
+* ``web_tls_key_file`` The private key in PKCS#8 format (PEM-encoded) to use for securing the web interface port.
 * ``web_tls_key_password`` The password, defaults to a blank password
