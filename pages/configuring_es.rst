@@ -75,7 +75,7 @@ system defaults allow. **Set it to at least 64000 open file descriptors.**
 
 Graylog will show a notification in the web interface when there is a node in the Elasticsearch cluster which has a too low open file limit.
 
-Read about how to raise the open file limit in the corresponding `Elasticsearch documentation page <http://www.elasticsearch.org/tutorials/too-many-open-files/>`__.
+Read about how to raise the open file limit in the corresponding `Elasticsearch documentation page <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup-configuration.html#file-descriptors>`__.
 
 Heap size
 ^^^^^^^^^
