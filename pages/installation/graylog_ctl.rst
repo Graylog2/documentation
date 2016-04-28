@@ -210,6 +210,8 @@ Wait some time until all services are restarted and running again. Afterwards yo
 Upgrade Graylog
 ===============
 
+.. warning:: The Graylog omnibus package currently does *not* support upgrading from Graylog 1.x to Graylog 2.0.x!
+
 Always perform a full backup or snapshot of the appliance before proceeding. Only upgrade
 if the release notes say the next version is a drop-in replacement.
 Look for the Graylog version you want to install `here <https://packages.graylog2.org/appliances/ubuntu>`_ , `graylog_latest` always links to the newest version::
