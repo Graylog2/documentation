@@ -45,7 +45,7 @@ This all can be put in a `docker-compose` file, like::
     image: "elasticsearch:2"
     command: "elasticsearch -Des.cluster.name='graylog'"
   graylog:
-    image: graylog2/server:2.0.0-rc.1-1
+    image: graylog2/server:2.0.0-1
     environment:
       GRAYLOG_PASSWORD_SECRET: somepasswordpepper
       GRAYLOG_ROOT_PASSWORD_SHA2: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
@@ -86,7 +86,7 @@ Make sure that the service user can write to `/graylog`, than the complete compo
     volumes:
       - /graylog/data/elasticsearch:/usr/share/elasticsearch/data
   graylog:
-    image: graylog2/server:2.0.0-rc.1-1
+    image: graylog2/server:2.0.0-1
     volumes:
       - /graylog/data/journal:/usr/share/graylog/data/journal
       - /graylog/config:/usr/share/graylog/data/config
