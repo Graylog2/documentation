@@ -198,9 +198,9 @@ For the following samples we are assuming that your Graylog instance is running 
    Listen 443
    <VirtualHost *:443>
        ServerName graylog.example.org
-       #Your SSL config <-- You should change this
-       RequestHeader set X-Graylog-Server-URL "https://graylog.example.org/api/"
+       # Your SSL config <-- You should change this
        <Location />
+           RequestHeader set X-Graylog-Server-URL "https://graylog.example.org/api/"
            ProxyPass http://127.0.0.1:9000/
            ProxyPassReverse http://127.0.0.1:9000/
        </Location>
