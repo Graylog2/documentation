@@ -9,7 +9,7 @@ The problem explained
 
 Syslog (`RFC3146 <http://tools.ietf.org/html/rfc3146>`_, `RFC5424 <http://tools.ietf.org/html/rfc5424>`_) is the de facto
 standard logging protocol since the 1980s and was originally developed as part of the sendmail project. It comes with some
-annoying shortcomings that we tried to improve in `GELF <http://www.graylog.org/gelf>`_ for application logging.
+annoying shortcomings that we tried to improve in :doc:`GELF <gelf>` for application logging.
 
 Because syslog has a clear specification in its RFCs it should be possible to parse it relatively easy. Unfortunately
 there are a lot of devices (especially routers and firewalls) out there that send logs looking like syslog but actually

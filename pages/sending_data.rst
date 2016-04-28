@@ -72,7 +72,7 @@ to logging from your application layer. It comes with optional compression, chun
 structure. There are `dozens of GELF libraries <http://marketplace.graylog.org>`__ for many frameworks and
 programming languages to get you started.
 
-Read more about GELF `on graylog.org <https://www.graylog.org/resources/gelf/>`__.
+Read more about :doc:`GELF in the specification <gelf>`.
 
 GELF via HTTP
 -------------
