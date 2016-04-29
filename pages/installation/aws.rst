@@ -11,13 +11,28 @@ Usage
 -----
 
   * Click on *Launch instance* for your AWS region to start Graylog into.
-  * Choose an instance type **with at least 4GB memory**
+  * Choose an instance type **with at least 4GB memory**.
   * Finish the wizard and spin up the VM.
-  * Login to the instance as user `ubuntu`
-  * Run `sudo graylog-ctl reconfigure`
-  * Open port 80 and ports for receiving log messages in the security group of the appliance
+  * Login to the instance as user `ubuntu`.
+  * Run `sudo graylog-ctl reconfigure`.
+  * Open port 80 and 12900 in the applied security group to access the web interface.
+  * additionally open more ports for ingesting log data, like 514 for syslog or 12201 for the GELF protocol.
 
-Open `http://<vm ip>` in your browser to access the Graylog web interface. Default username and password is `admin`.
+Open `http://<private ip>` in your browser to access the Graylog web interface. Default username and password is `admin`.
+
+Networking
+----------
+
+Your browser needs access to port 80 or 443 for reaching the web interface. The interface itself creates a connection
+back to the REST API of the Graylog server on port 12900. As long as you are in a private network like Amazon VPC for
+instance, this works out of the box.
+If you want to use the *public* IP address of your VM, this mechanism doesn't work automatically anymore. You have
+to tell Graylog how to reach the API from the users browser perspective::
+
+  sudo graylog-ctl set-external-ip http://<public ip>:12900
+  sudo graylog-ctl reconfigure
+
+Also make sure that this port is open, even on the public IP.
 
 Basic configuration
 -------------------
