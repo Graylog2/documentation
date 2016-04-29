@@ -27,7 +27,7 @@ The following commands are changing the configuration of Graylog:
 || ``--user=<username>``                              |                                             |
 || ``--password=<password>``                          |                                             |
 || ``--from-email=<sender-address>``                  |                                             |
-|| ``--web-url=<grayog web-interface url>``           |                                             |
+|| ``--web-url=<graylog web-interface url>``          |                                             |
 || ``--no-tls --no-ssl]``                             |                                             |
 +-----------------------------------------------------+---------------------------------------------+
 || ``sudo graylog-ctl set-timezone <zone acronym>``   | Set Graylog's timezone. Make sure system    |
@@ -38,7 +38,7 @@ The following commands are changing the configuration of Graylog:
 +-----------------------------------------------------+---------------------------------------------+
 || ``sudo graylog-ctl set-node-id <id>``              | Override random server node id              |
 +-----------------------------------------------------+---------------------------------------------+
-|| ``sudo grayog-ctl set-server-secret <secret>``     | Override server secret used for encryption  |
+|| ``sudo graylog-ctl set-server-secret <secret>``    | Override server secret used for encryption  |
 +-----------------------------------------------------+---------------------------------------------+
 || ``sudo graylog-ctl disable-internal-logging``      | Disable sending internal logs (e. g. nginx) |
 ||                                                    | from the virtual machine to Graylog         |
