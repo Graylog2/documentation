@@ -34,6 +34,21 @@ to tell Graylog how to reach the API from the users browser perspective::
 
 Also make sure that this port is open, even on the public IP.
 
+HTTPS
+-----
+
+In order to enable HTTPS for the web interface both ports need to be encrypted. Otherwise the web browser would show
+an error message. For this reason we created a proxy configuration on the appliance that can be enabled by running::
+
+  sudo graylog-ctl enforce-ssl
+  sudo graylog-ctl reconfigure
+
+This command combines the Graylog web interface and the API on port 443. The API is accessable via the path `/api`.
+For this reason you have to set the external IP to an HTTPS address with the appended path `/api`::
+
+  sudo graylog-ctl https://<public ip>:443/api
+  sudo graylog-ctl reconfigure
+
 Basic configuration
 -------------------
 
