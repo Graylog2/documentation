@@ -43,6 +43,16 @@ The following commands are changing the configuration of Graylog:
 || ``sudo graylog-ctl disable-internal-logging``      | Disable sending internal logs (e. g. nginx) |
 ||                                                    | from the virtual machine to Graylog         |
 +-----------------------------------------------------+---------------------------------------------+
+|| ``sudo graylog-ctl set-external-ip``               | Configure an external IP in the Nginx       |
+|| ``http[s]://<public IP>:port/``                    | proxy. This is needed to connect the web    |
+||                                                    | interface to the REST API e.g. in nat'd     |
+||                                                    | networks or on AWS.                         |
++-----------------------------------------------------+---------------------------------------------+
+|| ``sudo graylog-ctl set-listen-address``            | Set the listen address for the web          |
+|| ``--service <web|rest|trabsport>``                 | interface, REST API, and the transport URI. |
+|| ``--address http://<host>:port``                   | Can be used to deal with additional network |
+||                                                    | interfaces.                                 |
++-----------------------------------------------------+---------------------------------------------+
 
 **After setting one or more of these options re-run**::
 
