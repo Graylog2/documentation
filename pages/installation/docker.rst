@@ -37,7 +37,7 @@ In this case you can login to Graylog with the username and password `admin`.  G
 
   $ echo -n yourpassword | shasum -a 256
 
-This all can be put in a `docker-compose` file, like::
+This all can be put in a `docker-compose.yml` file, like::
 
   some-mongo:
     image: "mongo:3"
@@ -74,7 +74,18 @@ Persist log data
 ----------------
 
 In order to make the log data and configuration in Graylog persistent, you can use external volumes to store all data. In case of a container restart simply re-use the existing data from former instances.
-Make sure that the service user can write to `/graylog`, than the complete compose file looks like this::
+Create the data directories and make sure that the service user can write to it::
+
+  mkdir -p /graylog/data/mongo
+  mkdir /graylog/data/elasticsearch
+  mkdir /graylog/data/journal
+  mkdir /graylog/config
+  chmod -R 777 /graylog/data
+ 
+Copy the basic configuration files from `here <https://github.com/Graylog2/graylog2-images/tree/2.0/docker/config>`__ to
+`/graylog/config` on the host system. Create a unique server node ID with `uuidgen > /graylog/config/node-id`.
+
+The `docker-compose.yml` file looks like this::
 
   some-mongo:
     image: "mongo:3"
@@ -102,8 +113,7 @@ Make sure that the service user can write to `/graylog`, than the complete compo
       - "9000:9000"
       - "12900:12900"
 
-Copy the basic configuration files from `here <https://github.com/Graylog2/graylog2-images/tree/2.0/docker/config>`__ to
-`/graylog/config` on the host system. Create a unique node ID with `uuidgen > /graylog/config/node-id` and start all services with::
+Start all services with exposed data directories::
 
   $ docker-compose up
  
