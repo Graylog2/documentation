@@ -220,7 +220,7 @@ Wait some time until all services are restarted and running again. Afterwards yo
 Upgrade Graylog
 ===============
 
-.. warning:: The Graylog omnibus package currently does *not* support upgrading from Graylog 1.x to Graylog 2.0.x!
+.. warning:: The Graylog omnibus package does *not* support unattended upgrading from Graylog 1.x to Graylog 2.0.x!
 
 Always perform a full backup or snapshot of the appliance before proceeding. Only upgrade
 if the release notes say the next version is a drop-in replacement.
@@ -230,6 +230,86 @@ Look for the Graylog version you want to install `here <https://packages.graylog
   sudo graylog-ctl stop
   sudo dpkg -G -i graylog_latest.deb
   sudo graylog-ctl reconfigure
+
+Migrate manually from 1.x to 2.0.x
+==================================
+
+To update a 1.x appliance to 2.0.x the administrator has to purge the Graylog installation, migrate the stored log data
+and install the new version as Omnibus package. Before upgrading read the upgrade `notes <https://github.com/Graylog2/graylog2-server/blob/master/UPGRADING.rst>`_.
+This procedure can potentially delete log data or configuration settings. So it's absolutely necessary to perform a backup or a snpashot before!
+
+Stop all services but Elasticsearch::
+
+  sudo -s
+  graylog-ctl stop graylog-web
+  graylog-ctl stop graylog-server
+  graylog-ctl stop mongodb
+  graylog-ctl stop nginx
+  graylog-ctl stop etcd
+
+Check for index range types. The output of this command should be `{}`, if not `read <https://github.com/Graylog2/graylog2-server/blob/master/UPGRADING.rst#index-range-types>`_  how to fix this::
+
+  curl -XGET <appliance_IP>:9200/_all/_mapping/index_range; echo
+  {}
+
+Delete the Graylog index template::
+
+  curl -X DELETE <appliance_IP>:9200/_template/graylog-internal
+
+Migrate appliance configuration::
+
+  cd /etc
+  mv graylog graylog2.0
+  vi graylog2.0/graylog-secrets.json
+
+  Remove the graylog_web section
+  },  << don't forget the comma!
+  "graylog_web": {
+    "secret_token": "3552c87f3e3..."
+  }
+
+  vi graylog2.0/graylog-services.json
+
+  Remove the graylog_web section
+  }, << don't forget the comma!
+  "graylog_web": {
+    "enabled": true
+  }
+
+  vi graylog2.0/graylog-settings.json
+  
+  Remove "rotation_size", "rotation_time", "indices"
+  "enforce_ssl": false,
+  "rotation_size": 1073741824,
+  "rotation_time": 0,
+  "indices": 10,
+  "journal_size": 1,
+
+Migrate appliance data::
+
+  cd /var/opt
+  mv graylog graylog2.0
+  mv graylog2.0/data/elasticsearch/graylog2 graylog2.0/data/elasticsearch/graylog
+
+Delete old Graylog version and install new Omnibus package::
+
+  wget http://packages.graylog2.org/releases/graylog-omnibus/ubuntu/graylog_2.0.0-2_amd64.deb
+  apt-get purge graylog
+  dpkg -i graylog_2.0.0-2_amd64.deb
+
+Move directories back::
+
+  cd /etc
+  mv graylog2.0 graylog
+  cd /var/opt/
+  mv graylog2.0 graylog
+
+Reconfigure and Reboot::
+
+  graylog-ctl reconfigure
+  reboot
+
+Graylog should now be updated and old data still available.
 
 Advanced Settings
 =================
