@@ -147,13 +147,13 @@ I’m sending in messages, and I can see they are being accepted by Graylog, but
 A common reason for this issue is that the timestamp in the message is wrong. First, confirm that the message was received by selecting ‘all messages’ as the time range for your search. Then identify and fix the source that is sending the wrong timestamp.
 
 I have configured SMTP server, or output with TLS connection, and receive handshake errors. What should I do?
- --------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
  
- Outbound TLS connections have CA (*certification authority*) certificate verification enabled by default. In case the target server's certificate is not signed by a CA found from trust store, the connection will fail. A typical symptom for this is the following error message in the server logs::
+Outbound TLS connections have CA (*certification authority*) certificate verification enabled by default. In case the target server's certificate is not signed by a CA found from trust store, the connection will fail. A typical symptom for this is the following error message in the server logs::
  
-   Caused by: javax.mail.MessagingException: Could not convert socket to TLS; nested exception is: javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+  Caused by: javax.mail.MessagingException: Could not convert socket to TLS; nested exception is: javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
  
- This should be corrected by either adding the missing CA certificates to the Java default trust store (typically found at ``$JAVA_HOME/jre/lib/security/cacerts``), or a custom store that is configured (by using ``-Djavax.net.ssl.trustStore``) for the Graylog server process. The same procedure applies for both missing valid CAs and self-signed certificates.
+This should be corrected by either adding the missing CA certificates to the Java default trust store (typically found at ``$JAVA_HOME/jre/lib/security/cacerts``), or a custom store that is configured (by using ``-Djavax.net.ssl.trustStore``) for the Graylog server process. The same procedure applies for both missing valid CAs and self-signed certificates.
  
 Have another troubleshooting question?
 --------------------------------------
