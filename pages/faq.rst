@@ -146,8 +146,8 @@ I’m sending in messages, and I can see they are being accepted by Graylog, but
 
 A common reason for this issue is that the timestamp in the message is wrong. First, confirm that the message was received by selecting ‘all messages’ as the time range for your search. Then identify and fix the source that is sending the wrong timestamp.
 
-I have configured SMTP server, or output with TLS connection, and receive handshake errors. What should I do?
---------------------------------------------------------------------------------------------------------------
+I have configured an SMTP server or an output with TLS connection and receive handshake errors. What should I do?
+-----------------------------------------------------------------------------------------------------------------
  
 Outbound TLS connections have CA (*certification authority*) certificate verification enabled by default. In case the target server's certificate is not signed by a CA found from trust store, the connection will fail. A typical symptom for this is the following error message in the server logs::
  
