@@ -46,7 +46,7 @@ To register and enable a system service use the ``-service`` option::
 Windows
 ^^^^^^^
 
-Windows installation works in the same way. Download the Windows package and register the Sidecar services::
+Windows installation works in the same way. `Download <https://github.com/Graylog2/collector-sidecar/releases>`_ the Windows package and register the Sidecar services::
 
     & 'C:\Program Files (x86)\graylog\collector-sidecar\graylog-collector-sidecar.exe' -service install
     & 'C:\Program Files (x86)\graylog\collector-sidecar\graylog-collector-sidecar.exe' -service start
