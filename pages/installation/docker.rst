@@ -76,11 +76,7 @@ Persist log data
 In order to make the log data and configuration in Graylog persistent, you can use external volumes to store all data. In case of a container restart simply re-use the existing data from former instances.
 Create the data directories and make sure that the service user can write to it::
 
-  mkdir -p /graylog/data/mongo
-  mkdir /graylog/data/elasticsearch
-  mkdir /graylog/data/journal
   mkdir /graylog/config
-  chmod -R 777 /graylog/data
  
 Copy the basic configuration files from `here <https://github.com/Graylog2/graylog2-images/tree/2.0/docker/config>`__ to
 `/graylog/config` on the host system. Create a unique server node ID with `uuidgen > /graylog/config/node-id`.
