@@ -73,13 +73,13 @@ Similarly, the same can be done for UDP by appending `-p 5555:5555/udp` option. 
 Persist log data
 ----------------
 
-In order to make the log data and configuration in Graylog persistent, you can use external volumes to store all data. In case of a container restart simply re-use the existing data from former instances.
-Create the data directories and make sure that the service user can write to it::
+In order to make the log data and configuration of Graylog persistent, you can use external volumes to store all data. In case of a container restart simply re-use the existing data from the former instances.
+Create the configuration directory and copy the default files::
 
   mkdir /graylog/config
- 
-Copy the basic configuration files from `here <https://github.com/Graylog2/graylog2-images/tree/2.0/docker/config>`__ to
-`/graylog/config` on the host system. Create a unique server node ID with `uuidgen > /graylog/config/node-id`.
+  cd /graylog/config
+  wget https://raw.githubusercontent.com/Graylog2/graylog2-images/2.0/docker/config/graylog.conf
+  wget https://raw.githubusercontent.com/Graylog2/graylog2-images/2.0/docker/config/log4j2.xml
 
 The `docker-compose.yml` file looks like this::
 
