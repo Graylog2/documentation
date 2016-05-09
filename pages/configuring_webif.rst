@@ -98,6 +98,85 @@ Certificate/Key file format
 
 When you are configuring TLS, you need to make sure that your certificate/key files are in the right format, which is X.509 for certificates and PKCS#8 for the private keys. Both must to be stored in PEM format.
 
+If no X.509 certificate and/or no PKCS#8 private key have been provided, Graylog will automatically try to generate a self-signed private key and certificate with the hostname part of ``web_listen_uri`` as Common Name (CN) of the certificate.
+
+
+Creating a self-signed private key/certificate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Create PKCS#5 and X.509 certificate::
+
+  $ openssl version
+  OpenSSL 0.9.8zh 14 Jan 2016
+  $ openssl req -x509 -days 365 -nodes -newkey rsa:2048 -keyout pkcs5-plain.pem -out cert.pem
+  Generating a 2048 bit RSA private key
+  ............................+++
+  .+++
+  writing new private key to 'pkcs5-plain.pem'
+  -----
+  [...]
+  If you enter '.', the field will be left blank.
+  -----
+  Country Name (2 letter code) [AU]:DE
+  State or Province Name (full name) [Some-State]:Hamburg
+  Locality Name (eg, city) []:Hamburg
+  Organization Name (eg, company) [Internet Widgits Pty Ltd]:Graylog, Inc.
+  Organizational Unit Name (eg, section) []:
+  Common Name (e.g. server FQDN or YOUR name) []:graylog.example.com
+  Email Address []:hostmaster@graylog.example.com
+
+
+Convert PKCS#5 private key into a *plaintext* PKCS#8 private key::
+
+  $ openssl pkcs8 -in pkcs5-plain.pem -topk8 -nocrypt -out pkcs8-plain.pem
+
+Convert PKCS#5 private key into an *encrypted* PKCS#8 private key (using DES3 and the passphrase ``secret``)::
+
+  $ openssl pkcs8 -in pkcs5-plain.pem -topk8 -v2 des3 -out pkcs8-encrypted.pem -passout pass:secret
+
+
+Sample files
+^^^^^^^^^^^^
+
+This section show the difference between following private key formats with samples.
+
+PKCS#5 plain private key::
+
+  -----BEGIN RSA PRIVATE KEY-----
+  MIIBOwIBAAJBANxtmQ1Kccdp7HBNt8zgTai48Vv617bj4SnhkcMN99sCQ2Naj/sp
+  [...]
+  NiCYNLiCawBbpZnYw/ztPVACK4EwOpUy+u19cMB0JA==
+  -----END RSA PRIVATE KEY-----
+
+PKCS#8 plain private key::
+
+  -----BEGIN PRIVATE KEY-----
+  MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEA6GZN0rQFKRIVaPOz
+  [...]
+  LaLGdd9G63kLg85eldSy55uIAXsvqQIgfSYaliVtSbAgyx1Yfs3hJ+CTpNKzTNv/
+  Fx80EltYV6k=
+  -----END PRIVATE KEY-----
+
+PKCS#5 encrypted private key::
+
+  -----BEGIN RSA PRIVATE KEY-----
+  Proc-Type: 4,ENCRYPTED
+  DEK-Info: DES-EDE3-CBC,E83B4019057F55E9
+  
+  iIPs59nQn4RSd7ppch9/vNE7PfRSHLoQFmaAjaF0DxjV9oucznUjJq2gphAB2E2H
+  [...]
+  y5IT1MZPgN3LNkVSsLPWKo08uFZQdfu0JTKcn7NPyRc=
+  -----END RSA PRIVATE KEY-----
+
+PKCS#8 encrypted private key::
+
+  -----BEGIN ENCRYPTED PRIVATE KEY-----
+  MIIBpjBABgkqhkiG9w0BBQ0wMzAbBgkqhkiG9w0BBQwwDgQIU9Y9p2EfWucCAggA
+  [...]
+  IjsZNp6zmlqf/RXnETsJjGd0TXRWaEdu+XOOyVyPskX2177X9DUJoD31
+  -----END ENCRYPTED PRIVATE KEY-----
+
+
 Making the web interface work with load balancers/proxies
 =========================================================
 
