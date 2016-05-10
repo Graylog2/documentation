@@ -135,6 +135,127 @@ Convert PKCS#5 private key into an *encrypted* PKCS#8 private key (using DES3 an
   $ openssl pkcs8 -in pkcs5-plain.pem -topk8 -v2 des3 -out pkcs8-encrypted.pem -passout pass:secret
 
 
+Converting an existing Java Keystore to private key/certificate pair
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This section describes how to export a private key and certificate from an existing Java KeyStore in JKS format.
+
+The starting point is an existing Java KeyStore in JKS format which contains a private key and certificate which should be used in Graylog::
+
+  $ keytool -list -v -keystore keystore.jks -alias graylog.example.com
+  Enter keystore password:
+  Alias name: graylog.example.com
+  Creation date: May 10, 2016
+  Entry type: PrivateKeyEntry
+  Certificate chain length: 1
+  Certificate[1]:
+  Owner: CN=graylog.example.com, OU=Unknown, O="Graylog, Inc.", L=Hamburg, ST=Hamburg, C=DE
+  Issuer: CN=graylog.example.com, OU=Unknown, O="Graylog, Inc.", L=Hamburg, ST=Hamburg, C=DE
+  Serial number: 2b33832d
+  Valid from: Tue May 10 10:02:34 CEST 2016 until: Mon Aug 08 10:02:34 CEST 2016
+  Certificate fingerprints:
+  	 MD5:  8A:3D:9F:ED:69:93:1B:6C:E3:29:66:EA:82:8D:42:BE
+  	 SHA1: 5B:27:92:25:46:36:BC:F0:82:8F:9A:30:D8:50:D0:ED:32:4D:C6:A0
+  	 SHA256: 11:11:77:F5:F6:6A:20:A8:E6:4A:5D:B5:20:21:4E:B8:FE:B6:38:1D:45:6B:ED:D0:7B:CE:B8:C8:BC:DD:B4:FB
+  	 Signature algorithm name: SHA256withRSA
+  	 Version: 3
+
+  Extensions:
+  
+  #1: ObjectId: 2.5.29.14 Criticality=false
+  SubjectKeyIdentifier [
+  KeyIdentifier [
+  0000: AC 79 64 9F A1 60 14 B9   51 F4 F5 0B B3 B5 02 A5  .yd..`..Q.......
+  0010: B8 07 DC 7B                                        ....
+  ]
+  ]
+
+The Java KeyStore in JKS format has to be converted to a PKCS#12 keystore, so that OpenSSL can work with it::
+
+  $ keytool -importkeystore -srckeystore keystore.jks -destkeystore keystore.p12 -deststoretype PKCS12
+  Enter destination keystore password:
+  Re-enter new password:
+  Enter source keystore password:
+  Entry for alias graylog.example.com successfully imported.
+  Import command completed:  1 entries successfully imported, 0 entries failed or cancelled
+
+After the keystore has been successfully converted into PKCS#12 format, OpenSSL can export the X.509 certificate with PEM encoding::
+
+  $ openssl pkcs12 -in keystore.p12 -nokeys -out graylog-certificate.pem
+  Enter Import Password:
+  MAC verified OK
+
+The private key can only be exported in PKCS#5 format with PEM encoding::
+
+  $ openssl pkcs12 -in keystore.p12 -nocerts -out graylog-pkcs5.pem
+  Enter Import Password:
+  MAC verified OK
+  Enter PEM pass phrase:
+  Verifying - Enter PEM pass phrase:
+
+Graylog currently only supports PKCS#8 private keys with PEM encoding, so OpenSSL has to convert it into the correct format::
+
+  $ openssl pkcs8 -in graylog-pkcs5.pem -topk8 -out graylog-key.pem
+  Enter pass phrase for graylog-pkcs5.pem:
+  Enter Encryption Password:
+  Verifying - Enter Encryption Password:
+
+The working directory should now contain the PKCS#8 private key (``graylog-key.pem``) and the X.509 certificate (``graylog-certificate.pem``) to be used with Graylog::
+
+  $ head graylog-key.pem graylog-certificate.pem
+  ==> graylog-key.pem <==
+  -----BEGIN ENCRYPTED PRIVATE KEY-----
+  MIIE6TAbBgkqhkiG9w0BBQMwDgQIwMhLa5bw9vgCAggABIIEyN42AeYJJNBEiqhI
+  mWqJDot4Jokw2vB4abcIJ5Do4+7tjtMrecVRCDSvBZzjkXjnbumBHEoxexe5f0/z
+  wgq6f/UDyTM3uKYQTG91fcqTyMDUlo3Wc8OqSqsNehOAQzA7hMCehqgNJHO0Zfny
+  EFvrXHurJWi4eA9vLRup86dbm4Wp3o8pmjOLduXieHfcgVtm5jfd7XfL5cRFS8kS
+  bSFH4v8xDxLNaJmKkKl9gPCACMRbO9nGk/Z9q9N8zkj+xG9lxlNRMX51SRzg20E0
+  nyyKTb39tJF35zjroB2HfiFWyrPQ1uF6yGoroGvu0L3eWosjBLjdRs0eBgjJCm5P
+  ic9zSVqMH6/4CPKJqvB97vP4QhpYcr9jlYJsbn6Zg4OIELpM00VLvp0yU9tqTuRR
+  TDPYAlNMLZ2RrV52CEsh3zO21WHM7r187x4WHgprDFnjkXf02DrFhgCsGwkEQnb3
+  vj86q13RHhqoXT4W0zugvcv2/NBLMv0HNQBAfEK3X1YBmtQpEJhwSxeszA1i7CpU
+  
+  ==> graylog-certificate.pem <==
+  Bag Attributes
+      friendlyName: graylog.example.com
+      localKeyID: 54 69 6D 65 20 31 34 36 32 38 36 37 38 32 33 30 39 32
+  subject=/C=DE/ST=Hamburg/L=Hamburg/O=Graylog, Inc./OU=Unknown/CN=graylog.example.com
+  issuer=/C=DE/ST=Hamburg/L=Hamburg/O=Graylog, Inc./OU=Unknown/CN=graylog.example.com
+  -----BEGIN CERTIFICATE-----
+  MIIDkTCCAnmgAwIBAgIEKzODLTANBgkqhkiG9w0BAQsFADB5MQswCQYDVQQGEwJE
+  RTEQMA4GA1UECBMHSGFtYnVyZzEQMA4GA1UEBxMHSGFtYnVyZzEWMBQGA1UEChMN
+  R3JheWxvZywgSW5jLjEQMA4GA1UECxMHVW5rbm93bjEcMBoGA1UEAxMTZ3JheWxv
+  Zy5leGFtcGxlLmNvbTAeFw0xNjA1MTAwODAyMzRaFw0xNjA4MDgwODAyMzRaMHkx
+
+The resulting PKCS#8 private key (``graylog-key.pem``) and the X.509 certificate (``graylog-certificate.pem``) can now be used to enable encrypted connections with Graylog by enabling TLS for the Graylog REST API and the web interface in the Graylog configuration file::
+
+  # Enable HTTPS support for the REST API. This secures the communication with the REST API
+  # using TLS to prevent request forgery and eavesdropping.
+  rest_enable_tls = true
+  
+  # The X.509 certificate chain file in PEM format to use for securing the REST API.
+  rest_tls_cert_file = /path/to/graylog-certificate.pem
+  
+  # The PKCS#8 private key file in PEM format to use for securing the REST API.
+  rest_tls_key_file = /path/to/graylog-key.pem
+  
+  # The password to unlock the private key used for securing the REST API.
+  rest_tls_key_password = secret
+  
+  # Enable HTTPS support for the web interface. This secures the communication the web interface
+  # using TLS to prevent request forgery and eavesdropping.
+  web_enable_tls = true
+  
+  # The X.509 certificate chain file in PEM format to use for securing the web interface.
+  web_tls_cert_file = /path/to/graylog-certificate.pem
+  
+  # The PKCS#8 private key file in PEM format to use for securing the web interface.
+  web_tls_key_file = /path/to/graylog-key.pem
+  
+  # The password to unlock the private key used for securing the web interface.
+  web_tls_key_password = secret
+
+
 Sample files
 ^^^^^^^^^^^^
 
