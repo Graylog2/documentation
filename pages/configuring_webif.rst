@@ -102,7 +102,7 @@ If no X.509 certificate and/or no PKCS#8 private key have been provided, Graylog
 
 
 Creating a self-signed private key/certificate
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------------
 
 Create PKCS#5 and X.509 certificate::
 
@@ -136,7 +136,7 @@ Convert PKCS#5 private key into an *encrypted* PKCS#8 private key (using DES3 an
 
 
 Converting an existing Java Keystore to private key/certificate pair
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------------------------------------
 
 This section describes how to export a private key and certificate from an existing Java KeyStore in JKS format.
 
@@ -257,7 +257,7 @@ The resulting PKCS#8 private key (``graylog-key.pem``) and the X.509 certificate
 
 
 Sample files
-^^^^^^^^^^^^
+------------
 
 This section show the difference between following private key formats with samples.
 
