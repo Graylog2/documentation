@@ -11,7 +11,7 @@ This will create three containers with all Graylog services running::
 
   $ docker run --name some-mongo -d mongo
   $ docker run --name some-elasticsearch -d elasticsearch elasticsearch -Des.cluster.name="graylog"
-  $ docker run --link some-mongo:mongo --link some-elasticsearch:elasticsearch -d graylog-server
+  $ docker run --link some-mongo:mongo --link some-elasticsearch:elasticsearch -d graylog2/server
 
 Testing a beta version
 ----------------------
@@ -19,7 +19,7 @@ Testing a beta version
 You can also run a pre-release or beta version of Graylog using Docker. The pre-releases are included in the `graylog2/server` image.
 Follow this `guide <https://hub.docker.com/r/graylog2/server/>`_ and pick an alpha/beta/rc tag like::
 
-  $ docker run --link some-mongo:mongo --link some-elasticsearch:elasticsearch -d graylog-server:2.0.0-beta.1-1
+  $ docker run --link some-mongo:mongo --link some-elasticsearch:elasticsearch -d graylog2/server:2.0.0-beta.1-1
  
 We only recommend to run beta versions if you are an experienced Graylog user and know what you are doing.
 
