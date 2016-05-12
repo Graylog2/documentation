@@ -69,33 +69,41 @@ Or to restart all services::
 Multi VM setup
 ==============
 
-At some point it makes sense to not run all services in one VM anymore. For performance reasons you maybe want to add more Elasticsearch
-nodes or want to run the web interface separately from the server components. You can reach this by changing IP addresses in the Graylog
-configuration files or you can use our canned configurations which come with the ``graylog-ctl`` command.
+At some point it make sense to not run all services on a single VM anymore. For performance reasons you might want to add more Elasticsearch
+nodes to the cluster or even add a second Graylog server. This can be achieved by changing IP addresses in the Graylog
+configuration files by hand or use our canned configurations which come with the ``graylog-ctl`` command.
 
-The idea is to have one VM which is a central point for other VMs to fetch all needed configuration settings to join your cluster.
+The idea is to have one VM which is a central point for other VMs to fetch all needed configuration settings to join the cluster.
 Typically the first VM you spin up is used for this task. Automatically an instance of etcd is started and filled with the necessary
 settings for other hosts.
 
-For example to split the web interface from the rest of the setup, spin up two VMs from the same graylog image. On the first only start
-`graylog-server`, `elasticsearch` and `mongodb`::
+For example, to create a small cluster with a dedicated Graylog server node and another for Elasticsearch, spin up two VMs from the same Graylog image.
+On the first one start only `graylog-server` and `mongodb`::
 
   vm1> sudo graylog-ctl set-admin-password sEcReT
-  vm1> sudo graylog-ctl reconfigure-as-backend
+  vm1> sudo graylog-ctl reconfigure-as-server
 
-On the second VM, start only the web interface but before set the IP of the first VM to fetch configuration data from::
+On the second VM start only Elasticsearch. Before doing so set the IP of the first VM to fetch the configuration data from there::
 
   vm2> sudo graylog-ctl set-cluster-master <ip-of-vm1>
-  vm2> sudo graylog-ctl reconfigure-as-webinterface
+  vm2> sudo graylog-ctl reconfigure-as-datanode
 
+  vm1> sudo graylog-ctl reconfigure-as-server
+  
 This results in a perfectly fine dual VM setup. However if you want to scale this setup out by adding an additional Elasticsearch node,
 you can proceed in the same way::
 
   vm3> sudo graylog-ctl set-cluster-master <ip-of-vm1>
   vm3> sudo graylog-ctl reconfigure-as-datanode
 
+  vm1> sudo graylog-ctl reconfigure-as-server
+  vm2> sudo graylog-ctl reconfigure-as-datanode
+
+Verify that all nodes are working as a cluster by going to the Kopf plugin on one of the Elasticsearch nodes `open http://vm2:9200/_plugin/kopf/#!/nodes`
+
+**Important**:
 In case you want to add a second Graylog server you have to set the same server secret on all machines.
-The secret is stored in the file ``/etc/graylog/graylog-secrets`` and can be set with the ``set-server-secret`` sub-command on further nodes.
+The secret is stored in the file ``/etc/graylog/graylog-secrets`` and can be applied to other hosts with the ``set-server-secret`` sub-command.
 
 The following configuration modes do exist:
 
@@ -104,16 +112,18 @@ The following configuration modes do exist:
 +=====================================================+=============================================+
 | ``sudo graylog-ctl reconfigure``                    | Run all services on this box                |
 +-----------------------------------------------------+---------------------------------------------+
-| ``sudo graylog-ctl reconfigure-as-backend``         | Run graylog-server, elasticsearch and       |
-|                                                     | mongodb                                     |
+| ``sudo graylog-ctl reconfigure-as-server``          | Run graylog-server, web and mongodb         |
+|                                                     | (no elasticsearch)                          |
 +-----------------------------------------------------+---------------------------------------------+
-| ``sudo graylog-ctl reconfigure-as-webinterface``    | Run only the web interface                  |
+| ``sudo graylog-ctl reconfigure-as-backend``         | Run graylog-server, elasticsearch and       |
+|                                                     | mongodb (no nginx for web access)           |
 +-----------------------------------------------------+---------------------------------------------+
 | ``sudo graylog-ctl reconfigure-as-datanode``        | Run only elasticsearch                      |
 +-----------------------------------------------------+---------------------------------------------+
-| ``sudo graylog-ctl reconfigure-as-server``          | Run graylog-server and mongodb              |
-|                                                     | (no elasticsearch)                          |
-+-----------------------------------------------------+---------------------------------------------+
+
+A server with only the web interface running is not supported anymore since Graylog 2.0. The web interface is now included in the server process.
+But you can create your own service combinations by editing the file `/etc/graylog/graylog-services.json` by hand and enable or disable single services.
+Just run `graylog-ctl reconfigure` afterwards.
 
 Extend disk space
 =================
