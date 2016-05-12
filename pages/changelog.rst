@@ -2,6 +2,41 @@
 Changelog
 *********
 
+Graylog 2.0.1
+=============
+
+Released: 2016-05-11
+
+https://www.graylog.org/blog/56-graylog-v2-0-1-released
+
+**Improvements**
+
+* Improved session handling. `Graylog2/graylog2-server#2157 <https://github.com/Graylog2/graylog2-server/issues/2157>`_
+* Included UPGRADING file in the build artifact. `Graylog2/graylog2-server#2170 <https://github.com/Graylog2/graylog2-server/issues/2170>`_
+* Added rotation/retention settings back to the config file. `Graylog2/graylog2-server#2181 <https://github.com/Graylog2/graylog2-server/issues/2181>`_
+* Improved proxy setup configuration settings. `Graylog2/graylog2-server#2156 <https://github.com/Graylog2/graylog2-server/issues/2156>`_
+* Forbid wildcard host in `rest_transport_uri`. `Graylog2/graylog2-server#2205 <https://github.com/Graylog2/graylog2-server/issues/2205>`_
+* Improved robustness for unreachable nodes. `Graylog2/graylog2-server#2206 <https://github.com/Graylog2/graylog2-server/issues/2206>`_
+* Use a more lightweight API to get all index names and aliases. `Graylog2/graylog2-server#2194 <https://github.com/Graylog2/graylog2-server/issues/2194>`_ `Graylog2/graylog2-server#2210 <https://github.com/Graylog2/graylog2-server/issues/2210>`_
+
+**Bug Fixes**
+
+* Fixed some documentation links.
+* Fixed inverted stream rules. `Graylog2/graylog2-server#2160 <https://github.com/Graylog2/graylog2-server/issues/2160>`_ `Graylog2/graylog2-server#2172 <https://github.com/Graylog2/graylog2-server/issues/2172>`_
+* Fixed swallowed LDAP authentication exception. `Graylog2/graylog2-server#2176 <https://github.com/Graylog2/graylog2-server/issues/2176>`_ `Graylog2/graylog2-server#2178 <https://github.com/Graylog2/graylog2-server/issues/2178>`_
+* Fixed insecure handling of PID files. Thanks `@juergenhoetzel <https://github.com/juergenhoetzel>`_! `Graylog2/graylog2-server#2174 <https://github.com/Graylog2/graylog2-server/issues/2174>`_
+* Fixed alert conditions that have been created in Graylog 1.x. `Graylog2/graylog2-server#2169 <https://github.com/Graylog2/graylog2-server/issues/2169>`_ `Graylog2/graylog2-server#2182 <https://github.com/Graylog2/graylog2-server/issues/2182>`_
+* Fixed setting of application context. `Graylog2/graylog2-server#2191 <https://github.com/Graylog2/graylog2-server/issues/2191>`_ `Graylog2/graylog2-server#2208 <https://github.com/Graylog2/graylog2-server/issues/2208>`_
+* Fixed setting of custom Elasticsearch analyzer. `Graylog2/graylog2-server#2209 <https://github.com/Graylog2/graylog2-server/issues/2209>`_
+* Fixed masking of password config values in the web interface. `Graylog2/graylog2-server#2198 <https://github.com/Graylog2/graylog2-server/issues/2198>`_ `Graylog2/graylog2-server#2203 <https://github.com/Graylog2/graylog2-server/issues/2203>`_
+* Fixed URL handling. `Graylog2/graylog2-server#2200 <https://github.com/Graylog2/graylog2-server/issues/2200>`_ `Graylog2/graylog2-server#2213 <https://github.com/Graylog2/graylog2-server/issues/2213>`_
+
+**Plugin: Collector**
+
+* Rotate nxlog logfiles once a day by default.
+* Add GELF TCP output for nxlog.
+
+
 Graylog 2.0.0
 =============
 
