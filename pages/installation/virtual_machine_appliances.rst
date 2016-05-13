@@ -64,3 +64,11 @@ most basic settings of Graylog in the appliance::
 
 The ``graylog-ctl`` has much more functionality and is documented :ref:`here <graylog-ctl>`.
 We strongly recommend to learn more about it to ensure smooth operation of your virtual appliance.
+
+VMWare tools
+============
+
+If you are using the appliance on a VMWare host, you might want to install the hypervisor tools::
+
+  sudo apt-get install -y open-vm-tools
+
