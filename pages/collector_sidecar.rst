@@ -35,13 +35,13 @@ Linux/Unix
 We offer Debian/Ubuntu packages directly in the `releases <https://github.com/Graylog2/collector-sidecar/releases>`_ section.
 Download and install the latest version via ``dpkg(1)``::
 
-    $ wget https://github.com/Graylog2/collector-sidecar/releases/download/0.0.3/collector-sidecar_0.0.3-1_amd64.deb
-    $ sudo dpkg -i collector-sidecar_0.0.3-1_amd64.deb
+    $ wget https://github.com/Graylog2/collector-sidecar/releases/download/0.0.7/collector-sidecar_0.0.7-1_amd64.deb
+    $ sudo dpkg -i collector-sidecar_0.0.7-1_amd64.deb
 
 To register and enable a system service use the ``-service`` option::
 
     $ sudo graylog-collector-sidecar -service install
-    $ sudo start collector-sidecar
+    $ sudo service collector-sidecar start
 
 Windows
 ^^^^^^^
