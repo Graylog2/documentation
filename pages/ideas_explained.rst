@@ -8,7 +8,7 @@ A short history of Graylog
 The Graylog project was started by Lennart Koopmann some time around 2009. Back then the most prominent log management software
 vendor issued a quote for a one year license of their product that was so expensive that he decided to write a log management system
 himself. Now you might call this a bit over optimistic (*I'll build this in two weeks*, end of quote) but the situation was
-hopeless: There was basically no other product on the market and especially no open source alternatives.
+hopeless: there was basically no other product on the market and especially no open source alternatives.
 
 The log management market today
 ===============================
@@ -32,7 +32,7 @@ A log management system has to be constructed of several services that take care
 important reason is that you need to scale parts of it horizontally with your changing use cases and usually the different parts
 of the system have different hardware requirements. All services must be tightly integrated to allow efficient management and configuration
 of the system as a whole. A data ingestion or forwarder tool is hard to tedious to manage if the configuration **has** to be stored
-on the client machines and is not possible via for example REST APIs controlled by a simple interface. A system adminstrator needs to
+on the client machines and is not possible via for example REST APIs controlled by a simple interface. A system administrator needs to
 be able to log into the web interface of a log management product and select log files of a remote host (that has a forwarder running)
 for ingestion into the tool.
 
