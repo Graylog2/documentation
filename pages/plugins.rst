@@ -207,10 +207,19 @@ Using ESLint
 
 `ESLint <http://eslint.org>`_ is an awesome tool for linting JavaScript code. It makes sure that any written code is in line with general best practises and the project-specific coding style/guideline. We at Graylog are striving to make the best use of this tools as possible, to help our developers and you to generate top quality code with little bugs. Therefore we highly recommend to enable it for a Graylog plugin you are writing.
 
+Code Splitting
+--------------
+
+Both the web interface and plugins for it depend on a number of libraries like React, RefluxJS and others. To prevent those getting bundled into *both* the web interface *and* plugin assets, therefore wasting space or causing problems (especially React does not like to be present more than once), we extract those into a commons chunk which is reused by the web interface and plugins.
+
+This has no consequences for you as a plugin author, because the configuration to make use of this is already generated for you when using the meta project or the maven archetype. But here are some details about it:
+
+Common libraries are built into a separate ``vendor`` bundle using an own configuration file named `webpack.vendor.js <https://github.com/Graylog2/graylog2-server/blob/2.0.1/graylog2-web-interface/webpack.vendor.js>`_. Using the `DLLPlugin <https://github.com/webpack/docs/wiki/list-of-plugins>`_ a `manifest is extracted <https://github.com/Graylog2/graylog2-server/blob/2.0.1/graylog2-web-interface/webpack.vendor.js#L31-L34>`_ which allow us to reuse the generated bundle. This is then imported in our main `web interface webpack configuration file <https://github.com/Graylog2/graylog2-server/blob/2.0/graylog2-web-interface/webpack.config.js#L51>`_ and the corresponding `generated webpack config file for plugins <https://github.com/Graylog2/graylog-web-plugin/blob/master/src/PluginWebpackConfig.js#L45>`_.
+
 Building plugins
 ================
 
-Building the plugin is easy because the meta project has created all necessary files and settings for you. Just run ``mvn package`` either from the meta project's directory (to build the server _and_ the plugin) or from the plugin
+Building the plugin is easy because the meta project has created all necessary files and settings for you. Just run ``mvn package`` either from the meta project's directory (to build the server *and* the plugin) or from the plugin
 directory (to build the plugin only)::
 
   $ mvn package
