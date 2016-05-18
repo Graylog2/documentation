@@ -399,13 +399,13 @@ For the following samples we are assuming that your Graylog instance is running 
    <VirtualHost *:443>
        ServerName graylog.example.org
        # Your SSL config <-- You should change this
+       <Location /api/>
+           ProxyPass http://127.0.0.1:12900/
+           ProxyPassReverse http://127.0.0.1:12900/
+       </Location>
        <Location />
            RequestHeader set X-Graylog-Server-URL "https://graylog.example.org/api/"
            ProxyPass http://127.0.0.1:9000/
            ProxyPassReverse http://127.0.0.1:9000/
-       </Location>
-       <Location /api/>
-           ProxyPass http://127.0.0.1:12900/
-           ProxyPassReverse http://127.0.0.1:12900/
        </Location>
    </VirtualHost>
