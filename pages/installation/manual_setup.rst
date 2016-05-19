@@ -100,57 +100,66 @@ You can find the ``graylog-server`` logs in the directory ``logs/``.
 Supplying external logging configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``graylog-server`` uses Log4j for its internal logging and ships with a
-`default log configuration file <https://github.com/Graylog2/graylog2-server/blob/1.3/graylog2-bootstrap/src/main/resources/log4j.xml>`_
+Graylog is using `Apache Log4j 2 <https://logging.apache.org/log4j/2.x/>`_ for its internal logging and ships with a
+`default log configuration file <https://github.com/Graylog2/graylog2-server/blob/2.0/graylog2-server/src/main/resources/log4j2.xml>`_
 which is embedded within the shipped JAR.
 
-In case you need to overwrite the configuration ``graylog-server`` uses, you can supply a Java system property specifying the path to
-the configuration file in your ``graylogctl`` script. Append this before the `-jar` paramter::
+In case you need to modify Graylog's logging configuration, you can supply a Java system property specifying the path to
+the configuration file in your start script (e. g. ``graylogctl``).
 
-  -Dlog4j.configuration=file:///tmp/logj4.xml
+Append this before the ``-jar`` paramter::
 
-Substitute the actual path to the file for the ``/tmp/log4j.xml`` in the example.
+  -Dlog4j.configurationFile=file:///path/to/log4j2.xml
 
-In case you do not have a log rotation system already in place, you can also configure Graylog to rotate logs based on their size to prevent its
-logs to grow without bounds.
+Substitute the actual path to the file for the ``/path/to/log4j2.xml`` in the example.
 
-One such example ``log4j.xml`` configuration is shown below. Graylog includes the ``log4j-extras`` companion classes to support time based and size
-based log rotation. This is the example::
+In case you do not have a log rotation system already in place, you can also configure Graylog to rotate logs based on their size to prevent the
+log files to grow without bounds using the `RollingFileAppender <https://logging.apache.org/log4j/2.x/manual/appenders.html#RollingFileAppender>`_.
+
+One such example ``log4j2.xml`` configuration is shown below::
 
   <?xml version="1.0" encoding="UTF-8"?>
-  <!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
-  <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+  <Configuration packages="org.graylog2.log4j" shutdownHook="disable">
+    <Appenders>
+        <RollingFile name="RollingFile" fileName="/tmp/logs/graylog.log"
+                     filePattern="/tmp/logs/graylog-%d{yyyy-MM-dd}-%i.log.gz">
+          <PatternLayout>
+            <Pattern>%d %-5p: %c - %m%n</Pattern>
+          </PatternLayout>
+          <!-- Rotate logs every day or when the size exceeds 10 MB (whichever comes first) -->
+          <Policies>
+            <TimeBasedTriggeringPolicy modulate="true"/>
+            <SizeBasedTriggeringPolicy size="10 MB"/>
+          </Policies>
+          <!-- Keep a maximum of 10 log files -->
+          <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
 
-      <appender name="FILE" class="org.apache.log4j.rolling.RollingFileAppender">
-          <rollingPolicy class="org.apache.log4j.rolling.FixedWindowRollingPolicy" >
-              <param name="activeFileName" value="/tmp/server.log" /> <!-- ADAPT -->
-              <param name="fileNamePattern" value="/tmp/server.%i.log" /> <!-- ADAPT -->
-              <param name="minIndex" value="1" /> <!-- ADAPT -->
-              <param name="maxIndex" value="10" /> <!-- ADAPT -->
-          </rollingPolicy>
-          <triggeringPolicy class="org.apache.log4j.rolling.SizeBasedTriggeringPolicy">
-              <param name="maxFileSize" value="5767168" /> <!-- ADAPT: For example 5.5MB in bytes -->
-          </triggeringPolicy>
-          <layout class="org.apache.log4j.PatternLayout">
-              <param name="ConversionPattern" value="%d %-5p: %c - %m%n"/>
-          </layout>
-      </appender>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %-5p: %c - %m%n"/>
+        </Console>
 
-      <!-- Application Loggers -->
-      <logger name="org.graylog2">
-          <level value="info"/>
-      </logger>
-      <!-- this emits a harmless warning for ActiveDirectory every time which we can't work around :( -->
-      <logger name="org.apache.directory.api.ldap.model.message.BindRequestImpl">
-          <level value="error"/>
-      </logger>
-      <!-- Root Logger -->
-      <root>
-          <priority value="info"/>
-          <appender-ref ref="FILE"/>
-      </root>
-
-  </log4j:configuration>
+        <!-- Internal Graylog log appender. Please do not disable. This makes internal log messages available via REST calls. -->
+        <Memory name="graylog-internal-logs" bufferSize="500"/>
+    </Appenders>
+    <Loggers>
+        <Logger name="org.graylog2" level="info"/>
+        <Logger name="com.github.joschi.jadconfig" level="warn"/>
+        <Logger name="org.apache.directory.api.ldap.model.message.BindRequestImpl" level="error"/>
+        <Logger name="org.elasticsearch.script" level="warn"/>
+        <Logger name="org.graylog2.periodical.VersionCheckThread" level="off"/>
+        <Logger name="org.drools.compiler.kie.builder.impl.KieRepositoryImpl" level="warn"/>
+        <Logger name="com.joestelmach.natty.Parser" level="warn"/>
+        <Logger name="kafka.log.Log" level="warn"/>
+        <Logger name="kafka.log.OffsetIndex" level="warn"/>
+        <Logger name="org.apache.shiro.session.mgt.AbstractValidatingSessionManager" level="warn"/>
+        <Root level="warn">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="RollingFile"/>
+            <AppenderRef ref="graylog-internal-logs"/>
+        </Root>
+    </Loggers>
+  </Configuration>
 
 Command line (CLI) parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
