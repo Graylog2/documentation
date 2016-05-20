@@ -78,7 +78,7 @@ Writing the web interface as a single-page application is a challenging task. We
 | Safari            | OS X                 | 9               |
 +-------------------+----------------------+-----------------+
 
-Please take into account that you need to enable JavaScript in order to use Graylog web interface.  
+Please take into account that you need to enable JavaScript in order to use Graylog web interface.
 
 .. _ssl_setup:
 
@@ -161,7 +161,7 @@ The starting point is an existing Java KeyStore in JKS format which contains a p
   	 Version: 3
 
   Extensions:
-  
+
   #1: ObjectId: 2.5.29.14 Criticality=false
   SubjectKeyIdentifier [
   KeyIdentifier [
@@ -214,7 +214,7 @@ The working directory should now contain the PKCS#8 private key (``graylog-key.p
   ic9zSVqMH6/4CPKJqvB97vP4QhpYcr9jlYJsbn6Zg4OIELpM00VLvp0yU9tqTuRR
   TDPYAlNMLZ2RrV52CEsh3zO21WHM7r187x4WHgprDFnjkXf02DrFhgCsGwkEQnb3
   vj86q13RHhqoXT4W0zugvcv2/NBLMv0HNQBAfEK3X1YBmtQpEJhwSxeszA1i7CpU
-  
+
   ==> graylog-certificate.pem <==
   Bag Attributes
       friendlyName: graylog.example.com
@@ -232,26 +232,26 @@ The resulting PKCS#8 private key (``graylog-key.pem``) and the X.509 certificate
   # Enable HTTPS support for the REST API. This secures the communication with the REST API
   # using TLS to prevent request forgery and eavesdropping.
   rest_enable_tls = true
-  
+
   # The X.509 certificate chain file in PEM format to use for securing the REST API.
   rest_tls_cert_file = /path/to/graylog-certificate.pem
-  
+
   # The PKCS#8 private key file in PEM format to use for securing the REST API.
   rest_tls_key_file = /path/to/graylog-key.pem
-  
+
   # The password to unlock the private key used for securing the REST API.
   rest_tls_key_password = secret
-  
+
   # Enable HTTPS support for the web interface. This secures the communication the web interface
   # using TLS to prevent request forgery and eavesdropping.
   web_enable_tls = true
-  
+
   # The X.509 certificate chain file in PEM format to use for securing the web interface.
   web_tls_cert_file = /path/to/graylog-certificate.pem
-  
+
   # The PKCS#8 private key file in PEM format to use for securing the web interface.
   web_tls_key_file = /path/to/graylog-key.pem
-  
+
   # The password to unlock the private key used for securing the web interface.
   web_tls_key_password = secret
 
@@ -283,7 +283,7 @@ PKCS#5 encrypted private key::
   -----BEGIN RSA PRIVATE KEY-----
   Proc-Type: 4,ENCRYPTED
   DEK-Info: DES-EDE3-CBC,E83B4019057F55E9
-  
+
   iIPs59nQn4RSd7ppch9/vNE7PfRSHLoQFmaAjaF0DxjV9oucznUjJq2gphAB2E2H
   [...]
   y5IT1MZPgN3LNkVSsLPWKo08uFZQdfu0JTKcn7NPyRc=
@@ -383,18 +383,18 @@ If you want to use nginx to proxy access to a Graylog server, you have several o
   }
 
 Apache:
-------- 
+-------
 
-For the following samples we are assuming that your Graylog instance is running on ``graylog.internal.example.org`` using the default ports of 12900 for the REST API and 9000 for the web interface. Apache is running on the same server as Graylog. SSL is disabled for both. You want to expose the Graylog web interface as ``https://graylog.example.org``. 
+For the following samples we are assuming that your Graylog instance is running on ``graylog.internal.example.org`` using the default ports of 12900 for the REST API and 9000 for the web interface. Apache is running on the same server as Graylog. SSL is disabled for both. You want to expose the Graylog web interface as ``https://graylog.example.org``.
 
 **URI Configs in Graylog server conf**::
 
    rest_listen_uri = http://127.0.0.1:12900/
    web_listen_uri = http://127.0.0.1:9000/
-   
-   
+
+
 **REST API and Web Interface on one port (using HTTPS/SSL)**::
-   
+
    Listen 443
    <VirtualHost *:443>
        ServerName graylog.example.org
@@ -409,3 +409,5 @@ For the following samples we are assuming that your Graylog instance is running 
            ProxyPassReverse http://127.0.0.1:9000/
        </Location>
    </VirtualHost>
+
+.. warning::Using Apache 2.2 needs the configuration above, if you have Apache 2.4 you need to switch the Locations. This means ``/api/`` must go after ``/``
