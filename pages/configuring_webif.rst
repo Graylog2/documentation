@@ -312,16 +312,16 @@ If you want to run a load balancer/reverse proxy in front of Graylog, you need t
 
 
 Using a Layer 3 load balancer (forwarding TCP Ports)
------------------------------------------------------
+----------------------------------------------------
 
-#. Configure your load balancer to forward connections going to ``192.168.0.10:80`` to ``127.0.0.1:9000`` and ``192.168.0.10:12900`` to ``127.0.0.1:12900``.
+#. Configure your load balancer to forward connections going to ``192.168.0.10:80`` to ``127.0.0.1:9000`` (``web_listen_uri``) and ``192.168.0.10:12900`` to ``127.0.0.1:12900`` (``rest_listen_uri``).
 #. Set ``web_endpoint_uri`` in your Graylog server config to ``http://graylog.example.org:12900``.
-#. Start the Graylog server as usual
+#. Start the Graylog server as usual.
 #. Access the web interface on ``http://graylog.example.org``.
 #. Read up on :ref:`ssl_setup`.
 
 NGINX
-------
+-----
 
 **REST API and Web Interface on one port (using HTTP)**::
 
@@ -393,14 +393,14 @@ If you are running multiple Graylog Server you might want to use HTTPS/SSL to co
         server_name graylog.example.org;
         # <- your SSL Settings here!
 
-    location /
+        location /
         {
             proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header    Host $http_host;
             proxy_set_header    X-Graylog-Server-URL https://graylog.example.org/api;
             proxy_pass          http://127.0.0.1:9000;
         }
-    location /api/
+        location /api/
         {
             proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header    Host $http_host;
@@ -408,27 +408,27 @@ If you are running multiple Graylog Server you might want to use HTTPS/SSL to co
         }
     }
 
-Apache
--------
+Apache httpd 2.x
+----------------
 
 **REST API and Web Interface on one port (using HTTP)**::
 
-	<VirtualHost *:80>
-		ServerName graylog.example.org
-		ProxyRequests Off
-		<Proxy *>
-			Order deny,allow
-			Allow from all
-		</Proxy>
-		<Location /api/>
-			ProxyPass http://127.0.0.1:12900/
-			ProxyPassReverse http://127.0.0.1:12900/
-		</Location>
-		<Location />
-			RequestHeader set X-Graylog-Server-URL "http://graylog.example.org/api/"
-			ProxyPass http://127.0.0.1:9000/
-			ProxyPassReverse http://127.0.0.1:9000/
-		</Location>
-	</VirtualHost>
+    <VirtualHost *:80>
+        ServerName graylog.example.org
+        ProxyRequests Off
+        <Proxy *>
+            Order deny,allow
+            Allow from all
+        </Proxy>
+        <Location /api/>
+            ProxyPass http://127.0.0.1:12900/
+            ProxyPassReverse http://127.0.0.1:12900/
+        </Location>
+        <Location />
+            RequestHeader set X-Graylog-Server-URL "http://graylog.example.org/api/"
+            ProxyPass http://127.0.0.1:9000/
+            ProxyPassReverse http://127.0.0.1:9000/
+        </Location>
+    </VirtualHost>
 
 .. CAUTION:: Using Apache 2.2 needs the configuration above, if you have Apache 2.4 you need to switch the Locations. This means ``/api/`` must go after ``/``
