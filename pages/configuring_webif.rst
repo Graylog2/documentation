@@ -311,7 +311,7 @@ If you want to run a load balancer/reverse proxy in front of Graylog, you need t
 .. NOTE:: To help you with your specific environment, we have some example configurations. We take the following assumption in all examples. Your Graylog server.conf has the following settings set ``rest_listen_uri = http://127.0.0.1:12900/`` and ``web_listen_uri = http://127.0.0.1:9000/``. Your URL will be ``graylog.example.org`` with the IP ``192.168.0.10``.
 
 
-Using a Layer 3 load balancer (forwarding TCP Ports):
+Using a Layer 3 load balancer (forwarding TCP Ports)
 -----------------------------------------------------
 
 #. Configure your load balancer to forward connections going to ``192.168.0.10:80`` to ``127.0.0.1:9000`` and ``192.168.0.10:12900`` to ``127.0.0.1:12900``.
@@ -320,7 +320,7 @@ Using a Layer 3 load balancer (forwarding TCP Ports):
 #. Access the web interface on ``http://graylog.example.org``.
 #. Read up on :ref:`ssl_setup`.
 
-NGINX:
+NGINX
 ------
 
 **REST API and Web Interface on one port (using HTTP)**::
@@ -358,7 +358,7 @@ NGINX:
         listen      [::]:80 default_server ipv6only=on;
         server_name graylog.example.org;
 
-        location /
+    location /
         {
             proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header    X-Graylog-Server-URL http://graylog.example.org:12900;
@@ -372,7 +372,7 @@ NGINX:
         listen      12900;
         server_name graylog.example.org;
 
-        location /
+    location /
         {
             proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header    Host $http_host;
@@ -408,7 +408,7 @@ If you are running multiple Graylog Server you might want to use HTTPS/SSL to co
         }
     }
 
-Apache:
+Apache
 -------
 
 **REST API and Web Interface on one port (using HTTP)**::
