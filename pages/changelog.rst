@@ -2,6 +2,38 @@
 Changelog
 *********
 
+Graylog 2.0.2
+=============
+
+Released: 2016-05-27
+
+https://www.graylog.org/blog/57-graylog-v2-0-2-released
+
+**Improvements**
+
+* Improved user form. `Graylog2/graylog2-server#2261 <https://github.com/Graylog2/graylog2-server/issues/2261>`_
+* Improved logging of plugin list on server startup. `Graylog2/graylog2-server#2290 <https://github.com/Graylog2/graylog2-server/issues/2290>`_
+* Forbid empty passwords when using LDAP. `Graylog2/graylog2-server#2214 <https://github.com/Graylog2/graylog2-server/issues/2214>`_ `Graylog2/graylog2-server#2283 <https://github.com/Graylog2/graylog2-server/issues/2283>`_
+* Improved metrics page. `Graylog2/graylog2-server#2250 <https://github.com/Graylog2/graylog2-server/issues/2250>`_ `Graylog2/graylog2-server#2255 <https://github.com/Graylog2/graylog2-server/issues/2255>`_
+* Improved search histogram resolution auto selection. `Graylog2/graylog2-server#2148 <https://github.com/Graylog2/graylog2-server/issues/2148>`_ `Graylog2/graylog2-server#2289 <https://github.com/Graylog2/graylog2-server/issues/2289>`_
+* Improved cluster overview page. `Graylog2/graylog2-server#2291 <https://github.com/Graylog2/graylog2-server/issues/2291>`_
+
+**Bug Fixes**
+
+* Fixed concurrency issue with Drools. `Graylog2/graylog2-server#2119 <https://github.com/Graylog2/graylog2-server/issues/2119>`_ `Graylog2/graylog2-server#2188 <https://github.com/Graylog2/graylog2-server/issues/2188>`_ `Graylog2/graylog2-server#2231 <https://github.com/Graylog2/graylog2-server/issues/2231>`_
+* Fixed problems with Internet Explorer. `Graylog2/graylog2-server#2246 <https://github.com/Graylog2/graylog2-server/issues/2246>`_
+* Fixed issues with old dashboards. `Graylog2/graylog2-server#2262 <https://github.com/Graylog2/graylog2-server/issues/2262>`_ `Graylog2/graylog2-server#2163 <https://github.com/Graylog2/graylog2-server/issues/2163>`_
+* Fixed changing log levels via REST API. `Graylog2/graylog2-server#1904 <https://github.com/Graylog2/graylog2-server/issues/1904>`_ `Graylog2/graylog2-server#2277 <https://github.com/Graylog2/graylog2-server/issues/2277>`_
+* Fixed plugin inter-dependencies by using one class loader for all plugins. `Graylog2/graylog2-server#2280 <https://github.com/Graylog2/graylog2-server/issues/2280>`_
+
+**Plugin: Pipeline Processor**
+
+* Add syslog related rule functions. `Graylog2/graylog-plugin-pipeline-processor#19 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/19>`_
+* Add concat rule functions. `Graylog2/graylog-plugin-pipeline-processor#20 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/20>`_
+* Fixed problem with IP address function. `Graylog2/graylog-plugin-pipeline-processor#28 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/28>`_ `Graylog2/graylog-plugin-pipeline-processor#32 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/32>`_
+* Properly unescape strings in raw literals. `Graylog2/graylog-plugin-pipeline-processor#30 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/30>`_ `Graylog2/graylog-plugin-pipeline-processor#31 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/31>`_
+
+
 Graylog 2.0.1
 =============
 
