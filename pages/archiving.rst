@@ -1,8 +1,8 @@
 .. _archivetoc:
 
-******************************
-Archiving (commercial feature)
-******************************
+*********
+Archiving
+*********
 
 Graylog enables you to configure a retention period to automatically delete older messages - this is to help you
 control the costs of storage in Elasticsearch. But we know it's not ideal deciding between keeping less messages

@@ -13,6 +13,7 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
+   :caption: Graylog Server
 
    pages/architecture
    pages/getting_started
@@ -30,7 +31,6 @@ Contents:
    pages/pipelines
    pages/drools
    pages/blacklisting
-   pages/archiving
    pages/geolocation
    pages/load_balancers
    pages/index_model
@@ -43,3 +43,11 @@ Contents:
    pages/gelf
    pages/ideas_explained
    pages/changelog
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Graylog Enterprise
+
+   pages/enterprise/intro
+   pages/enterprise/setup
+   pages/archiving

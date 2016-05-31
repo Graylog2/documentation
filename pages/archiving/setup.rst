@@ -8,7 +8,8 @@ addition to the Graylog open source server.
 Installation
 ============
 
-.. note:: The installation instructions will be available once the archive plugin is available for purchase. The Graylog 2.0 BETA and RC releases ship with a trial version and don't need any extra installation steps.
+Please see the :doc:`Graylog Enterprise setup page </pages/enterprise/setup>` for details on how to install
+the Archive plugin.
 
 Configuration
 =============
