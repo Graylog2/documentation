@@ -31,7 +31,7 @@ Depending on the Graylog setup method you have used, you have to install the plu
 Also check the ``plugin_dir`` config option in your Graylog server configuration file. The default might have been changed.
 
 Make sure to install the enterprise plugin JAR files alongside the other Graylog plugins.
-Your plugin directory should looke similar to this after installing the enterprise plugins.
+Your plugin directory should look similar to this after installing the enterprise plugins.
 
 ::
 
