@@ -51,3 +51,4 @@ Contents:
    pages/enterprise/intro
    pages/enterprise/setup
    pages/archiving
+   pages/enterprise/changelog
