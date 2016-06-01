@@ -13,7 +13,7 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
-   :caption: Graylog Server
+   :caption: Graylog
 
    pages/architecture
    pages/getting_started
