@@ -11,6 +11,8 @@ Installation
 Once you `purchase a license for Graylog Enterprise <https://www.graylog.org/enterprise/order>`_,
 you will get download links for the tarballs and DEB/RPM packages in the confirmation mail.
 
+.. note:: The Graylog Enterprise plugins need to be installed on all your Graylog nodes!
+
 Tarball
 -------
 
