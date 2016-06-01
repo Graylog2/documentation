@@ -5,6 +5,20 @@ Setup
 Graylog Enterprise comes as a set of Graylog server plugins which need to be
 installed in addition to the Graylog open source setup.
 
+Requirements
+============
+
+The following list shows the minimum required Graylog versions for the Graylog Enterprise plugins.
+
+.. list-table:: Enterprise Version Requirements
+    :header-rows: 1
+    :widths: 7 20
+
+    * - Enterprise Version
+      - Required Graylog Version
+    * - 1.0.x
+      - >= 2.0.2, < 2.1.0
+
 Installation
 ============
 
