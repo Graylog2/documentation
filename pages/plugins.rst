@@ -237,6 +237,10 @@ Installing and loading plugins
 The only thing you need to do to run the plugin in Graylog is to copy the ``.jar`` file to your plugins folder that is configured in your
 ``graylog.conf``. The default is just ``plugins/`` relative from your ``graylog-server`` directory.
 
+This is a list of default plugin locations for the different installation methods.
+
+.. include:: /includes/plugin-installation-locations.rst
+
 Restart ``graylog-server`` and the plugin should be available to use from the web interface immediately.
 
 
