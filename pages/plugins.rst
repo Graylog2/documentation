@@ -239,7 +239,7 @@ The only thing you need to do to run the plugin in Graylog is to copy the ``.jar
 
 This is a list of default plugin locations for the different installation methods.
 
-.. include:: /include/plugin-installation-locations.rst
+.. include:: /includes/plugin-installation-locations.rst
 
 Restart ``graylog-server`` and the plugin should be available to use from the web interface immediately.
 
