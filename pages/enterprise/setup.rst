@@ -24,18 +24,9 @@ The tarball includes the enterprise plugin JAR files.
 
 Depending on the Graylog setup method you have used, you have to install the plugins into different locations.
 
-.. list-table:: Plugin Installation Locations
-    :header-rows: 1
-    :widths: 7 20
+.. include:: /include/plugin-installation-locations.rst
 
-    * - Installation Method
-      - Directory
-    * - :doc:`/pages/installation/virtual_machine_appliances`
-      - ``/opt/graylog/plugins/``
-    * - :doc:`/pages/installation/operating_system_packages`
-      - ``/usr/share/graylog-server/plugin/``
-    * - :doc:`/pages/installation/manual_setup`
-      - ``/<extracted-graylog-tarball-path>/plugin/``
+Also check the ``plugin_dir`` config option in your Graylog server configuration file. The default might have been changed.
 
 Make sure to install the enterprise plugin JAR files alongside the other Graylog plugins.
 Your plugin directory should looke similar to this after installing the enterprise plugins.
