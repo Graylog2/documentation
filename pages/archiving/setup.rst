@@ -40,6 +40,8 @@ There are several configuration options to configure the archive plugin.
       - Directory on the **master** node where the archive files will be stored.
     * - Max Segment Size
       - Maximum size (in *bytes*) of archive segment files.
+    * - Compression Type
+      - Compression type that will be used to compress the archives.
     * - Restore index batch size
       - Elasticsearch batch size when restoring archive files.
 
@@ -78,6 +80,42 @@ Example::
        archive-segment-0.gz
        archive-segment-1.gz
        archive-segment-2.gz
+
+.. _archive-config-option-compression-type:
+
+Compression Type
+^^^^^^^^^^^^^^^^
+
+Archives will be compressed with gzip by default. This option can be changed to use a different compression type.
+
+The selected compression type has a big impact on the time it takes to archive an index. Gzip for example is pretty
+slow but has a great compression rate. Snappy and LZ4 are way faster but the archives will be bigger.
+
+Here is a comparison between the available compression algorithms with test data.
+
+.. list-table:: Compression Type Comparison
+    :header-rows: 1
+    :widths: 7 5 5 15
+
+    * - Type
+      - Index Size
+      - Archive Size
+      - Duration
+    * - gzip
+      - 1 GB
+      - 134 MB
+      - 15 minutes, 23 seconds
+    * - Snappy
+      - 1 GB
+      - 291 MB
+      - 2 minutes, 31 seconds
+    * - LZ4
+      - 1 GB
+      - 266 MB
+      - 2 minutes, 25 seconds
+
+.. note:: Results with your data may vary! Make sure to test the different compression types
+          to find the one that is best for your data.
 
 .. _archive-config-option-restore-batch-size:
 

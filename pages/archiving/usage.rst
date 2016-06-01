@@ -66,7 +66,8 @@ An index can be archived with a simple curl command::
         "segment_filename_prefix" : "archive-segment",
         "metadata_filename" : "archive-metadata.json",
         "source_histogram_bucket_size" : 86400000,
-        "restore_index_batch_size" : 1001
+        "restore_index_batch_size" : 1001,
+        "segment_compression_type": "SNAPPY"
       },
       "system_job" : {
         "id" : "cd7ebfa0-079b-11e6-9e1b-fa163e6e9b8a",
@@ -136,6 +137,7 @@ archived index into the Elasticsearch cluster::
    Enter host password for user 'admin': ***************
    {
       "archive_metadata": {
+        "archive_id": "graylog_307",
         "index_name": "graylog_307",
         "document_count": 491906,
         "created_at": "2016-04-14T14:31:50.787Z",
@@ -162,7 +164,9 @@ archived index into the Elasticsearch cluster::
         "segments": [
           {
             "path": "archive-segment-0.gz",
-            "size": 21653755
+            "size": 21653755,
+            "raw_size": 2359745839,
+            "compression_type": "SNAPPY"
           }
         ]
       },
