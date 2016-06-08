@@ -6,6 +6,9 @@ We strongly recommend to use a dedicated Elasticsearch cluster for your Graylog 
 If you are using a shared Elasticsearch setup, a problem with indices unrelated to Graylog might turn the cluster status to yellow or red
 and impact the availability and performance of your Graylog setup.
 
+.. important:: Graylog currently does not work with Elasticsearch clusters using the License or `Shield <https://www.elastic.co/guide/en/shield/current/index.html>`__ plugin.
+
+
 Elasticsearch versions
 ======================
 
