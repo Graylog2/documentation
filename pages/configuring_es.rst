@@ -6,6 +6,29 @@ We strongly recommend to use a dedicated Elasticsearch cluster for your Graylog 
 If you are using a shared Elasticsearch setup, a problem with indices unrelated to Graylog might turn the cluster status to yellow or red
 and impact the availability and performance of your Graylog setup.
 
+Elasticsearch versions
+======================
+
+Graylog hosts an embedded Elasticsearch node which is joining the Elasticsearch cluster as a client node.
+
+The following table provides an overview over the Elasticsearch version in Graylog:
+
+===============  =====================
+Graylog version  Elasticsearch version
+===============  =====================
+1.2.0            1.7.1
+1.2.1            1.7.1
+1.3.0            1.7.3
+1.3.1            1.7.3
+1.3.2            1.7.3
+1.3.3            1.7.3
+1.3.4            1.7.5
+2.0.0            2.3.1
+2.0.1            2.3.2
+2.0.2            2.3.2
+===============  =====================
+
+
 Configuration
 =============
 
