@@ -47,51 +47,13 @@ Cluster Name
 
 You need to tell ``graylog-server`` which Elasticsearch cluster to join. The Elasticsearch cluster default name is *elasticsearch*
 and configured for every Elasticsearch node in its ``elasticsearch.yml`` configuration file with the setting ``cluster.name``.
-Configure the same name in every ``graylog.conf`` as ``elasticsearch_cluster_name``.
+Configure the same name in every ``server.conf`` as ``elasticsearch_cluster_name``.
 We recommend to call the cluster ``graylog-production`` and not ``elasticsearch``.
 
 The ``elasticsearch.yml`` file is typically located in ``/etc/elasticsearch/``.
 
-Discovery mode
-^^^^^^^^^^^^^^
-
-The default discovery mode is multicast. Graylog will try to find other Elasticsearch nodes automatically. This usually works fine
-when everything is running on the same system but gets problematic quickly when running in a bigger network topology. We recommend
-to use unicast for production setups. Configure Zen unicast discovery in Graylog with the following lines in your configuration file::
-
-  # Disable multicast
-  elasticsearch_discovery_zen_ping_multicast_enabled = false
-  # List of Elasticsearch nodes to connect to
-  elasticsearch_discovery_zen_ping_unicast_hosts = es-node-1.example.org:9300,es-node-2.example.org:9300
-
-Also make sure to configure `Zen unicast discovery <http://www.elastic.co/guide/en/elasticsearch/reference/2.3/modules-discovery-zen.html#unicast>`__ in
-the Elasticsearch configuration file by adding the ``discovery.zen.ping.multicast.enabled`` and ``discovery.zen.ping.unicast.hosts`` setting with the
-list of Elasticsearch nodes to ``elasticsearch.yml``::
-
-  discovery.zen.ping.multicast.enabled: false
-  discovery.zen.ping.unicast.hosts: ["es-node-1.example.org:9300" , "es-node-2.example.org:9300"]
-
-The Elasticsearch default communication port is *9300/tcp* (not to be confused with the HTTP interface running on port *9200/tcp* by default).
-The communication port can be changed in the Elasticsearch configuration file (``elasticsearch.yml``) with the configuration setting ``transport.tcp.port``.
-Make sure that Elasticsearch binds to a network interface that Graylog can connect to (see ``network.host``).
-
 Configuration of Elasticsearch nodes
 ------------------------------------
-
-Disable dynamic scripting
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Elasticsearch prior to version 1.2 had an insecure default configuration which could lead to a remote code execution.
-(see `here <http://bouk.co/blog/elasticsearch-rce/>`__ and `here <https://groups.google.com/forum/#!msg/graylog2/-icrS0rIA-Q/cCTJaNjVrQAJ>`__ for details)
-
-Make sure to add the following settings to the ``elasticsearch.yml`` file to disable the dynamic scripting feature and
-prevent possible remote code executions::
-
-  script.inline: false
-  script.indexed: false
-  script.file: false
-
-Details about dynamic scripting can be found in `the reference documentation of Elasticsearch <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/modules-scripting.html>`__.
 
 Control access to Elasticsearch ports
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
