@@ -72,3 +72,7 @@ If you are using the appliance on a VMWare host, you might want to install the h
 
   sudo apt-get install -y open-vm-tools
 
+Update OVA to latest Version
+============================
+
+If you want to update your Appliance to the newest release without deploying a new template the best solution is covered :ref:`here <upgrade_graylog_omnibus>`.
