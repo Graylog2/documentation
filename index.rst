@@ -21,6 +21,7 @@ Contents:
    pages/upgrade
    pages/configuring_webif
    pages/configuring_es
+   pages/securing
    pages/sending_data
    pages/collector_sidecar
    pages/collector
