@@ -7,7 +7,7 @@ Securing Graylog
 Logging user activity
 =====================
 
-Graylog follows microservices architecture model where the user interface retrieves all data via a collection of REST APIs. Thus logging relevant user activity is a simple matter of enabling built-in feature called RestAccessLogFilter. It catches all requests to REST APIs, and produces an access log augmented by user information.
+Graylog follows client-server architecture model where the user interface retrieves all data via a collection of REST APIs. Thus logging relevant user activity is a simple matter of enabling built-in feature called RestAccessLogFilter. It catches all requests to REST APIs, and produces an access log augmented by user information.
 
 Configuring RestAccessLogFilter
 -------------------------------
