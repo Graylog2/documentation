@@ -228,6 +228,7 @@ Activate the new IP and reconfigure Graylog to make use of it::
 Wait some time until all services are restarted and running again. Afterwards you should be able to access Graylog with the new IP.
 
 .. _upgrade_graylog_omnibus:
+
 Upgrade Graylog
 ===============
 
