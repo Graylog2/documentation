@@ -154,7 +154,11 @@ Outbound TLS connections have CA (*certification authority*) certificate verific
   Caused by: javax.mail.MessagingException: Could not convert socket to TLS; nested exception is: javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
  
 This should be corrected by either adding the missing CA certificates to the Java default trust store (typically found at ``$JAVA_HOME/jre/lib/security/cacerts``), or a custom store that is configured (by using ``-Djavax.net.ssl.trustStore``) for the Graylog server process. The same procedure applies for both missing valid CAs and self-signed certificates.
- 
+
+Suddenly parts of Graylog did not work as expected
+--------------------------------------------------
+If you notice multiple different non working parts in Graylog and found something like ``java.lang.OutOfMemoryError: unable to create new native thread`` in your Graylog Server logfile, you need to raise the process/thread limit of the graylog user. The limit can be checked with ``ulimit -u`` and you need to check how you can raise ``nproc`` in your OS.
+
 Have another troubleshooting question?
 --------------------------------------
 
