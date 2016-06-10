@@ -16,6 +16,14 @@ Graylog offers official ``DEB`` and ``RPM`` package repositories. The packages h
 The repositories can be setup by installing a single package. Once that's done the Graylog packages can be installed via ``apt-get`` or
 ``yum``. The packages can also be downloaded with a web browser at https://packages.graylog2.org/ if needed.
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Step-by-Step Guides
+
+   os/ubuntu
+   os/centos
+
+
 Prerequisites
 -------------
 
