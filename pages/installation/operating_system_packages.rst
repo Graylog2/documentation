@@ -16,14 +16,6 @@ Graylog offers official ``DEB`` and ``RPM`` package repositories. The packages h
 The repositories can be setup by installing a single package. Once that's done the Graylog packages can be installed via ``apt-get`` or
 ``yum``. The packages can also be downloaded with a web browser at https://packages.graylog2.org/ if needed.
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Step-by-Step Guides
-
-   os/ubuntu
-   os/centos
-
-
 Prerequisites
 -------------
 
@@ -92,6 +84,15 @@ OS                  Init System Command
 CentOS 6            SysV        ``sudo update-rc.d graylog-server defaults 95 10``
 CentOS 7            systemd     ``sudo systemctl enable graylog-server``
 =================== =========== ==================================================
+
+Step-by-Step Guides
+-------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   os/ubuntu
+   os/centos
 
 Feedback
 --------
