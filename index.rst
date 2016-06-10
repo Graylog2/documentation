@@ -9,7 +9,6 @@ Welcome to the Graylog documentation
 NOTE: There are multiple options for reading this documentation. See link to the lower left.
 
 
-Contents:
 
 .. toctree::
    :maxdepth: 2
