@@ -131,7 +131,7 @@ Example procedure for an OVA appliance on VMWare:
 | | ``sudo lshw -class disk``                         | Check for the `logical name` of the new hard     |
 |                                                     | drive. Usually this is `/dev/sdb`                |
 +-----------------------------------------------------+--------------------------------------------------+
-| | sudo parted -a optimal /dev/sdb mklabel gpt       | Partition and format new disk                    |
+| | ``sudo parted -a optimal /dev/sdb mklabel gpt``   | Partition and format new disk                    |
 | |                                                   |                                                  |
 | | (A reboot may be necessary at this point)         |                                                  |
 | |                                                   |                                                  |
