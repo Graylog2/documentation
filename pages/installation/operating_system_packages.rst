@@ -85,6 +85,15 @@ CentOS 6            SysV        ``sudo update-rc.d graylog-server defaults 95 10
 CentOS 7            systemd     ``sudo systemctl enable graylog-server``
 =================== =========== ==================================================
 
+Step-by-step guides
+-------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   os/ubuntu
+   os/centos
+
 Feedback
 --------
 
