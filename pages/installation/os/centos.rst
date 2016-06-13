@@ -1,24 +1,26 @@
-*************************
-CentOS Installation 
-*************************
+*******************
+CentOS installation 
+*******************
 
-This describe the fastest way to install Graylog on CentOS 7. All links and packages are present at the time of writing but might need to be updated later on.
+This guide describes the fastest way to install Graylog on CentOS 7. All links and packages are present at the time of writing but might need to be updated later on.
 
-.. warning:: This setup should not be done on exposed Servers, this guide does not cover security settings!
+.. warning:: This setup should not be done on publicly exposed servers. This guide **does not cover** security settings!
+
 
 Prerequisites
 -------------
 
-Taking a minimal Server Setup as base will need this additional packages::
+Taking a minimal server setup as base will need this additional packages::
 
- $ sudo yum install java-1.8.0-openjdk-headless.x86_64
+  $ sudo yum install java-1.8.0-openjdk-headless.x86_64
 
-If you like to use ``pwgen`` later on you need to Setup `epel <https://fedoraproject.org/wiki/EPEL>`_ on your system with ``sudo yum install epel-release`` and install the package with ``sudo yum install pwgen``
+If you want to use ``pwgen`` later on you need to Setup `EPEL <https://fedoraproject.org/wiki/EPEL>`_ on your system with ``sudo yum install epel-release`` and install the package with ``sudo yum install pwgen``.
+
 
 MongoDB
 -------
 
-Installing MongoDB on CentOS should follow `the tutorial for redhat <https://docs.mongodb.com/master/tutorial/install-mongodb-on-red-hat>`_ on the MongoDB Documentation. First add the repository file ``/etc/yum.repos.d/mongodb-org-3.2.repo`` with the content::
+Installing MongoDB on CentOS should follow `the tutorial for RHEL and CentOS <https://docs.mongodb.com/master/tutorial/install-mongodb-on-red-hat>`_ from the MongoDB documentation. First add the repository file ``/etc/yum.repos.d/mongodb-org-3.2.repo`` with the following contents::
 
   [mongodb-org-3.2]
   name=MongoDB Repository
@@ -27,50 +29,64 @@ Installing MongoDB on CentOS should follow `the tutorial for redhat <https://doc
   enabled=1
   gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc
 
-then followed by the installation of the latest release with ``sudo yum install -y mongodb-org``. Additional this last Steps to activate the MongoDB on Boot and start it direct::
+After that, install the latest release of MongoDB with ``sudo yum install -y mongodb-org``.
 
- $ sudo setenforce 0
- $ sudo systemctl start mongod.service
- $ sudo chkconfig --add mongo
+Additionally, run these last steps to start MongoDB during the operating system's boot and start it right away::
+
+  $ sudo setenforce 0
+  $ sudo chkconfig --add mongo
+  $ sudo systemctl start mongod.service
 
 
 Elasticsearch
 -------------
 
-For Graylog Version 2 we need elasticsearch 2.x so we took the Information how to install from `the elastic repo guide <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html>`_. First install the elastic GPG Key ``rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch`` then add the repository file ``/etc/yum.repos.d/elasticsearch.repo`` with the content::
+Graylog 2.0.0 and higher requires Elasticsearch 2.x, so we took the installation instructions from `the Elasticsearch installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup-repositories.html#_yum_dnf>`_.
 
- [elasticsearch-2.x]
- name=Elasticsearch repository for 2.x packages
- baseurl=https://packages.elastic.co/elasticsearch/2.x/centos
- gpgcheck=1
- gpgkey=https://packages.elastic.co/GPG-KEY-elasticsearch
- enabled=1
+First install the Elastic GPG key with ``rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch`` then add the repository file ``/etc/yum.repos.d/elasticsearch.repo`` with the following contents::
 
-followed by the installation of the latest release with ``sudo yum install elasticsearch``. Make sure to modify ``/etc/elasticsearch/elasticsearch.yml`` and add ``cluster.name: graylog`` and final start elasticsearch::
+  [elasticsearch-2.x]
+  name=Elasticsearch repository for 2.x packages
+  baseurl=https://packages.elastic.co/elasticsearch/2.x/centos
+  gpgcheck=1
+  gpgkey=https://packages.elastic.co/GPG-KEY-elasticsearch
+  enabled=1
+
+followed by the installation of the latest release with ``sudo yum install elasticsearch``.
+
+Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup-configuration.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set `the cluster name <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup-configuration.html#cluster-name>`__ to ``graylog``::
+
+  cluster.name: graylog
+
+After you have modified the configuration, you can start Elasticsearch::
 
   $ sudo chkconfig --add elasticsearch
   $ sudo systemctl daemon-reload
   $ sudo systemctl enable elasticsearch.service
   $ sudo systemctl restart elasticsearch.service
 
+
 Graylog
 -------
 
-Now just install the Graylog Repository and install::
+Now install the Graylog repository configuration and Graylog itself with the following commands::
 
- $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-2.0-repository_latest.rpm
- $ sudo yum install graylog-server
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-2.0-repository_latest.rpm
+  $ sudo yum install graylog-server
 
-Follow the instructions in your ``/etc/graylog/server/server.conf`` and add ``password_secret`` and ``root_password_sha2``. This need to be set, without Graylog will not start!
+Follow the instructions in your ``/etc/graylog/server/server.conf`` and add ``password_secret`` and ``root_password_sha2``. These settings are mandatory and without them, Graylog will not start!
 
-The last step is to enable Graylog on OS Boot and start the Service::
+The last step is to enable Graylog during the operating system's startup::
 
- $ sudo systemctl daemon-reload
- $ sudo systemctl enable graylog-server.service
- $ sudo systemctl start graylog-server.service
+  $ sudo systemctl daemon-reload
+  $ sudo systemctl enable graylog-server.service
+  $ sudo systemctl start graylog-server.service
+
 
 Feedback
 --------
 
-Please open an `issue <https://github.com/Graylog2/fpm-recipes/issues>`_ in the `Github repository <https://github.com/Graylog2/fpm-recipes>`_ if you
-run into any packaging related issues. **Thank you!**
+Please open an `issue in the Github repository for the operating system packages <https://github.com/Graylog2/fpm-recipes>`__ if you
+run into any packaging related issues.
+
+**Thank you!**
