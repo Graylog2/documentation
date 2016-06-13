@@ -33,8 +33,6 @@ Example rules file
 
 This is an example rules file::
 
-  import org.graylog2.plugin.Message
-
   rule "Overwrite localhosthost"
       when
           m : Message( source == "localhost" )
@@ -52,7 +50,7 @@ This is an example rules file::
   end
 
 
-The `log` object being used to write log messages from within Drools rules is an instance of the `SLF4J Logger <http://www.slf4j.org/apidocs/org/slf4j/Logger.html>`_ interface.
+The ``log`` object being used to write log messages from within Drools rules is an instance of the `SLF4J Logger <http://www.slf4j.org/apidocs/org/slf4j/Logger.html>`_ interface.
 
 
 Parsing Message and adding fields
