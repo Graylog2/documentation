@@ -93,7 +93,7 @@ The `docker-compose.yml` file looks like this::
     volumes:
       - /graylog/data/elasticsearch:/usr/share/elasticsearch/data
   graylog:
-    image: graylog2/server:2.0.0-1
+    image: graylog2/server
     volumes:
       - /graylog/data/journal:/usr/share/graylog/data/journal
       - /graylog/config:/usr/share/graylog/data/config
@@ -108,6 +108,8 @@ The `docker-compose.yml` file looks like this::
     ports:
       - "9000:9000"
       - "12900:12900"
+      - "12201/udp:12201/udp"
+      - "1514/udp:1514/udp"
 
 Start all services with exposed data directories::
 
