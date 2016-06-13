@@ -33,7 +33,7 @@ Example rules file
 
 This is an example rules file::
 
-  rule "Overwrite localhosthost"
+  rule "Overwrite localhost"
       when
           m : Message( source == "localhost" )
       then
