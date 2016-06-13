@@ -204,6 +204,288 @@ Elasticsearch has couple configuration options, which are designed to allow shor
 
 The configuration options should be set up so that only *minimal* node unavailability is tolerated. For example server restarts are common, and should be done in managed manner. The logic is that if you lose large part of your cluster, you probably should start re-shuffling the shards and replicas without tolerating the situation. 
 
+
+Custom index mappings
+=====================
+
+Sometimes it's useful to not rely on Elasticsearch's `dynamic mapping <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/dynamic-mapping.html>`__ but to define a stricter schema for messages.
+
+.. note:: If the index mapping is conflicting with the actual message to be sent to Elasticsearch, indexing that message will fail.
+
+Graylog itself is using a default mapping which includes settings for the ``timestamp``, ``message``, ``full_message``, and ``source`` fields of indexed messages::
+
+  $ curl -X GET 'http://localhost:9200/_template/graylog-internal?pretty'
+  {
+    "graylog-internal" : {
+      "order" : -2147483648,
+      "template" : "graylog_*",
+      "settings" : { },
+      "mappings" : {
+        "message" : {
+          "_ttl" : {
+            "enabled" : true
+          },
+          "_source" : {
+            "enabled" : true
+          },
+          "dynamic_templates" : [ {
+            "internal_fields" : {
+              "mapping" : {
+                "index" : "not_analyzed",
+                "type" : "string"
+              },
+              "match" : "gl2_*"
+            }
+          }, {
+            "store_generic" : {
+              "mapping" : {
+                "index" : "not_analyzed"
+              },
+              "match" : "*"
+            }
+          } ],
+          "properties" : {
+            "full_message" : {
+              "analyzer" : "standard",
+              "index" : "analyzed",
+              "type" : "string"
+            },
+            "streams" : {
+              "index" : "not_analyzed",
+              "type" : "string"
+            },
+            "source" : {
+              "analyzer" : "analyzer_keyword",
+              "index" : "analyzed",
+              "type" : "string"
+            },
+            "message" : {
+              "analyzer" : "standard",
+              "index" : "analyzed",
+              "type" : "string"
+            },
+            "timestamp" : {
+              "format" : "yyyy-MM-dd HH:mm:ss.SSS",
+              "type" : "date"
+            }
+          }
+        }
+      },
+      "aliases" : { }
+    }
+  }
+
+In order to extend the default mapping of Elasticsearch and Graylog, you can create one or more custom index mappings and add them as index templates to Elasticsearch.
+
+Let's say we have a schema for our data like the following:
+
+======================  ==========  ========================
+Field Name              Field Type  Example
+======================  ==========  ========================
+``http_method``         string      GET
+``http_response_code``  long        200
+``ingest_time``         date        2016-06-13T15:00:51.927Z
+``took_ms``             long        56
+======================  ==========  ========================
+
+This would translate to the following additional index mapping in Elasticsearch::
+
+  "mappings" : {
+    "message" : {
+      "properties" : {
+        "http_method" : {
+          "type" : "string",
+          "index" : "not_analyzed"
+        },
+        "http_response_code" : {
+          "type" : "long"
+        },
+        "ingest_time" : {
+          "type" : "date",
+          "format": "strict_date_time"
+        },
+        "took_ms" : {
+          "type" : "long"
+        }
+      }
+    }
+  }
+
+The format of the ``ingest_time`` field is described in the Elasticsearch documentation about the `format mapping parameter <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/mapping-date-format.html>`_. Also make sure to check the Elasticsearch documentation about `Field datatypes <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/mapping-types.html>`_.
+
+In order to apply the additional index mapping when Graylog creates a new index in Elasticsearch, it has to be added to an `index template <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/indices-templates.html>`_. The Graylog default template (``graylog-internal``) has the lowest priority and will be merged with the custom index template by Elasticsearch.
+
+.. warning:: If the default index mapping and the custom index mapping cannot be merged (e. g. because of conflicting field datatypes), Elasticsearch will throw an exception and won't create the index. So be extremeley cautious and conservative about the custom index mappings!
+
+Creating a new index template
+-----------------------------
+
+Save the following index template for the custom index mapping into a file named ``graylog-custom-mapping.json``::
+
+  {
+    "template": "graylog_*",
+    "mappings" : {
+      "message" : {
+        "properties" : {
+          "http_method" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "http_response_code" : {
+            "type" : "long"
+          },
+          "ingest_time" : {
+            "type" : "date",
+            "format": "strict_date_time"
+          },
+          "took_ms" : {
+            "type" : "long"
+          }
+        }
+      }
+    }
+  }
+
+
+Finally, load the index mapping into Elasticsearch with the following command::
+
+  $ curl -X PUT -d @'graylog-custom-mapping.json' 'http://localhost:9200/_template/graylog-custom-mapping?pretty'
+  {
+    "acknowledged" : true
+  }
+
+
+Every Elasticsearch index created from that time on, will have an index mapping consisting of the original ``graylog-internal`` index template and the new ``graylog-custom-mapping`` template::
+
+  $ curl -X GET 'http://localhost:9200/graylog_deflector/_mapping?pretty'
+  {
+    "graylog_2" : {
+      "mappings" : {
+        "message" : {
+          "_ttl" : {
+            "enabled" : true
+          },
+          "dynamic_templates" : [ {
+            "internal_fields" : {
+              "mapping" : {
+                "index" : "not_analyzed",
+                "type" : "string"
+              },
+              "match" : "gl2_*"
+            }
+          }, {
+            "store_generic" : {
+              "mapping" : {
+                "index" : "not_analyzed"
+              },
+              "match" : "*"
+            }
+          } ],
+          "properties" : {
+            "full_message" : {
+              "type" : "string",
+              "analyzer" : "standard"
+            },
+            "http_method" : {
+              "type" : "string",
+              "index" : "not_analyzed"
+            },
+            "http_response_code" : {
+              "type" : "long"
+            },
+            "ingest_time" : {
+              "type" : "date",
+              "format" : "strict_date_time"
+            },
+            "message" : {
+              "type" : "string",
+              "analyzer" : "standard"
+            },
+            "source" : {
+              "type" : "string",
+              "analyzer" : "analyzer_keyword"
+            },
+            "streams" : {
+              "type" : "string",
+              "index" : "not_analyzed"
+            },
+            "timestamp" : {
+              "type" : "date",
+              "format" : "yyyy-MM-dd HH:mm:ss.SSS"
+            },
+            "took_ms" : {
+              "type" : "long"
+            }
+          }
+        }
+      }
+    }
+  }
+
+Deleting custom index templates
+-------------------------------
+
+If you want to remove an existing index template from Elasticsearch, simply issue a ``DELETE`` request to Elasticsearch::
+
+  $ curl -X DELETE 'http://localhost:9200/_template/graylog-custom-mapping?pretty'
+  {
+    "acknowledged" : true
+  }
+
+
+After you've removed the index template, new indices will only have the original index mapping::
+
+  $ curl -X GET 'http://localhost:9200/graylog_deflector/_mapping?pretty'
+  {
+    "graylog_3" : {
+      "mappings" : {
+        "message" : {
+          "_ttl" : {
+            "enabled" : true
+          },
+          "dynamic_templates" : [ {
+            "internal_fields" : {
+              "mapping" : {
+                "index" : "not_analyzed",
+                "type" : "string"
+              },
+              "match" : "gl2_*"
+            }
+          }, {
+            "store_generic" : {
+              "mapping" : {
+                "index" : "not_analyzed"
+              },
+              "match" : "*"
+            }
+          } ],
+          "properties" : {
+            "full_message" : {
+              "type" : "string",
+              "analyzer" : "standard"
+            },
+            "message" : {
+              "type" : "string",
+              "analyzer" : "standard"
+            },
+            "source" : {
+              "type" : "string",
+              "analyzer" : "analyzer_keyword"
+            },
+            "streams" : {
+              "type" : "string",
+              "index" : "not_analyzed"
+            },
+            "timestamp" : {
+              "type" : "date",
+              "format" : "yyyy-MM-dd HH:mm:ss.SSS"
+            }
+          }
+        }
+      }
+    }
+  }
+
 Cluster Status explained
 ========================
 
