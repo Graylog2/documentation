@@ -18,8 +18,7 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/getting_started
    pages/installation
    pages/upgrade
-   pages/configuring_webif
-   pages/configuring_es
+   pages/configuration
    pages/securing
    pages/sending_data
    pages/collector_sidecar
