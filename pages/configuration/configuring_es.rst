@@ -1,3 +1,5 @@
+.. _configuring_es:
+
 ************************************
 Configuring and tuning Elasticsearch
 ************************************
