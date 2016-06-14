@@ -30,7 +30,6 @@ This chapter is explaining the many ways to install Graylog and aims to help cho
    :titlesonly:
 
    installation/virtual_machine_appliances
-   installation/graylog_ctl
    installation/operating_system_packages
    installation/config_management_tools
    installation/docker
