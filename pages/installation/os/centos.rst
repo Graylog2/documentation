@@ -34,7 +34,7 @@ After that, install the latest release of MongoDB with ``sudo yum install -y mon
 Additionally, run these last steps to start MongoDB during the operating system's boot and start it right away::
 
   $ sudo setenforce 0
-  $ sudo chkconfig --add mongo
+  $ sudo chkconfig --add mongod
   $ sudo systemctl start mongod.service
 
 
