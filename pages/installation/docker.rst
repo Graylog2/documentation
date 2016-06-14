@@ -138,3 +138,14 @@ Build
 To build the image from scratch run::
 
   $ docker build --build-arg GRAYLOG_VERSION=${GRAYLOG_VERSION} -t graylog2/server .
+
+Production readiness
+====================
+
+You can use the Graylog appliances (OVA, Docker, AWS, ...) for small production setups but please consider to harden the security of the box before.
+
+ * Set another password for the default ubuntu user
+ * Disable remote password logins in /etc/ssh/sshd_config and deploy proper ssh keys
+ * Seperate the box network-wise from the outside, otherwise Elasticsearch can be reached by anyone
+
+If you want to create your own customised setup take a look at our :ref:`other installation methods <installing>`.
