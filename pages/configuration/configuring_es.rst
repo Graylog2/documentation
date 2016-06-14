@@ -212,6 +212,8 @@ Custom index mappings
 
 Sometimes it's useful to not rely on Elasticsearch's `dynamic mapping <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/dynamic-mapping.html>`__ but to define a stricter schema for messages.
 
+.. note:: If the index mapping is conflicting with the actual message to be sent to Elasticsearch, indexing that message will fail.
+
 Graylog itself is using a default mapping which includes settings for the ``timestamp``, ``message``, ``full_message``, and ``source`` fields of indexed messages::
 
   $ curl -X GET 'http://localhost:9200/_template/graylog-internal?pretty'
