@@ -38,3 +38,14 @@ most basic settings of Graylog in the appliance::
 
 The ``graylog-ctl`` has much more functionality and is documented :ref:`here <graylog-ctl>`.
 We strongly recommend to learn more about it to ensure smooth operation of your virtual appliance.
+
+Production readiness
+====================
+
+You can use the Graylog appliances (OVA, Docker, AWS, ...) for small production setups but please consider to harden the security of the box before.
+
+ * Set another password for the default ubuntu user
+ * Disable remote password logins in /etc/ssh/sshd_config and deploy proper ssh keys
+ * Seperate the box network-wise from the outside, otherwise Elasticsearch can be reached by anyone
+
+If you want to create your own customised setup take a look at our :ref:`other installation methods <installing>`.
