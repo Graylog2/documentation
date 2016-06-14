@@ -1,9 +1,7 @@
 :orphan:
 
-**********
-site moved
-**********
+**********************
+The graylog-ctl script
+**********************
 
-please follow the refer to the new :ref:`graylog-ctl` section.
-
-
+.. important:: This page moved to :ref:`graylog-ctl`.

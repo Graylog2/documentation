@@ -1,8 +1,8 @@
 .. _configuring_webif:
 
-***************************************
-Configuring and using the web interface
-***************************************
+*************
+Web interface
+*************
 
 When your Graylog instance/cluster is up and running, the next thing you usually want to do is check out our web interface, which offers you great capabilities for searching and analyzing your indexed data and configuring your Graylog environment. Per default you can access it using your browser on ``http://<graylog-server>:9000``.
 

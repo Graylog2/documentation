@@ -1,8 +1,8 @@
 .. _configuring_es:
 
-************************************
-Configuring and tuning Elasticsearch
-************************************
+*************
+Elasticsearch
+*************
 
 We strongly recommend to use a dedicated Elasticsearch cluster for your Graylog setup.
 If you are using a shared Elasticsearch setup, a problem with indices unrelated to Graylog might turn the cluster status to yellow or red

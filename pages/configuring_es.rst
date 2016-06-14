@@ -1,9 +1,7 @@
 :orphan:
 
-**********
-site moved
-**********
+*************
+Elasticsearch
+*************
 
-please follow the refer to the new :ref:`configuring_es` section.
-
-
+.. important:: This page moved to :ref:`configuring_es`.

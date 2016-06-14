@@ -1,9 +1,7 @@
 :orphan:
 
-**********
-site moved
-**********
+*********************
+Graylog web interface
+*********************
 
-please follow the refer to the new :ref:`configuring_webif` section.
-
-
+.. important:: This page moved to :ref:`configuring_webif`.
