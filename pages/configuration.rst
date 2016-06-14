@@ -7,4 +7,5 @@ Configuring Graylog
 
    configuration/graylog_ctl
    configuration/web_interface
+   configuration/https
    configuration/elasticsearch
