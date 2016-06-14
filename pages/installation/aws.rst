@@ -46,7 +46,7 @@ an error message. For this reason we created a proxy configuration on the applia
 This command combines the Graylog web interface and the API on port 443. The API is accessable via the path `/api`.
 For this reason you have to set the external IP to an HTTPS address with the appended path `/api`::
 
-  sudo graylog-ctl https://<public ip>:443/api
+  sudo graylog-ctl set-external-ip https://<public ip>:443/api
   sudo graylog-ctl reconfigure
 
 Basic configuration
