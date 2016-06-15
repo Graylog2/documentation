@@ -21,6 +21,7 @@ When you are configuring TLS, you need to make sure that your certificate/key fi
 
 If no X.509 certificate and/or no PKCS#8 private key have been provided, Graylog will automatically try to generate a self-signed private key and certificate with the hostname part of ``web_listen_uri`` as Common Name (CN) of the certificate.
 
+.. _creating-a-self-signed-private-key-certificate:
 
 Creating a self-signed private key/certificate
 ==============================================
@@ -219,6 +220,51 @@ PKCS#8 encrypted private key::
   ====-END ENCRYPTED PRIVATE KEY====-
 
 
+Adding a self-signed certificate to the JVM trust store
+=======================================================
+
+Graylog nodes inside a cluster need to communicate with each other using the Graylog REST API. When using HTTPS for the Graylog REST API, the X.509 certificate must be *trusted* by the JVM trust store (similar to the trusted CA bundle in an operating system), otherwise communication will fail.
+
+.. important:: If you are using different X.509 certificates for each Graylog node, you have to add *all of them* into the JVM trust store of each Graylog node.
+
+The default trust store of an installed Java runtime environment can be found at ``$JAVA_HOME/jre/lib/security/cacerts``. In order not to "pollute" the official trust store, we make a copy of it which we will use with Graylog instead::
+
+  $ cp -a "${JAVA_HOME}/jre/lib/security/cacerts" /path/to/cacerts.jks
+
+After the original key store file has been copied, we can add the self-signed certificate (``cert.pem``, see :ref:`creating-a-self-signed-private-key-certificate`) to the key store (the default password is ``changeit``)::
+
+  $ keytool -importcert -keystore /path/to/cacerts.jks -storepass changeit -alias graylog-self-signed -file cert.pem
+  Owner: CN=graylog.example.com, O="Graylog, Inc.", L=Hamburg, ST=Hamburg, C=DE
+  Issuer: CN=graylog.example.com, O="Graylog, Inc.", L=Hamburg, ST=Hamburg, C=DE
+  Serial number: 8c80134cee556734
+  Valid from: Tue Jun 14 16:38:17 CEST 2016 until: Wed Jun 14 16:38:17 CEST 2017
+  Certificate fingerprints:
+  	 MD5:  69:D1:B3:01:46:0D:E9:45:FB:C6:6C:69:EA:38:ED:3E
+  	 SHA1: F0:64:D0:1B:3B:6B:C8:01:D5:4D:33:36:87:F0:FB:10:E1:36:21:9E
+  	 SHA256: F7:F2:73:3D:86:DC:10:22:1D:14:B8:5D:66:B4:EB:48:FD:3D:74:89:EC:C4:DF:D0:D2:EC:F8:5D:78:49:E7:2F
+  	 Signature algorithm name: SHA1withRSA
+  	 Version: 3
+  
+  Extensions:
+  
+  [Other details about the certificate...]
+  
+  Trust this certificate? [no]:  yes
+  Certificate was added to keystore
+
+To verify that the self-signed certificate has indeed been added, it can be listed with the following command::
+
+  $ keytool -keystore /path/to/cacerts.jks -storepass changeit -list | grep graylog-self-signed -A1
+  graylog-self-signed, Jun 14, 2016, trustedCertEntry,
+  Certificate fingerprint (SHA1): F0:64:D0:1B:3B:6B:C8:01:D5:4D:33:36:87:F0:FB:10:E1:36:21:9E
+
+The printed certificate fingerprint (SHA1) should match the one printed when importing the self-signed certificate.
+
+In order for the JVM to pick up the new trust store, it has to be started with the JVM parameter ``-Djavax.net.ssl.trustStore=/path/to/cacerts.jks``. If you've been using another password to encrypt the JVM trust store than the default ``changeit``, you additionally have to set the JVM parameter ``-Djavax.net.ssl.trustStorePassword=secret``.
+
+Most start and init scripts for Graylog provide a ``JAVA_OPTS`` variable which can be used to pass the ``javax.net.ssl.trustStore`` and (optionally) ``javax.net.ssl.trustStorePassword`` system properties.
+
+
 Disabling specific TLS ciphers and algorithms
 =============================================
 
@@ -241,12 +287,9 @@ To load the properties file into a JVM, you have to pass it to Java using the ``
 Most start and init scripts for Graylog provide a ``JAVA_OPTS`` variable which can be used to pass the ``java.security.properties`` system property.
 
 Further reading
-===============
+---------------
 
 * https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html#DisabledAlgorithms
 * http://www.oracle.com/technetwork/java/javase/7u76-relnotes-2389087.html
 * http://bugs.java.com/bugdatabase/view_bug.do?bug_id=7133344
 * https://tersesystems.com/2014/01/13/fixing-the-most-dangerous-code-in-the-world/
-
-
-
