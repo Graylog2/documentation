@@ -82,17 +82,18 @@ The last step is to enable Graylog during the operating system's startup::
   $ sudo systemctl start graylog-server.service
 
 SELinux Information
-----------------------
+-------------------
 
-If you run your System with SELinux you need to take care of the following
+If you run your system with SELinux you need to take care of the following settings:
 
-- enable http on all ports  ``sudo setsebool -P httpd_can_network_connect 1``
+- enable HTTP on all ports  ``sudo setsebool -P httpd_can_network_connect 1``
 - if the above does not follow your security rules
-		- Graylog API ``sudo semanage port -a -t http_port_t -p tcp 12900``
-		- elasticsearch ``sudo semanage port -a -t http_port_t -p tcp 9200``
-- enable mongodb ``sudo semanage port -a -t mongod_port_t -p tcp 27017``
+  - Graylog API ``sudo semanage port -a -t http_port_t -p tcp 12900``
+  - Graylog Web ``sudo semanage port -a -t http_port_t -p tcp 9000``
+  - Elasticsearch ``sudo semanage port -a -t http_port_t -p tcp 9200``
+- enable MongoDB ``sudo semanage port -a -t mongod_port_t -p tcp 27017``
 
-.. hint:: depending on your Setup you might need additional rules to have a running Setup
+.. hint:: Depending on your setup you might need additional rules to have a running Setup
 
 Feedback
 --------
