@@ -88,9 +88,9 @@ If you run your system with SELinux you need to take care of the following setti
 
 - enable HTTP on all ports  ``sudo setsebool -P httpd_can_network_connect 1``
 - if the above does not follow your security rules
-  - Graylog API ``sudo semanage port -a -t http_port_t -p tcp 12900``
-  - Graylog Web ``sudo semanage port -a -t http_port_t -p tcp 9000``
-  - Elasticsearch ``sudo semanage port -a -t http_port_t -p tcp 9200``
+    - Graylog API ``sudo semanage port -a -t http_port_t -p tcp 12900``
+    - Graylog Web ``sudo semanage port -a -t http_port_t -p tcp 9000``
+    - Elasticsearch ``sudo semanage port -a -t http_port_t -p tcp 9200``
 - enable MongoDB ``sudo semanage port -a -t mongod_port_t -p tcp 27017``
 
 .. hint:: Depending on your setup you might need additional rules to have a running Setup
