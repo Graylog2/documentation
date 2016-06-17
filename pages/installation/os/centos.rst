@@ -29,7 +29,7 @@ Installing MongoDB on CentOS should follow `the tutorial for RHEL and CentOS <ht
   enabled=1
   gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc
 
-After that, install the latest release of MongoDB with ``sudo yum install -y mongodb-org``.
+After that, install the latest release of MongoDB with ``sudo yum install mongodb-org``.
 
 Additionally, run these last steps to start MongoDB during the operating system's boot and start it right away::
 
