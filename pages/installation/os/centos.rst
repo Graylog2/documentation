@@ -34,6 +34,8 @@ After that, install the latest release of MongoDB with ``sudo yum install mongod
 Additionally, run these last steps to start MongoDB during the operating system's boot and start it right away::
 
   $ sudo chkconfig --add mongod
+  $ sudo systemctl daemon-reload
+  $ sudo systemctl enable mongod.service
   $ sudo systemctl start mongod.service
 
 
@@ -77,12 +79,15 @@ Follow the instructions in your ``/etc/graylog/server/server.conf`` and add ``pa
 
 The last step is to enable Graylog during the operating system's startup::
 
+  $ sudo chkconfig --add graylog-server
   $ sudo systemctl daemon-reload
   $ sudo systemctl enable graylog-server.service
   $ sudo systemctl start graylog-server.service
 
 SELinux Information
 -------------------
+
+.. hint:: We assume that you have ``policycoreutils-python`` installed to manage SELinux
 
 If you run your system with SELinux you need to take care of the following settings:
 
@@ -94,6 +99,7 @@ If you run your system with SELinux you need to take care of the following setti
 - enable MongoDB ``sudo semanage port -a -t mongod_port_t -p tcp 27017``
 
 .. hint:: Depending on your setup you might need additional rules to have a running Setup
+
 
 Feedback
 --------
