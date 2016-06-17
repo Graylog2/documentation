@@ -80,6 +80,7 @@ Writing the web interface as a single-page application is a challenging task. We
 
 Please take into account that you need to enable JavaScript in order to use Graylog web interface.
 
+.. _configuring_webif_nginx:
 
 Making the web interface work with load balancers/proxies
 =========================================================

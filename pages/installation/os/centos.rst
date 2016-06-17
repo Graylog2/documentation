@@ -98,6 +98,8 @@ If you run your system with SELinux you need to take care of the following setti
     - Elasticsearch ``sudo semanage port -a -t http_port_t -p tcp 9200``
 - enable MongoDB ``sudo semanage port -a -t mongod_port_t -p tcp 27017``
 
+If you run a single server environment with :ref:`NGINX or Apache proxy <configuring_webif_nginx>`, enabling the Graylog API is enough. All other rules are only needed in a multi server setup.
+
 .. hint:: Depending on your setup you might need additional rules to have a running Setup
 
 
