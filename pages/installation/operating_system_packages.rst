@@ -60,9 +60,13 @@ Debian 8, Ubuntu 16.06 systemd     ``sudo systemctl enable graylog-server``
 Manual Repository Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you do not like to install our DEB to get the repository information written to your system, add first the `graylog gpg key <https://github.com/Graylog2/fpm-recipes/blob/master/recipes/graylog-repository/files/deb/graylog-keyring.gpg>`_ that is used to sign the package. This need to be placed in ``/etc/apt/trusted.gpg.d/``.
+If you don't like to install the repository DEB to get the repository configuration onto your system, you can do so manually (although we don't recommend to do that).
 
-Now create a ``/etc/apt/sources.list.d/graylog.list`` file with the following content::
+First, add the `Graylog GPG key <https://github.com/Graylog2/fpm-recipes/blob/master/recipes/graylog-repository/files/deb/graylog-keyring.gpg>`_ which is being used to sign the packages to your system.
+
+.. hint:: We assume that you have placed the GPG key into ``/etc/apt/trusted.gpg.d/``.
+
+Now create a file ``/etc/apt/sources.list.d/graylog.list`` with the following content::
 
   deb https://packages.graylog2.org/repo/debian/ stable 2.0
 
