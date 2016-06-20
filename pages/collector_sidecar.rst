@@ -90,7 +90,7 @@ write a configuration file for it.
 +====================+===================================================================+
 | name               | The type name of the collector                                    |
 +--------------------+-------------------------------------------------------------------+
-| enabled            | Weather this backend should be started by the Sidecar or not      |
+| enabled            | Whether this backend should be started by the Sidecar or not      |
 +--------------------+-------------------------------------------------------------------+
 | binary_path        | Path to the actual collector binary                               |
 +--------------------+-------------------------------------------------------------------+
