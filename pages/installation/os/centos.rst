@@ -101,7 +101,7 @@ If you run your system with SELinux you need to take care of the following setti
 If you run a single server environment with :ref:`NGINX or Apache proxy <configuring_webif_nginx>`, enabling the Graylog API is enough. All other rules are only needed in a multi server setup.
 
 .. hint:: Depending on your setup you might need additional rules to have a running Setup
-
+.. note:: Taking https://www.nginx.com/blog/nginx-se-linux-changes-upgrading-rhel-6-6/ as a source `httpd_can_network_connect` is generic on port level!
 
 Feedback
 --------
