@@ -116,7 +116,7 @@ Use the Graylog web interface to configure remote collectors
 
 Navigate to ``System → Collectors → Manage configurations``, this is the entry point for all Sidecar configurations.
 Multiple configurations can be created. Because not all connected Sidecars should fetch all configurations, it's essential to provide tags for each configuration.
-Every Sidecar is only fetching the configuration with the tag it was started with. See also the ``tags`` paramter in the section before.
+Every Sidecar is only fetching the configuration with the tag it was started with. See also the ``tags`` parameter in the section before.
 Each configuration can hold parts for multiple collector backends.
 
 So you can create one configuration with the tag ``linux`` and this include e.g. an input section for a NXlog collector and one for a Filebeat collector.
