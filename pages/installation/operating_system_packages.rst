@@ -85,7 +85,7 @@ CentOS 6            SysV        ``sudo update-rc.d graylog-server defaults 95 10
 CentOS 7            systemd     ``sudo systemctl enable graylog-server``
 =================== =========== ==================================================
 
-Manuel Repository Installation
+Manual Repository Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you do not like to install our RPM to get the repository information written to your system, add first the `graylog gpg key <https://github.com/Graylog2/fpm-recipes/blob/master/recipes/graylog-repository/files/rpm/RPM-GPG-KEY-graylog>`_ that is used to sign the package.
