@@ -87,21 +87,23 @@ The last step is to enable Graylog during the operating system's startup::
 SELinux Information
 -------------------
 
-.. hint:: We assume that you have ``policycoreutils-python`` installed to manage SELinux
+.. hint:: We assume that you have ``policycoreutils-python`` installed to manage SELinux.
 
-If you run your system with SELinux you need to take care of the following settings:
+If you're using SELinux on your system, you need to take care of the following settings:
 
-- enable HTTP on all ports  ``sudo setsebool -P httpd_can_network_connect 1``
-- if the above does not follow your security rules
-    - Graylog API ``sudo semanage port -a -t http_port_t -p tcp 12900``
-    - Graylog Web ``sudo semanage port -a -t http_port_t -p tcp 9000``
-    - Elasticsearch ``sudo semanage port -a -t http_port_t -p tcp 9200``
-- enable MongoDB ``sudo semanage port -a -t mongod_port_t -p tcp 27017``
+- Allow the web server to access the network: ``sudo setsebool -P httpd_can_network_connect 1``
+- If the policy above does not follow your security rules, you can also allow access to each port individually:
+    - Graylog REST API: ``sudo semanage port -a -t http_port_t -p tcp 12900``
+    - Graylog web interface: ``sudo semanage port -a -t http_port_t -p tcp 9000``
+    - Elasticsearch: ``sudo semanage port -a -t http_port_t -p tcp 9200``
+- Allow using MongoDB's default port (27017/tcp): ``sudo semanage port -a -t mongod_port_t -p tcp 27017``
 
-If you run a single server environment with :ref:`NGINX or Apache proxy <configuring_webif_nginx>`, enabling the Graylog API is enough. All other rules are only needed in a multi server setup.
+If you run a single server environment with :ref:`NGINX or Apache proxy <configuring_webif_nginx>`, enabling the Graylog REST API is enough. All other rules are only required in a multi-node setup.
 
-.. hint:: Depending on your setup you might need additional rules to have a running Setup
-.. note:: Taking https://www.nginx.com/blog/nginx-se-linux-changes-upgrading-rhel-6-6/ as a source `httpd_can_network_connect` is generic on port level!
+.. hint:: Depending on your actual setup and configuration, you might need to add more SELinux rules to get to a running setup.
+
+.. note:: According to https://www.nginx.com/blog/nginx-se-linux-changes-upgrading-rhel-6-6/ as a source `httpd_can_network_connect` is generic on port level.
+
 
 Feedback
 --------
