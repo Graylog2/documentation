@@ -5,10 +5,10 @@ Elasticsearch
 *************
 
 We strongly recommend to use a dedicated Elasticsearch cluster for your Graylog setup.
-If you are using a shared Elasticsearch setup, a problem with indices unrelated to Graylog might turn the cluster status to yellow or red
-and impact the availability and performance of your Graylog setup.
 
-.. important:: Graylog currently does not work with Elasticsearch clusters using the License or `Shield <https://www.elastic.co/guide/en/shield/current/index.html>`__ plugin.
+If you are using a shared Elasticsearch setup, a problem with indices unrelated to Graylog might turn the cluster status to YELLOW or RED and impact the availability and performance of your Graylog setup.
+
+.. important:: Graylog currently does not work with Elasticsearch clusters using the License or `Shield <https://www.elastic.co/guide/en/shield/2.3/index.html>`__ plugin.
 
 
 Elasticsearch versions
@@ -21,61 +21,69 @@ The following table provides an overview over the Elasticsearch version in Grayl
 ===============  =====================
 Graylog version  Elasticsearch version
 ===============  =====================
-1.2.0            1.7.1
+1.2.0-1.2.1      1.7.1
 1.2.1            1.7.1
-1.3.0            1.7.3
-1.3.1            1.7.3
-1.3.2            1.7.3
-1.3.3            1.7.3
+1.3.0-1.3.3      1.7.3
 1.3.4            1.7.5
 2.0.0            2.3.1
-2.0.1            2.3.2
-2.0.2            2.3.2
+2.0.1-2.0.3      2.3.2
 ===============  =====================
 
 
 Configuration
 =============
 
-Configuration of graylog-server nodes
--------------------------------------
+Graylog
+-------
 
-The most important settings to make a successful connection are the Elasticsearch cluster name and the discovery mode. Graylog is able
-to discover the Elasticsearch nodes using multicast. This is great for development and proof of concepts but we recommend to use
-classic unicast discovery in production.
+The most important settings to make a successful connection are the Elasticsearch cluster name, one or more addresses of Elasticsearch master nodes, and the local network bind address.
+
+Graylog needs to know the address of at least one other Elasticsearch master node given in the ``elasticsearch_discovery_zen_ping_unicast_hosts`` setting. Vice versa, the Elasticsearch nodes need to be able to access the embedded Elasticsearch node in Graylog via the interface given in the ``elasticsearch_network_host`` setting.
+
 
 Cluster Name
 ^^^^^^^^^^^^
 
-You need to tell ``graylog-server`` which Elasticsearch cluster to join. The Elasticsearch cluster default name is *elasticsearch*
-and configured for every Elasticsearch node in its ``elasticsearch.yml`` configuration file with the setting ``cluster.name``.
-Configure the same name in every ``graylog.conf`` as ``elasticsearch_cluster_name``.
-We recommend to call the cluster ``graylog-production`` and not ``elasticsearch``.
+You need to tell Graylog which Elasticsearch cluster to join. The Elasticsearch default `cluster name <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup-configuration.html#cluster-name>`_ is ``elasticsearch`` and configured for every Elasticsearch node in the ``elasticsearch.yml`` configuration file with the ``cluster.name`` name.
 
-The ``elasticsearch.yml`` file is typically located in ``/etc/elasticsearch/``.
+Configure the same cluster name in every Graylog configuration file (e. g. ``graylog.conf``) with the ``elasticsearch_cluster_name`` setting (default: ``graylog``).
 
-Discovery mode
-^^^^^^^^^^^^^^
+We recommend to call the cluster ``graylog-production`` or ``graylog``, but not ``elasticsearch`` to prevent accidental cluster name collisions.
 
-The default discovery mode is multicast. Graylog will try to find other Elasticsearch nodes automatically. This usually works fine
-when everything is running on the same system but gets problematic quickly when running in a bigger network topology. We recommend
-to use unicast for production setups. Configure Zen unicast discovery in Graylog with the following lines in your configuration file::
+The Elasticsearch configuration file is typically located at ``/etc/elasticsearch/elasticsearch.yml``.
 
-  # Disable multicast
-  elasticsearch_discovery_zen_ping_multicast_enabled = false
-  # List of Elasticsearch nodes to connect to
+
+Network setup
+^^^^^^^^^^^^^
+
+Graylog is using unicast discovery to find all the Elasticsearch nodes in the cluster.
+
+In order for this to work, Graylog has to know some master nodes of the Elasticsearch cluster which can be provided in the ``elasticsearch_discovery_zen_ping_unicast_hosts`` configuration setting.
+
+For example, add the following lines to your Graylog configuration file for an Elasticsearch cluster which includes the 2 Elasticsearch master nodes ``es-node-1.example.org`` and ``es-node-2.example.org``::
+
+  # List of Elasticsearch master nodes to connect to
   elasticsearch_discovery_zen_ping_unicast_hosts = es-node-1.example.org:9300,es-node-2.example.org:9300
 
+Additionally, Graylog has to use a network interface for the embedded Elasticsearch node which the other Elasticsearch nodes in the cluster can connect to::
+
+  # Public IP address or host name of the Graylog node, accessible for the other Elasticsearch nodes
+  elasticsearch_network_host = 198.51.100.23
+
+
 Also make sure to configure `Zen unicast discovery <http://www.elastic.co/guide/en/elasticsearch/reference/2.3/modules-discovery-zen.html#unicast>`__ in
-the Elasticsearch configuration file by adding the ``discovery.zen.ping.multicast.enabled`` and ``discovery.zen.ping.unicast.hosts`` setting with the
+the Elasticsearch configuration file by adding the ``discovery.zen.ping.multicast.enabled`` and ``discovery.zen.ping.unicast.hosts`` settings with the
 list of Elasticsearch nodes to ``elasticsearch.yml``::
 
   discovery.zen.ping.multicast.enabled: false
   discovery.zen.ping.unicast.hosts: ["es-node-1.example.org:9300" , "es-node-2.example.org:9300"]
 
 The Elasticsearch default communication port is *9300/tcp* (not to be confused with the HTTP interface running on port *9200/tcp* by default).
+
 The communication port can be changed in the Elasticsearch configuration file (``elasticsearch.yml``) with the configuration setting ``transport.tcp.port``.
-Make sure that Elasticsearch binds to a network interface that Graylog can connect to (see ``network.host``).
+
+Last but not least, make sure that Elasticsearch is binding to a network interface that Graylog can connect to (see ``network.host`` and `Commonly Used Network Settings <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/modules-network.html#common-network-settings>`_).
+
 
 Configuration of Elasticsearch nodes
 ------------------------------------
@@ -137,8 +145,10 @@ Play around with this setting until you reach the best performance.
 Tuning Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^
 
-Graylog is already setting specific configuration per index it creates. This is enough tuning for a lot of use cases and setups. A more
-detailed guide on deeper tuning of Elasticsearch is following.
+Graylog is already setting specific configuration for every index it is managing. This is enough tuning for a lot of use cases and setups.
+
+A more detailed guide about tuning Elasticsearch will be published at a later time.
+
 
 Avoiding split-brain and shard shuffling
 ========================================
@@ -491,27 +501,25 @@ After you've removed the index template, new indices will only have the original
 Cluster Status explained
 ========================
 
-Elasticsearch provides a classification for the cluster health:
+Elasticsearch provides a classification for the `cluster health <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/cluster-health.html>`_:
 
 RED
 ---
 
-The red status indicates that some or all of the primary shards are not
-available. In this state, no searches can be performed until all primary shards
-are restored.
+The RED status indicates that some or all of the primary shards are not available.
+
+In this state, no searches can be performed until all primary shards have been restored.
+
 
 YELLOW
 ------
 
-The yellow status means that all of the primary shards are available but some
-or all shard replicas are not.
+The YELLOW status means that all of the primary shards are available but some or all shard replicas are not.
 
-With only one Elasticsearch node, the cluster state cannot become green because
-shard replicas cannot be assigned. This can be solved by adding another
-Elasticsearch node to the cluster.
+With only one Elasticsearch node, the cluster state cannot become green because shard replicas cannot be assigned.
 
-If the cluster is supposed to have only one node it is okay to be in the
-yellow state.
+In most cases, this can be solved by adding another Elasticsearch node to the cluster or by reducing the replication factor of the indices (which means less resiliency against node outages, though).
+
 
 GREEN
 -----
