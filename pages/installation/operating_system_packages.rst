@@ -62,7 +62,7 @@ Manual Repository Installation
 
 If you don't like to install the repository DEB to get the repository configuration onto your system, you can do so manually (although we don't recommend to do that).
 
-First, add the `Graylog GPG key <https://github.com/Graylog2/fpm-recipes/blob/master/recipes/graylog-repository/files/deb/graylog-keyring.gpg>`_ which is being used to sign the packages to your system.
+First, add the `Graylog GPG keyring <https://github.com/Graylog2/fpm-recipes/blob/master/recipes/graylog-repository/files/deb/graylog-keyring.gpg>`_ which is being used to sign the packages to your system.
 
 .. hint:: We assume that you have placed the GPG key into ``/etc/apt/trusted.gpg.d/``.
 
