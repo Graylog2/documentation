@@ -29,12 +29,13 @@ Installing MongoDB on CentOS should follow `the tutorial for RHEL and CentOS <ht
   enabled=1
   gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc
 
-After that, install the latest release of MongoDB with ``sudo yum install -y mongodb-org``.
+After that, install the latest release of MongoDB with ``sudo yum install mongodb-org``.
 
 Additionally, run these last steps to start MongoDB during the operating system's boot and start it right away::
 
-  $ sudo setenforce 0
   $ sudo chkconfig --add mongod
+  $ sudo systemctl daemon-reload
+  $ sudo systemctl enable mongod.service
   $ sudo systemctl start mongod.service
 
 
@@ -78,9 +79,40 @@ Follow the instructions in your ``/etc/graylog/server/server.conf`` and add ``pa
 
 The last step is to enable Graylog during the operating system's startup::
 
+  $ sudo chkconfig --add graylog-server
   $ sudo systemctl daemon-reload
   $ sudo systemctl enable graylog-server.service
   $ sudo systemctl start graylog-server.service
+
+
+SELinux information
+-------------------
+
+.. hint:: We assume that you have ``policycoreutils-python`` installed to manage SELinux.
+
+If you're using SELinux on your system, you need to take care of the following settings:
+
+- Allow the web server to access the network: ``sudo setsebool -P httpd_can_network_connect 1``
+- If the policy above does not comply with your security policy, you can also allow access to each port individually:
+    - Graylog REST API: ``sudo semanage port -a -t http_port_t -p tcp 12900``
+    - Graylog web interface: ``sudo semanage port -a -t http_port_t -p tcp 9000``
+    - Elasticsearch (only if the HTTP API is being used): ``sudo semanage port -a -t http_port_t -p tcp 9200``
+- Allow using MongoDB's default port (27017/tcp): ``sudo semanage port -a -t mongod_port_t -p tcp 27017``
+
+If you run a single server environment with :ref:`NGINX or Apache proxy <configuring_webif_nginx>`, enabling the Graylog REST API is enough. All other rules are only required in a multi-node setup.
+
+.. hint:: Depending on your actual setup and configuration, you might need to add more SELinux rules to get to a running setup.
+
+
+Further reading
+^^^^^^^^^^^^^^^
+
+* https://www.nginx.com/blog/nginx-se-linux-changes-upgrading-rhel-6-6/
+* https://wiki.centos.org/HowTos/SELinux
+* https://wiki.centos.org/TipsAndTricks/SelinuxBooleans
+* http://www.serverlab.ca/tutorials/linux/administration-linux/troubleshooting-selinux-centos-red-hat/
+* https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/
+* https://www.digitalocean.com/community/tutorials/an-introduction-to-selinux-on-centos-7-part-1-basic-concepts
 
 
 Feedback

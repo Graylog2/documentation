@@ -85,6 +85,24 @@ CentOS 6            SysV        ``sudo update-rc.d graylog-server defaults 95 10
 CentOS 7            systemd     ``sudo systemctl enable graylog-server``
 =================== =========== ==================================================
 
+Manual Repository Installation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you don't like to install the repository RPM to get the repository configuration onto your system, you can do so manually (although we don't recommend to do that).
+
+First, add the `Graylog GPG key <https://github.com/Graylog2/fpm-recipes/blob/master/recipes/graylog-repository/files/rpm/RPM-GPG-KEY-graylog>`_ which is being used to sign the packages to your system.
+
+.. hint:: We assume that you have placed the GPG key into ``/etc/pki/rpm-gpg/RPM-GPG-KEY-graylog``.
+
+Now create a file named ``/etc/yum.repos.d/graylog.repo`` with the following content::
+
+  [graylog]
+  name=graylog
+  baseurl=https://packages.graylog2.org/repo/el/stable/2.0/$basearch/
+  gpgcheck=1
+  gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-graylog
+
+
 Step-by-step guides
 -------------------
 
