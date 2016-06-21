@@ -84,7 +84,8 @@ The last step is to enable Graylog during the operating system's startup::
   $ sudo systemctl enable graylog-server.service
   $ sudo systemctl start graylog-server.service
 
-SELinux Information
+
+SELinux information
 -------------------
 
 .. hint:: We assume that you have ``policycoreutils-python`` installed to manage SELinux.
@@ -95,14 +96,23 @@ If you're using SELinux on your system, you need to take care of the following s
 - If the policy above does not follow your security rules, you can also allow access to each port individually:
     - Graylog REST API: ``sudo semanage port -a -t http_port_t -p tcp 12900``
     - Graylog web interface: ``sudo semanage port -a -t http_port_t -p tcp 9000``
-    - Elasticsearch: ``sudo semanage port -a -t http_port_t -p tcp 9200``
+    - Elasticsearch (only if the HTTP API is being used): ``sudo semanage port -a -t http_port_t -p tcp 9200``
 - Allow using MongoDB's default port (27017/tcp): ``sudo semanage port -a -t mongod_port_t -p tcp 27017``
 
 If you run a single server environment with :ref:`NGINX or Apache proxy <configuring_webif_nginx>`, enabling the Graylog REST API is enough. All other rules are only required in a multi-node setup.
 
 .. hint:: Depending on your actual setup and configuration, you might need to add more SELinux rules to get to a running setup.
 
-.. note:: According to https://www.nginx.com/blog/nginx-se-linux-changes-upgrading-rhel-6-6/ as a source `httpd_can_network_connect` is generic on port level.
+
+Further reading
+^^^^^^^^^^^^^^^
+
+* https://www.nginx.com/blog/nginx-se-linux-changes-upgrading-rhel-6-6/
+* https://wiki.centos.org/HowTos/SELinux
+* https://wiki.centos.org/TipsAndTricks/SelinuxBooleans
+* http://www.serverlab.ca/tutorials/linux/administration-linux/troubleshooting-selinux-centos-red-hat/
+* https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/
+* https://www.digitalocean.com/community/tutorials/an-introduction-to-selinux-on-centos-7-part-1-basic-concepts
 
 
 Feedback
