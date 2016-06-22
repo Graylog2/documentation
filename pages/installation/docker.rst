@@ -122,6 +122,34 @@ Every configuration option can be set via environment variables, take a look `he
 Simply prefix the parameter name with `GRAYLOG_` and put it all in upper case.
 Another option would be to store the configuration file outside of the container and edit it directly.
 
+Plugins
+-------
+
+In order to add plugins you can build a new image based on the existsing `graylog2/server` image with the needed plugin included. Simply
+create a new Dockerfile in an empty directory::
+
+  FROM graylog2/server:2.0.3-1
+  RUN wget -O /usr/share/graylog/plugin/graylog-plugin-beats-1.0.3.jar https://github.com/Graylog2/graylog-plugin-beats/releases/download/1.0.3/graylog-plugin-beats-1.0.3.jar
+
+Build a new image from that::
+
+  $ docker build -t graylog-with-beats-plugin .
+
+In this example we created a new image with the Beats plugin installed. From now on reference to that image instead of the `graylog2/server` e.g. in a `docker-compose.yml` file::
+
+  some-mongo:
+    image: "mongo:3"
+    volumes:
+      - /graylog/data/mongo:/data/db
+  some-elasticsearch:
+    image: "elasticsearch:2"
+    command: "elasticsearch -Des.cluster.name='graylog'"
+    volumes:
+      - /graylog/data/elasticsearch:/usr/share/elasticsearch/data
+  graylog:
+    image: graylog-with-beats-plugin
+  ...
+
 Problems
 --------
 
