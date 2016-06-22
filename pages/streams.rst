@@ -134,7 +134,7 @@ Three configuration options are available for the alert callback to customize th
 
 .. image:: /images/stream_alert_callback_email_form.png
 
-The *E-Mail Body* and *E-Mail Subject* are `jmte <https://github.com/DJCordhose/jmte>`_ templates. jmte is a minimal template engine that supports variables, loops and conditions. See the `jmte documentation <http://jmte.googlecode.com/svn/trunk/doc/index.html>`_ for a language reference.
+The *email body* and *email subject* are `JMTE <https://github.com/DJCordhose/jmte>`_ templates. JMTE is a minimal template engine that supports variables, loops and conditions. See the `JMTE documentation <https://cdn.rawgit.com/DJCordhose/jmte/master/doc/index.html>`_ for a language reference.
 
 We expose the following objects to the templates.
 
