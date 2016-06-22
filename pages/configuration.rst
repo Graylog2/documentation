@@ -9,3 +9,4 @@ Configuring Graylog
    configuration/web_interface
    configuration/https
    configuration/elasticsearch
+   configuration/backup
