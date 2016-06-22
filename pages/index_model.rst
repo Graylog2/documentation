@@ -37,6 +37,7 @@ Depending on the configured retention strategy, the oldest indices will automati
 The deletion is performed by the Graylog master node in a background thread that is continuously comparing the number of indices with the configured maximum.
 
 .. _index_rotation:
+
 The following index rotation settings are available:
 
 * **Message count**: Rotates the index after a specific number of messages have been written.
@@ -46,6 +47,7 @@ The following index rotation settings are available:
 .. image:: /images/index_settings.png
 
 .. _index_retention:
+
 The following index retention settings are available:
 
 * **Delete**: `Delete indices <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/indices-delete-index.html>`_ in Elasticsearch to minimize resource consumption.
