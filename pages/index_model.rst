@@ -85,7 +85,7 @@ You can do this either via an HTTP request against the REST API of the Graylog m
 
   $ curl -XPOST http://127.0.0.1:12900/system/deflector/cycle
 
-.. image:: /images/recalculate_index_ranges.png
+.. image:: /images/recalculate_index_ranges_2016.png
 
 This triggers the following log output::
 
