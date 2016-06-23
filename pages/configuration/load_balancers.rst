@@ -53,23 +53,16 @@ set the load balancer status to ``DEAD``, stop all inputs, turn on messages proc
 manually previously), and flush all messages in memory to Elasticsearch. After all buffers and caches are processed,
 it will shut itself down safely.
 
+.. image:: /images/nodes_more_action.png
+
 Web Interface
 =============
 
 It is possible to use the Graylog web interface behind a load balancer for high availability purposes.
 
-However, in order to make the various metrics work in Graylog's web interface, you need to enable sticky sessions in your
-load balancer, or configure the second instance to be a failover instance only, which only gets requests in case the
-first instance is no longer reachable.
+.. note:: Take care of the configuration you need :ref:`with a proxy setup <configuring_webif_nginx>`, it will *not* work out of the box.
 
-There are various terms used for sticky sessions. Session persistence or session management are also in use.
+In the current Version 2.0 you did not need the sticky Session that was needed in previous Version. Only the API URL ``/system/deflector/cycle`` need to point to the configured Graylog Master Node. In future Version that might change.
 
-Please refer to your vendor's documentation to learn about how to enable sticky sessions.
-
-Information for some popular load balancers and their settings can be found through the following links:
-
-* `Amazon Web Services ELB <http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-sticky-sessions.html>`_
-* `HAProxy <http://blog.haproxy.com/2012/03/29/load-balancing-affinity-persistence-sticky-sessions-what-you-need-to-know/>`_
-* `F5 BIG-IP <https://support.f5.com/kb/en-us/products/lc_9_x/manuals/product/lc_config_10_2/lc_persist_profiles.html>`_
-* `KEMP <https://support.kemptechnologies.com/hc/en-us/articles/202040855-What-is-persistence->`_
+Please refer to your vendor's documentation to learn how to route this URL to a specific host.
 
