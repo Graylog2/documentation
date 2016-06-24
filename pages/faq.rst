@@ -115,6 +115,10 @@ Can I filter inbound messages before they are processed by the Graylog server?
 
 Yes, check out our page on how to use :doc:`blacklisting <blacklisting>`.
 
+Dedicated Partition for the Journal
+-----------------------------------
+If you create a dedicated Partition for your Kafka Journal, you need to watch that this is a clean directory. Even *lost+found* can break it, for `your reference <https://github.com/Graylog2/graylog2-server/issues/2348>`_.
+
 Graylog & Integrations
 ======================
 
