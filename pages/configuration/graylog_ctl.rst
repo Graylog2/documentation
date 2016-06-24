@@ -128,7 +128,7 @@ Just run `graylog-ctl reconfigure` afterwards.
 Extend disk space
 =================
 
-All data is stored in one directory ``/var/opt/graylog/data``. In order to extend the disk space mount a second drive on this path. Make
+All data of an appliance setup is stored in one directory ``/var/opt/graylog/data``. In order to extend the disk space mount a second drive on this path. Make
 sure to move old data to the new drive before and give the graylog user permissions to read and write here.
 
 Example procedure for an OVA appliance on VMWare:
