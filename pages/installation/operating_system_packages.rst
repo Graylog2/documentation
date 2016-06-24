@@ -25,6 +25,8 @@ Make sure to install and configure the following software before installing and 
 * MongoDB (>= 2.4)
 * Elasticsearch (>= 2.x)
 
+.. _operationg_package_DEB-APT:
+
 DEB / APT
 ---------
 
@@ -70,6 +72,7 @@ Now create a file ``/etc/apt/sources.list.d/graylog.list`` with the following co
 
   deb https://packages.graylog2.org/repo/debian/ stable 2.0
 
+.. _operating_package_rpm-yum-dnf:
 
 RPM / YUM / DNF
 ---------------
