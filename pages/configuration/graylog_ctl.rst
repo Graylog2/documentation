@@ -326,6 +326,8 @@ Graylog should now be updated and old data still available.
 **Important:** The index retention configuration moved from the Graylog configuration file to the web interface. After the
 first start go to 'System -> Indices -> Update configuration' to re-enable your settings!
 
+.. _graylog_ctl_advanced:
+
 Advanced Settings
 =================
 
