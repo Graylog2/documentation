@@ -52,9 +52,9 @@ Convert PKCS#5 private key into a *plaintext* PKCS#8 private key::
 
   $ openssl pkcs8 -in pkcs5-plain.pem -topk8 -nocrypt -out pkcs8-plain.pem
 
-Convert PKCS#5 private key into an *encrypted* PKCS#8 private key (using DES3 and the passphrase ``secret``)::
+Convert PKCS#5 private key into an *encrypted* PKCS#8 private key (using the passphrase ``secret``)::
 
-  $ openssl pkcs8 -in pkcs5-plain.pem -topk8 -v2 des3 -out pkcs8-encrypted.pem -passout pass:secret
+  $ openssl pkcs8 -in pkcs5-plain.pem -topk8 -out pkcs8-encrypted.pem -passout pass:secret
 
 
 Converting an existing Java Keystore to private key/certificate pair
