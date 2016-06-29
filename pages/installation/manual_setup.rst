@@ -122,7 +122,7 @@ One such example ``log4j2.xml`` configuration is shown below::
   <Configuration packages="org.graylog2.log4j" shutdownHook="disable">
     <Appenders>
         <RollingFile name="RollingFile" fileName="/tmp/logs/graylog.log"
-                     filePattern="/tmp/logs/graylog-%d{yyyy-MM-dd}-%i.log.gz">
+                     filePattern="/tmp/logs/graylog-%d{yyyy-MM-dd}.log.gz">
           <PatternLayout>
             <Pattern>%d %-5p: %c - %m%n</Pattern>
           </PatternLayout>
