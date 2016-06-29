@@ -266,7 +266,7 @@ a message based on some date it contains. Let's assume we have this message from
 Extracting most of the data is not a problem and can be done easily. Using the date in the message (`Mar 12 00:45:38`) as Graylog
 message timestamp however needs to be done with a date parser converter.
 
-Use a standard extractor rule to select the timestamp and apply the *Date* converter with a format string::
+Use a copy input extractor rule to select the timestamp and apply the *Date* converter with a format string::
 
     MMM dd HH:mm:ss
 
