@@ -182,6 +182,8 @@ Getting up and running with a web development environment is as easy as this::
 
 This clones the meta project repository, bootstraps the required modules and starts the web server. It even tries to open a browser window going to it (probably working on Mac OS X only).
 
+If your Graylog server is not running on ``http://localhost:12900``, then you need to edit ``graylog2-server/graylog2-web-interface/config.js`` (in your ``graylog-project`` directory) and adapt the ``gl2ServerUrl`` parameter.
+
 Web Plugin structure
 --------------------
 
