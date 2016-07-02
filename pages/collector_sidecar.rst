@@ -124,13 +124,23 @@ The Sidecar will then pick the right parts based on the backends that are enable
 
 .. image:: /images/sidecar_configuration.png
 
-There are three sections in a configuration: *Outputs*, *Inputs* and *Snippets*. In the example above, Sidecar is instructing NXlog to create a GELF output that
-writes log messages back to Graylog. The two inputs are for reading in ``/var/log/syslog`` as a file input and listening on the UDP port 514 for incoming
-syslog messages. Both inputs route there messages to the GELF output.
 
-Snippets can be used to represent more complicated collector configurations. Simply paste the whole content of your NXlog configuration into a snippet
+Outputs, Inputs and Snippets
+***********************
+
+In the example above, Sidecar is instructing NXlog to create a GELF output that writes log messages back to Graylog. The two inputs are for reading in ``/var/log/syslog`` as a file input and listening on the UDP port 514 for incoming
+syslog messages. Both inputs route their messages to the GELF output.
+
+There are three sections in a configuration: *Outputs*, *Inputs* and *Snippets*. 
+
+**Inputs** - Data collected by NXLog. Think of this as a source of log data. For example, it could be a file or a syslog. 
+
+**Outputs** - Once data is collected by NXLog, the data is transmitted to this IP or address and port. You need to configure a GELF "Input" (System->Inputs) to capture data on the port. 
+
+**Snippets** - Snippets can be used to represent more complicated collector configurations. Simply paste the whole content of your NXlog configuration into a snippet
 or use it as an extension to the inputs and outputs defined before. All snippets will be copied directly to the generated collector configuration, no
 matter if there inputs or outputs defined.
+
 
 Debug
 *****
