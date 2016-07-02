@@ -69,7 +69,7 @@ The configuration file is separated into global options and backend specific opt
 +=================+=======================================================================================================================================+
 | server_url      | URL to the Graylog API, e.g. ``http://127.0.0.1:12900``                                                                               |
 +-----------------+---------------------------------------------------------------------------------------------------------------------------------------+
-| tls_skip_verify | Ignore errors when the REST API was started with a self-signed certificate                                                                  |
+| tls_skip_verify | Ignore errors when the REST API was started with a self-signed certificate                                                            |
 +-----------------+---------------------------------------------------------------------------------------------------------------------------------------+
 | node_id         | Name of the Sidecar instance, will also show up in the web interface                                                                  |
 +-----------------+---------------------------------------------------------------------------------------------------------------------------------------+
