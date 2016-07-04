@@ -128,7 +128,7 @@ The Sidecar will then pick the right parts based on the backends that are enable
 
 
 Outputs, Inputs and Snippets
-***********************
+****************************
 
 In the example above, Sidecar is instructing NXlog to create a GELF output that writes log messages back to Graylog. The two inputs are for reading in ``/var/log/syslog`` as a file input and listening on the UDP port 514 for incoming
 syslog messages. Both inputs route their messages to the GELF output.
