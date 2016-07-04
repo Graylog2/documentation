@@ -64,9 +64,13 @@ All log data is stored in Elasticsearch. They recommend you use *dm-crypt* at th
 Where are the log files Graylog produces?
 -----------------------------------------
 
-You can find the log data for Graylog under the below directory with timestamps and levels and exeception messages. This is useful when the server won't start.
+You can find the log data for Graylog under the below directory with timestamps and levels and exeception messages. This is useful for debugging or when the server won't start.
 
      /var/log/graylog-server/server.log
+
+If you use the pre-build appliances, take a look into
+
+    /var/log/graylog/<servicename>/current
 
 Installation / Setup
 ====================
