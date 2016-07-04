@@ -61,6 +61,13 @@ Does Graylog encrypt log data?
 
 All log data is stored in Elasticsearch. They recommend you use *dm-crypt* at the file system level. Please see `here <https://discuss.elastic.co/t/how-should-i-encrypt-data-at-rest-with-elasticsearch/96>`__.
 
+Where are the log files Graylog produces?
+-----------------------------------------
+
+You can find the log data for Graylog under the below directory with timestamps and levels and exeception messages. This is useful when the server won't start.
+
+     /var/log/graylog-server/server.log
+
 Installation / Setup
 ====================
 
