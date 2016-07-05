@@ -300,9 +300,6 @@ To load the properties file into a JVM, you have to pass it to Java using the ``
 
 Most start and init scripts for Graylog provide a ``JAVA_OPTS`` variable which can be used to pass the ``java.security.properties`` system property.
 
-Troubleshooting HTTPS problems
-------------------------------
-
 
 Further reading
 ---------------
