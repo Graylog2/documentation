@@ -92,7 +92,7 @@ The starting point is an existing Java KeyStore in JKS format which contains a p
   ]
   ]
 
-The Java KeyStore in JKS format has to be converted to a PKCS#12 keystore, so that OpenSSL can work with it::
+The Java KeyStore in JKS format has to be converted to a PKCS#12 (.p12 or .pfx) keystore, so that OpenSSL can work with it::
 
   $ keytool -importkeystore -srckeystore keystore.jks -destkeystore keystore.p12 -deststoretype PKCS12
   Enter destination keystore password:
@@ -101,7 +101,7 @@ The Java KeyStore in JKS format has to be converted to a PKCS#12 keystore, so th
   Entry for alias graylog.example.com successfully imported.
   Import command completed:  1 entries successfully imported, 0 entries failed or cancelled
 
-After the keystore has been successfully converted into PKCS#12 format, OpenSSL can export the X.509 certificate with PEM encoding::
+After the keystore has been successfully converted into PKCS#12 format (aka .pfx or .p12), OpenSSL can export the X.509 certificate with PEM encoding::
 
   $ openssl pkcs12 -in keystore.p12 -nokeys -out graylog-certificate.pem
   Enter Import Password:
@@ -151,6 +151,10 @@ The working directory should now contain the PKCS#8 private key (``graylog-key.p
 
 The resulting PKCS#8 private key (``graylog-key.pem``) and the X.509 certificate (``graylog-certificate.pem``) can now be used to enable encrypted connections with Graylog by enabling TLS for the Graylog REST API and the web interface in the Graylog configuration file::
 
+  # REST API listen URI. Must be reachable by other Graylog server nodes if you run a cluster.
+  # When using Graylog Collectors, this URI will be used to receive heartbeat messages and must be accessible for all collectors.
+  rest_listen_uri = https://mydomain.com:12900/
+
   # Enable HTTPS support for the REST API. This secures the communication with the REST API
   # using TLS to prevent request forgery and eavesdropping.
   rest_enable_tls = true
@@ -163,6 +167,9 @@ The resulting PKCS#8 private key (``graylog-key.pem``) and the X.509 certificate
 
   # The password to unlock the private key used for securing the REST API.
   rest_tls_key_password = secret
+
+  # Web interface listen URI. It must not contain a path other than "/".
+  web_listen_uri = https://mydomain.com:9000/
 
   # Enable HTTPS support for the web interface. This secures the communication the web interface
   # using TLS to prevent request forgery and eavesdropping.
@@ -177,6 +184,13 @@ The resulting PKCS#8 private key (``graylog-key.pem``) and the X.509 certificate
   # The password to unlock the private key used for securing the web interface.
   web_tls_key_password = secret
 
+**Possibly need to add domain to hosts file**
+You may possibly need to add your domain to the hosts file. Edit /etc/hosts and add a line for the IP and domain. Example:
+
+  10.0.0.99    mydomain.com
+
+**Restart service** 
+Be sure to restart the service. If you can't connect to the website after, you should look at the log files for a hint as to what went wrong. If you see an error about an "overrun" it probably means you didn't generate your cert and key files correctly.  
 
 Sample files
 ============
@@ -285,6 +299,10 @@ To load the properties file into a JVM, you have to pass it to Java using the ``
   java -Djava.security.properties=/path/to/security.properties -jar /path/to/graylog.jar server
 
 Most start and init scripts for Graylog provide a ``JAVA_OPTS`` variable which can be used to pass the ``java.security.properties`` system property.
+
+Troubleshooting HTTPS problems
+------------------------------
+
 
 Further reading
 ---------------
