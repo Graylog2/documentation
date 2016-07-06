@@ -57,6 +57,20 @@ Convert PKCS#5 private key into an *encrypted* PKCS#8 private key (using the pas
   $ openssl pkcs8 -in pkcs5-plain.pem -topk8 -out pkcs8-encrypted.pem -passout pass:secret
 
 
+Converting a PKCS #12 (PFX) file to private key and certificate pair
+====================================================================
+
+PKCS #12 key stores (PFX files) are commonly used on Microsoft Windows.
+
+In this example, the PKCS #12 (PFX) file is named ``keystore.pfx``::
+
+  $ openssl pkcs12 -in keystore.pfx -nokeys -out graylog-certificate.pem
+  $ openssl pkcs12 -in keystore.pfx -nocerts -out graylog-pkcs5.pem
+  $ openssl pkcs8 -in graylog-pkcs5.pem -topk8 -out graylog-key.pem
+
+The resulting ``graylog-certificate.pem`` and ``graylog-key.pem`` can be used in the Graylog configuration file.
+
+
 Converting an existing Java Keystore to private key/certificate pair
 ====================================================================
 
