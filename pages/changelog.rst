@@ -2,6 +2,31 @@
 Changelog
 *********
 
+Graylog 2.0.3
+=============
+
+Released 2016-06-20
+
+https://www.graylog.org/blog/58-graylog-v2-0-3-released
+
+**Improvements**
+
+* Make Message#getStreamIds() more reliable. `Graylog2/graylog2-server#2378 <https://github.com/Graylog2/graylog2-server/pull/2378>`_
+* Disabling a configured proxy for requests to localhost/127.0.0.1/::1. `Graylog2/graylog2-server#2305 <https://github.com/Graylog2/graylog2-server/pull/2305>`_
+
+**Bug fixes**
+
+* Update search query on auto refresh `Graylog2/graylog2-server#2385 <https://github.com/Graylog2/graylog2-server/pull/2385>`_ `Graylog2/graylog2-server#2379 <https://github.com/Graylog2/graylog2-server/pull/2379>`_
+* Fix permission checks for non admin users `Graylog2/graylog2-server#2366 <https://github.com/Graylog2/graylog2-server/pull/2366>`_ `Graylog2/graylog2-server#2358 <https://github.com/Graylog2/graylog2-server/pull/2358>`_
+* Fix display of total count of indices. `Graylog2/graylog2-server#2365 <https://github.com/Graylog2/graylog2-server/pull/2365>`_ `Graylog2/graylog2-server#2359 <https://github.com/Graylog2/graylog2-server/pull/2359>`_
+* Fix base URI for API documentation `Graylog2/graylog2-server#2362 <https://github.com/Graylog2/graylog2-server/pull/2362>`_ `Graylog2/graylog2-server#2360 <https://github.com/Graylog2/graylog2-server/pull/2360>`_
+* Fix link to API Browser on Node pages `Graylog2/graylog2-server#2361 <https://github.com/Graylog2/graylog2-server/pull/2361>`_ `Graylog2/graylog2-server#2360 <https://github.com/Graylog2/graylog2-server/pull/2360>`_
+* Calculate keyword from and to values on the fly `Graylog2/graylog2-server#2335 <https://github.com/Graylog2/graylog2-server/pull/2335>`_ `Graylog2/graylog2-server#2301 <https://github.com/Graylog2/graylog2-server/pull/2301>`_
+* Make MemoryAppender thread-safe `Graylog2/graylog2-server#2307 <https://github.com/Graylog2/graylog2-server/pull/2307>`_ `Graylog2/graylog2-server#2302 <https://github.com/Graylog2/graylog2-server/pull/2302>`_
+* Use right metrics to display buffer usage `Graylog2/graylog2-server#2300 <https://github.com/Graylog2/graylog2-server/pull/2300>`_ `Graylog2/graylog2-server#2299 <https://github.com/Graylog2/graylog2-server/pull/2299>`_
+* Check if props actually contain configuration fields before copying them `Graylog2/graylog2-server#2298 <https://github.com/Graylog2/graylog2-server/pull/2298>`_ `Graylog2/graylog2-server#2297 <https://github.com/Graylog2/graylog2-server/pull/2297>`_ 
+
+
 Graylog 2.0.2
 =============
 
