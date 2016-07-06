@@ -30,6 +30,7 @@ Bigger production setup
 This is a setup for bigger production environments. It has several ``graylog-server`` nodes behind
 a load balancer that share the processing load. The load balancer can ping the ``graylog-server``
 nodes via REST/HTTP to check if they are alive and take dead nodes out of the cluster.
+This setup requires that one server is marked as the master via the ``is_master = true`` configuration. All nodes must also point to the same MongoDB instance via ``mongodb_uri``, which is usually the same as the master.
 
 .. image:: /images/extended_setup.png
 
