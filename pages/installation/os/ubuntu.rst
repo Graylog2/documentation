@@ -62,6 +62,8 @@ The last step is to enable Graylog during the operating system's startup::
   $ sudo systemctl enable graylog-server.service
   $ sudo systemctl start graylog-server.service
 
+.. note:: We higly recommend that you proxy the Graylog Webinterface and API with NGINX/Apache like described in: :ref:`configuring_webif_nginx`
+
 
 Feedback
 --------
