@@ -122,6 +122,6 @@ Feedback
 --------
 
 Please open an `issue in the Github repository for the operating system packages <https://github.com/Graylog2/fpm-recipes>`__ if you
-run into any packaging related issues.
+run into any packaging related issues. If this Documentation is confusing or left questions to you please open an `issue in the Github repository for the documentation <https://github.com/Graylog2/documentation/issues>`__.
 
 **Thank you!**
