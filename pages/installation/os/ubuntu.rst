@@ -62,14 +62,13 @@ The last step is to enable Graylog during the operating system's startup::
   $ sudo systemctl enable graylog-server.service
   $ sudo systemctl start graylog-server.service
 
-.. note:: We higly recommend that you proxy the Graylog Webinterface and API with NGINX/Apache like described in: :ref:`configuring_webif_nginx`
+.. note:: We higly recommend that you proxy the Graylog Webinterface and API with NGINX/Apache like described in: :ref:`configuring_webif_nginx`.
 
 
 Feedback
 --------
 
 Please open an `issue in the Github repository for the operating system packages <https://github.com/Graylog2/fpm-recipes>`__ if you
-run into any packaging related issues. If this Documentation is confusing or left questions to you please open an `issue in the Github repository for the documentation <https://github.com/Graylog2/documentation/issues>`__.
-
+run into any packaging related issues. If you found this documentation confusing or have more questions, please open an `issue in the Github repository for the documentation <https://github.com/Graylog2/documentation/issues>`__.
 
 **Thank you!**
