@@ -39,3 +39,8 @@ After the installation you should take care that only one Graylog server has the
 The Graylog server need to know about the MongoDB `Replica Set` in the configuration with the ``mongodb_uri`` where you should enter all nodes that contain data. Additional the configured user and the name of the replica set must be part of the MongoDB connection string.
 
 To avoid issues with the connection to the `Elasticsearch` cluster you should set ``elasticsearch_discovery_zen_ping_unicast_hosts`` to some of the `Elasticsearch` servers in your setup. Additional ``elasticsearch_network_host`` must be set to a network interface which can be accessed by the other nodes in the `Elasticsearch` cluster.
+
+Troubleshoot
+============
+
+On every configuration change and service restart, watch the logfile of the application you had worked on. Sometime even other logfiles can give you information what is wrong. For example if you configure Graylog and look why the connection to the MongoDB is not working, the MongoDB logfile could also help to itentify the problem.
