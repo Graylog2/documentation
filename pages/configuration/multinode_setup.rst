@@ -22,10 +22,12 @@ In most setups each Graylog server will also have a MongoDB running that is part
 
 .. note:: To avoid that your database can be screwed by someone else your `Replica Set should be setup with authentication <https://docs.mongodb.com/v2.6/tutorial/deploy-replica-set-with-auth/>`__.
 
+.. important:: Understand the `connection string <http://docs.mongodb.org/manual/reference/connection-string/>`__ is important to succeed with user and *Replica Set* authentication.
+
 Elasticsearch
 =============
 
-The ressources `provided by elastic <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-configuration.html>`__ should help you to install a robust configuration. Important to name is, that your cluster should not simple named *elasticsearch*. Just choose anything else, because this is the default name and any elasticsearch instance that is started in the same network will connect to the cluster.
+The ressources `provided by elastic <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-configuration.html>`__ should help you to install a robust configuration. Important to name is, that your cluster should not simple named *Elasticsearch*. Just choose anything else, because this is the default name and any Elasticsearch instance that is started in the same network will connect to the cluster.
 
 .. note:: Graylog does not work with Elasticsearch clusters that run with `Shield <https://www.elastic.co/products/shield>`__ at the current version. Your cluster need to be secured by design and not additional software.
 
@@ -34,6 +36,6 @@ Graylog
 
 After the installation you should take care that only one Graylog server has the setting ``is_master`` set to ``true``. The ``rest_listen_uri`` should be accessable on all nodes from withing all nodes. 
 
-The Graylog server need to know about the MongoDB `Replica Set` in the configuration with the ``mongodb_uri`` where you should enter all nodes that contain data.
+The Graylog server need to know about the MongoDB `Replica Set` in the configuration with the ``mongodb_uri`` where you should enter all nodes that contain data. Additional the configured user and Replica Set need to be placed in the connection string.
 
-To avoid issues with the connection to the `elasticsearch` cluster you shoud set ``elasticsearch_discovery_zen_ping_unicast_hosts`` to some of the `elasticsearch` servers in your setup. Additional ``elasticsearch_network_host`` should be set, that the `elasticsearch` cluster can communicate with the Graylog elasticsearch clients. 
+To avoid issues with the connection to the `Elasticsearch` cluster you should set ``elasticsearch_discovery_zen_ping_unicast_hosts`` to some of the `Elasticsearch` servers in your setup. Additional ``elasticsearch_network_host`` should be set, that the `Elasticsearch` cluster can communicate with the Graylog Elasticsearch clients. 
