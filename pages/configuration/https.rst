@@ -14,7 +14,7 @@ We highly recommend securing your Graylog installation using SSL/TLS to make sur
 You also need to make sure that you have proper certificates in place, which are valid and trusted by the clients. Not enabling TLS for either one of them will result in a browser error about mixed content and the web interface will cease to work.
 
 
-.. note:: If you are using a single node setup and would like to use HTTPS for the webinterface and the API calls of your Browser, we recomment to use :ref:`NGINX or Apache as frontend proxy <configuring_webif_nginx>`.
+.. note:: If you are using a single node setup and would like to use HTTPS for the webinterface and the API calls of your Browser, it is possible to run :ref:`NGINX or Apache as frontend proxy <configuring_webif_nginx>`.
 
 
 
