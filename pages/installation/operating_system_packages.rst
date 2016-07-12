@@ -128,8 +128,11 @@ Step-by-step guides
    os/ubuntu
    os/centos
 
+
 Feedback
 --------
 
-Please open an `issue <https://github.com/Graylog2/fpm-recipes/issues>`_ in the `Github repository <https://github.com/Graylog2/fpm-recipes>`_ if you
-run into any packaging related issues. **Thank you!**
+Please file a `bug report in the GitHub repository for the operating system packages <https://github.com/Graylog2/fpm-recipes>`__ if you
+run into any packaging related issues.
+
+If you found this documentation confusing or have more questions, please open an `issue in the Github repository for the documentation <https://github.com/Graylog2/documentation/issues>`__.
