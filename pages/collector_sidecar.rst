@@ -124,6 +124,10 @@ Each configuration can hold parts for multiple collector backends.
 So you can create one configuration with the tag ``linux`` and this include e.g. an input section for a NXlog collector and one for a Filebeat collector.
 The Sidecar will then pick the right parts based on the backends that are enabled for the host system.
 
+For some collectors (currently NXlog) we provide a default snippet. This snippet is created by default for every new configuration and contains settings like module paths or
+other system-wide configurations. This snippet is not meant as an example it's actually needed to generate a working configuration. However it's a normal snippet that
+can be edited or deleted.
+
 .. image:: /images/sidecar_configuration.png
 
 

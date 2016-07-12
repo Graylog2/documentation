@@ -49,8 +49,8 @@ If our default settings do not work for you, there is a number of options in the
 
 .. _webif_connecting_to_server:
 
-How does the web interface connects to the Graylog server?
-==========================================================
+How does the web interface connect to the Graylog server?
+=========================================================
 
 The web interface is fetching all information it is showing from the REST API of the Graylog server. Therefore it needs to connect to it using HTTP(S). There are several ways how you can define which way the web interface connects to the Graylog server:
 

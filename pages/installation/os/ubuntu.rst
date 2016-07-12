@@ -62,11 +62,13 @@ The last step is to enable Graylog during the operating system's startup::
   $ sudo systemctl enable graylog-server.service
   $ sudo systemctl start graylog-server.service
 
+.. note:: If you're operating a single-node setup and would like to use HTTPS for the Graylog web interface and the Graylog REST API, it's possible to use :ref:`NGINX or Apache as a reverse proxy <configuring_webif_nginx>`.
+
 
 Feedback
 --------
 
-Please open an `issue in the Github repository for the operating system packages <https://github.com/Graylog2/fpm-recipes>`__ if you
+Please file a `bug report in the GitHub repository for the operating system packages <https://github.com/Graylog2/fpm-recipes>`__ if you
 run into any packaging related issues.
 
-**Thank you!**
+If you found this documentation confusing or have more questions, please open an `issue in the Github repository for the documentation <https://github.com/Graylog2/documentation/issues>`__.
