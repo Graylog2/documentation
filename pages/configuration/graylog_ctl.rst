@@ -7,7 +7,8 @@ The graylog-ctl script
 Some packages of Graylog (for example the :ref:`virtual machine appliances <virtual-machine-appliances>`)
 ship with a pre-installed ``graylog-ctl`` script to allow you easy configuration of certain settings.
 
-.. important:: The manual setup, operating system packages, configuration management scripts etc are not shipping with this.
+.. important:: ``graylog-ctl`` is only available in the virtual machine appliances, but not in the tar-ball (for manual setup), operating system packages, or configuration management scripts (Puppet, Chef, Ansible).
+
 
 Configuration commands
 ======================
