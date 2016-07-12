@@ -85,7 +85,7 @@ The last step is to enable Graylog during the operating system's startup::
   $ sudo systemctl start graylog-server.service
 
 
-.. note:: If you are using a single node setup and would like to use HTTPS for the webinterface and the API calls of your Browser, it is possible to run :ref:`NGINX or Apache as frontend proxy <configuring_webif_nginx>`.
+.. note:: If you're operating a single-node setup and would like to use HTTPS for the Graylog web interface and the Graylog REST API, it's possible to use :ref:`NGINX or Apache as a reverse proxy <configuring_webif_nginx>`.
 
 
 SELinux information
