@@ -4,25 +4,30 @@
 Multi node Setup
 ****************
 
-This guide will not cover one specific multi node setup of Graylog, but i should give some advice during the setup.
+This guide will not cover one specific multi node setup of Graylog, but i should give some advice during the setup. Important for such a project is that you understand each step and do some planing. Without a roadmap you will be lost.
 
-.. important:: This will not include how you can run a multi node setup over untrusted networks, the assumption is that you trust the connection between the hosts
+Graylog should always be the last component you install in the setup, MongoDB and Elasticsearch need to be up and running at first. 
+
+.. important:: This will not include how you can run a multi node setup over untrusted networks, the assumption is that you trust the connection between the hosts.
 
 Prerequisites
 =============
 
-Every server that is part of this setup should have the software equirements installed to run the targeted software that. All requirements can be found in the installation manual. We highly recommend that you have the time in sync on all servers. Needless to say working DNS.
+Every server that is part of this setup should have the software equirements installed to run the targeted software. All software requirements can be found in the installation manual. 
+
+We highly recommend that you have the time in sync on all servers. Needless to say working DNS. To easy up the installation, a working internet connection for the servers should be present.
 
 MongoDB
 =======
 
-Our recommendation is that you `deploy a Replica Set <https://docs.mongodb.com/manual/tutorial/deploy-replica-set/>`__. You did not need dedicated servers for your MongoDB but you should follow the recommendations that are given in the documentation about architecture.
+Our recommendation is that you `deploy a replica set <https://docs.mongodb.com/manual/tutorial/deploy-replica-set/>`__. You did not need dedicated servers for your MongoDB but you should follow the recommendations that are given in the documentation about architecture. Most important is that you have an odd number of MongoDB servers.
 
-In most setups each Graylog server will also have a MongoDB running that is part of the same Replica Set and share the data with all other nodes in the cluster. 
+In most setups each Graylog server will also have a MongoDB running that is part of the same replica set and share the data with all other nodes in the cluster. 
 
-.. note:: To avoid that your database can be screwed by someone else your `Replica Set should be setup with authentication <https://docs.mongodb.com/v2.6/tutorial/deploy-replica-set-with-auth/>`__.
+.. note:: To avoid that your database can be screwed by someone else your `replica set should be setup with authentication <https://docs.mongodb.com/v2.6/tutorial/deploy-replica-set-with-auth/>`__.
 
-.. important:: Understand the `connection string <http://docs.mongodb.org/manual/reference/connection-string/>`__ is important to succeed with user and *Replica Set* authentication.
+The right order of working steps should be, create the replica set (*rs01*), add database (*graylog*), create user for this database. The created user should have the following roles ``readWrite`` and ``dbAdmin`` within MongoDB.
+
 
 Elasticsearch
 =============
@@ -38,9 +43,15 @@ After the installation you should take care that only one Graylog server has the
 
 The Graylog server need to know about the MongoDB `Replica Set` in the configuration with the ``mongodb_uri`` where you should enter all nodes that contain data. Additional the configured user and the name of the replica set must be part of the MongoDB connection string.
 
+Finally should your connection string for MongoDB in your Graylog `server.conf` should look like this::
+
+  mongodb_uri = mongodb://USERNAME:PASSWORD@multinode01:27017,multinode02:27017,multinode03:27017/graylog?replicaSet=rs01
+
+
 To avoid issues with the connection to the `Elasticsearch` cluster you should set ``elasticsearch_discovery_zen_ping_unicast_hosts`` to some of the `Elasticsearch` servers in your setup. Additional ``elasticsearch_network_host`` must be set to a network interface which can be accessed by the other nodes in the `Elasticsearch` cluster.
+Graylog will connect as `client node <https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#client-node>`__ to the `Elasticsearch` Cluster.
 
 Troubleshoot
 ============
 
-On every configuration change and service restart, watch the logfile of the application you had worked on. Sometime even other logfiles can give you information what is wrong. For example if you configure Graylog and look why the connection to the MongoDB is not working, the MongoDB logfile could also help to itentify the problem.
+- On every configuration change and service restart, watch the logfile of the application you had worked on. Sometime even other logfiles can give you information what is wrong. For example if you configure Graylog and look why the connection to the MongoDB is not working, the MongoDB logfile could also help to itentify the problem.
