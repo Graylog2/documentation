@@ -64,7 +64,20 @@ The webinterface can be used on every instance of Graylog that has not the optio
 Depending on your setup it is possible to use the loadbalancer to do TLS/HTTPS termination, a :ref:`webserver <configuring_webif_nginx>` or to enable it :ref:`native in the Graylog <ssl_setup>` server.
 
 
+Scaling
+=======
+
+Each component in such a setup can be scaled on the individual needs. Depending on the amount of messages and how long messages should be available for direct search the Elasticsearch cluster will need most of the ressources on your setup. Check the `sizing estimator <https://www.graylog.org/tools/sizing-estimator>`__ we had created to help you. Keep an eye on your Elasticsearch cluster with plugins like `elasticHQ <http://www.elastichq.org>`__ or `kopf <https://github.com/lmenezes/elasticsearch-kopf>`__ those will help you to understand your cluster health and behavior.
+
+Graylog Metrics should be monitored `with this plugin <https://marketplace.graylog.org/addons/6fef88c7-94f7-488e-a6c5-bd6b71d8343e>`__ that is able to send the internal Graylog metrics over to your metric system.
+
+Until now we never faced the issue that the MongoDB replica set need some special attention. But you should monitor and store default metrics - just to be sure.
+
+
+
 Troubleshoot
 ============
 
 - On every configuration change and service restart, watch the logfile of the application you had worked on. Sometime even other logfiles can give you information what is wrong. For example if you configure Graylog and look why the connection to the MongoDB is not working, the MongoDB logfile could also help to itentify the problem.
+- If :ref:`ssl is enabled for the Graylog api <ssl_setup>` it need to be setup for the Graylog webinterface too.
+
