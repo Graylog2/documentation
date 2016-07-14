@@ -500,7 +500,19 @@ After you've removed the index template, new indices will only have the original
 Cluster Status explained
 ========================
 
-Elasticsearch provides a classification for the `cluster health <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/cluster-health.html>`_:
+Elasticsearch provides a classification for the `cluster health <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/cluster-health.html>`_.
+
+The cluster status applies to different levels:
+
+* **Shard level** - see status descriptions below
+* **Index level** - inherits the status of the worst shard status
+* **Cluster level** - inherits the status of the worst index status
+
+That means that the Elasticsearch cluster status can turn red if a single index or shard has problems even though the rest of the indices/shards are okay.
+
+.. note:: Graylog checks the status of the current write index while indexing messages. If that one is GREEN or YELLOW, Graylog will continue to write messages into Elasticsearch regardless of the overall cluster status.
+
+Explanation of the different status levels:
 
 RED
 ---
