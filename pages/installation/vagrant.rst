@@ -18,7 +18,7 @@ Usage
 -----
 
 After starting the virtual machine, your Graylog instance is ready to use.
-You can reach the web interface by pointing your browser to : `http://localhost:8080`
+You can reach the web interface by pointing your browser to : `http://localhost:9000`
 
 The default login is Username: `admin`, Password: `admin`.
 
