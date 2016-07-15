@@ -9,5 +9,6 @@ Configuring Graylog
    configuration/web_interface
    configuration/load_balancers
    configuration/https
+   configuration/multinode_setup
    configuration/elasticsearch
    configuration/backup
