@@ -125,6 +125,8 @@ A server with only the web interface running is not supported anymore since Gray
 But you can create your own service combinations by editing the file `/etc/graylog/graylog-services.json` by hand and enable or disable single services.
 Just run `graylog-ctl reconfigure` afterwards.
 
+.. _extend_ova_disk:
+
 Extend disk space
 =================
 
