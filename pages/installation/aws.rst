@@ -76,4 +76,4 @@ You can use the Graylog appliances (OVA, Docker, AWS, ...) for small production 
  * add additional HDD to the appliance and :ref:`extend disk space <extend_ova_disk>`.
  * add the appliance to your monitoring and metric systems.
 
-If you warningnt to create your own customised setup take a look at our :ref:`other installation methods <installing>`.
+If you want to create your own customised setup take a look at our :ref:`other installation methods <installing>`.
