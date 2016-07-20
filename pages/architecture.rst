@@ -7,7 +7,7 @@ There are a few rules of thumb when scaling resources for Graylog:
 * ``graylog-server`` nodes should have a focus on CPU power. These also serve the user interface to the browser.
 * Elasticsearch nodes should have as much RAM as possible and the fastest disks you can get.
   Everything depends on I/O speed here.
-* MongoDB is only being used to store configuration and the dead letter messages, and can be
+* MongoDB is only being used to store configuration and indexer failures, and can be
   sized fairly small.
 
 Also keep in mind that messages are **only** stored in Elasticsearch. If you have data loss on
