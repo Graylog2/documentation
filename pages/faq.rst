@@ -130,6 +130,8 @@ Dedicated Partition for the Journal
 -----------------------------------
 If you create a dedicated Partition for your Kafka Journal, you need to watch that this is a clean directory. Even *lost+found* can break it, for `your reference <https://github.com/Graylog2/graylog2-server/issues/2348>`_.
 
+.. _raise_java_heap:
+
 Raise the Java Heap
 -------------------
 If you need to raise the Java Heap of the Graylog Server or Elasticsearch in a System that runs as virtual appliances you can use :ref:`the advanced settings <graylog_ctl_advanced>`.
