@@ -13,84 +13,153 @@ automatically, performs an update and restarts the necessary process.
 .. image:: /images/sidecar_overview.png
 
 Installation
-************
+============
 
-Install the actual log collector first, e.g. NXlog, and disable the system service. The Sidecar will run as a daemon process and take control over NXlog.
-Download NXlog and follow the `instructions <https://nxlog.org/products/nxlog-community-edition/download>`_, afterwards::
+`Download a package <https://github.com/Graylog2/collector-sidecar/releases>`_ and install it on the target system.
+
+Beats backend
+-------------
+
+Ubuntu
+~~~~~~
+
+The Beats binaries (Filebeat and Winlogeventbeat) are included in the Sidecar package. So installation is just one command::
+
+    $ sudo dpkg -i collector-sidecar_0.0.9-1_amd64.deb
+
+Edit `/etc/graylog/collector-sidecar/collector_sidecar.yml`, you should set at least the correct URL to your Graylog server and proper tags.
+The tags are used to define which configurations the host should receive.
+
+Create a system service and start it::
+
+    $ sudo graylog-collector-sidecar -service install
+    $ sudo start collector-sidecar
+
+CentOS
+~~~~~~
+Install the RPM package on RedHat based systems ::
+
+    $ sudo rpm -i collector-sidecar-0.0.9-1.x86_64.rpm
+
+Activate the Sidecar as a system service::
+
+    $ sudo graylog-collector-sidecar -service install
+    $ sudo systemctl start collector-sidecar
+
+Windows
+~~~~~~~
+Use the Windows installer, it can be run interactively::
+
+    $ collector_sidecar_installer.exe
+
+or in silent mode with::
+
+    $ collector_sidecar_installer.exe /S
+
+Edit `C:\Program Files (x86)\graylog\collector-sidecar\collector_sidecar.yml` and register the system service::
+
+    $ C:\Program Files (x86)\graylog\collector-sidecar\graylog-collector-sidecar.exe -service install
+    $ C:\Program Files (x86)\graylog\collector-sidecar\graylog-collector-sidecar.exe -service start
+
+NXLog backend
+-------------
+
+Ubuntu
+~~~~~~
+
+Install the NXLog package from the offical download `page <https://nxlog.org/products/nxlog-community-edition/download>`_. Because the Sidecar takes control of stopping and starting NXlog it's
+necessary to stop all running instances of NXlog and deconfigure the default system service. Afterwards we can install and setup the Sidecar::
 
     $ sudo /etc/init.d/nxlog stop
     $ sudo update-rc.d -f nxlog remove
     $ sudo gpasswd -a nxlog adm
+    
+    $ sudo dpkg -i collector-sidecar_0.0.9-1_amd64.deb
 
-Same on a Windows host::
-
-    & 'C:\Program Files (x86)\nxlog\nxlog.exe' -u
-
-From now on NXlog will not start automatically and the Sidecar can start the collector process without any issues.
-The Sidecar binary itself doesn't have any dependencies beside an installation of the used collector backend.
-
-Linux/Unix
-^^^^^^^^^^
-
-We offer Debian/Ubuntu packages directly in the `releases <https://github.com/Graylog2/collector-sidecar/releases>`_ section.
-Download and install the latest version via ``dpkg(1)``::
-
-    $ wget https://github.com/Graylog2/collector-sidecar/releases/download/0.0.7/collector-sidecar_0.0.7-1_amd64.deb
-    $ sudo dpkg -i collector-sidecar_0.0.7-1_amd64.deb
-
-To register and enable a system service use the ``-service`` option::
+Edit `/etc/graylog/collector-sidecar/collector_sidecar.yml` accordingly and register the Sidecar as a service::
 
     $ sudo graylog-collector-sidecar -service install
-    $ sudo service collector-sidecar start
+    $ sudo start collector-sidecar
+
+CentOS
+``````
+
+The same on a RedHat based system::
+
+    $ sudo service nxlog stop
+    $ sudo chkconfig --del nxlog
+    $ sudo gpasswd -a nxlog root
+
+    $ sudo rpm -i collector-sidecar-0.0.9-1.x86_64.rpm
+
+Activate the Sidecar as a system service::
+
+    $ sudo graylog-collector-sidecar -service install
+    $ sudo systemctl start collector-sidecar
 
 Windows
-^^^^^^^
+~~~~~~~
 
-Windows installation works in the same way. `Download <https://github.com/Graylog2/collector-sidecar/releases>`_ the Windows package and register the Sidecar services::
+Install the NXLog package from the offical download `page <https://nxlog.org/products/nxlog-community-edition/download>`_ and deactive the
+system service. We just need the binaries installed on the system::
 
-    & 'C:\Program Files (x86)\graylog\collector-sidecar\graylog-collector-sidecar.exe' -service install
-    & 'C:\Program Files (x86)\graylog\collector-sidecar\graylog-collector-sidecar.exe' -service start
+    $ C:\Program Files (x86)\nxlog\nxlog -u
+
+    $ collector_sidecar_installer.exe
+
+Edit `C:\Program Files (x86)\graylog\collector-sidecar\collector_sidecar.yml`, you should set at least the correct URL to your Graylog server and proper tags. Register the system service::
+
+    $ C:\Program Files (x86)\graylog\collector-sidecar\graylog-collector-sidecar.exe -service install
+    $ C:\Program Files (x86)\graylog\collector-sidecar\graylog-collector-sidecar.exe -service start
 
 Configuration
-*************
+=============
 
 On the command line you can provide a path to the configuration file with the ``-c`` switch. If no path is specified it looks on Linux systems for::
 
     /etc/graylog/collector-sidecar/collector_sidecar.yml
 
-and on Windows machines::
+and on Windows machines under::
 
     C:\Program Files (x86)\graylog\collector-sidecar\collector_sidecar.yml
 
 The configuration file is separated into global options and backend specific options. Global options are:
 
-+-----------------+---------------------------------------------------------------------------------------------------------------------------------------+
-| Parameter       | Description                                                                                                                           |
-+=================+=======================================================================================================================================+
-| server_url      | URL to the Graylog API, e.g. ``http://127.0.0.1:12900``                                                                               |
-+-----------------+---------------------------------------------------------------------------------------------------------------------------------------+
-| tls_skip_verify | Ignore errors when the REST API was started with a self-signed certificate                                                            |
-+-----------------+---------------------------------------------------------------------------------------------------------------------------------------+
-| node_id         | Name of the Sidecar instance, will also show up in the web interface                                                                  |
-+-----------------+---------------------------------------------------------------------------------------------------------------------------------------+
-| collector_id    | Unique ID (UUID) of the instance. This can be a string or a path to an ID file                                                        |
-+-----------------+---------------------------------------------------------------------------------------------------------------------------------------+
-| tags            | List of configuration tags. All configurations on the server side that match the tag list will be fetched and merged by this instance |
-+-----------------+---------------------------------------------------------------------------------------------------------------------------------------+
-| log_path        | A path to a directory where the Sidecar can store the output of each running collector backend                                        |
-+-----------------+---------------------------------------------------------------------------------------------------------------------------------------+
-| update_interval | The interval in seconds the sidecar will fetch new configurations from the Graylog server                                             |
-+-----------------+---------------------------------------------------------------------------------------------------------------------------------------+
-| backends        | A list of collector backends the user wants to run on the target host                                                                 |
-+-----------------+---------------------------------------------------------------------------------------------------------------------------------------+
++-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
+| Parameter         | Description                                                                                                                           |
++===================+=======================================================================================================================================+
+| server_url        | URL to the Graylog API, e.g. ``http://127.0.0.1:12900``                                                                               |
++-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
+| update_interval   | The interval in seconds the sidecar will fetch new configurations from the Graylog server                                             |
++-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
+| tls_skip_verify   | Ignore errors when the REST API was started with a self-signed certificate                                                            |
++-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
+| send_status       | Send the status of each backend back to Graylog and display it on the status page for the host                                        |
++-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
+| list_log_files    | Send a directory listing to Graylog and display it on the host status page. This can also be a list of directories                    |
++-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
+| node_id           | Name of the Sidecar instance, will also show up in the web interface                                                                  |
++-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
+| collector_id      | Unique ID (UUID) of the instance. This can be a string or a path to an ID file                                                        |
++-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
+| log_path          | A path to a directory where the Sidecar can store the output of each running collector backend                                        |
++-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
+| log_rotation_time | Rotate the stdout and stderr logs of each collector after X seconds                                                                   |
++-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
+| log_max_age       | Delete rotated log files older than Y seconds                                                                                         |
++-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
+| tags              | List of configuration tags. All configurations on the server side that match the tag list will be fetched and merged by this instance |
++-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
+| backends          | A list of collector backends the user wants to run on the target host                                                                 |
++-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
 
-Currently NXLog is supported as a backend collector, to make it work the Sidecar needs to know where the binary is installed and where it can
+Currently NXLog and Beats are supported as collector backend, to make it work the Sidecar needs to know where the binary is installed and where it can
 write a configuration file for it.
 
 +--------------------+-------------------------------------------------------------------+
 | Parameter          | Description                                                       |
 +====================+===================================================================+
-| name               | The type name of the collector                                    |
+| name               | The type name of the collector (either 'nxlog' or 'beats')        |
 +--------------------+-------------------------------------------------------------------+
 | enabled            | Whether this backend should be started by the Sidecar or not      |
 +--------------------+-------------------------------------------------------------------+
@@ -114,44 +183,88 @@ As an example, a complete configuration could look like this::
           configuration_path: /etc/graylog/collector-sidecar/generated/nxlog.conf
 
 Use the Graylog web interface to configure remote collectors
-**************************************************************
+============================================================
 
 Navigate to ``System → Collectors → Manage configurations``, this is the entry point for all Sidecar configurations.
-Multiple configurations can be created. Because not all connected Sidecars should fetch all configurations, it's essential to provide tags for each configuration.
-Every Sidecar is only fetching the configuration with the tag it was started with. See also the ``tags`` parameter in the section before.
-Each configuration can hold parts for multiple collector backends.
 
-So you can create one configuration with the tag ``linux`` and this include e.g. an input section for a NXlog collector and one for a Filebeat collector.
-The Sidecar will then pick the right parts based on the backends that are enabled for the host system.
+Configuration
+-------------
 
-For some collectors (currently NXlog) we provide a default snippet. This snippet is created by default for every new configuration and contains settings like module paths or
-other system-wide configurations. This snippet is not meant as an example it's actually needed to generate a working configuration. However it's a normal snippet that
-can be edited or deleted.
+A collector configuration is an abstract representation of a collector configuration file. It contains one or many Outputs, Inputs and Snippets.
+Based on the selected backend the Sidecar will then render a working configuration file for the particular collector.
+To match a configuration for a Sidecar instance both sides need to be started with the same tag. If the tags of a Sidecar instance match multiple configurations
+all Out-,Inputs and Snippets are merged together to a single configuration.
+
+Tags
+----
+
+Tags are used to match Sidecar instances with configurations on the Graylog server side. E.g. a user can create a configuration for Apache access log files.
+The configuration gets the tag ``apache``. On all web servers running the Apache daemon the Sidecar can also be started with the ``apache`` tag to fetch this configuration
+and to collect web access log files. There can be multiple tags on both sides the Sidecar and the Graylog server side. But to keep the overview the administrator should
+use at least on one side discrete tags that the assignment is always 1:1 or 1:n.
+
+Outputs
+-------
+
+Outputs are used to send data from a collector back to the Graylog server. E.g. NXLog is able to send directly messages in the GELF format. So the natural fit is to create a
+GELF output in a NXLog configuration. Instructing NXlog to send GELF messages is of course just half the way, we also need a receiver for that. So an administrator
+needs to create a proper receiver under  ``System → Inputs``.
+
+Inputs
+------
+
+Inputs are the way how collectors ingest data. An input can be a log file that the collector should continuous read or a connection to the Windows event system that emits log events.
+An input is connected to an output, otherewise there would be no way of sending the data to the next hop. So first create an output and then associate one or many inputs with it.
+
+Snippets
+--------
+
+Snippets are simply plain text configuration fragments. Sometimes it's not possible to represent the needed configuration through the provided system. E.g. a user would
+like to load a special collector module. She could put the directive into a snippet which will be added to the final collector configuration without any modification.
+It's also conceivable to put a full configuration file into a snippet and skip all of the input and output mechanism.
+Before the snippet is actually rendered into the configuration file the Sidecar is sending it through a template engine. It's using Go's own text template `engine <https://golang.org/pkg/text/template/>`_
+for that. A usage of that can be seen in the ``nxlog-default`` snippet. It detects which operating the Sidecar is running on and depending on the result, paths for some collector settings
+change.
 
 .. image:: /images/sidecar_configuration.png
 
+Step-by-Step Guide
+==================
 
-Outputs, Inputs and Snippets
-****************************
+After following the installation instructions you most likely see an error from the Sidecar saying::
 
-In the example above, Sidecar is instructing NXlog to create a GELF output that writes log messages back to Graylog. The two inputs are for reading in ``/var/log/syslog`` as a file input and listening on the UDP port 514 for incoming
-syslog messages. Both inputs route their messages to the GELF output.
+    INFO[0006] [RequestConfiguration] No configuration found for configured tags!
 
-There are three sections in a configuration: *Outputs*, *Inputs* and *Snippets*. 
+This means simply that there is no configuration with the same tag that the Sidecar was started with. So we have to create a new configuration, define out- and inputs and tag it in order to collect
+log files.
 
-**Inputs** - Data collected by NXLog. Think of this as a source of log data. For example, it could be a file or a syslog. 
+- The first step is to navigate to the collector configurations. Click on ``System → Collectors → Manage configurations``. 
+.. image:: /images/sidecar_sbs1.png
 
-**Outputs** - Once data is collected by NXLog, the data is transmitted to this IP or address and port. You need to configure a GELF "Input" (System->Inputs) to capture data on the port. 
+- Next we create a new configuration
+.. image:: /images/sidecar_sbs2.png
 
-**Snippets** - Snippets can be used to represent more complicated collector configurations. Simply paste the whole content of your NXlog configuration into a snippet
-or use it as an extension to the inputs and outputs defined before. All snippets will be copied directly to the generated collector configuration, no
-matter if there inputs or outputs defined.
+- Give the configuration a name
+.. image:: /images/sidecar_sbs3.png
 
+- Click on the new configuration and create e.g. a Filebeat-GELF output. For a first test just change the IP to your Graylog server (given that a Beats input is running there on port 5044).
+.. image:: /images/sidecar_sbs4.png
+
+- Create a Filebeat file input to collect e.g. Apache access logs.
+.. image:: /images/sidecar_sbs5.png
+
+- Tag the configuration with the ``apache`` tag. Just write the tag name in the field press enter followed by the ``Update tags`` button.
+.. image:: /images/sidecar_sbs6.png
+
+- When you now start the Sidecar with the ``apache`` tag the output should look like this
+.. image:: /images/sidecar_sbs7.png
+
+- Congratulations your collector setup is working now!
 
 Debug
-*****
+=====
 
-The Sidecar is writing to the local syslog so take a look into `/var/log/syslog` on most systems. The output of the
+The Sidecar is writing to the local syslog so take a look into `/var/log/syslog` for informations why something is wrong. The output of the
 running collectors is written to the ``log_path`` directory.
 
 You can also start the Sidecar in foreground and monitor the output of the process::
