@@ -219,10 +219,10 @@ Step-by-step guide
 
 - Congratulations your collector setup is working now!
 
-Use the Graylog web interface to configure remote collectors
-============================================================
+Sidecar Glossar
+===============
 
-Navigate to ``System → Collectors → Manage configurations``, this is the entry point for all Sidecar configurations.
+As we have the same Namings on Sidecar and Graylog Server this should help you to understand them in the sidecar context.
 
 Configuration
 -------------
