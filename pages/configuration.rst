@@ -12,3 +12,4 @@ Configuring Graylog
    configuration/multinode_setup
    configuration/elasticsearch
    configuration/backup
+   configuration/file_location
