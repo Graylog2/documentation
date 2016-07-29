@@ -230,7 +230,7 @@ We have prepared an example how to configure Sidecar in your Browser using the G
 Sidecar Glossar
 ===============
 
-As we have the same Namings on Sidecar and Graylog Server this should help you to understand them in the sidecar context.
+To understand the different parts of the Graylog Sidecar they are explained in the following section.
 
 Configuration
 -------------
