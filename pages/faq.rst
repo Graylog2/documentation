@@ -164,6 +164,23 @@ I don’t want to use Elasticsearch as my backend storage system – can I use a
 
 You can, but we don’t suggest you do. You will not be able to use our query functionality or our analytic engine on the dataset outside the system. We only recommend another database if you want it for secondary storage.
 
+Can i add a restricted user to Graylog, to inlcude internal Graylog metrics in my Monitoring?
+---------------------------------------------------------------------------------------------
+
+You can create a user that has access only to ``/system/metrics`` at the Graylog API, this way it will be possible for you to integrate Graylog internal metrics to your monitoring.
+
+POST via API Browser or curl the following to ``/roles`` endpoint of your Graylog API::
+
+  {
+    "name": "Metrics Access",
+    "description": "Provides read access to all system metrics",
+    "permissions": [
+         "metrics:*"
+          ],
+    "read_only": false
+   }
+
+
 Troubleshooting
 ===============
 
