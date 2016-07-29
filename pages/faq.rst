@@ -167,22 +167,22 @@ You can, but we don’t suggest you do. You will not be able to use our query fu
 How can I create a restricted user to check internal Graylog metrics in my monitoring system?
 ---------------------------------------------------------------------------------------------
 
-You can create a user that has access only to ``/system/metrics`` at the Graylog API, this way it will be possible for you to integrate Graylog internal metrics to your monitoring. Giving the user only restriced access minimized the impact when this creadentials got leaked.
+You can create a restricted user which only has access to the ``/system/metrics`` resource on the Graylog REST API.
+This way it will be possible to integrate the internal metrics of Graylog into your monitoring system.
+Giving the user only restriced access will minimize the impact of these creadentials getting compromised.
 
-POST via API Browser or curl the following to ``/roles`` endpoint of your Graylog API::
+Send a POST request via the Graylog API Browser or curl to the ``/roles`` resource of the Graylog REST API::
 
   {
     "name": "Metrics Access",
     "description": "Provides read access to all system metrics",
-    "permissions": [
-         "metrics:*"
-          ],
+    "permissions": ["metrics:*"],
     "read_only": false
    }
 
-This command will look like the following, if your Graylog server is listening on `127.0.0.1` and your Admin credentials are `admin` and the password `admin`::
+The following curl command will create the required role (modify the URL of the Graylog REST API, here ``http://127.0.0.1:12900``, and the user credentials, here ``admin``/``admin``, according to your setup)::
   
-  curl -u admin:admin -H "Content-Type: application/json" -X POST -d '{  "name": "Metrics Access", "description": "Provides read access to all system metrics", "permissions": [ "metrics:*"  ],"read_only": false }' http://127.0.0.1:12900/roles
+  $ curl -u admin:admin -H "Content-Type: application/json" -X POST -d '{"name": "Metrics Access", "description": "Provides read access to all system metrics", "permissions": ["metrics:*"], "read_only": false}' 'http://127.0.0.1:12900/roles'
 
 
 Troubleshooting
