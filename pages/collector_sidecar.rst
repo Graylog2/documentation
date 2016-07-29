@@ -239,24 +239,31 @@ This means simply that there is no configuration with the same tag that the Side
 log files.
 
 - The first step is to navigate to the collector configurations. Click on ``System → Collectors → Manage configurations``. 
+
 .. image:: /images/sidecar_sbs1.png
 
 - Next we create a new configuration
+
 .. image:: /images/sidecar_sbs2.png
 
 - Give the configuration a name
+
 .. image:: /images/sidecar_sbs3.png
 
 - Click on the new configuration and create e.g. a Filebeat-GELF output. For a first test just change the IP to your Graylog server (given that a Beats input is running there on port 5044).
+
 .. image:: /images/sidecar_sbs4.png
 
 - Create a Filebeat file input to collect e.g. Apache access logs.
+
 .. image:: /images/sidecar_sbs5.png
 
 - Tag the configuration with the ``apache`` tag. Just write the tag name in the field press enter followed by the ``Update tags`` button.
+
 .. image:: /images/sidecar_sbs6.png
 
 - When you now start the Sidecar with the ``apache`` tag the output should look like this
+
 .. image:: /images/sidecar_sbs7.png
 
 - Congratulations your collector setup is working now!
