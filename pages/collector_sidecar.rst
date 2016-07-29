@@ -183,7 +183,7 @@ As an example, a complete configuration could look like this::
           configuration_path: /etc/graylog/collector-sidecar/generated/nxlog.conf
 
 Configure Sidecar 
-=================
+-----------------
 
 After the installation you will most likely see an error from the Sidecar saying::
 
@@ -191,10 +191,11 @@ After the installation you will most likely see an error from the Sidecar saying
 
 This means simply that there is no configuration with the same tag that the Sidecar was started with. So we have to create a new configuration, define out- and inputs and tag it in order to collect log files.
 
+Step-by-step guide
+~~~~~~~~~~~~~~~~~~
+
 We have prepared an example how to configure Sidecar in your Browser using the Graylog Webinterface. The assumption is that we will configure the collection of Apache logfiles and ship them with a Filebeat to the already present Beats input that is listening on Port 5044 on your Graylog Server.
 
-Step-by-step guide
-------------------
 
 - The first step is to navigate to the collector configurations. In your Graylog Webinterface click on ``System → Collectors → Manage configurations``. 
 
