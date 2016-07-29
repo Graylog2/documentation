@@ -182,6 +182,43 @@ As an example, a complete configuration could look like this::
           binary_path: /usr/bin/nxlog
           configuration_path: /etc/graylog/collector-sidecar/generated/nxlog.conf
 
+Configure Sidecar 
+=================
+
+After the installation you will most likely see an error from the Sidecar saying::
+
+    INFO[0006] [RequestConfiguration] No configuration found for configured tags!
+
+This means simply that there is no configuration with the same tag that the Sidecar was started with. So we have to create a new configuration, define out- and inputs and tag it in order to collect log files.
+
+We have prepared an example how to configure Sidecar in your Browser using the Graylog Webinterface. The assumption is that we will configure the collection of Apache logfiles and ship them with a Filebeat to the already present Beats input that is listening on Port 5044 on your Graylog Server.
+
+Step-by-step guide
+------------------
+
+- The first step is to navigate to the collector configurations. In your Graylog Webinterface click on ``System → Collectors → Manage configurations``. 
+.. image:: /images/sidecar_sbs1.png
+
+- Next we create a new configuration
+.. image:: /images/sidecar_sbs2.png
+
+- Give the configuration a name
+.. image:: /images/sidecar_sbs3.png
+
+- Click on the new configuration and create e.g. a Filebeat-GELF output. For a first test just change the IP to your Graylog server.
+.. image:: /images/sidecar_sbs4.png
+
+- Create a Filebeat file input to collect the Apache access logs.
+.. image:: /images/sidecar_sbs5.png
+
+- Tag the configuration with the ``apache`` tag. Just write the tag name in the field press enter followed by the ``Update tags`` button.
+.. image:: /images/sidecar_sbs6.png
+
+- When you now start the Sidecar with the ``apache`` tag the output should look like this
+.. image:: /images/sidecar_sbs7.png
+
+- Congratulations your collector setup is working now!
+
 Use the Graylog web interface to configure remote collectors
 ============================================================
 
@@ -227,39 +264,6 @@ for that. A usage of that can be seen in the ``nxlog-default`` snippet. It detec
 change.
 
 .. image:: /images/sidecar_configuration.png
-
-Step-by-Step Guide
-==================
-
-After following the installation instructions you most likely see an error from the Sidecar saying::
-
-    INFO[0006] [RequestConfiguration] No configuration found for configured tags!
-
-This means simply that there is no configuration with the same tag that the Sidecar was started with. So we have to create a new configuration, define out- and inputs and tag it in order to collect
-log files.
-
-- The first step is to navigate to the collector configurations. Click on ``System → Collectors → Manage configurations``. 
-.. image:: /images/sidecar_sbs1.png
-
-- Next we create a new configuration
-.. image:: /images/sidecar_sbs2.png
-
-- Give the configuration a name
-.. image:: /images/sidecar_sbs3.png
-
-- Click on the new configuration and create e.g. a Filebeat-GELF output. For a first test just change the IP to your Graylog server (given that a Beats input is running there on port 5044).
-.. image:: /images/sidecar_sbs4.png
-
-- Create a Filebeat file input to collect e.g. Apache access logs.
-.. image:: /images/sidecar_sbs5.png
-
-- Tag the configuration with the ``apache`` tag. Just write the tag name in the field press enter followed by the ``Update tags`` button.
-.. image:: /images/sidecar_sbs6.png
-
-- When you now start the Sidecar with the ``apache`` tag the output should look like this
-.. image:: /images/sidecar_sbs7.png
-
-- Congratulations your collector setup is working now!
 
 Debug
 =====
