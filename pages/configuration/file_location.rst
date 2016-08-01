@@ -43,3 +43,5 @@ In the `Elasticsearch documentation <https://www.elastic.co/guide/en/elasticsear
 | environment / heap  | :ref:`/etc/graylog/graylog-settings.json <graylog-ctl>` | * debian/ubuntu: /etc/default/elasticsearch |
 |                     |                                                         | * centos/RHEL: /etc/sysconfig/elasticsearch |
 +---------------------+---------------------------------------------------------+---------------------------------------------+
+
+.. important:: This list is not complete and should just give advice if looking for some special files
