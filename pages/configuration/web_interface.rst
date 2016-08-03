@@ -19,7 +19,7 @@ Single or separate listeners for web interface and REST API?
 
 Since Graylog 2.1 you have two options when it comes to exposing its web interface:
 
- - Running both on the same port, using different paths (defaulting to ``http://localhost:12900/`` for the REST API and ``http://localhost:12900/console`` for the web interface), this is the default since 2.1 and is assumed for most parts of the documentation.
+ - Running both on the same port, using different paths (defaulting to ``http://localhost:12900/`` for the REST API and ``http://localhost:12900/web`` for the web interface), this is the default since 2.1 and is assumed for most parts of the documentation.
  - Running on two different ports (for example ``http://localhost:12900`` for the REST API and ``http://localhost:9000`` for the web interface)
  
 .. note:: When you are using the first option and you want to run the REST API and the web interface on the same host and port, the path part of both URIs (``rest_listen_uri`` & ``web_listen_uri``) must be different and the path part of ``web_listen_uri`` must be non-empty and different than ``/``.
@@ -34,7 +34,7 @@ If our default settings do not work for you, there is a number of options in the
 +=========================+=================================+======================================================================+
 | ``web_enable``          | true                            | Determines if the web interface endpoint is started or not.          |
 +-------------------------+---------------------------------+----------------------------------------------------------------------+
-| ``web_listen_uri``      | http://127.0.0.1:12900/console  | Default address the web interface listener binds to.                 |
+| ``web_listen_uri``      | http://127.0.0.1:12900/web      | Default address the web interface listener binds to.                 |
 +-------------------------+---------------------------------+----------------------------------------------------------------------+
 | ``web_endpoint_uri``    | If not set,                     | This is the external address of the REST API of the Graylog server.  |
 |                         | ``rest_transport_uri``          | Web interface clients need to be able to connect to this for the web |
