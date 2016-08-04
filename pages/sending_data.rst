@@ -249,7 +249,6 @@ You can `learn more about JSONPath here <http://goessner.net/articles/JsonPath/>
 Reading from files
 ==================
 
-Graylog itself is not able, out-of-the-box to read log messages from file. But we had build the :ref:`Collector Sidecar <graylog-collector-sidecar>` which can be used as a supervisor for tools that are made for this purpose.
+Graylog ifself is not able to read log messages from file. We had build the :ref:`Collector Sidecar <graylog-collector-sidecar>` that can act like a supervisor for tools that made for this purpose.
 
-Any tool that can send data to Graylog can be used, as long as an input is present in Graylog that is able to receive the data.
-
+This leaves the ability untouched that you can use any tool that can create a valid message for the present Graylog inputs.
