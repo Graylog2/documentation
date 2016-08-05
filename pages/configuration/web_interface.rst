@@ -239,3 +239,30 @@ Apache httpd 2.x
     </VirtualHost>
 
 .. CAUTION:: Using Apache 2.2 needs the configuration above, if you have Apache 2.4 you need to switch the Locations. This means ``/api/`` must go after ``/``
+
+HAProxy 1.6
+-----------
+
+**REST API and Web Interface on one port (using HTTP)**::
+
+    frontend http
+        bind 0.0.0.0:80
+
+        option forwardfor
+        http-request add-header X-Forwarded-Host %[req.hdr(host)]
+        http-request add-header X-Forwarded-Server %[req.hdr(host)]
+        http-request add-header X-Forwarded-Port %[dst_port]
+
+        acl is_graylog hdr_dom(host) -i -m str graylog.example.org
+        use_backend	graylog	if is_graylog
+
+    backend graylog
+        description	The Graylog Web backend.
+        acl is_api var(req.api) -m bool true
+        http-request set-var(req.api) bool(true) if { path_beg /api/ }
+        http-request set-path %[path,regsub(^/api/,/)]
+        http-request set-header X-Graylog-Server-URL http://graylog.example.org/api unless is_api
+        use-server graylog_1_rest if is_api
+        use-server graylog_1 unless is_api
+        server graylog_1_rest 127.0.0.1:12900 maxconn 20 check
+        server graylog_1 127.0.0.1:9000 maxconn 20 check
