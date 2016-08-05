@@ -249,6 +249,8 @@ You can `learn more about JSONPath here <http://goessner.net/articles/JsonPath/>
 Reading from files
 ==================
 
-Graylog ifself is not able to read log messages from file. We had build the :ref:`Collector Sidecar <graylog-collector-sidecar>` that can act like a supervisor for tools that made for this purpose.
+Log files come in a lot of different flavors and formats, much more than any single program could handle.
 
-This leaves the ability untouched that you can use any tool that can create a valid message for the present Graylog inputs.
+To support this use case, we provide the :ref:`Collector Sidecar <graylog-collector-sidecar>` which acts as a supervisor process for other programs, such as nxlog and Filebeats, which have specifically been built to collect log messages from local files and ship them to remote systems like Graylog.
+
+Of course you can still use any program supporting the GELF or syslog protocol (among others) to send your logs to Graylog.
