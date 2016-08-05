@@ -173,7 +173,7 @@ As an example, a complete configuration could look like this::
     server_url: http://10.0.2.2:12900
     node_id: graylog-collector-sidecar
     collector_id: file:/etc/graylog/collector-sidecar/collector-id
-    tags: linux
+    tags: [linux, apache, redis]
     update_interval: 10
     log_path: /var/log/graylog/collector-sidecar
     backends:
