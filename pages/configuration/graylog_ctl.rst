@@ -51,15 +51,15 @@ The following commands are changing the configuration of Graylog:
 
 **After setting one or more of these options re-run**::
 
-  sudo graylog-ctl reconfigure
+  $ sudo graylog-ctl reconfigure
 
 You can also edit the full configuration files under ``/opt/graylog/conf`` manually. restart the related service afterwards::
 
-  sudo graylog-ctl restart graylog-server
+  $ sudo graylog-ctl restart graylog-server
 
 Or to restart all services::
 
-  sudo graylog-ctl restart
+  $ sudo graylog-ctl restart
 
 Multi VM setup
 ==============
@@ -73,7 +73,7 @@ Typically the first VM you spin up is used for this task. Automatically an insta
 settings for other hosts.
 
 For example, to create a small cluster with a dedicated Graylog server node and another for Elasticsearch, spin up two VMs from the same Graylog image.
-On the first one start only `graylog-server` and `mongodb`::
+On the first one start only Graylog and MongoDB::
 
   vm1> sudo graylog-ctl set-admin-password sEcReT
   vm1> sudo graylog-ctl reconfigure-as-server
@@ -94,7 +94,7 @@ you can proceed in the same way::
   vm1> sudo graylog-ctl reconfigure-as-server
   vm2> sudo graylog-ctl reconfigure-as-datanode
 
-Verify that all nodes are working as a cluster by going to the Kopf plugin on one of the Elasticsearch nodes `open http://vm2:9200/_plugin/kopf/#!/nodes`
+Verify that all nodes are working as a cluster by going to the Kopf plugin on one of the Elasticsearch nodes open ``http://vm2:9200/_plugin/kopf/#!/nodes``.
 
 **Important**:
 In case you want to add a second Graylog server you have to set the same server secret on all machines.
@@ -102,23 +102,22 @@ The secret is stored in the file ``/etc/graylog/graylog-secrets`` and can be app
 
 The following configuration modes do exist:
 
-+-----------------------------------------------------+---------------------------------------------+
-| Command                                             | Services                                    |
-+=====================================================+=============================================+
-| ``sudo graylog-ctl reconfigure``                    | Run all services on this box                |
-+-----------------------------------------------------+---------------------------------------------+
-| ``sudo graylog-ctl reconfigure-as-server``          | Run graylog-server, web and mongodb         |
-|                                                     | (no elasticsearch)                          |
-+-----------------------------------------------------+---------------------------------------------+
-| ``sudo graylog-ctl reconfigure-as-backend``         | Run graylog-server, elasticsearch and       |
-|                                                     | mongodb (no nginx for web access)           |
-+-----------------------------------------------------+---------------------------------------------+
-| ``sudo graylog-ctl reconfigure-as-datanode``        | Run only elasticsearch                      |
-+-----------------------------------------------------+---------------------------------------------+
++-----------------------------------------------------+-------------------------------------------------+
+| Command                                             | Services                                        |
++=====================================================+=================================================+
+| ``sudo graylog-ctl reconfigure``                    | Run all services on this box                    |
++-----------------------------------------------------+-------------------------------------------------+
+| ``sudo graylog-ctl reconfigure-as-server``          | Run Graylog, web and MongoDB (no Elasticsearch) |
++-----------------------------------------------------+-------------------------------------------------+
+| ``sudo graylog-ctl reconfigure-as-backend``         | Run Graylog, Elasticsearch and                  |
+|                                                     | MongoDB (no nginx for web interface access)     |
++-----------------------------------------------------+-------------------------------------------------+
+| ``sudo graylog-ctl reconfigure-as-datanode``        | Run only Elasticsearch                          |
++-----------------------------------------------------+-------------------------------------------------+
 
 A server with only the web interface running is not supported anymore since Graylog 2.0. The web interface is now included in the server process.
-But you can create your own service combinations by editing the file `/etc/graylog/graylog-services.json` by hand and enable or disable single services.
-Just run `graylog-ctl reconfigure` afterwards.
+But you can create your own service combinations by editing the file ``/etc/graylog/graylog-services.json`` by hand and enable or disable single services.
+Just run ``graylog-ctl reconfigure`` afterwards.
 
 .. _extend_ova_disk:
 
@@ -233,12 +232,12 @@ Upgrade Graylog
 
 Always perform a full backup or snapshot of the appliance before proceeding. Only upgrade
 if the release notes say the next version is a drop-in replacement.
-Look for the Graylog version you want to install `here <https://packages.graylog2.org/appliances/ubuntu>`_ , `graylog_latest` always links to the newest version::
+Choose the Graylog version you want to install from the `list of Omnibus packages <https://packages.graylog2.org/appliances/ubuntu>`_ . ``graylog_latest.deb`` always links to the newest version::
 
-  wget https://packages.graylog2.org/releases/graylog-omnibus/ubuntu/graylog_latest.deb
-  sudo graylog-ctl stop
-  sudo dpkg -G -i graylog_latest.deb
-  sudo graylog-ctl reconfigure
+  $ wget https://packages.graylog2.org/releases/graylog-omnibus/ubuntu/graylog_latest.deb
+  $ sudo graylog-ctl stop
+  $ sudo dpkg -G -i graylog_latest.deb
+  $ sudo graylog-ctl reconfigure
 
 Migrate manually from 1.x to 2.0.x
 ==================================
@@ -249,45 +248,45 @@ This procedure can potentially delete log data or configuration settings. So it'
 
 Stop all services but Elasticsearch::
 
-  sudo -s
-  graylog-ctl stop graylog-web
-  graylog-ctl stop graylog-server
-  graylog-ctl stop mongodb
-  graylog-ctl stop nginx
-  graylog-ctl stop etcd
+  $ sudo -s
+  $ graylog-ctl stop graylog-web
+  $ graylog-ctl stop graylog-server
+  $ graylog-ctl stop mongodb
+  $ graylog-ctl stop nginx
+  $ graylog-ctl stop etcd
 
 Check for index range types. The output of this command should be `{}`, if not `read <https://github.com/Graylog2/graylog2-server/blob/master/UPGRADING.rst#index-range-types>`_  how to fix this::
 
-  curl -XGET <appliance_IP>:9200/_all/_mapping/index_range; echo
+  $ curl -XGET <appliance_IP>:9200/_all/_mapping/index_range; echo
   {}
 
 Delete the Graylog index template::
 
-  curl -X DELETE <appliance_IP>:9200/_template/graylog-internal
+  $ curl -X DELETE <appliance_IP>:9200/_template/graylog-internal
 
 Migrate appliance configuration::
 
-  cd /etc
-  mv graylog graylog2.0
-  vi graylog2.0/graylog-secrets.json
+  $ cd /etc
+  $ mv graylog graylog2.0
+  $ vi graylog2.0/graylog-secrets.json
 
-  Remove the graylog_web section
+  # Remove the graylog_web section
   },  << don't forget the comma!
   "graylog_web": {
     "secret_token": "3552c87f3e3..."
   }
 
-  vi graylog2.0/graylog-services.json
+  $ vi graylog2.0/graylog-services.json
 
-  Remove the graylog_web section
+  # Remove the graylog_web section
   }, << don't forget the comma!
   "graylog_web": {
     "enabled": true
   }
 
-  vi graylog2.0/graylog-settings.json
+  $ vi graylog2.0/graylog-settings.json
   
-  Remove "rotation_size", "rotation_time", "indices"
+  # Remove "rotation_size", "rotation_time", "indices"
   "enforce_ssl": false,
   "rotation_size": 1073741824,
   "rotation_time": 0,
@@ -296,39 +295,38 @@ Migrate appliance configuration::
 
 Migrate appliance data::
 
-  cd /var/opt
-  mv graylog graylog2.0
-  mv graylog2.0/data/elasticsearch/graylog2 graylog2.0/data/elasticsearch/graylog
+  $ cd /var/opt
+  $ mv graylog graylog2.0
+  $ mv graylog2.0/data/elasticsearch/graylog2 graylog2.0/data/elasticsearch/graylog
 
 Delete old Graylog version and install new Omnibus package::
 
-  wget http://packages.graylog2.org/releases/graylog-omnibus/ubuntu/graylog_2.0.0-2_amd64.deb
-  apt-get purge graylog
-  dpkg -i graylog_2.0.0-2_amd64.deb
+  $ wget http://packages.graylog2.org/releases/graylog-omnibus/ubuntu/graylog_2.0.0-2_amd64.deb
+  $ apt-get purge graylog
+  $ dpkg -i graylog_2.0.0-2_amd64.deb
 
 Move directories back::
 
-  cd /etc
-  mv graylog2.0 graylog
-  cd /var/opt/
-  mv graylog2.0 graylog
+  $ cd /etc
+  $ mv graylog2.0 graylog
+  $ cd /var/opt/
+  $ mv graylog2.0 graylog
 
 Reconfigure and Reboot::
 
-  graylog-ctl reconfigure
-  reboot
+  $ graylog-ctl reconfigure
+  $ reboot
 
 Graylog should now be updated and old data still available.
 
-**Important:** The index retention configuration moved from the Graylog configuration file to the web interface. After the
-first start go to 'System -> Indices -> Update configuration' to re-enable your settings!
+.. important:: The index retention configuration moved from the Graylog configuration file to the web interface. After the first start go to 'System -> Indices -> Update configuration' to re-enable your settings.
 
 .. _graylog_ctl_advanced:
 
 Advanced Settings
 =================
 
-To change certain parameters used by `graylog-ctl` during a reconfigure run you can override all default parameters found  in the `attributes <https://github.com/Graylog2/omnibus-graylog2/blob/1.3/files/graylog-cookbooks/graylog/attributes/default.rb>`_ file.
+To change certain parameters used by ``graylog-ctl`` during a reconfigure run you can override all default parameters found  in the `attributes <https://github.com/Graylog2/omnibus-graylog2/blob/1.3/files/graylog-cookbooks/graylog/attributes/default.rb>`_ file.
 If you want to change the username used by Graylog for example, edit the file ``/etc/graylog/graylog-settings.json`` like this::
 
   "custom_attributes": {
@@ -357,7 +355,7 @@ There are a couple of other use cases of this, e.g. change the default data dire
       }
     }
 
-Or change the default memory settings used by `graylog-server` or `elasticsearch`::
+Or change the default memory settings used by Graylog or Elasticsearch::
 
   "custom_attributes": {
        "graylog-server": {
@@ -369,4 +367,3 @@ Or change the default memory settings used by `graylog-server` or `elasticsearch
      }
 
 Again, run ``reconfigure`` and ``restart`` afterwards to activate the changes.
-
