@@ -15,44 +15,39 @@ Configuration commands
 
 The following commands are changing the configuration of Graylog:
 
-+-----------------------------------------------------+---------------------------------------------+
-| Command                                             | Description                                 |
-+=====================================================+=============================================+
-|| ``sudo graylog-ctl set-admin-password <password>`` | Set a new admin password                    |
-+-----------------------------------------------------+---------------------------------------------+
-|| ``sudo graylog-ctl set-admin-username <username>`` | Set a different username for the admin user |
-+-----------------------------------------------------+---------------------------------------------+
-|| ``sudo graylog-ctl set-email-config``              | Configure SMTP settings to send alert mails |
-|| ``<smtp server> [--port=<smtp port>``              |                                             |
-|| ``--user=<username>``                              |                                             |
-|| ``--password=<password>``                          |                                             |
-|| ``--from-email=<sender-address>``                  |                                             |
-|| ``--web-url=<graylog web-interface url>``          |                                             |
-|| ``--no-tls --no-ssl]``                             |                                             |
-+-----------------------------------------------------+---------------------------------------------+
-|| ``sudo graylog-ctl set-timezone <zone acronym>``   | Set Graylog's timezone. Make sure system    |
-||                                                    | time is also set correctly with             |
-||                                                    | ``sudo dpkg-reconfigure tzdata``            |
-+-----------------------------------------------------+---------------------------------------------+
-|| ``sudo graylog-ctl enforce-ssl``                   | Enforce HTTPS for the web interface         |
-+-----------------------------------------------------+---------------------------------------------+
-|| ``sudo graylog-ctl set-node-id <id>``              | Override random server node id              |
-+-----------------------------------------------------+---------------------------------------------+
-|| ``sudo graylog-ctl set-server-secret <secret>``    | Override server secret used for encryption  |
-+-----------------------------------------------------+---------------------------------------------+
-|| ``sudo graylog-ctl disable-internal-logging``      | Disable sending internal logs (e. g. nginx) |
-||                                                    | from the virtual machine to Graylog         |
-+-----------------------------------------------------+---------------------------------------------+
-|| ``sudo graylog-ctl set-external-ip``               | Configure an external IP in the Nginx       |
-|| ``http[s]://<public IP>:port/``                    | proxy. This is needed to connect the web    |
-||                                                    | interface to the REST API e.g. in nat'd     |
-||                                                    | networks or on AWS.                         |
-+-----------------------------------------------------+---------------------------------------------+
-|| ``sudo graylog-ctl set-listen-address``            | Set the listen address for the web          |
-|| ``--service <web|rest|trabsport>``                 | interface, REST API, and the transport URI. |
-|| ``--address http://<host>:port``                   | Can be used to deal with additional network |
-||                                                    | interfaces.                                 |
-+-----------------------------------------------------+---------------------------------------------+
++-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| Command                                             | Description                                                                                                |
++=====================================================+============================================================================================================+
+|| ``sudo graylog-ctl set-admin-password <password>`` | Set a new admin password                                                                                   |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+|| ``sudo graylog-ctl set-admin-username <username>`` | Set a different username for the admin user                                                                |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+|| ``sudo graylog-ctl set-email-config``              | Configure SMTP settings to send alert mails                                                                |
+|| ``<smtp server> [--port=<smtp port>``              |                                                                                                            |
+|| ``--user=<username>``                              |                                                                                                            |
+|| ``--password=<password>``                          |                                                                                                            |
+|| ``--from-email=<sender-address>``                  |                                                                                                            |
+|| ``--web-url=<graylog web-interface url>``          |                                                                                                            |
+|| ``--no-tls --no-ssl]``                             |                                                                                                            |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+|| ``sudo graylog-ctl set-timezone <zone acronym>``   | Set Graylog's time zone from a `list of valid time zones <http://www.joda.org/joda-time/timezones.html>`_. |
+||                                                    | Make sure system time is also set correctly with ``sudo dpkg-reconfigure tzdata``.                         |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+|| ``sudo graylog-ctl enforce-ssl``                   | Enforce HTTPS for the web interface                                                                        |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+|| ``sudo graylog-ctl set-node-id <id>``              | Override random server node id                                                                             |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+|| ``sudo graylog-ctl set-server-secret <secret>``    | Override server secret used for encryption                                                                 |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+|| ``sudo graylog-ctl disable-internal-logging``      | Disable sending internal logs (e. g. nginx) from the VM to Graylog                                         |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+|| ``sudo graylog-ctl set-external-ip``               | Configure an external IP in the Nginx proxy.                                                               |
+|| ``http[s]://<public IP>:port/``                    | This is needed to connect the web interface to the REST API e.g. in NAT'd networks or on AWS.              |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+|| ``sudo graylog-ctl set-listen-address``            | Set the listen address for the web interface, REST API, and the transport URI.                             |
+|| ``--service <web|rest|trabsport>``                 | Can be used to deal with additional network interfaces.                                                    |
+|| ``--address http://<host>:port``                   |                                                                                                            |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
 
 **After setting one or more of these options re-run**::
 
