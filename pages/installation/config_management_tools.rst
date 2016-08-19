@@ -8,7 +8,7 @@ all three of them:
 
 * https://supermarket.chef.io/cookbooks/graylog2
 * https://forge.puppet.com/graylog/graylog
-* https://galaxy.ansible.com/list#/roles/3162
+* https://galaxy.ansible.com/Graylog2/graylog-ansible-role
 
 There are also official `Vagrant <https://www.vagrantup.com>`_ images if you want to spin up a local virtual machine quickly:
 

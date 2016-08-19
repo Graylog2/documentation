@@ -249,8 +249,8 @@ You can `learn more about JSONPath here <http://goessner.net/articles/JsonPath/>
 Reading from files
 ==================
 
-Graylog is currently not providing an out-of-the-box way to read log messages from files. We do however recommend two
-fantastic tools to do that job for you. Both come with native Graylog (GELF) outputs:
+Log files come in a lot of different flavors and formats, much more than any single program could handle.
 
-  * `fluentd <http://www.fluentd.org/guides/recipes/graylog2>`__
-  * `logstash <http://logstash.net/docs/1.4.2/outputs/gelf>`__
+To support this use case, we provide the :ref:`Collector Sidecar <graylog-collector-sidecar>` which acts as a supervisor process for other programs, such as nxlog and Filebeats, which have specifically been built to collect log messages from local files and ship them to remote systems like Graylog.
+
+Of course you can still use any program supporting the GELF or syslog protocol (among others) to send your logs to Graylog.

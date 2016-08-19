@@ -1,10 +1,14 @@
-### Problem description
+<!--- Provide a general summary of the issue in the Title above -->
 
-### Steps to reproduce the problem
+## Context
+<!--- Provide a more detailed introduction to the issue itself, and why you consider it to be wrong -->
+<!--- What were you trying to accomplish? -->
 
-1. ...
+## Expected Content
+<!--- Tell us what we are missing -->
 
-### Environment
+## Your Environment
+<!--- Include as many relevant details about the environment you use -->
 
 * Graylog Version:
 * Elasticsearch Version:
