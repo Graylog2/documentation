@@ -73,6 +73,7 @@ necessary to stop all running instances of NXlog and deconfigure the default sys
     $ sudo /etc/init.d/nxlog stop
     $ sudo update-rc.d -f nxlog remove
     $ sudo gpasswd -a nxlog adm
+    $ sudo chown -R nxlog.nxlog /var/spool/collector-sidecar/nxlog
 
     $ sudo dpkg -i collector-sidecar_0.0.9-1_amd64.deb
 
@@ -89,6 +90,7 @@ The same on a RedHat based system::
     $ sudo service nxlog stop
     $ sudo chkconfig --del nxlog
     $ sudo gpasswd -a nxlog root
+    $ sudo chown -R nxlog.nxlog /var/spool/collector-sidecar/nxlog
 
     $ sudo rpm -i collector-sidecar-0.0.9-1.x86_64.rpm
 
@@ -111,6 +113,13 @@ Edit `C:\Program Files\graylog\collector-sidecar\collector_sidecar.yml`, you sho
 
     $ C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe -service install
     $ C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe -service start
+
+To perform an uninstall on Windows::
+
+    $ C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe -service stop
+    $ C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe -service uninstall
+
+`Notice` that the NXLog file input is currently not able to do a SavePos for file tailing, this will be fixed in a future version.
 
 Configuration
 =============
