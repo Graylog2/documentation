@@ -56,7 +56,7 @@ or in silent mode with::
 
     $ collector_sidecar_installer.exe /S
 
-Edit `C:\Program Files\graylog\collector-sidecar\collector_sidecar.yml` and register the system service::
+Edit `C:\\Program Files\\graylog\\collector-sidecar\\collector_sidecar.yml` and register the system service::
 
     $ C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe -service install
     $ C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe -service start
@@ -109,7 +109,7 @@ system service. We just need the binaries installed on the system::
 
     $ collector_sidecar_installer.exe
 
-Edit `C:\Program Files\graylog\collector-sidecar\collector_sidecar.yml`, you should set at least the correct URL to your Graylog server and proper tags. Register the system service::
+Edit `C:\\Program Files\\graylog\\collector-sidecar\\collector_sidecar.yml`, you should set at least the correct URL to your Graylog server and proper tags. Register the system service::
 
     $ C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe -service install
     $ C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe -service start
