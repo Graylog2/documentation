@@ -4,19 +4,18 @@
 Default file locations
 **********************
 
-As every possible way to install Graylog in your environment might confuse with the location of specific files, this page should give you a little help in this.
+Every way to install Graylog will give you different locations for the same files. This Page should help you to find the files in your Setup.
 
 
 Graylog
 =======
 
-In the documentation and if you talk to someone references to the various configuration files or logfiles are given. This table should explain where you will find them.
+Only the default location are given, so if you had done some wired configuration this list might not help you.
 
 +---------------------+---------------------------------------------------------+---------------------------------------------+
 |                     | Omnibus (OVA / AWS / Openstack)                         | OS Package                                  |
 +=====================+=========================================================+=============================================+
-| graylog.conf /      | /opt/graylog/conf/graylog.conf                          | /etc/graylog/server/server.conf             |
-| server.conf         |                                                         |                                             |
+| configuration       | /opt/graylog/conf/graylog.conf                          | /etc/graylog/server/server.conf             |
 +---------------------+---------------------------------------------------------+---------------------------------------------+
 |  logs               | /var/log/graylog/server/                                | /var/log/graylog-server/                    |
 +---------------------+---------------------------------------------------------+---------------------------------------------+
@@ -31,6 +30,7 @@ In the documentation and if you talk to someone references to the various config
 
 Elasticsearch
 =============
+
 In the `Elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-dir-layout.html#default-paths>`__ is very detailed described where to find each file. We will only name a few that are of interest in a Graylog setup.
 
 +---------------------+---------------------------------------------------------+---------------------------------------------+
@@ -44,4 +44,4 @@ In the `Elasticsearch documentation <https://www.elastic.co/guide/en/elasticsear
 |                     |                                                         | * centos/RHEL: /etc/sysconfig/elasticsearch |
 +---------------------+---------------------------------------------------------+---------------------------------------------+
 
-.. important:: This list is not complete and should just give advice if looking for some special files
+.. important:: This list is not complete and should just give advice if looking for some files
