@@ -222,6 +222,54 @@ screenshots:
 
 Field graphs appear every time you perform a search, allowing you to compare data, or combine graphs coming from different streams.
 
+Decorators
+==========
+Decorators allow you to alter message fields during search time automatically. They are specially useful to make some data in your fields
+more readable, combine data in some field, or add new fields with more information about the message.
+
+Changes made by decorators are not persisted, meaning that you cannot search for decorated values or use field analyzers on them. You can
+still use those features in the original non-decorated fields.
+
+Decorators are applied on a stream-level, and are shared among all users capable of accessing a stream, so all users can share the same results
+and benefit from the advantages decorators add.
+
+Graylog includes some message decorators out of the box, but you can add new ones from pipelines or by writing your own as plugins.
+
+In order to apply decorators to your search results, click on the *Decorators* tab in your search sidebar, select the decorator you want
+to apply from the dropdown, and click on *Apply*. Once you save your changes, the search results will already contain the decorated values.
+
+.. image:: /images/create_decorator.png
+
+When you apply multiple decorators to the same search results, you can change the order in which they are applied at any time by using
+drag and drop in the decorator list.
+
+Syslog severity mapper
+^^^^^^^^^^^^^^^^^^^^^^
+The syslog severity mapper decorator lets you convert the numeric syslog level of syslog messages, to a human readable string. For example,
+applying the decorator to the ``level`` field in your logs would convert the syslog level ``4`` to ``Warning (4)``.
+
+To apply a syslog severity mapper decorator, you need to provide the following data:
+
+* **Source field**: Field containing the numeric syslog level
+* **Target field**: Field to store the human readable string. It can be the same one as the source field, if you wish to replace the numeric
+  value on your search results
+
+Format string
+^^^^^^^^^^^^^
+The format string decorator provides a simple way of combining several fields into one. It can also be used to modify the content of a field
+in, without altering the stored result in Elasticsearch.
+
+To apply a format string decorator you need to provide the following data:
+
+* **Format string**: Pattern used to format the resulting string. You can provide fields in the message by enclosing them in ``${}``.
+  E.g. ``${source}`` will add the contents of the ``source`` message field into the resulting string
+* **Target field**: Field to store the resulting value
+* **Require all fields** (optional): Check this box to only format the string when all other fields are present
+
+For example, using the format string ``Request to ${controller}#${action} finished in ${took_ms}ms with code ${http_response_code}``, could
+produce the text ``Request to PostsController#show finished in 57ms with code 200``, and make it visible in one of the message fields in
+your search results.
+
 Export results as CSV
 =====================
 It is also possible to export the results of your search as a CSV document. To do so, select all fields you want to export in the search
