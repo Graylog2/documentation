@@ -19,7 +19,7 @@ Testing a beta version
 You can also run a pre-release or beta version of Graylog using Docker. The pre-releases are included in the `graylog2/server` image.
 Follow this `guide <https://hub.docker.com/r/graylog2/server/>`_ and pick an alpha/beta/rc tag like::
 
-  $ docker run --link some-mongo:mongo --link some-elasticsearch:elasticsearch -d graylog2/server:2.0.0-beta.1-1
+  $ docker run --link some-mongo:mongo --link some-elasticsearch:elasticsearch -d graylog2/server:2.1.0-beta.4-1
  
 We only recommend to run beta versions if you are an experienced Graylog user and know what you are doing.
 
@@ -41,20 +41,20 @@ This all can be put in a `docker-compose.yml` file, like::
 
   version: '2'
   services:
-    some-mongo:
+    mongo:
       image: "mongo:3"
-    some-elasticsearch:
+    elasticsearch:
       image: "elasticsearch:2"
       command: "elasticsearch -Des.cluster.name='graylog'"
     graylog:
-      image: graylog2/server:2.0.0-1
+      image: graylog2/server:2.0.3-2
       environment:
         GRAYLOG_PASSWORD_SECRET: somepasswordpepper
         GRAYLOG_ROOT_PASSWORD_SHA2: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
         GRAYLOG_REST_TRANSPORT_URI: http://127.0.0.1:12900
       depends_on:
-        - some-mongo:mongo
-        - some-elasticsearch:elasticsearch
+        - mongo
+        - elasticsearch
       ports:
         - "9000:9000"
         - "12900:12900"
@@ -87,11 +87,11 @@ The `docker-compose.yml` file looks like this::
 
   version: '2'
   services:
-    some-mongo:
+    mongo:
       image: "mongo:3"
       volumes:
         - /graylog/data/mongo:/data/db
-    some-elasticsearch:
+    elasticsearch:
       image: "elasticsearch:2"
       command: "elasticsearch -Des.cluster.name='graylog'"
       volumes:
@@ -106,8 +106,8 @@ The `docker-compose.yml` file looks like this::
         GRAYLOG_ROOT_PASSWORD_SHA2: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
         GRAYLOG_REST_TRANSPORT_URI: http://127.0.0.1:12900
       depends_on:
-        - some-mongo:mongo
-        - some-elasticsearch:elasticsearch
+        - mongo
+        - elasticsearch
       ports:
         - "9000:9000"
         - "12900:12900"
@@ -142,11 +142,11 @@ In this example we created a new image with the Beats plugin installed. From now
 
   version: '2'
   services:
-    some-mongo:
+    mongo:
       image: "mongo:3"
       volumes:
         - /graylog/data/mongo:/data/db
-    some-elasticsearch:
+    elasticsearch:
       image: "elasticsearch:2"
       command: "elasticsearch -Des.cluster.name='graylog'"
       volumes:
