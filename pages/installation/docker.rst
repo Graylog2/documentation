@@ -39,23 +39,25 @@ In this case you can login to Graylog with the username and password `admin`.  G
 
 This all can be put in a `docker-compose.yml` file, like::
 
-  some-mongo:
-    image: "mongo:3"
-  some-elasticsearch:
-    image: "elasticsearch:2"
-    command: "elasticsearch -Des.cluster.name='graylog'"
-  graylog:
-    image: graylog2/server:2.0.0-1
-    environment:
-      GRAYLOG_PASSWORD_SECRET: somepasswordpepper
-      GRAYLOG_ROOT_PASSWORD_SHA2: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
-      GRAYLOG_REST_TRANSPORT_URI: http://127.0.0.1:12900
-    links:
-      - some-mongo:mongo
-      - some-elasticsearch:elasticsearch
-    ports:
-      - "9000:9000"
-      - "12900:12900"
+  version: '2'
+  services:
+    some-mongo:
+      image: "mongo:3"
+    some-elasticsearch:
+      image: "elasticsearch:2"
+      command: "elasticsearch -Des.cluster.name='graylog'"
+    graylog:
+      image: graylog2/server:2.0.0-1
+      environment:
+        GRAYLOG_PASSWORD_SECRET: somepasswordpepper
+        GRAYLOG_ROOT_PASSWORD_SHA2: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
+        GRAYLOG_REST_TRANSPORT_URI: http://127.0.0.1:12900
+      depends_on:
+        - some-mongo:mongo
+        - some-elasticsearch:elasticsearch
+      ports:
+        - "9000:9000"
+        - "12900:12900"
 
 After starting the three containers with `docker-compose up` open your browser with the URL `http://127.0.0.1:9000` and
 login with `admin:admin`
@@ -83,33 +85,34 @@ Create the configuration directory and copy the default files::
 
 The `docker-compose.yml` file looks like this::
 
-  some-mongo:
-    image: "mongo:3"
-    volumes:
-      - /graylog/data/mongo:/data/db
-  some-elasticsearch:
-    image: "elasticsearch:2"
-    command: "elasticsearch -Des.cluster.name='graylog'"
-    volumes:
-      - /graylog/data/elasticsearch:/usr/share/elasticsearch/data
-  graylog:
-    image: graylog2/server
-    volumes:
-      - /graylog/data/journal:/usr/share/graylog/data/journal
-      - /graylog/config:/usr/share/graylog/data/config
-    environment:
-      GRAYLOG_PASSWORD_SECRET: somepasswordpepper
-      GRAYLOG_ROOT_PASSWORD_SHA2: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
-      GRAYLOG_REST_TRANSPORT_URI: http://127.0.0.1:12900
-  
-    links:
-      - some-mongo:mongo
-      - some-elasticsearch:elasticsearch
-    ports:
-      - "9000:9000"
-      - "12900:12900"
-      - "12201/udp:12201/udp"
-      - "1514/udp:1514/udp"
+  version: '2'
+  services:
+    some-mongo:
+      image: "mongo:3"
+      volumes:
+        - /graylog/data/mongo:/data/db
+    some-elasticsearch:
+      image: "elasticsearch:2"
+      command: "elasticsearch -Des.cluster.name='graylog'"
+      volumes:
+        - /graylog/data/elasticsearch:/usr/share/elasticsearch/data
+    graylog:
+      image: graylog2/server
+      volumes:
+        - /graylog/data/journal:/usr/share/graylog/data/journal
+        - /graylog/config:/usr/share/graylog/data/config
+      environment:
+        GRAYLOG_PASSWORD_SECRET: somepasswordpepper
+        GRAYLOG_ROOT_PASSWORD_SHA2: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
+        GRAYLOG_REST_TRANSPORT_URI: http://127.0.0.1:12900
+      depends_on:
+        - some-mongo:mongo
+        - some-elasticsearch:elasticsearch
+      ports:
+        - "9000:9000"
+        - "12900:12900"
+        - "12201/udp:12201/udp"
+        - "1514/udp:1514/udp"
 
 Start all services with exposed data directories::
 
@@ -137,17 +140,19 @@ Build a new image from that::
 
 In this example we created a new image with the Beats plugin installed. From now on reference to that image instead of the `graylog2/server` e.g. in a `docker-compose.yml` file::
 
-  some-mongo:
-    image: "mongo:3"
-    volumes:
-      - /graylog/data/mongo:/data/db
-  some-elasticsearch:
-    image: "elasticsearch:2"
-    command: "elasticsearch -Des.cluster.name='graylog'"
-    volumes:
-      - /graylog/data/elasticsearch:/usr/share/elasticsearch/data
-  graylog:
-    image: graylog-with-beats-plugin
+  version: '2'
+  services:
+    some-mongo:
+      image: "mongo:3"
+      volumes:
+        - /graylog/data/mongo:/data/db
+    some-elasticsearch:
+      image: "elasticsearch:2"
+      command: "elasticsearch -Des.cluster.name='graylog'"
+      volumes:
+        - /graylog/data/elasticsearch:/usr/share/elasticsearch/data
+    graylog:
+      image: graylog-with-beats-plugin
   ...
 
 Problems
