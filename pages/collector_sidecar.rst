@@ -12,6 +12,14 @@ automatically, performs an update and restarts the necessary process.
 
 .. image:: /images/sidecar_overview.png
 
+
+Backends
+========
+
+Currently the Sidecar is supporting NXLog, Filebeat and Winlogbeat. They all share the same web interface, switch the tab on a configuration page to create
+resources for the used collector. The supported features are almost the same. For all collectors a GELF output with SSL encryption is available and the most used
+input options like file tailing or windows event logging.
+
 Installation
 ============
 
@@ -145,7 +153,7 @@ The configuration file is separated into global options and backend specific opt
 +-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
 | send_status       | Send the status of each backend back to Graylog and display it on the status page for the host                                        |
 +-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
-| list_log_files    | Send a directory listing to Graylog and display it on the host status page. This can also be a list of directories                    |
+| list_log_files    | Send a directory listing to Graylog and display it on the host status page, e.g. ``/var/log``. This can also be a list of directories |
 +-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
 | node_id           | Name of the Sidecar instance, will also show up in the web interface                                                                  |
 +-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
@@ -202,6 +210,14 @@ After the installation you will most likely see an error from the Sidecar saying
     INFO[0006] [RequestConfiguration] No configuration found for configured tags!
 
 This means simply that there is no configuration with the same tag that the Sidecar was started with. So we have to create a new configuration, define out- and inputs and tag it in order to collect log files.
+
+Sidecar Status
+--------------
+
+Each Sidecar instance is able to send status informations back to Graylog. By enabling the option ``send_status`` metrics like the configured tags or the IP address of the host Sidecar is running on
+are send. Also metrics that are relevant for a stable operation e.g. disk volumes over 75% utalization are included. Additionaly with the ``list_log_files`` option a directory listing is displayed in
+the Graylog web interface. In that way an administrator can see which files are available for collecting. The list is periodically updated and files with write access are highlighted for easy identification.
+After enabling ``send_status`` or ``send_status`` + ``list_log_files`` go to the collector overview and click on one of them, a status page with the configured information will be displayed.
 
 Step-by-step guide
 ~~~~~~~~~~~~~~~~~~
@@ -282,6 +298,13 @@ It's also conceivable to put a full configuration file into a snippet and skip a
 Before the snippet is actually rendered into the configuration file the Sidecar is sending it through a template engine. It's using Go's own text template `engine <https://golang.org/pkg/text/template/>`_
 for that. A usage of that can be seen in the ``nxlog-default`` snippet. It detects which operating the Sidecar is running on and depending on the result, paths for some collector settings
 change.
+
+Actions
+-------
+
+Resources like inputs, output or snippets have all the same actions: create, edit, clone
+Usually there are only little differences between certain configurations so you can create a resource once, clone it and modify only the fields you need. In this way
+it's possible to manage a fairly large amount of configurations.
 
 .. image:: /images/sidecar_configuration.png
 
