@@ -317,3 +317,11 @@ running collectors is written to the ``log_path`` directory.
 You can also start the Sidecar in foreground and monitor the output of the process::
 
     $ graylog-collector-sidecar -c /etc/graylog/collector-sidecar/collector_sidecar.yml
+
+Known Problems
+==============
+
+Currently we know of two problems with NXLog:
+
+  - Since version 2.9.17 timestamps are transmitted `without millisecond precision <https://nxlog.co/question/1855/gelf-timestamp-field-missing-millisecond-precision>`_
+  - On Windows machines NXlog is not able to store it's collector state so features like file tailing doesn't work correctly in combination with Sidecar. Use Filebeat as alternative here.
