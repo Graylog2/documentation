@@ -10,7 +10,7 @@ Each installation flavor of Graylog will place the configuration files into a sp
 DEB package
 ===========
 
-This paragraph covers Graylog installations on Ubuntu Linux, Debian Linux, and Debian derivates installed with the :ref:`DEB package <deb-apt>`.
+This paragraph covers Graylog installations on Ubuntu Linux, Debian Linux, and Debian derivates installed with the :ref:`DEB package <operationg_package_DEB-APT>`.
 
 Graylog
 -------
