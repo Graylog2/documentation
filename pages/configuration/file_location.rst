@@ -4,44 +4,175 @@
 Default file locations
 **********************
 
-Every way to install Graylog will give you different locations for the same files. This Page should help you to find the files in your Setup.
+Each installation flavor of Graylog will place the configuration files into a specific location on the local files system. The goal of this section is to provide a short overview about the most common and most important default file locations.
 
+
+DEB package
+===========
+
+This paragraph covers Graylog installations on Ubuntu Linux, Debian Linux, and Debian derivates installed with the :ref:`DEB package <deb-apt>`.
 
 Graylog
-=======
+-------
 
-Only the default location are given, so if you had done some wired configuration this list might not help you.
++-----------------------+---------------------------------------------+
+|                       | File system path                            |
++=======================+=============================================+
+| Configuration         | ``/etc/graylog/server/server.conf``         |
++-----------------------+---------------------------------------------+
+| Logging configuration | ``/etc/graylog/server/log4j2.xml``          |
++-----------------------+---------------------------------------------+
+| Plugins               | ``/usr/share/graylog-server/plugin``        |
++-----------------------+---------------------------------------------+
+| JVM settings          | ``/etc/default/graylog-server``             |
++-----------------------+---------------------------------------------+
+| Message journal files | TODO                                        |
++-----------------------+---------------------------------------------+
+| Log Files             | ``/var/log/graylog-server/``                |
++-----------------------+---------------------------------------------+
 
-+---------------------+---------------------------------------------------------+---------------------------------------------+
-|                     | Omnibus (OVA / AWS / Openstack)                         | OS Package                                  |
-+=====================+=========================================================+=============================================+
-| configuration       | /opt/graylog/conf/graylog.conf                          | /etc/graylog/server/server.conf             |
-+---------------------+---------------------------------------------------------+---------------------------------------------+
-|  logs               | /var/log/graylog/server/                                | /var/log/graylog-server/                    |
-+---------------------+---------------------------------------------------------+---------------------------------------------+
-|  plugins            | /opt/graylog/plugin                                     | /usr/share/graylog-server/plugin            |
-+---------------------+---------------------------------------------------------+---------------------------------------------+
-| log4j2.xml          | /opt/graylog/conf/log4j2.xml                            | /etc/graylog/server/log4j2.xml              |
-| (logging)           |                                                         |                                             |
-+---------------------+---------------------------------------------------------+---------------------------------------------+
-| environment / heap  | :ref:`/etc/graylog/graylog-settings.json <graylog-ctl>` | * debian/ubuntu: /etc/default/graylog-server|
-|                     |                                                         | * centos/RHEL: /etc/sysconfig/graylog-server|
-+---------------------+---------------------------------------------------------+---------------------------------------------+
 
 Elasticsearch
-=============
+-------------
 
-In the `Elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-dir-layout.html#default-paths>`__ is very detailed described where to find each file. We will only name a few that are of interest in a Graylog setup.
+.. note:: These are only the most common file locations. Please refer to the `Elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup-dir-layout.html#default-paths>`__ for a comprehensive list of default file locations.
 
-+---------------------+---------------------------------------------------------+---------------------------------------------+
-|                     | Omnibus (OVA / AWS / Openstack)                         | OS Package                                  |
-+=====================+=========================================================+=============================================+
-| configuration       | /opt/graylog/conf/elasticsearch/                        | /etc/elasticsearch                          |
-+---------------------+---------------------------------------------------------+---------------------------------------------+
-|  logs               | /var/log/graylog/elasticsearch/                         | /var/log/elasticsearch/                     |
-+---------------------+---------------------------------------------------------+---------------------------------------------+
-| environment / heap  | :ref:`/etc/graylog/graylog-settings.json <graylog-ctl>` | * debian/ubuntu: /etc/default/elasticsearch |
-|                     |                                                         | * centos/RHEL: /etc/sysconfig/elasticsearch |
-+---------------------+---------------------------------------------------------+---------------------------------------------+
++---------------+---------------------------------------------+
+|               | File system path                            |
++===============+=============================================+
+| Configuration | ``/etc/elasticsearch``                      |
++---------------+---------------------------------------------+
+| JVM settings  | ``/etc/default/elasticsearch``              |
++---------------+---------------------------------------------+
+| Data files    | ``/var/lib/elasticsearch/data``             |
++---------------+---------------------------------------------+
+| Log files     | ``/var/log/elasticsearch/``                 |
++---------------+---------------------------------------------+
 
-.. important:: This list is not complete and should just give advice if looking for some files
+
+MongoDB
+-------
+
++---------------+-----------------------+
+|               | File system path      |
++===============+=======================+
+| Configuration | ``/etc/mongod.conf``  |
++---------------+-----------------------+
+| Data files    | ``/var/lib/mongodb/`` |
++---------------+-----------------------+
+| Log files     | ``/var/log/mongodb/`` |
++---------------+-----------------------+
+
+
+RPM package
+===========
+
+This paragraph covers Graylog installations on Fedora Linux, Red Hat Enterprise Linux, CentOS Linux, and other Red Hat Linux derivates installed with the :ref:`RPM package <operating_package_rpm-yum-dnf>`.
+
+Graylog
+-------
+
++-----------------------+---------------------------------------------+
+|                       | File system path                            |
++=======================+=============================================+
+| Configuration         | ``/etc/graylog/server/server.conf``         |
++-----------------------+---------------------------------------------+
+| Logging configuration | ``/etc/graylog/server/log4j2.xml``          |
++-----------------------+---------------------------------------------+
+| Plugins               | ``/usr/share/graylog-server/plugin``        |
++-----------------------+---------------------------------------------+
+| JVM settings          | ``/etc/sysconfig/graylog-server``           |
++-----------------------+---------------------------------------------+
+| Message journal files | TODO                                        |
++-----------------------+---------------------------------------------+
+| Log Files             | ``/var/log/graylog-server/``                |
++-----------------------+---------------------------------------------+
+
+
+Elasticsearch
+-------------
+
+.. note:: These are only the most common file locations. Please refer to the `Elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup-dir-layout.html#default-paths>`__ for a comprehensive list of default file locations.
+
++---------------+----------------------------------+
+|               | File system path                 |
++===============+==================================+
+| Configuration | ``/etc/elasticsearch``           |
++---------------+----------------------------------+
+| JVM settings  | ``/etc/sysconfig/elasticsearch`` |
++---------------+----------------------------------+
+| Data files    | ``/var/lib/elasticsearch/``      |
++---------------+----------------------------------+
+| Log files     | ``/var/log/elasticsearch/``      |
++---------------+----------------------------------+
+
+
+MongoDB
+-------
+
++---------------+-----------------------+
+|               | File system path      |
++===============+=======================+
+| Configuration | ``/etc/mongod.conf``  |
++---------------+-----------------------+
+| Data files    | ``/var/lib/mongodb/`` |
++---------------+-----------------------+
+| Log files     | ``/var/log/mongodb/`` |
++---------------+-----------------------+
+
+
+Omnibus package
+===============
+
+This paragraph covers Graylog installations via OVA, on AWS (via AMI), and on Openstack using the `Graylog Omnibus package <https://github.com/Graylog2/omnibus-graylog2#readme>`_.
+
+Graylog
+-------
+
++-----------------------+---------------------------------------------------------+
+|                       | File system path                                        |
++=======================+=========================================================+
+| Configuration         | ``/opt/graylog/conf/graylog.conf``                      |
++-----------------------+---------------------------------------------------------+
+| Logging configuration | ``/opt/graylog/conf/log4j2.xml``                        |
++-----------------------+---------------------------------------------------------+
+| Plugins               | ``/opt/graylog/plugin``                                 |
++-----------------------+---------------------------------------------------------+
+| JVM settings          | :ref:`/etc/graylog/graylog-settings.json <graylog-ctl>` |
++-----------------------+---------------------------------------------------------+
+| Message journal files | TODO                                                    |
++-----------------------+---------------------------------------------------------+
+| Log files             | ``/var/log/graylog/server/``                            |
++-----------------------+---------------------------------------------------------+
+
+
+Elasticsearch
+-------------
+
+.. note:: These are only the most common file locations. Please refer to the `Elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup-dir-layout.html#default-paths>`__ for a comprehensive list of default file locations.
+
++---------------+---------------------------------------------------------+
+|               | File system path                                        |
++===============+=========================================================+
+| Configuration | ``/opt/graylog/conf/elasticsearch/``                    |
++---------------+---------------------------------------------------------+
+| JVM settings  | :ref:`/etc/graylog/graylog-settings.json <graylog-ctl>` |
++---------------+---------------------------------------------------------+
+| Data files    | TODO                                                    |
++---------------+---------------------------------------------------------+
+| Log files     | ``/var/log/graylog/elasticsearch/``                     |
++---------------+---------------------------------------------------------+
+
+
+MongoDB
+-------
+
++---------------+----------------------------------+
+|               | File system path                 |
++===============+==================================+
+| Configuration | TODO                             |
++---------------+----------------------------------+
+| Data files    | TODO                             |
++---------------+----------------------------------+
+| Log files     | ``/var/log/graylog/mongodb/``    |
++---------------+----------------------------------+
