@@ -326,7 +326,7 @@ Graylog should now be updated and old data still available.
 Advanced Settings
 =================
 
-To change certain parameters used by ``graylog-ctl`` during a reconfigure run you can override all default parameters found  in the `attributes <https://github.com/Graylog2/omnibus-graylog2/blob/1.3/files/graylog-cookbooks/graylog/attributes/default.rb>`_ file.
+To change certain parameters used by ``graylog-ctl`` during a reconfigure run you can override all default parameters found  in the `attributes <https://github.com/Graylog2/omnibus-graylog2/blob/2.0/files/graylog-cookbooks/graylog/attributes/default.rb>`_ file.
 If you want to change the username used by Graylog for example, edit the file ``/etc/graylog/graylog-settings.json`` like this::
 
   "custom_attributes": {
