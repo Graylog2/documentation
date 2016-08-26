@@ -23,7 +23,9 @@ input options like file tailing or windows event logging.
 Installation
 ============
 
-`Download a package <https://github.com/Graylog2/collector-sidecar/releases>`_ and install it on the target system.
+Currently we provide pre-compiled packages on the Github releases page of the project. Once the Sidecar project is settled and matured
+we will add the packages to the DEB and YUM online repositories.
+To get the Sidecar working `Download a package <https://github.com/Graylog2/collector-sidecar/releases>`_ and install it on the target system.
 
 Beats backend
 -------------
