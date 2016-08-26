@@ -1,3 +1,5 @@
+.. _upgrade_notes_graylog-2.0:
+
 **************************
 Upgrading to Graylog 2.0.x
 **************************
