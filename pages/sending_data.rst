@@ -90,6 +90,16 @@ Try sending an example message using curl::
 Both keep-alive and compression are supported via the common HTTP headers. The server will return a ``202 Accepted`` when the message
 was accepted for processing.
 
+Use Kafka as transport queue for sending
+========================================
+
+`Apache Kafka <http://kafka.apache.org>`__ can be used as a transport for different inputs in Graylog. Gelf, Syslog an RAW Inputs can be connected to a `Zookeeper <https://zookeeper.apache.org>`__ that controlls the Kafka Servers. The Topic is filtered by regex and depending on the Input you are able to set various additional settings.
+
+Use AMQP as transport queue for sending
+=======================================
+
+`AMQP <https://www.amqp.org>`__ can be used as a transport for different inputs in Graylog. Gelf, Syslog and RAW Inputs can be connected to any AMQP Server that is compatible to the `rabbitmq client library <https://www.rabbitmq.com/java-client.html>`__. You are able to set all common Settings by yourself.
+
 
 Microsoft Windows
 =================
