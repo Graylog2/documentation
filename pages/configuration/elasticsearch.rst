@@ -497,6 +497,8 @@ After you've removed the index template, new indices will only have the original
     }
   }
 
+.. _es_cluster_status:
+
 Cluster Status explained
 ========================
 
