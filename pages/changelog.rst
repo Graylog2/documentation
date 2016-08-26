@@ -101,7 +101,7 @@ Released: 2016-04-27
 
 https://www.graylog.org/blog/55-announcing-graylog-v2-0-ga
 
-.. note:: Please make sure to read the :ref:`Upgrade Guide <upgrade-from-1-to-2>`
+.. note:: Please make sure to read the :ref:`Upgrade Guide <upgrade_notes_graylog-2.0>`
           before upgrading to Graylog 2.0. There are breaking changes!
 
 **Feature Highlights**
