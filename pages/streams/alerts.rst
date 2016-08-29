@@ -7,7 +7,7 @@ Alerts are always based on streams. You can define conditions that trigger alert
 
 Hit *Manage alerts* in the stream overview to see already configured alerts, alerts that were fired in the past or to configure new alert conditions.
 
-Graylog ships with default *alert callbacks* and can be extended with :ref:`plugins`.
+Graylog ships with default *alert callbacks* and can be extended with :doc:`plugins`.
 
 Alert condition types explained
 ===============================
