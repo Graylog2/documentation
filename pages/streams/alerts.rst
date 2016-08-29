@@ -3,16 +3,11 @@
 Alerts
 ******
 
-You can define conditions that trigger alerts. For example whenever the stream *All production exceptions* has more than 50
-messages per minute or when the field *milliseconds* had a too high standard deviation in the last five minutes.
+Alerts are always based on streams. You can define conditions that trigger alerts. For example whenever the stream *All production exceptions* has more than 50 messages per minute or when the field *milliseconds* had a too high standard deviation in the last five minutes.
 
-Hit *Manage alerts* in the stream *Action* dropdown to see already configured alerts, alerts that were fired in the past or
-to configure new alert conditions.
+Hit *Manage alerts* in the stream overview to see already configured alerts, alerts that were fired in the past or to configure new alert conditions.
 
-You can configure the interval for alert checks in your `graylog.conf` using the `alert_check_interval` variable. The default
-is to check for alerts every 60 seconds.
-
-Graylog ships with default *alert callbacks* and can be extended with :doc:`plugins`.
+Graylog ships with default *alert callbacks* and can be extended with :ref:`plugins`.
 
 Alert condition types explained
 ===============================
@@ -20,27 +15,21 @@ Alert condition types explained
 Message count condition
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-This condition triggers whenever the stream received more than X messages in the last Y minutes. Perfect for example to
-be alerted when there are many exceptions on your platform. Create a stream that catches every error message and be alerted
-when that stream exceeds normal throughput levels.
+This condition triggers whenever the stream received more than X messages in the last Y minutes. Perfect for example to be alerted when there are many exceptions on your platform. Create a stream that catches every error message and be alerted when that stream exceeds normal throughput levels.
 
 Field value condition
 ^^^^^^^^^^^^^^^^^^^^^
 
-Triggers whenever the result of a statistical computation of a numerical message field in the stream is higher or lower than
-a given threshold. Perfect to monitor for performance problems: Be alerted whenever the standard deviation of the response time
-of your application was higher than X in the last Y minutes.
+Triggers whenever the result of a statistical computation of a numerical message field in the stream is higher or lower than a given threshold. Perfect to monitor for performance problems: *Be alerted whenever the standard deviation of the response time of your application was higher than X in the last Y minutes.*
 
-Field string value condition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Field content value condition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This condition triggers whenever the stream received at least one message since the last alert run that has a field set to
-a given value. Get an alert when a message with the field `type` set to `security` arrives in the stream.
+This condition triggers whenever the stream received at least one message since the last alert run that has a field set to a given value. *Get an alert when a message with the field `type` set to `security` arrives in the stream.*
 
-**Important:** We do not recommend to run this on analyzed fields like `message` or `full_message` because it is broken down
-to terms and you might get unexpected alerts. For example a check for `security` would also alert if a message with the field
-set to `no security` is received because it was broken down to `no` and `security`. This only happens on the analyzed
-`message` and `full_message` in Graylog. Please also take note that only a single alert is raised for this condition during the alerting interval, although multiple messages containing the given value may have been received since the last alert.
+.. Important:: We do not recommend to run this on analyzed fields like ``message`` or ``full_message`` because it is broken down to terms and you might get unexpected alerts. For example a check for `security` would also alert if a message with the field set to `no security` is received because it was broken down to `no` and `security`. This only happens on the analyzed ``message`` and ``full_message`` in Graylog.
+
+Please also take note that only a single alert is raised for this condition during the alerting interval, although multiple messages containing the given value may have been received since the last alert.
 
 What is the difference between alert callbacks and alert receivers?
 ===================================================================
@@ -53,9 +42,7 @@ If the email alarm callback is used because it appears once or multiple times in
 
 Alert callbacks types explained
 ===============================
-In this section we explain what the default alert callbacks included in Graylog do, and how to configure them.
-Alert callbacks are meant to be extensible through :doc:`plugins`, you can find more types in the
-`Graylog Marketplace <http://marketplace.graylog.org>`_ or even create your own.
+In this section we explain what the default alert callbacks included in Graylog do, and how to configure them. Alert callbacks are meant to be extensible through :doc:`plugins`, you can find more types in the `Graylog Marketplace <http://marketplace.graylog.org>`__ or even create your own.
 
 Email alert callback
 ^^^^^^^^^^^^^^^^^^^^
@@ -63,10 +50,7 @@ Email alert callback
 The email alert callback can be used to send an email to the configured alert receivers when the conditions are triggered.
 
 Three configuration options are available for the alert callback to customize the email that will be sent.
-
-.. image:: /images/stream_alert_callback_email_form.png
-
-The *email body* and *email subject* are `JMTE <https://github.com/DJCordhose/jmte>`_ templates. JMTE is a minimal template engine that supports variables, loops and conditions. See the `JMTE documentation <https://cdn.rawgit.com/DJCordhose/jmte/master/doc/index.html>`_ for a language reference.
+The *email body* and *email subject* are `JMTE <https://github.com/DJCordhose/jmte>`__ templates. JMTE is a minimal template engine that supports variables, loops and conditions. See the `JMTE documentation <https://cdn.rawgit.com/DJCordhose/jmte/master/doc/index.html>`__ for a language reference.
 
 We expose the following objects to the templates.
 
@@ -97,6 +81,8 @@ We expose the following objects to the templates.
   * ``message.fields`` map of key value pairs for all the fields defined in the message
 
   The ``message.fields`` fields can be useful to get access to arbitrary fields that are defined in the message. For example ``message.fields.full_message`` would return the ``full_message`` of a GELF message.
+
+.. image:: /images/stream_alert_callback_email_form.png
 
 HTTP alert callback
 ^^^^^^^^^^^^^^^^^^^
@@ -201,14 +187,10 @@ Graylog will send a POST request to the callback URL including information about
 
 Alert callback history
 ======================
-Sometimes sending alert callbacks may fail for some reason. Graylog provides an alert callback history for those ocasions,
-helping you to debug and fix any problems that may arise.
+Sometimes sending alert callbacks may fail for some reason. Graylog provides an alert callback history for those ocasions, helping you to debug and fix any problems that may arise.
 
 .. image:: /images/alert_callback_history.png
 
-To check the status of alert callbacks, go to the *Streams* page, and click on the *Manage alerts* button next to the stream
-containing the alert callbacks. You can find the alert callback history at the bottom of that page, in the *Triggered alerts*
-section.
+To check the status of alert callbacks, go to the *Streams* page, and click on the *Manage alerts* button next to the stream containing the alert callbacks. You can find the alert callback history at the bottom of that page, in the *Triggered alerts* section.
 
-On the list of alerts, clicking on *Show callbacks* will open a list of all the callbacks involved in the alert, including
-their status and configuration at the time the alert was triggered.
+On the list of alerts, clicking on *Show callbacks* will open a list of all the callbacks involved in the alert, including their status and configuration at the time the alert was triggered.
