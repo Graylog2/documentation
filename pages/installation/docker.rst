@@ -31,7 +31,7 @@ Also the web interface needs to know how to connect from your browser to the Gra
 
   -e GRAYLOG_PASSWORD_SECRET=somepasswordpepper
   -e GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
-  -e GRAYLOG_REST_TRANSPORT_URI="http://127.0.0.1:12900"
+  -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api"
 
 In this case you can login to Graylog with the username and password `admin`.  Generate your own password with this command::
 
@@ -51,13 +51,12 @@ This all can be put in a `docker-compose.yml` file, like::
       environment:
         GRAYLOG_PASSWORD_SECRET: somepasswordpepper
         GRAYLOG_ROOT_PASSWORD_SHA2: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
-        GRAYLOG_REST_TRANSPORT_URI: http://127.0.0.1:12900
+        GRAYLOG_WEB_ENDPOINT_URI: http://127.0.0.1:9000/api
       depends_on:
         - mongo
         - elasticsearch
       ports:
         - "9000:9000"
-        - "12900:12900"
 
 After starting the three containers with `docker-compose up` open your browser with the URL `http://127.0.0.1:9000` and
 login with `admin:admin`
@@ -104,13 +103,12 @@ The `docker-compose.yml` file looks like this::
       environment:
         GRAYLOG_PASSWORD_SECRET: somepasswordpepper
         GRAYLOG_ROOT_PASSWORD_SHA2: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
-        GRAYLOG_REST_TRANSPORT_URI: http://127.0.0.1:12900
+        GRAYLOG_WEB_ENDPOINT_URI: http://127.0.0.1:9000/api/
       depends_on:
         - mongo
         - elasticsearch
       ports:
         - "9000:9000"
-        - "12900:12900"
         - "12201/udp:12201/udp"
         - "1514/udp:1514/udp"
 
