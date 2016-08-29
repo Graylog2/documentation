@@ -12,6 +12,7 @@ _build
 [Ll]ib64
 [Ll]ocal
 [Ss]cripts
+share
 pyvenv.cfg
 .venv
 pip-selfcheck.json
