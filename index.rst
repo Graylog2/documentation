@@ -25,6 +25,7 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/collector
    pages/queries
    pages/streams
+   pages/streams/alerts 
    pages/dashboards
    pages/extractors
    pages/pipelines
