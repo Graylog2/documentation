@@ -131,6 +131,8 @@ other plugins in the marketplace.
       - Concatenates two strings.
     * - `regex`_
       - Match a regular expression against a string, with matcher groups.
+    * - `grok`_
+      - Applies a Grok pattern to a string.
     * - `crc32`_
       - Returns the hex encoded CRC32 digest of the given string.
     * - `crc32c`_
@@ -288,6 +290,16 @@ The groups can optionally be named using the ``group_names`` array. If not named
 
 **Note**: Patterns have to be valid `Java String literals <https://docs.oracle.com/javase/tutorial/essential/regex/literals.html>`_,
 please ensure you escape any backslashes in your regular expressions!
+
+grok
+----
+``grok(pattern: string, value: string, [only_named_captures: boolean])``
+
+Applies the grok pattern ``grok`` to ``value``. Returns a match object, containing a Map of field names and values.
+You can set ``only_named_captures`` to ``true`` to only return matches using named captures.
+
+**Tip**: The result of executing the ``grok`` function can be passed as argument for `set_fields`_ to set the extracted fields
+into a message.
 
 crc32
 -----
@@ -452,6 +464,8 @@ Sets the given field named ``field`` to the new ``value``. The ``field`` name mu
 a ``.`` character. It is trimmed of leading and trailing whitespace. String values are trimmed of whitespace as well.
 
 If ``message`` is omitted, this function uses the currently processed message.
+
+.. _set_fields:
 
 set_fields
 ----------
