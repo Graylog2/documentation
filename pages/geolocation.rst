@@ -59,7 +59,7 @@ Configuration* section.
 
 .. image:: /images/geolocation_3.png
 
-In that screen, you need to **enable the GeoIP Resolver**, and you must also **set the GeopIP Resolver as
+In that screen, you need to **enable the GeoIP Resolver**, and you must also **set the GeoIP Resolver as
 the last message processor to run**, if you want to be able to resolve geolocation from fields coming from
 extractors.
 
