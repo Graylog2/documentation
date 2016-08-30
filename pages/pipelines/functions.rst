@@ -254,6 +254,9 @@ Match the regular expression in ``pattern`` against ``value``. Returns a match o
 ``matches`` to indicate whether the regular expression matched and, if requested, the matching groups as ``groups``.
 The groups can optionally be named using the ``group_names`` array. If not named, the groups names are strings starting with ``"0"``.
 
+**Note**: Patterns have to be valid `Java String literals <https://docs.oracle.com/javase/tutorial/essential/regex/literals.html>`_,
+please ensure you escape any backslashes in your regular expressions!
+
 crc32
 -----
 ``crc32(value: string)``
