@@ -102,7 +102,7 @@ Use AMQP as transport queue for sending
 
 `AMQP <https://www.amqp.org>`__ can be used as a transport for different inputs in Graylog. Gelf, Syslog and RAW Inputs can be connected to any AMQP Server that is compatible to the `rabbitmq client library <https://www.rabbitmq.com/java-client.html>`__. You are able to set all common Settings by yourself.
 
-Examples can be found in the `Graylog Marketplace <https://marketplace.graylog.org/addons?search=amqp>`__.
+How you can send Syslog via AMQP can be found in the `Graylog Marketplace <https://marketplace.graylog.org/addons/246dc332-7da7-4016-b2f9-b00f722a8e79>`__.
 
 Microsoft Windows
 =================
