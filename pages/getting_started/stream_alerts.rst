@@ -58,7 +58,7 @@ In the Callbacks section,  select email alert callback, and input your email add
 
 Going Further
 ^^^^^^^^^^^^^
-If you want to configure an SMTP server, you can refer to the :doc:`this documentation <../installation/graylog_ctl>`.
+If you want to configure an SMTP server, you can refer to :ref:`graylog-ctl`.
 
 If you want to make this stream active, just go back to Streams and where you see the stream name, click the green *Start stream* button.
 
