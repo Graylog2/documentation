@@ -49,6 +49,7 @@ The default MongoDB audit log has a few configuration options available.
       - the MongoDB collection to store the audit log entries in
 
 .. _auditlog-config-option-mongodb-keep-entries:
+
 auditlog_mongodb_keep_entries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -65,6 +66,7 @@ Example::
     auditlog_mongodb_keep_entries = 365d
 
 .. _auditlog-config-option-mongodb-cleanup-interval:
+
 auditlog_mongodb_cleanup_interval
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -79,6 +81,7 @@ Example::
     auditlog_mongodb_cleanup_interval = 1h
 
 .. _auditlog-config-option-mongodb-collection:
+
 auditlog_mongodb_collection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -112,6 +115,7 @@ The optional log4j2 audit log appender has a few configuration options available
       - log4j2 marker name
 
 .. _auditlog-config-option-log4j2-enabled:
+
 auditlog_log4j_enabled
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -125,6 +129,7 @@ Example::
     auditlog_log4j_enabled = true
 
 .. _auditlog-config-option-log4j2-logger-name:
+
 auditlog_log4j_logger_name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -137,6 +142,7 @@ Example::
     auditlog_log4j_logger_name = graylog-auditlog
 
 .. _auditlog-config-option-log4j2-marker-name:
+
 auditlog_log4j_marker_name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
