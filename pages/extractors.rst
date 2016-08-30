@@ -34,6 +34,8 @@ full text searches but the real power of log analytics unveils when you can run 
 Wouldn't it be nice to be able to search for all blocked packages of a given source IP or to get a quickterms analysis
 of recently failed SSH login usernames? Hard to do when all you have is just a single long text message.
 
+.. attention:: Graylog extractors only work on text fields but won't be executed for numeric fields or anything other than a string.
+
 Creating extractors is possible via either Graylog REST API calls or from the web interface using a wizard. Select
 a message input on the *System* -> *Inputs* page and hit *Manage extractors* in the actions menu. The wizard allows
 you to load a message to test your extractor configuration against. You can extract data using for example regular
@@ -46,8 +48,10 @@ You can also choose to apply so called *converters* on the extracted value to fo
 of numbers to an integer or double value (important for range searches later), anonymize IP addresses, lower-/uppercase a
 string, build a hash value, and much more.
 
+
 Import extractors
 *****************
+
 The recommended way of importing extractors in Graylog is using :ref:`content_packs`. The
 `Graylog Marketplace <http://marketplace.graylog.org>`_ provides access to many content packs that you can easily
 download and import into your Graylog setup.
