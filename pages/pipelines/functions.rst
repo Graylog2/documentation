@@ -105,6 +105,8 @@ other plugins in the marketplace.
       - Converts the first parameter to a long integer value.
     * - `to_string`_
       - Converts the first parameter to its string representation.
+    * - `to_url`
+      - Converts a value to a valid URL using its string representation.
     * - `abbreviate`_
       - Abbreviates a String using ellipses.
     * - `capitalize`_
@@ -195,6 +197,12 @@ to_string
 ``to_string(value: any, [default: string])``
 
 Converts the first parameter to its string representation.
+
+to_url
+------
+``to_url(url: any, [default: string])``
+
+Converts the given ``url`` to a valid URL.
 
 abbreviate
 ----------
