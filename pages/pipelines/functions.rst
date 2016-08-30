@@ -183,6 +183,8 @@ other plugins in the marketplace.
       - Sets the name field to the given value in the currently processed message.
     * - `set_fields`_
       - Sets multiple fields to the given values in the currently processed message.
+    * - `rename_field`_
+      - Rename a message field.
 
 to_bool
 -------
@@ -516,3 +518,10 @@ acting like `set_field`_. It can be helpful for using the result of a function l
 currently processed message especially when the key names are the result of a regular expression.
 
 If ``message`` is omitted, this function uses the currently processed message.
+
+rename_field
+------------
+``rename_field(old_field: string, new_field: string, [message: Message])``
+
+Modifies the field name ``old_field`` to ``new_field`` in the given message, keeping the field value unchanged.
+
