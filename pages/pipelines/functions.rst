@@ -133,6 +133,8 @@ other plugins in the marketplace.
       - Match a regular expression against a string, with matcher groups.
     * - `grok`_
       - Applies a Grok pattern to a string.
+    * - `key_value`
+      - Extracts key/value pairs from a string.
     * - `crc32`_
       - Returns the hex encoded CRC32 digest of the given string.
     * - `crc32c`_
@@ -299,6 +301,44 @@ Applies the grok pattern ``grok`` to ``value``. Returns a match object, containi
 You can set ``only_named_captures`` to ``true`` to only return matches using named captures.
 
 **Tip**: The result of executing the ``grok`` function can be passed as argument for `set_fields`_ to set the extracted fields
+into a message.
+
+key_value
+---------
+::
+
+  key_value(
+    value: string,
+    [delimiters: string],
+    [kv_delimiters: string],
+    [ignore_empty_values: boolean],
+    [allow_dup_keys: boolean],
+    [handle_dup_keys: string],
+    [trim_key_chars: string],
+    [trim_value_chars: string]
+  )
+
+Extracts key-value pairs from the given ``value`` and returns them as a Map of field names and values. You can optionally specify:
+
+``delimiters``
+  Characters used to separate pairs. We will use each character in the string, so you do not need to separate them. Default value: ``<whitespace>``.
+``kv_delimiters``
+  Characters used to separate keys from values. Again, there is no need to separate each character. Default value: ``=``.
+``ignore_empty_values``
+  Ignores keys containing empty values. Default value: ``true``.
+``allow_dup_keys``
+  Indicates if duplicated keys are allowed. Default value: ``true``.
+``handle_dup_keys``
+  How to handle duplicated keys (if ``allow_dup_keys`` is set). It can take the values ``take_first``, which will only use the first value for the key;
+  or ``take_last``, which will only use the last value for the key. Setting this option to any other value will change the handling to concatenate, which
+  will combine all values given to the key, separating them with the value set in this option. For example, setting ``handle_dup_keys: ","``, would
+  combine all values given to a key ``a``, separating them with a comma, such as ``1,2,foo``. Default value: ``take_first``.
+``trim_key_chars``
+  Characters to trim (remove from the beginning and end) from keys. Default value: no trim.
+``trim_value_chars``
+  Characters to trim (remove from the beginning and end) from values. Default value: no trim.
+
+**Tip**: The result of executing the ``key_value`` function can be passed as argument for `set_fields`_ to set the extracted fields
 into a message.
 
 crc32
