@@ -174,25 +174,25 @@ other plugins in the marketplace.
 
 to_bool
 -------
-``to_bool(any)``
+``to_bool(value: any)``
 
 Converts the single parameter to a boolean value using its string value.
 
 to_double
 ---------
-``to_double(any, [default: double])``
+``to_double(value: any, [default: double])``
 
 Converts the first parameter to a double floating point value.
 
 to_long
 -------
-``to_long(any, [default: long])``
+``to_long(value: any, [default: long])``
 
 Converts the first parameter to a long integer value.
 
 to_string
 ---------
-``to_string(any, [default: string])``
+``to_string(value: any, [default: string])``
 
 Converts the first parameter to its string representation.
 
