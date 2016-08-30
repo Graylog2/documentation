@@ -185,6 +185,14 @@ other plugins in the marketplace.
       - Sets multiple fields to the given values in the currently processed message.
     * - `rename_field`_
       - Rename a message field.
+    * - `syslog_facility`
+      - Converts a syslog facility number to its string representation.
+    * - `syslog_level`
+      - Converts a syslog level number to its string representation.
+    * - `expand_syslog_priority`
+      - Converts a syslog priority number to its level and facility.
+    * - `expand_syslog_priority_as_string`
+      - Converts a syslog priority number to its level and facility string representations.
 
 to_bool
 -------
@@ -524,4 +532,28 @@ rename_field
 ``rename_field(old_field: string, new_field: string, [message: Message])``
 
 Modifies the field name ``old_field`` to ``new_field`` in the given message, keeping the field value unchanged.
+
+syslog_facility
+---------------
+``syslog_facility(value: any)``
+
+Converts the `syslog facility number <https://tools.ietf.org/html/rfc3164#section-4.1.1>`_ in ``value`` to its string representation.
+
+syslog_level
+------------
+``syslog_level(value: any)``
+
+Converts the `syslog severity number <https://tools.ietf.org/html/rfc3164#section-4.1.1>`_ in ``value`` to its string representation.
+
+expand_syslog_priority
+----------------------
+``expand_syslog_priority(value: any)``
+
+Converts the `syslog priority number <https://tools.ietf.org/html/rfc3164#section-4.1.1>`_ in ``value`` to its numeric severity and facility values.
+
+expand_syslog_priority_as_string
+--------------------------------
+``expand_syslog_priority_as_string(value: any)``
+
+Converts the `syslog priority number <https://tools.ietf.org/html/rfc3164#section-4.1.1>`_ in ``value`` to its severity and facility string representations.
 
