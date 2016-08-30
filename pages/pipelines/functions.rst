@@ -107,6 +107,10 @@ other plugins in the marketplace.
       - Converts the first parameter to its string representation.
     * - `to_url`
       - Converts a value to a valid URL using its string representation.
+    * - `is_null`
+      - Checks whether a value is 'null'.
+    * - `is_not_null`
+      - Checks whether a value is not 'null'.
     * - `abbreviate`_
       - Abbreviates a String using ellipses.
     * - `capitalize`_
@@ -203,6 +207,18 @@ to_url
 ``to_url(url: any, [default: string])``
 
 Converts the given ``url`` to a valid URL.
+
+is_null
+-------
+``is_null(value: any)``
+
+Checks if the given value is ``null``.
+
+is_not_null
+-----------
+``is_not_null(value: any)``
+
+Checks if the given value is not ``null``.
 
 abbreviate
 ----------
