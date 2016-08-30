@@ -127,6 +127,8 @@ other plugins in the marketplace.
       - Checks if a string contains another string.
     * - `substring`_
       - Returns a substring of ``value`` with the given start and end offsets.
+    * - `concat`
+      - Concatenates two strings.
     * - `regex`_
       - Match a regular expression against a string, with matcher groups.
     * - `crc32`_
@@ -269,6 +271,12 @@ substring
 
 Returns a substring of ``value`` starting at the ``start`` offset (zero based indices), optionally ending at
 the ``end`` offset. Both offsets can be negative, indicating positions relative to the end of ``value``.
+
+concat
+------
+``concat(first: string, second: string)``
+
+Returns a new string combining the text of ``first`` and ``second``.
 
 regex
 -----
