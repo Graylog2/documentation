@@ -282,15 +282,16 @@ The prerequisite of using the pipeline decorator is that an existing pipeline is
 
 .. note:: Please take note, that the pipeline you use for decoration should not be connected to a stream. This would mean that it is run twice (during indexing *and* search time) for each message, effectively rendering the second run useless.
 
-When you are done creating a pipeline, you can now add a decorator using it on any number of streams.
+When you are done creating a pipeline, you can now add a decorator using it on any number of streams. In order to create one, you proceed just like for
+any other decorator type, by clicking on the *Decorator* sidebar, selecting the type ("Pipeline Processor Decorator" in this case) and clicking the *Apply* button next to one.
 
 .. image:: /images/pipeline_decorator_select_type.png
 
-After clicking "Apply", the pipeline to be used for decorating can be selected.
+Upon clicking *Apply*, the pipeline to be used for decorating can be selected.
 
 .. image:: /images/pipeline_decorator_select_pipeline.png
 
-After selecting a pipeline and clicking "Save", you are already set creating a new pipeline decorator.
+After selecting a pipeline and clicking *Save*, you are already set creating a new pipeline decorator.
 
 Debugging decorators
 ^^^^^^^^^^^^^^^^^^^^
