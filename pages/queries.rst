@@ -224,10 +224,12 @@ Field graphs appear every time you perform a search, allowing you to compare dat
 
 Decorators
 ==========
-Decorators allow you to alter message fields during search time automatically. They are specially useful to make some data in your fields
-more readable, combine data in some field, or add new fields with more information about the message.
+Decorators allow you to alter message fields during search time automatically, while *preserving the unmodified message on disk*. Decorators
+are specially useful to make some data in your fields more readable, combine data in some field, or add new fields with more information about
+the message. As decorators are configured per stream (including the :ref:`default stream <default_stream>`), you are also able to present a single message in different
+streams differently.
 
-Changes made by decorators are not persisted, meaning that you cannot search for decorated values or use field analyzers on them. You can
+As changes made by decorators are not persisted, you cannot search for decorated values or use field analyzers on them. You can
 still use those features in the original non-decorated fields.
 
 Decorators are applied on a stream-level, and are shared among all users capable of accessing a stream, so all users can share the same results
@@ -269,6 +271,35 @@ To apply a format string decorator you need to provide the following data:
 For example, using the format string ``Request to ${controller}#${action} finished in ${took_ms}ms with code ${http_response_code}``, could
 produce the text ``Request to PostsController#show finished in 57ms with code 200``, and make it visible in one of the message fields in
 your search results.
+
+Pipeline Decorator
+^^^^^^^^^^^^^^^^^^
+The pipeline decorator provides a way to decorate messages by processing them with an existing :doc:`processing pipeline <pipelines>`.
+In contrast to using a processing pipeline, changes done to the message by the pipeline are not persisted. Instead, the pipeline is used at search time
+to modify the *presentation* of the message.
+
+The prerequisite of using the pipeline decorator is that an existing pipeline is required.
+
+.. note:: Please take note, that the pipeline you use for decoration should not be connected to a stream. This would mean that it is run twice (during indexing *and* search time) for each message, effectively rendering the second run useless.
+
+When you are done creating a pipeline, you can now add a decorator using it on any number of streams.
+
+.. image:: /images/pipeline_decorator_select_type.png
+
+After clicking "Apply", the pipeline to be used for decorating can be selected.
+
+.. image:: /images/pipeline_decorator_select_pipeline.png
+
+After selecting a pipeline and clicking "Save", you are already set creating a new pipeline decorator.
+
+Debugging decorators
+^^^^^^^^^^^^^^^^^^^^
+
+When a message is not decorated as expected, or you need to know how it looked like originally, you can see all changes that were done during decoration by clicking "Show changes" in the message details.
+
+.. image:: /images/pipeline_decorator_show_changes.png
+
+In this view, deleted content is shown in red, while added content is shown in green. This means that added fields will have a single green entry, removed fields a single red entry and modified fields will have two entries, a red and a green one.
 
 Export results as CSV
 =====================
