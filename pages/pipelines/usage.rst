@@ -73,3 +73,36 @@ routed into such stream.
 
 .. image:: /images/pipelines_edit_connections.png
 
+Simulate your changes
+=====================
+
+After performing some changes in processing pipelines, you most likely want to see how they are
+applied to incoming messages. This is what the pipeline simulator is for.
+
+Click the `Simulate processing` button in your pipeline connections page to access the pipeline
+simulator.
+
+.. image:: /images/pipelines_simulation_1.png
+
+In order to test the message processing, you need to feed a raw message that will be routed into
+the stream you want to simulate. The raw message should be using the same format as Graylog will
+receive, for instance, you can type a GELF message in the `Raw message` field, just as your
+GELF library would send. Don't forget to select the right codec for the message you provide.
+
+Once you provide the message and codec to use as example, clicking on `Load message` will start
+the simulation, and show the results when they are ready.
+
+.. image:: /images/pipelines_simulation_2.png
+
+The simulation provides the following results:
+
+Changes summary
+  Provides a summary of modified fields in the original message, and a list of added and dropped
+  messages.
+Results preview
+  Shows all fields in the processed message.
+Simulation trace
+  Displays a trace of the processing, indicating which rules were evaluated, which were executed.
+  It also includes a timeline in microseconds to allow you to see which rules and pipelines are
+  taking most of the time during message processing.
+
