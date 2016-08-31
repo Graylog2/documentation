@@ -17,13 +17,10 @@ Configuration
 The archive plugin can be configured via the Graylog web interface and does
 not need any changes in the Graylog server configuration file.
 
-In the web interface menu navigate to "System/Archives" for the configuration.
+In the web interface menu navigate to "System/Archives" and click "Configuration"
+to adjust the configuration.
 
 .. image:: /images/archiving-setup-config.png
-
-The "Configuration" section on the page shows the current configuration values. You can change the configuration by pressing "Update configuration".
-
-.. image:: /images/archiving-setup-config-dialog.png
 
 Archive Options
 ---------------
@@ -44,6 +41,8 @@ There are several configuration options to configure the archive plugin.
       - Compression type that will be used to compress the archives.
     * - Restore index batch size
       - Elasticsearch batch size when restoring archive files.
+    * - Streams to archive
+      - Streams that should be included in the archive.
 
 .. _archive-config-option-archive-path:
 
@@ -134,6 +133,19 @@ processing.
 
 Make sure to tune this **carefully** to avoid any negative impact on your
 message indexing throughput and search speed!
+
+.. _archive-config-option-streams-to-archive:
+
+Streams To Archive
+^^^^^^^^^^^^^^^^^^
+
+This option can be used to select which streams should be included in the
+archive. With this you are able to archive only your important data instead
+of archiving everything that is arriving in Graylog.
+
+.. note:: New streams will be archived automatically. If you create a new stream
+          and don't want it to be archived, you have to disable it in this
+          configuration dialog.
 
 .. _archive-config-index-retention:
 
