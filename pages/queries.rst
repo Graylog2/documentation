@@ -226,8 +226,8 @@ Decorators
 ==========
 Decorators allow you to alter message fields during search time automatically, while *preserving the unmodified message on disk*. Decorators
 are specially useful to make some data in your fields more readable, combine data in some field, or add new fields with more information about
-the message. As decorators are configured per stream (including the :ref:`default stream <default_stream>`), you are also able to present a single message in different
-streams differently.
+the message. As decorators are configured per stream (including the :ref:`default stream <default_stream>`), you are also able to present a
+single message in different streams differently.
 
 As changes made by decorators are not persisted, you cannot search for decorated values or use field analyzers on them. You can
 still use those features in the original non-decorated fields.
