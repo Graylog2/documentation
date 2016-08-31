@@ -8,7 +8,7 @@ addition to the Graylog open source server.
 Installation
 ============
 
-Please see the :doc:`Graylog Enterprise setup page </pages/enterprise/setup>` for details on how to install
+Please see the :ref:`Graylog Enterprise setup page <enterprise-setup>` for details on how to install
 the Audit Log plugin.
 
 .. note:: Make sure the Audit Log plugin is installed on every node in your Graylog cluster.
@@ -23,8 +23,9 @@ The audit log plugin provides two ways of writing audit log entries:
 
 Logging to the database is always enabled and cannot be disabled.
 
-All configuration needs to be done in the Graylog server configuration file
-and in the logging configuration. (only if the log4j2 appender is enabled)
+.. note:: All configuration needs to be done in the Graylog server configuration file
+          **and** in the logging configuration. (only if the log4j2 appender is enabled)
+          Check the :ref:`default file locations page <default_file_location>` for details.
 
 The web interface can show the current configuration.
 
@@ -163,20 +164,7 @@ in your Graylog configuration file **and** add some configuration to the
 ``log4j2.xml`` file that is used by your server process.
 
 The ``log4j2.xml`` file location is dependent on your deployment method.
-
-
-.. list-table:: Config File Locations
-    :header-rows: 1
-    :widths: 7 20
-
-    * - Deployment
-      - Location
-    * - OS Packages (deb, rpm)
-      - ``/etc/graylog/server/log4j2.xml``
-    * - Appliance
-      - tbd
-    * - manual
-      - no default ``log4j2.xml`` file available
+so please check the :ref:`default file locations page <default_file_location>`.
 
 An existing ``log4j2.xml`` config file needs another ``<Logger/>`` statement
 in the ``<Loggers/>`` section and an additional appender in the ``<Appenders/>``

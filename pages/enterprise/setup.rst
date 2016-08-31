@@ -1,3 +1,5 @@
+.. _enterprise-setup:
+
 *****
 Setup
 *****
