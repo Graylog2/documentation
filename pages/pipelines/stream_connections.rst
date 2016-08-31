@@ -18,6 +18,8 @@ To begin processing pipelines the incoming messages must therefore be directed t
 The default stream
 ==================
 
+.. _default_stream:
+
 All messages received by Graylog are initially on what is called the *default stream*. This merely means they aren't routed to
 any specific stream yet. The default stream by itself is no explicit stream, it doesn't show up anywhere, but the pipeline
 processor still allows you to connect pipelines to it.
