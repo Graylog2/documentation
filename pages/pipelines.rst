@@ -23,3 +23,4 @@ The following pages introduce the concepts of pipelines, rules, stream connectio
    pipelines/rules
    pipelines/stream_connections
    pipelines/functions
+   pipelines/usage
