@@ -151,6 +151,8 @@ Register your new plugin using the ``configure()`` method::
       addAlarmCallback(JiraAlarmCallback.class);
   }
 
+.. _writing_decorators:
+
 Writing a decorator plugin
 ==========================
 
@@ -177,13 +179,13 @@ In this example ``YourMessageDecorator`` is used as the base name for the class 
 Registering the plugin
 ----------------------
 
-Registering the decorator works generally similar to the alarm callback :ref:`example <registering_alarm_callback>`_, the helper method used to register a decorator has a different name and signature though. In general it works like this::
+Registering the decorator works generally similar to the alarm callback :ref:`example <registering_alarm_callback>`, the helper method used to register a decorator has a different name and signature though. In general it works like this::
 
   @Override
   protected void configure() {
       installSearchResponseDecorator(searchResponseDecoratorBinder(),
                                      YourMessageDecorator.class,
-                                     YourMessageDecoratorFactory.class);
+                                     YourMessageDecorator.Factory.class);
   }
 
 
