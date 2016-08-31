@@ -302,6 +302,11 @@ When a message is not decorated as expected, or you need to know how it looked l
 
 In this view, deleted content is shown in red, while added content is shown in green. This means that added fields will have a single green entry, removed fields a single red entry and modified fields will have two entries, a red and a green one.
 
+Further functionality
+^^^^^^^^^^^^^^^^^^^^^
+
+If the existing decorators are not sufficient for your needs, you can either search the `Graylog marketplace <http://marketplace.graylog.org>`__, or write your own decorator. The required steps are described :ref:`here <writing_decorators>`.
+
 Export results as CSV
 =====================
 It is also possible to export the results of your search as a CSV document. To do so, select all fields you want to export in the search
