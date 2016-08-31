@@ -187,22 +187,55 @@ write a configuration file for it.
 | configuration_path | Path to the configuration file for this collector                 |
 +--------------------+-------------------------------------------------------------------+
 
-As an example, a complete configuration could look like this::
+An example configuration for NXlog looks like this::
 
     server_url: http://10.0.2.2:12900
+    update_interval: 30
+    tls_skip_verify: true
+    send_status: true
+    list_log_files:
+      - /var/log
     node_id: graylog-collector-sidecar
     collector_id: file:/etc/graylog/collector-sidecar/collector-id
+    log_path: /var/log/graylog/collector-sidecar
+    log_rotation_time: 86400
+    log_max_age: 604800
     tags: 
       - linux
       - apache
       - redis
-    update_interval: 10
-    log_path: /var/log/graylog/collector-sidecar
     backends:
         - name: nxlog
           enabled: true
           binary_path: /usr/bin/nxlog
           configuration_path: /etc/graylog/collector-sidecar/generated/nxlog.conf
+
+For the Beats platform you can enable each Beat individually, e.g on a Windows host with Filebeat and Winlogbeat enabled use a configuration like this::
+
+    server_url: http://10.0.2.2:12900
+    update_interval: 30
+    tls_skip_verify: true
+    send_status: true
+    list_log_files:
+      - /var/log
+    node_id: graylog-collector-sidecar
+    collector_id: file:/etc/graylog/collector-sidecar/collector-id
+    log_path: /var/log/graylog/collector-sidecar
+    log_rotation_time: 86400
+    log_max_age: 604800
+    tags: 
+      - linux
+      - apache
+      - redis
+    backends:
+        - name: winlogbeat
+          enabled: true
+          binary_path: C:\Program Files\graylog\collector-sidecar\winlogbeat.exe
+          configuration_path: C:\Program Files\graylog\collector-sidecar\generated\winlogbeat.yml
+        - name: filebeat
+          enabled: true
+          binary_path: C:\Program Files\graylog\collector-sidecar\filebeat.exe
+          configuration_path: C:\Program Files\graylog\collector-sidecar\generated\filebeat.yml
 
 Configure Sidecar 
 -----------------
