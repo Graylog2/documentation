@@ -105,6 +105,12 @@ other plugins in the marketplace.
       - Converts the first parameter to a long integer value.
     * - `to_string`_
       - Converts the first parameter to its string representation.
+    * - `to_url`
+      - Converts a value to a valid URL using its string representation.
+    * - `is_null`
+      - Checks whether a value is 'null'.
+    * - `is_not_null`
+      - Checks whether a value is not 'null'.
     * - `abbreviate`_
       - Abbreviates a String using ellipses.
     * - `capitalize`_
@@ -121,8 +127,14 @@ other plugins in the marketplace.
       - Checks if a string contains another string.
     * - `substring`_
       - Returns a substring of ``value`` with the given start and end offsets.
+    * - `concat`
+      - Concatenates two strings.
     * - `regex`_
       - Match a regular expression against a string, with matcher groups.
+    * - `grok`_
+      - Applies a Grok pattern to a string.
+    * - `key_value`
+      - Extracts key/value pairs from a string.
     * - `crc32`_
       - Returns the hex encoded CRC32 digest of the given string.
     * - `crc32c`_
@@ -171,30 +183,58 @@ other plugins in the marketplace.
       - Sets the name field to the given value in the currently processed message.
     * - `set_fields`_
       - Sets multiple fields to the given values in the currently processed message.
+    * - `rename_field`_
+      - Rename a message field.
+    * - `syslog_facility`
+      - Converts a syslog facility number to its string representation.
+    * - `syslog_level`
+      - Converts a syslog level number to its string representation.
+    * - `expand_syslog_priority`
+      - Converts a syslog priority number to its level and facility.
+    * - `expand_syslog_priority_as_string`
+      - Converts a syslog priority number to its level and facility string representations.
 
 to_bool
 -------
-``to_bool(any)``
+``to_bool(value: any)``
 
 Converts the single parameter to a boolean value using its string value.
 
 to_double
 ---------
-``to_double(any, [default: double])``
+``to_double(value: any, [default: double])``
 
 Converts the first parameter to a double floating point value.
 
 to_long
 -------
-``to_long(any, [default: long])``
+``to_long(value: any, [default: long])``
 
 Converts the first parameter to a long integer value.
 
 to_string
 ---------
-``to_string(any, [default: string])``
+``to_string(value: any, [default: string])``
 
 Converts the first parameter to its string representation.
+
+to_url
+------
+``to_url(url: any, [default: string])``
+
+Converts the given ``url`` to a valid URL.
+
+is_null
+-------
+``is_null(value: any)``
+
+Checks if the given value is ``null``.
+
+is_not_null
+-----------
+``is_not_null(value: any)``
+
+Checks if the given value is not ``null``.
 
 abbreviate
 ----------
@@ -246,6 +286,12 @@ substring
 Returns a substring of ``value`` starting at the ``start`` offset (zero based indices), optionally ending at
 the ``end`` offset. Both offsets can be negative, indicating positions relative to the end of ``value``.
 
+concat
+------
+``concat(first: string, second: string)``
+
+Returns a new string combining the text of ``first`` and ``second``.
+
 regex
 -----
 ``regex(pattern: string, value: string, [group_names: array[string])``
@@ -253,6 +299,57 @@ regex
 Match the regular expression in ``pattern`` against ``value``. Returns a match object, with the boolean property
 ``matches`` to indicate whether the regular expression matched and, if requested, the matching groups as ``groups``.
 The groups can optionally be named using the ``group_names`` array. If not named, the groups names are strings starting with ``"0"``.
+
+**Note**: Patterns have to be valid `Java String literals <https://docs.oracle.com/javase/tutorial/essential/regex/literals.html>`_,
+please ensure you escape any backslashes in your regular expressions!
+
+grok
+----
+``grok(pattern: string, value: string, [only_named_captures: boolean])``
+
+Applies the grok pattern ``grok`` to ``value``. Returns a match object, containing a Map of field names and values.
+You can set ``only_named_captures`` to ``true`` to only return matches using named captures.
+
+**Tip**: The result of executing the ``grok`` function can be passed as argument for `set_fields`_ to set the extracted fields
+into a message.
+
+key_value
+---------
+::
+
+  key_value(
+    value: string,
+    [delimiters: string],
+    [kv_delimiters: string],
+    [ignore_empty_values: boolean],
+    [allow_dup_keys: boolean],
+    [handle_dup_keys: string],
+    [trim_key_chars: string],
+    [trim_value_chars: string]
+  )
+
+Extracts key-value pairs from the given ``value`` and returns them as a Map of field names and values. You can optionally specify:
+
+``delimiters``
+  Characters used to separate pairs. We will use each character in the string, so you do not need to separate them. Default value: ``<whitespace>``.
+``kv_delimiters``
+  Characters used to separate keys from values. Again, there is no need to separate each character. Default value: ``=``.
+``ignore_empty_values``
+  Ignores keys containing empty values. Default value: ``true``.
+``allow_dup_keys``
+  Indicates if duplicated keys are allowed. Default value: ``true``.
+``handle_dup_keys``
+  How to handle duplicated keys (if ``allow_dup_keys`` is set). It can take the values ``take_first``, which will only use the first value for the key;
+  or ``take_last``, which will only use the last value for the key. Setting this option to any other value will change the handling to concatenate, which
+  will combine all values given to the key, separating them with the value set in this option. For example, setting ``handle_dup_keys: ","``, would
+  combine all values given to a key ``a``, separating them with a comma, such as ``1,2,foo``. Default value: ``take_first``.
+``trim_key_chars``
+  Characters to trim (remove from the beginning and end) from keys. Default value: no trim.
+``trim_value_chars``
+  Characters to trim (remove from the beginning and end) from values. Default value: no trim.
+
+**Tip**: The result of executing the ``key_value`` function can be passed as argument for `set_fields`_ to set the extracted fields
+into a message.
 
 crc32
 -----
@@ -418,6 +515,8 @@ a ``.`` character. It is trimmed of leading and trailing whitespace. String valu
 
 If ``message`` is omitted, this function uses the currently processed message.
 
+.. _set_fields:
+
 set_fields
 ----------
 ``set_fields(fields: Map<string, any>, [message: Message])``
@@ -427,3 +526,34 @@ acting like `set_field`_. It can be helpful for using the result of a function l
 currently processed message especially when the key names are the result of a regular expression.
 
 If ``message`` is omitted, this function uses the currently processed message.
+
+rename_field
+------------
+``rename_field(old_field: string, new_field: string, [message: Message])``
+
+Modifies the field name ``old_field`` to ``new_field`` in the given message, keeping the field value unchanged.
+
+syslog_facility
+---------------
+``syslog_facility(value: any)``
+
+Converts the `syslog facility number <https://tools.ietf.org/html/rfc3164#section-4.1.1>`_ in ``value`` to its string representation.
+
+syslog_level
+------------
+``syslog_level(value: any)``
+
+Converts the `syslog severity number <https://tools.ietf.org/html/rfc3164#section-4.1.1>`_ in ``value`` to its string representation.
+
+expand_syslog_priority
+----------------------
+``expand_syslog_priority(value: any)``
+
+Converts the `syslog priority number <https://tools.ietf.org/html/rfc3164#section-4.1.1>`_ in ``value`` to its numeric severity and facility values.
+
+expand_syslog_priority_as_string
+--------------------------------
+``expand_syslog_priority_as_string(value: any)``
+
+Converts the `syslog priority number <https://tools.ietf.org/html/rfc3164#section-4.1.1>`_ in ``value`` to its severity and facility string representations.
+
