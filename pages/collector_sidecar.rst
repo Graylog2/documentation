@@ -178,7 +178,7 @@ write a configuration file for it.
 +--------------------+-------------------------------------------------------------------+
 | Parameter          | Description                                                       |
 +====================+===================================================================+
-| name               | The type name of the collector (either 'nxlog' or 'beats')        |
+| name               | Which backend to use (must be 'nxlog', 'filebeat' or 'winlogbeat) |
 +--------------------+-------------------------------------------------------------------+
 | enabled            | Whether this backend should be started by the Sidecar or not      |
 +--------------------+-------------------------------------------------------------------+
