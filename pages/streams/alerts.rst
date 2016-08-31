@@ -42,7 +42,7 @@ If the email alarm callback is used because it appears once or multiple times in
 
 Alert callbacks types explained
 ===============================
-In this section we explain what the default alert callbacks included in Graylog do, and how to configure them. Alert callbacks are meant to be extensible through :doc:`plugins`, you can find more types in the `Graylog Marketplace <http://marketplace.graylog.org>`__ or even create your own.
+In this section we explain what the default alert callbacks included in Graylog do, and how to configure them. Alert callbacks are meant to be extensible through :ref:`plugins`, you can find more types in the `Graylog Marketplace <http://marketplace.graylog.org>`__ or even create your own.
 
 Email alert callback
 ^^^^^^^^^^^^^^^^^^^^
