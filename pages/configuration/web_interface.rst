@@ -4,7 +4,7 @@
 Web interface
 *************
 
-When your Graylog instance/cluster is up and running, the next thing you usually want to do is check out our web interface, which offers you great capabilities for searching and analyzing your indexed data and configuring your Graylog environment. Per default you can access it using your browser on ``http://<graylog-server>:12900``.
+When your Graylog instance/cluster is up and running, the next thing you usually want to do is check out our web interface, which offers you great capabilities for searching and analyzing your indexed data and configuring your Graylog environment. Per default you can access it using your browser on ``http://<graylog-server>:9000/api/``.
 
 
 Overview
@@ -19,8 +19,8 @@ Single or separate listeners for web interface and REST API?
 
 Since Graylog 2.1 you have two options when it comes to exposing its web interface:
 
- - Running both on the same port, using different paths (defaulting to ``http://localhost:12900/`` for the REST API and ``http://localhost:12900/web`` for the web interface), this is the default since 2.1 and is assumed for most parts of the documentation.
- - Running on two different ports (for example ``http://localhost:12900`` for the REST API and ``http://localhost:9000`` for the web interface)
+ - Running both on the same port, using different paths (defaulting to ``http://localhost:9000/api/`` for the REST API and ``http://localhost:9000/`` for the web interface), this is the default since 2.1 and is assumed for most parts of the documentation.
+ - Running on two different ports (for example ``http://localhost:12900/`` for the REST API and ``http://localhost:9000/`` for the web interface)
  
 .. note:: When you are using the first option and you want to run the REST API and the web interface on the same host and port, the path part of both URIs (``rest_listen_uri`` & ``web_listen_uri``) must be different and the path part of ``web_listen_uri`` must be non-empty and different than ``/``.
 
@@ -34,7 +34,7 @@ If our default settings do not work for you, there is a number of options in the
 +=========================+=================================+======================================================================+
 | ``web_enable``          | true                            | Determines if the web interface endpoint is started or not.          |
 +-------------------------+---------------------------------+----------------------------------------------------------------------+
-| ``web_listen_uri``      | http://127.0.0.1:12900/web      | Default address the web interface listener binds to.                 |
+| ``web_listen_uri``      | http://127.0.0.1:9000/          | Default address the web interface listener binds to.                 |
 +-------------------------+---------------------------------+----------------------------------------------------------------------+
 | ``web_endpoint_uri``    | If not set,                     | This is the external address of the REST API of the Graylog server.  |
 |                         | ``rest_transport_uri``          | Web interface clients need to be able to connect to this for the web |
@@ -115,14 +115,14 @@ If you want to run a load balancer/reverse proxy in front of Graylog, you need t
   - You are either using only HTTP or only HTTPS (no mixed content) for both the web interface endpoint and the REST API endpoint.
   - If you use SSL, your certificates must be valid and trusted by your clients.
 
-.. NOTE:: To help you with your specific environment, we have some example configurations. We take the following assumption in all examples. Your Graylog server.conf has the following settings set ``rest_listen_uri = http://127.0.0.1:12900/`` and ``web_listen_uri = http://127.0.0.1:9000/``. Your URL will be ``graylog.example.org`` with the IP ``192.168.0.10``.
+.. NOTE:: To help you with your specific environment, we have some example configurations. We take the following assumption in all examples. Your Graylog server.conf has the following settings set ``rest_listen_uri = http://127.0.0.1:9000/api/`` and ``web_listen_uri = http://127.0.0.1:9000/``. Your URL will be ``graylog.example.org`` with the IP ``192.168.0.10``.
 
 
 Using a Layer 3 load balancer (forwarding TCP Ports)
 ----------------------------------------------------
 
-#. Configure your load balancer to forward connections going to ``192.168.0.10:80`` to ``127.0.0.1:9000`` (``web_listen_uri``) and ``192.168.0.10:12900`` to ``127.0.0.1:12900`` (``rest_listen_uri``).
-#. Set ``web_endpoint_uri`` in your Graylog server config to ``http://graylog.example.org:12900``.
+#. Configure your load balancer to forward connections going to ``192.168.0.10:80`` to ``127.0.0.1:9000`` (``web_listen_uri``) and ``192.168.0.10:9000/api/`` to ``127.0.0.1:9000/api/`` (``rest_listen_uri``).
+#. Set ``web_endpoint_uri`` in your Graylog server config to ``http://graylog.example.org:9000/api/``.
 #. Start the Graylog server as usual.
 #. Access the web interface on ``http://graylog.example.org``.
 #. Read up on :ref:`ssl_setup`.
@@ -144,7 +144,7 @@ NGINX
             proxy_set_header    X-Forwarded-Host $host;
             proxy_set_header    X-Forwarded-Server $host;
             proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_pass          http://127.0.0.1:12900/;
+            proxy_pass          http://127.0.0.1:9000/api/;
         }
       location /
         {
@@ -168,7 +168,7 @@ NGINX
     location /
         {
             proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header    X-Graylog-Server-URL http://graylog.example.org:12900;
+            proxy_set_header    X-Graylog-Server-URL http://graylog.example.org:9000/api/;
             proxy_set_header    Host $http_host;
             proxy_pass          http://127.0.0.1:9000;
         }
@@ -176,14 +176,14 @@ NGINX
 
     server
     {
-        listen      12900;
+        listen      9000;
         server_name graylog.example.org;
 
     location /
         {
             proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header    Host $http_host;
-            proxy_pass          http://127.0.0.1:12900/;
+            proxy_pass          http://127.0.0.1:9000/api/;
         }
     }
 
@@ -211,7 +211,7 @@ If you are running multiple Graylog Server you might want to use HTTPS/SSL to co
         {
             proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header    Host $http_host;
-            proxy_pass          http://127.0.0.1:12900/;
+            proxy_pass          http://127.0.0.1:9000/api/;
         }
     }
 
@@ -228,8 +228,8 @@ Apache httpd 2.x
             Allow from all
         </Proxy>
         <Location /api/>
-            ProxyPass http://127.0.0.1:12900/
-            ProxyPassReverse http://127.0.0.1:12900/
+            ProxyPass http://127.0.0.1:9000/api/
+            ProxyPassReverse http://127.0.0.1:9000/api/
         </Location>
         <Location />
             RequestHeader set X-Graylog-Server-URL "http://graylog.example.org/api/"
@@ -264,5 +264,5 @@ HAProxy 1.6
         http-request set-header X-Graylog-Server-URL http://graylog.example.org/api unless is_api
         use-server graylog_1_rest if is_api
         use-server graylog_1 unless is_api
-        server graylog_1_rest 127.0.0.1:12900 maxconn 20 check
+        server graylog_1_rest 127.0.0.1:9000/api/ maxconn 20 check
         server graylog_1 127.0.0.1:9000 maxconn 20 check

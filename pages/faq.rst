@@ -180,9 +180,9 @@ Send a POST request via the Graylog API Browser or curl to the ``/roles`` resour
     "read_only": false
    }
 
-The following curl command will create the required role (modify the URL of the Graylog REST API, here ``http://127.0.0.1:12900``, and the user credentials, here ``admin``/``admin``, according to your setup)::
+The following curl command will create the required role (modify the URL of the Graylog REST API, here ``http://127.0.0.1:9000/api/``, and the user credentials, here ``admin``/``admin``, according to your setup)::
   
-  $ curl -u admin:admin -H "Content-Type: application/json" -X POST -d '{"name": "Metrics Access", "description": "Provides read access to all system metrics", "permissions": ["metrics:*"], "read_only": false}' 'http://127.0.0.1:12900/roles'
+  $ curl -u admin:admin -H "Content-Type: application/json" -X POST -d '{"name": "Metrics Access", "description": "Provides read access to all system metrics", "permissions": ["metrics:*"], "read_only": false}' 'http://127.0.0.1:9000/api/roles'
 
 
 Troubleshooting

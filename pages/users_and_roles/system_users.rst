@@ -30,7 +30,7 @@ Creating the role
 
 You can create a new role using the REST API like this::
 
-  curl -v -XPOST -H 'Content-Type: application/json' 'http://ADMIN:PASSWORD@graylog.example.org:12900/roles' -d '{"read_only": false,"permissions": ["processing:changestate"],"name": "Change processing state","description": "Permission to start or stop processing on graylog-server nodes"}'
+  curl -v -XPOST -H 'Content-Type: application/json' 'http://ADMIN:PASSWORD@graylog.example.org:9000/api/roles' -d '{"read_only": false,"permissions": ["processing:changestate"],"name": "Change processing state","description": "Permission to start or stop processing on graylog-server nodes"}'
 
 Notice the ``processing:changestate`` permission that we assigned. Every user with this role will be able to
 execute only calls that start or stop processing on ``graylog-server`` nodes. (and also the standard ``reader`` permissions
@@ -59,7 +59,7 @@ or maintenance functionalities.
 
 Now request the user information to see what permissions have been assigned::
 
-  $ curl -XGET 'http://ADMIN:PASSWORT@graylog.example.org:12900/users/maintenanceuser?pretty=true'
+  $ curl -XGET 'http://ADMIN:PASSWORT@graylog.example.org:9000/api/users/maintenanceuser?pretty=true'
   {
     "id" : "563d1024d4c63709999c4ac2",
     "username" : "maintenanceuser",

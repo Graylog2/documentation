@@ -97,8 +97,7 @@ If you're using SELinux on your system, you need to take care of the following s
 
 - Allow the web server to access the network: ``sudo setsebool -P httpd_can_network_connect 1``
 - If the policy above does not comply with your security policy, you can also allow access to each port individually:
-    - Graylog REST API: ``sudo semanage port -a -t http_port_t -p tcp 12900``
-    - Graylog web interface: ``sudo semanage port -a -t http_port_t -p tcp 9000``
+    - Graylog REST API and web interface: ``sudo semanage port -a -t http_port_t -p tcp 9000``
     - Elasticsearch (only if the HTTP API is being used): ``sudo semanage port -a -t http_port_t -p tcp 9200``
 - Allow using MongoDB's default port (27017/tcp): ``sudo semanage port -a -t mongod_port_t -p tcp 27017``
 
