@@ -61,7 +61,13 @@ How do I create a stream?
 #. Save the stream after entering a name and a description. For example *All error messages* and
    *Catching all error messages from all sources*. The stream is now saved but **not yet activated**.
 #. Click on "Edit rules" for the stream you just created. That will open a page where you can manage and test stream rules.
-#. Indicate whether any or all of the rules must be true to include a message in the stream.
+#. Select the way you want to combine stream rules to decide which messages go into the stream:
+
+   * *A message must match all of the following rules*: Messages will only be routed into the stream if all rules in the
+     stream are fulfilled. This is the default behavior
+   * *A message must match at least one of the following rules*: Messages will be routed into the stream if one or more
+     rules in the stream are fulfilled
+
 #. Add stream rules, by indicating the field that you want to check, and the condition that should satisfy. Try the rules against
    some messages by loading them from an input or manually giving a message ID. Once you are satisfied with the results, click on "I'm done".
 #. The stream is still paused, click on the "Start stream" button to activate the stream.
@@ -97,8 +103,8 @@ How are streams processed internally?
 *************************************
 
 The most important thing to know about Graylog stream matching is that there is no duplication of stored messages. Every message that comes
-in is matched against all rules of a stream. The internal ID of every stream that has *all* rules matching is appended to the ``streams``
-array of the processed message.
+in is matched against the rules of a stream. For messages satisfying *all* or *at least one* of the stream rules (as configured in
+the stream), the internal ID of that stream is stored in the ``streams`` array of the processed message.
 
 All analysis methods and searches that are bound to streams can now easily narrow their operation by searching with a
 ``streams:[STREAM_ID]`` limit. This is done automatically by Graylog and does not have to be provided by the user.
@@ -109,9 +115,9 @@ Stream Processing Runtime Limits
 ********************************
 
 An important step during the processing of a message is the stream classification. Every message is matched against the user-configured
-stream rules. If every rule of a stream matches, the message is added to this stream. Applying stream rules is done during the indexing
-of a message only, so the amount of time spent for the classification of a message is crucial for the overall performance and message
-throughput the system can handle.
+stream rules. The message is added to the stream if all or any rules of a stream matches, depending on what the user chose. Applying
+stream rules is done during the indexing of a message only, so the amount of time spent for the classification of a message is crucial
+for the overall performance and message throughput the system can handle.
 
 There are certain scenarios when a stream rule takes very long to match. When this happens for a number of messages, message processing
 can stall, messages waiting for processing accumulate in memory and the whole system could become non-responsive. Messages are lost and
