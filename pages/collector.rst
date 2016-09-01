@@ -100,7 +100,7 @@ Replace the ``<your-graylog-server-ip>`` with the IP address of your Graylog ser
 
 Example::
 
-  server-url = "http://<your-graylog-server-ip>:12900/"
+  server-url = "http://<your-graylog-server-ip>:9000/api/"
 
   inputs {
     win-eventlog-application {
@@ -147,7 +147,7 @@ If you choose the operating system installation method, the configuration file d
 
 Here is a minimal configuration example that collects logs from the ``/var/log/syslog`` file and sends them to a Graylog server::
 
-  server-url = "http://10.0.0.1:12900/"
+  server-url = "http://10.0.0.1:9000/api/"
 
   inputs {
     syslog {
@@ -172,7 +172,7 @@ Global Settings
 ``server-url`` - The API URL of the Graylog server
   Used to send a heartbeat to the Graylog server.
 
-  (default: ``"http://localhost:12900"``)
+  (default: ``"http://localhost:9000/api/"``)
 ``enable-registration`` - Enable heartbeat registration
   Enables the heartbeat registration with the Graylog server. The collector will not contact the Graylog server API for heartbeat registration if this is set to ``false``.
 
@@ -634,12 +634,12 @@ Unable to send heartbeat
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 The collector registers with your Graylog server on a regular basis to make sure it shows up on the Collectors page in the Graylog web interface.
-This registration can fail if the collector cannot connect to the server via HTTP on port ``12900``::
+This registration can fail if the collector cannot connect to the server via HTTP on port ``9000``::
 
   2015-06-06T10:45:14.964+0200 WARN  [HeartbeatService RUNNING] collector.heartbeat.HeartbeatService - Unable to send heartbeat to Graylog server: ConnectException: Connection refused
 
 **Possible solutions**
 
 * Make sure the server REST API is configured to listen on a reachable IP address.
-  Change the "rest_listen_uri" setting in the Graylog server config to this: ``rest_listen_uri = http://0.0.0.0:12900/``
-* Correctly configure any firewalls between the collector and the server to allow HTTP traffic to port ``12900``.
+  Change the "rest_listen_uri" setting in the Graylog server config to this: ``rest_listen_uri = http://0.0.0.0:9000/api/``
+* Correctly configure any firewalls between the collector and the server to allow HTTP traffic to port ``9000``.

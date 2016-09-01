@@ -147,7 +147,7 @@ The configuration file is separated into global options and backend specific opt
 +-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
 | Parameter         | Description                                                                                                                           |
 +===================+=======================================================================================================================================+
-| server_url        | URL to the Graylog API, e.g. ``http://127.0.0.1:12900``                                                                               |
+| server_url        | URL to the Graylog API, e.g. ``http://127.0.0.1:9000/api/``                                                                           |
 +-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
 | update_interval   | The interval in seconds the sidecar will fetch new configurations from the Graylog server                                             |
 +-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
@@ -189,7 +189,7 @@ write a configuration file for it.
 
 An example configuration for NXlog looks like this::
 
-    server_url: http://10.0.2.2:12900
+    server_url: http://10.0.2.2:9000/api/
     update_interval: 30
     tls_skip_verify: true
     send_status: true
@@ -212,7 +212,7 @@ An example configuration for NXlog looks like this::
 
 For the Beats platform you can enable each Beat individually, e.g on a Windows host with Filebeat and Winlogbeat enabled use a configuration like this::
 
-    server_url: http://10.0.2.2:12900
+    server_url: http://10.0.2.2:9000/api/
     update_interval: 30
     tls_skip_verify: true
     send_status: true

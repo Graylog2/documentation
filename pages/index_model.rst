@@ -66,7 +66,7 @@ This may take a few seconds but is an easy task for Graylog.
 
 You can easily re-build the information yourself after manually deleting indices or doing other changes that might cause synchronisation problems::
 
-  $ curl -XPOST http://127.0.0.1:12900/system/indices/ranges/rebuild
+  $ curl -XPOST http://127.0.0.1:9000/api/system/indices/ranges/rebuild
 
 This will trigger a systemjob::
 
@@ -85,7 +85,7 @@ Manually cycling the deflector
 Sometimes you might want to cycle the deflector manually and not wait until the configured rotation criterion for in the latest index has been reached.
 You can do this either via an HTTP request against the REST API of the Graylog master node or via the web interface::
 
-  $ curl -XPOST http://127.0.0.1:12900/system/deflector/cycle
+  $ curl -XPOST http://127.0.0.1:9000/api/system/deflector/cycle
 
 .. image:: /images/recalculate_index_ranges_2016.png
 
