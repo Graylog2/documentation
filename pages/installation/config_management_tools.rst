@@ -12,4 +12,4 @@ all three of them:
 
 There are also official `Vagrant <https://www.vagrantup.com>`_ images if you want to spin up a local virtual machine quickly:
 
-* https://github.com/Graylog2/graylog2-images/tree/2.0/vagrant
+* https://github.com/Graylog2/graylog2-images/tree/2.1/vagrant
