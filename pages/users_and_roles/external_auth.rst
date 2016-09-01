@@ -85,3 +85,19 @@ Referral issues can be detected by warnings in the server logs about group mappi
   Please see http://docs.graylog.org/en/2.1/pages/users_and_roles/external_auth.html#troubleshooting
 
 These issues may be resolved by either managing the groups manually, or configuring the LDAP connection to work against the `global catalog <https://technet.microsoft.com/en-us/library/cc728188(v=ws.10).aspx>`_. The first solution means simply that the LDAP group settings must not be set, and the groups are managed locally. The global catalog solution requires using the 3268/TCP, or 3269/TCP (TLS) port of eligible Active Directory server. The downside is that using the global catalog service consumes slightly more server resources.
+
+
+Single Sign-On
+==============
+
+The `SSO Authentication Plugin for Graylog <https://marketplace.graylog.org/addons/eeeb0704-d50a-4df0-a789-eee29b1bb11d>`_ allows to use arbitrary HTTP request headers for authenticating Graylog users.
+
+Once the plugin has been `downloaded <https://github.com/Graylog2/graylog-plugin-auth-sso/releases>`__ and installed on all Graylog nodes, it can be configured on the **System / Authentication / Single Sign-On (SSO)** page.
+
+.. image:: /images/sso_1.png
+
+The HTTP request header containing the Graylog username can be configured in the **Username Header** field and should contain exactly one HTTP header name. Most HTTP request header based single sign-on solutions are using the ``Remote-User`` or ``X-Forwarded-User`` HTTP request header.
+
+In order to only allow trusted proxy servers to provide the Graylog username, the **Request must come from a trusted proxy** checkbox must be checked. The list of trusted proxy servers can be edited on each Graylog node in the configuration file using the `trusted_proxies <https://github.com/Graylog2/graylog2-server/blob/2.1.0/misc/graylog.conf#L124-L126>`_ configuration setting.
+
+If user accounts not existing in the Graylog user database should automatically be created on the first login, the **Automatically create user** checkbox must be checked. The automatically created users can also be customized to retrieve their full name or email address from another HTTP request header, otherwise the defaults are being used.
