@@ -126,6 +126,7 @@ Step-by-step guides
    :maxdepth: 1
 
    os/ubuntu
+   os/debian
    os/centos
 
 
