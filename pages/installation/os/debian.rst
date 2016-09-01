@@ -2,7 +2,7 @@
 Debian installation
 *******************
 
-This guide describes the fastest way to install Graylog on Debian (Jessie) 8. All links and packages are present at the time of writing but might need to be updated later on.
+This guide describes the fastest way to install Graylog on Debian Linux 8 (Jessie). All links and packages are present at the time of writing but might need to be updated later on.
 
 .. warning:: This setup should not be done on publicly exposed servers. This guide **does not cover** security settings!
 
@@ -10,12 +10,12 @@ This guide describes the fastest way to install Graylog on Debian (Jessie) 8. Al
 Prerequisites
 -------------
 
-To have all dependencies available the `Debian Backports <https://backports.debian.org>`__ need to be added to the available sources::
+Not all required dependencies are available in the standard repository, so we need to add `Debian Backports <https://backports.debian.org>`__ to the list of package sources::
 
   $ sudo echo "deb http://ftp.debian.org/debian jessie-backports main" > /etc/apt/sources.list.d/backports.list
   $ sudo apt-get update 
 
-Taking a minimal server setup as base will need this additional packages::
+If you're starting from a minimal server setup, you will need to install these additional packages::
 
   $ sudo apt-get install apt-transport-https openjdk-8-jre-headless uuid-runtime pwgen
 
@@ -23,7 +23,7 @@ Taking a minimal server setup as base will need this additional packages::
 MongoDB
 -------
 
-The Version included in Debian Jessie can be used together with Graylog 2.0.0 and higher::
+The version of MongoDB included in Debian Jessie is recent enough to be used with Graylog 2.0.0 and higher::
 
   $ apt-get install mongodb-server
 
