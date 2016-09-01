@@ -1,8 +1,8 @@
 *******************
-Ubuntu installation
+Debian installation
 *******************
 
-This guide describes the fastest way to install Graylog on Ubuntu 16.04 LTS. All links and packages are present at the time of writing but might need to be updated later on.
+This guide describes the fastest way to install Graylog on Debian Linux 8 (Jessie). All links and packages are present at the time of writing but might need to be updated later on.
 
 .. warning:: This setup should not be done on publicly exposed servers. This guide **does not cover** security settings!
 
@@ -10,15 +10,20 @@ This guide describes the fastest way to install Graylog on Ubuntu 16.04 LTS. All
 Prerequisites
 -------------
 
-Taking a minimal server setup as base will need this additional packages::
+Not all required dependencies are available in the standard repository, so we need to add `Debian Backports <https://backports.debian.org>`__ to the list of package sources::
 
-  $ apt-get install apt-transport-https openjdk-8-jre-headless uuid-runtime pwgen
+  $ sudo echo "deb http://ftp.debian.org/debian jessie-backports main" > /etc/apt/sources.list.d/backports.list
+  $ sudo apt-get update 
+
+If you're starting from a minimal server setup, you will need to install these additional packages::
+
+  $ sudo apt-get install apt-transport-https openjdk-8-jre-headless uuid-runtime pwgen
 
 
 MongoDB
 -------
 
-The Version included in Ubuntu 16.04 LTS can be used together with Graylog 2.0.0 and higher::
+The version of MongoDB included in Debian Jessie is recent enough to be used with Graylog 2.0.0 and higher::
 
   $ apt-get install mongodb-server
 
@@ -40,9 +45,9 @@ Make sure to modify the `Elasticsearch configuration file <https://www.elastic.c
 
 After you have modified the configuration, you can start Elasticsearch::
 
-  $ sudo /bin/systemctl daemon-reload
-  $ sudo /bin/systemctl enable elasticsearch.service
-  $ sudo /bin/systemctl restart elasticsearch.service
+  $ sudo systemctl daemon-reload
+  $ sudo systemctl enable elasticsearch.service
+  $ sudo systemctl restart elasticsearch.service
 
 
 Graylog
