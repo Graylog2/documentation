@@ -61,11 +61,11 @@ How do I create a stream?
 #. Save the stream after entering a name and a description. For example *All error messages* and
    *Catching all error messages from all sources*. The stream is now saved but **not yet activated**.
 #. Click on "Edit rules" for the stream you just created. That will open a page where you can manage and test stream rules.
-#. Select the way you want to combine stream rules to decide which messages go into the stream:
+#. Choose how you want to evaluate the stream rules to decide which messages go into the stream:
 
-   * *A message must match all of the following rules*: Messages will only be routed into the stream if all rules in the
+   * *A message must match all of the following rules* (logical AND): Messages will only be routed into the stream if all rules in the
      stream are fulfilled. This is the default behavior
-   * *A message must match at least one of the following rules*: Messages will be routed into the stream if one or more
+   * *A message must match at least one of the following rules* (logical OR): Messages will be routed into the stream if one or more
      rules in the stream are fulfilled
 
 #. Add stream rules, by indicating the field that you want to check, and the condition that should satisfy. Try the rules against
