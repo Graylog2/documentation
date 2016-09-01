@@ -20,7 +20,7 @@ Single or separate listeners for web interface and REST API?
 Since Graylog 2.1 you have two options when it comes to exposing its web interface:
 
  - Running both on the same port, using different paths (defaulting to ``http://localhost:9000/api/`` for the REST API and ``http://localhost:9000/`` for the web interface), this is the default since 2.1 and is assumed for most parts of the documentation.
- - Running on two different ports (for example ``http://localhost:9000/api/`` for the REST API and ``http://localhost:9000`` for the web interface)
+ - Running on two different ports (for example ``http://localhost:12900/`` for the REST API and ``http://localhost:9000/`` for the web interface)
  
 .. note:: When you are using the first option and you want to run the REST API and the web interface on the same host and port, the path part of both URIs (``rest_listen_uri`` & ``web_listen_uri``) must be different and the path part of ``web_listen_uri`` must be non-empty and different than ``/``.
 
