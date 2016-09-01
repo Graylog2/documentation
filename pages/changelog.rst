@@ -7,7 +7,7 @@ Graylog 2.1.0
 
 Released 2016-09-01
 
-TODO: URL to release blog post
+https://www.graylog.org/blog/68-announcing-graylog-v-2-1-0-ga
 
 **Core**
 
