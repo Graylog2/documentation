@@ -7,7 +7,7 @@ Rules
 Overview
 ========
 
-Rules are the cornerstone of the processing pipelines. They contain the logic about how to change, enrich route and drop messages.
+Rules are the cornerstone of the processing pipelines. They contain the logic about how to change, enrich, route, and drop messages.
 
 To avoid the complexities of a complete programming language, Graylog supports a small rule language to express the processing logic.
 The rule language is limited on purpose to allow for easier understanding, better runtime optimization and fast learning.
