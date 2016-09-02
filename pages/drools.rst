@@ -121,4 +121,4 @@ IP addrress of the Squid proxy, which not very useful. This rule overwrites the 
 Blacklisting messages
 =====================
 
-You can also use Drools rules to blacklist messages. How to do this is described :ref:`here <blacklisting>`.
+You can also use Drools rules to :ref:`blacklist messages <blacklisting>`.
