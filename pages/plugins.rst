@@ -195,7 +195,7 @@ Writing the actual logic
 The actual logic of modifying the presentation of messages (or better: search results, as this is what a decorator is working on) is contained in the ``SearchResponseDecorator#apply`` method, which needs to be implemented.
 It is called every time a search is performed and this specific decorator is configured for the stream it is performed on. It receives a ``SearchResponse`` object and also needs to return one, but is able to manipulate it during the runtime of the ``apply`` call.
 
-A good example on how to write a decorator can be seen in the `source of the Syslog severity mapper decorator <https://github.com/Graylog2/graylog2-server/blob/b4ddf46baf473dc0d3a27cf56703d06170d1e8ff/graylog2-server/src/main/java/org/graylog2/decorators/SyslogSeverityMapperDecorator.java>`_.
+A good example on how to write a decorator can be seen in the `source of the Syslog severity mapper decorator <https://github.com/Graylog2/graylog2-server/blob/master/graylog2-server/src/main/java/org/graylog2/decorators/SyslogSeverityMapperDecorator.java>`_.
 
 Creating a plugin for the web interface
 =======================================
@@ -264,7 +264,7 @@ Both the web interface and plugins for it depend on a number of libraries like R
 
 This has no consequences for you as a plugin author, because the configuration to make use of this is already generated for you when using the meta project or the maven archetype. But here are some details about it:
 
-Common libraries are built into a separate ``vendor`` bundle using an own configuration file named `webpack.vendor.js <https://github.com/Graylog2/graylog2-server/blob/2.0.1/graylog2-web-interface/webpack.vendor.js>`_. Using the `DLLPlugin <https://github.com/webpack/docs/wiki/list-of-plugins>`_ a `manifest is extracted <https://github.com/Graylog2/graylog2-server/blob/2.0.1/graylog2-web-interface/webpack.vendor.js#L31-L34>`_ which allow us to reuse the generated bundle. This is then imported in our main `web interface webpack configuration file <https://github.com/Graylog2/graylog2-server/blob/2.0/graylog2-web-interface/webpack.config.js#L51>`_ and the corresponding `generated webpack config file for plugins <https://github.com/Graylog2/graylog-web-plugin/blob/master/src/PluginWebpackConfig.js#L45>`_.
+Common libraries are built into a separate ``vendor`` bundle using an own configuration file named `webpack.vendor.js <https://github.com/Graylog2/graylog2-server/blob/2.1/graylog2-web-interface/webpack.vendor.js>`_. Using the `DLLPlugin <https://github.com/webpack/docs/wiki/list-of-plugins>`_ a `manifest is extracted <https://github.com/Graylog2/graylog2-server/blob/2.1/graylog2-web-interface/webpack.vendor.js#L30-L33>`_ which allow us to reuse the generated bundle. This is then imported in our main `web interface webpack configuration file <https://github.com/Graylog2/graylog2-server/blob/2.1/graylog2-web-interface/webpack.config.js#L48>`_ and the corresponding `generated webpack config file for plugins <https://github.com/Graylog2/graylog-web-plugin/blob/master/src/PluginWebpackConfig.js#L45>`_.
 
 Building plugins
 ================

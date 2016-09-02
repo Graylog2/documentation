@@ -1,5 +1,5 @@
 # The Graylog documentation
-[![Build Status](https://travis-ci.org/Graylog2/documentation.svg?branch=2.0)](https://travis-ci.org/Graylog2/documentation)
+[![Build Status](https://travis-ci.org/Graylog2/documentation.svg?branch=2.1)](https://travis-ci.org/Graylog2/documentation)
 
 ## Building locally
 

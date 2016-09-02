@@ -18,7 +18,7 @@ all calls and roles based on the standard stream or dashboard permissions can ex
 If you want to create a user that can only execute calls to start or stop message processing you have to find the name
 of the required permission first. Until we include this functionality in the Graylog UI you'll have to look directly
 into the code. The permissions are listed in the ``RestPermissions`` class which you can find on
-`GitHub <https://github.com/Graylog2/graylog2-server/blob/2.0.3/graylog2-server/src/main/java/org/graylog2/shared/security/RestPermissions.java>`__.
+`GitHub <https://github.com/Graylog2/graylog2-server/blob/2.1/graylog2-server/src/main/java/org/graylog2/shared/security/RestPermissions.java>`__.
 (Make sure to select a branch that reflects your current ``graylog-server`` version.)
 
 The permission you are searching for in this case is::
