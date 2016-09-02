@@ -286,7 +286,7 @@ Disabling specific TLS ciphers and algorithms
 
 Since `Java 7u76 <http://www.oracle.com/technetwork/java/javase/7u76-relnotes-2389087.html>`_ it is possible to disable specific TLS algorithms and ciphers for secure connections.
 
-In order to disable specific TLS algorithms and ciphers, you need to provide a properties file with a list of disabled algorithms and ciphers. Take a look at the example `security.properties <https://github.com/Graylog2/graylog2-server/blob/2.0/misc/security.properties>`__ in the Graylog source repository.
+In order to disable specific TLS algorithms and ciphers, you need to provide a properties file with a list of disabled algorithms and ciphers. Take a look at the example `security.properties <https://github.com/Graylog2/graylog2-server/blob/2.1/misc/security.properties>`__ in the Graylog source repository.
 
 For example, if you want to disable all algorithms except for TLS 1.2, the properties file has to contain the following line::
 

@@ -11,7 +11,7 @@ Installation
 
 These steps will create a Vagrant virtual machine with all Graylog services running::
 
-  $ wget https://raw.githubusercontent.com/Graylog2/graylog2-images/2.0/vagrant/Vagrantfile
+  $ wget https://raw.githubusercontent.com/Graylog2/graylog2-images/2.1/vagrant/Vagrantfile
   $ vagrant up
 
 Usage

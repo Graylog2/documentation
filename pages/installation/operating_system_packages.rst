@@ -30,12 +30,12 @@ Make sure to install and configure the following software before installing and 
 DEB / APT
 ---------
 
-Download and install `graylog-2.0-repository_latest.deb <https://packages.graylog2.org/repo/packages/graylog-2.0-repository_latest.deb>`_
+Download and install `graylog-2.1-repository_latest.deb <https://packages.graylog2.org/repo/packages/graylog-2.1-repository_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
   $ sudo apt-get install apt-transport-https
-  $ wget https://packages.graylog2.org/repo/packages/graylog-2.0-repository_latest.deb
-  $ sudo dpkg -i graylog-2.0-repository_latest.deb
+  $ wget https://packages.graylog2.org/repo/packages/graylog-2.1-repository_latest.deb
+  $ sudo dpkg -i graylog-2.1-repository_latest.deb
   $ sudo apt-get update
   $ sudo apt-get install graylog-server
 
@@ -70,17 +70,17 @@ First, add the `Graylog GPG keyring <https://packages.graylog2.org/repo/debian/k
 
 Now create a file ``/etc/apt/sources.list.d/graylog.list`` with the following content::
 
-  deb https://packages.graylog2.org/repo/debian/ stable 2.0
+  deb https://packages.graylog2.org/repo/debian/ stable 2.1
 
 .. _operating_package_rpm-yum-dnf:
 
 RPM / YUM / DNF
 ---------------
 
-Download and install `graylog-2.0-repository_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-2.0-repository_latest.rpm>`_
+Download and install `graylog-2.1-repository_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-2.1-repository_latest.rpm>`_
 via ``rpm(8)``::
 
-  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-2.0-repository_latest.rpm
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-2.1-repository_latest.rpm
   $ sudo yum install graylog-server
 
 After the installation completed successfully, Graylog can be started with the following commands. Make sure to use the correct command for your operating system.
@@ -114,7 +114,7 @@ Now create a file named ``/etc/yum.repos.d/graylog.repo`` with the following con
 
   [graylog]
   name=graylog
-  baseurl=https://packages.graylog2.org/repo/el/stable/2.0/$basearch/
+  baseurl=https://packages.graylog2.org/repo/el/stable/2.1/$basearch/
   gpgcheck=1
   gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-graylog
 
