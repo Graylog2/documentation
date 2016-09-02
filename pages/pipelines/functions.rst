@@ -105,11 +105,11 @@ other plugins in the marketplace.
       - Converts the first parameter to a long integer value.
     * - `to_string`_
       - Converts the first parameter to its string representation.
-    * - `to_url`
+    * - `to_url`_
       - Converts a value to a valid URL using its string representation.
-    * - `is_null`
+    * - `is_null`_
       - Checks whether a value is 'null'.
-    * - `is_not_null`
+    * - `is_not_null`_
       - Checks whether a value is not 'null'.
     * - `abbreviate`_
       - Abbreviates a String using ellipses.
@@ -127,13 +127,13 @@ other plugins in the marketplace.
       - Checks if a string contains another string.
     * - `substring`_
       - Returns a substring of ``value`` with the given start and end offsets.
-    * - `concat`
+    * - `concat`_
       - Concatenates two strings.
     * - `regex`_
       - Match a regular expression against a string, with matcher groups.
     * - `grok`_
       - Applies a Grok pattern to a string.
-    * - `key_value`
+    * - `key_value`_
       - Extracts key/value pairs from a string.
     * - `crc32`_
       - Returns the hex encoded CRC32 digest of the given string.
@@ -185,13 +185,13 @@ other plugins in the marketplace.
       - Sets multiple fields to the given values in the currently processed message.
     * - `rename_field`_
       - Rename a message field.
-    * - `syslog_facility`
+    * - `syslog_facility`_
       - Converts a syslog facility number to its string representation.
-    * - `syslog_level`
+    * - `syslog_level`_
       - Converts a syslog level number to its string representation.
-    * - `expand_syslog_priority`
+    * - `expand_syslog_priority`_
       - Converts a syslog priority number to its level and facility.
-    * - `expand_syslog_priority_as_string`
+    * - `expand_syslog_priority_as_string`_
       - Converts a syslog priority number to its level and facility string representations.
 
 to_bool
