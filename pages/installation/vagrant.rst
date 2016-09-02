@@ -4,7 +4,7 @@ Vagrant
 
 Requirements
 ------------
-You need a recent `vagrant` version, take a look `here <https://www.vagrantup.com/downloads.html>`_.
+You need a `recent <https://www.vagrantup.com/downloads.html>`_ `vagrant` version.
 
 Installation
 ------------
@@ -34,7 +34,7 @@ most basic settings of Graylog in the appliance::
   sudo graylog-ctl set-timezone <zone acronym>
   sudo graylog-ctl reconfigure
 
-The ``graylog-ctl`` has much more functionality and is documented :ref:`here <graylog-ctl>`.
+The ``graylog-ctl`` has much more :ref:`functionality <graylog-ctl>` documented .
 We strongly recommend to learn more about it to ensure smooth operation of your virtual appliance.
 
 Production readiness
