@@ -10,7 +10,7 @@ You need a recent `docker` version installed, take a look `here <https://docs.do
 This will create three containers with all Graylog services running::
 
   $ docker run --name some-mongo -d mongo
-  $ docker run --name some-elasticsearch -d elasticsearch elasticsearch -Des.cluster.name="graylog"
+  $ docker run --name some-elasticsearch -d elasticsearch:2 elasticsearch -Des.cluster.name="graylog"
   $ docker run --link some-mongo:mongo --link some-elasticsearch:elasticsearch -d graylog2/server
 
 Testing a beta version
