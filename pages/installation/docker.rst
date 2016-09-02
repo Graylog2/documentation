@@ -10,7 +10,7 @@ You need a recent `docker` version installed, take a look `here <https://docs.do
 This will create three containers with all Graylog services running::
 
   $ docker run --name some-mongo -d mongo
-  $ docker run --name some-elasticsearch -d elasticsearch elasticsearch -Des.cluster.name="graylog"
+  $ docker run --name some-elasticsearch -d elasticsearch:2.3 elasticsearch -Des.cluster.name="graylog"
   $ docker run --link some-mongo:mongo --link some-elasticsearch:elasticsearch -d graylog2/server
 
 Testing a beta version
@@ -44,7 +44,7 @@ This all can be put in a `docker-compose.yml` file, like::
     mongo:
       image: "mongo:3"
     elasticsearch:
-      image: "elasticsearch:2"
+      image: "elasticsearch:2.3"
       command: "elasticsearch -Des.cluster.name='graylog'"
     graylog:
       image: graylog2/server:2.1.0-1
@@ -91,7 +91,7 @@ The `docker-compose.yml` file looks like this::
       volumes:
         - /graylog/data/mongo:/data/db
     elasticsearch:
-      image: "elasticsearch:2"
+      image: "elasticsearch:2.3"
       command: "elasticsearch -Des.cluster.name='graylog'"
       volumes:
         - /graylog/data/elasticsearch:/usr/share/elasticsearch/data
@@ -145,7 +145,7 @@ In this example we created a new image with the Beats plugin installed. From now
       volumes:
         - /graylog/data/mongo:/data/db
     elasticsearch:
-      image: "elasticsearch:2"
+      image: "elasticsearch:2.3"
       command: "elasticsearch -Des.cluster.name='graylog'"
       volumes:
         - /graylog/data/elasticsearch:/usr/share/elasticsearch/data
