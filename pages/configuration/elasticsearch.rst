@@ -10,6 +10,7 @@ If you are using a shared Elasticsearch setup, a problem with indices unrelated 
 
 .. important:: Graylog currently does not work with Elasticsearch clusters using the License or `Shield <https://www.elastic.co/guide/en/shield/2.3/index.html>`__ plugin.
 
+.. warning:: Graylog 2.0.x currently **does not** work with Elasticsearch 2.4.x. The latest supported version is `Elasticsearch 2.3.5 <https://www.elastic.co/downloads/past-releases/elasticsearch-2-3-5>`_.
 
 Elasticsearch versions
 ======================
