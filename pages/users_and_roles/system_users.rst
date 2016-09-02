@@ -8,6 +8,7 @@ expose permissions on a REST call level yet. This guide describes how to create 
 
 Let's imagine we want to create a role that is only allowed to start or stop message processing on ``graylog-server`` nodes.
 
+
 REST call permissions
 =====================
 
@@ -17,20 +18,19 @@ all calls and roles based on the standard stream or dashboard permissions can ex
 
 If you want to create a user that can only execute calls to start or stop message processing you have to find the name
 of the required permission first. Until we include this functionality in the Graylog UI you'll have to look directly
-into the code. The permissions are listed in the ``RestPermissions`` class which you can find on
-`GitHub <https://github.com/Graylog2/graylog2-server/blob/2.1/graylog2-server/src/main/java/org/graylog2/shared/security/RestPermissions.java>`__.
-(Make sure to select a branch that reflects your current ``graylog-server`` version.)
+into the code. The permissions are listed in the `RestPermissions class <https://github.com/Graylog2/graylog2-server/blob/2.1.0/graylog2-server/src/main/java/org/graylog2/shared/security/RestPermissions.java>`__ (make sure to select a branch that reflects your current version of Graylog).
 
 The permission you are searching for in this case is::
 
   public static final String PROCESSING_CHANGESTATE = "processing:changestate";
+
 
 Creating the role
 =================
 
 You can create a new role using the REST API like this::
 
-  curl -v -XPOST -H 'Content-Type: application/json' 'http://ADMIN:PASSWORD@graylog.example.org:9000/api/roles' -d '{"read_only": false,"permissions": ["processing:changestate"],"name": "Change processing state","description": "Permission to start or stop processing on graylog-server nodes"}'
+  curl -v -XPOST -u ADMIN:PASSWORD -H 'Content-Type: application/json' 'http://graylog.example.org:9000/api/roles' -d '{"read_only": false,"permissions": ["processing:changestate"],"name": "Change processing state","description": "Permission to start or stop processing on Graylog nodes"}'
 
 Notice the ``processing:changestate`` permission that we assigned. Every user with this role will be able to
 execute only calls that start or stop processing on ``graylog-server`` nodes. (and also the standard ``reader`` permissions
@@ -47,19 +47,20 @@ This is the POST body in an easier to read formatting::
     "read_only": false
   }
 
+
 Assigning the role to a user
 ============================
 
-Create a new user in the Graylog Web Interface and assign the new role to it:
+Create a new user in the Graylog web interface and assign the new role to it:
 
 .. image:: /images/sysuser.png
 
-Every user needs to at least have the standard ``reader`` permissions but those do not provide any access to data
+Every user needs to at least have the standard "Reader" permissions but those do not provide any access to data
 or maintenance functionalities.
 
 Now request the user information to see what permissions have been assigned::
 
-  $ curl -XGET 'http://ADMIN:PASSWORT@graylog.example.org:9000/api/users/maintenanceuser?pretty=true'
+  $ curl -XGET -u ADMIN:PASSWORD 'http://graylog.example.org:9000/api/users/maintenanceuser?pretty=true'
   {
     "id" : "563d1024d4c63709999c4ac2",
     "username" : "maintenanceuser",

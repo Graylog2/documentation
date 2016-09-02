@@ -7,7 +7,7 @@ Plugins
 General information
 ===================
 
-Graylog comes with a stable plugin API for the following plugin types since Graylog 1.0:
+Graylog comes with a stable plugin API for the following plugin types:
 
 * **Inputs:** Accept/write any messages into Graylog
 * **Outputs:** Forward messages to other endpoints in real-time
@@ -17,6 +17,7 @@ Graylog comes with a stable plugin API for the following plugin types since Gray
 * **REST API Resources:** A REST resource to expose as part of the ``graylog-server`` REST API
 * **Periodical:** Called at periodical intervals during server runtime
 * **Decorators:** Used during search time to modify the presentation of messages
+* **Authentication Realms:** Allowing to implement different authentication mechanisms (like single sign-on or 2FA)
 
 The first step for writing a plugin is creating a skeleton that is the same for each type of plugin. The next chapter
 is explaining how to do this and will then go over to chapters explaining plugin types in detail.
