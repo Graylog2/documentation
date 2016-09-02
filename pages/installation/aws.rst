@@ -5,7 +5,7 @@ Amazon Web Services
 AMIs
 ----
 
-Select your AMI and AZ `here <https://github.com/Graylog2/graylog2-images/tree/2.1/aws>`_.
+Select your `AMI and Availability Zone (AZ) <https://github.com/Graylog2/graylog2-images/tree/2.1/aws>`_.
 
 Usage
 -----
@@ -13,7 +13,7 @@ Usage
   * Click on *Launch instance* for your AWS region to start Graylog into.
   * Choose an instance type **with at least 4GB memory**.
   * Finish the wizard and spin up the VM.
-  * Login to the instance as user `ubuntu`.
+  * Login to the instance via SSH as user `ubuntu`.
   * Run `sudo graylog-ctl reconfigure`.
   * Open port 80 and 9000 in the applied security group to access the web interface.
   * additionally open more ports for ingesting log data, like 514 for syslog or 12201 for the GELF protocol.
