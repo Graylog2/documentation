@@ -255,7 +255,7 @@ Stop all services but Elasticsearch::
   $ graylog-ctl stop nginx
   $ graylog-ctl stop etcd
 
-Check for index range types. The output of this command should be `{}`, if not `read <https://github.com/Graylog2/graylog2-server/blob/master/UPGRADING.rst#index-range-types>`_  how to fix this::
+Check for index range types. The output of this command should be `{}`, if not `read these notes <https://github.com/Graylog2/graylog2-server/blob/6b2d3fa0cf11596bee0d606f2eace23d73e50513/UPGRADING.rst#index-range-types>`_  for how to fix this::
 
   $ curl -XGET <appliance_IP>:9200/_all/_mapping/index_range; echo
   {}
