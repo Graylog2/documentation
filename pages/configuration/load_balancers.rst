@@ -19,9 +19,11 @@ There are two ways the load balancer state can change:
 * due to a lifecycle change (e.g. the server is starting to accept messages, or shutting down)
 * due to manual intervention via the REST API
 
+.. note:: In the following examples we assume that the Graylog REST API is available on the URI path ``/api/`` (e. g. ``http://graylog.example.com/api/``).
+
 To query the current load balancer status of a Graylog instance, all you need to do is to issue a HTTP call to its REST API::
 
-  GET /system/lbstatus
+  GET /api/system/lbstatus
 
 The status knows two different states, ``ALIVE`` and ``DEAD``, which is also the ``text/plain`` response of the
 resource. Additionally, the same information is reflected in the HTTP status codes: If the state is ``ALIVE``
@@ -32,8 +34,8 @@ The resource is accessible without authentication to make it easier for load bal
 
 To programmatically change the load balancer status, an additional endpoint is exposed::
 
-  PUT /system/lbstatus/override/alive
-  PUT /system/lbstatus/override/dead
+  PUT /api/system/lbstatus/override/alive
+  PUT /api/system/lbstatus/override/dead
 
 Only authenticated and authorized users are able to change the status, in the currently released Graylog version
 this means only admin users can change it.
@@ -62,7 +64,7 @@ It is possible to use the Graylog web interface behind a load balancer for high 
 
 .. note:: Take care of the configuration you need :ref:`with a proxy setup <configuring_webif_nginx>`, as it will *not* work out of the box.
 
-As of version 2.0 you do not need a sticky session (previously required under 1.x).  It is still important, however, that the API URL ``/system/deflector/cycle`` hits the configured Graylog master node, although this might change in a future release.
+As of version 2.0 you do not need a sticky session (previously required under 1.x).  It is still important, however, that the API URL ``/api/system/deflector/cycle`` hits the configured Graylog master node, although this might change in a future release.
 
 Please refer to your vendor's documentation to learn how to route this URL to a specific host.
 
