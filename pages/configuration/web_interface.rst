@@ -21,7 +21,7 @@ Since Graylog 2.1 you have two options when it comes to exposing its web interfa
 
  - Running both on the same port, using different paths (defaulting to ``http://localhost:9000/api/`` for the REST API and ``http://localhost:9000/`` for the web interface), this is the default since 2.1 and is assumed for most parts of the documentation.
  - Running on two different ports (for example ``http://localhost:12900/`` for the REST API and ``http://localhost:9000/`` for the web interface)
- 
+
 .. note:: When you are using the first option and you want to run the REST API and the web interface on the same host and port, the path part of both URIs (``rest_listen_uri`` & ``web_listen_uri``) must be different and the path part of ``web_listen_uri`` must be non-empty and different than ``/``.
 
 Configuration Options
@@ -138,14 +138,6 @@ NGINX
       listen      [::]:80 default_server ipv6only=on;
       server_name graylog.example.org;
 
-      location /api/
-        {
-            proxy_set_header    Host $http_host;
-            proxy_set_header    X-Forwarded-Host $host;
-            proxy_set_header    X-Forwarded-Server $host;
-            proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_pass          http://127.0.0.1:9000/api/;
-        }
       location /
         {
             proxy_set_header    Host $http_host;
@@ -154,36 +146,6 @@ NGINX
             proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header    X-Graylog-Server-URL http://graylog.example.org/api;
             proxy_pass          http://127.0.0.1:9000;
-        }
-    }
-
-**REST API and web interface on separate ports (using HTTP)**::
-
-    server
-    {
-        listen      80 default_server;
-        listen      [::]:80 default_server ipv6only=on;
-        server_name graylog.example.org;
-
-    location /
-        {
-            proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header    X-Graylog-Server-URL http://graylog.example.org:9000/api/;
-            proxy_set_header    Host $http_host;
-            proxy_pass          http://127.0.0.1:9000;
-        }
-    }
-
-    server
-    {
-        listen      9000;
-        server_name graylog.example.org;
-
-    location /
-        {
-            proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header    Host $http_host;
-            proxy_pass          http://127.0.0.1:9000/api/;
         }
     }
 
@@ -207,12 +169,6 @@ If you are running multiple Graylog Server you might want to use HTTPS/SSL to co
             proxy_set_header    X-Graylog-Server-URL https://graylog.example.org/api;
             proxy_pass          http://127.0.0.1:9000;
         }
-        location /api/
-        {
-            proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header    Host $http_host;
-            proxy_pass          http://127.0.0.1:9000/api/;
-        }
     }
 
 Apache httpd 2.x
@@ -227,15 +183,13 @@ Apache httpd 2.x
             Order deny,allow
             Allow from all
         </Proxy>
-        <Location /api/>
-            ProxyPass http://127.0.0.1:9000/api/
-            ProxyPassReverse http://127.0.0.1:9000/api/
-        </Location>
+
         <Location />
             RequestHeader set X-Graylog-Server-URL "http://graylog.example.org/api/"
             ProxyPass http://127.0.0.1:9000/
             ProxyPassReverse http://127.0.0.1:9000/
         </Location>
+
     </VirtualHost>
 
 .. CAUTION:: Using Apache 2.2 needs the configuration above, if you have Apache 2.4 you need to switch the Locations. This means ``/api/`` must go after ``/``
@@ -252,17 +206,11 @@ HAProxy 1.6
         http-request add-header X-Forwarded-Host %[req.hdr(host)]
         http-request add-header X-Forwarded-Server %[req.hdr(host)]
         http-request add-header X-Forwarded-Port %[dst_port]
-
         acl is_graylog hdr_dom(host) -i -m str graylog.example.org
         use_backend	graylog	if is_graylog
 
     backend graylog
         description	The Graylog Web backend.
-        acl is_api var(req.api) -m bool true
-        http-request set-var(req.api) bool(true) if { path_beg /api/ }
-        http-request set-path %[path,regsub(^/api/,/)]
-        http-request set-header X-Graylog-Server-URL http://graylog.example.org/api unless is_api
-        use-server graylog_1_rest if is_api
-        use-server graylog_1 unless is_api
-        server graylog_1_rest 127.0.0.1:9000/api/ maxconn 20 check
+        http-request set-header X-Graylog-Server-URL http://graylog.example.org/api
+        use-server graylog_1
         server graylog_1 127.0.0.1:9000 maxconn 20 check
