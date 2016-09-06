@@ -59,7 +59,7 @@ Give it a try, you might be surprised!
 Does Graylog encrypt log data?
 ------------------------------
 
-All log data is stored in Elasticsearch. Elastic recommends you use `*dm-crypt* <https://discuss.elastic.co/t/how-should-i-encrypt-data-at-rest-with-elasticsearch/96>`__ at the file system level.
+All log data is stored in Elasticsearch. `Elastic recommends <https://discuss.elastic.co/t/how-should-i-encrypt-data-at-rest-with-elasticsearch/96>`__ you use *dm-crypt* at the file system level.
 
 Where are the log files Graylog produces?
 -----------------------------------------
