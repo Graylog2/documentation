@@ -11,6 +11,22 @@ Once you have understood the concepts explained in :doc:`pipelines`, :doc:`rules
 :doc:`stream_connections`, you are ready to start creating your own processing pipelines. This
 page gives you the information you need to get started with the user interface.
 
+Configuration
+=============
+
+Configure the message processor
+-------------------------------
+
+Before start using the processing pipelines you need to ensure the message processor is enabled
+and correctly configured. You can do so by going to the *System -> Configurations* page, and
+check the configuration in the *Message Processors Configuration* section.
+
+.. image:: /images/pipelines_message_processor.png
+
+In that screen, you need to **enable the Pipeline Processor** message processor, and you must
+also **set the Pipeline Processor after the Message Filter Chain**, if you want to be
+able to use pipelines in your streams, and get access to fields coming from extractors.
+
 Manage rules
 ============
 
