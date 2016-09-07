@@ -211,7 +211,7 @@ are by default not allowed to view or edit **any** dashboard.
 Navigate to *System* -> *Roles* and create a new role that grant the permissions you wish. You can then assign
 that new role to any users you wish to give dashboard permissions in the *System* -> *Users* page.
 
-You can read more about user permissions and roles under :doc:`users_and_roles`.
+You can read more about :doc:`user permissions and roles <users_and_roles>`.
 
 That's it!
 ----------

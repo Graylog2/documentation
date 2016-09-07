@@ -117,8 +117,7 @@ Time frame selector
 
 The time frame selector defines in what time range to search in. It offers three different ways of selecting a time range and
 is vital for search speed: If you know you are only interested in messages of the last hour, only search in that time frame.
-This will make Graylog search in relevant indices only and greatly reduce system load and required resources. You can read
-more about this here: :doc:`index_model`
+This will make Graylog search in :doc:`relevant indices <index_model>` only and greatly reduce system load and required resources.
 
 .. image:: /images/queries_time_range_selector.png
 
@@ -305,7 +304,7 @@ In this view, deleted content is shown in red, while added content is shown in g
 Further functionality
 ^^^^^^^^^^^^^^^^^^^^^
 
-If the existing decorators are not sufficient for your needs, you can either search the `Graylog marketplace <http://marketplace.graylog.org>`__, or write your own decorator. The required steps are described :ref:`here <writing_decorators>`.
+If the existing decorators are not sufficient for your needs, you can either search the `Graylog marketplace <http://marketplace.graylog.org>`__, or :ref:`write your own decorator <writing_decorators>`.
 
 Export results as CSV
 =====================
@@ -386,8 +385,6 @@ More details about the format of ISO 8601 durations can be found `on Wikipedia <
 Relative time ranges
 ^^^^^^^^^^^^^^^^^^^^
 
-The list of time ranges displayed in the :ref:`relative-time-frame-selector` can be configured, too. It consists of a list of ISO 8601 durations which the users can select on the search page.
-
-The format of the ISO 8601 durations can be looked up :ref:`here <iso_8601_duration>`.
+The list of time ranges displayed in the :ref:`relative-time-frame-selector` can be configured, too. It consists of a list of :ref:`ISO 8601 <iso_8601_duration>` durations which the users can select on the search page.
 
 .. image:: /images/queries_relative_timerange_options.png

@@ -5,7 +5,7 @@ Docker
 Requirements
 ------------
 
-You need a recent `docker` version installed, take a look `here <https://docs.docker.com/installation/>`__ for instructions.
+You need a recent `docker` version `installed <https://docs.docker.com/installation/>`__.
 
 This will create three containers with all Graylog services running::
 
@@ -119,7 +119,7 @@ Start all services with exposed data directories::
 Configuration
 -------------
 
-Every configuration option can be set via environment variables, take a look `here <https://github.com/Graylog2/graylog2-server/blob/master/misc/graylog.conf>`__ for an overview.
+Every configuration option can be set via `environment variables <https://github.com/Graylog2/graylog2-server/blob/master/misc/graylog.conf>`__.
 Simply prefix the parameter name with `GRAYLOG_` and put it all in upper case.
 Another option would be to store the configuration file outside of the container and edit it directly.
 
@@ -161,7 +161,7 @@ Problems
   $ docker run --ulimit nofile=64000:64000 ...
 
 * The `devicemapper` storage driver can produce problems with Graylogs disk journal on some systems.
-  In this case please pick another driver like `aufs` or `overlay`. Have a look `here <https://docs.docker.com/engine/userguide/storagedriver/selectadriver>`__
+  In this case please `pick another driver <https://docs.docker.com/engine/userguide/storagedriver/selectadriver>`__ like `aufs` or `overlay`.
 
 Build
 -----

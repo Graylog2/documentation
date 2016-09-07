@@ -59,7 +59,7 @@ Give it a try, you might be surprised!
 Does Graylog encrypt log data?
 ------------------------------
 
-All log data is stored in Elasticsearch. They recommend you use *dm-crypt* at the file system level. Please see `here <https://discuss.elastic.co/t/how-should-i-encrypt-data-at-rest-with-elasticsearch/96>`__.
+All log data is stored in Elasticsearch. `Elastic recommends <https://discuss.elastic.co/t/how-should-i-encrypt-data-at-rest-with-elasticsearch/96>`__ you use *dm-crypt* at the file system level.
 
 Where are the log files Graylog produces?
 -----------------------------------------
@@ -104,7 +104,7 @@ Functionality
 Can Graylog automatically clean old data?
 -----------------------------------------
 
-Absolutely we have data retention features, please see :doc:`here <index_model>`.
+Absolutely we have :doc:`data retention features <index_model>`.
 
 Does Graylog support LDAP / AD and its groups?
 ----------------------------------------------

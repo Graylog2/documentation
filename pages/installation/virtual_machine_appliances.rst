@@ -7,8 +7,7 @@ Virtual Machine Appliances
 Download
 ========
 
-Download the OVA image from `here <https://packages.graylog2.org/appliances/ova>`_
-and save it to your disk locally.
+Download the `OVA image <https://packages.graylog2.org/appliances/ova>`_.
 
 Run the image
 =============
@@ -62,7 +61,7 @@ most basic settings of Graylog in the appliance::
   sudo graylog-ctl set-timezone <zone acronym>
   sudo graylog-ctl reconfigure
 
-The ``graylog-ctl`` has much more functionality and is documented :ref:`here <graylog-ctl>`.
+The ``graylog-ctl`` has much more :ref:`functionality <graylog-ctl>` documented .
 We strongly recommend to learn more about it to ensure smooth operation of your virtual appliance.
 
 VMWare tools
@@ -75,7 +74,7 @@ If you are using the appliance on a VMWare host, you might want to install the h
 Update OVA to latest Version
 ============================
 
-If you want to update your Appliance to the newest release without deploying a new template the best solution is covered :ref:`here <upgrade_graylog_omnibus>`.
+You can update your Appliance to the :ref:`newest release <upgrade_graylog_omnibus>` without deploying a new template.
 
 Production readiness
 ====================

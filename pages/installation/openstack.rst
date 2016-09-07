@@ -36,7 +36,7 @@ most basic settings of Graylog in the appliance::
   sudo graylog-ctl set-timezone <zone acronym>
   sudo graylog-ctl reconfigure
 
-The ``graylog-ctl`` has much more functionality and is documented :ref:`here <graylog-ctl>`.
+The ``graylog-ctl`` has much more :ref:`functionality <graylog-ctl>` documented.
 We strongly recommend to learn more about it to ensure smooth operation of your virtual appliance.
 
 Production readiness

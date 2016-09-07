@@ -245,7 +245,7 @@ These are the relevant files and directories in your plugin directory for the we
     In this file you can customize some of the parameters of the build. There is one mandatory parameter named ``web_src_path`` which defines the absolute or relative location to a checkout of the `Graylog source repository <https://github.com/Graylog2/graylog2-server>`_.
 
   package.json
-    This is a standard npm_ JSON file describing the web part of your plugin, especially its dependencies. You can read more about its format `here <https://docs.npmjs.com/files/package.json>`_.
+    This is a standard npm_ JSON file describing the web part of your plugin, especially its dependencies. You can read more about its `format <https://docs.npmjs.com/files/package.json>`_.
 
   src/web
     This is where the actual code for thw web part of your plugin goes to. For the start there is a simple ``index.jsx`` file, which shows you how to register your plugin and the parts it provides with the Graylog web interface. We will get to this in detail later.

@@ -91,8 +91,7 @@ Configuration of Elasticsearch nodes
 Disable dynamic scripting
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Elasticsearch prior to version 1.2 had an insecure default configuration which could lead to a remote code execution.
-(see `here <http://bouk.co/blog/elasticsearch-rce/>`__ and `here <https://groups.google.com/forum/#!msg/graylog2/-icrS0rIA-Q/cCTJaNjVrQAJ>`__ for details)
+Elasticsearch prior to version 1.2 had an `insecure default configuration <http://bouk.co/blog/elasticsearch-rce/>`__ which could lead to a `remote code execution <https://groups.google.com/forum/#!msg/graylog2/-icrS0rIA-Q/cCTJaNjVrQAJ>`__.
 
 Make sure to add the following settings to the ``elasticsearch.yml`` file to disable the dynamic scripting feature and
 prevent possible remote code executions::
