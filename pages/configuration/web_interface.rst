@@ -214,3 +214,24 @@ HAProxy 1.6
         http-request set-header X-Graylog-Server-URL http://graylog.example.org/api
         use-server graylog_1
         server graylog_1 127.0.0.1:9000 maxconn 20 check
+
+
+**Multiple Backends (roundrobin) with Health-Check (using HTTP)**::
+
+    frontend graylog_http
+        bind *:80
+        option forwardfor
+        http-request add-header X-Forwarded-Host %[req.hdr(host)]
+        http-request add-header X-Forwarded-Server %[req.hdr(host)]
+        http-request add-header X-Forwarded-Port %[dst_port]
+        acl is_graylog hdr_dom(host) -i -m str graylog.example.org
+        use_backend     graylog
+
+    backend graylog
+        description     The Graylog Web backend.
+        balance roundrobin
+        option httpchk HEAD /api/system/lbstatus
+        http-request set-header X-Graylog-Server-URL http://graylog.example.org/api
+        server graylog1 192.168.0.10:9000 maxconn 20 check
+        server graylog2 192.168.0.11:9000 maxconn 20 check
+        server graylog3 192.168.0.12:9000 maxconn 20 check
