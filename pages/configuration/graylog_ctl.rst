@@ -45,7 +45,7 @@ The following commands are changing the configuration of Graylog:
 || ``http[s]://<public IP>:port/``                    | This is needed to connect the web interface to the REST API e.g. in NAT'd networks or on AWS.              |
 +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
 || ``sudo graylog-ctl set-listen-address``            | Set the listen address for the web interface, REST API, and the transport URI.                             |
-|| ``--service <web|rest|trabsport|endpoint>``        | As well as the endpoint uri that is used by the web browser to connect to the API.                         |
+|| ``--service <web|rest|transport|endpoint>``        | As well as the endpoint uri that is used by the web browser to connect to the API.                         |
 || ``--address http://<host>:port``                   | Can be used to deal with additional network interfaces.                                                    |
 +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
 
