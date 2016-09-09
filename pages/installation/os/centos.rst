@@ -77,15 +77,20 @@ Now install the Graylog repository configuration and Graylog itself with the fol
 
 Follow the instructions in your ``/etc/graylog/server/server.conf`` and add ``password_secret`` and ``root_password_sha2``. These settings are mandatory and without them, Graylog will not start!
 
+You need to use the following command to create your ``root_password_sha2``::
+
+  echo -n yourpassword | sha256sum
+
+To be able to connect to Graylog you should set ``rest_listen_uri`` and ``web_listen_uri`` to the public host name or a public IP address of the machine you can connect to. More information about these settings can be found in :ref:`Configuring the web interface <configuring_webif>`.
+
+.. note:: If you're operating a single-node setup and would like to use HTTPS for the Graylog web interface and the Graylog REST API, it's possible to use :ref:`NGINX or Apache as a reverse proxy <configuring_webif_nginx>`.
+
 The last step is to enable Graylog during the operating system's startup::
 
   $ sudo chkconfig --add graylog-server
   $ sudo systemctl daemon-reload
   $ sudo systemctl enable graylog-server.service
   $ sudo systemctl start graylog-server.service
-
-
-.. note:: If you're operating a single-node setup and would like to use HTTPS for the Graylog web interface and the Graylog REST API, it's possible to use :ref:`NGINX or Apache as a reverse proxy <configuring_webif_nginx>`.
 
 
 SELinux information
