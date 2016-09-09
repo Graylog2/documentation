@@ -114,7 +114,7 @@ Yup, we’re all over this too with read/write roles and group permissions.  To 
 Do we have a user audit log for compliance?
 -------------------------------------------
 
-Coming soon in a future release – stay tuned!
+`Graylog Enterprise <https://www.graylog.org/enterprise>`_ includes an audit log plugin. You can explore the :ref:`documentation <auditlog_toc>` for more details.
 
 It seems like Graylog has no reporting functionality?
 -----------------------------------------------------
