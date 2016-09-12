@@ -90,19 +90,19 @@ Try sending an example message using curl::
 Both keep-alive and compression are supported via the common HTTP headers. The server will return a ``202 Accepted`` when the message
 was accepted for processing.
 
-Use Kafka as transport queue for sending
+Using Apache Kafka as transport queue
+=====================================
+
+Graylog supports `Apache Kafka <http://kafka.apache.org>`__ as a transport for various inputs such as GELF, syslog, and Raw/Plaintext inputs. The Kafka topic can be filtered by a regular expression and depending on the input, various additional settings can be configured.
+
+Learn how to use rsyslog and Apache Kafka in the `Sending syslog via Kafka into Graylog guide <https://marketplace.graylog.org/addons/113fd1cb-f7d2-4176-b427-32831bd554ee>`__.
+
+Using RabbitMQ (AMQP) as transport queue
 ========================================
 
-`Apache Kafka <http://kafka.apache.org>`__ can be used as a transport for different inputs in Graylog. Gelf, Syslog an RAW Inputs can be connected to a `Zookeeper <https://zookeeper.apache.org>`__ that controlls the Kafka Servers. The Topic is filtered by regex and depending on the Input you are able to set various additional settings.
+Graylog supports `AMQP <https://www.amqp.org>`__ as a transport for various inputs such as GELF, syslog, and Raw/Plaintext inputs. It can connect to any AMQP broker supporting [AMQP 0-9-1](https://www.rabbitmq.com/amqp-0-9-1-reference.html) such as `RabbitMQ <https://www.rabbitmq.com/>`__.
 
-How you can send Syslog via Kafka can be found in the `Graylog Marketplace <https://marketplace.graylog.org/addons/113fd1cb-f7d2-4176-b427-32831bd554ee>`__.
-
-Use AMQP as transport queue for sending
-=======================================
-
-`AMQP <https://www.amqp.org>`__ can be used as a transport for different inputs in Graylog. Gelf, Syslog and RAW Inputs can be connected to any AMQP Server that is compatible to the `rabbitmq client library <https://www.rabbitmq.com/java-client.html>`__. You are able to set all common Settings by yourself.
-
-How you can send Syslog via AMQP can be found in the `Graylog Marketplace <https://marketplace.graylog.org/addons/246dc332-7da7-4016-b2f9-b00f722a8e79>`__.
+Learn how to use rsyslog and RabbitMQ in the `Sending syslog via AMQP into Graylog guide <https://marketplace.graylog.org/addons/246dc332-7da7-4016-b2f9-b00f722a8e79>`__.
 
 Microsoft Windows
 =================
