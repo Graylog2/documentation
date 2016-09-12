@@ -95,7 +95,7 @@ Use Kafka as transport queue for sending
 
 `Apache Kafka <http://kafka.apache.org>`__ can be used as a transport for different inputs in Graylog. Gelf, Syslog an RAW Inputs can be connected to a `Zookeeper <https://zookeeper.apache.org>`__ that controlls the Kafka Servers. The Topic is filtered by regex and depending on the Input you are able to set various additional settings.
 
-Examples can be found in the `Graylog Marketplace <https://marketplace.graylog.org/addons?search=kafka>`__.
+How you can send Syslog via Kafka can be found in the `Graylog Marketplace <https://marketplace.graylog.org/addons/113fd1cb-f7d2-4176-b427-32831bd554ee>`__.
 
 Use AMQP as transport queue for sending
 =======================================
