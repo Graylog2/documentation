@@ -13,8 +13,7 @@ There are a few rules of thumb when scaling resources for Graylog:
 Also keep in mind that messages are **only** stored in Elasticsearch. If you have data loss on
 Elasticsearch, the messages are gone - except if you have created backups of the indices.
 
-MongoDB is only storing meta information and will be abstracted with a general database layer
-in future versions. This will allow you to use other databases like MySQL instead.
+MongoDB is only storing meta information and configuration data.
 
 Minimum setup
 -------------
