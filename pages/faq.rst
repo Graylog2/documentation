@@ -25,8 +25,6 @@ What is MongoDB used for?
 
 Graylog uses MongoDB to store your configuration data, not your log data. Only metadata is stored, such as user information or stream configurations. None of your log messages are ever stored in MongoDB. This is why MongoDB does not have a big system impact, and you won’t have to worry too much about scaling it. With our recommended setup architecture, MongoDB will simply run alongside your graylog-server processes and use almost no resources.
 
-We have plans to introduce a database abstraction layer in the future. This will give you the flexibility to run MongoDB, MySQL or any other database to store metadata.
-
 Can you guide me on how to replicate MongoDB for High Availability?
 -------------------------------------------------------------------
 
