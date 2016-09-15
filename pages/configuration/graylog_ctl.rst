@@ -238,6 +238,9 @@ Choose the Graylog version you want to install from the `list of Omnibus package
   $ sudo graylog-ctl stop
   $ sudo dpkg -G -i graylog_latest.deb
   $ sudo graylog-ctl reconfigure
+  $ sudo reboot
+
+.. note:: Restart the Server after you had updated should be done to prevent data corruption!
 
 Migrate manually from 1.x to 2.1.x
 ==================================
