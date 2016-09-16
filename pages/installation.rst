@@ -30,6 +30,8 @@ This chapter is explaining the many ways to install Graylog and aims to help cho
    installation/manual_setup
 
 
+.. _system-requirements:
+
 ===================
 System requirements
 ===================
