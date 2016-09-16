@@ -240,7 +240,7 @@ Choose the Graylog version you want to install from the `list of Omnibus package
   $ sudo graylog-ctl reconfigure
   $ sudo reboot
 
-.. note:: Restart the Server after you had updated should be done to prevent data corruption!
+.. note:: Reboot the server after the update procedure to make sure that all services are running in the correct version. 
 
 Migrate manually from 1.x to 2.1.x
 ==================================
