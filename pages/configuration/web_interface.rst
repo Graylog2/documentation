@@ -192,7 +192,6 @@ Apache httpd 2.x
 
     </VirtualHost>
 
-.. CAUTION:: Using Apache 2.2 needs the configuration above, if you have Apache 2.4 you need to switch the Locations. This means ``/api/`` must go after ``/``
 
 HAProxy 1.6
 -----------
