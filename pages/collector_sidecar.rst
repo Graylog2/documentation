@@ -239,9 +239,10 @@ For the Beats platform you can enable each Beat individually, e.g on a Windows h
           configuration_path: C:\Program Files\graylog\collector-sidecar\generated\filebeat.yml
 
 First start
------------------
+-----------
 
-Once you installed the Sidecar package and went through the configuration file you are ready to start the service for the first time. Depending on your operating system you can do this with:
+Once you installed the Sidecar package you are ready to start the service for the first time. Decide which backend you want to use. Enable or disable the single
+backends by setting ``enabled: true`` or respectively to ``false``. Now start the Sidecar, depending on your operating system you can do this with:
 
 +---------------+---------------------------------------------------------------------------------------------+
 | Debian/Ubuntu | ``sudo start collector-sidecar``                                                            |
