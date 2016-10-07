@@ -16,9 +16,10 @@ automatically, performs an update and restarts the necessary process.
 Backends
 ========
 
-Currently the Sidecar is supporting NXLog, Filebeat and Winlogbeat. They all share the same web interface, switch the tab on a configuration page to create
-resources for the used collector. The supported features are almost the same. For all collectors a GELF output with SSL encryption is available and the most used
-input options like file tailing or windows event logging.
+Currently the Sidecar is supporting NXLog, Filebeat and Winlogbeat. They all share the same web interface. Switch the tab on a configuration page to create
+resources for the used collector. The supported features are almost the same. For all collectors a GELF output with SSL encryption is available. The most used
+input options like file tailing or windows event logging do exist. On the server side you can share inputs with multiple collectors. E.g. All Filebeat and Winlogbeat instances
+can send logs into a single Graylog-Beats input.
 
 Installation
 ============
@@ -237,14 +238,31 @@ For the Beats platform you can enable each Beat individually, e.g on a Windows h
           binary_path: C:\Program Files\graylog\collector-sidecar\filebeat.exe
           configuration_path: C:\Program Files\graylog\collector-sidecar\generated\filebeat.yml
 
-Configure Sidecar 
+First start
 -----------------
 
-After the installation you will most likely see an error from the Sidecar saying::
+Once you installed the Sidecar package and went through the configuration file you are ready to start the service for the first time. Depending on your operating system you can do this with:
+
++---------------+---------------------------------------------------------------------------------------------+
+| Debian/Ubuntu | ``sudo start collector-sidecar``                                                            |
++---------------+---------------------------------------------------------------------------------------------+
+| RedHat/CentOS | ``sudo systemctl start collector-sidecar``                                                  |
++---------------+---------------------------------------------------------------------------------------------+
+| Windows       | ``C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe -service start`` |
++---------------+---------------------------------------------------------------------------------------------+
+
+Afterwards you will most likely see an error like this in the log file::
 
     INFO[0006] [RequestConfiguration] No configuration found for configured tags!
 
-This means simply that there is no configuration with the same tag that the Sidecar was started with. So we have to create a new configuration, define out- and inputs and tag it in order to collect log files.
+This simply means that there is no configuration with the same tag that the Sidecar was started with. So we have to create a new configuration. Define outputs and inputs and tag it in order to collect log files.
+Take the :ref:`sidecar_step-by-step` to create your first configuration.
+
+When the Sidecar can find a configuration that matches it's own ``tags``, it will write for each collector backend a configuration file into the ``/generated`` directory. E.g. if you enabled the
+Filebeat collector you will find a ``filebeat.yml`` file in that directory. All changes have to be made in the Graylog web interface. Everytime the Sidecar detects an update to it's configuration it will
+rewrite the corresponding collector configuration file. So it doesn't make sense to manually edit those files.
+
+Everytime a collector configuration file is changed the collector process is restarted. The Sidecar takes care of the collector processes and reports the status back to the web interface
 
 Sidecar Status
 --------------
@@ -253,6 +271,8 @@ Each Sidecar instance is able to send status informations back to Graylog. By en
 are send. Also metrics that are relevant for a stable operation e.g. disk volumes over 75% utalization are included. Additionaly with the ``list_log_files`` option a directory listing is displayed in
 the Graylog web interface. In that way an administrator can see which files are available for collecting. The list is periodically updated and files with write access are highlighted for easy identification.
 After enabling ``send_status`` or ``send_status`` + ``list_log_files`` go to the collector overview and click on one of them, a status page with the configured information will be displayed.
+
+.. _sidecar_step-by-step:
 
 Step-by-step guide
 ~~~~~~~~~~~~~~~~~~
@@ -359,4 +379,4 @@ Known Problems
 Currently we know of two problems with NXLog:
 
   - Since version 2.9.17 timestamps are transmitted `without millisecond precision <https://nxlog.co/question/1855/gelf-timestamp-field-missing-millisecond-precision>`_
-  - On Windows machines NXlog is not able to store it's collector state so features like file tailing doesn't work correctly in combination with Sidecar. Use Filebeat as alternative here.
+  - On Windows machines NXlog is not able to store it's collector state so features like file tailing doesn't work correctly in combination with Sidecar. Use Sidecar version 0.1.0-alpha.1 or newer.
