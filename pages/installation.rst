@@ -42,3 +42,5 @@ The Graylog server application has the following prerequisites:
 * `Elasticsearch 2.x (2.1.0 or later) <https://www.elastic.co/downloads/elasticsearch>`_
 * `MongoDB 2.4 or later <https://docs.mongodb.org/manual/administration/install-on-linux/>`_ (latest stable version is recommended)
 * Oracle Java SE 8 or later (OpenJDK 8 also works; latest stable update is recommended)
+
+.. caution:: Graylog 2.x **does not** work with Elasticsearch 5.x!
