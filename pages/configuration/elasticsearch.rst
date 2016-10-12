@@ -29,6 +29,8 @@ Graylog version  Elasticsearch version
 2.0.1-2.0.3      2.3.2
 ===============  =====================
 
+.. caution:: Graylog 2.0.x **does not** work with Elasticsearch 2.4.x or 5.x!
+
 
 Configuration
 =============
