@@ -84,9 +84,9 @@ You will get the following response::
 Create and use Token
 --------------------
 
-Providing your Username and Password on the command line or in some tool is not what you would like to-do. This is why you can create a token that can be used for authentication instead.
+Providing your Username and Password on the command line or in some tool is not what you would like to do. That is why you can create a token that can be used for authentication instead.
 
-You need to POST a command that includes the username and the name of the new created token to the API. In short ``POST /users/{username}/tokens/{name}``  and following now as example::
+You need to POST a command that includes the username and the name of the newly created token to the API. In short ``POST /users/{username}/tokens/{name}``  and following now as example::
 
     curl -u GM:superpower -H 'Accept: application/json' -X POST 'http://192.168.178.26:9000/api/users/GM/tokens/icinga?pretty=true'
 
@@ -98,16 +98,15 @@ The response will include your Token ID::
        "last_access" : "1970-01-01T00:00:00.000Z"
     }
 
-To use this Token now you need to put the token as username in a curl command and use the password ``token``. Now the first curl example will become::
+To use this Token now, you need to put the token as the username in a curl command and use the password ``token``. Now the first curl example will become::
 
     curl -u htgi84ut7jpivsrcldd6l4lmcigvfauldm99ofcb4hsfcvdgsru:token -H 'Accept: application/json' -X GET 'http://192.168.178.26:9000/api/cluster?pretty=true'
 
-If you need to know what tokens already are create for a user, just use ``GET /users/{username}/tokens/`` on the API. Following one example::
+If you need to know what tokens already created for a user, just use ``GET /users/{username}/tokens/`` on the API to request a list of all tokens that are present for this user. Following one example::
 
     curl -uGM:superpower -H 'Accept: application/json' -X GET 'http://192.168.178.26:9000/api/users/GM/tokens/?pretty=true'
 
 When a Token is not longer needed you can use ``DELETE /users/{username}/tokens/{token}`` on the API to remove the Token::
 
     curl -u GM:superpower -H 'Accept: application/json' -X DELETE' http://192.168.178.26:9000/api/users/GM/tokens/ap84p4jehbf2jddva8rdmjr3k7m3kdnuqbai5s0h5a48e7069po?pretty=true'
-
 
