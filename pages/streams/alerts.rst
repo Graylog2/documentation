@@ -7,7 +7,7 @@ Alerts are always based on streams. You can define conditions that trigger alert
 
 Hit *Manage alerts* in the stream overview to see already configured alerts, alerts that were fired in the past or to configure new alert conditions.
 
-Graylog ships with default *alert callbacks* and can be extended with :ref:`Plugins <plugins>`.
+Graylog ships with default *alert conditions* and *alert callbacks* and can be extended with :ref:`Plugins <plugins>`.
 
 Alert condition types explained
 ===============================
@@ -43,6 +43,8 @@ If the email alarm callback is used because it appears once or multiple times in
 Alert callbacks types explained
 ===============================
 In this section we explain what the default alert callbacks included in Graylog do, and how to configure them. Alert callbacks are meant to be extensible through :ref:`plugins`, you can find more types in the `Graylog Marketplace <http://marketplace.graylog.org>`__ or even create your own.
+
+.. important:: In previous versions of Graylog (before 2.2.0), the email alarm callback was used, when alert conditions existed for a stream, but no alarm callback had been created before. This has been changed, so that if there is no alarm callback existing for a stream, alerts will be shown in the interface but no other action is performed. To help users coming from earlier version, there is a migration job which is being run once, creating the email alarm callback explicitly for qualifying streams, so the old behavior is preserved.
 
 Email alert callback
 ^^^^^^^^^^^^^^^^^^^^
