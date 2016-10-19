@@ -158,7 +158,7 @@ The configuration file is separated into global options and backend specific opt
 +-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
 | list_log_files    | Send a directory listing to Graylog and display it on the host status page, e.g. ``/var/log``. This can also be a list of directories |
 +-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
-| node_id           | Name of the Sidecar instance, will also show up in the web interface                                                                  |
+| node_id           | Name of the Sidecar instance, will also show up in the web interface. Hostname will be used if not set.                               |
 +-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
 | collector_id      | Unique ID (UUID) of the instance. This can be a string or a path to an ID file                                                        |
 +-------------------+---------------------------------------------------------------------------------------------------------------------------------------+
