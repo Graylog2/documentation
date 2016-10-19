@@ -13,4 +13,4 @@ Configuring Graylog
    configuration/elasticsearch
    configuration/backup
    configuration/file_location
-   configuration/work_with_api
+   configuration/rest_api
