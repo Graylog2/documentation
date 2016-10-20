@@ -192,6 +192,27 @@ Apache httpd 2.x
 
     </VirtualHost>
 
+**REST API and Web Interface on one port (using HTTPS/SSL)**::
+
+    <VirtualHost *:443>
+        ServerName graylog.example.org
+        ProxyRequests Off
+        SSLEngine on
+        # <- your SSL Settings here!
+
+        <Proxy *>
+            Order deny,allow
+            Allow from all
+        </Proxy>
+
+        <Location />
+            RequestHeader set X-Graylog-Server-URL "https://graylog.example.org/api/"
+            ProxyPass http://127.0.0.1:9000/
+            ProxyPassReverse http://127.0.0.1:9000/
+        </Location>
+
+    </VirtualHost>
+
 
 HAProxy 1.6
 -----------
