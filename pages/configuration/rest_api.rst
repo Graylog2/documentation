@@ -127,9 +127,9 @@ The following example deletes the previously created access token ``htgi84ut7jpi
 Creating and using Session Token
 --------------------------------
 
-While access token can be used for permanent access, session tokens will expire after a certain time. The experation time can be adjusted in the users profile. 
+While access tokens can be used for permanent access, session tokens will expire after a certain time. The expiration time can be adjusted in the user's profile. 
 
-Getting a new session token will be done via ``POST`` request to the Graylog REST API. Username and password are required to get a valid session ID. The following example will create an session token for the user ``GM``::
+Getting a new session token can be obtained  via ``POST`` request to the Graylog REST API. Username and password are required to get a valid session ID. The following example will create an session token for the user ``GM``::
 
     curl -i -X POST -H 'Content-Type: application/json' -H 'Accept: application/json' 'http://192.168.178.26:9000/api/system/sessions' -d '{"username":"GM", "password":"superpower", "host":""}'
 
@@ -145,5 +145,4 @@ The received token can now be used as username in a request to the Graylog REST 
 Now a ``curl`` command to get a list of access tokens would look as follows::
 
     curl -u cf1df45c-53ea-446c-8ed7-e1df64861de7:session -H 'Accept: application/json' -X GET 'http://192.168.178.26:9000/api/cluster?pretty=true'
-
 
