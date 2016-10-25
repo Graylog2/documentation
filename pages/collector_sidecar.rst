@@ -245,7 +245,7 @@ Once you installed the Sidecar package you are ready to start the service for th
 backends by setting ``enabled: true`` or respectively to ``false``. Now start the Sidecar, depending on your operating system you can do this with:
 
 +---------------+---------------------------------------------------------------------------------------------+
-| Debian/Ubuntu | ``sudo start collector-sidecar``                                                            |
+| Debian/Ubuntu | ``sudo systemctl start collector-sidecar``                                                            |
 +---------------+---------------------------------------------------------------------------------------------+
 | RedHat/CentOS | ``sudo systemctl start collector-sidecar``                                                  |
 +---------------+---------------------------------------------------------------------------------------------+
