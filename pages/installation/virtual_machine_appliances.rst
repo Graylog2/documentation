@@ -41,7 +41,7 @@ completed:
    
       "Your appliance came up without a configured IP address. Graylog is probable not running correctly!"
    
-   In this case, you have to login and edit ``/etc/network/interfaces`` in order to setup a fixed IP address. Then manually reconfigure graylog as showed in the following paragraphs.
+   In this case, you have to login and edit ``/etc/network/interfaces`` in order to setup a fixed IP address. Then manually reconfigure Graylog as shown in the following paragraphs.
 
 
 Logging in
