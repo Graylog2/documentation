@@ -44,7 +44,7 @@ The tags are used to define which configurations the host should receive.
 Create a system service and start it::
 
     $ sudo graylog-collector-sidecar -service install
-    $ sudo start collector-sidecar
+    $ sudo systemctl start collector-sidecar
 
 CentOS
 ~~~~~~
