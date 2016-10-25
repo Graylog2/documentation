@@ -123,3 +123,26 @@ The following example deletes the previously created access token ``htgi84ut7jpi
 
     curl -u GM:superpower -H 'Accept: application/json' -X DELETE' http://192.168.178.26:9000/api/users/GM/tokens/ap84p4jehbf2jddva8rdmjr3k7m3kdnuqbai5s0h5a48e7069po?pretty=true'
 
+
+Creating and using Session Token
+--------------------------------
+
+While access tokens can be used for permanent access, session tokens will expire after a certain time. The expiration time can be adjusted in the user's profile. 
+
+Getting a new session token can be obtained  via ``POST`` request to the Graylog REST API. Username and password are required to get a valid session ID. The following example will create an session token for the user ``GM``::
+
+    curl -i -X POST -H 'Content-Type: application/json' -H 'Accept: application/json' 'http://192.168.178.26:9000/api/system/sessions' -d '{"username":"GM", "password":"superpower", "host":""}'
+
+The response will include the session token in the field ``session_id`` and the time of experation::
+
+    {
+        "valid_until" : "2016-10-24T16:08:57.854+0000",
+        "session_id" : "cf1df45c-53ea-446c-8ed7-e1df64861de7"
+    }
+
+The received token can now be used as username in a request to the Graylog REST API using Basic Auth together with the literal password ``session``.
+
+Now a ``curl`` command to get a list of access tokens would look as follows::
+
+    curl -u cf1df45c-53ea-446c-8ed7-e1df64861de7:session -H 'Accept: application/json' -X GET 'http://192.168.178.26:9000/api/cluster?pretty=true'
+
