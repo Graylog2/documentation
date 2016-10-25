@@ -35,6 +35,15 @@ completed:
 
 .. image:: /images/virtualbox3.png
 
+
+
+.. note:: If you don't have a working DHCP server for your virtual machine, you will get the error message:
+   
+      "Your appliance came up without a configured IP address. Graylog is probable not running correctly!"
+   
+   In this case, you have to login and edit ``/etc/network/interfaces`` in order to setup a fixed IP address. Then manually reconfigure Graylog as shown in the following paragraphs.
+
+
 Logging in
 ==========
 
