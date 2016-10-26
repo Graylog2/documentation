@@ -4,10 +4,10 @@
 Graylog Collector Sidecar
 *************************
 
-Graylog Collector Sidecar is a lightweight supervisor application for various log collectors. It allows the user to centralize the configuration of remote log collectors.
-Configurations can be maintained through the Graylog web interface in a graphical way. For advanced configurations it's also possible to store the raw content in Graylog.
-The Sidecar is then fetching the configuration meant for the target host, renders a configuration file and starts the selected log collector on it. It detects changes
-automatically, performs an update and restarts the necessary process.
+Graylog Collector Sidecar is a lightweight configuration management system for different log collectors. It runs on a remote server and allows the user to centralize the
+configuration of log collectors. Configurations can be maintained through the Graylog web interface in a graphical way. For advanced configurations it's also possible
+to store the raw content in Graylog. The Sidecar is then fetching the configuration for the target host over the network, renders a configuration file and starts the selected
+log collector on it. It detects configuration changes automatically, performs an update and restarts the necessary process.
 
 
 .. image:: /images/sidecar_overview.png
@@ -27,6 +27,8 @@ Installation
 Currently we provide pre-compiled packages on the Github releases page of the project. Once the Sidecar project is settled and matured
 we will add the packages to the DEB and YUM online repositories.
 To get the Sidecar working `Download a package <https://github.com/Graylog2/collector-sidecar/releases>`_ and install it on the target system.
+
+All following commands should be executed on the **remote machine** where you want to collector log data from.
 
 Beats backend
 -------------
@@ -278,10 +280,15 @@ After enabling ``send_status`` or ``send_status`` + ``list_log_files`` go to the
 Step-by-step guide
 ~~~~~~~~~~~~~~~~~~
 
-We have prepared an example how to configure Sidecar in your Browser using the Graylog Webinterface. The assumption is that we will configure the collection of Apache logfiles and ship them with a Filebeat to the already present Beats input that is listening on Port 5044 on your Graylog Server.
+We have prepared an example on how to configure the Sidecar using the Graylog Webinterface. The assumption is that we want to collect Apache
+logfiles and ship them with a Filebeat collector to a Beats input that is listening on Port 5044 on your Graylog Server.
 
 
-- The first step is to navigate to the collector configurations. In your Graylog Webinterface click on ``System → Collectors → Manage configurations``. 
+- The first step is to create a Beats input where collectors can send data to. Click on ``System → Inputs`` and start a global Beats input on the listening address 0.0.0.0 and port 5044.
+
+.. image:: /images/sidecar_sbs0.png
+ 
+- Navigate to the collector configurations. In your Graylog Webinterface click on ``System → Collectors → Manage configurations``. 
 
 .. image:: /images/sidecar_sbs1.png
 
@@ -293,7 +300,7 @@ We have prepared an example how to configure Sidecar in your Browser using the G
 
 .. image:: /images/sidecar_sbs3.png
 
-- Click on the new configuration and create e.g. a Filebeat-GELF output. For a first test just change the IP to your Graylog server.
+- Click on the new configuration and create e.g. a Filebeat output. For a first test just change the IP to your Graylog server.
 
 .. image:: /images/sidecar_sbs4.png
 
