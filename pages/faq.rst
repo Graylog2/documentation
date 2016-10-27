@@ -202,7 +202,7 @@ This should be corrected by either adding the missing CA certificates to the Jav
 
 For Debian/Ubuntu-based systems using OpenJDK JRE, CA certificates may be added to the systemwide trust store. After installing the JRE (including ``ca-certificates-java``, ergo ``ca-certificates`` packages), place ``name-of-certificate-dot-crt`` (in PEM format) into ``/usr/local/share/ca-certificates/`` and run ``/usr/sbin/update-ca-certificates``. The hook script in ``/etc/ca-certificates/update.d/`` should automatically generate ``/etc/ssl/certs/java/cacerts``.
 
-Fedora/RHEL-based systems may refer to the `Fedora wiki article <https://fedoraproject.org/wiki/Features/SharedSystemCertificates>`_
+Fedora/RHEL-based systems may refer to `Shared System Certificates in the Fedora Project Wiki <https://fedoraproject.org/wiki/Features/SharedSystemCertificates>`__.
 
 Suddenly parts of Graylog did not work as expected
 --------------------------------------------------
