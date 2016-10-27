@@ -134,7 +134,7 @@ Raise the Java Heap
 -------------------
 If you need to raise the Java Heap of the Graylog Server or Elasticsearch in a System that runs as virtual appliances you can use :ref:`the advanced settings <graylog_ctl_advanced>`.
 
-On Systems that are installed with :ref:`DEB / APT <operationg_package_DEB-APT>` this setting can be made in ``/etc/defaults/graylog-server``. 
+On Systems that are installed with :ref:`DEB / APT <operationg_package_DEB-APT>` this setting can be made in ``/etc/default/graylog-server``. 
 
 Systems that are installed with :ref:`RPM / YUM / DNF <operating_package_rpm-yum-dnf>` the file is found in ``/etc/sysconfig/graylog-server``. 
 
@@ -199,6 +199,10 @@ Outbound TLS connections have CA (*certification authority*) certificate verific
   Caused by: javax.mail.MessagingException: Could not convert socket to TLS; nested exception is: javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
  
 This should be corrected by either adding the missing CA certificates to the Java default trust store (typically found at ``$JAVA_HOME/jre/lib/security/cacerts``), or a custom store that is configured (by using ``-Djavax.net.ssl.trustStore``) for the Graylog server process. The same procedure applies for both missing valid CAs and self-signed certificates.
+
+For Debian/Ubuntu-based systems using OpenJDK JRE, CA certificates may be added to the systemwide trust store. After installing the JRE (including ``ca-certificates-java``, ergo ``ca-certificates`` packages), place ``name-of-certificate-dot-crt`` (in PEM format) into ``/usr/local/share/ca-certificates/`` and run ``/usr/sbin/update-ca-certificates``. The hook script in ``/etc/ca-certificates/update.d/`` should automatically generate ``/etc/ssl/certs/java/cacerts``.
+
+Fedora/RHEL-based systems may refer to `Shared System Certificates in the Fedora Project Wiki <https://fedoraproject.org/wiki/Features/SharedSystemCertificates>`__.
 
 Suddenly parts of Graylog did not work as expected
 --------------------------------------------------
