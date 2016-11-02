@@ -23,7 +23,7 @@ Make sure to install and configure the following software before installing and 
 
 * Java (>= 8)
 * MongoDB (>= 2.4)
-* Elasticsearch (>= 2.x)
+* Elasticsearch (>= 2.x, <2.4.x)
 
 .. caution:: Graylog 2.x **does not** work with Elasticsearch 5.x!
 
