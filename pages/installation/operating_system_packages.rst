@@ -64,7 +64,8 @@ Debian 8, Ubuntu 16.06 systemd     ``sudo systemctl enable graylog-server``
 Update to latest Version
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-When you had used the repository package before to install Graylog, you need to update the repository package at first. The new repository package will update and replace the repository URL. Without this update you will only get Bugfix releases of your installed Version.
+
+If you've been using the repository package before to install Graylog, you first need to update the repository package. The new repository package will replace the repository URL for the new Graylog version without which you will only be able to get bugfix releases of your previously installed version of Graylog.
 
 The update will work like a fresh installation::
 
@@ -119,7 +120,7 @@ Update to latest Version
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-When you had used the repository package before to install Graylog, you need to update the repository package at first. The new repository package will update and replace the repository URL. Without this update you will only get Bugfix releases of your installed Version.
+If you've been using the repository package before to install Graylog, you first need to update the repository package. The new repository package will replace the repository URL for the new Graylog version without which you will only be able to get bugfix releases of your previously installed version of Graylog.
 
 The update will work like a fresh installation::
 
