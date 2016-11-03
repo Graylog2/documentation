@@ -61,15 +61,18 @@ Debian 7               SysV        ``sudo update-rc.d graylog-server defaults 95
 Debian 8, Ubuntu 16.06 systemd     ``sudo systemctl enable graylog-server``
 ====================== =========== ==================================================
 
-Update to latest Version
+Update to latest version
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you like to install the latest Graylog Version as Update and you had used the repository package before just install the latest repository package and use your distribution command to update the ``graylog-server`` package::
+If you've been using the repository package to install Graylog before, it has to be updated first. The new package will replace the repository URL, without which you will only be able to get bugfix releases of your previously installed version of Graylog.
+
+The update basically works like a fresh installation::
 
   $ wget https://packages.graylog2.org/repo/packages/graylog-2.1-repository_latest.deb
   $ sudo dpkg -i graylog-2.1-repository_latest.deb
   $ sudo apt-get update
   $ sudo apt-get install graylog-server
+
 
 Manual Repository Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -113,14 +116,15 @@ CentOS 6            SysV        ``sudo update-rc.d graylog-server defaults 95 10
 CentOS 7            systemd     ``sudo systemctl enable graylog-server``
 =================== =========== ==================================================
 
-Update to latest Version
+Update to latest version
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you like to install the latest Graylog Version as Update and you had used the repository package before just install the latest repository package and use your distribution command to update the ``graylog-server`` package::
+If you've been using the repository package to install Graylog before, it has to be updated first. The new package will replace the repository URL, without which you will only be able to get bugfix releases of your previously installed version of Graylog.
+
+The update basically works like a fresh installation::
 
   $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-2.1-repository_latest.rpm
   $ sudo yum install graylog-server
-
 
 
 Manual Repository Installation
