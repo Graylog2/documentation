@@ -2,6 +2,36 @@
 Changelog
 *********
 
+Graylog 2.1.1
+=============
+
+Released 2016-09-14
+
+https://www.graylog.org/blog/69-announcing-graylog-v2-1-1
+
+**Core**
+
+* Proxied requests query other nodes in parallel. `Graylog2/graylog2-server#2764 <https://github.com/Graylog2/graylog2-server/issues/2764>`__, `Graylog2/graylog2-server#2779 <https://github.com/Graylog2/graylog2-server/issues/2779>`__
+* Fix 404s on IE 11 using compatibility view. `Graylog2/graylog2-server#2768 <https://github.com/Graylog2/graylog2-server/issues/2768>`__, `Graylog2/graylog2-server#2782 <https://github.com/Graylog2/graylog2-server/issues/2782>`__
+* Modify actions in search page triggering a page reload. `Graylog2/graylog2-server#2488 <https://github.com/Graylog2/graylog2-server/issues/2488>`__, `Graylog2/graylog2-server#2798 <https://github.com/Graylog2/graylog2-server/issues/2798>`__
+* Do not display login form while loading. `Graylog2/graylog2-server#2770 <https://github.com/Graylog2/graylog2-server/issues/2770>`__, `Graylog2/graylog2-server#2802 <https://github.com/Graylog2/graylog2-server/issues/2802>`__
+* Check in SearchPage if search is in progress, reuse promise then. `Graylog2/graylog2-server#2799 <https://github.com/Graylog2/graylog2-server/issues/2799>`__, `Graylog2/graylog2-server#2803 <https://github.com/Graylog2/graylog2-server/issues/2803>`__
+* Use index and message\_id as message identifier. `Graylog2/graylog2-server#2801 <https://github.com/Graylog2/graylog2-server/issues/2801>`__, `Graylog2/graylog2-server#2804 <https://github.com/Graylog2/graylog2-server/issues/2804>`__
+* Fix: file handle leak in KeyUtil <SSL>`__. `Graylog2/graylog2-server#2808 <https://github.com/Graylog2/graylog2-server/issues/2808>`__. Thank you `@gbu-censhare <https://github.com/gbu-censhare>`__!
+* Use current search time configuration for CSV export. `Graylog2/graylog2-server#2795 <https://github.com/Graylog2/graylog2-server/issues/2795>`__, `Graylog2/graylog2-server#2809 <https://github.com/Graylog2/graylog2-server/issues/2809>`__
+* Explicitly close okhttp response body, avoiding leak connection warning. `Graylog2/graylog2-server#2811 <https://github.com/Graylog2/graylog2-server/issues/2811>`__. Thank you `@chainkite <https://github.com/chainkite>`__!
+* Properly close OkHttp Response objects to avoid resource leaks. `Graylog2/graylog2-server#2812 <https://github.com/Graylog2/graylog2-server/issues/2812>`__
+* Remove ldap settings check from authenticators. `Graylog2/graylog2-server#2817 <https://github.com/Graylog2/graylog2-server/issues/2817>`__, `Graylog2/graylog2-server#2820 <https://github.com/Graylog2/graylog2-server/issues/2820>`__
+
+**Map plugin**
+
+* Ignore internal message fields <starting with "gl2\_">`__. `Graylog2/graylog-plugin-map-widget#17 <https://github.com/Graylog2/graylog-plugin-map-widget/issues/17>`__
+
+**Pipeline processor plugin**
+
+* Display boolean values in pipeline simulator. `Graylog2/graylog-plugin-pipeline-processor#54 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/54>`__, `Graylog2/graylog-plugin-pipeline-processor#99 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/99>`__
+* Use case insensitive lookup for timezone IDs. `Graylog2/graylog-plugin-pipeline-processor#100 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/100>`__, `Graylog2/graylog-plugin-pipeline-processor#102 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/102>`__
+
 Graylog 2.1.0
 =============
 
@@ -46,7 +76,7 @@ https://www.graylog.org/blog/68-announcing-graylog-v-2-1-0-ga
 * Do not load plugins for journal commands.
   `Graylog2/graylog2-server#2667 <https://github.com/Graylog2/graylog2-server/issues/2667>`__
 * Use proper other count for pie chart slices.
-  `Graylog2/graylog2-server#2639](https://github.com/Graylog2/graylog2-server/issues/2639), `Graylog2/graylog2-server#2671 <https://github.com/Graylog2/graylog2-server/issues/2671>`__
+  `Graylog2/graylog2-server#2639 <https://github.com/Graylog2/graylog2-server/issues/2639>`__, `Graylog2/graylog2-server#2671 <https://github.com/Graylog2/graylog2-server/issues/2671>`__
 * Removing unused prop type in StreamRuleList component.
   `Graylog2/graylog2-server#2673 <https://github.com/Graylog2/graylog2-server/issues/2673>`__
 * Add a generic search form component. `Graylog2/graylog2-server#2678 <https://github.com/Graylog2/graylog2-server/issues/2678>`__
