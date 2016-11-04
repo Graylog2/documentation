@@ -2,6 +2,46 @@
 Changelog
 *********
 
+Graylog 2.1.2
+=============
+
+Released 2016-11-04
+
+https://www.graylog.org/blog/75-announcing-graylog-v2-1-2
+
+**Core**
+
+* Improve logging in DecodingProcessor. `Graylog2/graylog2-server#3025 <https://github.com/Graylog2/graylog2-server/issues/3025>`__, `Graylog2/graylog2-server#3034 <https://github.com/Graylog2/graylog2-server/issues/3034>`__
+* Support all ZLIB compression levels for GELF messages. `Graylog2/graylog2-server#3022 <https://github.com/Graylog2/graylog2-server/issues/3022>`__, `Graylog2/graylog2-server#3036 <https://github.com/Graylog2/graylog2-server/issues/3036>`__
+* Implement "contains" stream rule. `Graylog2/graylog2-server#3020 <https://github.com/Graylog2/graylog2-server/issues/3020>`__, `Graylog2/graylog2-server#3037 <https://github.com/Graylog2/graylog2-server/issues/3037>`__
+* Make ValidatorProvider a Singleton. `Graylog2/graylog2-server#3019 <https://github.com/Graylog2/graylog2-server/issues/3019>`__, `Graylog2/graylog2-server#3038 <https://github.com/Graylog2/graylog2-server/issues/3038>`__
+* Fix NPE in MongoProbe if MongoDB doesn't run with MMAPv1. `Graylog2/graylog2-server#3018 <https://github.com/Graylog2/graylog2-server/issues/3018>`__, `Graylog2/graylog2-server#3039 <https://github.com/Graylog2/graylog2-server/issues/3039>`__
+* Fix NPE in Indices#numberOfMessages(String). `Graylog2/graylog2-server#3016 <https://github.com/Graylog2/graylog2-server/issues/3016>`__, `Graylog2/graylog2-server#3041 <https://github.com/Graylog2/graylog2-server/issues/3041>`__
+* Only create new LdapConnectionConfig if LDAP is enabled. `Graylog2/graylog2-server#3017 <https://github.com/Graylog2/graylog2-server/issues/3017>`__, `Graylog2/graylog2-server#3040 <https://github.com/Graylog2/graylog2-server/issues/3040>`__
+* Properly track replace-all flag and pass through to API. `Graylog2/graylog2-server#3023 <https://github.com/Graylog2/graylog2-server/issues/3023>`__, `Graylog2/graylog2-server#3043 <https://github.com/Graylog2/graylog2-server/issues/3043>`__
+* Replace Jersey GZipEncoder with Grizzly's GZipFilter. `Graylog2/graylog2-server#3021 <https://github.com/Graylog2/graylog2-server/issues/3021>`__, `Graylog2/graylog2-server#3044 <https://github.com/Graylog2/graylog2-server/issues/3044>`__
+* Prevent n+1 query loading for Stream Rules. `Graylog2/graylog2-server#3024 <https://github.com/Graylog2/graylog2-server/issues/3024>`__, `Graylog2/graylog2-server#3035 <https://github.com/Graylog2/graylog2-server/issues/3035>`__. Thank you `@bjoernhaeuser <https://github.com/bjoernhaeuser>`__!
+* Handle search execution errors. `Graylog2/graylog2-server#3027 <https://github.com/Graylog2/graylog2-server/issues/3027>`__, `Graylog2/graylog2-server#3045 <https://github.com/Graylog2/graylog2-server/issues/3045>`__
+* Calculate cardinality on field graphs. `Graylog2/graylog2-server#3028 <https://github.com/Graylog2/graylog2-server/issues/3028>`__, `Graylog2/graylog2-server#3046 <https://github.com/Graylog2/graylog2-server/issues/3046>`__
+* Update stats function in field graph description. `Graylog2/graylog2-server#3029 <https://github.com/Graylog2/graylog2-server/issues/3029>`__, `Graylog2/graylog2-server#3047 <https://github.com/Graylog2/graylog2-server/issues/3047>`__
+* Use response status 500 if search failed but wasn't syntax error. `Graylog2/graylog2-server#3026 <https://github.com/Graylog2/graylog2-server/issues/3026>`__, `Graylog2/graylog2-server#3042 <https://github.com/Graylog2/graylog2-server/issues/3042>`__
+* Improved search indicators. `Graylog2/graylog2-server#3031 <https://github.com/Graylog2/graylog2-server/issues/3031>`__, `Graylog2/graylog2-server#3050 <https://github.com/Graylog2/graylog2-server/issues/3050>`__
+* Fix field analyzers loading when search changes. `Graylog2/graylog2-server#3030 <https://github.com/Graylog2/graylog2-server/issues/3030>`__, `Graylog2/graylog2-server#3049 <https://github.com/Graylog2/graylog2-server/issues/3049>`__
+* Close search query autocompletion on enter. `Graylog2/graylog2-server#3032 <https://github.com/Graylog2/graylog2-server/issues/3032>`__, `Graylog2/graylog2-server#3051 <https://github.com/Graylog2/graylog2-server/issues/3051>`__
+* Refresh stream search when stream changes. `Graylog2/graylog2-server#3033 <https://github.com/Graylog2/graylog2-server/issues/3033>`__, `Graylog2/graylog2-server#3052 <https://github.com/Graylog2/graylog2-server/issues/3052>`__
+* Update Joda-Time and moment-timezone. `Graylog2/graylog2-server#3059 <https://github.com/Graylog2/graylog2-server/issues/3059>`__, `Graylog2/graylog2-server#3060 <https://github.com/Graylog2/graylog2-server/issues/3060>`__
+* Search button does not always trigger a new search. `Graylog2/graylog2-server#3062 <https://github.com/Graylog2/graylog2-server/issues/3062>`__, `Graylog2/graylog2-server#3063 <https://github.com/Graylog2/graylog2-server/issues/3063>`__
+
+**Beats plugin**
+
+* Fix frame decoding in case of lost connection. `Graylog2/graylog-plugin-beats#14 <https://github.com/Graylog2/graylog-plugin-beats/issues/14>`__, `Graylog2/graylog-plugin-beats#15 <https://github.com/Graylog2/graylog-plugin-beats/issues/15>`__, `Graylog2/graylog-plugin-beats#17 <https://github.com/Graylog2/graylog-plugin-beats/issues/17>`__. Thank you `@hc4 <https://github.com/hc4>`__!
+* Support messages >1024 bytes in BeatsFrameDecoder. `Graylog2/graylog-plugin-beats#10 <https://github.com/Graylog2/graylog-plugin-beats/issues/10>`__, `Graylog2/graylog-plugin-beats#12 <https://github.com/Graylog2/graylog-plugin-beats/issues/12>`__
+
+**Pipeline processor plugin**
+
+* Don't doubly negate the value of the expression. `Graylog2/graylog-plugin-pipeline-processor#126 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/126>`__, `Graylog2/graylog-plugin-pipeline-processor#127 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/127>`__
+
+
 Graylog 2.1.1
 =============
 
@@ -31,6 +71,7 @@ https://www.graylog.org/blog/69-announcing-graylog-v2-1-1
 
 * Display boolean values in pipeline simulator. `Graylog2/graylog-plugin-pipeline-processor#54 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/54>`__, `Graylog2/graylog-plugin-pipeline-processor#99 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/99>`__
 * Use case insensitive lookup for timezone IDs. `Graylog2/graylog-plugin-pipeline-processor#100 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/100>`__, `Graylog2/graylog-plugin-pipeline-processor#102 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/102>`__
+
 
 Graylog 2.1.0
 =============
