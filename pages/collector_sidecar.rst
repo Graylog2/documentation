@@ -4,20 +4,20 @@
 Graylog Collector Sidecar
 *************************
 
-**Graylog Collector Sidecar** is a lightweight configuration management system for different log collectors, also called backends.
+**Graylog Collector Sidecar** is a lightweight configuration management system for different log collectors, also called `Backends`_.
 The Graylog node(s) act as a centralized hub containing the configurations of log collectors.
 On supported message-producing devices/hosts, Sidecar can run as a service (Windows host) or daemon (Linux host).
 
 .. image:: /images/sidecar_overview.png
 
-These configurations are centrally managed through the Graylog web interface, in a graphical way. For specific needs, raw backend configurations may optionally be directly stored into Graylog.
+These configurations are centrally managed through the Graylog web interface, in a graphical way. For specific needs, raw backend configurations, called `Snippets`_, may optionally be directly stored into Graylog.
 
 Periodically, the Sidecar daemon will fetch all relevant configurations for the target, using the :doc:`REST API <rest_api>`.
 Which configurations are actually fetched depends on 'tags' defined in the host's Sidecar configuration file. For instance, a Web server host may include the ``linux`` and ``nginx`` tags.
 
 On its first run, or when a configuration change has been detected, Sidecar will *generate* (render) relevant backend configuration files. Then it will start, or restart, those reconfigured log collectors.
 
-Graylog Collector Sidecar (written in Go) and backends (written in C or Go) are meant as a replacement for the Java-based :doc:`deprecated Graylog Collector <collector>`.
+Graylog Collector Sidecar (written in Go) and backends (written in various languages, such as C and Go) are meant as a small-footprint replacement for the deprecated, Java-based :doc:`deprecated Graylog Collector <collector>`.
 
 
 Backends
