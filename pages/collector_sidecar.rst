@@ -12,7 +12,7 @@ On supported message-producing devices/hosts, Sidecar can run as a service (Wind
 
 These configurations are centrally managed through the Graylog web interface, in a graphical way. For specific needs, raw backend configurations, called `Snippets`_, may optionally be directly stored into Graylog.
 
-Periodically, the Sidecar daemon will fetch all relevant configurations for the target, using the :doc:`REST API <configuring_api>`.
+Periodically, the Sidecar daemon will fetch all relevant configurations for the target, using the :doc:`REST API <configuration/configuring_api>`.
 Which configurations are actually fetched depends on 'tags' defined in the host's Sidecar configuration file. For instance, a Web server host may include the ``linux`` and ``nginx`` tags.
 
 On its first run, or when a configuration change has been detected, Sidecar will *generate* (render) relevant backend configuration files. Then it will start, or restart, those reconfigured log collectors.
