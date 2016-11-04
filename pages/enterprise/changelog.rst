@@ -2,6 +2,34 @@
 Changelog
 *********
 
+Graylog Enterprise 1.2.0
+========================
+
+Released: 2016-09-14
+
+https://www.graylog.org/blog/70-announcing-graylog-enterprise-v1-2
+
+
+Plugin: Archive
+---------------
+
+Add support for selecting which streams should be included in your archives.
+
+
+Plugin: Audit Log
+-----------------
+
+New plugin to keep track of changes made by users to a Graylog system by automatically saving them in MongoDB.
+
+
+Graylog Enterprise 1.1
+======================
+
+Released: 2016-09-01
+
+Added support for Graylog 2.1.0.
+
+
 Graylog Enterprise 1.0.1
 ========================
 
