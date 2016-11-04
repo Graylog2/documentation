@@ -17,7 +17,7 @@ https://www.graylog.org/blog/69-announcing-graylog-v2-1-1
 * Do not display login form while loading. `Graylog2/graylog2-server#2770 <https://github.com/Graylog2/graylog2-server/issues/2770>`__, `Graylog2/graylog2-server#2802 <https://github.com/Graylog2/graylog2-server/issues/2802>`__
 * Check in SearchPage if search is in progress, reuse promise then. `Graylog2/graylog2-server#2799 <https://github.com/Graylog2/graylog2-server/issues/2799>`__, `Graylog2/graylog2-server#2803 <https://github.com/Graylog2/graylog2-server/issues/2803>`__
 * Use index and message\_id as message identifier. `Graylog2/graylog2-server#2801 <https://github.com/Graylog2/graylog2-server/issues/2801>`__, `Graylog2/graylog2-server#2804 <https://github.com/Graylog2/graylog2-server/issues/2804>`__
-* Fix: file handle leak in KeyUtil <SSL>`__. `Graylog2/graylog2-server#2808 <https://github.com/Graylog2/graylog2-server/issues/2808>`__. Thank you `@gbu-censhare <https://github.com/gbu-censhare>`__!
+* Fix: file handle leak in KeyUtil (SSL). `Graylog2/graylog2-server#2808 <https://github.com/Graylog2/graylog2-server/issues/2808>`__. Thank you `@gbu-censhare <https://github.com/gbu-censhare>`__!
 * Use current search time configuration for CSV export. `Graylog2/graylog2-server#2795 <https://github.com/Graylog2/graylog2-server/issues/2795>`__, `Graylog2/graylog2-server#2809 <https://github.com/Graylog2/graylog2-server/issues/2809>`__
 * Explicitly close okhttp response body, avoiding leak connection warning. `Graylog2/graylog2-server#2811 <https://github.com/Graylog2/graylog2-server/issues/2811>`__. Thank you `@chainkite <https://github.com/chainkite>`__!
 * Properly close OkHttp Response objects to avoid resource leaks. `Graylog2/graylog2-server#2812 <https://github.com/Graylog2/graylog2-server/issues/2812>`__
@@ -25,7 +25,7 @@ https://www.graylog.org/blog/69-announcing-graylog-v2-1-1
 
 **Map plugin**
 
-* Ignore internal message fields <starting with "gl2\_">`__. `Graylog2/graylog-plugin-map-widget#17 <https://github.com/Graylog2/graylog-plugin-map-widget/issues/17>`__
+* Ignore internal message fields (starting with "gl2\_"). `Graylog2/graylog-plugin-map-widget#17 <https://github.com/Graylog2/graylog-plugin-map-widget/issues/17>`__
 
 **Pipeline processor plugin**
 
