@@ -44,7 +44,7 @@ The correct order of working steps should be as follows:
 Elasticsearch cluster
 =====================
 
-The `Elasticsearch setup documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-configuration.html>`__ should help you to install Elasticsearch with a robust base configuration.
+The `Elasticsearch setup documentation <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup-configuration.html>`__ should help you to install Elasticsearch with a robust base configuration.
 
 It is important to name the Elasticsearch cluster not simply named `elasticsearch` to avoid accidental conflicts with Elasticsearch nodes using the default configuration. Just choose anything else (we recommend `graylog`), because this is the default name and any Elasticsearch instance that is started in the same network will try to connect to this cluster.
 
