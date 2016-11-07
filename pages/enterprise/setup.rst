@@ -26,7 +26,7 @@ The following list shows the minimum required Graylog versions for the Graylog E
 Installation
 ============
 
-Once you `purchase a license for Graylog Enterprise <https://www.graylog.org/enterprise/order>`_,
+Once you `purchase a license for Graylog Enterprise <https://www.graylog.org/enterprise/>`_,
 you will get download links for the tarballs and DEB/RPM packages in the confirmation mail.
 
 .. note:: The Graylog Enterprise plugins need to be installed on all your Graylog nodes!
@@ -109,7 +109,7 @@ License Installation
 
 The Graylog Enterprise plugins require a valid license to use the additional features.
 
-Once you have `purchased a license <https://www.graylog.org/enterprise/order>`_
+Once you have `purchased a license <https://www.graylog.org/enterprise/>`_
 you can import it into your Graylog setup by going through the following steps.
 
 #. As an admin user, open the System/License page from the menu in the web interface.
