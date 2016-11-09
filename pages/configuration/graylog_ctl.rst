@@ -39,7 +39,7 @@ The following commands are changing the configuration of Graylog:
 +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
 || ``sudo graylog-ctl set-server-secret <secret>``    | Override server secret used for encryption                                                                 |
 +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
-|| ``sudo graylog-ctl disable-internal-logging``      | Disable sending internal logs (e. g. nginx) from the VM to Graylog                                         |
+|| ``sudo graylog-ctl disable-internal-logging``      | Disable sending internal logs (e. g. nginx) from the VM to Graylog. Reboot is needed for activation!       |
 +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
 || ``sudo graylog-ctl set-external-ip``               | Configure an external IP in the Nginx proxy.                                                               |
 || ``http[s]://<public IP>:port/``                    | This is needed to connect the web interface to the REST API e.g. in NAT'd networks or on AWS.              |
