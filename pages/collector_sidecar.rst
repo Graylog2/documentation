@@ -325,6 +325,22 @@ logfiles and ship them with a Filebeat collector to a Beats input that is listen
 
 - Congratulations your collector setup is working now!
 
+Secure Sidecar Communication
+============================
+
+The Communication between Sidecar and Graylog will be secured if your API :ref:`use SSL <https_setup>`.
+
+To secure the communication between the Collector and Graylog you just need to mark ``Enable TLS`` in your Beats Input. Without giving additional Information, Graylog will now create a self-signed certificate for this Input.
+Now in the Sidecar Beats Output Configuration you just mark ``Enable TLS Support`` and ``Insecure TLS connection``. After this is saved, the communication between Beats and Graylog will use TLS.
+
+If you prefer NXLog you need to mark ``Allow unstrusted certificate`` in the NXLog Outputs configuration and ``Enable TLS`` for your GELF Input.
+
+Certificate based client authentification
+-----------------------------------------
+
+If you want to allow Graylog only to accept data from certificated clients you will need to build your own `certificate authrority <https://en.wikipedia.org/wiki/Certificate_authority>`__  and provide this to the Input and the Client Output configuration.
+
+
 Sidecar Glossar
 ===============
 
