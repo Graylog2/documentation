@@ -219,7 +219,7 @@ Support
 I think I’ve found a bug, how do I report it?
 ----------------------------------------------
 
-Think you spotted a bug? Oh no! Please report it in our issue trackers so we can take a look at it.  All issue trackers are hosted on `GitHub <https://github.com/Graylog2>`__, tightly coupled to our code and milestones. Don’t hesitate to open issues – we’ll just close them if there is nothing to do. We have GitHub repos for the `web interface <https://github.com/Graylog2/graylog2-web-interface/issues>`__ and the `server <https://github.com/Graylog2/graylog2-server/issues>`__.
+Think you spotted a bug? Oh no! Please report it in our issue trackers so we can take a look at it.  All issue trackers are hosted on `GitHub <https://github.com/Graylog2>`__, tightly coupled to our code and milestones. Don’t hesitate to open issues – we’ll just close them if there is nothing to do. Most issues will be in the `Graylog server <https://github.com/Graylog2/graylog2-server/issues>`__ repository, but you should choose others if you have found a bug in one of the plugins.
 
 I’m having issues installing or configuring Graylog, where can I go for support?
 --------------------------------------------------------------------------------
