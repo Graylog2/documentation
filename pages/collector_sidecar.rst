@@ -78,8 +78,8 @@ or in silent mode with::
 
 Edit `C:\\Program Files\\graylog\\collector-sidecar\\collector_sidecar.yml` and register the system service::
 
-    $ C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe -service install
-    $ C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe -service start
+    $ "C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe" -service install
+    $ "C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe" -service start
 
 NXLog backend
 -------------
