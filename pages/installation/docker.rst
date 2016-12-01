@@ -121,19 +121,18 @@ Configuration
 
 Every configuration option can be set via `environment variables <https://github.com/Graylog2/graylog2-server/blob/master/misc/graylog.conf>`__.
 Simply prefix the parameter name with `GRAYLOG_` and put it all in upper case.
+
+For example setting up a smtp configuration, the `docker-compose.yml` would look like this::
+
+      environment:
+        GRAYLOG_TRANSPORT_EMAIL_ENABLED: "true"
+        GRAYLOG_TRANSPORT_EMAIL_HOSTNAME: smtp
+        GRAYLOG_TRANSPORT_EMAIL_PORT: 25
+        GRAYLOG_TRANSPORT_EMAIL_USE_AUTH: "false"
+        GRAYLOG_TRANSPORT_EMAIL_USE_TLS: "false"
+        GRAYLOG_TRANSPORT_EMAIL_USE_SSL: "false"
+
 Another option would be to store the configuration file outside of the container and edit it directly.
-
-The `docker-compose.yml` environment example for transport looks like this::
-
-            …
-            GRAYLOG_TRANSPORT_EMAIL_ENABLED: "true"
-            GRAYLOG_TRANSPORT_EMAIL_HOSTNAME: smtp
-            GRAYLOG_TRANSPORT_EMAIL_PORT: 25
-            GRAYLOG_TRANSPORT_EMAIL_USE_AUTH: "false"
-            GRAYLOG_TRANSPORT_EMAIL_USE_TLS: "false"
-            GRAYLOG_TRANSPORT_EMAIL_USE_SSL: "false"
-            …
-
 
 Plugins
 -------
