@@ -123,6 +123,18 @@ Every configuration option can be set via `environment variables <https://github
 Simply prefix the parameter name with `GRAYLOG_` and put it all in upper case.
 Another option would be to store the configuration file outside of the container and edit it directly.
 
+The `docker-compose.yml` environment example for transport looks like this::
+
+            …
+            GRAYLOG_TRANSPORT_EMAIL_ENABLED: "true"
+            GRAYLOG_TRANSPORT_EMAIL_HOSTNAME: smtp
+            GRAYLOG_TRANSPORT_EMAIL_PORT: 25
+            GRAYLOG_TRANSPORT_EMAIL_USE_AUTH: "false"
+            GRAYLOG_TRANSPORT_EMAIL_USE_TLS: "false"
+            GRAYLOG_TRANSPORT_EMAIL_USE_SSL: "false"
+            …
+
+
 Plugins
 -------
 
