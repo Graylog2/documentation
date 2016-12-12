@@ -1,3 +1,5 @@
+.. _ingest_data:
+
 *******************
 Sending in log data
 *******************

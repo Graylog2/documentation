@@ -13,7 +13,7 @@ Prerequisites
 Not all required dependencies are available in the standard repository, so we need to add `Debian Backports <https://backports.debian.org>`__ to the list of package sources::
 
   $ sudo echo "deb http://ftp.debian.org/debian jessie-backports main" > /etc/apt/sources.list.d/backports.list
-  $ sudo apt-get update 
+  $ sudo apt-get update && sudo apt-get upgrade
 
 If you're starting from a minimal server setup, you will need to install these additional packages::
 
@@ -25,7 +25,7 @@ MongoDB
 
 The version of MongoDB included in Debian Jessie is recent enough to be used with Graylog 2.0.0 and higher::
 
-  $ apt-get install mongodb-server
+  $ sudo apt-get install mongodb-server
 
 
 Elasticsearch
@@ -75,6 +75,7 @@ The last step is to enable Graylog during the operating system's startup::
   $ sudo systemctl enable graylog-server.service
   $ sudo systemctl start graylog-server.service
 
+The next step is to :ref:`ingest messages <ingest_data>` into your Graylog and extract the messages with :ref:`extractors <extractors>` or use :ref:`the Pipelines <pipelinestoc>` to work with the messages.
 
 Feedback
 --------

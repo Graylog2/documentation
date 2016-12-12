@@ -12,7 +12,8 @@ Prerequisites
 
 Taking a minimal server setup as base will need this additional packages::
 
-  $ apt-get install apt-transport-https openjdk-8-jre-headless uuid-runtime pwgen
+  $ sudo apt-get update && sudo apt-get upgrade
+  $ sudo apt-get install apt-transport-https openjdk-8-jre-headless uuid-runtime pwgen
 
 
 MongoDB
@@ -20,7 +21,7 @@ MongoDB
 
 The Version included in Ubuntu 16.04 LTS can be used together with Graylog 2.0.0 and higher::
 
-  $ apt-get install mongodb-server
+  $ sudo apt-get install mongodb-server
 
 
 Elasticsearch
@@ -40,9 +41,9 @@ Make sure to modify the `Elasticsearch configuration file <https://www.elastic.c
 
 After you have modified the configuration, you can start Elasticsearch::
 
-  $ sudo /bin/systemctl daemon-reload
-  $ sudo /bin/systemctl enable elasticsearch.service
-  $ sudo /bin/systemctl restart elasticsearch.service
+  $ sudo systemctl daemon-reload
+  $ sudo systemctl enable elasticsearch.service
+  $ sudo systemctl restart elasticsearch.service
 
 
 Graylog
@@ -69,6 +70,8 @@ The last step is to enable Graylog during the operating system's startup::
   $ sudo systemctl daemon-reload
   $ sudo systemctl enable graylog-server.service
   $ sudo systemctl start graylog-server.service
+
+The next step is to :ref:`ingest messages <ingest_data>` into your Graylog and extract the messages with :ref:`extractors <extractors>` or use :ref:`the Pipelines <pipelinestoc>` to work with the messages. 
 
 
 Feedback
