@@ -138,15 +138,15 @@ On Systems that are installed with :ref:`DEB / APT <operationg_package_DEB-APT>`
 
 Systems that are installed with :ref:`RPM / YUM / DNF <operating_package_rpm-yum-dnf>` the file is found in ``/etc/sysconfig/graylog-server``. 
 
-How can I start my Input on a Port below 1024?
+How can I start an input on a port below 1024?
 ----------------------------------------------
-You try to start the Input on one of the `priviliged ports <https://www.w3.org/Daemon/User/Installation/PrivilegedPorts.html>`_ , this is only allowed for the user root.  
-To be able to use the Port you can use `authbind <https://en.wikipedia.org/wiki/Authbind>`_ on Debian based systems or you redirect the traffic with iptables rule like the following::
+If you try to start an input on one of the `priviliged ports <https://www.w3.org/Daemon/User/Installation/PrivilegedPorts.html>`_ , it will only work for the "root" user.
+To be able to use a privileged port, you can use `authbind <https://en.wikipedia.org/wiki/Authbind>`_ on Debian-based systems, or you redirect the traffic with an ``iptables`` rule like this::
 
     iptables -t nat -A PREROUTING -p tcp --dport 514 -j REDIRECT --to 1514
     iptables -t nat -A PREROUTING -p udp --dport 514 -j REDIRECT --to 1514
 
-The Input needs to be started on Port 1514. The Syslog sender can use the default port 514.
+The input needs to be started on port 1514 in this case and will be made available on port 514 to the outside. The clients can then send data to port 514.
 
 
 Graylog & Integrations
