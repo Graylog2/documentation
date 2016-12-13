@@ -138,7 +138,7 @@ On Systems that are installed with :ref:`DEB / APT <operationg_package_DEB-APT>`
 
 Systems that are installed with :ref:`RPM / YUM / DNF <operating_package_rpm-yum-dnf>` the file is found in ``/etc/sysconfig/graylog-server``. 
 
-How can I start my Syslog Input on Port 514?
+How can I start my Input on a Port below 1024?
 --------------------------------------------
 You try to start the Input on one of the `priviliged ports <https://www.w3.org/Daemon/User/Installation/PrivilegedPorts.html>`_ , this is only allowed for the user root.  
 To be able to use the Port you can use `authbind <https://en.wikipedia.org/wiki/Authbind>`_ on Debian based systems or you redirect the traffic with iptables rule like the following::
