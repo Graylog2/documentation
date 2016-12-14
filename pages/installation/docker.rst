@@ -47,7 +47,7 @@ This all can be put in a `docker-compose.yml` file, like::
       image: "elasticsearch:2"
       command: "elasticsearch -Des.cluster.name='graylog'"
     graylog:
-      image: graylog2/server:2.1.0-3
+      image: graylog2/server:2.1.2-1
       environment:
         GRAYLOG_PASSWORD_SECRET: somepasswordpepper
         GRAYLOG_ROOT_PASSWORD_SHA2: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
@@ -96,7 +96,7 @@ The `docker-compose.yml` file looks like this::
       volumes:
         - /graylog/data/elasticsearch:/usr/share/elasticsearch/data
     graylog:
-      image: graylog2/server:2.1.0-3
+      image: graylog2/server:2.1.2-1
       volumes:
         - /graylog/data/journal:/usr/share/graylog/data/journal
         - /graylog/config:/usr/share/graylog/data/config
@@ -140,7 +140,7 @@ Plugins
 In order to add plugins you can build a new image based on the existsing `graylog2/server` image with the needed plugin included. Simply
 create a new Dockerfile in an empty directory::
 
-  FROM graylog2/server:2.1.0-3
+  FROM graylog2/server:2.1.2-1
   RUN wget -O /usr/share/graylog/plugin/graylog-plugin-beats-1.1.0.jar https://github.com/Graylog2/graylog-plugin-beats/releases/download/1.1.0/graylog-plugin-beats-1.1.0.jar
 
 Build a new image from that::
