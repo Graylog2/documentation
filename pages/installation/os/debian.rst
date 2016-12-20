@@ -85,12 +85,12 @@ If you plan to have multiple server taking care of different roles in your clust
 Elasticsearch
 ^^^^^^^^^^^^^
 
-The Elasticsearch servers need on IP that can be reached over network set in ``network.host`` and all participants of the cluster in ``discovery.zen.ping.unicast.hosts``. That is enough to have a minial cluster setup.
+The Elasticsearch servers need on IP that can be reached over network set in ``network.host`` and some participants of the cluster in ``discovery.zen.ping.unicast.hosts``. That is enough to have a minial cluster setup.
 
 MongoDB
 ^^^^^^^
 
-If your MongoDB needs to be reachle over network you should set the IP with ``bind_ip`` in the configuration.
+If your MongoDB needs to be reachable over network you should set the IP with ``bind_ip`` in the configuration.
 
 Graylog
 ^^^^^^^
