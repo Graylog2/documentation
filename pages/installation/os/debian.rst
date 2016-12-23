@@ -55,7 +55,7 @@ Graylog
 
 Now install the Graylog repository configuration and Graylog itself with the following commands::
 
-  $ wget https://packages.graylog2.org/repo/packages/graylog-2.1-repository_latest.deb 
+  $ wget https://packages.graylog2.org/repo/packages/graylog-2.1-repository_latest.deb
   $ sudo dpkg -i graylog-2.1-repository_latest.deb
   $ sudo apt-get update && sudo apt-get install graylog-server
 
@@ -80,22 +80,7 @@ The next step is to :ref:`ingest messages <ingest_data>` into your Graylog and e
 Multiple Server Setup
 ---------------------
 
-If you plan to have multiple server taking care of different roles in your cluster :ref:`like we have in this big production setup <big_production_setup>` you need to modify only a few settings. Some of them already covered in our :ref:`Multi-node Setup guide<configure_multinode>` but we will refer them here to help you with this. The :ref:`default file location guide <default_file_location>` will give you the file you need to modify in your setup. 
-
-Elasticsearch
-^^^^^^^^^^^^^
-
-The Elasticsearch servers need on IP that can be reached over network set in ``network.host`` and some participants of the cluster in ``discovery.zen.ping.unicast.hosts``. That is enough to have a minial cluster setup.
-
-MongoDB
-^^^^^^^
-
-If your MongoDB needs to be reachable over network you should set the IP with ``bind_ip`` in the configuration.
-
-Graylog
-^^^^^^^
-
-You should have your Elasticsearch Server in written in ``elasticsearch_discovery_zen_ping_unicast_hosts`` and one IP of your Graylog Server that can be reached by the Elasticsearch Cluster in ``elasticsearch_network_host``. Additional you will need to give Graylog the configuration where it can reach the MongoDB, this is done with the setting ``mongodb_uri``.
+If you plan to have multiple server taking care of different roles in your cluster :ref:`like we have in this big production setup <big_production_setup>` you need to modify only a few settings. This is covered in our :ref:`Multi-node Setup guide<configure_multinode>`. The :ref:`default file location guide <default_file_location>` will give you the file you need to modify in your setup.
 
 
 Feedback
