@@ -24,6 +24,8 @@ None of the components is redundant but it is easy and quick to setup.
 Our :ref:`Virtual Machine Appliances <virtual-machine-appliances>` are using this design by default, deploying nginx as :ref:`frontend proxy <configuring_webif_nginx>`.
 
 
+.. _big_production_setup:
+
 Bigger production setup
 -----------------------
 
