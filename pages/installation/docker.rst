@@ -141,7 +141,7 @@ In order to add plugins you can build a new image based on the existsing `graylo
 create a new Dockerfile in an empty directory::
 
   FROM graylog2/server:2.1.0-3
-  RUN wget -O /usr/share/graylog/plugin/graylog-plugin-beats-1.1.0.jar https://github.com/Graylog2/graylog-plugin-beats/releases/download/1.1.0/graylog-plugin-beats-1.1.0.jar
+  RUN gosu graylog wget -O /usr/share/graylog/plugin/graylog-plugin-beats-1.1.0.jar https://github.com/Graylog2/graylog-plugin-beats/releases/download/1.1.0/graylog-plugin-beats-1.1.0.jar
 
 Build a new image from that::
 
