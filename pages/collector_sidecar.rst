@@ -247,6 +247,12 @@ For the Beats platform you can enable each Beat individually, e.g on a Windows h
           binary_path: C:\Program Files\graylog\collector-sidecar\filebeat.exe
           configuration_path: C:\Program Files\graylog\collector-sidecar\generated\filebeat.yml
 
+On the server side the collector plugin is caching the requested configuration in memory. By default up-to 100 entries are stored for 1 hour.
+If you wish to change that, add to your server configuration::
+
+    collector_sidecar_cache_time = 2h
+    collector_sidecar_cache_max_size = 500
+
 First start
 -----------
 
