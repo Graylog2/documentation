@@ -74,7 +74,7 @@ Use the Windows installer, it can be run interactively::
 
 or in silent mode with::
 
-    $ collector_sidecar_installer.exe /S
+    $ collector_sidecar_installer.exe /S -SERVERURL=http://10.0.2.2:9000/api -TAGS="windows,iis"
 
 Edit `C:\\Program Files\\graylog\\collector-sidecar\\collector_sidecar.yml` and register the system service::
 
