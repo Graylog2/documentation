@@ -92,7 +92,7 @@ You can use the Graylog appliances (OVA, Docker, AWS, ...) for small production 
 
  * Set another password for the default ubuntu user
  * Disable remote password logins in /etc/ssh/sshd_config and deploy proper ssh keys
- * Seperate the box network-wise from the outside, otherwise Elasticsearch can be reached by anyone
+ * Seperate the box network-wise from the outside, otherwise Elasticsearch and MongoDB can be reached by anyone
  * add additional RAM to the appliance and raise the :ref:`java heap  <raise_java_heap>`!
  * add additional HDD to the appliance and :ref:`extend disk space <extend_ova_disk>`.
  * add the appliance to your monitoring and metric systems.
