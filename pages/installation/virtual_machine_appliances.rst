@@ -7,7 +7,7 @@ Virtual Machine Appliances
 Pre-Considerations
 ==================
 
-This is a showcase of Graylog and it's cluster mode. Please run this appliance always in a separated network that is isolated from the internet.
+This is a showcase of Graylog and its cluster mode. Please run this appliance always in a separated network that is isolated from the internet.
 Read also the notes about production readiness_!
 
 Download
