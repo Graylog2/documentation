@@ -403,12 +403,13 @@ it's possible to manage a fairly large amount of configurations.
 Debug
 =====
 
-The Sidecar is writing to the local syslog so take a look into `/var/log/syslog` for informations why something is wrong. The output of the
-running collectors is written to the ``log_path`` directory.
+The Sidecar is writing log files to the directory configured in ``log_path``. One file for each backend, there you can check for general issues like
+file permissions or log transmission problems. The Sidecar itself is writing to ``collector_sidecar.log`` problems like failed connection to the Graylog API can
+be found there.
 
 You can also start the Sidecar in foreground and monitor the output of the process::
 
-    $ graylog-collector-sidecar -c /etc/graylog/collector-sidecar/collector_sidecar.yml
+    $ graylog-collector-sidecar -debug -c /etc/graylog/collector-sidecar/collector_sidecar.yml
 
 Known Problems
 ==============
