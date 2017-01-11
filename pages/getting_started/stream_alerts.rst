@@ -64,4 +64,6 @@ If you want to make this stream active, just go back to Streams and where you se
 
 .. image:: /images/gs_27-streamactive.png
 
-You are done - go grab a Creamsicle, take a deep breath, and chillax.  Tomorrow you can configure all your own logs and alerts.  To help, go and get some deep knowledge in the official :doc:`documentation </index>`.
+You are done - go grab a Creamsicle, take a deep breath, and chillax. Tomorrow you can configure all your own logs and alerts. To help, go and get some deep knowledge in the official :doc:`documentation </index>` friendly people that will help and guide you can be found in our `support community <https://www.graylog.org/community-support>`__. 
+
+You can find more information on our :ref:`alerts` page.

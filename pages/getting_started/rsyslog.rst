@@ -30,3 +30,5 @@ Type::
   $sudo service rsyslog restart
 
 If you have modified the config file and it is somehow invalid, the service command will not bring rsyslog back up - so don't worry, you can always delete the line!
+
+We have even more information how to send messages to Graylog on :ref:`a special page <ingest_data>` in our Documentation.

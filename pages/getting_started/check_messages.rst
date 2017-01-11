@@ -27,3 +27,4 @@ If You Don't Have Messages
 
 ``$ sudo netstat -peanut | grep ":5140"``
 
+If you still have issues, connect to our `community support <https://www.graylog.org/community-support>`__ or get in touch with us about `professional support <https://www.graylog.org/professional-support>`__.
