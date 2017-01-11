@@ -4,11 +4,11 @@
 Getting Started
 ***************
 
-To get a first look what Graylog is and how you can work with it we have a :ref:`virtual appliance <virtual-machine-appliances>` that runs on VMWare or Virtualbox. The following will guide you through the first steps of using Graylog.
+To get the first look what Graylog is and how you can work with we have a :ref:`virtual appliance <virtual-machine-appliances>` to run on VMWare or Virtualbox. The following will guide you to start using Graylog.
 
-After you feel comfortable you should create a fresh :ref:`installation <installing>` that follows your own requirements regarding the sizing and the security settings. The virtual appliance is only created to have a showcase about the features and is not created to run in production.
+After you feel omfortable you should make a fresh :ref:`installation <installing>` that takes care of youre recommendation regarding the sizing and the security settings. The virtual appliance is only created to have a showcase about the features and is not created to run in production.
 
-If you need assistance in planning or building your logging environment `we offer professional support <https://www.graylog.org/professional-support>`__.
+If you need assistance to plan and build your logging environment `we offer professional support <https://www.graylog.org/professional-support>`__ that can work with you.
 
 
 
