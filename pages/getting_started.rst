@@ -4,7 +4,13 @@
 Getting Started
 ***************
 
-The fastest way to evaluate Graylog is to download the virtual appliance file and run it in VMWare or VirtualBox.
+To get a first look what Graylog is and how you can work with it we have a :ref:`virtual appliance <virtual-machine-appliances>` that runs on VMWare or Virtualbox. The following will guide you through the fist steps of using Graylog.
+
+After you feel comfortable you should create a fresh :ref:`installation <installing>` that follows your own requirements regarding the sizing and the security settings. The virtual appliance is only created to have a showcase about the features and is not created to run in production.
+
+If you need assistance in planning or building your logging environment `we offer professional support <https://www.graylog.org/professional-support>`__.
+
+
 
 .. toctree::
    :titlesonly:
