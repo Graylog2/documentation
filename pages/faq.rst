@@ -218,6 +218,14 @@ Suddenly parts of Graylog did not work as expected
 --------------------------------------------------
 If you notice multiple different non working parts in Graylog and found something like ``java.lang.OutOfMemoryError: unable to create new native thread`` in your Graylog Server logfile, you need to raise the process/thread limit of the graylog user. The limit can be checked with ``ulimit -u`` and you need to check how you can raise ``nproc`` in your OS.
 
+I cannot go past page 66 in search results
+------------------------------------------
+Elasticsearch limits the number of messages per search result to 10000 by default. Graylog displays 150 messages per page, which means that the last full page with default settings will be page 66.
+
+You can increase the maximum result window by adjusting the parameter ``index.max_result_window`` as described in the `Elasticsearch index modules dynamic settings <https://www.elastic.co/guide/en/elasticsearch/reference/2.4/index-modules.html#dynamic-index-settings>`__, but be careful as this requires more memory in your Elasticsearch nodes for deep pagination.
+
+This setting can be `dynamically updated <https://www.elastic.co/guide/en/elasticsearch/reference/2.4/cluster-update-settings.html#cluster-update-settings>`__ in Elasticsearch, so that it does not require a cluster restart to be effective.
+
 Have another troubleshooting question?
 --------------------------------------
 
