@@ -235,7 +235,7 @@ This replacement is done just prior to writing messages to Elasticsearch, which 
 Stream rules, the conditions that determine whether or not a message is routed to a stream, are being run as data is being processed by Graylog. These see the field names as containing the dots.
 
 However, alert conditions, which are also attached to streams, are converted to searches and run in the background. They operate on stored data in Elasticsearch and thus see the replacement character for the dots.
-Thus alert conditions need to use the ``_`` instead of ``_`` when referring to fields. There is currently no way to maintain backwards compatibility and transparently fixing this issue, so you need to take action.
+Thus alert conditions need to use the ``_`` instead of ``.`` when referring to fields. There is currently no way to maintain backwards compatibility and transparently fixing this issue, so you need to take action.
 
 The best option, apart from not sending fields with dots, is to remember to write alert conditions using the replacement character, and never use ``.`` in the field names. In general Graylog will use the version with ``_`` in searches etc.
 
