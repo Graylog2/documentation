@@ -218,6 +218,29 @@ Suddenly parts of Graylog did not work as expected
 --------------------------------------------------
 If you notice multiple different non working parts in Graylog and found something like ``java.lang.OutOfMemoryError: unable to create new native thread`` in your Graylog Server logfile, you need to raise the process/thread limit of the graylog user. The limit can be checked with ``ulimit -u`` and you need to check how you can raise ``nproc`` in your OS.
 
+I cannot go past page 66 in search results
+------------------------------------------
+Elasticsearch limits the number of messages per search result to 10000 by default. Graylog displays 150 messages per page, which means that the last full page with default settings will be page 66.
+
+You can increase the maximum result window by adjusting the parameter ``index.max_result_window`` as described in the `Elasticsearch index modules dynamic settings <https://www.elastic.co/guide/en/elasticsearch/reference/2.4/index-modules.html#dynamic-index-settings>`__, but be careful as this requires more memory in your Elasticsearch nodes for deep pagination.
+
+This setting can be `dynamically updated <https://www.elastic.co/guide/en/elasticsearch/reference/2.4/cluster-update-settings.html#cluster-update-settings>`__ in Elasticsearch, so that it does not require a cluster restart to be effective.
+
+My field names contain dots and stream alerts do not match anymore
+------------------------------------------------------------------
+Due to restrictions in certain Elasticsearch versions, Graylog needs to convert field names that contain ``.`` characters with another character, by default the replacement character is ``_``.
+
+This replacement is done just prior to writing messages to Elasticsearch, which causes a mismatch between what stream rules and alert conditions see as field names when they are evaluated.
+
+Stream rules, the conditions that determine whether or not a message is routed to a stream, are being run as data is being processed by Graylog. These see the field names as containing the dots.
+
+However, alert conditions, which are also attached to streams, are converted to searches and run in the background. They operate on stored data in Elasticsearch and thus see the replacement character for the dots.
+Thus alert conditions need to use the ``_`` instead of ``.`` when referring to fields. There is currently no way to maintain backwards compatibility and transparently fixing this issue, so you need to take action.
+
+The best option, apart from not sending fields with dots, is to remember to write alert conditions using the replacement character, and never use ``.`` in the field names. In general Graylog will use the version with ``_`` in searches etc.
+
+For example, if an incoming message contains the field ``docker.container`` stream rules use that name, whereas alert conditions need to use ``docker_container``. You will notice that the search results also use the latter name.
+
 Have another troubleshooting question?
 --------------------------------------
 
