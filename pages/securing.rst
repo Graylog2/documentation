@@ -4,11 +4,12 @@
 Securing Graylog
 ****************
 
-To secure your Graylog Setup, you should not use one of our pre-configured Images, create your own unique installation where you understand each component and secure the environment by design. Expose only the Services that are needed and secure them whenever possible with TLS/SSL and some kind of authentification. Do not use the pre-created appliances as critical production environments. 
+To secure your Graylog setup, you should not use one of our pre-configured images, create your own unique installation where you understand each component and secure the environment by design. Expose only the services that are needed and secure them whenever possible with TLS/SSL and some kind of authentication. Do not use the pre-created appliances ifor critical production environments. 
 
-The Graylog OVA by default leave MongoDB and Elasticsearch listening to the external interface, just because this is created as a showcase to simplify the creation of a cluster. Never run this in an insecure network. 
+On the Graylog appliances MongoDB and Elasticsearch is listening on the external interface. This makes the creation of a cluster easier and demonstrates the way Graylog works.
+Never run this in an insecure network. 
 
-When using Amazon Web Services and our pre-configured AMI, never open all ports in the security group. Do not expose the Server, connect only from inside your VPC. Enable encryption for the communication.
+When using Amazon Web Services and our pre-configured AMI, never open all ports in the security group. Do not expose the server to the internet. Access Graylog only from within your VPC. Enable encryption for the communication.
 
 Logging user activity
 =====================
