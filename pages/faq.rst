@@ -226,6 +226,21 @@ You can increase the maximum result window by adjusting the parameter ``index.ma
 
 This setting can be `dynamically updated <https://www.elastic.co/guide/en/elasticsearch/reference/2.4/cluster-update-settings.html#cluster-update-settings>`__ in Elasticsearch, so that it does not require a cluster restart to be effective.
 
+My field names contain dots and stream alerts do not match anymore
+------------------------------------------------------------------
+Due to restrictions in certain Elasticsearch versions, Graylog needs to convert field names that contain ``.`` characters with another character, by default the replacement character is ``_``.
+
+This replacement is done just prior to writing messages to Elasticsearch, which causes a mismatch between what stream rules and alert conditions see as field names when they are evaluated.
+
+Stream rules, the conditions that determine whether or not a message is routed to a stream, are being run as data is being processed by Graylog. These see the field names as containing the dots.
+
+However, alert conditions, which are also attached to streams, are converted to searches and run in the background. They operate on stored data in Elasticsearch and thus see the replacement character for the dots.
+Thus alert conditions need to use the ``_`` instead of ``.`` when referring to fields. There is currently no way to maintain backwards compatibility and transparently fixing this issue, so you need to take action.
+
+The best option, apart from not sending fields with dots, is to remember to write alert conditions using the replacement character, and never use ``.`` in the field names. In general Graylog will use the version with ``_`` in searches etc.
+
+For example, if an incoming message contains the field ``docker.container`` stream rules use that name, whereas alert conditions need to use ``docker_container``. You will notice that the search results also use the latter name.
+
 Have another troubleshooting question?
 --------------------------------------
 
