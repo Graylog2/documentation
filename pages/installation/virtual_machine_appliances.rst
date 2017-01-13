@@ -13,7 +13,8 @@ Read also the notes about production readiness_!
 Download
 ========
 
-Download the `OVA image <https://packages.graylog2.org/appliances/ova>`_.
+Download the `OVA image <https://packages.graylog2.org/appliances/ova>`_. If you are unsure what the latest version number is, take a look at our `release page <https://www.graylog.org/releases>`__.
+
 
 Run the image
 =============
@@ -55,7 +56,7 @@ Logging in
 
 You can log into the shell of the operating system of the appliance with the
 user *ubuntu* and the password *ubuntu*. You should of course change those
-credentials if you plan to go into production with the appliance.
+credentials.
 
 The web interface is reachable on port 80 at the IP address of your virtual
 machine. The login prompt of the shell is showing you this IP address, too. (See

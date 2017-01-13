@@ -10,8 +10,7 @@ fully automated reproducible setups.
 
 Graylog can be installed in many different ways so you can pick whatever works best for you. We recommend to start with the
 :ref:`virtual machine appliances <virtual-machine-appliances>` for the fastest way to get started and then pick one
-of the other, more flexible installation methods to build an easier to scale setup. (Note: The :ref:`virtual machine appliances <virtual-machine-appliances>`
-are suitable for production usage because they are also prepared to scale out to some level when required.)
+of the other, more flexible installation methods to build an easier to scale setup. 
 
 This chapter is explaining the many ways to install Graylog and aims to help choosing the one that fits your needs.
 
