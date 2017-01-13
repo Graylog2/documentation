@@ -56,7 +56,7 @@ Logging in
 
 You can log into the shell of the operating system of the appliance with the
 user *ubuntu* and the password *ubuntu*. You should of course change those
-credentials if you plan to go into some kind of production with the appliance.
+credentials.
 
 The web interface is reachable on port 80 at the IP address of your virtual
 machine. The login prompt of the shell is showing you this IP address, too. (See
