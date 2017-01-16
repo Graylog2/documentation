@@ -35,7 +35,7 @@ Currently we provide pre-compiled packages on the Github releases page of the pr
 we will add the packages to the DEB and YUM online repositories.
 To get the Sidecar working `Download a package <https://github.com/Graylog2/collector-sidecar/releases>`_ and install it on the target system.
 
-All following commands should be executed on the **remote machine** where you want to collector log data from.
+All following commands should be executed on the **remote machine** where you want to collect log data from.
 
 Beats backend
 -------------
