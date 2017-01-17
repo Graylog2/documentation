@@ -35,7 +35,9 @@ Eviction of indices and messages
 --------------------------------
 
 There are configuration settings for the maximum number of indices Graylog is managing in a given index set.
+
 Depending on the configured retention strategy, the oldest indices of an index set will automatically be closed, deleted, or exported when the configured maximum number of indices has been reached.
+
 The deletion is performed by the Graylog master node in a background thread which is continuously comparing the number of indices with the configured maximum::
 
   INFO : org.graylog2.indexer.rotation.strategies.AbstractRotationStrategy - Deflector index <graylog_95> should be rotated, Pointing deflector to new index now!
@@ -48,9 +50,28 @@ The deletion is performed by the Graylog master node in a background thread whic
   INFO : org.graylog2.system.jobs.SystemJobManager - Submitted SystemJob <f1018ae0-dcaa-11e6-97c3-6c4008b8fc28> [org.graylog2.indexer.indices.jobs.SetIndexReadOnlyAndCalculateRangeJob]
   INFO : org.graylog2.indexer.MongoIndexSet - Successfully pointed index alias <graylog_deflector> to index <graylog_96>.
 
+
+Index Set Configuration
+=======================
+
+Index sets have a variety of different settings related to how Graylog will store messages into the Elasticsearch cluster.
+
+.. image:: /images/index_sets/index_set_create.png
+
+* **Title**: A descriptive name of the index set.
+* **Description**: A description of the index set for human consumption.
+* **Index prefix**: A unique prefix used for Elasticsearch indices managed by the index set. The prefix must start with a letter or number, and can only contain letters, numbers, ``_``, ``-`` and ``+``. The index alias will be named accordingly, e. g. ``graylog_deflector`` if the index prefix was ``graylog``.
+* **Analyzer**: (default: ``standard``) The Elasticsearch `analyzer <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/configuring-analyzers.html>`_ for the index set.
+* **Index shards**: (default: 4) The number of Elasticsearch shards used per index.
+* **Index replicas**: (default: 0) The number of Elasticsearch replicas used per index.
+* **Max. number of segments**: (default: 1) The maximum number of segments per Elasticsearch index after `index optimization (force merge) <https://www.elastic.co/guide/en/elasticsearch/reference/2.4/indices-forcemerge.html>`_, see `Segment Merging <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/merge-process.html>`_ for details.
+* **Disable index optimization after rotation**: Disable Elasticsearch `index optimization (force merge) <https://www.elastic.co/guide/en/elasticsearch/reference/2.4/indices-forcemerge.html>`_ after index rotation. Only activate this if you have serious problems with the performance of your Elasticsearch cluster during the optimization process.
+
+
 .. _index_rotation:
 
-The following index rotation settings are available:
+Index rotation
+--------------
 
 * **Message count**: Rotates the index after a specific number of messages have been written.
 * **Index size**: Rotates the index after an approximate size on disk (before optimization) has been reached.
@@ -60,7 +81,8 @@ The following index rotation settings are available:
 
 .. _index_retention:
 
-The following index retention settings are available:
+Index retention
+---------------
 
 * **Delete**: `Delete indices <https://www.elastic.co/guide/en/elasticsearch/reference/2.4/indices-delete-index.html>`_ in Elasticsearch to minimize resource consumption.
 * **Close**: `Close indices <https://www.elastic.co/guide/en/elasticsearch/reference/2.4/indices-open-close.html>`_ in Elasticsearch to reduce resource consumption.
