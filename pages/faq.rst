@@ -102,7 +102,7 @@ Functionality
 Can Graylog automatically clean old data?
 -----------------------------------------
 
-Absolutely we have :doc:`data retention features <index_model>`.
+Absolutely we have :doc:`data retention features <configuration/index_model>`.
 
 Does Graylog support LDAP / AD and its groups?
 ----------------------------------------------

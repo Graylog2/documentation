@@ -11,6 +11,7 @@ Configuring Graylog
    configuration/https
    configuration/multinode_setup
    configuration/elasticsearch
+   configuration/index_model
    configuration/backup
    configuration/file_location
    configuration/rest_api

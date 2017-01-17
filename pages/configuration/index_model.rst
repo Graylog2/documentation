@@ -9,7 +9,11 @@ Graylog is transparently managing one or more sets of Elasticsearch indices to o
 
 To enable managing indices with different `mappings <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/mapping.html>`_, `analyzers <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/configuring-analyzers.html>`_, and `replication settings <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/_index_settings.html>`_ Graylog is using so-called index sets which are an abstraction of all these settings.
 
+.. image:: /images/index_sets/index_set_overview.png
+
 Each index set contains the necessary settings for Graylog to create, manage, and fill Elasticsearch indices and handle index rotation and data retention for specific requirements.
+
+.. image:: /images/index_sets/index_set_details.png
 
 Graylog is maintaining an `index alias <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/index-aliases.html>`_ per index set which is always pointing to the current write-active index from that index set.
 There is always exactly one index to which new messages are written until the configured rotation criterion (number of documents, index size, or index age) has been met.
@@ -28,7 +32,7 @@ It selects a lists of indices to query when having a time range provided. If no 
 
 
 Eviction of indices and messages
-================================
+--------------------------------
 
 There are configuration settings for the maximum number of indices Graylog is managing in a given index set.
 Depending on the configured retention strategy, the oldest indices of an index set will automatically be closed, deleted, or exported when the configured maximum number of indices has been reached.
@@ -61,13 +65,16 @@ The following index retention settings are available:
 * **Delete**: `Delete indices <https://www.elastic.co/guide/en/elasticsearch/reference/2.4/indices-delete-index.html>`_ in Elasticsearch to minimize resource consumption.
 * **Close**: `Close indices <https://www.elastic.co/guide/en/elasticsearch/reference/2.4/indices-open-close.html>`_ in Elasticsearch to reduce resource consumption.
 * **Do nothing**
-* **Archive**: Commercial feature, see :doc:`archiving`.
+* **Archive**: Commercial feature, see :doc:`../archiving`.
 
 .. image:: /images/index_sets/index_set_create_retention.png
 
 
+Maintenance
+===========
+
 Keeping the index ranges in sync
-================================
+--------------------------------
 
 Graylog will take care of calculating index ranges automatically as soon as a new index has been created.
 
@@ -94,7 +101,7 @@ This will trigger a system job::
 
 
 Manually rotating the active write index
-========================================
+----------------------------------------
 
 Sometimes you might want to rotate the active write index manually and not wait until the configured rotation criterion for in the latest index has been met, for example if you've changed the index mapping or the number of shards per index.
 
