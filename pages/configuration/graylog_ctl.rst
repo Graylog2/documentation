@@ -50,6 +50,9 @@ The following commands are changing the configuration of Graylog:
 +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
 || ``sudo graylog-ctl local-connect``                 | Bind all services but the web interface to 127.0.0.1                                                       |
 +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+|| ``sudo graylog-ctl set-mongodb-password [-a|-g]``  | Activate MongoDB authentication and set a password for an admin or unprivileged service user               |
+|| ``-u <username> -p <password>``                    |                                                                                                            |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
 
 Commands for multi node setups:
 
@@ -417,3 +420,29 @@ Or change the default memory settings used by Graylog or Elasticsearch::
      }
 
 Again, run ``reconfigure`` and ``restart`` afterwards to activate the changes.
+
+Securing an appliance
+=====================
+
+Even though the Graylog appliances are not meant for production use there are still two commands you can use to increase the security of an installation.
+With ``graylog-ctl local-connect`` only the web interface is reachable from the outside. All other services are listening on the local loopback device.
+This is only useful when you run the appliance as a single node. Clustered setups are not possible anymore. But data stored in MongoDB or Elastcsearch
+are protected from direct external access.
+
+The other one is ``graylog-ctl set-mongodb-password``. This command enables authentication for MongoDB and creates or updates a database user.
+First an admin user should be created. This user is needed for database maintenance and future password changes. Afterwards an unprivileged service user
+can be created for Graylog. The procedure works like this::
+
+  $ graylog-ctl set-mongodb-password -a -u admin -p someAdminPassword123
+  $ graylog-ctl set-mongodb-password -g -u graylog -p someGraylogServicePassword
+  $ graylog-ctl reconfigure
+
+MongoDB and the Graylog server will be restarted with activated authentication. The username and password needs to be set on every Graylog node to make a cluster work.
+Login to another Graylog server and only set the service user::
+
+  $ graylog-ctl set-cluster-master 1.1.1.2
+  $ graylog-ctl set-mongodb-password -g -u graylog -p someGraylogServicePassword
+  $ graylog-ctl reconfigure-as-server
+
+Since the pre-build appliances are based on standard Ubuntu-Linux, tools like iptables/SELinux/AppArmor can be used additionally.
+But to explain all available countermeasurements would go beyond this documentation.
