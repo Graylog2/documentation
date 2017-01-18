@@ -278,7 +278,7 @@ Sidecar Status
 --------------
 
 Each Sidecar instance is able to send status informations back to Graylog. By enabling the option ``send_status`` metrics like the configured tags or the IP address of the host Sidecar is running on
-are send. Also metrics that are relevant for a stable operation e.g. disk volumes over 75% utalization are included. Additionaly with the ``list_log_files`` option a directory listing is displayed in
+are send. Also metrics that are relevant for a stable operation e.g. disk volumes over 75% utilization are included. Additionaly with the ``list_log_files`` option a directory listing is displayed in
 the Graylog web interface. In that way an administrator can see which files are available for collecting. The list is periodically updated and files with write access are highlighted for easy identification.
 After enabling ``send_status`` or ``send_status`` + ``list_log_files`` go to the collector overview and click on one of them, a status page with the configured information will be displayed.
 
