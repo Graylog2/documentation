@@ -250,6 +250,28 @@ These are the relevant files and directories in your plugin directory for the we
   src/web
     This is where the actual code for thw web part of your plugin goes to. For the start there is a simple ``index.jsx`` file, which shows you how to register your plugin and the parts it provides with the Graylog web interface. We will get to this in detail later.
 
+Required conventions for web plugins
+====================================
+
+Plugin Entrypoint
+-----------------
+
+There is a single file which is the entry point of your plugin, which means that the execution of your plugin starts there. By convention this is `src/web/index.jsx`. You can rename/move this file, you just have to adapt your webpack configuration to reflect this change, but it is not recommended.
+
+In any case, this file needs to contain the following code at the very top::
+
+    // eslint-disable-next-line no-unused-vars
+    import webpackEntry from 'webpack-entry';
+
+This part is responsible to include and execute the `webpack-entry <https://github.com/Graylog2/graylog2-server/blob/master/graylog2-web-interface/src/webpack-entry.js>`_ file, which is responsible to set up webpack to use the correct URL format when loading assets for this plugin. If you leave this out, erratic behavior will be the result.
+
+Linking to other pages from your plugin
+---------------------------------------
+
+If you want to generate links from the web frontend to other pages of your plugin or the main web interface, you need to use the ``Routes.pluginRoute()`` helper method to generate the URLs properly.
+
+See `this file <https://github.com/Graylog2/graylog2-server/blob/master/graylog2-web-interface/src/routing/Routes.jsx#L5-L20>`_ for more information.
+
 Best practices for web plugin development
 =========================================
 
