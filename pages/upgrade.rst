@@ -4,6 +4,6 @@ Upgrading Graylog
 
 .. toctree::
    :titlesonly:
+   :glob:
 
-   upgrade/graylog-2.0
-   upgrade/graylog-2.1
+   upgrade/graylog-*
