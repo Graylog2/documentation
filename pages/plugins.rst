@@ -39,7 +39,7 @@ There are lots of different ways to get those on your local machine, unfortunate
 Creating a plugin skeleton
 ==========================
 
-The easiest way to get started is to use our `Graylog meta project <https://github.com/graylog2/graylog-project>`_,
+The easiest way to get started is to use our `Graylog meta project <https://github.com/Graylog2/graylog-project>`_,
 which will create a complete plugin project infrastructure will all required classes, build definitions, and configurations. Using the meta project allows you to have the `Graylog server project <https://github.com/graylog2/graylog2-server>`_ and your own plugins (or 3rd party plugins) in the same project, which means that you can run and debug everything in your favorite IDE or navigate seamlessly in the code base.
 
 Maven is a widely used build tool for Java, that comes pre-installed on many operating systems or can be installed using most package managers. Make sure that you have at least version 3 before you go on.
@@ -201,7 +201,7 @@ A good example on how to write a decorator can be seen in the `source of the Sys
 Creating a plugin for the web interface
 =======================================
 
-Sometimes your plugin is not only supposed to work under the hoods inside a Graylog server as an input, output, alarm callback, etc. but you also want to contribute previously nonexisting functionality to Graylog's web interface. Since version 2.0 this is now possible. When using the most recent `Graylog meta project <https://github.com/Graylog2/graylog-project>` to bootstrap the plugin skeleton, you are already good to go for this. Otherwise please see our chapter about :ref:`creating_plugin_skeleton`.
+Sometimes your plugin is not only supposed to work under the hoods inside a Graylog server as an input, output, alarm callback, etc. but you also want to contribute previously nonexisting functionality to Graylog's web interface. Since version 2.0 this is now possible. When using the most recent `Graylog meta project <https://github.com/Graylog2/graylog-project>`_ to bootstrap the plugin skeleton, you are already good to go for this. Otherwise please see our chapter about :ref:`creating_plugin_skeleton`.
 
 The Graylog web interface is written in JavaScript, based on `React <https://facebook.github.io/react/>`_. It is built using `webpack <http://webpack.github.io>`_, which is bundling all JavaScript code (and other files you use, like stylesheets, fonts, images, even audio or video files if you need them) into chunks digestable by your browser and npm_, which is managing our external (and own) dependencies. During the build process all of this will be bundled and included in the jar file of your plugin.
 
@@ -249,6 +249,28 @@ These are the relevant files and directories in your plugin directory for the we
 
   src/web
     This is where the actual code for thw web part of your plugin goes to. For the start there is a simple ``index.jsx`` file, which shows you how to register your plugin and the parts it provides with the Graylog web interface. We will get to this in detail later.
+
+Required conventions for web plugins
+====================================
+
+Plugin Entrypoint
+-----------------
+
+There is a single file which is the entry point of your plugin, which means that the execution of your plugin starts there. By convention this is `src/web/index.jsx`. You can rename/move this file, you just have to adapt your webpack configuration to reflect this change, but it is not recommended.
+
+In any case, this file needs to contain the following code at the very top::
+
+    // eslint-disable-next-line no-unused-vars
+    import webpackEntry from 'webpack-entry';
+
+This part is responsible to include and execute the `webpack-entry <https://github.com/Graylog2/graylog2-server/blob/master/graylog2-web-interface/src/webpack-entry.js>`_ file, which is responsible to set up webpack to use the correct URL format when loading assets for this plugin. If you leave this out, erratic behavior will be the result.
+
+Linking to other pages from your plugin
+---------------------------------------
+
+If you want to generate links from the web frontend to other pages of your plugin or the main web interface, you need to use the ``Routes.pluginRoute()`` helper method to generate the URLs properly.
+
+See `this file <https://github.com/Graylog2/graylog2-server/blob/master/graylog2-web-interface/src/routing/Routes.jsx#L5-L20>`_ for more information.
 
 Best practices for web plugin development
 =========================================
