@@ -39,7 +39,7 @@ There are lots of different ways to get those on your local machine, unfortunate
 Creating a plugin skeleton
 ==========================
 
-The easiest way to get started is to use our `Graylog meta project <https://github.com/graylog2/graylog-project>`_,
+The easiest way to get started is to use our `Graylog meta project <https://github.com/Graylog2/graylog-project>`_,
 which will create a complete plugin project infrastructure will all required classes, build definitions, and configurations. Using the meta project allows you to have the `Graylog server project <https://github.com/graylog2/graylog2-server>`_ and your own plugins (or 3rd party plugins) in the same project, which means that you can run and debug everything in your favorite IDE or navigate seamlessly in the code base.
 
 Maven is a widely used build tool for Java, that comes pre-installed on many operating systems or can be installed using most package managers. Make sure that you have at least version 3 before you go on.
