@@ -58,7 +58,7 @@ Now restart ``syslogd``::
   $ sudo launchctl load /System/Library/LaunchDaemons/com.apple.syslogd.plist
 
 **Important:** If ``syslogd`` was running as another user you might end up with multiple ``syslogd`` instances and strange
-behaviour of the whole system. Please check that only one ``syslogd`` process is running::
+behavior of the whole system. Please check that only one ``syslogd`` process is running::
 
   $ ps aux | grep syslog
   lennart         58775   0.0  0.0  2432768    592 s004  S+    6:10PM   0:00.00 grep syslog
@@ -244,7 +244,7 @@ This will result in a message in Graylog looking like this:
 
 .. image:: /images/jsonpath_1.png
 
-You can use Graylog to analyse your download counts now.
+You can use Graylog to analyze your download counts now.
 
 JSONPath
 --------

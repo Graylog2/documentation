@@ -31,4 +31,4 @@ Type::
 
 If you have modified the config file and it is somehow invalid, the service command will not bring rsyslog back up - so don't worry, you can always delete the line!
 
-Further information on how to send log messages are on :ref:`a sperate page <ingest_data>` in our documentation
+Further information on how to send log messages are on :ref:`a separate page <ingest_data>` in our documentation
