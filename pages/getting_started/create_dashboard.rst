@@ -47,7 +47,7 @@ Give your chart a title and hit *Create*.
 
 .. image:: /images/gs_17-crwidget.png
 
-The new widget is now on the screen.  Goob job - you’ve got this!
+The new widget is now on the screen.  Good job - you’ve got this!
 
 .. image:: /images/gs_18-dashboard2.png
 
@@ -65,5 +65,5 @@ I like to track password changes, privilege assignments, root activity, system e
 Once you have a few widgets in your dashboard, go into unlock / edit mode to quickly edit any widget, rearrange them on your dashboard, or delete. Make sure to click Lock to save!
 
 
-You can find out why dasboards matter at :ref:`our Dashboard documentation <dashboards>`.
+You can find out why dashboards matter at :ref:`our Dashboard documentation <dashboards>`.
 
