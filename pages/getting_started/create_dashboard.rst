@@ -63,5 +63,3 @@ Let’s start by searching for all messages within the last 1 hour. To do this, 
 I like to track password changes, privilege assignments, root activity, system events, user logins, etc.  Go knock yourself out and show your co-workers.
 
 Once you have a few widgets in your dashboard, go into unlock / edit mode to quickly edit any widget, rearrange them on your dashboard, or delete. Make sure to click Lock to save!
-
-You can find out why dashboards matter at :ref:`our Dashboard documentation <dashboards>`.
