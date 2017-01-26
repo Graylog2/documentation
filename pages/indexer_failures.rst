@@ -46,4 +46,4 @@ written to a field per index wins. If the Graylog index cycles then the field
 types are starting from scratch for that index. If the first message written to
 that index has the ``http_response_code`` set as ``string`` then it will be a ``string``
 until the index cycles the next time. Take a look
-at :doc:`index_model` for more information.
+at :doc:`configuration/index_model` for more information.

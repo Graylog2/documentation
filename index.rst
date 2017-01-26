@@ -32,7 +32,6 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/drools
    pages/blacklisting
    pages/geolocation
-   pages/index_model
    pages/indexer_failures
    pages/users_and_roles
    pages/plugins

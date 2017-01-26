@@ -3,7 +3,7 @@ Streams
 *******
 
 What are streams?
-*****************
+=================
 
 The Graylog streams are a mechanism to route messages into categories in realtime while they are processed. You define rules that
 instruct Graylog which message to route into which streams. Imagine sending these three messages to Graylog::
@@ -38,8 +38,9 @@ The stream is now appearing in the streams list and a click on its title will sh
 
 Streams can be used to be alerted in case certain condition happens. We cover more topics related to alerts in :ref:`alerts`.
 
+
 What's the difference to saved searches?
-========================================
+----------------------------------------
 
 The biggest difference is that streams are processed in realtime. This allows realtime alerting and forwarding to other systems.
 Imagine forwarding your database errors to another system or writing them to a file by regularly reading them from the message
@@ -52,6 +53,7 @@ rules you have configured::
   streams:[STREAM_ID]
 
 Building a query with all rules would cause significantly higher load on the message storage.
+
 
 How do I create a stream?
 =========================
@@ -72,13 +74,42 @@ How do I create a stream?
    some messages by loading them from an input or manually giving a message ID. Once you are satisfied with the results, click on "I'm done".
 #. The stream is still paused, click on the "Start stream" button to activate the stream.
 
-Alerts
-******
 
-Information on :ref:`alerts <alerts>` have been moved.
+Index Sets
+==========
+
+For starters, you should read :doc:`configuration/index_model` for a comprehensive description of the index set functionality in Graylog.
+
+Every stream is assigned to an index set which controls how messages routed into that stream are being stored into Elasticsearch.
+The stream overview in the web interface shows the assigned index set for each stream.
+
+.. image:: /images/index_sets/stream_overview.png
+
+Index sets can be assigned to a stream when creating the stream and changed later when editing the stream settings.
+
+.. important:: Graylog will not automatically copy messages into new Elasticsearch indices if another index set is being assigned to a stream.
+
+.. image:: /images/index_sets/stream_create.png
+
+Graylog routes every message into the **All messages** stream by default, unless the message is removed from this stream with a pipeline rule (see :doc:`pipelines`) or it's routed into a stream marked with **Remove matches from 'All messages' stream**.
+
+The latter is useful if messages should be stored with different settings than the ones in the **Default index set**, for example web server access logs should only be stored for 4 weeks while all other messages should be stored for 1 year.
+
+
+Storage requirements
+--------------------
+
+Graylog writes messages once for each index set into Elasticsearch. This means that if all streams are using the **Default index set**, each message will be written exactly once into Elasticsearch, no matter into how many streams the message has been sent.
+This can be thought of a kind of de-duplication.
+
+If some streams use other index sets and the **Remove matches from 'All messages' stream** setting is not enabled, messages will be written into Elasticsearch at least twice, once for the **Default index set** and once for the assigned index set.
+This means that the same message will be stored in two or more indices in Elasticsearch with different index settings.
+
+Unless you explicitly want to store messages multiple times in different Elasticsearch indices, either assign the **Default index set** to the respective streams or enable the **Remove matches from 'All messages' stream** setting for the respective streams.
+
 
 Outputs
-*******
+=======
 
 The stream output system allows you to forward every message that is routed into a stream to other destinations.
 
@@ -87,20 +118,22 @@ for as many streams as you like. This way you can configure a forwarding destina
 
 Graylog ships with default outputs and can be extended with :doc:`plugins`.
 
+
 Use cases
-*********
+=========
 
 These are a few example use cases for streams:
 
 * Forward a subset of messages to other data analysis or BI systems to reduce their license costs.
 * Monitor exception or error rates in your whole environment and broken down per subsystem.
-* Get a list of all failed SSH logins and use the *quickvalues* to analyze which user names where affected.
+* Get a list of all failed SSH logins and use *quick values* to analyze which user names where affected.
 * Catch all HTTP POST requests to ``/login`` that were answered with a HTTP 302 and route them into a stream called
-  *Successful user logins*. Now get a chart of when users logged in and use the *quickvalues* to get a list of users that performed
+  *Successful user logins*. Now get a chart of when users logged in and use *quick values* to get a list of users that performed
   the most logins in the search time frame.
 
+
 How are streams processed internally?
-*************************************
+=====================================
 
 The most important thing to know about Graylog stream matching is that there is no duplication of stored messages. Every message that comes
 in is matched against the rules of a stream. For messages satisfying *all* or *at least one* of the stream rules (as configured in
@@ -111,8 +144,9 @@ All analysis methods and searches that are bound to streams can now easily narro
 
 .. image:: /images/internal_stream_processing.png
 
+
 Stream Processing Runtime Limits
-********************************
+================================
 
 An important step during the processing of a message is the stream classification. Every message is matched against the user-configured
 stream rules. The message is added to the stream if all or any rules of a stream matches, depending on what the user chose. Applying
@@ -136,8 +170,9 @@ situations where the message load is much higher than the system can handle, ove
 timeout. If this happens repeatedly, all streams get disabled. This is a clear indicator that your system is overutilized and not able
 to handle the peak message load.
 
+
 How to configure the timeout values if the defaults do not match
-================================================================
+----------------------------------------------------------------
 
 There are two configuration variables in the configuration file of the server, which influence the behavior of this functionality.
 
@@ -146,8 +181,9 @@ There are two configuration variables in the configuration file of the server, w
 * ``stream_processing_max_faults`` is the maximum number of times a single stream can exceed this runtime limit. When it happens more often,
   the stream is disabled until it is manually reenabled. The default for this setting is ``3``.
 
+
 What could cause it?
-====================
+--------------------
 
 If a single stream has been disabled and all others are doing well, the chances are high that one or more stream rules are performing bad under
 certain circumstances. In most cases, this is related to stream rules which are utilizing regular expressions. For most other stream rules types
@@ -156,22 +192,25 @@ matched against it. In some special cases, the difference between a match and a 
 or even 1000. This is caused by a phenomenon called *catastrophic backtracking*. There are good write-ups about it on the web which will help
 you understanding it.
 
+
 Summary: How do I solve it?
-===========================
+---------------------------
 
 #. Check the rules of the stream that is disabled for rules that could take very long (especially regular expressions).
 #. Modify or delete those stream rules.
 #. Re-enable the stream.
 
+
 Programmatic access via the REST API
-************************************
+====================================
 
 Many organisations already run monitoring infrastructure that are able to alert operations staff when incidents are detected.
 These systems are often capable of either polling for information on a regular schedule or being pushed new alerts - this article describes how to
 use the Graylog Stream Alert API to poll for currently active alerts in order to further process them in third party products.
 
+
 Checking for currently active alert/triggered conditions
-========================================================
+--------------------------------------------------------
 
 Graylog stream alerts can currently be configured to send emails when one or more of the associated alert conditions evaluate to true. While
 sending email solves many immediate problems when it comes to alerting, it can be helpful to gain programmatic access to the currently active alerts.
@@ -214,8 +253,9 @@ Sample JSON return value::
 
 Note that the result is cached for 30 seconds.
 
+
 List of already triggered stream alerts
-=======================================
+---------------------------------------
 
 Checking the current state of a stream's alerts can be useful to trigger alarms in other monitoring systems, but if one wants to send more detailed
 messages to operations, it can be very helpful to get more information about the current state of the stream, for example the list of all triggered
@@ -254,14 +294,15 @@ alert, as well as the number of alerts triggered since the timestamp provided.
 
 Note that currently a maximum of 300 alerts will be returned.
 
+
 FAQs
-****
+====
 
 Using regular expressions for stream matching
-=============================================
+---------------------------------------------
 
 Stream rules support matching field values using regular expressions.
-Graylog uses the `Java Pattern class <http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html>`_ to execute regular expressions.
+Graylog uses the `Java Pattern class <http://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html>`_ to execute regular expressions.
 
 For the individual elements of regular expression syntax, please refer to Oracle's documentation, however the syntax largely follows the familiar
 regular expression languages in widespread use today and will be familiar to most.
@@ -281,14 +322,16 @@ In order to match the expression using any combination of upper- and lowercase c
 Most of the other flags supported by Java are rarely used in the context of matching stream rules or extractors, but if you need them their use
 is documented on the same Javadoc page by Oracle.
 
+
 Can I add messages to a stream after they were processed and stored?
-====================================================================
+--------------------------------------------------------------------
 
 No. Currently there is no way to re-process or re-match messages into streams.
 
 Only new messages are routed into the current set of streams.
 
+
 Can I write own outputs or alert callbacks methods?
-===================================================
+---------------------------------------------------
 
 Yes. Please refer to the :doc:`plugins` documentation page.
