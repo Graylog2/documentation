@@ -99,8 +99,6 @@ Each component in this multi-node setup can be scaled on the individual needs.
 
 Depending on the amount of messages ingested and how long messages should be available for direct search, the Elasticsearch cluster will need most of the resources on your setup.
 
-Check the `Graylog sizing estimator <https://www.graylog.org/tools/sizing-estimator>`__ we had created to help you to get a rough idea about the hardware requirements.
-
 Keep an eye on your Elasticsearch cluster with plugins like `Elastic HQ <http://www.elastichq.org>`__ or `Kopf <https://github.com/lmenezes/elasticsearch-kopf>`__. Those will help you to understand the Elasticsearch cluster health and behavior.
 
 Graylog Metrics should be monitored `with the Graylog Metrics Reporter plugins <https://marketplace.graylog.org/addons/6fef88c7-94f7-488e-a6c5-bd6b71d8343e>`__ which are able to send the internal Graylog metrics to your favorite metrics collector (e. g. Graphite or Prometheus).
