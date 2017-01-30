@@ -128,11 +128,19 @@ Will Graylog extract IPs from all fields?
 -----------------------------------------
 Yes, as long as they contain exclusively an IP address.
 
-Where are the extracted geolocations stored?
---------------------------------------------
-Extracted geolocations are stored in a new field, named as the original field, with ``_geolocation``
-appended to it. That is, if the original field was called ``ip_address``, the extracted geolocation will be
-stored in the ``ip_address_geolocation`` field.
+What geo-information is extracted from IPs?
+-------------------------------------------
+Since version 2.2.0, Graylog extracts the IP coordinates, country ISO code, and the city name if available.
+
+Where is the extracted geo-information stored?
+----------------------------------------------
+Extracted geo-information is stored in new message fields, named as the original field, and appended suffix
+describing the stored information. That is, if the original field was called ``ip_address``, the extracted
+geo-information will be stored as follows:
+
+- ``ip_address_geolocation`` will contain the geo-coordinates
+- ``ip_address_country_code`` will contain the country ISO code
+- ``ip_address_city_name`` will contain the city name (if available) or ``N/A`` in other case
 
 Which geo-points format does Graylog use to store geolocation information?
 --------------------------------------------------------------------------
