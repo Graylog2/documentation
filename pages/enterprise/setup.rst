@@ -20,7 +20,7 @@ The following list shows the minimum required Graylog versions for the Graylog E
       - Required Graylog Version
     * - 1.0.0
       - 2.0.0, 2.0.1
-    * - 1.0.0
+    * - 1.0.1
       - 2.0.2, 2.0.3
     * - 1.2.0
       - 2.1.0, 2.1.1, 2.1.2
