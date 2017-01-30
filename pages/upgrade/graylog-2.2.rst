@@ -17,6 +17,8 @@ Due to the extensive rework done in alerting, this behavior has been modified to
 
 To simplify the transition for people relying on this behavior, we have added a migration step that will create an email alarm callback for each stream that has alert conditions, has alert receivers, but has no associated alarm callbacks.
 
+With to the introduction of email templates in 0.21, the ``transport_email_subject_prefix`` config setting became unused. It is now being removed completely. In early versions it was used to add a prefix to the generated subject of alerting emails. Since 0.21 it is possible to define a complete template used for the generation of alert email subjects.
+
 Default stream/Index Sets
 =========================
 
