@@ -6,7 +6,7 @@ Geolocation
 
 Graylog lets you extract and visualize geolocation information from IP addresses in your logs.
 Here we will explain how to install and configure the geolocation resolution, and how to create a
-map with those geolocation.
+map with the extracted geo-information.
 
 Setup
 =====
