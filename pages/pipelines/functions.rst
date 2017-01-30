@@ -127,6 +127,8 @@ other plugins in the marketplace.
       - Returns a substring of ``value`` with the given start and end offsets.
     * - `concat`_
       - Concatenates two strings.
+    * - `split`_
+      - Split a string around matches of this pattern (Java syntax).
     * - `regex`_
       - Match a regular expression against a string, with matcher groups.
     * - `grok`_
@@ -149,14 +151,6 @@ other plugins in the marketplace.
       - Returns the hex encoded SHA256 digest of the given string.
     * - `sha512`_
       - Returns the hex encoded SHA512 digest of the given string.
-    * - `now`_
-      - Returns the current date and time.
-    * - `parse_date`_
-      - Parses a date and time from the given string, according to a strict pattern.
-    * - `flex_parse_date`_
-      - Attempts to parse a date and time using the Natty date parser.
-    * - `format_date`_
-      - Formats a date and time according to a given formatter pattern.
     * - `parse_json`_
       - Parse a string into a JSON tree.
     * - `select_jsonpath`_
@@ -171,6 +165,8 @@ other plugins in the marketplace.
       - Assigns the current message to the specified stream.
     * - `create_message`_
       - **Currently incomplete** Creates a new message which will be evaluated by the entire processing pipeline.
+    * - `clone_message`_
+      - Clones a message.
     * - `drop_message`_
       - This currently processed message will be removed from the processing pipeline after the rule finishes.
     * - `has_field`_
@@ -191,6 +187,34 @@ other plugins in the marketplace.
       - Converts a syslog priority number to its level and facility.
     * - `expand_syslog_priority_as_string`_
       - Converts a syslog priority number to its level and facility string representations.
+    * - `now`_
+      - Returns the current date and time.
+    * - `parse_date`_
+      - Parses a date and time from the given string, according to a strict pattern.
+    * - `flex_parse_date`_
+      - Attempts to parse a date and time using the Natty date parser.
+    * - `format_date`_
+      - Formats a date and time according to a given formatter pattern.
+    * - `to_date`_
+      - Converts a type to a date.
+    * - `years`_
+      - Create a period with a specified number of years.
+    * - `months`_
+      - Create a period with a specified number of months.
+    * - `weeks`_
+      - Create a period with a specified number of weeks.
+    * - `days`_
+      - Create a period with a specified number of days.
+    * - `hours`_
+      - Create a period with a specified number of hours.
+    * - `minutes`_
+      - Create a period with a specified number of minutes.
+    * - `seconds`_
+      - Create a period with a specified number of seconds.
+    * - `millis`_
+      - Create a period with a specified number of millis.
+    * - `period`_
+      - Parses an ISO 8601 period from the specified string.
 
 to_bool
 -------
@@ -289,6 +313,16 @@ concat
 ``concat(first: string, second: string)``
 
 Returns a new string combining the text of ``first`` and ``second``.
+
+split
+-----
+``split(pattern: string, value: string, [limit: int])``
+
+Split a ``value`` around matches of ``pattern``. Use ``limit`` to indicate the number of times the pattern
+should be applied.
+
+**Note**: Patterns have to be valid `Java String literals <https://docs.oracle.com/javase/tutorial/essential/regex/literals.html>`_,
+please ensure you escape any backslashes in your regular expressions!
 
 regex
 -----
@@ -397,36 +431,6 @@ sha512
 
 Creates the hex encoded SHA512 digest of the ``value``.
 
-now
----
-``now([timezone: string])``
-
-Returns the current date and time. Uses the default time zone ``UTC``.
-
-parse_date
-----------
-``parse_date(value: string, pattern: string, [timezone: string])``
-
-Parses the ``value`` into a date and time object, using the ``pattern``. If no timezone is detected in the pattern, the optional
-timezone parameter is used as the assumed timezone. If omitted the timezone defaults to ``UTC``.
-
-flex_parse_date
----------------
-``flex_parse_date(value: string, [default: DateTime], [timezone: string])``
-
-Uses the `Natty date parser <http://natty.joestelmach.com/>`_ to parse a date and time ``value``. If no timezone is detected in
-the pattern, the optional timezone parameter is used as the assumed timezone. If omitted the timezone defaults to ``UTC``.
-
-In case the parser fails to detect a valid date and time the ``default`` date and time is being returned, otherwise the expression
-fails to evaluate and will be aborted.
-
-format_date
------------
-``format_date(value: DateTime, format: string, [timezone: string])``
-
-Returns the given date and time ``value`` formatted according to the ``format`` string. If no timezone is given,
-it defaults to ``UTC``.
-
 parse_json
 ----------
 ``parse_json(value: string)``
@@ -473,10 +477,16 @@ processed for this message.
 
 create_message
 --------------
-``create_message([message: string], [source: string], [timestamp: DateTime])``
+``create_message([message: Message], [source: string], [timestamp: DateTime])``
 
 Creates a new message with from the given parameters. If any of them is omitted, its value is taken from the currently
 processed message. If ``timestamp`` is omitted, the timestamp of the created message will be the timestamp at that moment.
+
+clone_message
+-------------
+``clone_message([message: Message])``
+
+Clones a message. If ``message`` is omitted, this function uses the currently processed message.
 
 drop_message
 ------------
@@ -554,4 +564,94 @@ expand_syslog_priority_as_string
 ``expand_syslog_priority_as_string(value: any)``
 
 Converts the `syslog priority number <https://tools.ietf.org/html/rfc3164#section-4.1.1>`_ in ``value`` to its severity and facility string representations.
+
+now
+---
+``now([timezone: string])``
+
+Returns the current date and time. Uses the default time zone ``UTC``.
+
+parse_date
+----------
+``parse_date(value: string, pattern: string, [timezone: string])``
+
+Parses the ``value`` into a date and time object, using the ``pattern``. If no timezone is detected in the pattern, the optional
+timezone parameter is used as the assumed timezone. If omitted the timezone defaults to ``UTC``.
+
+flex_parse_date
+---------------
+``flex_parse_date(value: string, [default: DateTime], [timezone: string])``
+
+Uses the `Natty date parser <http://natty.joestelmach.com/>`_ to parse a date and time ``value``. If no timezone is detected in
+the pattern, the optional timezone parameter is used as the assumed timezone. If omitted the timezone defaults to ``UTC``.
+
+In case the parser fails to detect a valid date and time the ``default`` date and time is being returned, otherwise the expression
+fails to evaluate and will be aborted.
+
+format_date
+-----------
+``format_date(value: DateTime, format: string, [timezone: string])``
+
+Returns the given date and time ``value`` formatted according to the ``format`` string. If no timezone is given,
+it defaults to ``UTC``.
+
+to_date
+-------
+``to_date(value: any, [timezone: string])``
+
+Converts ``value`` to a date. If no ``timezone`` is given, it defaults to ``UTC``.
+
+years
+-----
+``years(value: long)``
+
+Create a period with ``value`` number of years.
+
+months
+------
+``months(value: long)``
+
+Create a period with ``value`` number of months.
+
+weeks
+-----
+``weeks(value: long)``
+
+Create a period with ``value`` number of weeks.
+
+days
+----
+``days(value: long)``
+
+Create a period with ``value`` number of days.
+
+hours
+-----
+``hours(value: long)``
+
+Create a period with ``value`` number of hours.
+
+minutes
+-------
+``minutes(value: long)``
+
+Create a period with ``value`` number of minutes.
+
+seconds
+-------
+``seconds(value: long)``
+
+Create a period with ``value`` number of seconds.
+
+millis
+------
+``millis(value: long)``
+
+Create a period with ``value`` number of milliseconds.
+
+period
+------
+``period(value: string)``
+
+Parses an ISO 8601 period from ``value``.
 
