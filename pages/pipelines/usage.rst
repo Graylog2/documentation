@@ -2,8 +2,6 @@
 Usage
 *****
 
-.. warning:: This documentation is work in progress
-
 Overview
 ========
 
@@ -46,10 +44,9 @@ Managing pipelines
 Once there are some rules in Graylog, you can create pipelines that use them to modify and enrich
 your messages.
 
-To manage your pipelines, please access the `Manage pipelines` page, under `System -> Pipelines`.
-From that page you can create new pipelines, edit existing pipelines, and delete pipelines you
+To manage your pipelines, access `Manage pipelines` page under `System -> Pipelines`.
+From that page you can create new pipelines, edit existing ones, and delete pipelines you
 don't need any more.
-
 
 .. image:: /images/pipelines_manage_pipelines.png
 
@@ -74,29 +71,28 @@ At least one of the rules on this stage matches the message
 Connect pipelines to streams
 ============================
 
-When you have created pipelines and connected rules to them, it's time to use those pipelines in
-your system.
-
-Manage the pipelines that are connected to streams by going to `System -> Pipelines`.
+You can decide which streams are connected to a pipeline from the pipeline details page. Under
+`System -> Pipelines`, click on the title of the pipeline you want to connect to a stream, and
+then click on the `Edit connections` button.
 
 .. image:: /images/pipelines_manage_connections.png
-
-Remember from the :doc:`stream_connections` documentation, that the `Default` stream is the one
-where all messages not routed into another stream go.
 
 You can assign many pipelines to the same stream, so they are all evaluated for all messages
 routed into such stream.
 
 .. image:: /images/pipelines_edit_connections.png
 
+Remember from the :doc:`stream_connections` documentation, that the `All messages` stream is the one
+where all messages are routed, and probably a good place to apply pipelines to all your messages.
+
 Simulate your changes
 =====================
 
-After performing some changes in processing pipelines, you most likely want to see how they are
+After performing some changes in a processing pipeline, you most likely want to see how they are
 applied to incoming messages. This is what the pipeline simulator is for.
 
-Click the `Simulate processing` button in your pipeline connections page to access the pipeline
-simulator.
+Click the `Simulate processing` button under `System -> Pipelines` or in the pipeline details page
+to access the pipeline simulator.
 
 .. image:: /images/pipelines_simulation_1.png
 

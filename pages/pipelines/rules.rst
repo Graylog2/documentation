@@ -2,8 +2,6 @@
 Rules
 *****
 
-.. warning:: This documentation is work in progress
-
 Overview
 ========
 
