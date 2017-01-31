@@ -331,7 +331,7 @@ No. Currently there is no way to re-process or re-match messages into streams.
 Only new messages are routed into the current set of streams.
 
 
-Can I write own outputs or alert callbacks methods?
----------------------------------------------------
+Can I write own outputs, alert conditions or notifications?
+-----------------------------------------------------------
 
 Yes. Please refer to the :doc:`plugins` documentation page.
