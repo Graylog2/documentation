@@ -477,10 +477,11 @@ processed for this message.
 
 create_message
 --------------
-``create_message([message: Message], [source: string], [timestamp: DateTime])``
+``create_message([message: string], [source: string], [timestamp: DateTime])``
 
-Creates a new message with from the given parameters. If any of them is omitted, its value is taken from the currently
-processed message. If ``timestamp`` is omitted, the timestamp of the created message will be the timestamp at that moment.
+Creates a new message with from the given parameters. If any of them is omitted, its value is taken from the corresponding
+fields of the currently processed message. If ``timestamp`` is omitted, the timestamp of the created message will 
+be the timestamp at that moment.
 
 clone_message
 -------------
@@ -654,4 +655,3 @@ period
 ``period(value: string)``
 
 Parses an ISO 8601 period from ``value``.
-
