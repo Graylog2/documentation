@@ -72,7 +72,7 @@ Graylog
 
 Now install the Graylog repository configuration and Graylog itself with the following commands::
 
-  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-2.1-repository_latest.rpm
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-2.2-repository_latest.rpm
   $ sudo yum install graylog-server
 
 Follow the instructions in your ``/etc/graylog/server/server.conf`` and add ``password_secret`` and ``root_password_sha2``. These settings are mandatory and without them, Graylog will not start!
