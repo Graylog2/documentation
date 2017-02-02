@@ -6,21 +6,33 @@ Plugins
 
 General information
 ===================
-
-Graylog comes with a stable plugin API for the following plugin types:
-
-* **Inputs:** Accept/write any messages into Graylog
-* **Outputs:** Forward messages to other endpoints in real-time
-* **Services:** Run at startup and able to implement any functionality
-* **Alarm Callbacks:** Called when a stream alert condition has been triggered
-* **Filters:** Transform/drop incoming messages during processing
-* **REST API Resources:** A REST resource to expose as part of the ``graylog-server`` REST API
-* **Periodical:** Called at periodical intervals during server runtime
-* **Decorators:** Used during search time to modify the presentation of messages
-* **Authentication Realms:** Allowing to implement different authentication mechanisms (like single sign-on or 2FA)
+Graylog offers various extension points to customize and extend its functionality through writing Java code.
 
 The first step for writing a plugin is creating a skeleton that is the same for each type of plugin. The next chapter
 is explaining how to do this and will then go over to chapters explaining plugin types in detail.
+
+Plugin Types
+============
+
+ Graylog comes with a stable plugin API for the following plugin types:
+
+ * **Inputs:** Accept/write any messages into Graylog
+ * **Outputs:** Forward messages to other endpoints in real-time
+ * **Services:** Run at startup and able to implement any functionality
+ * :ref:`alert_conditions`: Decide whether an alert will be triggered depending on a condition
+ * :ref:`alert_notifications`: Called when a stream alert condition has been triggered
+ * **Filters:** Transform/drop incoming messages during processing
+ * **REST API Resources:** A REST resource to expose as part of the ``graylog-server`` REST API
+ * **Periodical:** Called at periodical intervals during server runtime
+ * :ref:`decorators`: Used during search time to modify the presentation of messages
+ * **Authentication Realms:** Allowing to implement different authentication mechanisms (like single sign-on or 2FA)
+
+.. toctree::
+   :hidden:
+
+   plugins/alert_conditions
+   plugins/alert_notifications
+   plugins/decorators
 
 .. _plugin_prerequisites:
 
@@ -88,115 +100,6 @@ Open the ``JiraAlarmCallbackMetaData.java`` file and customize the default value
 Especially the author name etc. should be changed.
 
 Now go on with implementing the actual login in one of the example plugin chapters below.
-
-Example Alarm Callback plugin
-=============================
-
-Let's assume you still want to build the mentioned JIRA AlarmCallback plugin. First open the ``JiraAlarmCallback.java`` file and let it implement
-the ``AlarmCallback`` interface::
-
-  public class JiraAlarmCallback implements AlarmCallback
-
-Your IDE should offer you to create the methods you need to implement:
-
-**public void initialize(Configuration configuration) throws AlarmCallbackConfigurationException**
-
-This is called once at the very beginning of the lifecycle of this plugin. It is common practive to store the ``Configuration`` as a private member
-for later access.
-
-**public void call(Stream stream, AlertCondition.CheckResult checkResult) throws AlarmCallbackException**
-
-This is the actual alarm callback being triggered. Implement your login that creates a JIRA ticket here.
-
-**public ConfigurationRequest getRequestedConfiguration()**
-
-Plugins can request configurations. The UI in the Graylog web interface is generated from this information and the filled out configuration values
-are passed back to the plugin in ``initialize(Configuration configuration)``.
-
-This is an example configuration request::
-
-  final ConfigurationRequest configurationRequest = new ConfigurationRequest();
-  configurationRequest.addField(new TextField(
-          "service_key", "Service key", "", "JIRA API token. You can find this token in your account settings.",
-          ConfigurationField.Optional.NOT_OPTIONAL)); // required, must be filled out
-  configurationRequest.addField(new BooleanField(
-          "use_https", "HTTPs", true,
-          "Use HTTP for API communication?"));
-
-**public String getName()**
-
-Return a human readable name of this plugin.
-
-**public Map<String, Object> getAttributes()**
-
-Return attributes that might be interesting to be shown under the alarm callback in the Graylog web interface. It is common practice to at least
-return the used configuration here.
-
-**public void checkConfiguration() throws ConfigurationException**
-
-Throw a ``ConfigurationException`` if the user should have entered missing or invalid configuration parameters.
-
-Registering the plugin
-----------------------
-
-.. _registering_alarm_callback:
-
-You now have to register your plugin in the ``JiraAlarmCallbackModule.java`` file to make ``graylog-server`` load the alarm callback when launching. The
-reason for the manual registering is that a plugin could consist of multiple plugin types. Think of the generated plugin file as a bundle of
-multiple plugins.
-
-Register your new plugin using the ``configure()`` method::
-
-  @Override
-  protected void configure() {
-      addAlarmCallback(JiraAlarmCallback.class);
-  }
-
-.. _writing_decorators:
-
-Writing a decorator plugin
-==========================
-
-Writing a custom decorator is generally similar to the aforementioned alarm callback. After :ref:`creating_plugin_skeleton`, you need to implement a class implementing the ``SearchResponseDecorator`` interface. This class must:
-
-  * Contain interfaces extending the ``SearchResponseDecorator.Factory``, ``SearchResponseDecorator.Config`` & ``SearchResponseDecorator.Descriptor`` interface
-  * Implement a ``apply`` method, containing the actual logic of decorating a message
-
-The ``Factory`` interface needs a bit more explanation. It works as a connection between the factory, config, description and actual implementation classes. It should look similar to this::
-
-      public interface Factory extends SearchResponseDecorator.Factory {
-        @Override
-        YourMessageDecorator create(Decorator decorator);
-
-        @Override
-        YourMessageDecorator.Config getConfig();
-
-        @Override
-        YourMessageDecorator.Descriptor getDescriptor();
-      }
-
-In this example ``YourMessageDecorator`` is used as the base name for the class implementing a decorator.
-
-Registering the plugin
-----------------------
-
-Registering the decorator works generally similar to the alarm callback :ref:`example <registering_alarm_callback>`, the helper method used to register a decorator has a different name and signature though. In general it works like this::
-
-  @Override
-  protected void configure() {
-      installSearchResponseDecorator(searchResponseDecoratorBinder(),
-                                     YourMessageDecorator.class,
-                                     YourMessageDecorator.Factory.class);
-  }
-
-
-Writing the actual logic
-------------------------
-
-The actual logic of modifying the presentation of messages (or better: search results, as this is what a decorator is working on) is contained in the ``SearchResponseDecorator#apply`` method, which needs to be implemented.
-It is called every time a search is performed and this specific decorator is configured for the stream it is performed on. It receives a ``SearchResponse`` object and also needs to return one, but is able to manipulate it during the runtime of the ``apply`` call.
-
-A good example on how to write a decorator can be seen in the `source of the Syslog severity mapper decorator <https://github.com/Graylog2/graylog2-server/blob/master/graylog2-server/src/main/java/org/graylog2/decorators/SyslogSeverityMapperDecorator.java>`_.
 
 Creating a plugin for the web interface
 =======================================
