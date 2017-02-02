@@ -1,8 +1,8 @@
 .. _decorators:
 
-****
+**********
 Decorators
-****
+**********
 
 Decorators can be used to transform a message field value during searches.
 
