@@ -22,7 +22,7 @@ Create a Stream Rule
 ^^^^^^^^^^^^^^^^^^^^
 Next, we are going to configure the stream to process our Syslog UDP input messages for any security alerts.
 
-Hit the *Edit rules* button.
+Hit the *Manage Rules* button.
 
 .. image:: /images/gs_22-editrules.png
 
@@ -42,17 +42,36 @@ Now let’s create the alert.
 
 Create the Alert
 ^^^^^^^^^^^^^^^^
-You can now either output your new stream to a 3rd party application or database, or trigger an alert to ping you in real time when a message that matches our stream rule comes in. Let’s create an alert that will email us when there are more than 2 messages in the last 2 minutes . Click *Manage Alerts*.
+You can now either output your new stream to a 3rd party application or database, or trigger an alert to ping you in real time when a message that matches our stream rule comes in. Let’s create an alert that will email us when there are more than 2 messages in the last 2 minutes.
+
+Click *Alerts* in the navigation bar and then *Manage conditions* on the Alerts overview page.
 
 .. image:: /images/gs_24-alert.png
 
-In the Add new alert condition section, let’s configure and add a new alert. Select message count condition, and configure the rest based on my screenshot (input 2’s in every field). Then click Add alert condition.
+In the Condition section, select the "Security/Auth Errors from Syslogs" stream and the "Message Count Alert Condition" from the Condition type menu.
+
+.. image:: /images/gs_29-alertstream.png
+
+Configure the rest based on my screenshot (input 2’s in every field). Then click Add alert condition.
 
 .. image:: /images/gs_25-alertcondition.png
 
 Send a Test Email
 ^^^^^^^^^^^^^^^^^
-In the Callbacks section,  select email alert callback, and input your email address in the Receivers section. After you’ve added a callback type and receiver, hit the blue ‘Send test alert’ button.
+On the Alerts overview page, click *Manage notifications* to setup an email notification.
+
+
+.. image:: /images/gs_30-notification.png
+
+Click *Add new notification* to create a email notification for the "Security/Auth Errors from Syslogs" stream.
+
+.. image:: /images/gs_31-emailnotification.png
+
+Enter a title and your email address in the "E-Mail Receivers" section.
+
+.. image:: /images/gs_32-emailnotificationcreate.png
+
+After adding the notification, hit the blue "Send test alert" button.
 
 .. image:: /images/gs_26-alertemail.png
 
@@ -60,7 +79,7 @@ Going Further
 ^^^^^^^^^^^^^
 If you want to configure an SMTP server, you can refer to :ref:`graylog-ctl`.
 
-If you want to make this stream active, just go back to Streams and where you see the stream name, click the green *Start stream* button.
+If you want to make this stream active, just go back to Streams and where you see the stream name, click the green *Start Stream* button.
 
 .. image:: /images/gs_27-streamactive.png
 
