@@ -1,58 +1,61 @@
-.. _decorators:
+.. _decorators_api:
 
 **********
 Decorators
 **********
 
-Decorators can be used to transform a message field value during searches.
+:ref:`decorators` can be used to transform a message field value during searches. Multiple decorators can be applied at the same time, but you cannot make any assumptions about their order, as that is user defined.
 
 They are typically used to map between the stored value and a human readable form of that value,
-for example like the `Syslog severity mapper decorator <https://github.com/Graylog2/graylog2-server/blob/master/graylog2-server/src/main/java/org/graylog2/decorators/SyslogSeverityMapperDecorator.java>`_ maps between numeric values and their textual respresentation.
+for example like the :ref:`syslog_severity_mapper` (compare its `code <https://github.com/Graylog2/graylog2-server/blob/master/graylog2-server/src/main/java/org/graylog2/decorators/SyslogSeverityMapperDecorator.java>`_) maps between numeric values and their textual respresentation.
 
 Other uses include looking up user names based on a user's ID in a remote database, triggering a ``whois`` request on a domain name etc.
 
 .. _writing_decorators:
 
-Writing a decorator plugin
-==========================
+Class Overview
+==============
 
-Writing a custom decorator is generally similar to the aforementioned alarm callback. After :ref:`creating_plugin_skeleton`, you need to implement a class implementing the ``SearchResponseDecorator`` interface. This class must:
+You need to implement the ``org.graylog2.plugin.decorators.SearchResponseDecorator`` interface. This class must declare a :ref:`concept_factory_api`.
 
-  * Contain interfaces extending the ``SearchResponseDecorator.Factory``, ``SearchResponseDecorator.Config`` & ``SearchResponseDecorator.Descriptor`` interface
-  * Implement a ``apply`` method, containing the actual logic of decorating a message
+Beyond the factory, configuration and descriptor classes, the only thing that a decorator needs to implement is the ``apply`` function:
 
-The ``Factory`` interface needs a bit more explanation. It works as a connection between the factory, config, description and actual implementation classes. It should look similar to this::
+.. code:: java
+	SearchResponse apply(SearchResponse searchResponse);
 
-      public interface Factory extends SearchResponseDecorator.Factory {
-        @Override
-        YourMessageDecorator create(Decorator decorator);
+The ``org.graylog2.rest.resources.search.responses.SearchResponse`` class represents the result that is being returned to the web interface (or other callers of the REST API).
 
-        @Override
-        YourMessageDecorator.Config getConfig();
+You are free to modify any field, create new fields or remove fields. However, the web interface makes certain assumptions regarding fields that start with ``gl2_`` and requires at least the ``timestamp``, ``source`` and ``message`` fields to be present.
 
-        @Override
-        YourMessageDecorator.Descriptor getDescriptor();
-      }
+Thrown exceptions are being logged as errors and lead to returning the original search response, without any modifications.
 
-In this example ``YourMessageDecorator`` is used as the base name for the class implementing a decorator.
+Example
+=======
 
-Registering the plugin
-----------------------
+Please refer to the sample `plugin implementation <https://github.com/Graylog2/graylog-plugin-sample/blob/2.2/src/main/java/org/graylog/plugins/sample/decorator/SampleDecorator.java>`_ for the full code.
 
-Registering the decorator works generally similar to the alarm callback :ref:`example <registering_alarm_callback>`, the helper method used to register a decorator has a different name and signature though. In general it works like this::
+Bindings
+========
 
-  @Override
-  protected void configure() {
+Compare with the code in the `sample plugin <https://github.com/Graylog2/graylog-plugin-sample/blob/2.2/src/main/java/org/graylog/plugins/sample/SampleModule.java>`_.
+
+.. code:: java
+  public class SampleModule extends PluginModule {
+
+    @Override
+    public Set<? extends PluginConfigBean> getConfigBeans() {
+        return Collections.emptySet();
+    }
+
+    @Override
+    protected void configure() {
       installSearchResponseDecorator(searchResponseDecoratorBinder(),
-                                     YourMessageDecorator.class,
-                                     YourMessageDecorator.Factory.class);
+                      PipelineProcessorMessageDecorator.class,
+                      PipelineProcessorMessageDecorator.Factory.class);
+    }
   }
 
+User Interface
+==============
 
-Writing the actual logic
-------------------------
-
-The actual logic of modifying the presentation of messages (or better: search results, as this is what a decorator is working on) is contained in the ``SearchResponseDecorator#apply`` method, which needs to be implemented.
-It is called every time a search is performed and this specific decorator is configured for the stream it is performed on. It receives a ``SearchResponse`` object and also needs to return one, but is able to manipulate it during the runtime of the ``apply`` call.
-
-A good example on how to write a decorator can be seen in the `source of the Syslog severity mapper decorator <https://github.com/Graylog2/graylog2-server/blob/master/graylog2-server/src/main/java/org/graylog2/decorators/SyslogSeverityMapperDecorator.java>`_.
+Decorators have no custom user interface elements.

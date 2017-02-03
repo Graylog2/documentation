@@ -1,4 +1,4 @@
-.. _alert_notifications:
+.. _alert_notifications_api:
 
 *******************
 Alert Notifications

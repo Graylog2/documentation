@@ -21,17 +21,18 @@ Graylog comes with a stable plugin API for the following plugin types:
   * **Inputs:** Accept/write any messages into Graylog
   * **Outputs:** Forward messages to other endpoints in real-time
   * **Services:** Run at startup and able to implement any functionality
-  * :ref:`alert_conditions`: Decide whether an alert will be triggered depending on a condition
-  * :ref:`alert_notifications`: Called when a stream alert condition has been triggered
+  * :ref:`alert_conditions_api`: Decide whether an alert will be triggered depending on a condition
+  * :ref:`alert_notifications_api`: Called when a stream alert condition has been triggered
   * **Filters:** Transform/drop incoming messages during processing
   * **REST API Resources:** A REST resource to expose as part of the ``graylog-server`` REST API
   * **Periodical:** Called at periodical intervals during server runtime
-  * :ref:`decorators`: Used during search time to modify the presentation of messages
+  * :ref:`decorators_api`: Used during search time to modify the presentation of messages
   * **Authentication Realms:** Allowing to implement different authentication mechanisms (like single sign-on or 2FA)
 
 .. toctree::
    :hidden:
 
+   plugins/general_concepts
    plugins/alert_conditions
    plugins/alert_notifications
    plugins/decorators
@@ -47,6 +48,8 @@ What you need in your development environment before starting is:
   * `maven <https://maven.apache.org>`_
 
 There are lots of different ways to get those on your local machine, unfortunately we cannot list all of them, so please refer to your operating system-specific documentation,
+
+Graylog uses a couple of conventions and techniques in its code, so be sure to read about the :ref:`general_concepts_api` for an overview.
 
 .. _sample_plugin:
 

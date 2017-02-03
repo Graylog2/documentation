@@ -1,4 +1,4 @@
-.. _alert_conditions:
+.. _alert_conditions_api:
 
 ****************
 Alert Conditions
