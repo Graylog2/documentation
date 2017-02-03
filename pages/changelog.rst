@@ -2,6 +2,26 @@
 Changelog
 *********
 
+Graylog 2.1.3
+=============
+
+Released 2017-01-26
+
+https://www.graylog.org/blog/84-announcing-graylog-2-1-3
+
+**Core**
+
+* Use "order": -1 in default index template to allow override. `Graylog2/graylog2-server#3426 <https://github.com/Graylog2/graylog2-server/issues/3426>`__
+* Add missing authentication to ClusterResource and ClusterStatsResource. `Graylog2/graylog2-server#3427 <https://github.com/Graylog2/graylog2-server/issues/3427>`__
+* Unbreak Firefox by requesting JSON when pinging the API. `Graylog2/graylog2-server#3430 <https://github.com/Graylog2/graylog2-server/issues/3430>`__
+* Use custom Grizzly error page to prevent XSS. `Graylog2/graylog2-server#3428 <https://github.com/Graylog2/graylog2-server/issues/3428>`__
+
+**Beats plugin**
+
+* Add support for Metricbeat. `Graylog2/graylog-plugin-beats#19 <https://github.com/Graylog2/graylog-plugin-beats/issues/19>`__
+* Extract "fields" for every type of beat. `Graylog2/graylog-plugin-beats#18 <https://github.com/Graylog2/graylog-plugin-beats/issues/18>`__
+
+
 Graylog 2.1.2
 =============
 
