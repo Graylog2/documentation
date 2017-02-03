@@ -40,6 +40,7 @@ Bindings
 Compare with the code in the `sample plugin <https://github.com/Graylog2/graylog-plugin-sample/blob/2.2/src/main/java/org/graylog/plugins/sample/SampleModule.java>`_.
 
 .. code:: java
+
   public class SampleModule extends PluginModule {
 
     @Override

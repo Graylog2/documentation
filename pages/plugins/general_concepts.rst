@@ -21,6 +21,7 @@ Say Graylog exposes an extension point interface called ``ExtensionPoint``, whic
 An implementation of ``ExtensionPoint`` then looks as following:
 
 .. code:: java
+
 	public AwesomeExtension implements ExtensionPoint {
 		
 		public interface Factory extends ExtensionPoint.Factory {
