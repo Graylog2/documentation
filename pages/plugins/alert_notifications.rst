@@ -8,33 +8,41 @@ Alert Notifications are responsible for sending information about alerts to exte
 
 They receive the stream they were bound to as well as the result of the configured :ref:`alert_conditions`.
 
-.. note::
-  *Alert Notifications* were called *Alarm Callbacks* in previous versions of Graylog. 
-   The old name is still used in the code and REST API endpoints for backwards compatibility, so you will see it when implementing your plugins.
+.. note:: Alert Notifications were called Alarm Callbacks in previous versions of Graylog. 
 
-Example Alarm Callback plugin
-=============================
+  The old name is still used in the code and REST API endpoints for backwards compatibility, so you will see it when implementing your plugins.
 
-Let's assume you still want to build the mentioned JIRA AlarmCallback plugin. First open the ``JiraAlarmCallback.java`` file and let it implement
-the ``AlarmCallback`` interface::
+Class Overview
+==============
 
-  public class JiraAlarmCallback implements AlarmCallback
+The interface to implement is ``org.graylog2.plugin.alarms.callbacks.AlarmCallback`` which is also the type that a plugin module must register using ``org.graylog2.plugin.PluginModule#addAlarmCallback``.
+
+Example Alert Notification
+==========================
+
+You can find a `minimal implementation in the sample plugin <https://github.com/Graylog2/graylog-plugin-sample/blob/2.2/src/main/java/org/graylog/plugins/sample/alerts/SampleAlertNotification.java>`_.
+
+To create an alert notification plugin implement the ``AlarmCallback`` interface interface::
+
+  public class SampleAlertNotification implements AlarmCallback
 
 Your IDE should offer you to create the methods you need to implement:
 
 **public void initialize(Configuration configuration) throws AlarmCallbackConfigurationException**
 
-This is called once at the very beginning of the lifecycle of this plugin. It is common practive to store the ``Configuration`` as a private member
+This is called once at the very beginning of the lifecycle of this plugin. It is common practice to store the ``Configuration`` as a private member
 for later access.
 
 **public void call(Stream stream, AlertCondition.CheckResult checkResult) throws AlarmCallbackException**
 
-This is the actual alarm callback being triggered. Implement your login that creates a JIRA ticket here.
+This is the actual alert notification being triggered. Implement your login that interacts with a remote system here, for example sending a push notification, posts into a chat system etc.
 
 **public ConfigurationRequest getRequestedConfiguration()**
 
 Plugins can request configurations. The UI in the Graylog web interface is generated from this information and the filled out configuration values
 are passed back to the plugin in ``initialize(Configuration configuration)``.
+
+The return value must not be ``null``.
 
 This is an example configuration request::
 
@@ -52,25 +60,40 @@ Return a human readable name of this plugin.
 
 **public Map<String, Object> getAttributes()**
 
-Return attributes that might be interesting to be shown under the alarm callback in the Graylog web interface. It is common practice to at least
+Return attributes that might be interesting to be shown under the alert notification in the Graylog web interface. It is common practice to at least
 return the used configuration here.
 
 **public void checkConfiguration() throws ConfigurationException**
 
 Throw a ``ConfigurationException`` if the user should have entered missing or invalid configuration parameters.
 
-Registering the plugin
-----------------------
+.. caution:: The alert notification may be created multiple times, so be sure to not perform business logic in the constructor.
+
+  You should however inject custom dependencies, such as a specific client library or other objects in the constructor.
+
+Bindings
+========
 
 .. _registering_alarm_callback:
 
-You now have to register your plugin in the ``JiraAlarmCallbackModule.java`` file to make ``graylog-server`` load the alarm callback when launching. The
-reason for the manual registering is that a plugin could consist of multiple plugin types. Think of the generated plugin file as a bundle of
-multiple plugins.
+Compare with the code in the `sample plugin <https://github.com/Graylog2/graylog-plugin-sample/blob/2.2/src/main/java/org/graylog/plugins/sample/SampleModule.java>`_.
 
-Register your new plugin using the ``configure()`` method::
+.. code:: java
 
-  @Override
-  protected void configure() {
-      addAlarmCallback(JiraAlarmCallback.class);
-  }
+	public class SampleModule extends PluginModule {
+
+		@Override
+		public Set<? extends PluginConfigBean> getConfigBeans() {
+			return Collections.emptySet();
+		}
+
+		@Override
+		protected void configure() {
+			addAlarmCallback(SampleAlertNotification.class);
+		}
+	}
+
+User Interface
+==============
+
+Alert notifications have no custom user interface elements.
