@@ -170,6 +170,17 @@ search by selecting *Saved search* -> *Delete saved search*.
 
 .. image:: /images/saved_search_update.png
 
+Histogram
+=========
+The search page includes a search result histogram, where you can view in a concise way the number of messages received grouped by a certain time period that Graylog will adjust for you.
+
+The histogram also allows you to further narrow down the cause for an issue:
+
+- Delimit the search time range by brushing over the histogram. Just click and drag with your mouse over the chart to select the time range you want to use, and click on the search button to perform that search
+- See the time where alerts are triggered in the graph annotations. If you are searching in a stream, you will only see alerts related to that stream
+
+.. image:: /images/search_histogram.png
+
 Analysis
 ========
 Graylog provides several tools to analyze your search results. It is possible to save these analysis into dashboards, so you can check them over
