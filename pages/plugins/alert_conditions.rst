@@ -22,7 +22,7 @@ Typically you will not implement ``AlertCondition`` directly, but instead use ``
 Example
 =======
 
-Please refer to the sample plugin implementation.
+Please refer to the sample `plugin implementation <https://github.com/Graylog2/graylog-plugin-sample/blob/2.2/src/main/java/org/graylog/plugins/sample/alerts/SampleAlertCondition.java>`_ for the full code.
 
 Bindings
 ========
