@@ -248,6 +248,8 @@ During the first reconfigure run self signed SSL certificates are generated. You
 warnings in your browser. Just drop the key and combined certificate file here: ``/opt/graylog/conf/nginx/ca/graylog.crt`` respectively
 ``/opt/graylog/conf/nginx/ca/graylog.key``. Afterwards restart nginx with ``sudo graylog-ctl restart nginx``.
 
+.. _static_ip_ova:
+
 Assign a static IP
 ==================
 

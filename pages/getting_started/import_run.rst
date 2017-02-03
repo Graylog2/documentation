@@ -13,4 +13,6 @@ This is what you'll see when you run the virtual machine.  This is where all the
 
 .. image:: /images/gs_3-gl-server.png
 
-The above steps are also covered in our :ref:`virtual machine appliance installation page <virtual-machine-appliances>` with some additional information.
+
+
+The above steps are also covered in our :ref:`virtual machine appliance installation page <virtual-machine-appliances>` with some additional information. If you do not have DHCP enabled in your Network you need to :ref:`assign a static IP <static_ip_ova>`. 
