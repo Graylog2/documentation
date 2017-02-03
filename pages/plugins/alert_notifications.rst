@@ -6,7 +6,7 @@ Alert Notifications
 
 Alert Notifications are responsible for sending information about alerts to external systems, such as sending an email, push notifications, opening tickets, writing to chat systems etc.
 
-They receive the stream they were bound to as well as the result of the configured :ref:`alert_conditions`.
+They receive the stream they were bound to as well as the result of the configured :ref:`alert_conditions_api`.
 
 .. note:: Alert Notifications were called Alarm Callbacks in previous versions of Graylog. 
 
