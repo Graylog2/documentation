@@ -21,6 +21,7 @@ You need to implement the ``org.graylog2.plugin.decorators.SearchResponseDecorat
 Beyond the factory, configuration and descriptor classes, the only thing that a decorator needs to implement is the ``apply`` function:
 
 .. code:: java
+
 	SearchResponse apply(SearchResponse searchResponse);
 
 The ``org.graylog2.rest.resources.search.responses.SearchResponse`` class represents the result that is being returned to the web interface (or other callers of the REST API).
