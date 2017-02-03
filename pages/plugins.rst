@@ -4,8 +4,8 @@
 Plugins
 *******
 
-General information
-===================
+About Plugins
+=============
 Graylog offers various extension points to customize and extend its functionality through writing Java code.
 
 The first step for writing a plugin is creating a skeleton that is the same for each type of plugin. The next chapter
@@ -38,8 +38,8 @@ Graylog comes with a stable plugin API for the following plugin types:
 
 .. _plugin_prerequisites:
 
-Prerequisites
-=============
+Writing Plugins
+===============
 
 What you need in your development environment before starting is:
 
@@ -51,7 +51,7 @@ There are lots of different ways to get those on your local machine, unfortunate
 .. _sample_plugin:
 
 Sample Plugin
-=============
+-------------
 
 To go along with this documentation, there is a `sample plugin on Github <https://github.com/Graylog2/graylog-plugin-sample/tree/2.2>`_. Tis documentation will link to specific parts for your reference.
 It is fully functional, even though it does not implement any real logic. Its purpose so to give a reference for helping to implement your own plugins.
@@ -59,7 +59,7 @@ It is fully functional, even though it does not implement any real logic. Its pu
 .. _creating_plugin_skeleton:
 
 Creating a plugin skeleton
-==========================
+--------------------------
 
 The easiest way to get started is to use our `Graylog meta project <https://github.com/Graylog2/graylog-project>`_,
 which will create a complete plugin project infrastructure will all required classes, build definitions, and configurations. Using the meta project allows you to have the `Graylog server project <https://github.com/graylog2/graylog2-server>`_ and your own plugins (or 3rd party plugins) in the same project, which means that you can run and debug everything in your favorite IDE or navigate seamlessly in the code base.
@@ -106,7 +106,7 @@ If you want to continue working on the command line, you can do the following to
 
 
 The anatomy of a plugin
-=======================
+-----------------------
 
 Each plugin contains information to describe itself and register the extensions it contains.
 
@@ -115,7 +115,7 @@ Each plugin contains information to describe itself and register the extensions 
   For example a hypothetical plugin might contribute an input, an output and alert notifications to communicate with systems. For convenience this would be bundled in a single plugin registering multiple extensions.
 
 Required classes
-----------------
+................
 
 At the very minimum you need to implement two interfaces:
 
@@ -130,7 +130,7 @@ In addition to the service, Graylog needs an additional resource file called ``g
 Typically you can simply take the default that has been `generated for you <https://github.com/Graylog2/graylog-plugin-sample/blob/2.2/src/main/resources/org.graylog.plugins.graylog-plugin-sample/graylog-plugin.properties>`_.
 
 Registering your extension
---------------------------
+..........................
 
 So far the plugin itself does not do anything, because it neither implements any of the available extensions, nor could Graylog know which ones are available from your code.
 
@@ -146,7 +146,8 @@ An `empty module <https://github.com/Graylog2/graylog-plugin-sample/blob/2.2/src
 Please refer to the available :ref:`plugin_types` for detailed information what you can implement. The :ref:`sample_plugin` contains stub implementations for each of the supported extensions.
 
 Web Plugin creation
--------------------
+...................
+
 Sometimes your plugin is not only supposed to work under the hoods inside a Graylog server as an input, output, alarm callback, etc. but you also want to contribute previously nonexisting functionality to Graylog's web interface. Since version 2.0 this is now possible. When using the most recent `Graylog meta project <https://github.com/Graylog2/graylog-project>`_ to bootstrap the plugin skeleton, you are already good to go for this. Otherwise please see our chapter about :ref:`creating_plugin_skeleton`.
 
 The Graylog web interface is written in JavaScript, based on `React <https://facebook.github.io/react/>`_. It is built using `webpack <http://webpack.github.io>`_, which is bundling all JavaScript code (and other files you use, like stylesheets, fonts, images, even audio or video files if you need them) into chunks digestable by your browser and npm_, which is managing our external (and own) dependencies. During the build process all of this will be bundled and included in the jar file of your plugin.
@@ -167,7 +168,7 @@ This starts the development web server. It even tries to open a browser window g
 If your Graylog server is not running on ``http://localhost:9000/api/``, then you need to edit ``graylog2-server/graylog2-web-interface/config.js`` (in your ``graylog-project`` directory) and adapt the ``gl2ServerUrl`` parameter.
 
 Web Plugin structure
---------------------
+....................
 
 These are the relevant files and directories in your plugin directory for the web part of it:
 
@@ -185,10 +186,10 @@ These are the relevant files and directories in your plugin directory for the we
 
 
 Required conventions for web plugins
-====================================
+------------------------------------
 
 Plugin Entrypoint
------------------
+.................
 
 There is a single file which is the entry point of your plugin, which means that the execution of your plugin starts there. By convention this is `src/web/index.jsx`. You can rename/move this file, you just have to adapt your webpack configuration to reflect this change, but it is not recommended.
 
@@ -200,22 +201,22 @@ In any case, this file needs to contain the following code at the very top::
 This part is responsible to include and execute the `webpack-entry <https://github.com/Graylog2/graylog2-server/blob/master/graylog2-web-interface/src/webpack-entry.js>`_ file, which is responsible to set up webpack to use the correct URL format when loading assets for this plugin. If you leave this out, erratic behavior will be the result.
 
 Linking to other pages from your plugin
----------------------------------------
+.......................................
 
 If you want to generate links from the web frontend to other pages of your plugin or the main web interface, you need to use the ``Routes.pluginRoute()`` helper method to generate the URLs properly.
 
 See `this file <https://github.com/Graylog2/graylog2-server/blob/master/graylog2-web-interface/src/routing/Routes.jsx#L5-L20>`_ for more information.
 
 Best practices for web plugin development
-=========================================
+-----------------------------------------
 
 Using ESLint
-------------
+............
 
 `ESLint <http://eslint.org>`_ is an awesome tool for linting JavaScript code. It makes sure that any written code is in line with general best practises and the project-specific coding style/guideline. We at Graylog are striving to make the best use of this tools as possible, to help our developers and you to generate top quality code with little bugs. Therefore we highly recommend to enable it for a Graylog plugin you are writing.
 
 Code Splitting
---------------
+..............
 
 Both the web interface and plugins for it depend on a number of libraries like React, RefluxJS and others. To prevent those getting bundled into *both* the web interface *and* plugin assets, therefore wasting space or causing problems (especially React does not like to be present more than once), we extract those into a commons chunk which is reused by the web interface and plugins.
 
@@ -224,7 +225,7 @@ This has no consequences for you as a plugin author, because the configuration t
 Common libraries are built into a separate ``vendor`` bundle using an own configuration file named `webpack.vendor.js <https://github.com/Graylog2/graylog2-server/blob/2.1/graylog2-web-interface/webpack.vendor.js>`_. Using the `DLLPlugin <https://github.com/webpack/docs/wiki/list-of-plugins>`_ a `manifest is extracted <https://github.com/Graylog2/graylog2-server/blob/2.1/graylog2-web-interface/webpack.vendor.js#L30-L33>`_ which allow us to reuse the generated bundle. This is then imported in our main `web interface webpack configuration file <https://github.com/Graylog2/graylog2-server/blob/2.1/graylog2-web-interface/webpack.config.js#L48>`_ and the corresponding `generated webpack config file for plugins <https://github.com/Graylog2/graylog-web-plugin/blob/master/src/PluginWebpackConfig.js#L45>`_.
 
 Building plugins
-================
+----------------
 
 Building the plugin is easy because the meta project has created all necessary files and settings for you. Just run ``mvn package`` either from the meta project's directory (to build the server *and* the plugin) or from the plugin
 directory (to build the plugin only)::
