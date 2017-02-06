@@ -232,6 +232,8 @@ screenshots:
 
 Field graphs appear every time you perform a search, allowing you to compare data, or combine graphs coming from different streams.
 
+.. _decorators:
+
 Decorators
 ==========
 Decorators allow you to alter message fields during search time automatically, while *preserving the unmodified message on disk*. Decorators
@@ -254,6 +256,8 @@ to apply from the dropdown, and click on *Apply*. Once you save your changes, th
 
 When you apply multiple decorators to the same search results, you can change the order in which they are applied at any time by using
 drag and drop in the decorator list.
+
+.. _syslog_severity_mapper:
 
 Syslog severity mapper
 ^^^^^^^^^^^^^^^^^^^^^^
