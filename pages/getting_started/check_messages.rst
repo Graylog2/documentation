@@ -1,7 +1,7 @@
 Check If You Have Messages 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-After that go back to  the *System > Input* page.
+After that go back to  the *System > Inputs* page.
 
 .. image:: /images/gs/input_page.png
 

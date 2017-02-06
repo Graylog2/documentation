@@ -4,7 +4,7 @@ Get Messages In
 Log into the VM
 ^^^^^^^^^^^^^^^
 
-We’re going to use rsyslog because we already have it running on the virtual server. So, go to the image and login with ``ubuntu/ubuntu``.
+We’re going to use rsyslog because we already have it running on the virtual machine. So, go to the image and login with ``ubuntu/ubuntu``.
 
 .. image:: /images/gs_6-glslogin.png
 

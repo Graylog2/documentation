@@ -23,7 +23,7 @@ This means that you can already use the running appliance as a syslog receiver f
 
 If you would like to know the supported options for ingesting messages into Graylog, you can find additional information at :ref:`ingest_data`.
 
-To show what's possible with Graylog, we have already created a few dashboards for you in the virtual appliance. Navigate to the *Dasboards* page in the top menu and click on *nginx overview*. After this you will see the following screen with a dashboard generated from the internal log data of the virtual appliance itself.
+To show what's possible with Graylog, we have already created a few dashboards for you in the virtual appliance. Navigate to the *Dasboards* page in the top menu and click on *nginx overview*. After this you will see the following screen with a dashboard generated from the internal log data of the appliance itself.
 
 .. image:: /images/gs/nginx_dashboard.png
 

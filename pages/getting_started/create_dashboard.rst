@@ -19,7 +19,7 @@ In this given example the title is *Important Stuff* and the description *Look a
 Add a Dashboard Widget
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Click the "Show received messages" button next to the *appliance-syslog-udp* input on the System / Inputs page to only show messages received by this input.
+Click the "Show received messages" button next to the *appliance-syslog-udp* input on the *System > Inputs* page to only show messages received by this input.
 
 We'll start by adding a widget with the message count: Click on *Add count to dashboard* and select the new created  dashboard.
 
