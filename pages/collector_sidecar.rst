@@ -53,8 +53,13 @@ The tags are used to define which configurations the host should receive.
 Create a system service and start it::
 
     $ sudo graylog-collector-sidecar -service install
+
+    [Ubuntu 14.04 with Upstart]
     $ sudo start collector-sidecar
 
+    [Ubuntu 16.04 with Systemd]
+    $ sudo systemctl start collector-sidecar
+ 
 CentOS
 ~~~~~~
 Install the RPM package on RedHat based systems ::
@@ -100,7 +105,13 @@ necessary to stop all running instances of NXlog and deconfigure the default sys
 Edit `/etc/graylog/collector-sidecar/collector_sidecar.yml` accordingly and register the Sidecar as a service::
 
     $ sudo graylog-collector-sidecar -service install
+
+    [Ubuntu 14.04 with Upstart]
     $ sudo start collector-sidecar
+
+    [Ubuntu 16.04 with Systemd]
+    $ sudo systemctl start collector-sidecar
+
 
 CentOS
 ~~~~~~
