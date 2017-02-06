@@ -1,29 +1,31 @@
 Explore Graylog
 ^^^^^^^^^^^^^^^
 
-By default the appliance is already getting logs. This are the Logfiles from all components that are running inside. This can be disabled later with the :ref:`graylog-ctl`.
+By default the appliance is already indexing log messages from all components running inside the virtual machine. If you don't want to record these messages, you can disable this internal logging using :ref:`graylog-ctl`.
 
 .. image:: /images/gs/first_login_dismissed_guide.png 
 
-If you choose *Streams* on the top you will get a overview of of the pre-defined Streams. Think of them like a pre-sorted view on the incoming messages. Your can find more information on the :ref:`streams page <streams>`. As you can see you define rules for the messages that are visible in this stream.
+When opening the *Streams* page in the top menu, you will see a list of all predefined streams. Think of them as a filtered view of all incoming messages. You can find more information on the :ref:`streams page <streams>`. As you can see, you can define rules for the messages which should be visible in this stream.
 
 .. image:: /images/gs/graylog_streams.png
 
-If you choose *Sources* in the Top you will get a nice overview who is sending what amount of Data into your Graylog Setup. In the showcase Setup you only have the graylog-server and nginx visible. If you start sending data from other hosts, the hostname or ip adress will be shown here.
+If you click on *Sources* in the top menu, you will see a nice overview of which clients are sending data into Graylog and how much. In the showcase setup, you will see "graylog-server" and "nginx" in the beginning. Once you start sending data from other systems, their hostnames or IP addresses will be listed on the *Sources* page.
 
 .. image:: /images/gs/sources_page.png
 
-The most importand part, how does the data actually come into Graylog. Check *System > Inputs* and you will see what is by default enabled. You can already use the running virtual machine as a syslog target from any device that is able  and can reach the IP of the VM. 
+The most important question is: How will the data actually come into Graylog.
+
+Open the *System > Inputs* page from the top menu and you will see some inputs which are running by default, such as a syslog input.
+
+This means that you can already use the running appliance as a syslog receiver for any device supporting the syslog protocol which is able to connect to the virtual machine on port 514/udp (which happens to be the standard port for syslog).
 
 .. image:: /images/gs/input_page.png
 
-If you like to know what options you have to ingest messages to Graylog, look at the page :ref:`ingest_data`.
+If you would like to know the supported options for ingesting messages into Graylog, you can find additional information at :ref:`ingest_data`.
 
-In the showcase setup UDP port 514 is already waiting to get some messages.
-
-In the Showcase we have already created a Dashboard for you, just to show what is possible with Graylog. Navigate to *Dasboards* at the top navigation and choose *nginx overview*. After this you will get the following screen. This is generated out of the data that comes in.
+To show what's possible with Graylog, we have already created a few dashboards for you in the virtual appliance. Navigate to the *Dasboards* page in the top menu and click on *nginx overview*. After this you will see the following screen with a dashboard generated from the internal log data of the virtual appliance itself.
 
 .. image:: /images/gs/nginx_dashboard.png
 
-To have some more data, we will add the Syslog Data from the running virtual machine in the next step.
+To have some more data, we will add the syslog data from the running virtual machine in the next step.
 

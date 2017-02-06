@@ -36,4 +36,4 @@ If you have modified the config file and it is somehow invalid, the service comm
 Ingesting more log messages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Please refer to :ref:ingest_data for further instructions about configuring Graylog and ingesting data from external sources.
+Please refer to :ref:`ingest_data` for further instructions about configuring Graylog and ingesting data from external sources.
