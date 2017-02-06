@@ -4,7 +4,7 @@ Get Messages In
 Log into the VM
 ^^^^^^^^^^^^^^^
 
-We’re going to use rsyslog because we already have it running on the showcase. So, go to the image and login with ``ubuntu/ubuntu``.
+We’re going to use rsyslog because we already have it running on the virtual server. So, go to the image and login with ``ubuntu/ubuntu``.
 
 .. image:: /images/gs_6-glslogin.png
 
@@ -21,7 +21,7 @@ In case you wanted to know, ``@`` means UDP, ``127.0.0.1`` is localhost, and ``5
 
 .. image:: /images/gs_7-rsyslogadd.png
 
-You can find out more on this in our `Guide to send Syslog over to Graylog <https://github.com/Graylog2/graylog-guide-syslog-linux>`__.
+You can find out more about ingesting syslog messages with Graylog in our `Syslog configuration guide <https://github.com/Graylog2/graylog-guide-syslog-linux>`__.
 
 Restart rsyslog
 ^^^^^^^^^^^^^^^
@@ -33,7 +33,7 @@ Type::
 
 If you have modified the config file and it is somehow invalid, the service command will not bring rsyslog back up - so don't worry, you can always delete the line!
 
-Sending additional Messages
+Ingesting more log messages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We have even more information how to send messages to Graylog on :ref:`a separate page <ingest_data>`. Use this Page as a start to have more external Data in Graylog.
+Please refer to :ref:ingest_data for further instructions about configuring Graylog and ingesting data from external sources.

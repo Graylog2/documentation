@@ -9,6 +9,6 @@ Logging in will get you to blank screen.  Not very fun?  No problem, let's get s
 
 .. image:: /images/gs/first_login.png
 
-You can dismiss the Guide, and just follow all steps in this section to get started with Graylog. After that the following screen will be present to you.
+You can dismiss the Guide, and just follow all steps in this section to get started with Graylog.
 
 

@@ -15,4 +15,4 @@ This is what you'll see when you run the virtual machine.  This is where all the
 
 
 
-The above steps are also covered in our :ref:`virtual machine appliance installation page <virtual-machine-appliances>` with some additional information. If you do not have DHCP enabled in your Network you need to :ref:`assign a static IP <static_ip_ova>`. 
+The above steps are also covered in our :ref:`virtual machine appliance installation page <virtual-machine-appliances>` with some additional information. If you do not have DHCP enabled in your network you need to :ref:`assign a static IP <static_ip_ova>`. 

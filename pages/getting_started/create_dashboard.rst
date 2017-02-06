@@ -4,9 +4,9 @@ Create Your Dashboard
 You’ve got data coming in, let’s add information to a dashboard to better visualize the data we want to see.
 
 Add a Dashboard
-^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 
-We will now add a new dashboard, go to *Dashboards* in the top, select *Create dashboard* 
+Now we'll create a new dashboard for these messages by opening the *Dashboards* page in the top menu and clicking on *Create dashboard*.
 
 .. image:: /images/gs/graylog_dashboard.png
 
@@ -17,9 +17,9 @@ Give your new dashboard a title and description.
 Add a Dashboard Widget
 ^^^^^^^^^^^^^^^^^^^^^^
 
-To select only the messages coming in via Syslog go to *System > Inputs*, select the *appliance-syslog-udp* input, and hit Show messages.
+Click the "Show received messages" button next to the *appliance-syslog-udp* input on the System / Inputs page to only show messages received by this input.
 
-We'll start by adding the message count data to a dashboard. Click *Add count to dashboard*, and select the new created Dasboard.
+We'll start by adding a widget with the message count: Click on *Add count to dashboard* and select the new created  dashboard.
 
 .. image:: /images/gs/create_widget_dashboard.png
 

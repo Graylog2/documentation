@@ -1,11 +1,11 @@
 Check If You Have Messages 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-After that, you should can select the *System > Input* page again.
+After that go back to  the *System > Input* page.
 
 .. image:: /images/gs/input_page.png
 
-Click *Show received messages* button for the *appliance-syslog-udp* input, and you should have messages at the bottom. It may take a few minutes before you have messages coming in.
+Click on the  *Show received messages* button next to the *appliance-syslog-udp* input and you should see only the messages received from your syslog clients.
 
 .. image:: /images/gs_10-messages.png
 
