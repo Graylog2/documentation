@@ -57,8 +57,8 @@ Graylog uses a couple of conventions and techniques in its code, so be sure to r
 Sample Plugin
 -------------
 
-To go along with this documentation, there is a `sample plugin on Github <https://github.com/Graylog2/graylog-plugin-sample/tree/2.2>`_. Tis documentation will link to specific parts for your reference.
-It is fully functional, even though it does not implement any real logic. Its purpose so to give a reference for helping to implement your own plugins.
+To go along with this documentation, there is a `sample plugin on Github <https://github.com/Graylog2/graylog-plugin-sample/tree/2.2>`_. This documentation will link to specific parts for your reference.
+It is fully functional, even though it does not implement any useful functionality. Its purpose to provide a reference for helping to implement your own plugins.
 
 .. _creating_plugin_skeleton:
 
