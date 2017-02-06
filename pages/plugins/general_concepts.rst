@@ -6,7 +6,7 @@ API concepts
 Graylog uses certain patterns in its code bases to make it easier to write extensions.
 It is important to know about these to be successful in writing custom for it.
 
-You can browse the ava
+You can browse the Graylog `Javadoc documentation <https://javadoc.io/doc/org.graylog2/graylog2-server/2.2.0>`_ for details on each class and method mentioned here.
 
 .. _concept_factory_api:
 
