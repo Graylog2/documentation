@@ -14,6 +14,8 @@ Give your new dashboard a title and description.
 
 .. image:: /images/gs_12-titledash.png
 
+In this given example the title is *Important Stuff* and the description *Look at this, yo.*
+
 Add a Dashboard Widget
 ^^^^^^^^^^^^^^^^^^^^^^
 
