@@ -23,12 +23,12 @@ Graylog comes with a stable plugin API for the following plugin types:
   * **Services:** Run at startup and able to implement any functionality
   * :ref:`alert_conditions_api`: Decide whether an alert will be triggered depending on a condition
   * :ref:`alert_notifications_api`: Called when a stream alert condition has been triggered
-	* **Processors:** Transform/drop incoming messages (can create multiple new messages)
-  * **Filters:** Deprecated: Transform/drop incoming messages during processing
+  * **Processors:** Transform/drop incoming messages (can create multiple new messages)
+  * **Filters:** (Deprecated) Transform/drop incoming messages during processing
   * **REST API Resources:** An HTTP resource exposed as part of the Graylog REST API
   * **Periodical:** Called at periodical intervals during server runtime
   * :ref:`decorators_api`: Used during search time to modify the presentation of messages
-  * **Authentication Realms:** Allowing to implement different authentication mechanisms (like single sign-on or 2FA)
+  * **Authentication Realms**: Allowing to implement different authentication mechanisms (like single sign-on or 2FA)
 
 .. toctree::
    :hidden:
@@ -128,7 +128,8 @@ At the very minimum you need to implement two interfaces:
 
 The ``bootstrap-plugin`` script generates these implementations for you, and you simply need to fill out the details.
 
-Graylog uses Java's ServiceLoader mechanism to find your plugin's main class, so if you rename your ``Plugin`` implementation, you need to also adjust the `service file <https://github.com/Graylog2/graylog-plugin-sample/blob/2.2/src/main/resources/META-INF/services/org.graylog2.plugin.Plugin>`_.
+Graylog uses Java's `ServiceLoader <https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html>`_ mechanism to find your plugin's main class, so if you rename your ``Plugin`` implementation, you need to also adjust the `service file <https://github.com/Graylog2/graylog-plugin-sample/blob/2.2/src/main/resources/META-INF/services/org.graylog2.plugin.Plugin>`_.
+Please also see Google Guava's `AutoService <https://github.com/google/auto/tree/master/service>`_ which Graylog uses in conjunction with the plain ServiceLoader.
 
 In addition to the service, Graylog needs an additional resource file called ``graylog-plugin.properties`` in a special location. This file contains information about the plugin, specifically which classloader the plugin needs to be in, so it needs to be read before the plugin is actually loaded.
 Typically you can simply take the default that has been `generated for you <https://github.com/Graylog2/graylog-plugin-sample/blob/2.2/src/main/resources/org.graylog.plugins.graylog-plugin-sample/graylog-plugin.properties>`_.
@@ -138,8 +139,7 @@ Registering your extension
 
 So far the plugin itself does not do anything, because it neither implements any of the available extensions, nor could Graylog know which ones are available from your code.
 
-Graylog uses `dependency injection <https://github.com/google/guice>`_ to wire up its internal components as well as the plugins. Thus the extensions a plugin provides need to be exposed as a ``PluginModule``.
-`It provides <https://github.com/Graylog2/graylog2-server/blob/master/graylog2-server/src/main/java/org/graylog2/plugin/PluginModule.java>`_ you with a lot of helper methods to register the various available extensions to cut down the boiler plate code you have to write.
+Graylog uses `dependency injection <https://github.com/google/guice>`_ to wire up its internal components as well as the plugins. Thus the extensions a plugin provides need to be exposed as a `PluginModule <https://github.com/Graylog2/graylog2-server/blob/master/graylog2-server/src/main/java/org/graylog2/plugin/PluginModule.java>`_ which provides you with a lot of helper methods to register the various available extensions to cut down the boiler plate code you have to write.
 
 An `empty module <https://github.com/Graylog2/graylog-plugin-sample/blob/2.2/src/main/java/org/graylog/plugins/sample/SampleModule.java>`_ is created for you.
 

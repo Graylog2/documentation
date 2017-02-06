@@ -6,7 +6,7 @@ Alert Conditions
 
 An alert condition determines whether an alert is triggered. The result of a condition is sent to an alert notification for sending to remote systems.
 
-In Graylog alerting is based on searches and typically includes a list of messages that lead to the alert. However nothing prevents user code to query other systems than elasticsearch to produce alerts.
+In Graylog alerting is based on searches and typically includes a list of messages that lead to the alert. However nothing prevents user code to query other systems than Elasticsearch to produce alerts.
 
 Class Overview
 ==============

@@ -6,6 +6,8 @@ API concepts
 Graylog uses certain patterns in its code bases to make it easier to write extensions.
 It is important to know about these to be successful in writing custom for it.
 
+You can browse the ava
+
 .. _concept_factory_api:
 
 Factory Class
@@ -61,10 +63,10 @@ For example alert conditions follow the same pattern and are registered as such:
 
 	public class SampleModule extends PluginModule {
 		// other methods omitted for clarity
-    @Override
-    protected void configure() {
-        addAlertCondition(SampleAlertCondition.class.getCanonicalName(),
-                SampleAlertCondition.class,
-                SampleAlertCondition.Factory.class);
-    }
-  }
+		@Override
+		protected void configure() {
+			addAlertCondition(SampleAlertCondition.class.getCanonicalName(),
+					SampleAlertCondition.class,
+					SampleAlertCondition.Factory.class);
+		}
+	}
