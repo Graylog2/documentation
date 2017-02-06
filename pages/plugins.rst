@@ -19,12 +19,13 @@ Plugin Types
 Graylog comes with a stable plugin API for the following plugin types:
 
   * **Inputs:** Accept/write any messages into Graylog
-  * **Outputs:** Forward messages to other endpoints in real-time
+  * **Outputs:** Forward ingested messages to other systems as they are processed
   * **Services:** Run at startup and able to implement any functionality
   * :ref:`alert_conditions_api`: Decide whether an alert will be triggered depending on a condition
   * :ref:`alert_notifications_api`: Called when a stream alert condition has been triggered
-  * **Filters:** Transform/drop incoming messages during processing
-  * **REST API Resources:** A REST resource to expose as part of the ``graylog-server`` REST API
+	* **Processors:** Transform/drop incoming messages (can create multiple new messages)
+  * **Filters:** Deprecated: Transform/drop incoming messages during processing
+  * **REST API Resources:** An HTTP resource exposed as part of the Graylog REST API
   * **Periodical:** Called at periodical intervals during server runtime
   * :ref:`decorators_api`: Used during search time to modify the presentation of messages
   * **Authentication Realms:** Allowing to implement different authentication mechanisms (like single sign-on or 2FA)
