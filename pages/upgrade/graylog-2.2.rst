@@ -19,6 +19,15 @@ To simplify the transition for people relying on this behavior, we have added a 
 
 With to the introduction of email templates in 0.21, the ``transport_email_subject_prefix`` config setting became unused. It is now being removed completely. In early versions it was used to add a prefix to the generated subject of alerting emails. Since 0.21 it is possible to define a complete template used for the generation of alert email subjects.
 
+Alert Notifications (previously known as Alarm Callbacks)
+=========================================================
+
+Graylog 2.2.0 introduces some changes in alerting. Alerts have now states, helping you to know in an easier way if something requires your attention.
+
+These changes also affect the way we send notifications: Starting in Graylog 2.2.0, alert notifications are only executed **once**, just when a new alert is triggered. As long as the alert is unresolved or in grace period, **Graylog will not send further notifications**. This will help you reducing the noise and annoyance of getting notified way too often when a problem persists for a while.
+
+If you are using Graylog for alerting, please take a moment to ensure this change will not break any of your processes when an alert occurs.
+
 Default stream/Index Sets
 =========================
 
