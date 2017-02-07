@@ -168,16 +168,19 @@ Add the ``java.net.preferIPv4Stack`` flag in your ``graylogctl`` script or from 
 Create a message input and send a first message
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Log in to the web interface on port 9000 (e.g. ``http://127.0.0.1:9000``) and navigate to *System* -> *Nodes*. Select your Graylog node there and click on *Manage inputs*.
+Log in to the web interface on port 9000 (e.g. ``http://127.0.0.1:9000``) and navigate to *System* -> *Inputs*.
 
 .. image:: /images/create_input.png
 
-Launch a new *Raw/Plaintext UDP* input, listening on port ``9099`` and listening on ``127.0.0.1``. No need to configure anything else for now.
-The list of running inputs on that node should show you your new input right away. Let's send a message in::
+Launch a new *Raw/Plaintext UDP* input, listening on ``127.0.0.1`` on port ``9099``. There's no need to configure anything else for now.
+
+The list of running inputs on that node should show you your new input right away.
+
+Let's send a message in::
 
   echo "Hello Graylog, let's be friends." | nc -w 1 -u 127.0.0.1 9099
 
-This has sent a short string to the raw UDP input you just opened. Now search for *friends* using the searchbar on the top and you should already
+This has sent a short string to the raw UDP input you just opened. Now search for *friends* using the search bar on the top and you should already
 see the message you just sent in. Click on it in the table and see it in detail:
 
 .. image:: /images/setup_1.png
