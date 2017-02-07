@@ -1,36 +1,41 @@
 Create Your Dashboard
 ---------------------
 
-You should be at a screen like the one below. If you dozed off or went to cook some meatballs, go to System -> Inputs, select the Syslog UDP input you created, and hit Show messages.
-
-Now it’s go-time.
-
 You’ve got data coming in, let’s add information to a dashboard to better visualize the data we want to see.
 
 Add a Dashboard
-^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 
-We'll start by adding the message count data to a dashboard. Click *Add count to dashboard*, and it will say *No Dashboards, create one?*   Yes!  Click that.
+Now we'll create a new dashboard for these messages by opening the *Dashboards* page in the top menu and clicking on *Create dashboard*.
 
-.. image:: /images/gs_11-createdash.png
+.. image:: /images/gs/graylog_dashboard.png
 
 Give your new dashboard a title and description.
 
 .. image:: /images/gs_12-titledash.png
 
+In this given example the title is *Important Stuff* and the description *Look at this, yo.*
+
 Add a Dashboard Widget
 ^^^^^^^^^^^^^^^^^^^^^^
+
+Click the "Show received messages" button next to the *appliance-syslog-udp* input on the *System > Inputs* page to only show messages received by this input.
+
+We'll start by adding a widget with the message count: Click on *Add count to dashboard* and select the new created  dashboard.
+
+.. image:: /images/gs/create_widget_dashboard.png
+
 
 Now it will let you create a widget. In this case, we are creating a widget from our search result of message count in the last 8 hours. I like to put a timeframe in the title, and trends are always a big bowl of sunshine.
 
 .. image:: /images/gs_13-createwidget.png
 
-When you hit create - *wa la!*  Nothing happens.  All you UX types, relax, we know.  For now, click Dashboards and then the name of your dashboard.
+When you hit create you will see a small green notification at the bottom of the page. Click Dashboards and then the name of your dashboard.
 
 .. image:: /images/gs_14-clickdash.png
 
 Smile
-^^^^^
+=====
 
 And you'll end up with the widget you created!
 

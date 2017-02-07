@@ -18,7 +18,7 @@ If you need assistance to plan and build your logging environment `we offer prof
    getting_started/download.rst
    getting_started/import_run.rst
    getting_started/web_console.rst
-   getting_started/config_input.rst
+   getting_started/explore_graylog.rst
    getting_started/rsyslog.rst
    getting_started/check_messages.rst
    getting_started/create_dashboard.rst
