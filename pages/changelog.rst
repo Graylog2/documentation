@@ -1,6 +1,146 @@
 *********
 Changelog
 *********
+Graylog 2.2.0
+=============
+
+Released 2017-02-14
+
+https://www.graylog.org/blog/88-announcing-graylog-v2-2-0
+
+**Core**
+
+* Warn about pipeline stream routing `Graylog2/graylog2-server#3472 <https://github.com/Graylog2/graylog2-server/issues/3472>`__
+* Add npm shrinkwrap for 2.2.0 `Graylog2/graylog2-server#3468 <https://github.com/Graylog2/graylog2-server/issues/3468>`__
+* Use consistent case in old message count conditions `Graylog2/graylog2-server#3454 <https://github.com/Graylog2/graylog2-server/issues/3454>`__
+* Fix stream filter view. `Graylog2/graylog2-server#3390 <https://github.com/Graylog2/graylog2-server/issues/3390>`__
+* Use the default index set by default in stream create form. `Graylog2/graylog2-server#3397 <https://github.com/Graylog2/graylog2-server/issues/3397>`__
+* Fix broken decorator with duplicate messages. `Graylog2/graylog2-server#3400 <https://github.com/Graylog2/graylog2-server/issues/3400>`__
+* Updating index sets store when stream form is opened. `Graylog2/graylog2-server#3410 <https://github.com/Graylog2/graylog2-server/issues/3410>`__
+* Only show extractor actions on string fields. `Graylog2/graylog2-server#3404 <https://github.com/Graylog2/graylog2-server/issues/3404>`__
+* Use correct format when adding timestamp to search. `Graylog2/graylog2-server#3412 <https://github.com/Graylog2/graylog2-server/issues/3412>`__
+* Properly escape strings sent to /messages/{index}/analyze. `Graylog2/graylog2-server#3418 <https://github.com/Graylog2/graylog2-server/issues/3418>`__
+* Retain input and stream IDs in content packs. `Graylog2/graylog2-server#3416 <https://github.com/Graylog2/graylog2-server/issues/3416>`__
+* Use "order": -1 in default index template to allow override. `Graylog2/graylog2-server#3422 <https://github.com/Graylog2/graylog2-server/issues/3422>`__
+* Improve base-line memory usage. `Graylog2/graylog2-server#3425 <https://github.com/Graylog2/graylog2-server/issues/3425>`__
+* Use condition and notification placeholders. `Graylog2/graylog2-server#3432 <https://github.com/Graylog2/graylog2-server/issues/3432>`__
+* Get field stats for indices only, which contain field. `Graylog2/graylog2-server#3424 <https://github.com/Graylog2/graylog2-server/issues/3424>`__
+* Redirect to overview after editing index set configuration. `Graylog2/graylog2-server#3438 <https://github.com/Graylog2/graylog2-server/issues/3438>`__
+* Send "stream" property when updating a decorator. `Graylog2/graylog2-server#3439 <https://github.com/Graylog2/graylog2-server/issues/3439>`__
+* Adding simple cache for index sets in MongoIndexSetRegistry. `Graylog2/graylog2-server#3440 <https://github.com/Graylog2/graylog2-server/issues/3440>`__
+* Restrict search in RecentMessageLoader to 1 hour. `Graylog2/graylog2-server#3367 <https://github.com/Graylog2/graylog2-server/issues/3367>`__
+* Remove stray whitespace in MongoIndexSet. `Graylog2/graylog2-server#3371 <https://github.com/Graylog2/graylog2-server/issues/3371>`__
+* Add more detail to index range system notification. `Graylog2/graylog2-server#3372 <https://github.com/Graylog2/graylog2-server/issues/3372>`__
+* Suppress error notification when loading a potentially missing input. `Graylog2/graylog2-server#3373 <https://github.com/Graylog2/graylog2-server/issues/3373>`__
+* Ensure resolved at is non-null on resolvedSecondsAgo. `Graylog2/graylog2-server#3376 <https://github.com/Graylog2/graylog2-server/issues/3376>`__
+* Do not allow testing a message against the default stream. `Graylog2/graylog2-server#3377 <https://github.com/Graylog2/graylog2-server/issues/3377>`__
+* Propagate shard failure in multi-index search to global search failure. `Graylog2/graylog2-server#3379 <https://github.com/Graylog2/graylog2-server/issues/3379>`__
+* Add support for arrays to "contains" stream rule. `Graylog2/graylog2-server#3380 <https://github.com/Graylog2/graylog2-server/issues/3380>`__
+* Automatically unsubscribe from DecoratorsStore in SearchPage. `Graylog2/graylog2-server#3363 <https://github.com/Graylog2/graylog2-server/issues/3363>`__
+* Keep modified search bar params when opening modal. `Graylog2/graylog2-server#3384 <https://github.com/Graylog2/graylog2-server/issues/3384>`__
+* Reset keyword content after changing range type. `Graylog2/graylog2-server#3386 <https://github.com/Graylog2/graylog2-server/issues/3386>`__
+* Disable the "set as default" action for the default index set. `Graylog2/graylog2-server#3385 <https://github.com/Graylog2/graylog2-server/issues/3385>`__
+* Unregistering component callbacks from Stream(Rules)Store. `Graylog2/graylog2-server#3378 <https://github.com/Graylog2/graylog2-server/issues/3378>`__
+* Check for stream existence when displaying replay link. `Graylog2/graylog2-server#3387 <https://github.com/Graylog2/graylog2-server/issues/3387>`__
+* Reuse Generator instance in DocumentationResource. `Graylog2/graylog2-server#3293 <https://github.com/Graylog2/graylog2-server/issues/3293>`__
+* Fix: Refreshing saved searches store after deleting one. `Graylog2/graylog2-server#3309 <https://github.com/Graylog2/graylog2-server/issues/3309>`__
+* Escape curly braces in Swagger resource URIs for challenged browsers. `Graylog2/graylog2-server#3290 <https://github.com/Graylog2/graylog2-server/issues/3290>`__
+* Unbreak Firefox by requesting JSON when pinging the API `Graylog2/graylog2-server#3312 <https://github.com/Graylog2/graylog2-server/issues/3312>`__
+* Escape search query when using surrounding search. `Graylog2/graylog2-server#3314 <https://github.com/Graylog2/graylog2-server/issues/3314>`__
+* Close idle GELF HTTP connections after a timeout. `Graylog2/graylog2-server#3315 <https://github.com/Graylog2/graylog2-server/issues/3315>`__
+* Ensure that index ranges are deleted when an index set is removed. `Graylog2/graylog2-server#3310 <https://github.com/Graylog2/graylog2-server/issues/3310>`__
+* Ignore reopened indices for count-based retention strategies. `Graylog2/graylog2-server#3321 <https://github.com/Graylog2/graylog2-server/issues/3321>`__
+* Ignore deprecated "default" field in IndexSetConfig. `Graylog2/graylog2-server#3329 <https://github.com/Graylog2/graylog2-server/issues/3329>`__
+* Use last executed search data on auto-refresh. `Graylog2/graylog2-server#3330 <https://github.com/Graylog2/graylog2-server/issues/3330>`__
+* Show stats for each index set on the index sets overview page. `Graylog2/graylog2-server#3322 <https://github.com/Graylog2/graylog2-server/issues/3322>`__
+* Not fetching/checking unnecessary streams in AlertScannerThread. `Graylog2/graylog2-server#3336 <https://github.com/Graylog2/graylog2-server/issues/3336>`__
+* Add more metrics for extractors. `Graylog2/graylog2-server#3332 <https://github.com/Graylog2/graylog2-server/issues/3332>`__
+* Saved search improvements. `Graylog2/graylog2-server#3338 <https://github.com/Graylog2/graylog2-server/issues/3338>`__
+* Warn when neither reader nor admin roles are selected for a user. `Graylog2/graylog2-server#3337 <https://github.com/Graylog2/graylog2-server/issues/3337>`__
+* Prevent setting default index set readonly. `Graylog2/graylog2-server#3339 <https://github.com/Graylog2/graylog2-server/issues/3339>`__
+* Add migration to fix parameter value types for alert conditions. `Graylog2/graylog2-server#3340 <https://github.com/Graylog2/graylog2-server/issues/3340>`__
+* Fix unlock dashboard from link. `Graylog2/graylog2-server#3344 <https://github.com/Graylog2/graylog2-server/issues/3344>`__
+* Allow re-configuration of shards and replicas in the UI. `Graylog2/graylog2-server#3349 <https://github.com/Graylog2/graylog2-server/issues/3349>`__
+* Adapt grace period to latest changes in alerts. `Graylog2/graylog2-server#3346 <https://github.com/Graylog2/graylog2-server/issues/3346>`__
+* Go back in history instead to users page when canceling user form. `Graylog2/graylog2-server#3350 <https://github.com/Graylog2/graylog2-server/issues/3350>`__
+* Improve wrapping of entity title and description. `Graylog2/graylog2-server#3351 <https://github.com/Graylog2/graylog2-server/issues/3351>`__
+* Keep stream filter after editing stream. `Graylog2/graylog2-server#3352 <https://github.com/Graylog2/graylog2-server/issues/3352>`__
+* Guard against duplication key error from MongoDB. `Graylog2/graylog2-server#3358 <https://github.com/Graylog2/graylog2-server/issues/3358>`__
+* Keep calling convention of SearchPage._refreshData consistent. `Graylog2/graylog2-server#3357 <https://github.com/Graylog2/graylog2-server/issues/3357>`__
+* Creating MongoDB indices in services running conditional queries. `Graylog2/graylog2-server#3345 <https://github.com/Graylog2/graylog2-server/issues/3345>`__
+* Fix NPE in MongoDbSessionDAO#doDelete(). `Graylog2/graylog2-server#3227 <https://github.com/Graylog2/graylog2-server/issues/3227>`__
+* Support syslog messages with ISO-8601 timestamps. `Graylog2/graylog2-server#3228 <https://github.com/Graylog2/graylog2-server/issues/3228>`__
+* Use local copies of Droid Sans font in Swagger UI. `Graylog2/graylog2-server#3229 <https://github.com/Graylog2/graylog2-server/issues/3229>`__
+* Remove empty row if input description is empty. `Graylog2/graylog2-server#3237 <https://github.com/Graylog2/graylog2-server/issues/3237>`__
+* Make "sender" optional in EmailAlarmCallback. `Graylog2/graylog2-server#3224 <https://github.com/Graylog2/graylog2-server/issues/3224>`__
+* Fix URL for throbber image. `Graylog2/graylog2-server#3242 <https://github.com/Graylog2/graylog2-server/issues/3242>`__
+* Remove special handling in SplitAndCountConverter. `Graylog2/graylog2-server#3230 <https://github.com/Graylog2/graylog2-server/issues/3230>`__
+* Add missing AuditBindings to journal commands. `Graylog2/graylog2-server#3226 <https://github.com/Graylog2/graylog2-server/issues/3226>`__
+* Don't check private key/certificate if REST API and web interface on same port. `Graylog2/graylog2-server#3231 <https://github.com/Graylog2/graylog2-server/issues/3231>`__
+* Add configuration settings for timeout and concurrency of OptimizeIndexJob. `Graylog2/graylog2-server#3225 <https://github.com/Graylog2/graylog2-server/issues/3225>`__
+* Change way of exporting CSV search results. `Graylog2/graylog2-server#3238 <https://github.com/Graylog2/graylog2-server/issues/3238>`__
+* Add space in processing limit notification. `Graylog2/graylog2-server#3256 <https://github.com/Graylog2/graylog2-server/issues/3256>`__
+* Only reacalculate index set ranges in index set maintenance menu. `Graylog2/graylog2-server#3252 <https://github.com/Graylog2/graylog2-server/issues/3252>`__
+* Fix alert condition validations. `Graylog2/graylog2-server#3257 <https://github.com/Graylog2/graylog2-server/issues/3257>`__
+* Validate alarm callbacks before saving them. `Graylog2/graylog2-server#3262 <https://github.com/Graylog2/graylog2-server/issues/3262>`__
+* Only update index ranges for managed indices. `Graylog2/graylog2-server#3259 <https://github.com/Graylog2/graylog2-server/issues/3259>`__
+* Resolve alerts from deleted alert conditions. `Graylog2/graylog2-server#3265 <https://github.com/Graylog2/graylog2-server/issues/3265>`__
+* Alert UI changes. `Graylog2/graylog2-server#3266 <https://github.com/Graylog2/graylog2-server/issues/3266>`__
+* Properly track stream throughput for the default stream. `Graylog2/graylog2-server#3278 <https://github.com/Graylog2/graylog2-server/issues/3278>`__
+* Add support for OPTIONS request to HttpTransport. `Graylog2/graylog2-server#3234 <https://github.com/Graylog2/graylog2-server/issues/3234>`__
+* Add list of stream IDs to Message#toElasticSearchObject(). `Graylog2/graylog2-server#3277 <https://github.com/Graylog2/graylog2-server/issues/3277>`__
+* Fix document counts with an empty index set. `Graylog2/graylog2-server#3291 <https://github.com/Graylog2/graylog2-server/issues/3291>`__
+* Handle ElasticsearchException in Counts class. `Graylog2/graylog2-server#3288 <https://github.com/Graylog2/graylog2-server/issues/3288>`__
+* Move client-side split/import of Grok pattern files to server. `Graylog2/graylog2-server#3284 <https://github.com/Graylog2/graylog2-server/issues/3284>`__
+* Showing index set in stream listing only if user is permitted to. `Graylog2/graylog2-server#3300 <https://github.com/Graylog2/graylog2-server/issues/3300>`__
+* Fix reloading after notification changes. `Graylog2/graylog2-server#3264 <https://github.com/Graylog2/graylog2-server/issues/3264>`__
+* Add "messages:analyze" permission to reader permission set. `Graylog2/graylog2-server#3305 <https://github.com/Graylog2/graylog2-server/issues/3305>`__
+* Disable alarm notification controls if user is not permitted to edit. `Graylog2/graylog2-server#3303 <https://github.com/Graylog2/graylog2-server/issues/3303>`__
+* Changing conditional to check for presence of index set definition. `Graylog2/graylog2-server#3304 <https://github.com/Graylog2/graylog2-server/issues/3304>`__
+* Allow to get a thread dump as plain text. `Graylog2/graylog2-server#3289 <https://github.com/Graylog2/graylog2-server/issues/3289>`__
+* Add missing authentication to ClusterResource and ClusterStatsResource. `Graylog2/graylog2-server#3279 <https://github.com/Graylog2/graylog2-server/issues/3279>`__
+* Save anchor and last rotation in TimeBasedRotationStrategy depending on IndexSet. `Graylog2/graylog2-server#3306 <https://github.com/Graylog2/graylog2-server/issues/3306>`__
+* Fix loading of plugins in development mode. `Graylog2/graylog2-server#3185 <https://github.com/Graylog2/graylog2-server/issues/3185>`__
+* Add contains string tester. `Graylog2/graylog2-server#3186 <https://github.com/Graylog2/graylog2-server/issues/3186>`__
+* Index set fixes. `Graylog2/graylog2-server#3193 <https://github.com/Graylog2/graylog2-server/issues/3193>`__
+* Add synthetic JavaBean getters to AutoValue classes. `Graylog2/graylog2-server#3188 <https://github.com/Graylog2/graylog2-server/issues/3188>`__
+* Improve IndexSetValidator. [Graylog2/graylog2-server#3197](https://github.com/Graylog2/graylog2-server/issues/3197)
+* Add custom Jackson (de-) serializer for ZonedDateTime and DateTime. `Graylog2/graylog2-server#3198 <https://github.com/Graylog2/graylog2-server/issues/3198>`__
+* Improved alarm callback testing. `Graylog2/graylog2-server#3196 <https://github.com/Graylog2/graylog2-server/issues/3196>`__
+* Fix DateTime serialization. `Graylog2/graylog2-server#3202 <https://github.com/Graylog2/graylog2-server/issues/3202>`__
+* Fix labels on field graphs. `Graylog2/graylog2-server#3204 <https://github.com/Graylog2/graylog2-server/issues/3204>`__
+* Alerts cleanup. `Graylog2/graylog2-server#3205 <https://github.com/Graylog2/graylog2-server/issues/3205>`__
+* Index set UI fixes. `Graylog2/graylog2-server#3203 <https://github.com/Graylog2/graylog2-server/issues/3203>`__
+* Fix quickvalues and field statistics refresh. `Graylog2/graylog2-server#3206 <https://github.com/Graylog2/graylog2-server/issues/3206>`__
+* Allow fetching streams by index set ID. `Graylog2/graylog2-server#3207 <https://github.com/Graylog2/graylog2-server/issues/3207>`__
+* UI improvements. `Graylog2/graylog2-server#3213 <https://github.com/Graylog2/graylog2-server/issues/3213>`__
+* IndexSet default setting. `Graylog2/graylog2-server#3209 <https://github.com/Graylog2/graylog2-server/issues/3209>`__
+* Alerts UI improvements. `Graylog2/graylog2-server#3214 <https://github.com/Graylog2/graylog2-server/issues/3214>`__
+* Create DefaultIndexSetConfig when creating the default index set. `Graylog2/graylog2-server#3215 <https://github.com/Graylog2/graylog2-server/issues/3215>`__
+* ClusterEventPeriodical must use MongoJackObjectMapper. `Graylog2/graylog2-server#3217 <https://github.com/Graylog2/graylog2-server/issues/3217>`__
+* Fix V20161130141500_DefaultStreamRecalcIndexRanges. `Graylog2/graylog2-server#3222 <https://github.com/Graylog2/graylog2-server/issues/3222>`__
+* Migration improvements. `Graylog2/graylog2-server#3211 <https://github.com/Graylog2/graylog2-server/issues/3211>`__
+
+**Beats plugin**
+
+* Add support for Metricbeat
+* Extract "fields" for every type of beat
+
+**Pipeline processor plugin**
+
+* Allow duplicate stream titles in route_to_stream. `Graylog2/graylog-plugin-pipeline-processor#154 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/154>`__
+* Do not use lambdas with gauge metrics. `Graylog2/graylog-plugin-pipeline-processor#152 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/152>`__
+* Add clone_message() function. `Graylog2/graylog-plugin-pipeline-processor#153 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/153>`__
+* Track total pipeline interpreter executionTime as a single metric. `Graylog2/graylog-plugin-pipeline-processor#155 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/155>`__
+
+**Collector sidecar plugin**
+
+* Fix: Reload on Beats configuration change.
+* Update Beats to version 5.1.1
+* Fix race conditions in start/stop/restart code for the exec runner `Graylog2/collector-sidecar#123 <https://github.com/Graylog2/collector-sidecar/issues/123>`__
+* Add debug switch `Graylog2/collector-sidecar#124 <https://github.com/Graylog2/collector-sidecar/issues/124>`__
+* Using Modern UI in a standard way (thanks to `@nicozanf <https://github.com/nicozanf>`__) `Graylog2/collector-sidecar#125 <https://github.com/Graylog2/collector-sidecar/issues/125>`__
+* Extract etag cache into its own service. `Graylog2/graylog-plugin-collector#43 <https://github.com/Graylog2/graylog-plugin-collector/issues/43>`__
 
 Graylog 2.1.3
 =============
