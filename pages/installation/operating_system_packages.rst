@@ -124,8 +124,10 @@ If you've been using the repository package to install Graylog before, it has to
 The update basically works like a fresh installation::
 
   $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-2.1-repository_latest.rpm
+  $ sudo yum clean all
   $ sudo yum install graylog-server
 
+Running ``yum clean all`` is required because YUM might use a stale cache and thus might be unable to find the latest version of the ``graylog-server`` package.
 
 Manual Repository Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
