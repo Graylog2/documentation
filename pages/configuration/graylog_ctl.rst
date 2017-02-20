@@ -279,7 +279,7 @@ Wait some time until all services are restarted and running again. Afterwards yo
 Upgrade Graylog
 ===============
 
-.. warning:: The Graylog omnibus package does *not* support unattended upgrading from Graylog 1.x to Graylog 2.1.x!
+.. warning:: The Graylog omnibus package does *not* support unattended upgrading from Graylog 1.x to Graylog 2.x!
 
 Always perform a full backup or snapshot of the appliance before proceeding. Only upgrade
 if the release notes say the next version is a drop-in replacement.
@@ -293,10 +293,10 @@ Choose the Graylog version you want to install from the `list of Omnibus package
 
 .. note:: Reboot the server after the update procedure to make sure that all services are running in the correct version. 
 
-Migrate manually from 1.x to 2.1.x
-==================================
+Migrate manually from 1.x to 2.x
+================================
 
-To update a 1.x appliance to 2.1.x the administrator has to purge the Graylog installation, migrate the stored log data
+To update a 1.x appliance to 2.x the administrator has to purge the Graylog installation, migrate the stored log data
 and install the new version as Omnibus package. Before upgrading read the `upgrade notes <https://github.com/Graylog2/graylog2-server/blob/master/UPGRADING.rst>`_.
 This procedure can potentially delete log data or configuration settings. So it's absolutely necessary to perform a backup or a snpashot before!
 
@@ -321,8 +321,8 @@ Delete the Graylog index template::
 Migrate appliance configuration::
 
   $ cd /etc
-  $ mv graylog graylog2.1
-  $ vi graylog2.1/graylog-secrets.json
+  $ mv graylog graylog2.2
+  $ vi graylog2.2/graylog-secrets.json
 
   # Remove the graylog_web section
   },  << don't forget the comma!
@@ -330,7 +330,7 @@ Migrate appliance configuration::
     "secret_token": "3552c87f3e3..."
   }
 
-  $ vi graylog2.1/graylog-services.json
+  $ vi graylog2.2/graylog-services.json
 
   # Remove the graylog_web section
   }, << don't forget the comma!
@@ -338,7 +338,7 @@ Migrate appliance configuration::
     "enabled": true
   }
 
-  $ vi graylog2.1/graylog-settings.json
+  $ vi graylog2.2/graylog-settings.json
   
   # Remove "rotation_size", "rotation_time", "indices"
   "enforce_ssl": false,
@@ -350,21 +350,21 @@ Migrate appliance configuration::
 Migrate appliance data::
 
   $ cd /var/opt
-  $ mv graylog graylog2.1
-  $ mv graylog2.1/data/elasticsearch/graylog2 graylog2.1/data/elasticsearch/graylog
+  $ mv graylog graylog2.2
+  $ mv graylog2.2/data/elasticsearch/graylog2 graylog2.2/data/elasticsearch/graylog
 
 Delete old Graylog version and install new Omnibus package::
 
-  $ wget http://packages.graylog2.org/releases/graylog-omnibus/ubuntu/graylog_2.1.0-1_amd64.deb
+  $ wget http://packages.graylog2.org/releases/graylog-omnibus/ubuntu/graylog_2.2.1-1_amd64.deb
   $ apt-get purge graylog
-  $ dpkg -i graylog_2.1.0-1_amd64.deb
+  $ dpkg -i graylog_2.2.1-1_amd64.deb
 
 Move directories back::
 
   $ cd /etc
-  $ mv graylog2.1 graylog
+  $ mv graylog2.2 graylog
   $ cd /var/opt/
-  $ mv graylog2.1 graylog
+  $ mv graylog2.2 graylog
 
 Reconfigure and Reboot::
 
@@ -380,7 +380,7 @@ Graylog should now be updated and old data still available.
 Advanced Settings
 =================
 
-To change certain parameters used by ``graylog-ctl`` during a reconfigure run you can override all default parameters found  in the `attributes <https://github.com/Graylog2/omnibus-graylog2/blob/2.1/files/graylog-cookbooks/graylog/attributes/default.rb>`_ file.
+To change certain parameters used by ``graylog-ctl`` during a reconfigure run you can override all default parameters found  in the `attributes <https://github.com/Graylog2/omnibus-graylog2/blob/2.2/files/graylog-cookbooks/graylog/attributes/default.rb>`_ file.
 
 If you want to change the username used by Graylog for example, edit the file ``/etc/graylog/graylog-settings.json`` like this::
 
