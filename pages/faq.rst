@@ -259,8 +259,8 @@ Think you spotted a bug? Oh no! Please report it in our issue trackers so we can
 I’m having issues installing or configuring Graylog, where can I go for support?
 --------------------------------------------------------------------------------
 
-Check out our Google Group `mailing list <https://groups.google.com/forum/?hl=en#!forum/graylog2>`__ – you can search for your problem which may already have an answer, or post a new question.
+Check out the `Graylog Community Forums <https://community.graylog.org>`__ – you can search for your problem which may already have an answer, or post a new question.
 
-Another source is the `#Graylog IRC chat channel on Freenode <https://webchat.freenode.net/?channels=%23graylog>`__.  Our developers and a lot of community members hang out here. Just join the channel and add any questions, suggestions or general topics you have.
+Another source is the `Graylog channel on Matrix.org <https://riot.im/app/#/room/%23graylog:matrix.org>`__ or the `#graylog IRC chat channel on freenode <https://webchat.freenode.net/?channels=%23graylog>`__ (both are bridged, so you'll see messages from either channels).  Our developers and a lot of community members hang out here. Just join the channel and add any questions, suggestions or general topics you have.
 
 If you’re looking for professional commercial support from the Graylog team, we do that too.  Please `get in touch here <https://www.graylog.org/professional-support>`__ for more details.
