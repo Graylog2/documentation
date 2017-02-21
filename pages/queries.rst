@@ -63,9 +63,13 @@ You can also use the NOT operator::
   source:exam?le.*
 
 **Note that leading wildcards are disabled to avoid excessive memory consumption!** You can enable them in
-your ``graylog-server.conf``: ``allow_leading_wildcard_searches = true``
+your Graylog configuration file::
 
-Also note that `message`, `full_message`, and `source` are the only fields that can be searched via wildcard by default.
+  allow_leading_wildcard_searches = true
+
+Also note that ``message``, ``full_message``, and ``source`` are the only fields that are being analyzed by default.
+While wildcard searches (using ``*`` and ``?``) work on all indexed fields, analyzed fields will behave a little bit different.
+See `wildcard and regexp queries <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/_wildcard_and_regexp_queries.html>`_ for details.
 
 **Fuzziness:** You can search for similar but not equal terms::
 
@@ -313,8 +317,8 @@ sidebar, click on the *More actions* button, and select *Export as CSV*.
 
 .. image:: /images/export_as_csv.png
 
-**Hint**: Some Graylog inputs keep the original message in the the `full_message` field. If you need to export the original message, you
-can do so by clicking on the *List all fields* link at the bottom of the sidebar, and then selecting the `full_message` field.
+**Hint**: Some Graylog inputs keep the original message in the the ``full_message`` field. If you need to export the original message, you
+can do so by clicking on the *List all fields* link at the bottom of the sidebar, and then selecting the ``full_message`` field.
 
 Search result highlighting
 ==========================
@@ -327,9 +331,9 @@ Enabling/Disabling search result highlighting
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Using search result highlighting will result in slightly higher resource consumption of searches. You can enable and disable
-it using a configuration parameter in the ``graylog.conf`` of your ``graylog-server`` nodes::
+it using a configuration parameter in the ``graylog.conf`` of your Graylog nodes::
 
-    allow_highlighting = true
+  allow_highlighting = true
 
 
 Search configuration
