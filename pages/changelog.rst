@@ -1,10 +1,26 @@
 *********
 Changelog
 *********
+
+Graylog 2.2.1
+=============
+
+Released: 2017-02-20
+
+https://www.graylog.org/blog/89-announcing-graylog-v2-2-1
+
+**Core**
+
+* Allow version '0' for structured syslog messages. `Graylog2/graylog2-server#3502 <https://github.com/Graylog2/graylog2-server/issues/3502>`__
+* Ignore ``Content-Type`` in ``HttpTransport``. `Graylog2/graylog2-server#3477 <https://github.com/Graylog2/graylog2-server/issues/3477>`__
+* Ensure that ``index_prefix`` is lower case. `Graylog2/graylog2-server#3476 <https://github.com/Graylog2/graylog2-server/issues/3476>`__
+* Add missing whitespace in SystemOutputsPage. `Graylog2/graylog2-server#3505 <https://github.com/Graylog2/graylog2-server/issues/3505>`__
+
+
 Graylog 2.2.0
 =============
 
-Released 2017-02-14
+Released: 2017-02-14
 
 https://www.graylog.org/blog/88-announcing-graylog-v2-2-0
 
@@ -145,7 +161,7 @@ https://www.graylog.org/blog/88-announcing-graylog-v2-2-0
 Graylog 2.1.3
 =============
 
-Released 2017-01-26
+Released: 2017-01-26
 
 https://www.graylog.org/blog/84-announcing-graylog-2-1-3
 
@@ -165,7 +181,7 @@ https://www.graylog.org/blog/84-announcing-graylog-2-1-3
 Graylog 2.1.2
 =============
 
-Released 2016-11-04
+Released: 2016-11-04
 
 https://www.graylog.org/blog/75-announcing-graylog-v2-1-2
 
@@ -205,7 +221,7 @@ https://www.graylog.org/blog/75-announcing-graylog-v2-1-2
 Graylog 2.1.1
 =============
 
-Released 2016-09-14
+Released: 2016-09-14
 
 https://www.graylog.org/blog/69-announcing-graylog-v2-1-1
 
@@ -236,7 +252,7 @@ https://www.graylog.org/blog/69-announcing-graylog-v2-1-1
 Graylog 2.1.0
 =============
 
-Released 2016-09-01
+Released: 2016-09-01
 
 https://www.graylog.org/blog/68-announcing-graylog-v-2-1-0-ga
 
@@ -759,7 +775,7 @@ https://www.graylog.org/blog/68-announcing-graylog-v-2-1-0-ga
 Graylog 2.0.3
 =============
 
-Released 2016-06-20
+Released: 2016-06-20
 
 https://www.graylog.org/blog/58-graylog-v2-0-3-released
 
