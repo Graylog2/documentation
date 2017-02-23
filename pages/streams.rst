@@ -137,9 +137,9 @@ These are a few example use cases for streams:
 How are streams processed internally?
 =====================================
 
-The most important thing to know about Graylog stream matching is that there is no duplication of stored messages. Every message that comes
-in is matched against the rules of a stream. For messages satisfying *all* or *at least one* of the stream rules (as configured in
-the stream), the internal ID of that stream is stored in the ``streams`` array of the processed message.
+Every message that comes in is matched against the rules of a stream. For messages satisfying *all* or 
+*at least one* of the stream rules (as configured in the stream), the internal ID of that stream is stored 
+in the ``streams`` array of the processed message.
 
 All analysis methods and searches that are bound to streams can now easily narrow their operation by searching with a
 ``streams:[STREAM_ID]`` limit. This is done automatically by Graylog and does not have to be provided by the user.
