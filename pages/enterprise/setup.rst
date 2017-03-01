@@ -113,6 +113,12 @@ You should see something like the following in your Graylog server logs. It indi
   2016-05-30 12:06:34,606 INFO : org.graylog2.bootstrap.CmdLineTool - Loaded plugin: ArchivePlugin 1.0.0 [org.graylog.plugins.archive.ArchivePlugin]
   2016-05-30 12:06:34,607 INFO : org.graylog2.bootstrap.CmdLineTool - Loaded plugin: License Plugin 1.0.0 [org.graylog.plugins.license.LicensePlugin]
 
+Cluster Setup
+=============
+
+If you run a Graylog Cluster you need to add the Enterprise Plugins to every Graylog Node. Additional your Loadbalancer should route ``/api/plugins/org.graylog.plugins.archive/`` only to the Graylog master node. Upcoming Version will proxy them automatically.
+
+
 License Installation
 ====================
 
