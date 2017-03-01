@@ -116,7 +116,7 @@ You should see something like the following in your Graylog server logs. It indi
 Cluster Setup
 =============
 
-If you run a Graylog Cluster you need to add the Enterprise Plugins to every Graylog Node. Additional your Loadbalancer should route ``/api/plugins/org.graylog.plugins.archive/`` only to the Graylog master node. Upcoming Version will proxy them automatically.
+If you run a Graylog cluster you need to add the enterprise plugins to every Graylog node. Additionally your load-balancer must route ``/api/plugins/org.graylog.plugins.archive/`` only to the Graylog master node. Future versions of Graylog will forward these requests automatically to the correct node.
 
 
 License Installation
