@@ -94,6 +94,8 @@ The last step is to enable Graylog during the operating system's startup::
 
 The next step is to :ref:`ingest messages <ingest_data>` into your Graylog and extract the messages with :ref:`extractors <extractors>` or use :ref:`the Pipelines <pipelinestoc>` to work with the messages.
 
+.. _selinux:
+
 SELinux information
 -------------------
 
