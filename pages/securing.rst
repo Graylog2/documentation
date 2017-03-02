@@ -23,7 +23,9 @@ All parts of one Graylog installation will communicate over network sockets. Dep
       - Port
     * - Graylog (web interface / API)
       - 9000 (tcp)
-    * - Elasticsearch (binary protocol)
+    * - Graylog to Elasticsearch
+      - 9350 (tcp)
+    * - Elasticsearch node communication
       - 9300 (tcp)
     * - MongoDB
       - 27017 (tcp)
