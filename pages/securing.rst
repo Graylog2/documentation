@@ -19,8 +19,8 @@ All parts of one Graylog installation will communicate over network sockets. Dep
 .. list-table:: Default network communication ports
     :header-rows: 1
 
-    * - Port
-      - Service
+    * - Component
+      - Port
     * - Graylog (web interface / API)
       - 9000 (tcp)
     * - Elasticsearch (binary protocol)
