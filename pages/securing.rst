@@ -11,6 +11,13 @@ Never run this in an insecure network.
 
 When using Amazon Web Services and our pre-configured AMI, never open all ports in the security group. Do not expose the server to the internet. Access Graylog only from within your VPC. Enable encryption for the communication.
 
+Default ports
+=============
+
+All parts of one Graylog installation will communicate over network sockets. Depending on your setup and number of nodes this might be exposed or can be bound to localhost. The :ref:`SELinux <selinux>` configuration is already covered in our step-by-step guide for centos. The important default network ports to cover are ``9000`` for Graylog, ``9200`` for Elasticsearch and ``27017`` for MongoDB.
+
+Every setup is unique in the requirements and ports might be changed by configuration, but you should limit who is able to connect to what service. In the :ref:`architecture description <big_production_setup>` you can see what parts need to be exposed and communicate with each other.
+
 Logging user activity
 =====================
 
