@@ -14,9 +14,23 @@ When using Amazon Web Services and our pre-configured AMI, never open all ports 
 Default ports
 =============
 
-All parts of one Graylog installation will communicate over network sockets. Depending on your setup and number of nodes this might be exposed or can be bound to localhost. The :ref:`SELinux <selinux>` configuration is already covered in our step-by-step guide for centos. The important default network ports to cover are ``9000`` for Graylog, ``9200`` for Elasticsearch and ``27017`` for MongoDB.
+All parts of one Graylog installation will communicate over network sockets. Depending on your setup and number of nodes this might be exposed or can be bound to localhost. The :ref:`SELinux <selinux>` configuration is already covered in our step-by-step guide for CentOS Linux. 
 
-Every setup is unique in the requirements and ports might be changed by configuration, but you should limit who is able to connect to what service. In the :ref:`architecture description <big_production_setup>` you can see what parts need to be exposed and communicate with each other.
+.. list-table:: Default network communication ports
+    :header-rows: 1
+
+    * - Port
+      - Service
+    * - Graylog (web interface / API)
+      - 9000 (tcp)
+    * - Elasticsearch (binary protocol)
+      - 9300 (tcp)
+    * - MongoDB
+      - 27017 (tcp)
+
+ 
+
+Each setup is unique in the requirements and ports might be changed by configuration, but you should limit who is able to connect to which service. In the :ref:`architecture description <big_production_setup>` you can see what components need to be exposed and communicate with each other.
 
 Logging user activity
 =====================
