@@ -146,6 +146,7 @@ Now create a file named ``/etc/yum.repos.d/graylog.repo`` with the following con
   gpgcheck=1
   gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-graylog
 
+.. _step_by_step_guides:
 
 Step-by-step guides
 -------------------
