@@ -2,7 +2,7 @@
 Changelog
 *********
 
-Graylog 2.2.1
+Graylog 2.2.2
 =============
 
 Released: 2017-03-03
@@ -14,6 +14,7 @@ https://www.graylog.org/blog/90-announcing-graylog-v2-2-2
 * Give an option to repeat alert notifications. `Graylog2/graylog2-server#3511 <https://github.com/Graylog2/graylog2-server/issues/3511>`__
 * Wait until notification types are loaded. `Graylog2/graylog2-server#3534 <https://github.com/Graylog2/graylog2-server/issues/3534>`__
 * Fixing slicing of alert conditions in pagination. `Graylog2/graylog2-server#3528 <https://github.com/Graylog2/graylog2-server/issues/3528>`__
+* Fix command line help of the server jar. `Graylog2/graylog2-server#3527 <https://github.com/Graylog2/graylog2-server/pull/3527>`__
 
 Graylog 2.2.1
 =============
@@ -28,7 +29,6 @@ https://www.graylog.org/blog/89-announcing-graylog-v2-2-1
 * Ignore ``Content-Type`` in ``HttpTransport``. `Graylog2/graylog2-server#3477 <https://github.com/Graylog2/graylog2-server/issues/3477>`__
 * Ensure that ``index_prefix`` is lower case. `Graylog2/graylog2-server#3476 <https://github.com/Graylog2/graylog2-server/issues/3476>`__
 * Add missing whitespace in SystemOutputsPage. `Graylog2/graylog2-server#3505 <https://github.com/Graylog2/graylog2-server/issues/3505>`__
-
 
 Graylog 2.2.0
 =============
