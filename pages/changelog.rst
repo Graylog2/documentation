@@ -5,6 +5,19 @@ Changelog
 Graylog 2.2.1
 =============
 
+Released: 2017-03-03
+
+https://www.graylog.org/blog/90-announcing-graylog-v2-2-2
+
+**Core**
+
+* Give an option to repeat alert notifications. `Graylog2/graylog2-server#3511 <https://github.com/Graylog2/graylog2-server/issues/3511>`__
+* Wait until notification types are loaded. `Graylog2/graylog2-server#3534 <https://github.com/Graylog2/graylog2-server/issues/3534>`__
+* Fixing slicing of alert conditions in pagination. `Graylog2/graylog2-server#3528 <https://github.com/Graylog2/graylog2-server/issues/3528>`__
+
+Graylog 2.2.1
+=============
+
 Released: 2017-02-20
 
 https://www.graylog.org/blog/89-announcing-graylog-v2-2-1
