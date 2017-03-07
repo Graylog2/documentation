@@ -99,7 +99,7 @@ Even though our engineers say it is “technically possible”, don’t do it.  
 Can I run Graylog on Azure?
 ---------------------------
 
-You can just `create a Linux VM <https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-portal>`__ and use our :ref:`step-by-step <step_by_step_guides>` to install your customized Graylog. As a second option you can just use `this guide <https://cloudbase.it/convert-virtualbox-to-hyper-v/>`__ to convert our :ref:`Appliance <virtual-machine-appliances>` into some Azure compatible virtual machine.
+You can `create a Linux VM <https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-portal>`__ and use our :ref:`step-by-step <step_by_step_guides>` to install your customized Graylog. As a second option you can use `this guide <https://cloudbase.it/convert-virtualbox-to-hyper-v/>`__ to convert our :ref:`Appliance <virtual-machine-appliances>` into some Azure compatible virtual machine.
 
 
 Functionality
