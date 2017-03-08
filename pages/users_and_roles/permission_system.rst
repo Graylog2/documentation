@@ -1,9 +1,11 @@
+.. _permissions:
+
 *****************
 Permission system
 *****************
 
 The Graylog permission system is extremely flexible and allows you to create users that are only allowed to perform
-certain REST calls. The :ref:`roles`  UI allows you to create roles based on stream or dashboard access but does not
+certain REST calls. The :ref:`roles` UI allows you to create roles based on stream or dashboard access but does not
 expose permissions on a REST call level yet. This guide describes how to create those roles using the Graylog REST API.
 
 Imagine we want to create a role that is only allowed to start or stop message processing on ``graylog-server`` nodes.

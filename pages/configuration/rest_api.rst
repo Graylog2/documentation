@@ -36,8 +36,9 @@ monitoring or ticket systems.
 Naturally, the same operations the API browser offers can be used on the command line or in scripts. A very common HTTP
 client being used for this kind of interaction is `curl <https://curl.haxx.se/>`__.
 
-.. note:: In the following examples, the username ``GM`` and password ``superpower`` will be used to demonstrate how to
-work with the Graylog REST API running at ``http://192.168.178.26:9000/api``.
+.. note::
+   In the following examples, the username ``GM`` and password ``superpower`` will be used to demonstrate how to
+   work with the Graylog REST API running at ``http://192.168.178.26:9000/api``.
 
 
 The following command displays Graylog cluster information as JSON, exactly the same information the web interface is
@@ -103,6 +104,11 @@ authentication instead.
 
 In order to create a new access token, you need to send a ``POST`` request to the Graylog REST API which includes the
 username and the name of the new access token.
+
+.. note::
+   Users require the permissions ``users:tokenlist``, ``users:tokencreate``, and ``users:tokenremove``
+   to manage their access tokens. Please check the documentation on :ref:`permissions` for more information. Also note
+   that users, even administrators, may only manage their *own* tokens.
 
 The following example will create an access token named ``icinga`` for the user ``GM``::
 
