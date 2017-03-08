@@ -124,62 +124,82 @@ Just run ``graylog-ctl reconfigure`` afterwards.
 Extend disk space
 =================
 
-All data of an appliance setup is stored in one directory ``/var/opt/graylog/data``. In order to extend the disk space mount a second drive on this path. Make
-sure to move old data to the new drive before and give the graylog user permissions to read and write here.
+All data of the appliance setup is stored in ``/var/opt/graylog/data``.
+In order to extend the disk space mount a second (virtual) hard drive into this directory.
 
-Example procedure for an OVA appliance on VMWare:
+.. important:: Make sure to move old data to the new drive before and give the graylog user permissions to read and write here.
 
-+-----------------------------------------------------+--------------------------------------------------+
-| Action                                              | Explanation                                      |
-+=====================================================+==================================================+
-| shutdown the VM                                     | Preparation for creating a consistend snapshot   |
-+-----------------------------------------------------+--------------------------------------------------+
-| take a snapshot through VMWare                      | Use the VMWare GUI to create a snapshot          |
-|                                                     | of the VM in case something goes wrong           |
-+-----------------------------------------------------+--------------------------------------------------+
-| attach an additional hard drive                     | Use the VMWare GUI to attach another harddrive   |
-|                                                     | suitable for the amount of logs you want to      |
-|                                                     | store                                            |
-+-----------------------------------------------------+--------------------------------------------------+
-| start the VM again and follow these steps:          |                                                  |
-+-----------------------------------------------------+--------------------------------------------------+
-| | ``sudo graylog-ctl stop``                         | Stop all running services to prevent disk        |
-|                                                     | access                                           |
-+-----------------------------------------------------+--------------------------------------------------+
-| | ``sudo lshw -class disk``                         | Check for the `logical name` of the new hard     |
-|                                                     | drive. Usually this is `/dev/sdb`                |
-+-----------------------------------------------------+--------------------------------------------------+
-| | ``sudo parted -a optimal /dev/sdb mklabel gpt``   | Partition and format new disk                    |
-| |                                                   |                                                  |
-| | (A reboot may be necessary at this point)         |                                                  |
-| |                                                   |                                                  |
-| | ``sudo parted -a optimal -- /dev/sdb unit \\``    |                                                  |
-| |          ``compact mkpart primary ext3 "1" "-1"`` |                                                  |
-| |                                                   |                                                  |
-| | ``sudo mkfs.ext4 /dev/sdb1``                      |                                                  |
-+-----------------------------------------------------+--------------------------------------------------+
-| | ``sudo mkdir /mnt/tmp``                           | Mount disk to temporary mount point              |
-| |                                                   |                                                  |
-| | ``sudo mount /dev/sdb1 /mnt/tmp``                 |                                                  |
-+-----------------------------------------------------+--------------------------------------------------+
-| | ``cd /var/opt/graylog/data``                      | Copy current data to new disk                    |
-| |                                                   |                                                  |
-| | ``sudo cp -ax * /mnt/tmp/``                       |                                                  |
-+-----------------------------------------------------+--------------------------------------------------+
-| | ``sudo diff -qr --suppress-common-lines \\``      | Compare both folders.                            |
-| |           ``/var/opt/graylog/data /mnt/tmp``      | Output should be: `Only in /mnt/tmp: lost+found` |
-+-----------------------------------------------------+--------------------------------------------------+
-| | ``sudo rm -rf /var/opt/graylog/data/*``           | Delete old data                                  |
-+-----------------------------------------------------+--------------------------------------------------+
-| | ``sudo umount /mnt/tmp``                          | Mount new disk over data folder                  |
-| |                                                   |                                                  |
-| | ``sudo mount /dev/sdb1 /var/opt/graylog/data``    |                                                  |
-+-----------------------------------------------------+--------------------------------------------------+
-| | ``echo "/dev/sdb1 /var/opt/graylog/data ext4 \\`` | Make change permanent                            |
-| | ``defaults 0 0" | sudo tee -a /etc/fstab``        |                                                  |
-| |                                                   |                                                  |
-| | ``sudo shutdown -r now``                          |                                                  |
-+-----------------------------------------------------+--------------------------------------------------+
+
+Example procedure for the Graylog virtual appliance
+---------------------------------------------------
+
+.. note:: These steps require basic knowledge in using Linux and the common shell programs.
+
+* Shutdown the virtual machine as preparation for creating a consistent snapshot.
+
+* Take a snapshot of the virtual machine in case something goes wrong.
+
+    * `Understanding VM snapshots in ESXi / ESX <https://kb.vmware.com/kb/1015180>`_
+    * `VMware vSphere: Managing Snapshots <https://pubs.vmware.com/vsphere-65/topic/com.vmware.vsphere.vm_admin.doc/GUID-50BD0E64-75A6-4164-B0E3-A2FBCCE15F1A.html>`_
+    * `VirtualBox: Snapshots <https://www.virtualbox.org/manual/ch01.html#snapshots>`_
+    * `Parallels: Save Snapshots of a Virtual Machine <http://download.parallels.com/desktop/v12/docs/en_US/Parallels%20Desktop%20User's%20Guide/32896.htm>`_
+    * `Parallels: Working with snapshots <http://kb.parallels.com/5691>`_
+
+* Attach an additional hard drive to the virtual machine.
+
+    * `VMware Workstation: Adding a New Virtual Disk to a Virtual Machine <https://www.vmware.com/support/ws5/doc/ws_disk_add_virtual.html>`_
+    * `VMware vSphere: Virtual Disk Configuration <https://pubs.vmware.com/vsphere-65/topic/com.vmware.vsphere.vm_admin.doc/GUID-90FD3678-AC9F-40CC-BB66-F499141E2B99.html>`_
+    * `VirtualBox: Virtual storage <https://www.virtualbox.org/manual/ch05.html>`_
+    * `Parallels: Hard Disk <http://download.parallels.com/desktop/v12/docs/en_US/Parallels%20Desktop%20User's%20Guide/33140.htm>`_
+
+* Start the virtual machine again.
+
+* Stop all services to prevent disk access::
+
+    $ sudo graylog-ctl stop
+
+* Check for the `logical name` of the new hard drive. Usually this is ``/dev/sdb``::
+
+    $ sudo lshw -class disk
+
+* Partition and format new disk::
+
+    $ sudo parted -a optimal /dev/sdb mklabel gpt
+    # A reboot may be necessary at this point so that the updated GPT is being recognized by the operating system
+    $ sudo parted -a optimal -- /dev/sdb unit compact mkpart primary ext3 "1" "-1"
+    $ sudo mkfs.ext4 /dev/sdb1
+
+* Mount disk into temporary directory ``/mnt/tmp``::
+
+    $ sudo mkdir /mnt/tmp
+    $ sudo mount /dev/sdb1 /mnt/tmp
+
+* Copy current data to new disk::
+
+    $ sudo cp -ax /var/opt/graylog/data/* /mnt/tmp/
+
+* Compare both folders::
+
+    # Output should be: Only in /mnt/tmp: lost+found
+    $ sudo diff -qr --suppress-common-lines var/opt/graylog/data /mnt/tmp
+
+* Delete old data::
+
+    $ sudo rm -rf /var/opt/graylog/data/*
+
+* Mount new disk into ``/var/opt/graylog/data`` directory::
+
+    $ sudo umount /mnt/tmp
+    $ sudo mount /dev/sdb1 /var/opt/graylog/data
+
+* Make change permanent by adding an entry to ``/etc/fstab``::
+
+    $ echo '/dev/sdb1 /var/opt/graylog/data ext4 defaults 0 0' | sudo tee -a /etc/fstab
+
+* Reboot virtual machine::
+
+    $ sudo shutdown -r now
+
 
 Install Graylog plugins
 =======================
