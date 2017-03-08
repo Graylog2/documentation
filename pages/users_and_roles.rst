@@ -16,7 +16,7 @@ The following sections describe the capabilities of users and roles **and also h
 
    users_and_roles/users
    users_and_roles/roles
-   users_and_roles/system_users
+   users_and_roles/permission_system
    users_and_roles/external_auth
 
 
