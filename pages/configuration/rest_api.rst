@@ -4,14 +4,11 @@
 Graylog REST API
 ****************
 
-The functionality Graylog REST API is very comprehensive; even the Graylog web interface is exclusively using Graylog
-REST API to interact with the Graylog cluster.
+The functionality Graylog REST API is very comprehensive; even the Graylog web interface is exclusively using Graylog REST API to interact with the Graylog cluster.
 
-To connect to the Graylog REST API with a web browser, just add ``api-browser`` to your current ``rest_listen_uri``
-setting or use the **API browser** button on the nodes overview page (*System / Nodes* in the web interface).
+To connect to the Graylog REST API with a web browser, just add ``api-browser`` to your current ``rest_listen_uri`` setting or use the **API browser** button on the nodes overview page (*System / Nodes* in the web interface).
 
-For example if your Graylog REST API is listening on ``http://192.168.178.26:9000/api/``, the API browser will be
-available at ``http://192.168.178.26:9000/api/api-browser/``.
+For example if your Graylog REST API is listening on ``http://192.168.178.26:9000/api/``, the API browser will be available at ``http://192.168.178.26:9000/api/api-browser/``.
 
 .. image:: /images/api/system_nodes_overview.png
 
@@ -29,20 +26,15 @@ After providing the credentials (username and password), you can browse all avai
 Interacting with the Graylog REST API
 =====================================
 
-While having a graphical UI for the Graylog REST API is perfect for interactive usage and exploratory learning, the real
-power unfolds when using the Graylog REST API for automation or integrating Graylog into another system, such as
-monitoring or ticket systems.
+While having a graphical UI for the Graylog REST API is perfect for interactive usage and exploratory learning, the real power unfolds when using the Graylog REST API for automation or integrating Graylog into another system, such as monitoring or ticket systems.
 
-Naturally, the same operations the API browser offers can be used on the command line or in scripts. A very common HTTP
-client being used for this kind of interaction is `curl <https://curl.haxx.se/>`__.
+Naturally, the same operations the API browser offers can be used on the command line or in scripts. A very common HTTP client being used for this kind of interaction is `curl <https://curl.haxx.se/>`__.
 
 .. note::
-   In the following examples, the username ``GM`` and password ``superpower`` will be used to demonstrate how to
-   work with the Graylog REST API running at ``http://192.168.178.26:9000/api``.
+   In the following examples, the username ``GM`` and password ``superpower`` will be used to demonstrate how to work with the Graylog REST API running at ``http://192.168.178.26:9000/api``.
 
 
-The following command displays Graylog cluster information as JSON, exactly the same information the web interface is
-displaying on the *System / Nodes* page::
+The following command displays Graylog cluster information as JSON, exactly the same information the web interface is displaying on the *System / Nodes* page::
 
     curl -u GM:superpower -H 'Accept: application/json' -X GET 'http://192.168.178.26:9000/api/cluster?pretty=true'
 
@@ -96,19 +88,14 @@ The Graylog REST API will respond with the following information::
 Creating and using Access Token
 -------------------------------
 
-For security reasons, using the username and password directly on the command line or in some third party application is
-undesirable.
+For security reasons, using the username and password directly on the command line or in some third party application is undesirable.
 
-To prevent having to use the clear text credentials, Graylog allows to create access tokens which can be used for
-authentication instead.
+To prevent having to use the clear text credentials, Graylog allows to create access tokens which can be used for authentication instead.
 
-In order to create a new access token, you need to send a ``POST`` request to the Graylog REST API which includes the
-username and the name of the new access token.
+In order to create a new access token, you need to send a ``POST`` request to the Graylog REST API which includes the username and the name of the new access token.
 
 .. note::
-   Users require the permissions ``users:tokenlist``, ``users:tokencreate``, and ``users:tokenremove``
-   to manage their access tokens. Please check the documentation on :ref:`permissions` for more information. Also note
-   that users, even administrators, may only manage their *own* tokens.
+   Users require the permissions ``users:tokenlist``, ``users:tokencreate``, and ``users:tokenremove`` to manage their access tokens. Please check the documentation on :ref:`permissions` for more information. Also note that users, even administrators, may only manage their *own* tokens.
 
 The following example will create an access token named ``icinga`` for the user ``GM``::
 
@@ -122,15 +109,13 @@ The response will include the access token in the ``token`` field::
        "last_access" : "1970-01-01T00:00:00.000Z"
     }
 
-The received access token can now be used as username in a request to the Graylog REST API using Basic Auth together
-with the literal password ``token``.
+The received access token can now be used as username in a request to the Graylog REST API using Basic Auth together with the literal password ``token``.
 
 Now the first ``curl`` example would look as follows::
 
     curl -u htgi84ut7jpivsrcldd6l4lmcigvfauldm99ofcb4hsfcvdgsru:token -H 'Accept: application/json' -X GET 'http://192.168.178.26:9000/api/cluster?pretty=true'
 
-If you need to know which access tokens have already been created by a user, just use ``GET /users/{username}/tokens/``
-on the Graylog REST API to request a list of all access tokens that are present for this user.
+If you need to know which access tokens have already been created by a user, just use ``GET /users/{username}/tokens/`` on the Graylog REST API to request a list of all access tokens that are present for this user.
 
 The following example will request all access tokens of the user ``GM``::
 
@@ -138,8 +123,7 @@ The following example will request all access tokens of the user ``GM``::
 
 When an access token is no longer needed, it can be delete on the Graylog REST API via ``DELETE /users/{username}/tokens/{token}``.
 
-The following example deletes the previously created access token ``htgi84ut7jpivsrcldd6l4lmcigvfauldm99ofcb4hsfcvdgsru``
-of the user ``GM``::
+The following example deletes the previously created access token ``htgi84ut7jpivsrcldd6l4lmcigvfauldm99ofcb4hsfcvdgsru`` of the user ``GM``::
 
     curl -u GM:superpower -H 'Accept: application/json' -X DELETE' http://192.168.178.26:9000/api/users/GM/tokens/ap84p4jehbf2jddva8rdmjr3k7m3kdnuqbai5s0h5a48e7069po?pretty=true'
 
@@ -147,11 +131,9 @@ of the user ``GM``::
 Creating and using Session Token
 --------------------------------
 
-While access tokens can be used for permanent access, session tokens will expire after a certain time. The expiration
-time can be adjusted in the user's profile.
+While access tokens can be used for permanent access, session tokens will expire after a certain time. The expiration time can be adjusted in the user's profile.
 
-Getting a new session token can be obtained  via ``POST`` request to the Graylog REST API. Username and password are
-required to get a valid session ID. The following example will create an session token for the user ``GM``::
+Getting a new session token can be obtained  via ``POST`` request to the Graylog REST API. Username and password are required to get a valid session ID. The following example will create an session token for the user ``GM``::
 
     curl -i -X POST -H 'Content-Type: application/json' -H 'Accept: application/json' 'http://192.168.178.26:9000/api/system/sessions' -d '{"username":"GM", "password":"superpower", "host":""}'
 
@@ -162,8 +144,7 @@ The response will include the session token in the field ``session_id`` and the 
         "session_id" : "cf1df45c-53ea-446c-8ed7-e1df64861de7"
     }
 
-The received token can now be used as username in a request to the Graylog REST API using Basic Auth together with the
-literal password ``session``.
+The received token can now be used as username in a request to the Graylog REST API using Basic Auth together with the literal password ``session``.
 
 Now a ``curl`` command to get a list of access tokens would look as follows::
 
