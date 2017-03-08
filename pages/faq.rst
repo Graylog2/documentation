@@ -96,6 +96,12 @@ Can I install the Graylog Server on Windows?
 
 Even though our engineers say it is “technically possible”, don’t do it.  The Graylog server is built using Java, so technically it can run anywhere. But we currently have it optimized to run better on other operating systems. If you don’t feel comfortable running your own Linux system, we recommend you use our Linux virtual appliance which will run under VMWare.
 
+Can I run Graylog on Azure?
+---------------------------
+
+You can `create a Linux VM <https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-portal>`__ and use our :ref:`step-by-step <step_by_step_guides>` to install your customized Graylog. As a second option you can use `this guide <https://cloudbase.it/convert-virtualbox-to-hyper-v/>`__ to convert our :ref:`Appliance <virtual-machine-appliances>` into some Azure compatible virtual machine.
+
+
 Functionality
 =============
 
