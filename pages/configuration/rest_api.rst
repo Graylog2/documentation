@@ -15,7 +15,7 @@ For example if your Graylog REST API is listening on ``http://192.168.178.26:900
 .. note:: The customized version of Swagger UI used by Graylog does currently only work in Google Chrome and Firefox.
 
 
-Using the API Browser
+Using the API browser
 =====================
 
 After providing the credentials (username and password), you can browse all available HTTP resources of the Graylog REST API.
@@ -30,7 +30,8 @@ While having a graphical UI for the Graylog REST API is perfect for interactive 
 
 Naturally, the same operations the API browser offers can be used on the command line or in scripts. A very common HTTP client being used for this kind of interaction is `curl <https://curl.haxx.se/>`__.
 
-.. note:: In the following examples, the username ``GM`` and password ``superpower`` will be used to demonstrate how to work with the Graylog REST API running at ``http://192.168.178.26:9000/api``.
+.. note::
+   In the following examples, the username ``GM`` and password ``superpower`` will be used to demonstrate how to work with the Graylog REST API running at ``http://192.168.178.26:9000/api``.
 
 
 The following command displays Graylog cluster information as JSON, exactly the same information the web interface is displaying on the *System / Nodes* page::
@@ -93,6 +94,9 @@ To prevent having to use the clear text credentials, Graylog allows to create ac
 
 In order to create a new access token, you need to send a ``POST`` request to the Graylog REST API which includes the username and the name of the new access token.
 
+.. note::
+   Users require the permissions ``users:tokenlist``, ``users:tokencreate``, and ``users:tokenremove`` to manage their access tokens. Please check the documentation on :ref:`permissions` for more information. Also note that users, even administrators, may only manage their *own* tokens.
+
 The following example will create an access token named ``icinga`` for the user ``GM``::
 
     curl -u GM:superpower -H 'Accept: application/json' -X POST 'http://192.168.178.26:9000/api/users/GM/tokens/icinga?pretty=true'
@@ -127,7 +131,7 @@ The following example deletes the previously created access token ``htgi84ut7jpi
 Creating and using Session Token
 --------------------------------
 
-While access tokens can be used for permanent access, session tokens will expire after a certain time. The expiration time can be adjusted in the user's profile. 
+While access tokens can be used for permanent access, session tokens will expire after a certain time. The expiration time can be adjusted in the user's profile.
 
 Getting a new session token can be obtained  via ``POST`` request to the Graylog REST API. Username and password are required to get a valid session ID. The following example will create an session token for the user ``GM``::
 
