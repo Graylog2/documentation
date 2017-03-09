@@ -181,7 +181,7 @@ Example procedure for the Graylog virtual appliance
 * Compare both folders::
 
     # Output should be: Only in /mnt/tmp: lost+found
-    $ sudo diff -qr --suppress-common-lines var/opt/graylog/data /mnt/tmp
+    $ sudo diff -qr --suppress-common-lines /var/opt/graylog/data /mnt/tmp
 
 * Delete old data::
 
