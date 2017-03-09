@@ -295,8 +295,8 @@ Afterwards you will most likely see an error like this in the log file::
 This simply means that there is no configuration with the same tag that the Sidecar was started with. So we have to create a new configuration. Define outputs and inputs and tag it in order to collect log files.
 Take the :ref:`sidecar_step-by-step` to create your first configuration.
 
-When the Sidecar can find a configuration that matches it's own ``tags``, it will write for each collector backend a configuration file into the ``/generated`` directory. E.g. if you enabled the
-Filebeat collector you will find a ``filebeat.yml`` file in that directory. All changes have to be made in the Graylog web interface. Everytime the Sidecar detects an update to it's configuration it will
+When the Sidecar can find a configuration that matches its own ``tags``, it will write for each collector backend a configuration file into the ``/generated`` directory. E.g. if you enabled the
+Filebeat collector you will find a ``filebeat.yml`` file in that directory. All changes have to be made in the Graylog web interface. Everytime the Sidecar detects an update to its configuration it will
 rewrite the corresponding collector configuration file. So it doesn't make sense to manually edit those files.
 
 Everytime a collector configuration file is changed the collector process is restarted. The Sidecar takes care of the collector processes and reports the status back to the web interface
@@ -368,8 +368,8 @@ Certificate based client authentification
 If you want to allow Graylog only to accept data from certificated clients you will need to build your own `certificate authrority <https://en.wikipedia.org/wiki/Certificate_authority>`__  and provide this to the Input and the Client Output configuration.
 
 
-Sidecar Glossar
-===============
+Sidecar Glossary
+================
 
 To understand the different parts of the Graylog Sidecar they are explained in the following section.
 
@@ -438,4 +438,4 @@ Known Problems
 Currently we know of two problems with NXLog:
 
   - Since version 2.9.17 timestamps are transmitted `without millisecond precision <https://nxlog.co/question/1855/gelf-timestamp-field-missing-millisecond-precision>`_
-  - On Windows machines NXlog is not able to store it's collector state so features like file tailing doesn't work correctly in combination with Sidecar. Use Sidecar version 0.1.0-alpha.1 or newer.
+  - On Windows machines NXlog is not able to store its collector state so features like file tailing don't work correctly in combination with Sidecar. Use Sidecar version 0.1.0-alpha.1 or newer.
