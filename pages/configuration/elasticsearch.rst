@@ -436,6 +436,9 @@ Every Elasticsearch index created from that time on, will have an index mapping 
     }
   }
 
+.. note:: When using different index sets every index set can have is own mapping. 
+
+
 Deleting custom index templates
 -------------------------------
 
