@@ -368,8 +368,8 @@ Certificate based client authentification
 If you want to allow Graylog only to accept data from certificated clients you will need to build your own `certificate authrority <https://en.wikipedia.org/wiki/Certificate_authority>`__  and provide this to the Input and the Client Output configuration.
 
 
-Sidecar Glossar
-===============
+Sidecar Glossary
+================
 
 To understand the different parts of the Graylog Sidecar they are explained in the following section.
 
