@@ -27,7 +27,7 @@ Graylog version  Elasticsearch version
 2.0.0            2.3.1
 2.0.1-2.0.3      2.3.2
 2.1.0-2.1.3      2.3.5
-2.2.0-2.2.1      2.4.4
+2.2.0-2.2.2      2.4.4
 ===============  =====================
 
 .. caution:: Graylog 2.x **does not** work with Elasticsearch 5.x!
@@ -435,6 +435,9 @@ Every Elasticsearch index created from that time on, will have an index mapping 
       }
     }
   }
+
+.. note:: When using different index sets every index set can have its own mapping. 
+
 
 Deleting custom index templates
 -------------------------------
