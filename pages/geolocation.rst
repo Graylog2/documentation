@@ -69,8 +69,9 @@ extractors.
 That's it, at this point Graylog will start looking for fields **containing exclusively** an IPv4 or IPv6
 address, and extracting their geolocation into a ``<field>_geolocation`` field.
 
-**Note**: In case you are not sending structured logs to Graylog, you can use extractors to store the IPs
-in your messages into their own fields. Check out the :ref:`extractors` documentation for more information.
+.. note:: In case you are not sending structured logs to Graylog, you can use extractors to store the IP addresses in your messages into their own fields. Check out the :ref:`extractors` documentation for more information.
+
+.. important:: The GeoIP Resolver processor will **not process** any internal message fields, i. e. any field starting with ``gl2_`` such as ``gl2_remote_ip``.
 
 
 Verify the geolocation configuration (Optional)
