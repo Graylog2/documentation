@@ -116,6 +116,20 @@ Here is a comparison between the available compression algorithms with test data
 .. note:: Results with your data may vary! Make sure to test the different compression types
           to find the one that is best for your data.
 
+
+.. _archive-config-option-checksum-type:
+
+Checksum Type
+^^^^^^^^^^^^^
+
+When writing archives Graylog computes a CRC32 checksum over the files. This option can be changed to use a different checksum algorithm.
+
+The type of checksum depends on the use case. CRC32 and MD5 are quick to compute and a reasonable choice to be able to detect damaged files, but neither is suitable as protection against malicious changes in the files.
+Graylog also supports using SHA-1 or SHA-256 checksums which can be used to make sure the files were not modified, as they are cryptographic hashes.
+
+The best choice of checksum types depends on whether the necessary system tools are installed to compute them later (not all systems come with a SHA-256 utility for example), speed of checksum calculation for larger files as well as the security considerations.
+
+
 .. _archive-config-option-restore-batch-size:
 
 Restore Index Batch Size
