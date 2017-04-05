@@ -104,8 +104,8 @@ The archive plugin offer two ways to restore archived indices.
 * :ref:`Web Interface <archive-restore-web-interface>`
 * :ref:`REST API <archive-restore-rest-api>`
 
-A restored index has a ``_restored_archive`` in the index name to avoid
-conflicts with the original index. (if that still exists)
+The archive plugin restores all indices into the "Restored Archives" index set
+to avoid conflicts with the original indices. (should those still exist)
 
 .. image:: /images/archiving-usage-restore-web-result.png
 
@@ -195,11 +195,11 @@ your Elasticsearch cluster, you can restore the archived indices on a
 different cluster.
 
 To do that, you only have to transfer the archived indices to a different
-machine and put them into the configured :ref:`Archive Path <archive-config-option-archive-path>`.
+machine and put them into a configured :ref:`Backend <archive-config-option-backend>`.
 
 Each index archive is in a separate directory, so if you only want to transfer
 one index to a different machine, you only have to copy the corresponding
-directory into the archive path.
+directory into the backend.
 
 Example::
 

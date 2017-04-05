@@ -46,7 +46,7 @@ There are several configuration options to configure the archive plugin.
     * - Streams to archive
       - Streams that should be included in the archive.
 
-.. _archive-config-option-archive-path:
+.. _archive-config-option-backend:
 
 Backend
 ^^^^^^^
