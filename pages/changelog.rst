@@ -1,7 +1,40 @@
 *********
 Changelog
 *********
+Graylog 2.2.3
+=============
 
+Released: 2017-04-04
+
+https://www.graylog.org/blog/92-announcing-graylog-v2-2-3
+
+**Core**
+
+* Prevent unwanted session extension. `Graylog2/graylog2-server#3583 <https://github.com/Graylog2/graylog2-server/issues/3583>`__
+* Properly escape username/roles in web interface. `Graylog2/graylog2-server#3588 <https://github.com/Graylog2/graylog2-server/issues/3588>`__
+* Allow "-" in the path pattern for the index range rebuild endpoint. `Graylog2/graylog2-server#3600 <https://github.com/Graylog2/graylog2-server/issues/3600>`__
+* Copy Query Button Fix. `Graylog2/graylog2-server#3491 <https://github.com/Graylog2/graylog2-server/issues/3491>`__
+* Fixing slicing of alert notifications in pagination. `Graylog2/graylog2-server#3619 <https://github.com/Graylog2/graylog2-server/issues/3619>`__
+* Fix cloning alert conditions with identical id when cloning stream. `Graylog2/graylog2-server#3616 <https://github.com/Graylog2/graylog2-server/issues/3616>`__
+* Use UTC for embedded Date objects as well. `Graylog2/graylog2-server#3626 <https://github.com/Graylog2/graylog2-server/issues/3626>`__
+* Prevent session extension for polling system messages. `Graylog2/graylog2-server#3638 <https://github.com/Graylog2/graylog2-server/issues/3638>`__
+* Support replacing whitespace in nested keys for JSON extractor. `Graylog2/graylog2-server#3623 <https://github.com/Graylog2/graylog2-server/issues/3623>`__
+* Prevent NPE due to race between rotation and retention threads. `Graylog2/graylog2-server#3640 <https://github.com/Graylog2/graylog2-server/issues/3640>`__
+* Prevent session extension in SystemJobsStore. `Graylog2/graylog2-server#3625 <https://github.com/Graylog2/graylog2-server/issues/3625>`__
+* Render loading indicator on no results page. `Graylog2/graylog2-server#3667 <https://github.com/Graylog2/graylog2-server/issues/3667>`__
+* Using consistent collection of non displayable fields to filter against. `Graylog2/graylog2-server#3668 <https://github.com/Graylog2/graylog2-server/issues/3668>`__
+* Ensure that plugin RPMs will be built for Linux. `Graylog2/graylog2-server#3659 <https://github.com/Graylog2/graylog2-server/issues/3659>`__
+* Fix navigation in LDAP components. `Graylog2/graylog2-server#3670 <https://github.com/Graylog2/graylog2-server/issues/3670>`__
+* Publish GrokPatternsChangedEvent when using content packs. `Graylog2/graylog2-server#3621 <https://github.com/Graylog2/graylog2-server/issues/3621>`__
+* Add support for Cisco and FortiGate syslog messages. `Graylog2/graylog2-server#3599 <https://github.com/Graylog2/graylog2-server/issues/3599>`__
+* Effectively change user permissions when listing inputs. `Graylog2/graylog2-server#3682 <https://github.com/Graylog2/graylog2-server/issues/3682>`__
+* Restore removal of role permissions upon roles update. `Graylog2/graylog2-server#3684 <https://github.com/Graylog2/graylog2-server/issues/3684>`__
+* Comply with grace condition when repeat alert notifications is enabled `Graylog2/graylog2-server#3676 <https://github.com/Graylog2/graylog2-server/issues/3676>`__
+
+**Pipeline Processor**
+
+* Use uppercase timezone in TimezoneAwareFunction and fix default value. `Graylog2/graylog-plugin-pipeline-processor#169 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/169>`__
+ 
 Graylog 2.2.2
 =============
 
