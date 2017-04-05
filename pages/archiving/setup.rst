@@ -167,7 +167,7 @@ File System
 ^^^^^^^^^^^
 
 The archived indices will be stored in the *Output base path* directory. This
-directory **needs to be writable for the Graylog server process** so the files
+directory **needs to exist and be writable for the Graylog server process** so the files
 can be stored.
 
 .. note:: Only the **master** node needs access to the *Output base path* directory because the archiving process runs on the master node.
