@@ -156,6 +156,7 @@ archived index into the Elasticsearch cluster::
             "c5df7bff-cafd-4546-ac0a-5ccd2ba4c847": "graylog.example.org"
           }
         },
+        "histogram_bucket_size": 86400000,
         "source_histogram": {
           "2016-04-14T00:00:00.000Z": {
             "example.org": 227567
@@ -167,8 +168,12 @@ archived index into the Elasticsearch cluster::
             "size": 21653755,
             "raw_size": 2359745839,
             "compression_type": "SNAPPY"
+            "checksum": "751e6e76",
+            "checksum_type": "CRC32"
           }
-        ]
+        ],
+        "index_size": 12509063,
+        "index_shard_count": 4
       },
       "system_job": {
         "id": "e680dcc0-07a2-11e6-9e1b-fa163e6e9b8a",
