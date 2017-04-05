@@ -33,31 +33,27 @@ There are several configuration options to configure the archive plugin.
 
     * - Name
       - Description
-    * - Archive Path
-      - Directory on the **master** node where the archive files will be stored.
+    * - Backend
+      - Backend on the **master** node where the archive files will be stored.
     * - Max Segment Size
       - Maximum size (in *bytes*) of archive segment files.
     * - Compression Type
       - Compression type that will be used to compress the archives.
+    * - Checksum Type
+      - Checksum algorithm that is used to calculate the checksum for archives.
     * - Restore index batch size
       - Elasticsearch batch size when restoring archive files.
     * - Streams to archive
       - Streams that should be included in the archive.
 
-.. _archive-config-option-archive-path:
+.. _archive-config-option-backend:
 
-Archive Path
-^^^^^^^^^^^^
+Backend
+^^^^^^^
 
-The archived indices will be stored in the *Archive Path* directory. This
-directory **needs to be writable for the Graylog server process** so the files
-can be stored.
-
-.. note:: Only the **master** node needs access to the *Archive Path* directory because the archiving process runs on the master node.
-
-We recommend to put the *Archive Path* directory onto a **separate disk or partition** to avoid
-any negative impact on the message processing should the archiving fill up
-the disk.
+The archived indices will be stored in a backend. A backend that stores the data in ``/tmp/graylog-archive`` is created
+when the server starts for the first time but you can create a new backend if you want to store the data in a different
+path.
 
 Max Segment Size
 ^^^^^^^^^^^^^^^^^
@@ -129,7 +125,6 @@ Graylog also supports using SHA-1 or SHA-256 checksums which can be used to make
 
 The best choice of checksum types depends on whether the necessary system tools are installed to compute them later (not all systems come with a SHA-256 utility for example), speed of checksum calculation for larger files as well as the security considerations.
 
-
 .. _archive-config-option-restore-batch-size:
 
 Restore Index Batch Size
@@ -161,6 +156,77 @@ of archiving everything that is arriving in Graylog.
           and don't want it to be archived, you have to disable it in this
           configuration dialog.
 
+.. _archive-config-backends:
+
+Backends
+--------
+
+A backend can be used to store the archived data. For now, we only support a single file system backend type.
+
+File System
+^^^^^^^^^^^
+
+The archived indices will be stored in the *Output base path* directory. This
+directory **needs to exist and be writable for the Graylog server process** so the files
+can be stored.
+
+.. note:: Only the **master** node needs access to the *Output base path* directory because the archiving process runs on the master node.
+
+We recommend to put the *Output base path* directory onto a **separate disk or partition** to avoid
+any negative impact on the message processing should the archiving fill up
+the disk.
+
+.. image:: /images/archiving-setup-backend-new.png
+
+.. list-table:: Configuration Options
+    :header-rows: 1
+    :widths: 7 20
+
+    * - Name
+      - Description
+    * - Title
+      - A simple title to identify the backend.
+    * - Description
+      - Longer description for the backend.
+    * - Output base path
+      - Directory path where the archive files should be stored.
+
+**Output base path**
+
+The output base path can either be a simple directory path string or a template string to build dynamic paths.
+
+You could use a template string to store the archive data in a directory tree that is based on the archival date.
+
+Example::
+
+    # Template
+    /data/graylog-archive/${year}/${month}/${day}
+
+    # Result
+    /data/graylog-archive/2017/04/01/graylog_0
+
+.. list-table:: Available Template Variables
+    :header-rows: 1
+    :widths: 7 20
+
+    * - Name
+      - Description
+    * - ``${year}``
+      - Archival date year. (e.g. "2017")
+    * - ``${month}``
+      - Archival date month. (e.g "04")
+    * - ``${day}``
+      - Archival date day. (e.g. "01")
+    * - ``${hour}``
+      - Archival date hour. (e.g. "23")
+    * - ``${minute}``
+      - Archival date minute. (e.g. "24")
+    * - ``${second}``
+      - Archival date second. (e.g. "59")
+    * - ``${index-name}``
+      - Name of the archived index. (e.g. "graylog_0")
+
+
 .. _archive-config-index-retention:
 
 Index Retention
@@ -174,14 +240,14 @@ The archive plugin offers a new index retention strategy that you can configure
 to automatically archive an index before closing or deleting it.
 
 Index retention strategies can be configured in the system menu under
-"System/Indices". Click "Update configuration" to change the index rotation
+"System/Indices". Select an index set and click "Edit" to change the index rotation
 and retention strategies.
 
 .. image:: /images/archiving-setup-index-retention-config.png
 
 As with the regular index retention strategies, you can configure a max
 number of Elasticsearch indices. Once there are more indices than the
-configured limit, the oldest ones will be archived to the *Archive Path* and
+configured limit, the oldest ones will be archived into the backend and
 then closed or deleted. You can also decide to not do anything (*NONE*) after
 archiving an index. In that case **no cleanup of old indices will happen**
 and you have to take care of that yourself!
