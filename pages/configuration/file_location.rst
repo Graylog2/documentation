@@ -124,7 +124,7 @@ MongoDB
 Omnibus package
 ===============
 
-This paragraph covers Graylog installations via OVA, on AWS (via AMI), and on Openstack using the `Graylog Omnibus package <https://github.com/Graylog2/omnibus-graylog2#readme>`_.
+This paragraph covers Graylog installations via OVA, on AWS (via AMI), and on OpenStack using the `Graylog Omnibus package <https://github.com/Graylog2/omnibus-graylog2#readme>`_.
 
 Graylog
 -------
