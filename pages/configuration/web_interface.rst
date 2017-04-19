@@ -4,55 +4,78 @@
 Web interface
 *************
 
-When your Graylog instance/cluster is up and running, the next thing you usually want to do is check out our web interface, which offers you great capabilities for searching and analyzing your indexed data and configuring your Graylog environment. Per default you can access it using your browser on ``http://<graylog-server>:9000``.
+When your Graylog instance/cluster is up and running, the next thing you usually want to do is check out our web interface, which offers you great capabilities for searching and analyzing your indexed data and configuring your Graylog environment. Per default you can access it using your browser on ``http://<graylog-server>:12900``.
 
 
 Overview
 ========
 
-The Graylog web interface was rewritten in JavaScript for 2.0 to be a client-side single-page browser application. This means its code is running solely in your browser, fetching all data via HTTP(S) from the REST API of your Graylog server. Therefore there is a second HTTP listener which is serving the assets for the web interface (all JavaScript, fonts, images, CSS files) to the clients.
+The Graylog web interface was rewritten in JavaScript for 2.0 to be a client-side single-page browser application. This means its code is running solely in your browser, fetching all data via HTTP(S) from the REST API of your Graylog server.
 
-.. note:: Both the web interface port (http://127.0.0.1:9000/ by default, see ``web_listen_uri``) and the REST API port (http://127.0.0.1:12900 by default, see ``rest_listen_uri`` and ``rest_transport_uri``) must be accessible by everyone using the web interface. This means that both components *must* listen on a public network interface *or* be exposed to one using a proxy or NAT!
+.. note:: Both the web interface URI (see ``web_listen_uri``) and the REST API (see ``rest_listen_uri`` and ``rest_transport_uri``) must be accessible by everyone using the web interface. This means that Graylog *must* listen on a public network interface *or* be exposed to one using a proxy or NAT!
 
+Single or separate listeners for web interface and REST API?
+============================================================
+
+Since Graylog 2.1 you have two options when it comes to exposing its web interface:
+
+ - Running both on the same port, using different paths (defaulting to ``http://localhost:12900/`` for the REST API and ``http://localhost:12900/console`` for the web interface), this is the default since 2.1 and is assumed for most parts of the documentation.
+ - Running on two different ports (for example ``http://localhost:12900`` for the REST API and ``http://localhost:9000`` for the web interface)
+ 
+.. note:: When you are using the first option and you want to run the REST API and the web interface on the same host and port, the path part of both URIs (``rest_listen_uri`` & ``web_listen_uri``) must be different and the path part of ``web_listen_uri`` must be non-empty and different than ``/``.
 
 Configuration Options
 =====================
 
 If our default settings do not work for you, there is a number of options in the Graylog server configuration file which you can change to influence its behavior:
 
-+-------------------------+-------------------------+----------------------------------------------------------------------+
-| Setting                 | Default                 | Explanation                                                          |
-+=========================+=========================+======================================================================+
-| ``web_enable``          | true                    | Determines if the web interface endpoint is started or not.          |
-+-------------------------+-------------------------+----------------------------------------------------------------------+
-| ``web_listen_uri``      | http://127.0.0.1:9000/  | Default address the web interface listener binds to.                 |
-+-------------------------+-------------------------+----------------------------------------------------------------------+
-| ``web_endpoint_uri``    | If not set,             | This is the external address of the REST API of the Graylog server.  |
-|                         | ``rest_transport_uri``  | Web interface clients need to be able to connect to this for the web |
-|                         | will be used.           | interface to work.                                                   |
-+-------------------------+-------------------------+----------------------------------------------------------------------+
-| ``web_enable_cors``     | false                   | Support Cross-Origin Resource Sharing for the web interface assets.  |
-|                         |                         | Not required, because no REST calls are made to this listener.       |
-+-------------------------+-------------------------+----------------------------------------------------------------------+
-| ``web_enable_gzip``     | true                    | Serve web interface assets using compression.                        |
-+-------------------------+-------------------------+----------------------------------------------------------------------+
-| ``web_enable_tls``      | false                   | Should the web interface serve assets using encryption or not.       |
-+-------------------------+-------------------------+----------------------------------------------------------------------+
-| ``web_tls_cert_file``   | (no default)            | Path to TLS certificate file, if TLS is enabled.                     |
-+-------------------------+-------------------------+----------------------------------------------------------------------+
-| ``web_tls_key_file``    | (no default)            | Path to private key for certificate, used if TLS is enabled.         |
-+-------------------------+-------------------------+----------------------------------------------------------------------+
-| ``web_tls_key_password``| (no default)            | Password for TLS key (if it is encrypted).                           |
-+-------------------------+-------------------------+----------------------------------------------------------------------+
-| ``web_thread_pool_size``| 16                      | Number of threads used for web interface listener.                   |
-+-------------------------+-------------------------+----------------------------------------------------------------------+
++-------------------------+---------------------------------+----------------------------------------------------------------------+
+| Setting                 | Default                         | Explanation                                                          |
++=========================+=================================+======================================================================+
+| ``web_enable``          | true                            | Determines if the web interface endpoint is started or not.          |
++-------------------------+---------------------------------+----------------------------------------------------------------------+
+| ``web_listen_uri``      | http://127.0.0.1:12900/console  | Default address the web interface listener binds to.                 |
++-------------------------+---------------------------------+----------------------------------------------------------------------+
+| ``web_endpoint_uri``    | If not set,                     | This is the external address of the REST API of the Graylog server.  |
+|                         | ``rest_transport_uri``          | Web interface clients need to be able to connect to this for the web |
+|                         | will be used.                   | interface to work.                                                   |
++-------------------------+---------------------------------+----------------------------------------------------------------------+
+| ``web_enable_cors``     | false                           | Support Cross-Origin Resource Sharing for the web interface assets.  |
+|                         |                                 | Not required, because no REST calls are made to this listener.       |
+|                         |                                 | This setting is ignored, if the host and port parts of               |
+|                         |                                 | ``web_listen_uri`` and ``rest_listen_uri`` are identical.            |
++-------------------------+---------------------------------+----------------------------------------------------------------------+
+| ``web_enable_gzip``     | true                            | Serve web interface assets using compression.                        |
+|                         |                                 | This setting is ignored, if the host and port parts of               |
+|                         |                                 | ``web_listen_uri`` and ``rest_listen_uri`` are identical.            |
++-------------------------+---------------------------------+----------------------------------------------------------------------+
+| ``web_enable_tls``      | false                           | Should the web interface serve assets using encryption or not.       |
+|                         |                                 | This setting is ignored, if the host and port parts of               |
+|                         |                                 | ``web_listen_uri`` and ``rest_listen_uri`` are identical.            |
++-------------------------+---------------------------------+----------------------------------------------------------------------+
+| ``web_tls_cert_file``   | (no default)                    | Path to TLS certificate file, if TLS is enabled.                     |
+|                         |                                 | This setting is ignored, if the host and port parts of               |
+|                         |                                 | ``web_listen_uri`` and ``rest_listen_uri`` are identical.            |
++-------------------------+---------------------------------+----------------------------------------------------------------------+
+| ``web_tls_key_file``    | (no default)                    | Path to private key for certificate, used if TLS is enabled.         |
+|                         |                                 | This setting is ignored, if the host and port parts of               |
+|                         |                                 | ``web_listen_uri`` and ``rest_listen_uri`` are identical.            |
++-------------------------+---------------------------------+----------------------------------------------------------------------+
+| ``web_tls_key_password``| (no default)                    | Password for TLS key (if it is encrypted).                           |
+|                         |                                 | This setting is ignored, if the host and port parts of               |
+|                         |                                 | ``web_listen_uri`` and ``rest_listen_uri`` are identical.            |
++-------------------------+---------------------------------+----------------------------------------------------------------------+
+| ``web_thread_pool_size``| 16                              | Number of threads used for web interface listener.                   |
+|                         |                                 | This setting is ignored, if the host and port parts of               |
+|                         |                                 | ``web_listen_uri`` and ``rest_listen_uri`` are identical.            |
++-------------------------+---------------------------------+----------------------------------------------------------------------+
 
 .. _webif_connecting_to_server:
 
 How does the web interface connect to the Graylog server?
 =========================================================
 
-The web interface is fetching all information it is showing from the REST API of the Graylog server. Therefore it needs to connect to it using HTTP(S). There are several ways how you can define which way the web interface connects to the Graylog server:
+The web interface is fetching all information it is showing from the REST API of the Graylog server. Therefore it needs to connect to it using HTTP(S). There are several ways how you can define which way the web interface connects to the Graylog server. The URI used by the web interface is determined in this exact order:
 
   - If the HTTP(S) client going to the web interface port sends a ``X-Graylog-Server-URL`` header, which contains a valid URL, then this is overriding everything else.
   - If ``web_endpoint_uri`` is defined in the Graylog configuration file, this is used if the aforementioned header is not set.
@@ -87,7 +110,7 @@ Making the web interface work with load balancers/proxies
 
 If you want to run a load balancer/reverse proxy in front of Graylog, you need to make sure that:
 
-  - The REST API port is still accessible for clients
+  - The REST API port is accessible for clients
   - The address for the Graylog server's REST API is properly set (as explained in :ref:`webif_connecting_to_server`), so it is resolvable and accessible for any client of the web interface.
   - You are either using only HTTP or only HTTPS (no mixed content) for both the web interface endpoint and the REST API endpoint.
   - If you use SSL, your certificates must be valid and trusted by your clients.
