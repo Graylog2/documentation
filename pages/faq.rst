@@ -191,6 +191,15 @@ I’m sending in messages, and I can see they are being accepted by Graylog, but
 
 A common reason for this issue is that the timestamp in the message is wrong. First, confirm that the message was received by selecting ‘all messages’ as the time range for your search. Then identify and fix the source that is sending the wrong timestamp.
 
+When setting up HTTPs SSL with TLS I'm getting the error Failed to start Grizzly HTTP server: Cannot assign requested address
+-----------------------------------------------------------------------------------------------------------------------------
+
+Assuming your other SSL HTTPS settings were configured correctly, you might need to modify the hosts file on the machine to allow the internal Grizzly web server to bind to the address. Edit the /etc/hosts file and add a line for the IP address the server should listen on and the URL without the https and without the port.
+
+Example:
+
+     10.0.0.99   domain.com
+
 I have configured an SMTP server or an output with TLS connection and receive handshake errors. What should I do?
 -----------------------------------------------------------------------------------------------------------------
  
