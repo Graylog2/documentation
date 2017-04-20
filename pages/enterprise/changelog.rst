@@ -10,8 +10,8 @@ Released: 2017-04-04
 Plugin: Archive
 ---------------
 
-Metadata is now stored in MongoDB
-Preparation for storage backend support
+* Metadata is now stored in MongoDB
+* Preparation for storage backend support
 
 Graylog Enterprise 2.2.2
 ========================
