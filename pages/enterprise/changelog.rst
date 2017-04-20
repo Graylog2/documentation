@@ -21,7 +21,7 @@ Released: 2017-03-02
 Plugin: Audit Log
 -----------------
 
-Extend intergation with the Archive plugin
+* Extend intergation with the Archive plugin
 
 Graylog Enterprise 2.2.1
 ========================
@@ -31,7 +31,7 @@ Released: 2017-02-20
 Plugin: Archive
 ---------------
 
-Improve stability and smaller UI fixes
+* Improve stability and smaller UI fixes
 
 Graylog Enterprise 2.2.0
 ========================
@@ -41,7 +41,7 @@ Released: 2017-02-09
 Plugin: Archive
 ---------------
 
-Improve index set support
+* Improve index set support
 
 Graylog Enterprise 1.2.1
 ========================
@@ -51,13 +51,13 @@ Released: 2017-01-26
 Plugin: Archive
 ---------------
 
-Prepare for the plugin to be compatible with the new default stream.
+* Prepare the plugin to be compatible with the new default stream.
 
 Plugin: Audit Log
 -----------------
 
-Add support for index sets and fix potential NPEs.
-Smaller UI imprevements.
+* Add support for index sets and fix potential NPEs.
+* Smaller UI imprevements.
 
 Graylog Enterprise 1.2.0
 ========================
@@ -70,7 +70,7 @@ https://www.graylog.org/blog/70-announcing-graylog-enterprise-v1-2
 Plugin: Archive
 ---------------
 
-Add support for selecting which streams should be included in your archives.
+* Add support for selecting which streams should be included in your archives.
 
 
 Plugin: Audit Log
@@ -84,7 +84,7 @@ Graylog Enterprise 1.1
 
 Released: 2016-09-01
 
-Added support for Graylog 2.1.0.
+* Added support for Graylog 2.1.0.
 
 
 Graylog Enterprise 1.0.1
