@@ -102,7 +102,7 @@ NXLog backend
 Ubuntu
 ~~~~~~
 
-Install the NXLog package from the offical download `page <https://nxlog.org/products/nxlog-community-edition/download>`_. Because the Sidecar takes control of stopping and starting NXlog it's
+Install the NXLog package from the official download `page <https://nxlog.org/products/nxlog-community-edition/download>`_. Because the Sidecar takes control of stopping and starting NXlog it's
 necessary to stop all running instances of NXlog and deconfigure the default system service. Afterwards we can install and setup the Sidecar::
 
     $ sudo /etc/init.d/nxlog stop
@@ -143,7 +143,7 @@ Activate the Sidecar as a system service::
 Windows
 ~~~~~~~
 
-Install the NXLog package from the offical download `page <https://nxlog.org/products/nxlog-community-edition/download>`_ and deactivate the
+Install the NXLog package from the official download `page <https://nxlog.org/products/nxlog-community-edition/download>`_ and deactivate the
 system service. We just need the binaries installed on the system::
 
     $ C:\Program Files (x86)\nxlog\nxlog -u
