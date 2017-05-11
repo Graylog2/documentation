@@ -76,7 +76,7 @@ Installation / Setup
 Should I download the OVA appliances or the separate packages?
 --------------------------------------------------------------
 
-If you are downloading Graylog for the first time to evaluate it, go for the appliance.  It is really easy, and can be quickly setup so you can understand if Graylog is right for you.  If you are wanting to use Graylog at some scale in production, and do things like high availabilty (Mongo replication) we recommend you go for the separate packages.
+If you are downloading Graylog for the first time to evaluate it, go for the appliance.  It is really easy, and can be quickly setup so you can understand if Graylog is right for you.  If you are wanting to use Graylog at some scale in production, and do things like high availability (Mongo replication) we recommend you go for the separate packages.
 
 How do I find out if a specific log source is supported?
 --------------------------------------------------------
