@@ -183,7 +183,7 @@ How can I create a restricted user to check internal Graylog metrics in my monit
 
 You can create a restricted user which only has access to the ``/system/metrics`` resource on the Graylog REST API.
 This way it will be possible to integrate the internal metrics of Graylog into your monitoring system.
-Giving the user only restriced access will minimize the impact of these credentials getting compromised.
+Giving the user only restricted access will minimize the impact of these credentials getting compromised.
 
 Send a POST request via the Graylog API Browser or curl to the ``/roles`` resource of the Graylog REST API::
 
