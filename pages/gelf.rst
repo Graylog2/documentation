@@ -34,7 +34,7 @@ Compression
 ===========
 
 GELF messages can be sent uncompressed, GZIP’d or ZLIB’d. Graylog nodes detect the compression type in the GELF magic byte header automatically.
-Decide if you want to trade a bit more CPU load for saving a lot of network bandwith. GZIP is the protocol default. Read more on the GELF
+Decide if you want to trade a bit more CPU load for saving a lot of network bandwidth. GZIP is the protocol default. Read more on the GELF
 specification page.
 
 GELF Format Specification
