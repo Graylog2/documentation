@@ -21,7 +21,7 @@ Released: 2017-03-02
 Plugin: Audit Log
 -----------------
 
-* Extend intergation with the Archive plugin
+* Extend integration with the Archive plugin
 
 Graylog Enterprise 2.2.1
 ========================
