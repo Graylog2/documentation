@@ -360,7 +360,7 @@ The Communication between Sidecar and Graylog will be secured if your API :ref:`
 To secure the communication between the Collector and Graylog you just need to mark ``Enable TLS`` in your Beats Input. Without giving additional Information, Graylog will now create a self-signed certificate for this Input.
 Now in the Sidecar Beats Output Configuration you just mark ``Enable TLS Support`` and ``Insecure TLS connection``. After this is saved, the communication between Beats and Graylog will use TLS.
 
-If you prefer NXLog you need to mark ``Allow unstrusted certificate`` in the NXLog Outputs configuration and ``Enable TLS`` for your GELF Input.
+If you prefer NXLog you need to mark ``Allow untrusted certificate`` in the NXLog Outputs configuration and ``Enable TLS`` for your GELF Input.
 
 Certificate based client authentication
 -----------------------------------------
