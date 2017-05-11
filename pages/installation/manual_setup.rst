@@ -88,7 +88,7 @@ which is embedded within the shipped JAR.
 In case you need to modify Graylog's logging configuration, you can supply a Java system property specifying the path to
 the configuration file in your start script (e. g. ``graylogctl``).
 
-Append this before the ``-jar`` paramter::
+Append this before the ``-jar`` parameter::
 
   -Dlog4j.configurationFile=file:///path/to/log4j2.xml
 
