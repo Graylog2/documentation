@@ -81,7 +81,7 @@ Another example: Adding additional fields and changing the message itself
 -------------------------------------------------------------------------
 
 We send Squid access logs to Graylog using Syslog. The problem is that the ``host`` field of the message was set to the
-IP addrress of the Squid proxy, which not very useful. This rule overwrites the source and adds other fields::
+IP address of the Squid proxy, which not very useful. This rule overwrites the source and adds other fields::
 
   import java.util.regex.Matcher
   import java.util.regex.Pattern
