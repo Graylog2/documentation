@@ -146,7 +146,7 @@ Systems that are installed with :ref:`RPM / YUM / DNF <operating_package_rpm-yum
 
 How can I start an input on a port below 1024?
 ----------------------------------------------
-If you try to start an input on one of the `priviliged ports <https://www.w3.org/Daemon/User/Installation/PrivilegedPorts.html>`_ , it will only work for the "root" user.
+If you try to start an input on one of the `privileged ports <https://www.w3.org/Daemon/User/Installation/PrivilegedPorts.html>`_ , it will only work for the "root" user.
 To be able to use a privileged port, you can use `authbind <https://en.wikipedia.org/wiki/Authbind>`_ on Debian-based systems, or you redirect the traffic with an ``iptables`` rule like this::
 
     iptables -t nat -A PREROUTING -p tcp --dport 514 -j REDIRECT --to 1514
