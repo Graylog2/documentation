@@ -57,7 +57,7 @@ Plugin: Audit Log
 -----------------
 
 * Add support for index sets and fix potential NPEs.
-* Smaller UI imprevements.
+* Smaller UI improvements.
 
 Graylog Enterprise 1.2.0
 ========================
