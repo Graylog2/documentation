@@ -143,7 +143,7 @@ Activate the Sidecar as a system service::
 Windows
 ~~~~~~~
 
-Install the NXLog package from the offical download `page <https://nxlog.org/products/nxlog-community-edition/download>`_ and deactive the
+Install the NXLog package from the offical download `page <https://nxlog.org/products/nxlog-community-edition/download>`_ and deactivate the
 system service. We just need the binaries installed on the system::
 
     $ C:\Program Files (x86)\nxlog\nxlog -u
