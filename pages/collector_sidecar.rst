@@ -362,7 +362,7 @@ Now in the Sidecar Beats Output Configuration you just mark ``Enable TLS Support
 
 If you prefer NXLog you need to mark ``Allow unstrusted certificate`` in the NXLog Outputs configuration and ``Enable TLS`` for your GELF Input.
 
-Certificate based client authentification
+Certificate based client authentication
 -----------------------------------------
 
 If you want to allow Graylog only to accept data from certificated clients you will need to build your own `certificate authrority <https://en.wikipedia.org/wiki/Certificate_authority>`__  and provide this to the Input and the Client Output configuration.
