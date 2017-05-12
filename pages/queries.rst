@@ -71,7 +71,7 @@ Also note that ``message``, ``full_message``, and ``source`` are the only fields
 While wildcard searches (using ``*`` and ``?``) work on all indexed fields, analyzed fields will behave a little bit different.
 See `wildcard and regexp queries <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/_wildcard_and_regexp_queries.html>`_ for details.
 
-**Fuzziness:** You can search for similar but not equal terms::
+**Fuzziness:** You can search for similar (e.g. misspelled) terms::
 
   ssh logni~
   source:exmaple.org~
