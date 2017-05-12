@@ -137,7 +137,7 @@ Another option would be to store the configuration file outside of the container
 Plugins
 -------
 
-In order to add plugins you can build a new image based on the existsing `graylog2/server` image with the needed plugin included. Simply
+In order to add plugins you can build a new image based on the existing `graylog2/server` image with the needed plugin included. Simply
 create a new Dockerfile in an empty directory::
 
   FROM graylog2/server:2.2.1-1
@@ -188,7 +188,7 @@ You can use the Graylog appliances (OVA, Docker, AWS, ...) for small production 
 
  * Set another password for the default ubuntu user
  * Disable remote password logins in /etc/ssh/sshd_config and deploy proper ssh keys
- * Seperate the box network-wise from the outside, otherwise Elasticsearch and MongoDB can be reached by anyone
+ * Separate the box network-wise from the outside, otherwise Elasticsearch and MongoDB can be reached by anyone
  * add additional RAM to the appliance and raise the :ref:`java heap  <raise_java_heap>`!
  * add additional HDD to the appliance and :ref:`extend disk space <extend_ova_disk>`.
  * add the appliance to your monitoring and metric systems.

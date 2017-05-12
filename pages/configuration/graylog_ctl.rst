@@ -318,7 +318,7 @@ Migrate manually from 1.x to 2.x
 
 To update a 1.x appliance to 2.x the administrator has to purge the Graylog installation, migrate the stored log data
 and install the new version as Omnibus package. Before upgrading read the `upgrade notes <https://github.com/Graylog2/graylog2-server/blob/master/UPGRADING.rst>`_.
-This procedure can potentially delete log data or configuration settings. So it's absolutely necessary to perform a backup or a snpashot before!
+This procedure can potentially delete log data or configuration settings. So it's absolutely necessary to perform a backup or a snapshot before!
 
 Stop all services but Elasticsearch::
 

@@ -218,7 +218,7 @@ The file input follows files in the file system and reads log data from them.
 
   (default: none)
 ``path-glob-pattern``
-  The globbing patttern. See below for an explanation on globbing.
+  The globbing pattern. See below for an explanation on globbing.
 
   (default: none)
 ``content-splitter``

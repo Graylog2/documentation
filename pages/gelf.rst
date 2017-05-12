@@ -14,7 +14,7 @@ The Graylog Extended Log Format (GELF) is a log format that avoids the shortcomi
 
 
 Syslog is okay for logging system messages of your machines or network gear. GELF is a great choice for logging from within applications.
-There are libaries and appenders for many programming languages and logging frameworks so it is easy to implement. You could use GELF to
+There are libraries and appenders for many programming languages and logging frameworks so it is easy to implement. You could use GELF to
 send every exception as a log message to your Graylog cluster. You don’t have to care about timeouts, connection problems or anything
 that might break your application from within your logging class because GELF can be sent via UDP.
 
@@ -34,7 +34,7 @@ Compression
 ===========
 
 GELF messages can be sent uncompressed, GZIP’d or ZLIB’d. Graylog nodes detect the compression type in the GELF magic byte header automatically.
-Decide if you want to trade a bit more CPU load for saving a lot of network bandwith. GZIP is the protocol default. Read more on the GELF
+Decide if you want to trade a bit more CPU load for saving a lot of network bandwidth. GZIP is the protocol default. Read more on the GELF
 specification page.
 
 GELF Format Specification

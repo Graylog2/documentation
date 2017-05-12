@@ -7,7 +7,7 @@ Decorators
 :ref:`decorators` can be used to transform a message field at display time. Multiple decorators can be applied at the same time, but you cannot make any assumptions about their order, as that is user defined. Stacked decorators receive the value of the previous decorator results.
 
 They are typically used to map between the stored value and a human readable form of that value,
-for example like the :ref:`syslog_severity_mapper` (compare its `code <https://github.com/Graylog2/graylog2-server/blob/master/graylog2-server/src/main/java/org/graylog2/decorators/SyslogSeverityMapperDecorator.java>`_) maps between numeric values and their textual respresentation.
+for example like the :ref:`syslog_severity_mapper` (compare its `code <https://github.com/Graylog2/graylog2-server/blob/master/graylog2-server/src/main/java/org/graylog2/decorators/SyslogSeverityMapperDecorator.java>`_) maps between numeric values and their textual representation.
 
 Other uses include looking up user names based on a user's ID in a remote database, triggering a ``whois`` request on a domain name etc.
 

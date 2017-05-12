@@ -27,7 +27,7 @@ Make sure to install and configure the following software before installing and 
 
 .. caution:: Graylog 2.x **does not** work with Elasticsearch 5.x!
 
-.. _operationg_package_DEB-APT:
+.. _operating_package_DEB-APT:
 
 DEB / APT
 ---------

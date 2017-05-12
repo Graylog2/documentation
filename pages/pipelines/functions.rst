@@ -467,7 +467,7 @@ route_to_stream
 ---------------
 ``route_to_stream(id: string | name: string, [message: Message])``
 
-Routes the ``messsage`` to the given stream. The stream can be looked up by either
+Routes the ``message`` to the given stream. The stream can be looked up by either
 specifying its ``name`` or the ``id``.
 
 If ``message`` is omitted, this function uses the currently processed message.

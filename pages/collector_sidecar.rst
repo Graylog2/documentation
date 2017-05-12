@@ -102,7 +102,7 @@ NXLog backend
 Ubuntu
 ~~~~~~
 
-Install the NXLog package from the offical download `page <https://nxlog.org/products/nxlog-community-edition/download>`_. Because the Sidecar takes control of stopping and starting NXlog it's
+Install the NXLog package from the official download `page <https://nxlog.org/products/nxlog-community-edition/download>`_. Because the Sidecar takes control of stopping and starting NXlog it's
 necessary to stop all running instances of NXlog and deconfigure the default system service. Afterwards we can install and setup the Sidecar::
 
     $ sudo /etc/init.d/nxlog stop
@@ -143,7 +143,7 @@ Activate the Sidecar as a system service::
 Windows
 ~~~~~~~
 
-Install the NXLog package from the offical download `page <https://nxlog.org/products/nxlog-community-edition/download>`_ and deactive the
+Install the NXLog package from the official download `page <https://nxlog.org/products/nxlog-community-edition/download>`_ and deactivate the
 system service. We just need the binaries installed on the system::
 
     $ C:\Program Files (x86)\nxlog\nxlog -u
@@ -305,7 +305,7 @@ Sidecar Status
 --------------
 
 Each Sidecar instance is able to send status informations back to Graylog. By enabling the option ``send_status`` metrics like the configured tags or the IP address of the host Sidecar is running on
-are send. Also metrics that are relevant for a stable operation e.g. disk volumes over 75% utilization are included. Additionaly with the ``list_log_files`` option a directory listing is displayed in
+are send. Also metrics that are relevant for a stable operation e.g. disk volumes over 75% utilization are included. Additionally with the ``list_log_files`` option a directory listing is displayed in
 the Graylog web interface. In that way an administrator can see which files are available for collecting. The list is periodically updated and files with write access are highlighted for easy identification.
 After enabling ``send_status`` or ``send_status`` + ``list_log_files`` go to the collector overview and click on one of them, a status page with the configured information will be displayed.
 
@@ -360,12 +360,12 @@ The Communication between Sidecar and Graylog will be secured if your API :ref:`
 To secure the communication between the Collector and Graylog you just need to mark ``Enable TLS`` in your Beats Input. Without giving additional Information, Graylog will now create a self-signed certificate for this Input.
 Now in the Sidecar Beats Output Configuration you just mark ``Enable TLS Support`` and ``Insecure TLS connection``. After this is saved, the communication between Beats and Graylog will use TLS.
 
-If you prefer NXLog you need to mark ``Allow unstrusted certificate`` in the NXLog Outputs configuration and ``Enable TLS`` for your GELF Input.
+If you prefer NXLog you need to mark ``Allow untrusted certificate`` in the NXLog Outputs configuration and ``Enable TLS`` for your GELF Input.
 
-Certificate based client authentification
+Certificate based client authentication
 -----------------------------------------
 
-If you want to allow Graylog only to accept data from certificated clients you will need to build your own `certificate authrority <https://en.wikipedia.org/wiki/Certificate_authority>`__  and provide this to the Input and the Client Output configuration.
+If you want to allow Graylog only to accept data from certificated clients you will need to build your own `certificate authority <https://en.wikipedia.org/wiki/Certificate_authority>`__  and provide this to the Input and the Client Output configuration.
 
 
 Sidecar Glossary
@@ -400,7 +400,7 @@ Inputs
 ------
 
 Inputs are the way how collectors ingest data. An input can be a log file that the collector should continuous read or a connection to the Windows event system that emits log events.
-An input is connected to an output, otherewise there would be no way of sending the data to the next hop. So first create an output and then associate one or many inputs with it.
+An input is connected to an output, otherwise there would be no way of sending the data to the next hop. So first create an output and then associate one or many inputs with it.
 
 Snippets
 --------
