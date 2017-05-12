@@ -142,7 +142,7 @@ https://www.graylog.org/blog/88-announcing-graylog-v2-2-0
 * Add configuration settings for timeout and concurrency of OptimizeIndexJob. `Graylog2/graylog2-server#3225 <https://github.com/Graylog2/graylog2-server/issues/3225>`__
 * Change way of exporting CSV search results. `Graylog2/graylog2-server#3238 <https://github.com/Graylog2/graylog2-server/issues/3238>`__
 * Add space in processing limit notification. `Graylog2/graylog2-server#3256 <https://github.com/Graylog2/graylog2-server/issues/3256>`__
-* Only reacalculate index set ranges in index set maintenance menu. `Graylog2/graylog2-server#3252 <https://github.com/Graylog2/graylog2-server/issues/3252>`__
+* Only recalculate index set ranges in index set maintenance menu. `Graylog2/graylog2-server#3252 <https://github.com/Graylog2/graylog2-server/issues/3252>`__
 * Fix alert condition validations. `Graylog2/graylog2-server#3257 <https://github.com/Graylog2/graylog2-server/issues/3257>`__
 * Validate alarm callbacks before saving them. `Graylog2/graylog2-server#3262 <https://github.com/Graylog2/graylog2-server/issues/3262>`__
 * Only update index ranges for managed indices. `Graylog2/graylog2-server#3259 <https://github.com/Graylog2/graylog2-server/issues/3259>`__
@@ -1317,7 +1317,7 @@ https://www.graylog.org/graylog-v1-1-2-is-now-available/
 * Fixed issues with natural language parser for keyword time range. `Graylog2/graylog2-server#1226 <https://github.com/Graylog2/graylog2-server/issues/1226>`_
 * Unable to write Graylog metrics to MongoDB `Graylog2/graylog2-server#1228 <https://github.com/Graylog2/graylog2-server/issues/1228>`_
 * Unable to delete user. `Graylog2/graylog2-server#1209 <https://github.com/Graylog2/graylog2-server/issues/1209>`_
-* Unable to unpause streams, dispite editing permissions. `Graylog2/graylog2-web-interface#1456 <https://github.com/Graylog2/graylog2-web-interface/issues/1456>`_
+* Unable to unpause streams, despite editing permissions. `Graylog2/graylog2-web-interface#1456 <https://github.com/Graylog2/graylog2-web-interface/issues/1456>`_
 * Choose quick values widget size dynamically. `Graylog2/graylog2-web-interface#1422 <https://github.com/Graylog2/graylog2-web-interface/issues/1422>`_
 * Default field sort order is not guaranteed after reload. `Graylog2/graylog2-web-interface#1436 <https://github.com/Graylog2/graylog2-web-interface/issues/1436>`_
 * Toggling all fields in search list throws error and breaks pagination. `Graylog2/graylog2-web-interface#1434 <https://github.com/Graylog2/graylog2-web-interface/issues/1434>`_
@@ -1335,7 +1335,7 @@ https://www.graylog.org/graylog-v1-1-2-is-now-available/
 * New quickvalues are not showing number of terms. `Graylog2/graylog2-web-interface#1411 <https://github.com/Graylog2/graylog2-web-interface/issues/1411>`_
 * Default index for split &amp; index extractor results in an error. `Graylog2/graylog2-web-interface#1464 <https://github.com/Graylog2/graylog2-web-interface/issues/1464>`_
 * Improve behaviour when field graph fails to load. `Graylog2/graylog2-web-interface#1276 <https://github.com/Graylog2/graylog2-web-interface/issues/1276>`_
-* Unable to unpause streams, dispite editing permissions. `Graylog2/graylog2-web-interface#1456 <https://github.com/Graylog2/graylog2-web-interface/issues/1456>`_
+* Unable to unpause streams, despite editing permissions. `Graylog2/graylog2-web-interface#1456 <https://github.com/Graylog2/graylog2-web-interface/issues/1456>`_
 * Wrong initial size of quick values pie chart. `Graylog2/graylog2-web-interface#1469 <https://github.com/Graylog2/graylog2-web-interface/issues/1469>`_
 * Problems refreshing data on quick values pie chart. `Graylog2/graylog2-web-interface#1470 <https://github.com/Graylog2/graylog2-web-interface/issues/1470>`_
 * Ignore streams with no permissions on message details. `Graylog2/graylog2-web-interface#1472 <https://github.com/Graylog2/graylog2-web-interface/issues/1472>`_

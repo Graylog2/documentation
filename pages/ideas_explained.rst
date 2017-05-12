@@ -50,7 +50,7 @@ data.
   without having to select indices and write tedious time range selection filters, etc. - Just submit the search query and Graylog
   will take care of the rest for you.
 * All parts of the system are tightly integrated and many parts speak to each other to make your job easier.
-* Like Wordpress makes MySQL a good solution for blogging, Graylog makes Elasticsearch a good solution for logging. You should never
+* Like WordPress makes MySQL a good solution for blogging, Graylog makes Elasticsearch a good solution for logging. You should never
   have a system or frontend query Elasticsearch directly for log management so we are putting ``graylog-server`` in front of it.
 
 .. image:: /images/architecture_comparison.png

@@ -137,7 +137,7 @@ Getting a new session token can be obtained  via ``POST`` request to the Graylog
 
     curl -i -X POST -H 'Content-Type: application/json' -H 'Accept: application/json' 'http://192.168.178.26:9000/api/system/sessions' -d '{"username":"GM", "password":"superpower", "host":""}'
 
-The response will include the session token in the field ``session_id`` and the time of experation::
+The response will include the session token in the field ``session_id`` and the time of expiration::
 
     {
         "valid_until" : "2016-10-24T16:08:57.854+0000",

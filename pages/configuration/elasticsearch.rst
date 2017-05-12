@@ -329,7 +329,7 @@ The format of the ``ingest_time`` field is described in the Elasticsearch docume
 
 In order to apply the additional index mapping when Graylog creates a new index in Elasticsearch, it has to be added to an `index template <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/indices-templates.html>`_. The Graylog default template (``graylog-internal``) has the lowest priority and will be merged with the custom index template by Elasticsearch.
 
-.. warning:: If the default index mapping and the custom index mapping cannot be merged (e. g. because of conflicting field datatypes), Elasticsearch will throw an exception and won't create the index. So be extremeley cautious and conservative about the custom index mappings!
+.. warning:: If the default index mapping and the custom index mapping cannot be merged (e. g. because of conflicting field datatypes), Elasticsearch will throw an exception and won't create the index. So be extremely cautious and conservative about the custom index mappings!
 
 Creating a new index template
 -----------------------------

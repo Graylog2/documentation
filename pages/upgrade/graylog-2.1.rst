@@ -56,7 +56,7 @@ Examples:
 Collector Sidecar
 -----------------
 
-The network changes are reflected in the Sidecar configuration as well and should be adopted. However it's still possible to use the old API port by setting it explictly.
+The network changes are reflected in the Sidecar configuration as well and should be adopted. However it's still possible to use the old API port by setting it explicitly.
 In case a mass deployment is too hard to change, just run the following to switch back to the old REST API port (OVA based installation)::
 
   sudo graylog-ctl set-listen-address --service rest --address http://0.0.0.0:12900

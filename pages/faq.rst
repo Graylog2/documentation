@@ -62,7 +62,7 @@ All log data is stored in Elasticsearch. `Elastic recommends <https://discuss.el
 Where are the log files Graylog produces?
 -----------------------------------------
 
-You can find the log data for Graylog under the below directory with timestamps and levels and exeception messages. This is useful for debugging or when the server won't start.
+You can find the log data for Graylog under the below directory with timestamps and levels and exception messages. This is useful for debugging or when the server won't start.
 
      /var/log/graylog-server/server.log
 
@@ -76,7 +76,7 @@ Installation / Setup
 Should I download the OVA appliances or the separate packages?
 --------------------------------------------------------------
 
-If you are downloading Graylog for the first time to evaluate it, go for the appliance.  It is really easy, and can be quickly setup so you can understand if Graylog is right for you.  If you are wanting to use Graylog at some scale in production, and do things like high availabilty (Mongo replication) we recommend you go for the separate packages.
+If you are downloading Graylog for the first time to evaluate it, go for the appliance.  It is really easy, and can be quickly setup so you can understand if Graylog is right for you.  If you are wanting to use Graylog at some scale in production, and do things like high availability (Mongo replication) we recommend you go for the separate packages.
 
 How do I find out if a specific log source is supported?
 --------------------------------------------------------
@@ -140,13 +140,13 @@ Raise the Java Heap
 -------------------
 If you need to raise the Java Heap of the Graylog Server or Elasticsearch in a System that runs as virtual appliances you can use :ref:`the advanced settings <graylog_ctl_advanced>`.
 
-On Systems that are installed with :ref:`DEB / APT <operationg_package_DEB-APT>` this setting can be made in ``/etc/default/graylog-server``. 
+On Systems that are installed with :ref:`DEB / APT <operating_package_DEB-APT>` this setting can be made in ``/etc/default/graylog-server``. 
 
 Systems that are installed with :ref:`RPM / YUM / DNF <operating_package_rpm-yum-dnf>` the file is found in ``/etc/sysconfig/graylog-server``. 
 
 How can I start an input on a port below 1024?
 ----------------------------------------------
-If you try to start an input on one of the `priviliged ports <https://www.w3.org/Daemon/User/Installation/PrivilegedPorts.html>`_ , it will only work for the "root" user.
+If you try to start an input on one of the `privileged ports <https://www.w3.org/Daemon/User/Installation/PrivilegedPorts.html>`_ , it will only work for the "root" user.
 To be able to use a privileged port, you can use `authbind <https://en.wikipedia.org/wiki/Authbind>`_ on Debian-based systems, or you redirect the traffic with an ``iptables`` rule like this::
 
     iptables -t nat -A PREROUTING -p tcp --dport 514 -j REDIRECT --to 1514
@@ -183,7 +183,7 @@ How can I create a restricted user to check internal Graylog metrics in my monit
 
 You can create a restricted user which only has access to the ``/system/metrics`` resource on the Graylog REST API.
 This way it will be possible to integrate the internal metrics of Graylog into your monitoring system.
-Giving the user only restriced access will minimize the impact of these creadentials getting compromised.
+Giving the user only restricted access will minimize the impact of these credentials getting compromised.
 
 Send a POST request via the Graylog API Browser or curl to the ``/roles`` resource of the Graylog REST API::
 

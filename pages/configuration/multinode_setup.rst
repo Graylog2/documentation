@@ -49,7 +49,7 @@ The `Elasticsearch setup documentation <https://www.elastic.co/guide/en/elastics
 
 It is important to name the Elasticsearch cluster not simply named `elasticsearch` to avoid accidental conflicts with Elasticsearch nodes using the default configuration. Just choose anything else (we recommend `graylog`), because this is the default name and any Elasticsearch instance that is started in the same network will try to connect to this cluster.
 
-The Elasticsearch servers need one IP that can be reached over network set in ``network.host`` and some participants of the cluster in ``discovery.zen.ping.unicast.hosts``. That is enough to have a minial cluster setup.
+The Elasticsearch servers need one IP that can be reached over network set in ``network.host`` and some participants of the cluster in ``discovery.zen.ping.unicast.hosts``. That is enough to have a minimal cluster setup.
 
 .. note:: Graylog currently doesn't work with Elasticsearch clusters using the `Shield <https://www.elastic.co/products/shield>`__ plugin. Your Elasticsearch cluster need to be secured by design (e. g. segregating network access).
 

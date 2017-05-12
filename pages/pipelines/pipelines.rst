@@ -40,7 +40,7 @@ For example, if there was a second pipeline declared, which contained a stage wi
 of the ones from the example. The order in which stages are declared is irrelevant, they are sorted according to their priority.
 
 Stages then list the *rule references* they want to be executed as well as declaring whether *any or all* rules' conditions need to be satisfied to
-continue to evalute the pipeline.
+continue to evaluate the pipeline.
 
 In our example, imagine rule *"has firewall fields"* checks for the presence of two message fields: ``src_ip`` and ``dst_ip`` but does not have
 any actions to run. Then for messages that do not have both fields, the condition would be false, and the pipeline would be aborted after stage 1,
