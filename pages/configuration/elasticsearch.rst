@@ -34,7 +34,7 @@ A sample specification of ``elasticsearch_hosts`` could look like this::
 
 As there are subtle differences between different Elasticsearch major versions, Graylog currently differentiates between 2.x and 5.x versions and needs some configuration help to distinguish between the two. When configuring Graylog, you need to specify the currently used major version of Elasticsearch with the ``elasticsearch_version`` directive. Currently you can set it to either ``2`` or ``5`` for all ``2.x`` and ``5.x`` versions, respectively.
 
-.. caution:: Graylog does not react to externally triggered index changes (creating/closing/reopening/deleting an index) anymore. All of these actions need to be performed through the Graylog REST API in order to retain index consistency.
+.. warning:: Graylog does not react to externally triggered index changes (creating/closing/reopening/deleting an index) anymore. All of these actions need to be performed through the Graylog REST API in order to retain index consistency.
 
 Available Elasticsearch configuration tunables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
