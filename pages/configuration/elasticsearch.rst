@@ -12,14 +12,14 @@ If you are using a shared Elasticsearch setup, a problem with indices unrelated 
 Elasticsearch versions
 ======================
 
-Since Graylog uses the HTTP protocol to connect to your Elasticsearch cluster, it does not have a hard requirement for the Elasticsearch version anymore. We can safely assume that any version starting from 2.x is working.
+Starting with version 2.3 Graylog uses the HTTP protocol to connect to your Elasticsearch cluster, so it does not have a hard requirement for the Elasticsearch version anymore. We can safely assume that any version starting from 2.x is working.
 
 .. caution:: Graylog 2.3 **does not** work with Elasticsearch 6.x yet!
 
 Configuration
 =============
 
-.. caution:: As Graylog has recently switched from an embedded Elasticsearch node client to a lightweight HTTP client, please check the `upgrade notes <https://github.com/Graylog2/graylog2-server/blob/bb820e8/UPGRADING.rst#graylog-switches-to-elasticsearch-http-client>`_ how to migrate your configuration if you are switching from an earlier version.
+.. caution:: As Graylog has switched from an embedded Elasticsearch node client to a lightweight HTTP client in version 2.3, please check the `upgrade notes <https://github.com/Graylog2/graylog2-server/blob/bb820e8/UPGRADING.rst#graylog-switches-to-elasticsearch-http-client>`_ how to migrate your configuration if you are switching from an earlier version.
 
 Graylog
 -------
