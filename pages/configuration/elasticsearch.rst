@@ -24,7 +24,7 @@ Configuration
 Graylog
 -------
 
-The most important setting to make a successful connection is a list of comma-separated URIs to one or more Elasticsearch nodes. Graylog needs to know the address of at least one other Elasticsearch node given in the ``elasticsearch_hosts`` setting. The specified value should at least contain the scheme (``http://`` for unencrypted, ``https://`` for encrypted connections), the hostname or IP and the port of the HTTP listener (which is ``9200`` unless otherwise configured) of this node. Optionally, you can also specify an authentication section containing a user name and a password, if either your Elasticsearch node uses `Shield/X-Pack <https://www.elastic.co/products/x-pack/security>`_ or you have an intermediate HTTP proxy requiring authentication in between the Graylog server and the Elasticsearch node, or you can specify an optional path prefix at the end of the URI.
+The most important setting to make a successful connection is a list of comma-separated URIs to one or more Elasticsearch nodes. Graylog needs to know the address of at least one other Elasticsearch node given in the ``elasticsearch_hosts`` setting. The specified value should at least contain the scheme (``http://`` for unencrypted, ``https://`` for encrypted connections), the hostname or IP and the port of the HTTP listener (which is ``9200`` unless otherwise configured) of this node. Optionally, you can also specify an authentication section containing a user name and a password, if either your Elasticsearch node uses `Shield/X-Pack <https://www.elastic.co/products/x-pack/security>`_ or `Search Guard <http://floragunn.com/searchguard/>`_, or you have an intermediate HTTP proxy requiring authentication in between the Graylog server and the Elasticsearch node. Additionally you can specify an optional path prefix at the end of the URI.
 
 A sample specification of ``elasticsearch_hosts`` could look like this::
 
@@ -78,7 +78,7 @@ Configuration of Elasticsearch nodes
 Control access to Elasticsearch ports
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you are not using `Shield/X-Pack <https://www.elastic.co/products/x-pack/security>`_ to authenticate access to your Elasticsearch nodes, make sure to restrict access to the Elasticsearch ports (default: 9200/tcp and 9300/tcp). Otherwise the data is readable by anyone who has access to the machine over network.
+If you are not using `Shield/X-Pack <https://www.elastic.co/products/x-pack/security>`_ or `Search Guard <http://floragunn.com/searchguard/>`_ to authenticate access to your Elasticsearch nodes, make sure to restrict access to the Elasticsearch ports (default: 9200/tcp and 9300/tcp). Otherwise the data is readable by anyone who has access to the machine over network.
 
 Open file limits
 ^^^^^^^^^^^^^^^^
