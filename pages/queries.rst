@@ -71,13 +71,15 @@ Also note that ``message``, ``full_message``, and ``source`` are the only fields
 While wildcard searches (using ``*`` and ``?``) work on all indexed fields, analyzed fields will behave a little bit different.
 See `wildcard and regexp queries <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/_wildcard_and_regexp_queries.html>`_ for details.
 
-**Fuzziness:** You can search for similar but not equal terms::
+**Fuzziness:** You can search for similar terms::
 
   ssh logni~
   source:exmaple.org~
 
-This is using the `Damerau–Levenshtein distance <http://en.wikipedia.org/wiki/Damerau-Levenshtein_distance>`_ with a default
-distance of *2*. You can change the distance like this::
+This example is using the `Damerau–Levenshtein distance <http://en.wikipedia.org/wiki/Damerau-Levenshtein_distance>`_ with a default
+distance of *2* and will match "ssh login" and "example.org" (intentionally misspelled in the query).
+
+You can change the distance like this::
 
   source:exmaple.org~1
 
