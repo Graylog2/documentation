@@ -32,8 +32,6 @@ A sample specification of ``elasticsearch_hosts`` could look like this::
 
 .. caution:: Graylog assumes that all nodes in the cluster are running the same versions of Elasticsearch. While it might work when patch-levels differ, we highly encourage to keep versions consistent.
 
-As there are subtle differences between different Elasticsearch major versions, Graylog currently differentiates between 2.x and 5.x versions and needs some configuration help to distinguish between the two. When configuring Graylog, you need to specify the currently used major version of Elasticsearch with the ``elasticsearch_version`` directive. Currently you can set it to either ``2`` or ``5`` for all ``2.x`` and ``5.x`` versions, respectively.
-
 .. warning:: Graylog does not react to externally triggered index changes (creating/closing/reopening/deleting an index) anymore. All of these actions need to be performed through the Graylog REST API in order to retain index consistency.
 
 Available Elasticsearch configuration tunables
@@ -55,8 +53,6 @@ The following configuration options are now being used to configure connectivity
 | ``elasticsearch_max_total_connections_per_route``  | int       | Maximum number of Elasticsearch connections per route/host   | ``2``                       |
 +----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
 | ``elasticsearch_socket_timeout``                   | Duration  | Timeout when sending/receiving from Elasticsearch connection | ``60s`` (60 Seconds)        |
-+----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
-| ``elasticsearch_version``                          | (2 or 5)  | Major version of Elasticsearch being used in the cluster     | ``5``                       |
 +----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
 | ``elasticsearch_discovery_enabled``                | boolean   | Enable automatic Elasticsearch node discovery                | ``false``                   |
 +----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
