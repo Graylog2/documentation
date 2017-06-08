@@ -19,6 +19,10 @@ On its first run, or when a configuration change has been detected, Sidecar will
 
 Graylog Collector Sidecar (written in Go) and backends (written in various languages, such as C and Go) are meant as a small-footprint replacement for the deprecated, Java-based :doc:`deprecated Graylog Collector <collector>`.
 
+Installing Graylog-plugin-collector
+===================================
+You need to install the Collector-plugin to Graylog server. 
+See https://github.com/Graylog2/graylog-plugin-collector/blob/master/README.md
 
 Backends
 ========
