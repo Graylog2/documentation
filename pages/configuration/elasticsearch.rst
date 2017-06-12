@@ -64,6 +64,8 @@ The following configuration options are now being used to configure connectivity
 +----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
 | ``elasticsearch_discovery_frequency``              | Duration  | Frequency of the Elasticsearch node discovery                | ``30s`` (30 Seconds)        |
 +----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
+| ``elasticsearch_compression_enabled``              | boolean   | Enable GZIP compression of Elasticseach request payloads     | ``false``                   |
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
 
 Automatic node discovery
 ^^^^^^^^^^^^^^^^^^^^^^^^
