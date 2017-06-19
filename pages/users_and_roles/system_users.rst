@@ -87,7 +87,6 @@ Now request the user information to see what permissions have been assigned::
     ],
     "preferences" : {
       "updateUnfocussed" : false,
-      "disableExpensiveUpdates" : false,
       "enableSmartSearch" : true
     },
     "timezone" : "America/Chicago",
