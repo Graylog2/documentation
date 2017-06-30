@@ -67,12 +67,12 @@ Currently, the multi value can only be used in a pipeline rule when using the
 **Example 1:** Output for a CSV data adapter including a single value
 and a multi value.
 
-.. image:: /images/lookuptables/single-value-example.png
+.. image:: /images/lookuptables/example-single-value.png
 
 **Example 2:** Output for the geo-ip data adapter including a single value
 and a multi value.
 
-.. image:: /images/lookuptables/multi-value-example.png
+.. image:: /images/lookuptables/example-multi-value.png
 
 Setup
 -----
@@ -127,3 +127,44 @@ be used if a lookup operation does not return any result.
 
 Usage
 -----
+
+Lookup tables can be used with the following Graylog components.
+
+- Extractors
+- Converters
+- Decorators
+- Pipeline rules
+
+Extractors
+^^^^^^^^^^
+
+A lookup table extractor can be used to lookup the value of a message field
+in a lookup table and write the result into a new field or overwrite an
+existing field.
+
+.. image:: /images/lookuptables/usage-extractor.png
+
+Converters
+^^^^^^^^^^
+
+When you use an extractor to get values out of a text message, you can use a
+lookup table converter to do a lookup on the extracted value.
+
+.. image:: /images/lookuptables/usage-converter.png
+
+Decorators
+^^^^^^^^^^
+
+A lookup table decorator can be used to enrich messages by looking up values
+at search time.
+
+.. image:: /images/lookuptables/usage-decorator.png
+
+Pipeline Rules
+^^^^^^^^^^^^^^
+
+There are two lookup functions that can be used in a pipeline rule,
+``lookup()`` and ``lookup_value()``. The first returns the **multi value** data
+of the lookup result, the second returns the **single value**.
+
+.. image:: /images/lookuptables/usage-pipeline-rule.png
