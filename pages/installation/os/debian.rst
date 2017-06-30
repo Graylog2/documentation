@@ -27,7 +27,7 @@ The version of MongoDB included in Debian Jessie is recent enough to be used wit
 Elasticsearch
 -------------
 
-Graylog 2.3.x can be used with Elasticsearch 5.x, please follow the installation instructions from `the Elasticsearch installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html>`__::
+Graylog 2.3.x can be used with Elasticsearch 5.x, please follow the installation instructions from `the Elasticsearch installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/5.4/deb.html>`__::
 
 
     $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
