@@ -10,7 +10,7 @@ You need a recent `docker` version `installed <https://docs.docker.com/installat
 This will create three containers with all Graylog services running::
 
   $ docker run --name some-mongo -d mongo:3
-  $ docker run --name some-elasticsearch -d elasticsearch:2 elasticsearch -Des.cluster.name="graylog"
+  $ docker run --name some-elasticsearch -d elasticsearch:5 elasticsearch -Des.cluster.name="graylog"
   $ docker run --link some-mongo:mongo --link some-elasticsearch:elasticsearch -p 9000:9000 -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" -d graylog2/server
 
 Testing a beta version
@@ -19,8 +19,8 @@ Testing a beta version
 You can also run a pre-release (alpha, beta, or release candidate) version of Graylog using Docker. The pre-releases are included in the `graylog2/server` image.
 Follow this `guide <https://hub.docker.com/r/graylog2/server/>`_ and pick an alpha/beta/rc tag like::
 
-  $ docker run --link some-mongo:mongo --link some-elasticsearch:elasticsearch -p 9000:9000 -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" -d graylog2/server:2.2.1-1
- 
+  $ docker run --link some-mongo:mongo --link some-elasticsearch:elasticsearch -p 9000:9000 -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" -d graylog2/server:2.3.0-1
+
 We only recommend running pre-release versions if you are an experienced Graylog user and know what you are doing.
 
 Settings
@@ -44,10 +44,10 @@ This all can be put in a `docker-compose.yml` file, like::
     mongo:
       image: "mongo:3"
     elasticsearch:
-      image: "elasticsearch:2"
+      image: "elasticsearch:5"
       command: "elasticsearch -Des.cluster.name='graylog'"
     graylog:
-      image: graylog2/server:2.2.1-1
+      image: graylog2/server:2.3.0-1
       environment:
         GRAYLOG_PASSWORD_SECRET: somepasswordpepper
         GRAYLOG_ROOT_PASSWORD_SHA2: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
@@ -79,8 +79,8 @@ Create the configuration directory and copy the default files::
 
   mkdir /graylog/config
   cd /graylog/config
-  wget https://raw.githubusercontent.com/Graylog2/graylog2-images/2.2/docker/config/graylog.conf
-  wget https://raw.githubusercontent.com/Graylog2/graylog2-images/2.2/docker/config/log4j2.xml
+  wget https://raw.githubusercontent.com/Graylog2/graylog2-images/2.3/docker/config/graylog.conf
+  wget https://raw.githubusercontent.com/Graylog2/graylog2-images/2.3/docker/config/log4j2.xml
 
 The `docker-compose.yml` file looks like this::
 
@@ -91,12 +91,12 @@ The `docker-compose.yml` file looks like this::
       volumes:
         - /graylog/data/mongo:/data/db
     elasticsearch:
-      image: "elasticsearch:2"
+      image: "elasticsearch:5"
       command: "elasticsearch -Des.cluster.name='graylog'"
       volumes:
         - /graylog/data/elasticsearch:/usr/share/elasticsearch/data
     graylog:
-      image: graylog2/server:2.2.1-1
+      image: graylog2/server:2.3.0-1
       volumes:
         - /graylog/data/journal:/usr/share/graylog/data/journal
         - /graylog/config:/usr/share/graylog/data/config
@@ -115,7 +115,7 @@ The `docker-compose.yml` file looks like this::
 Start all services with exposed data directories::
 
   $ docker-compose up
- 
+
 Configuration
 -------------
 
@@ -140,7 +140,7 @@ Plugins
 In order to add plugins you can build a new image based on the existing `graylog2/server` image with the needed plugin included. Simply
 create a new Dockerfile in an empty directory::
 
-  FROM graylog2/server:2.2.1-1
+  FROM graylog2/server:2.3.0-1
   RUN wget -O /usr/share/graylog/plugin/graylog-plugin-beats-1.1.0.jar https://github.com/Graylog2/graylog-plugin-beats/releases/download/1.1.0/graylog-plugin-beats-1.1.0.jar
 
 Build a new image from that::
@@ -156,7 +156,7 @@ In this example we created a new image with the Beats plugin installed. From now
       volumes:
         - /graylog/data/mongo:/data/db
     elasticsearch:
-      image: "elasticsearch:2"
+      image: "elasticsearch:5"
       command: "elasticsearch -Des.cluster.name='graylog'"
       volumes:
         - /graylog/data/elasticsearch:/usr/share/elasticsearch/data

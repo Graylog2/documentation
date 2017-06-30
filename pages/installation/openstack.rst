@@ -7,9 +7,9 @@ Installation
 
 Download the Graylog image from the `package <https://packages.graylog2.org/appliances/qcow2>`_ site, uncompress it and import it into the OpenStack image store::
 
-  $ wget https://packages.graylog2.org/releases/graylog-omnibus/qcow2/graylog-2.2.3-1.qcow2.gz
-  $ gunzip graylog-2.2.3-1.qcow2.gz
-  $ glance image-create --name='graylog' --is-public=true --container-format=bare --disk-format=qcow2 --file graylog-2.2.3-1.qcow2
+  $ wget https://packages.graylog2.org/releases/graylog-omnibus/qcow2/graylog-2.3.0-1.qcow2.gz
+  $ gunzip graylog-2.3.0-1.qcow2.gz
+  $ glance image-create --name='graylog' --is-public=true --container-format=bare --disk-format=qcow2 --file graylog-2.3.0-1.qcow2
 
 You should now see an image called `graylog` in the OpenStack web interface under `Images`
 

@@ -42,29 +42,31 @@ Additionally, run these last steps to start MongoDB during the operating system'
 Elasticsearch
 -------------
 
-Graylog 2.0.0 and higher requires Elasticsearch 2.x, so we took the installation instructions from `the Elasticsearch installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup-repositories.html#_yum_dnf>`_.
+Graylog 2.3.x can be used with Elasticsearch 5.x, please follow the installation instructions from `the Elasticsearch installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/5.4/rpm.html>`_.
 
-First install the Elastic GPG key with ``rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch`` then add the repository file ``/etc/yum.repos.d/elasticsearch.repo`` with the following contents::
+First install the Elastic GPG key with ``rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch`` then add the repository file ``/etc/yum.repos.d/elasticsearch.repo`` with the following contents::
 
-  [elasticsearch-2.x]
-  name=Elasticsearch repository for 2.x packages
-  baseurl=https://packages.elastic.co/elasticsearch/2.x/centos
-  gpgcheck=1
-  gpgkey=https://packages.elastic.co/GPG-KEY-elasticsearch
-  enabled=1
+    [elasticsearch-5.x]
+    name=Elasticsearch repository for 5.x packages
+    baseurl=https://artifacts.elastic.co/packages/5.x/yum
+    gpgcheck=1
+    gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    enabled=1
+    autorefresh=1
+    type=rpm-md
 
 followed by the installation of the latest release with ``sudo yum install elasticsearch``.
 
-Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup-configuration.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set `the cluster name <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup-configuration.html#cluster-name>`__ to ``graylog`` additionally you need to uncomment (remove the # as first character) the line::
+Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/5.4/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` additionally you need to uncomment (remove the # as first character) the line::
 
-  cluster.name: graylog
+    cluster.name: graylog
 
 After you have modified the configuration, you can start Elasticsearch::
 
-  $ sudo chkconfig --add elasticsearch
-  $ sudo systemctl daemon-reload
-  $ sudo systemctl enable elasticsearch.service
-  $ sudo systemctl restart elasticsearch.service
+    $ sudo chkconfig --add elasticsearch
+    $ sudo systemctl daemon-reload
+    $ sudo systemctl enable elasticsearch.service
+    $ sudo systemctl restart elasticsearch.service
 
 
 Graylog
@@ -72,7 +74,7 @@ Graylog
 
 Now install the Graylog repository configuration and Graylog itself with the following commands::
 
-  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-2.2-repository_latest.rpm
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-2.3-repository_latest.rpm
   $ sudo yum install graylog-server
 
 Follow the instructions in your ``/etc/graylog/server/server.conf`` and add ``password_secret`` and ``root_password_sha2``. These settings are mandatory and without them, Graylog will not start!
@@ -128,7 +130,7 @@ Further reading
 Multiple Server Setup
 ---------------------
 
-If you plan to have multiple server taking care of different roles in your cluster :ref:`like we have in this big production setup <big_production_setup>` you need to modify only a few settings. This is covered in our :ref:`Multi-node Setup guide<configure_multinode>`. The :ref:`default file location guide <default_file_location>` will give you the file you need to modify in your setup. 
+If you plan to have multiple server taking care of different roles in your cluster :ref:`like we have in this big production setup <big_production_setup>` you need to modify only a few settings. This is covered in our :ref:`Multi-node Setup guide<configure_multinode>`. The :ref:`default file location guide <default_file_location>` will give you the file you need to modify in your setup.
 
 
 Feedback
