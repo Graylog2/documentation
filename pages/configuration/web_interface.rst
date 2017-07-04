@@ -142,7 +142,7 @@ NGINX
           proxy_set_header X-Forwarded-Host $host;
           proxy_set_header X-Forwarded-Server $host;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_set_header X-Graylog-Server-URL http://$server_addr/api;
+          proxy_set_header X-Graylog-Server-URL http://$server_name/api;
           proxy_pass       http://127.0.0.1:9000;
         }
     }
