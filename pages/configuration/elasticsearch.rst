@@ -66,7 +66,6 @@ The following configuration options are now being used to configure connectivity
 Automatic node discovery
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. caution:: Automatic node discovery will be available starting with Graylog 2.3.0-alpha.3/beta.1.
 
 Graylog uses automatic node discovery to gather a list of all available Elasticsearch nodes in the cluster at runtime and distribute requests among them to potentially increase performance and availability. To enable this feature, you need to set the ``elasticsearch_discovery_enabled`` to ``true``. Optionally, you can define the a filter allowing to selectively include/exclude discovered nodes (details how to specify node filters are found in the `Elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/5.4/cluster.html#cluster-nodes>`_) using the ``elasticsearch_discovery_filter`` setting, or tuning the frequency of the node discovery using the ``elasticsearch_discovery_frequency`` configuration option.
 
@@ -134,7 +133,7 @@ The previous mechanism can in some circumstances fail, causing a **split-brain e
 Avoiding split-brain events
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Elasticsearch nodes take a simple majority vote over who is master. If the majority agrees that they are the master, then most likely the disconnected minority has also come to conclusion that they can not be the master, and everything is just fine. This mechanism requires at least 3 nodes to work reliably however, because one or two nodes can not form a majority. 
+Elasticsearch nodes take a simple majority vote over who is master. If the majority agrees that they are the master, then most likely the disconnected minority has also come to conclusion that they can not be the master, and everything is just fine. This mechanism requires at least 3 nodes to work reliably however, because one or two nodes can not form a majority.
 
 The minimum amount of master nodes required to elect a master must be configured manually in ``elasticsearch.yml``::
 
@@ -159,7 +158,7 @@ The configuration values should typically for example:
 | 6            | 4                      |                                                                      |
 +--------------+------------------------+----------------------------------------------------------------------+
 
-Some of the master nodes may be *dedicated master nodes*, meaning they are configured just to handle lightweight operational (cluster management) responsibilities. They will not handle or store any of the cluster's data. The function of such nodes is similar to so called *witness servers* on other database products, and setting them up on dedicated witness sites will greatly reduce the chance of Elasticsearch cluster instability. 
+Some of the master nodes may be *dedicated master nodes*, meaning they are configured just to handle lightweight operational (cluster management) responsibilities. They will not handle or store any of the cluster's data. The function of such nodes is similar to so called *witness servers* on other database products, and setting them up on dedicated witness sites will greatly reduce the chance of Elasticsearch cluster instability.
 
 A dedicated master node has the following configuration in ``elasticsearch.yml``::
 
@@ -183,7 +182,7 @@ Elasticsearch has couple configuration options, which are designed to allow shor
   # Inform ElasticSearch how many nodes form a full cluster. If this number is met, start up immediately.
   gateway.expected_nodes: 10
 
-The configuration options should be set up so that only *minimal* node unavailability is tolerated. For example server restarts are common, and should be done in managed manner. The logic is that if you lose large part of your cluster, you probably should start re-shuffling the shards and replicas without tolerating the situation. 
+The configuration options should be set up so that only *minimal* node unavailability is tolerated. For example server restarts are common, and should be done in managed manner. The logic is that if you lose large part of your cluster, you probably should start re-shuffling the shards and replicas without tolerating the situation.
 
 
 Custom index mappings
@@ -403,7 +402,7 @@ Every Elasticsearch index created from that time on, will have an index mapping 
     }
   }
 
-.. note:: When using different index sets every index set can have its own mapping. 
+.. note:: When using different index sets every index set can have its own mapping.
 
 
 Deleting custom index templates
