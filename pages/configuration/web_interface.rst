@@ -136,18 +136,17 @@ NGINX
     {
         listen 80 default_server;
         listen [::]:80 default_server ipv6only=on;
+        server_name graylog.example.org;
 
         location / {
           proxy_set_header Host $http_host;
           proxy_set_header X-Forwarded-Host $host;
           proxy_set_header X-Forwarded-Server $host;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_set_header X-Graylog-Server-URL http://$server_addr/api;
+          proxy_set_header X-Graylog-Server-URL http://$server_name/api;
           proxy_pass       http://127.0.0.1:9000;
         }
     }
-
-
 
 
 NGINX can be used for SSL Termination, you would only need to modify the ``server listen`` directive and add all Information about your certificate.
@@ -164,10 +163,12 @@ If you are running multiple Graylog Server you might want to use HTTPS/SSL to co
 
         location /
         {
-            proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header    Host $http_host;
-            proxy_set_header    X-Graylog-Server-URL https://graylog.example.org/api;
-            proxy_pass          http://127.0.0.1:9000;
+          proxy_set_header Host $http_host;
+          proxy_set_header X-Forwarded-Host $host;
+          proxy_set_header X-Forwarded-Server $host;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Graylog-Server-URL https://$server_name/api;
+          proxy_pass       http://127.0.0.1:9000;
         }
     }
 
