@@ -45,13 +45,13 @@ If your MongoDB needs to be reachable over network you should set the IP with ``
 Elasticsearch cluster
 =====================
 
-The `Elasticsearch setup documentation <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup-configuration.html>`__ should help you to install Elasticsearch with a robust base configuration.
+The `Elasticsearch setup documentation <https://www.elastic.co/guide/en/elasticsearch/reference/5.4/setup.html>`__ should help you to install Elasticsearch with a robust base configuration.
 
 It is important to name the Elasticsearch cluster not simply named `elasticsearch` to avoid accidental conflicts with Elasticsearch nodes using the default configuration. Just choose anything else (we recommend `graylog`), because this is the default name and any Elasticsearch instance that is started in the same network will try to connect to this cluster.
 
 The Elasticsearch servers need one IP that can be reached over network set in ``network.host`` and some participants of the cluster in ``discovery.zen.ping.unicast.hosts``. That is enough to have a minimal cluster setup.
 
-.. note:: Graylog currently doesn't work with Elasticsearch clusters using the `Shield <https://www.elastic.co/products/shield>`__ plugin. Your Elasticsearch cluster need to be secured by design (e. g. segregating network access).
+When you secure your Elasticsearch with `User Authentification <https://www.elastic.co/guide/en/x-pack/5.4/xpack-security.html#preventing-unauthorized-access>`__ you need to add credentials to the `Graylog configuration <https://github.com/Graylog2/graylog2-server/blob/master/misc/graylog.conf#L172-L178>`__ to be able to use the secured Elasticsearch cluster with Graylog.
 
 
 Graylog Multi-node
@@ -75,11 +75,9 @@ Finally, the MongoDB connection string in the Graylog configuration file should 
 Graylog to Elasticsearch connection
 -----------------------------------
 
-Graylog will connect as `client node <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/modules-node.html#client-node>`__ to the Elasticsearch Cluster.
+Graylog will connect to the Elasticsearch `REST API <https://www.elastic.co/guide/en/elasticsearch/reference/5.4/_exploring_your_cluster.html>`__.
 
-To avoid issues with the connection to the Elasticsearch cluster you should add some of the network addresses of the Elasticsearch nodes to ``elasticsearch_discovery_zen_ping_unicast_hosts``.
-
-Additionally, ``elasticsearch_network_host`` must be set to a network interface which can be accessed by the other Elasticsearch nodes in the Elasticsearch cluster.
+To avoid issues with the connection to the Elasticsearch cluster you should add some of the network addresses of the Elasticsearch nodes to ``elasticsearch_hosts``.
 
 
 Graylog web interface
@@ -99,9 +97,9 @@ Each component in this multi-node setup can be scaled on the individual needs.
 
 Depending on the amount of messages ingested and how long messages should be available for direct search, the Elasticsearch cluster will need most of the resources on your setup.
 
-Keep an eye on your Elasticsearch cluster with plugins like `Elastic HQ <http://www.elastichq.org>`__ or `Kopf <https://github.com/lmenezes/elasticsearch-kopf>`__. Those will help you to understand the Elasticsearch cluster health and behavior.
+Keep an eye on the Metrics of each part of the cluster. One option is to use `telegraf <https://github.com/influxdata/telegraf>`__ to fetch importand metrics and store them in your favorite metric system (e. g. Graphite, Prometheus or Influx).
 
-Graylog Metrics should be monitored `with the Graylog Metrics Reporter plugins <https://marketplace.graylog.org/addons/6fef88c7-94f7-488e-a6c5-bd6b71d8343e>`__ which are able to send the internal Graylog metrics to your favorite metrics collector (e. g. Graphite or Prometheus).
+Graylog Metrics can be monitored `with the Graylog Metrics Reporter plugins <https://marketplace.graylog.org/addons/6fef88c7-94f7-488e-a6c5-bd6b71d8343e>`__ which are able to send the internal Graylog metrics to your favorite metrics collector (e. g. Graphite or Prometheus).
 
 Up until today, we have almost never faced the issue that the MongoDB replica set needed special attention. But of course you should still monitor it and store its metrics - just to be sure.
 
