@@ -148,8 +148,6 @@ NGINX
     }
 
 
-
-
 NGINX can be used for SSL Termination, you would only need to modify the ``server listen`` directive and add all Information about your certificate.
 
 If you are running multiple Graylog Server you might want to use HTTPS/SSL to connect to the Graylog Servers (on how to Setup read :ref:`ssl_setup`) and use HTTPS/SSL on NGINX. The configuration for TLS certificates, keys and ciphers is omitted from the sample config for brevity's sake.
