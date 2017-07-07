@@ -3,7 +3,7 @@ Explore Graylog
 
 By default the appliance is already indexing log messages from all components running inside the virtual machine. If you don't want to record these messages, you can disable this internal logging using :ref:`graylog-ctl`.
 
-.. image:: /images/gs/first_login_dismissed_guide.png 
+.. image:: /images/gs/first_login_dismissed_guide.png
 
 When opening the *Streams* page in the top menu, you will see a list of all predefined streams. Think of them as a filtered view of all incoming messages. You can find more information on the :ref:`streams page <streams>`. As you can see, you can define rules for the messages which should be visible in this stream.
 
@@ -15,7 +15,7 @@ If you click on *Sources* in the top menu, you will see a nice overview of which
 
 The most important question is: How will the data actually come into Graylog.
 
-Open the *System > Inputs* page from the top menu and you will see some inputs which are running by default, such as a syslog input.
+Open the *System / Inputs* page from the top menu and you will see some inputs which are running by default, such as a syslog input.
 
 This means that you can already use the running appliance as a syslog receiver for any device supporting the syslog protocol which is able to connect to the virtual machine on port 514/udp (which happens to be the standard port for syslog).
 
@@ -28,4 +28,3 @@ To show what's possible with Graylog, we have already created a few dashboards f
 .. image:: /images/gs/nginx_dashboard.png
 
 To have some more data, we will add the syslog data from the running virtual machine in the next step.
-
