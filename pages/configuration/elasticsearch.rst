@@ -19,7 +19,7 @@ Starting with version 2.3, Graylog uses the HTTP protocol to connect to your Ela
 Configuration
 =============
 
-.. caution:: As Graylog has switched from an embedded Elasticsearch node client to a lightweight HTTP client in version 2.3, please check the `upgrade notes <https://github.com/Graylog2/graylog2-server/blob/bb820e8/UPGRADING.rst#graylog-switches-to-elasticsearch-http-client>`_ how to migrate your configuration if you are switching from an earlier version.
+.. caution:: As Graylog has switched from an embedded Elasticsearch node client to a lightweight HTTP client in version 2.3, please check the :ref:`upgrade notes <upgrade-from-22-to-23>` how to migrate your configuration if you are switching from an earlier version.
 
 Graylog
 -------
