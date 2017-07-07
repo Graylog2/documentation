@@ -7,6 +7,8 @@ Overview
 
 Graylog is transparently managing one or more sets of Elasticsearch indices to optimize search and analysis operations for speed and low resource consumption.
 
+.. at the time of writing this guide has not been updated for elasticsearch 5 - we need to check from time to time.
+
 To enable managing indices with different `mappings <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/mapping.html>`_, `analyzers <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/configuring-analyzers.html>`_, and `replication settings <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/_index_settings.html>`_ Graylog is using so-called index sets which are an abstraction of all these settings.
 
 .. image:: /images/index_sets/index_set_overview.png
