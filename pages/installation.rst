@@ -10,7 +10,7 @@ fully automated reproducible setups.
 
 Graylog can be installed in many different ways so you can pick whatever works best for you. We recommend to start with the
 :ref:`virtual machine appliances <virtual-machine-appliances>` for the fastest way to get started and then pick one
-of the other, more flexible installation methods to build an easier to scale setup. 
+of the other, more flexible installation methods to build an easier to scale setup.
 
 This chapter is explaining the many ways to install Graylog and aims to help choosing the one that fits your needs.
 
@@ -42,4 +42,4 @@ The Graylog server application has the following prerequisites:
 * `MongoDB 2.4 or later <https://docs.mongodb.org/manual/administration/install-on-linux/>`_ (latest stable version is recommended)
 * Oracle Java SE 8 or later (OpenJDK 8 also works; latest stable update is recommended)
 
-.. caution:: Graylog 2.x **does not** work with Elasticsearch 5.x!
+.. caution:: Graylog prior 2.3 **do not** work with Elasticsearch 5.x!

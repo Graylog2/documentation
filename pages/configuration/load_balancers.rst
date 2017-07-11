@@ -63,8 +63,3 @@ Web Interface
 It is possible to use the Graylog web interface behind a load balancer for high availability purposes.
 
 .. note:: Take care of the configuration you need :ref:`with a proxy setup <configuring_webif_nginx>`, as it will *not* work out of the box.
-
-As of version 2.0 you do not need a sticky session (previously required under 1.x).  It is still important, however, that the API URL ``/api/system/deflector/cycle`` hits the configured Graylog master node, although this might change in a future release.
-
-Please refer to your vendor's documentation to learn how to route this URL to a specific host.
-

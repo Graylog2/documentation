@@ -69,7 +69,7 @@ Create a system service and start it::
 
     [Ubuntu 16.04 with Systemd]
     $ sudo systemctl start collector-sidecar
- 
+
 CentOS
 ~~~~~~
 Install the RPM package on RedHat based systems ::
@@ -231,7 +231,7 @@ An example configuration for NXlog looks like this::
     log_path: /var/log/graylog/collector-sidecar
     log_rotation_time: 86400
     log_max_age: 604800
-    tags: 
+    tags:
       - linux
       - apache
       - redis
@@ -254,7 +254,7 @@ For the Beats platform you can enable each Beat individually, e.g on a Windows h
     log_path: /var/log/graylog/collector-sidecar
     log_rotation_time: 86400
     log_max_age: 604800
-    tags: 
+    tags:
       - linux
       - apache
       - redis
@@ -318,11 +318,11 @@ We have prepared an example on how to configure the Sidecar using the Graylog We
 logfiles and ship them with a Filebeat collector to a Beats input that is listening on Port 5044 on your Graylog Server.
 
 
-- The first step is to create a Beats input where collectors can send data to. Click on ``System → Inputs`` and start a global Beats input on the listening address 0.0.0.0 and port 5044.
+- The first step is to create a Beats input where collectors can send data to. Click on ``System / Inputs`` and start a global Beats input on the listening address 0.0.0.0 and port 5044.
 
 .. image:: /images/sidecar_sbs0.png
- 
-- Navigate to the collector configurations. In your Graylog Webinterface click on ``System → Collectors → Manage configurations``. 
+
+- Navigate to the collector configurations. In your Graylog Webinterface click on ``System / Collectors / Manage configurations``.
 
 .. image:: /images/sidecar_sbs1.png
 
@@ -394,7 +394,7 @@ Outputs
 
 Outputs are used to send data from a collector back to the Graylog server. E.g. NXLog is able to send directly messages in the GELF format. So the natural fit is to create a
 GELF output in a NXLog configuration. Instructing NXlog to send GELF messages is of course just half the way, we also need a receiver for that. So an administrator
-needs to create a proper receiver under  ``System → Inputs``.
+needs to create a proper receiver under  ``System / Inputs``.
 
 Inputs
 ------
