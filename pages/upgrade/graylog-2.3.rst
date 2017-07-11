@@ -55,7 +55,7 @@ The following configuration options are now being used to configure connectivity
 
 In most cases, the only configuration setting that needs to be set explicitly is ``elasticsearch_hosts``. All other configuration settings should be tweaked only in case of errors.
 
-.. warn:: The automatic node discovery does not work if Elasticsearch requires authentication, e. g. when using Shield (X-Pack).
+.. warning:: The automatic node discovery does not work if Elasticsearch requires authentication, e. g. when using Shield (X-Pack).
 
 .. caution:: Graylog does not react to externally triggered index changes (creating/closing/reopening/deleting an index) anymore. All of these actions need to be performed through the Graylog REST API in order to retain index consistency.
 
