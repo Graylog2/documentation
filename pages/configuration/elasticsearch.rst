@@ -16,7 +16,7 @@ Starting with version 2.3, Graylog uses the HTTP protocol to connect to your Ela
 
 .. caution:: Graylog 2.3 **does not** work with Elasticsearch 6.x yet!
 
-.. note:: Graylog 2.3 works with the `AWS Elasticsearch service <https://aws.amazon.com/elasticsearch-service/>`_ but make sure to use version **5.3** or later.
+.. note:: Graylog works fine with the `Amazon Elasticsearch Service <https://aws.amazon.com/elasticsearch-service/>`_ using **Elasticsearch 5.3.x** or later.
 
 Configuration
 =============
@@ -70,7 +70,7 @@ Automatic node discovery
 
 .. caution:: Authentication with the Elasticsearch cluster will not work if the automatic node discovery is being used.
 
-.. caution:: Automatic node discovery does not work when using the `AWS Elasticsearch service <https://aws.amazon.com/elasticsearch-service/>`_ because AWS blocks certain Elasticsearch API endpoints.
+.. caution:: Automatic node discovery does not work when using the `Amazon Elasticsearch Service <https://aws.amazon.com/elasticsearch-service/>`_ because Amazon blocks certain Elasticsearch API endpoints.
 
 Graylog uses automatic node discovery to gather a list of all available Elasticsearch nodes in the cluster at runtime and distribute requests among them to potentially increase performance and availability. To enable this feature, you need to set the ``elasticsearch_discovery_enabled`` to ``true``. Optionally, you can define the a filter allowing to selectively include/exclude discovered nodes (details how to specify node filters are found in the `Elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/5.4/cluster.html#cluster-nodes>`_) using the ``elasticsearch_discovery_filter`` setting, or tuning the frequency of the node discovery using the ``elasticsearch_discovery_frequency`` configuration option.
 
