@@ -42,7 +42,7 @@ Please follow the version matrix to pick the right package:
 +=================+========================+
 | 0.0.9           | 2.1.x                  |
 +-----------------+------------------------+
-| 0.1.x           | 2.2.x                  |
+| 0.1.x           | 2.2.x,2.3.x            |
 +-----------------+------------------------+
 
 All following commands should be executed on the **remote machine** where you want to collect log data from.

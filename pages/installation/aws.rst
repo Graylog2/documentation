@@ -5,7 +5,7 @@ Amazon Web Services
 AMIs
 ----
 
-Select your `AMI and Availability Zone (AZ) <https://github.com/Graylog2/graylog2-images/tree/2.2/aws>`_.
+Select your `AMI and Availability Zone (AZ) <https://github.com/Graylog2/graylog2-images/tree/2.3/aws>`_.
 
 Usage
 -----
