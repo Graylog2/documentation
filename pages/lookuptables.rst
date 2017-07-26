@@ -39,6 +39,11 @@ and do not have to implement it on their own.
 
 Cache implementations are pluggable and new ones can be added through plugins.
 
+.. note:: The CSV file adapter reads the entire file into memory and refreshes
+          its contents within each check interval if the file was changed.
+          If the cache was purged but the check interval has not elapsed,
+          lookups might return expired values.
+
 Lookup Tables
 ^^^^^^^^^^^^^
 
