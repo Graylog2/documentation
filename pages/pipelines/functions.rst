@@ -38,9 +38,9 @@ You'll note that we haven't said in which time zone the timestamp is in, but sti
 relies on the local time of your server as that makes it nearly impossible to figure out why date handling came up with its
 result).
 
-The reason Graylog knows which timezone to pick is because ``parse_date`` actually takes three parameters rather than
-the two we've given it in this example. The third one is a ``String`` called ``timezone`` and is optional. It has a default value of
-``"UTC"``.
+The reason Graylog knows which timezone to pick is because ``parse_date`` actually takes four parameters rather than
+the two we've given it in this example. The other two parameters are a ``String`` called ``timezone`` (default value: ``"UTC"``)
+and a ``String`` called ``locale`` (default value: the default locale of the system running Graylog) which both are optional.
 
 Let's assume we have another field in the message, called ``transaction_timezone``. It is send by the application and
 contains the time zone ID the transaction was done in (hopefully no application in the world sends its data like this, though)::
@@ -574,7 +574,7 @@ Returns the current date and time. Uses the default time zone ``UTC``.
 
 parse_date
 ----------
-``parse_date(value: string, pattern: string, [timezone: string])``
+``parse_date(value: string, pattern: string, [timezone: string], [locale: string])``
 
 Parses the ``value`` into a date and time object, using the ``pattern``. If no timezone is detected in the pattern, the optional
 timezone parameter is used as the assumed timezone. If omitted the timezone defaults to ``UTC``.
@@ -609,6 +609,21 @@ Symbol  Meaning                      Presentation  Examples
 ``''``  single quote                 literal       '
 ======  ===========================  ============  ==================================
 
+The format used for the ``locale`` parameter is a valid language tag according to `IETF BCP 47 <https://tools.ietf.org/html/bcp47>`_ which can be parsed by the `Locale#forLanguageTag(String) <https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html#forLanguageTag-java.lang.String->`_ method.
+
+Also see `IANA Language Subtag Registry <https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry>`_.
+
+If no locale was specified, the locale of the system running Graylog (the default locale) is being used.
+
+Examples:
+
+============  ====================================
+Language Tag  Description
+============  ====================================
+``en``        English
+``en-US``     English as used in the United States
+``de-CH``     German for Switzerland
+============  ====================================
 
 
 flex_parse_date
