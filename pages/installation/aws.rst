@@ -5,7 +5,7 @@ Amazon Web Services
 AMIs
 ----
 
-Select your AMI and AZ `here <https://github.com/Graylog2/graylog2-images/tree/2.0/aws>`_.
+Select your `AMI and AWS Region <https://github.com/Graylog2/graylog2-images/tree/2.0/aws>`_.
 
 Usage
 -----
