@@ -301,6 +301,8 @@ Upgrade Graylog
 
 .. warning:: The Graylog omnibus package does *not* support unattended upgrading from Graylog 1.x to Graylog 2.x!
 
+.. caution:: The Graylog omnibus package 2.3.0 and later, which contains Elasticsearch 5.5.0, can not be used in environments which have been running the Graylog omnibus package 1.x before and which still have indices created by Elasticsearch before version 2.0.0!
+
 Always perform a full backup or snapshot of the appliance before proceeding. Only upgrade
 if the release notes say the next version is a drop-in replacement.
 Choose the Graylog version you want to install from the `list of Omnibus packages <https://packages.graylog2.org/appliances/ubuntu>`_ . ``graylog_latest.deb`` always links to the newest version::
