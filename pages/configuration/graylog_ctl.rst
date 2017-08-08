@@ -53,6 +53,8 @@ The following commands are changing the configuration of Graylog:
 || ``sudo graylog-ctl set-mongodb-password [-a|-g]``  | Activate MongoDB authentication and set a password for an admin or unprivileged service user               |
 || ``-u <username> -p <password>``                    |                                                                                                            |
 +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+|| ``sudo graylog-ctl backup-etcd``                   | Backup the cluster configuration stored in etcd. See also the :ref:`restore notes <restore_etcd>`.         |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------------------+
 
 Commands for multi node setups:
 
@@ -310,6 +312,7 @@ Choose the Graylog version you want to install from the `list of Omnibus package
   $ wget https://packages.graylog2.org/releases/graylog-omnibus/ubuntu/graylog_latest.deb
   $ sudo graylog-ctl stop
   $ sudo dpkg -G -i graylog_latest.deb
+  $ sudo graylog-ctl backup-etcd
   $ sudo graylog-ctl reconfigure
   $ sudo reboot
 
@@ -470,3 +473,16 @@ Login to another Graylog server and only set the service user::
 
 Since the pre-build appliances are based on standard Ubuntu-Linux, tools like iptables/SELinux/AppArmor can be used additionally.
 But to explain all available countermeasurements would go beyond this documentation.
+
+.. _restore_etcd:
+
+Restore cluster configuration
+=============================
+
+With ``graylog-ctl backup-etcd`` a backup of the cluster configuration of a multi node setup can be created. In order to restore this backup copy the wal-file back to the data directory::
+
+  $ graylog-ctl stop etcd
+  $ cp /var/opt/graylog/backup/etcd/<timestamp>/member/wal/0000000000000000-0000000000000000.wal /var/opt/graylog/data/etcd/member/wal/
+  $ su -c '/opt/graylog/embedded/sbin/etcd -data-dir=/var/opt/graylog/data/etcd -force-new-cluster' graylog
+  <Ctrl-C>
+  $ graylog-ctl start etcd
