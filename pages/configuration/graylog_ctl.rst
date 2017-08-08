@@ -310,6 +310,7 @@ Choose the Graylog version you want to install from the `list of Omnibus package
   $ wget https://packages.graylog2.org/releases/graylog-omnibus/ubuntu/graylog_latest.deb
   $ sudo graylog-ctl stop
   $ sudo dpkg -G -i graylog_latest.deb
+  $ sudo graylog-ctl backup-etcd
   $ sudo graylog-ctl reconfigure
   $ sudo reboot
 
