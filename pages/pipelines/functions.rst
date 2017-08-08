@@ -574,7 +574,7 @@ Returns the current date and time. Uses the default time zone ``UTC``.
 
 parse_date
 ----------
-``parse_date(value: string, pattern: string, [timezone: string], [locale: string])``
+``parse_date(value: string, pattern: string, [locale: string], [timezone: string])``
 
 Parses the ``value`` into a date and time object, using the ``pattern``. If no timezone is detected in the pattern, the optional
 timezone parameter is used as the assumed timezone. If omitted the timezone defaults to ``UTC``.
