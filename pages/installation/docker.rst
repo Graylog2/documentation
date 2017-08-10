@@ -10,7 +10,7 @@ You need a recent `docker` version `installed <https://docs.docker.com/installat
 This will create three containers with all Graylog services running::
 
   $ docker run --name some-mongo -d mongo:3
-  $ docker run --name some-elasticsearch -d elasticsearch:5 elasticsearch -Des.cluster.name="graylog"
+  $ docker run --name some-elasticsearch -d elasticsearch:5 elasticsearch -Ecluster.name="graylog"
   $ docker run --link some-mongo:mongo --link some-elasticsearch:elasticsearch -p 9000:9000 -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" -d graylog2/server
 
 Testing a beta version
