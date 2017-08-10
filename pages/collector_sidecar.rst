@@ -367,6 +367,42 @@ Certificate based client authentication
 
 If you want to allow Graylog only to accept data from certificated clients you will need to build your own `certificate authority <https://en.wikipedia.org/wiki/Certificate_authority>`__  and provide this to the Input and the Client Output configuration.
 
+Run Sidecar as non-root user
+============================
+
+The default is that the Sidecar is started with the root user to allow access to all log files. But this is not mandatory. If you like to start it with a daemon user, proceede like the following:
+
+  - Create a daemon user e.g. ``collector``
+
+The Sidecar itself is accessing the following files and directories:
+
+  - ``collector_sidecar.yml`` - /etc/graylog/collector-sidecar/collector_sidecar.yml
+  - backend ``configuration_path`` - /etc/graylog/collector-sidecar/generated/
+  - ``collector_id`` - /etc/graylog/collector-sidecar/collector-id
+  - ``cache_path`` - /var/cache/graylog/collector-sidecar/
+  - ``log_path`` - /var/log/graylog/collector-sidecar/
+
+So to make these directories readable for the ``collector`` user, use:
+
+  - ``chown -R collector /etc/graylog``
+  - ``chown -R collector /var/cache/graylog``
+  - ``chown -R collector /etc/graylog``
+
+You can change all pathes to different places in the filesystem. If you prefer to store all Sidecar data in the home directory of the ``collector`` user, just change the pathes accordingly.
+
+Now ``systemd`` needs to know that the Sidecar should be started with a non-root user. Open ``/etc/systemd/system/collector-sidecar.service`` with an editor and navigate to the ``[Service]`` section, add::
+
+  User=collector
+  Group=collector
+
+To make use of these settings reload systemd::
+
+  $ sudo systemctl daemon-reload
+  $ sudo systemctl restart collector-sidecar
+
+Check the log files in ``/var/log/graylog/collector-sidecar`` for any errors. Understand that not only the Sidecar but also all backends, like ``filebeat``, will be started as ``collector`` user after these changes.
+So all log files that the backound should observe also need to be readable by the ``collector`` user.
+
 
 Sidecar Glossary
 ================
