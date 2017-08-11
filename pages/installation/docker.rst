@@ -93,7 +93,7 @@ log in with username ``admin`` and password ``admin`` (make sure to change the p
 How to get log data in
 ======================
 
-You can create different kinds of inputs under *System -> Inputs*, however you can only use ports that have been properly
+You can create different kinds of inputs under *System / Inputs*, however you can only use ports that have been properly
 mapped to your docker container, otherwise data will not go through.
 
 For example, to start a Raw/Plaintext TCP input on port 5555, stop your container and recreate it, whilst appending ``-p 5555:5555`` to your ``docker run`` command.
