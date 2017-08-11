@@ -20,10 +20,9 @@ Quick start
 If you simply want to checkout Graylog without any further customization, you can run the following three commands to create the necessary environment::
 
   $ docker run --name mongo -d mongo:3
-  $ docker run --name elasticsearch -d -e "http.host=0.0.0.0" docker.elastic.co/elasticsearch/elasticsearch:5.5.1
+  $ docker run --name elasticsearch -d -e "http.host=0.0.0.0" -e "xpack.security.enabled=false" docker.elastic.co/elasticsearch/elasticsearch:5.5.1
   $ docker run --link mongo --link elasticsearch -p 9000:9000 -p 12201:12201 -p 514:514 \
       -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" \
-      -e GRAYLOG_ELASTICSEARCH_HOSTS="http://elastic:changeme@elasticsearch:9200" \
       -d graylog/graylog:2.3.0-1
 
 Testing a beta version
@@ -39,7 +38,6 @@ Follow the `documentation for the Graylog image on Docker Hub <https://hub.docke
 
   $ docker run --link mongo --link elasticsearch -p 9000:9000 -p 12201:12201 -p 514:514 \
       -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" \
-      -e GRAYLOG_ELASTICSEARCH_HOSTS="http://elastic:changeme@elasticsearch:9200" \
       -d graylog/graylog:2.3.0-rc.2-3
 
 Settings
@@ -53,7 +51,6 @@ Both can be done via environment variables::
   -e GRAYLOG_PASSWORD_SECRET=somepasswordpepper
   -e GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
   -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api"
-  -e GRAYLOG_ELASTICSEARCH_HOSTS="http://elastic:changeme@elasticsearch:9200"
 
 In this case you can login to Graylog with the username and password ``admin``.
 
@@ -73,6 +70,8 @@ This all can be put in a ``docker-compose.yml`` file, like::
       image: docker.elastic.co/elasticsearch/elasticsearch:5.5.1
       environment:
         - http.host=0.0.0.0
+        # Disable X-Pack security: https://www.elastic.co/guide/en/elasticsearch/reference/5.5/security-settings.html#general-security-settings
+        - xpack.security.enabled=false
         - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       ulimits:
         memlock:
@@ -88,10 +87,6 @@ This all can be put in a ``docker-compose.yml`` file, like::
         # Password: admin
         - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
         - GRAYLOG_WEB_ENDPOINT_URI=http://127.0.0.1:9000/api
-        # Address of Elasticsearch node
-        - GRAYLOG_ELASTICSEARCH_HOSTS=http://elastic:changeme@elasticsearch:9200
-        # Address of MongoDB node
-        - GRAYLOG_MONGODB_URI=mongodb://mongodb/graylog
       depends_on:
         - mongodb
         - elasticsearch
@@ -189,6 +184,8 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
         - es_data:/usr/share/elasticsearch/data
       environment:
         - http.host=0.0.0.0
+        # Disable X-Pack security: https://www.elastic.co/guide/en/elasticsearch/reference/5.5/security-settings.html#general-security-settings
+        - xpack.security.enabled=false
         - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       ulimits:
         memlock:
@@ -207,10 +204,6 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
         # Password: admin
         - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
         - GRAYLOG_WEB_ENDPOINT_URI=http://127.0.0.1:9000/api
-        # Address of Elasticsearch node
-        - GRAYLOG_ELASTICSEARCH_HOSTS=http://elastic:changeme@elasticsearch:9200
-        # Address of MongoDB node
-        - GRAYLOG_MONGODB_URI=mongodb://mongodb/graylog
       depends_on:
         - mongodb
         - elasticsearch
