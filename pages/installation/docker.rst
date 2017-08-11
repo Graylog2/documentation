@@ -255,13 +255,6 @@ Troubleshooting
 * The ``devicemapper`` storage driver can produce problems with Graylogs disk journal on some systems.
   In this case please `pick another driver <https://docs.docker.com/engine/userguide/storagedriver/selectadriver>`__ like ``aufs`` or ``overlay``.
 
-Build
-=====
-
-To build the image from scratch run::
-
-  $ docker build --build-arg GRAYLOG_VERSION=${GRAYLOG_VERSION} -t graylog/graylog .
-
 Production readiness
 ====================
 
