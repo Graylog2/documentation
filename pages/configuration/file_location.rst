@@ -12,6 +12,8 @@ DEB package
 
 This paragraph covers Graylog installations on Ubuntu Linux, Debian Linux, and Debian derivates installed with the :ref:`DEB package <operationg_package_DEB-APT>`.
 
+.. _deb-graylog:
+
 Graylog
 -------
 
@@ -32,6 +34,8 @@ Graylog
 +-----------------------+--------------------------------------+
 
 
+.. _deb-elasticsearch:
+
 Elasticsearch
 -------------
 
@@ -49,6 +53,8 @@ Elasticsearch
 | Log files     | ``/var/log/elasticsearch/``                 |
 +---------------+---------------------------------------------+
 
+
+.. _deb-mongodb:
 
 MongoDB
 -------
@@ -68,6 +74,8 @@ RPM package
 ===========
 
 This paragraph covers Graylog installations on Fedora Linux, Red Hat Enterprise Linux, CentOS Linux, and other Red Hat Linux derivates installed with the :ref:`RPM package <operating_package_rpm-yum-dnf>`.
+
+.. _rpm-graylog:
 
 Graylog
 -------
@@ -89,6 +97,8 @@ Graylog
 +-----------------------+--------------------------------------+
 
 
+.. _rpm-elasticsearch:
+
 Elasticsearch
 -------------
 
@@ -106,6 +116,8 @@ Elasticsearch
 | Log files     | ``/var/log/elasticsearch/``      |
 +---------------+----------------------------------+
 
+
+.. _rpm-mongodb:
 
 MongoDB
 -------
@@ -125,6 +137,8 @@ Omnibus package
 ===============
 
 This paragraph covers Graylog installations via OVA, on AWS (via AMI), and on Openstack using the `Graylog Omnibus package <https://github.com/Graylog2/omnibus-graylog2#readme>`_.
+
+.. _omnibus-graylog:
 
 Graylog
 -------
@@ -146,6 +160,8 @@ Graylog
 +-----------------------+---------------------------------------------------------+
 
 
+.. _omnibus-elasticsearch:
+
 Elasticsearch
 -------------
 
@@ -163,6 +179,8 @@ Elasticsearch
 | Log files     | ``/var/log/graylog/elasticsearch/``                     |
 +---------------+---------------------------------------------------------+
 
+
+.. _omnibus-mongodb:
 
 MongoDB
 -------
