@@ -208,7 +208,6 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
       image: graylog/graylog:2.3.0-1
       volumes:
         - graylog_journal:/usr/share/graylog/data/journal
-        - ./graylog/config:/usr/share/graylog/data/config
       environment:
         # CHANGE ME!
         - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
@@ -245,7 +244,7 @@ Start all services with exposed data directories::
 Plugins
 =======
 
-In order to add plugins you can build a new image based on the existing ``graylog/graylog`` image with the needed plugin included. Simply
+In order to add plugins you can build a new image based on the existing `graylog/graylog`_ Docker image with the needed plugin included. Simply
 create a new `Dockerfile <https://docs.docker.com/engine/reference/builder/>`_ in an empty directory with the following contents::
 
   FROM graylog/graylog:2.3.0-1
@@ -255,7 +254,7 @@ Build a new image from the new ``Dockerfile`` (also see `docker build <https://d
 
   $ docker build -t graylog-with-sso-plugin .
 
-In this example, we created a new image with the `SSO plugin <https://github.com/Graylog2/graylog-plugin-auth-sso>`_ installed. From now on reference to the newly built image instead of ``graylog/graylog``.
+In this example, we created a new image with the `SSO plugin <https://github.com/Graylog2/graylog-plugin-auth-sso>`_ installed. From now on reference to the newly built image instead of `graylog/graylog`_.
 
 The ``docker-compose.yml`` file has to reference the new Docker image::
 
