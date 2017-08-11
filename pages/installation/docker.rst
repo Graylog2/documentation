@@ -55,6 +55,9 @@ This all can be put in a `docker-compose.yml` file, like::
       depends_on:
         - mongo
         - elasticsearch
+      links:
+        - mongo:mongo
+        - elasticsearch:elasticsearch
       ports:
         - "9000:9000"
 
@@ -107,6 +110,9 @@ The `docker-compose.yml` file looks like this::
       depends_on:
         - mongo
         - elasticsearch
+      links:
+        - mongo:mongo
+        - elasticsearch:elasticsearch
       ports:
         - "9000:9000"
         - "12201/udp:12201/udp"
