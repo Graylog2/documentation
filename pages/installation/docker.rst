@@ -25,21 +25,6 @@ If you simply want to checkout Graylog without any further customization, you ca
       -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" \
       -d graylog/graylog:2.3.0-1
 
-Testing a beta version
-======================
-
-.. caution:: We only recommend running pre-release versions if you are an experienced Graylog user and know what you are doing.
-
-You can also run a pre-release (alpha, beta, or release candidate) version of Graylog using Docker.
-
-The pre-releases are tagged in the `graylog/graylog`_ Docker image.
-
-Follow the `documentation for the Graylog image on Docker Hub <https://hub.docker.com/r/graylog/graylog/>`__ and pick an alpha/beta/rc tag like this::
-
-  $ docker run --link mongo --link elasticsearch -p 9000:9000 -p 12201:12201 -p 514:514 \
-      -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" \
-      -d graylog/graylog:2.3.0-rc.2-3
-
 Settings
 ========
 
@@ -290,3 +275,18 @@ You can use the Graylog appliances (OVA, Docker, AWS, ...) for small production 
  * add the appliance to your monitoring and metric systems.
 
 If you want to create your own customised setup take a look at our :ref:`other installation methods <installing>`.
+
+Testing a beta version
+======================
+
+.. caution:: We only recommend running pre-release versions if you are an experienced Graylog user and know what you are doing.
+
+You can also run a pre-release (alpha, beta, or release candidate) version of Graylog using Docker.
+
+The pre-releases are tagged in the `graylog/graylog`_ Docker image.
+
+Follow the `documentation for the Graylog image on Docker Hub <https://hub.docker.com/r/graylog/graylog/>`__ and pick an alpha/beta/rc tag like this::
+
+  $ docker run --link mongo --link elasticsearch -p 9000:9000 -p 12201:12201 -p 514:514 \
+      -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" \
+      -d graylog/graylog:2.3.0-rc.2-3
