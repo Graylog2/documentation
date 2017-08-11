@@ -3,7 +3,7 @@ Docker
 ******
 
 Requirements
-------------
+============
 
 You will need a fairly recent version of `Docker <https://docs.docker.com/installation/>`__.
 
@@ -15,7 +15,7 @@ We will use the following Docker images in this chapter:
 
 
 Quick start
------------
+===========
 
 If you simply want to checkout Graylog without any further customization, you can run the following three commands to create the necessary environment::
 
@@ -26,7 +26,7 @@ If you simply want to checkout Graylog without any further customization, you ca
       -d graylog/graylog:2.3.0-1
 
 Testing a beta version
-----------------------
+======================
 
 .. caution:: We only recommend running pre-release versions if you are an experienced Graylog user and know what you are doing.
 
@@ -41,7 +41,7 @@ Follow the `documentation for the Graylog image on Docker Hub <https://hub.docke
       -d graylog/graylog:2.3.0-rc.2-3
 
 Settings
---------
+========
 
 Graylog comes with a default configuration that works out of the box but you have to set a password for the admin user.
 Also the web interface needs to know how to connect from your browser to the Graylog API.
@@ -106,7 +106,7 @@ After starting all three Docker containers with ``docker-compose up`` you can op
 log in with username ``admin`` and password ``admin`` (make sure to change the password later).
 
 How to get log data in
-----------------------
+======================
 
 You can create different kinds of inputs under *System -> Inputs*, however you can only use ports that have been properly
 mapped to your docker container, otherwise data will not go through.
@@ -121,7 +121,7 @@ Similarly, the same can be done for UDP by appending ``-p 5555:5555/udp``. After
 .. _configuration:
 
 Configuration
--------------
+=============
 
 Every configuration option can be set via `environment variables <https://github.com/Graylog2/graylog2-server/blob/2.3/misc/graylog.conf>`__.
 Simply prefix the parameter name with ``GRAYLOG_`` and put it all in upper case.
@@ -153,7 +153,7 @@ Another option would be to store the configuration file outside of the container
 .. _persisting-data:
 
 Persisting data
----------------
+===============
 
 In order to make the recorded data persistent, you can use external volumes to store all data.
 
@@ -232,7 +232,7 @@ Start all services with exposed data directories::
   $ docker-compose up
 
 Plugins
--------
+=======
 
 In order to add plugins you can build a new image based on the existing ``graylog/graylog`` image with the needed plugin included. Simply
 create a new `Dockerfile <https://docs.docker.com/engine/reference/builder/>`_ in an empty directory with the following contents::
@@ -261,7 +261,7 @@ The ``docker-compose.yml`` file has to reference the new Docker image::
       # Other settings [...]
 
 Troubleshooting
----------------
+===============
 
 * In case you see warnings regarding open file limit, try to set ulimit from the outside of the container::
 
@@ -271,7 +271,7 @@ Troubleshooting
   In this case please `pick another driver <https://docs.docker.com/engine/userguide/storagedriver/selectadriver>`__ like ``aufs`` or ``overlay``.
 
 Build
------
+=====
 
 To build the image from scratch run::
 
