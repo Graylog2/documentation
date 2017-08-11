@@ -132,7 +132,42 @@ For example, setting up the SMTP configuration for sending Graylog alert notific
         GRAYLOG_TRANSPORT_EMAIL_USE_TLS: "false"
         GRAYLOG_TRANSPORT_EMAIL_USE_SSL: "false"
 
-Another option would be to store the configuration file outside of the container and edit it directly (see :ref:`persisting-data`).
+Another option would be to store the configuration file outside of the container and edit it directly.
+
+
+Custom configuration files
+--------------------------
+
+Instead of using a long list of environment variables to configure Graylog (see :ref:`configuration`), you can also overwrite the bundled Graylog configuration files.
+
+The bundled configuration files are stored in ``/usr/share/graylog/data/config/`` inside the Docker container.
+
+Create the new configuration directory next to the ``docker-compose.yml`` file and copy the default files from GitHub::
+
+  $ mkdir -p ./graylog/config
+  $ cd ./graylog/config
+  $ wget https://raw.githubusercontent.com/Graylog2/graylog-docker/2.3/config/graylog.conf
+  $ wget https://raw.githubusercontent.com/Graylog2/graylog-docker/2.3/config/log4j2.xml
+
+The newly created directory ``./graylog/config/`` with the custom configuration files now has to be mounted into the Graylog Docker container.
+
+This can be done by adding an entry to the `volumes <https://docs.docker.com/compose/compose-file/#volume-configuration-reference>`__ section of the ``docker-compose.yml`` file::
+
+  version: '2'
+  services:
+    mongodb:
+      image: mongo:3
+      # Other settings [...]
+    elasticsearch:
+      image: docker.elastic.co/elasticsearch/elasticsearch:5.5.1
+      # Other settings [...]
+    graylog:
+      image: graylog/graylog:2.3.0-1
+      # Other settings [...]
+      volumes:
+        # Mount local configuration directory into Docker container
+        - ./graylog/config:/usr/share/graylog/data/config
+
 
 
 .. _persisting-data:
@@ -143,15 +178,6 @@ Persisting data
 In order to make the recorded data persistent, you can use external volumes to store all data.
 
 In case of a container restart, this will simply re-use the existing data from the former instances.
-
-Instead of using environment variables to configure Graylog (see :ref:`configuration`), you can also overwrite the bundled Graylog configuration files in ``/usr/share/graylog/data/config/`` with custom versions by mounting a Docker volume into that directory.
-
-Create the configuration directory next to the ``docker-compose.yml`` file and copy the default files from GitHub::
-
-  $ mkdir -p ./graylog/config
-  $ cd ./graylog/config
-  $ wget https://raw.githubusercontent.com/Graylog2/graylog-docker/2.3/config/graylog.conf
-  $ wget https://raw.githubusercontent.com/Graylog2/graylog-docker/2.3/config/log4j2.xml
 
 Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``docker-compose.yml`` file looks as follows::
 
