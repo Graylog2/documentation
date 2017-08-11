@@ -388,7 +388,7 @@ So to make these directories readable for the ``collector`` user, use:
   - ``chown -R collector /var/cache/graylog``
   - ``chown -R collector /etc/graylog``
 
-You can change all pathes to different places in the filesystem. If you prefer to store all Sidecar data in the home directory of the ``collector`` user, just change the pathes accordingly.
+You can change all paths to different places in the filesystem. If you prefer to store all Sidecar data in the home directory of the ``collector`` user, just change the paths accordingly.
 
 Now ``systemd`` needs to know that the Sidecar should be started with a non-root user. Open ``/etc/systemd/system/collector-sidecar.service`` with an editor and navigate to the ``[Service]`` section, add::
 
@@ -401,7 +401,8 @@ To make use of these settings reload systemd::
   $ sudo systemctl restart collector-sidecar
 
 Check the log files in ``/var/log/graylog/collector-sidecar`` for any errors. Understand that not only the Sidecar but also all backends, like ``filebeat``, will be started as ``collector`` user after these changes.
-So all log files that the backound should observe also need to be readable by the ``collector`` user.
+So all log files that the backend should observe also need to be readable by the ``collector`` user. Depending on the Linux distribution there is usually an adminstrator group which has access to most log files.
+By adding the `collector` user to that group you can grant access fairly easy. E.g. on Debian/Ubuntu systems this group is called `adm`.
 
 
 Sidecar Glossary
