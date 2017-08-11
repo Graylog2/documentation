@@ -402,7 +402,7 @@ To make use of these settings reload systemd::
 
 Check the log files in ``/var/log/graylog/collector-sidecar`` for any errors. Understand that not only the Sidecar but also all backends, like ``filebeat``, will be started as ``collector`` user after these changes.
 So all log files that the backend should observe also need to be readable by the ``collector`` user. Depending on the Linux distribution there is usually an adminstrator group which has access to most log files.
-By adding the `collector` user to that group you can grant access fairly easy. E.g. on Debian/Ubuntu systems this group is called `adm`.
+By adding the ``collector`` user to that group you can grant access fairly easy. For example on Debian/Ubuntu systems this group is called `adm`.
 
 
 Sidecar Glossary
