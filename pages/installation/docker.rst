@@ -20,20 +20,41 @@ Quick start
 If you simply want to checkout Graylog without any further customization, you can run the following three commands to create the necessary environment::
 
   $ docker run --name mongo -d mongo:3
-  $ docker run --name elasticsearch -d -e "http.host=0.0.0.0" -e "xpack.security.enabled=false" docker.elastic.co/elasticsearch/elasticsearch:5.5.1
-  $ docker run --link mongo --link elasticsearch -p 9000:9000 -p 12201:12201 -p 514:514 \
+  $ docker run --name elasticsearch \
+      -e "http.host=0.0.0.0" -e "xpack.security.enabled=false" \
+      -d docker.elastic.co/elasticsearch/elasticsearch:5.5.1
+  $ docker run --link mongo --link elasticsearch \
+      -p 9000:9000 -p 12201:12201 -p 514:514 \
       -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" \
       -d graylog/graylog:2.3.0-1
 
+How to get log data in
+----------------------
+
+You can create different kinds of inputs under *System / Inputs*, however you can only use ports that have been properly mapped to your docker container, otherwise data will not go through.
+
+For example, to start a Raw/Plaintext TCP input on port 5555, stop your container and recreate it, whilst appending ``-p 5555:5555`` to your `docker run <https://docs.docker.com/engine/reference/run/>`_ command::
+
+  $ docker run --link mongo --link elasticsearch \
+      -p 9000:9000 -p 12201:12201 -p 514:514 -p 5555:5555 \
+      -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" \
+      -d graylog/graylog:2.3.0-1
+
+
+Similarly, the same can be done for UDP by appending ``-p 5555:5555/udp``.
+
+After that you can send a plaintext message to the Graylog Raw/Plaintext TCP input running on port 5555 using the following command::
+
+  $ echo 'First log message' | nc localhost 5555
+
+
 Settings
-========
+--------
 
-Graylog comes with a default configuration that works out of the box but you have to set a password for the admin user.
-Also the web interface needs to know how to connect from your browser to the Graylog API.
+Graylog comes with a default configuration that works out of the box but you have to set a password for the admin user and the web interface needs to know how to connect from your browser to the Graylog REST API.
 
-Both can be done via environment variables::
+Both settings can be configured via environment variables (also see :ref:`configuration`)::
 
-  -e GRAYLOG_PASSWORD_SECRET=somepasswordpepper
   -e GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
   -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api"
 
@@ -43,7 +64,10 @@ Generate your own admin password with the following command and put the SHA-256 
 
   $ echo -n yourpassword | shasum -a 256
 
-This all can be put in a ``docker-compose.yml`` file, like::
+
+All these settings and command line parameters can be put in a ``docker-compose.yml`` file, so that they don't have to be executed one after the other.
+
+Example::
 
   version: '2'
   services:
@@ -87,20 +111,7 @@ This all can be put in a ``docker-compose.yml`` file, like::
         # GELF UDP
         - 12201:12201/udp
 
-After starting all three Docker containers with ``docker-compose up`` you can open the URL ``http://127.0.0.1:9000`` in a web browser and
-log in with username ``admin`` and password ``admin`` (make sure to change the password later).
-
-How to get log data in
-======================
-
-You can create different kinds of inputs under *System / Inputs*, however you can only use ports that have been properly
-mapped to your docker container, otherwise data will not go through.
-
-For example, to start a Raw/Plaintext TCP input on port 5555, stop your container and recreate it, whilst appending ``-p 5555:5555`` to your ``docker run`` command.
-
-Similarly, the same can be done for UDP by appending ``-p 5555:5555/udp``. After that you can send plaintext messages to Graylog using the following command::
-
-  echo 'first log message' | nc localhost 5555
+After starting all three Docker containers by running ``docker-compose up``, you can open the URL ``http://127.0.0.1:9000`` in a web browser and log in with username ``admin`` and password ``admin`` (make sure to change the password later).
 
 
 .. _configuration:
