@@ -96,6 +96,9 @@ Example::
         # Password: admin
         - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
         - GRAYLOG_WEB_ENDPOINT_URI=http://127.0.0.1:9000/api
+      links:
+        - mongodb:mongo
+        - elasticsearch
       depends_on:
         - mongodb
         - elasticsearch
@@ -225,6 +228,9 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
         # Password: admin
         - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
         - GRAYLOG_WEB_ENDPOINT_URI=http://127.0.0.1:9000/api
+      links:
+        - mongodb:mongo
+        - elasticsearch
       depends_on:
         - mongodb
         - elasticsearch
