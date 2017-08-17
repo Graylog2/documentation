@@ -41,8 +41,8 @@ Highly available setup with Graylog Radio
 
 Beginning with Graylog 1.0 on, we no longer recommend running Graylog Radio because we are now using a
 high-performant message journal (from the Apache Kafka project) in every `graylog-server` instance which is
-spooling all incoming messages to disk immediately and is able to buffer load spikes just at least as good as
-Graylog Radio was, but with less dependencies and maintenance overhead.
+spooling all incoming messages to disk immediately and is able to buffer load spikes at least as well as
+Graylog Radio was, but with fewer dependencies and maintenance overhead.
 
 If you are running a setup with Graylog Radio we recommend to shut down the Graylog Radio architecture
 including AMQP or Kafka brokers completely and directly send messages to the `graylog-server` nodes.
