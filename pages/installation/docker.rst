@@ -79,6 +79,8 @@ Example::
       image: docker.elastic.co/elasticsearch/elasticsearch:5.5.1
       environment:
         - http.host=0.0.0.0
+        - transport.host=localhost
+        - network.host=0.0.0.0
         # Disable X-Pack security: https://www.elastic.co/guide/en/elasticsearch/reference/5.5/security-settings.html#general-security-settings
         - xpack.security.enabled=false
         - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
@@ -209,6 +211,8 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
         - es_data:/usr/share/elasticsearch/data
       environment:
         - http.host=0.0.0.0
+        - transport.host=localhost
+        - network.host=0.0.0.0
         # Disable X-Pack security: https://www.elastic.co/guide/en/elasticsearch/reference/5.5/security-settings.html#general-security-settings
         - xpack.security.enabled=false
         - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
