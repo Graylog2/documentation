@@ -477,6 +477,6 @@ Currently we know of two problems with NXLog:
   - Since version 2.9.17 timestamps are transmitted `without millisecond precision <https://nxlog.co/question/1855/gelf-timestamp-field-missing-millisecond-precision>`_
   - On Windows machines NXlog is not able to store its collector state so features like file tailing don't work correctly in combination with Sidecar. Use Sidecar version 0.1.0-alpha.1 or newer.
 
-Known issues if you use an reverse proxy as loadbalancer:
-  
-  - The client logs "408 Request Time-out" if the lb session or http timeout is lower than the configured "update_interval"
+Known issue if you use a loadbalancer or firewall in front of Graylog's API:
+
+  - The Sidecar is using a persistent connection for API requests. Therefore it logs ``408 Request Time-out`` if the loadbalancer session or http timeout is lower than the configured ``update_interval``.
