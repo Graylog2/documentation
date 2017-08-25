@@ -99,7 +99,7 @@ Depending on the amount of messages ingested and how long messages should be ava
 
 Keep an eye on the Metrics of each part of the cluster. One option is to use `telegraf <https://github.com/influxdata/telegraf>`__ to fetch importand metrics and store them in your favorite metric system (e. g. Graphite, Prometheus or Influx).
 
-Elasticseach Metrics and some administration can be done with `Elastic HQ <http://www.elastichq.org>`__ or `Kopf <https://github.com/lmenezes/elasticsearch-kopf>`__. Those will help you to understand the Elasticsearch cluster health and behavior.
+Elasticseach Metrics and some administration can be done with `Elastic HQ <http://www.elastichq.org>`__ or `Cerebro <http://github.com/lmenezes/cerebro>`__. Those will help you to understand the Elasticsearch cluster health and behavior.
 
 Graylog Metrics can be monitored `with the Graylog Metrics Reporter plugins <https://marketplace.graylog.org/addons/6fef88c7-94f7-488e-a6c5-bd6b71d8343e>`__ which are able to send the internal Graylog metrics to your favorite metrics collector (e. g. Graphite or Prometheus).
 
