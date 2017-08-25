@@ -156,7 +156,8 @@ The following configuration modes do exist:
 +-----------------------------------------------------+-------------------------------------------------+
 | Command                                             | Services                                        |
 +=====================================================+=================================================+
-| ``sudo graylog-ctl reconfigure``                    | Run all services on this box                    |
+| ``sudo graylog-ctl reconfigure``                    | Regenerate configuration files based on         |
+|                                                     | ``/etc/graylog/graylog-services.json``          |
 +-----------------------------------------------------+-------------------------------------------------+
 | ``sudo graylog-ctl reconfigure-as-server``          | Run Graylog, web and MongoDB (no Elasticsearch) |
 +-----------------------------------------------------+-------------------------------------------------+
@@ -164,6 +165,8 @@ The following configuration modes do exist:
 |                                                     | MongoDB (no nginx for web interface access)     |
 +-----------------------------------------------------+-------------------------------------------------+
 | ``sudo graylog-ctl reconfigure-as-datanode``        | Run only Elasticsearch                          |
++-----------------------------------------------------+-------------------------------------------------+
+| ``sudo graylog-ctl enable-all-services``            | Run all services on this box                    |
 +-----------------------------------------------------+-------------------------------------------------+
 
 A server with only the web interface running is not supported as of Graylog 2.0. The web interface is now included in the server process.
