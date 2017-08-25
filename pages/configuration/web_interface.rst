@@ -122,7 +122,7 @@ Using a Layer 3 load balancer (forwarding TCP Ports)
 ----------------------------------------------------
 
 #. Configure your load balancer to forward connections going to ``192.168.0.10:80`` to ``127.0.0.1:9000`` (``web_listen_uri``) and ``192.168.0.10:9000/api/`` to ``127.0.0.1:9000/api/`` (``rest_listen_uri``).
-#. Set ``web_endpoint_uri`` in your Graylog server config to ``http://graylog.example.org:9000/api/``.
+#. Set ``web_endpoint_uri`` in your Graylog server config to ``http://graylog.example.org/api/``.
 #. Start the Graylog server as usual.
 #. Access the web interface on ``http://graylog.example.org``.
 #. Read up on :ref:`ssl_setup`.
