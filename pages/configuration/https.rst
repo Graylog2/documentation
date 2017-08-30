@@ -21,36 +21,52 @@ Certificate/Key file format
 
 When you are configuring TLS, you need to make sure that your certificate/key files are in the right format, which is X.509 for certificates and PKCS#8 for the private keys. Both must to be stored in PEM format.
 
-If no X.509 certificate and/or no PKCS#8 private key have been provided, Graylog will automatically try to generate a self-signed private key and certificate with the hostname part of ``web_listen_uri`` as Common Name (CN) of the certificate.
-
 .. _creating-a-self-signed-private-key-certificate:
 
 Creating a self-signed private key/certificate
 ==============================================
 
-Create PKCS#5 and X.509 certificate::
+Create a file named ``openssl-graylog.cnf`` with the following content (customized to your needs)::
+
+  [req]
+  distinguished_name = req_distinguished_name
+  x509_extensions = v3_req
+  prompt = no
+  
+  # Details about the issuer of the certificate
+  [req_distinguished_name]
+  C = US
+  ST = Some-State
+  L = Some-City
+  O = My Company
+  OU = My Division
+  CN = graylog.example.com
+
+  [v3_req]
+  keyUsage = keyEncipherment, dataEncipherment
+  extendedKeyUsage = serverAuth
+  subjectAltName = @alt_names
+
+  # IP addresses and DNS names the certificate should include
+  # Use IP.### for IP addresses and DNS.### for DNS names,
+  # with "###" being a consecutive number.
+  [alt_names]
+  IP.1 = 203.0.113.42
+  DNS.1 = graylog.example.com
+
+
+Create PKCS#5 private key and X.509 certificate::
 
   $ openssl version
   OpenSSL 0.9.8zh 14 Jan 2016
-  $ openssl req -x509 -days 365 -nodes -newkey rsa:2048 -keyout pkcs5-plain.pem -out cert.pem
+  $ openssl req -x509 -days 365 -nodes -newkey -config openssl-graylog.cnf rsa:2048 -keyout pkcs5-plain.pem -out cert.pem
   Generating a 2048 bit RSA private key
   ............................+++
   .+++
   writing new private key to 'pkcs5-plain.pem'
-  ====-
-  [...]
-  If you enter '.', the field will be left blank.
-  ====-
-  Country Name (2 letter code) [AU]:DE
-  State or Province Name (full name) [Some-State]:Hamburg
-  Locality Name (eg, city) []:Hamburg
-  Organization Name (eg, company) [Internet Widgits Pty Ltd]:Graylog, Inc.
-  Organizational Unit Name (eg, section) []:
-  Common Name (e.g. server FQDN or YOUR name) []:graylog.example.com
-  Email Address []:hostmaster@graylog.example.com
+  -----
 
-
-Convert PKCS#5 private key into a *plaintext* PKCS#8 private key::
+Convert PKCS#5 private key into a *unencrypted* PKCS#8 private key::
 
   $ openssl pkcs8 -in pkcs5-plain.pem -topk8 -nocrypt -out pkcs8-plain.pem
 
