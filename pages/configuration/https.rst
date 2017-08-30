@@ -21,8 +21,6 @@ Certificate/Key file format
 
 When you are configuring TLS, you need to make sure that your certificate/key files are in the right format, which is X.509 for certificates and PKCS#8 for the private keys. Both must to be stored in PEM format.
 
-If no X.509 certificate and/or no PKCS#8 private key have been provided, Graylog will automatically try to generate a self-signed private key and certificate with the hostname part of ``web_listen_uri`` as Common Name (CN) of the certificate.
-
 .. _creating-a-self-signed-private-key-certificate:
 
 Creating a self-signed private key/certificate
