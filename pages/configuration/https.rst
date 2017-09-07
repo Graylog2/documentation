@@ -59,7 +59,7 @@ Create PKCS#5 private key and X.509 certificate::
 
   $ openssl version
   OpenSSL 0.9.8zh 14 Jan 2016
-  $ openssl req -x509 -days 365 -nodes -newkey -config openssl-graylog.cnf rsa:2048 -keyout pkcs5-plain.pem -out cert.pem
+  $ openssl req -x509 -days 365 -nodes -newkey rsa:2048 -config openssl-graylog.cnf -keyout pkcs5-plain.pem -out cert.pem
   Generating a 2048 bit RSA private key
   ............................+++
   .+++
