@@ -542,7 +542,7 @@ If ``message`` is omitted, this function uses the currently processed message.
 
 rename_field
 ------------
-``rename_field(old_field: string, new_field: string, [message: Message], )``
+``rename_field(old_field: string, new_field: string, [message: Message])``
 
 Modifies the field name ``old_field`` to ``new_field`` in the given message, keeping the field value unchanged.
 
