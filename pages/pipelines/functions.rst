@@ -538,10 +538,12 @@ If ``message`` is omitted, this function uses the currently processed message.
 
 set_field
 ---------
-``set_field(field: string, value: any, [message: Message])``
+``set_field(field: string, value: any, [prefix: string], [suffix: string], [message: Message])``
 
 Sets the given field named ``field`` to the new ``value``. The ``field`` name must be valid, and specifically cannot include
 a ``.`` character. It is trimmed of leading and trailing whitespace. String values are trimmed of whitespace as well.
+
+The optional ``prefix`` and ``suffix`` parameters specify which prefix or suffix should be added to the inserted field name.
 
 If ``message`` is omitted, this function uses the currently processed message.
 
@@ -549,11 +551,13 @@ If ``message`` is omitted, this function uses the currently processed message.
 
 set_fields
 ----------
-``set_fields(fields: Map<string, any>, [message: Message])``
+``set_fields(fields: Map<string, any>, [prefix: string], [suffix: string], [message: Message])``
 
 Sets all of the given name-value pairs in ``field`` in the given message. This is a convenience function
 acting like `set_field`_. It can be helpful for using the result of a function like `select_jsonpath`_ or `regex`_ in the
 currently processed message especially when the key names are the result of a regular expression.
+
+The optional ``prefix`` and ``suffix`` parameters specify which prefix or suffix should be added to the inserted field names.
 
 If ``message`` is omitted, this function uses the currently processed message.
 
