@@ -304,7 +304,7 @@ Wait some time until all services are restarted and running again. Afterwards yo
 Upgrade Graylog
 ===============
 
-.. warning:: The Graylog omnibus package does *not* support unattended upgrading from Graylog 1.x to Graylog 2.x!
+.. caution:: The Graylog omnibus package does *not* support unattended upgrading from Graylog 1.x to Graylog 2.x!
 
 .. caution:: The Graylog omnibus package 2.3.0 and later, which contains Elasticsearch 5.5.0, can not be used in environments which have been running the Graylog omnibus package 1.x before and which still have indices created by Elasticsearch before version 2.0.0!
 
@@ -319,7 +319,15 @@ Choose the Graylog version you want to install from the `list of Omnibus package
   $ sudo graylog-ctl reconfigure
   $ sudo reboot
 
-.. note:: Reboot the server after the update procedure to make sure that all services are running in the correct version. 
+.. error:: In case the ``etcd`` service won't start after the upgrade, an error is shown like:
+
+  .. code-block:: ruby
+
+    Errno::ECONNREFUSED
+    -------------------
+    Connection refused - connect(2) for "127.0.0.1" port 4001``
+
+  Please flush and restore the ``etcd`` database like it's shown in the :ref:`restore notes <restore_etcd>`.
 
 Migrate manually from 1.x to 2.x
 ================================
@@ -485,7 +493,9 @@ Restore cluster configuration
 With ``graylog-ctl backup-etcd`` a backup of the cluster configuration of a multi node setup can be created. In order to restore this backup copy the wal-file back to the data directory::
 
   $ graylog-ctl stop etcd
-  $ cp /var/opt/graylog/backup/etcd/<timestamp>/member/wal/0000000000000000-0000000000000000.wal /var/opt/graylog/data/etcd/member/wal/
+  $ rm -r /var/opt/graylog/data/etcd/member/*
+  $ cp /var/opt/graylog/backup/etcd/<timestamp>/member/wal /var/opt/graylog/data/etcd/member/
+  $ chown -R graylog.graylog /var/opt/graylog/data/etcd/member/wal
   $ su -c '/opt/graylog/embedded/sbin/etcd -data-dir=/var/opt/graylog/data/etcd -force-new-cluster' graylog
   <Ctrl-C>
   $ graylog-ctl start etcd
