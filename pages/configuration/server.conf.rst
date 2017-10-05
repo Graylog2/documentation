@@ -167,8 +167,6 @@ Elasticsearch
 Rotation 
 ^^^^^^^^
 
-================================
-
 .. attention:: The following settings identified with *!* in this section have been moved to the database in Graylog 2.0. When you upgrade, make sure to set these to your previous 1.x settings so they will be migrated to the database!
 
 * ``rotation_strategy = count`` *!*
@@ -324,6 +322,7 @@ Rotation
 
 
 .. note:: Since 0.21 the Graylog server supports pluggable output modules. This means a single message can be written to multiple outputs. The next setting defines the timeout for a single output module, including the default output module where all messages end up.
+
 * ``output_module_timeout = 10000``
     * Time in milliseconds to wait for all message outputs to finish writing a single message.
 * ``stale_master_timeout = 2000``
@@ -404,5 +403,5 @@ Others
     * A comma-separated list of content packs (files in "content_packs_dir") which should be applied on the first start of Graylog.
     * Default: empty
 * ``proxied_requests_thread_pool_size = 32``
-    * For some cluster-related REST requests, the node must query all other nodes in the cluster. This is the maximum number of threads available for this. Increase it, if '/cluster/*' requests take long to complete.
-    * Should be rest_thread_pool_size * average_cluster_size if you have a high number of concurrent users.
+    * For some cluster-related REST requests, the node must query all other nodes in the cluster. This is the maximum number of threads available for this. Increase it, if ``/cluster/*`` requests take long to complete.
+    * Should be ``rest_thread_pool_size * average_cluster_size`` if you have a high number of concurrent users.
