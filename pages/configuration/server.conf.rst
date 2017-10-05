@@ -154,6 +154,10 @@ Elasticsearch
     * Default: ``false``
     
     .. warning:: Automatic node discovery does not work if Elasticsearch requires authentication, e. g. with Shield.
+    
+    .. warning:: This setting must be false on AWS Elasticsearch Clusters (the hosted ones) and should be used carefully. In case of trouble with connections to ES this should be the first option to be disabled. See :ref:`automatic_node_discovery` for more details.
+    
+    
 * ``elasticsearch_discovery_filter = rack:42``
     * Filter for including/excluding Elasticsearch nodes in discovery according to their custom attributes, see `Elastic Search Reference » Cluster APIs » Node Specification <https://www.elastic.co/guide/en/elasticsearch/reference/5.4/cluster.html#cluster-nodes>`_.
     * Default: empty
@@ -209,7 +213,7 @@ Rotation
 
 ================================
 
-.. attention:: The following settings identified with *!!* have been moved to the database in Graylog 2.2.0. When you upgrade, make sure to set these to your previous settings so they will be migrated to the database!
+.. attention:: The following settings identified with *!!* have been moved to the database in Graylog 2.2.0. When you upgrade, make sure to set these to your previous settings so they will be migrated to the database. This settings are read **once** at the very first startup to be the initial settings in the database.
 
 * ``elasticsearch_shards = 4`` *!!*
     * The number of shards for your indices. A good setting here highly depends on the number of nodes in your Elasticsearch cluster. If you have one node, set it to ``1``.
