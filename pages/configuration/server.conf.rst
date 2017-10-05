@@ -309,6 +309,8 @@ Rotation
 * ``message_journal_segment_age = 1h``
 * ``message_journal_segment_size = 100mb``
 
+.. attention:: When the journal is full and it keeps receiving messages, it will start dropping messages as a FIFO queue: The first dropped message will be the first inserted and so on (and not some random).
+
 * ``async_eventbus_processors = 2``
     * Number of threads used exclusively for dispatching internal events. Default is 2.
 * ``lb_recognition_period_seconds = 3``
