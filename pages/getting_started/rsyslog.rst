@@ -1,10 +1,12 @@
 Get Messages In
 ---------------
 
-Log into the VM
-^^^^^^^^^^^^^^^
+Log in to the VM
+^^^^^^^^^^^^^^^^
 
-We’re going to use rsyslog because we already have it running on the virtual machine. So, go to the image and login with ``ubuntu/ubuntu``.
+We’re going to use rsyslog to ship messages to Graylog since it's already running on the virtual machine.
+
+To start, go to your virtual machine's window (starting it back up if needed) and login with ``ubuntu`` for both the username and password.
 
 .. image:: /images/gs_6-glslogin.png
 
@@ -17,7 +19,7 @@ At the bottom of the file, add the following so messages will forward::
 
   *.* @127.0.0.1:514;RSYSLOG_SyslogProtocol23Format
 
-In case you wanted to know, ``@`` means UDP, ``127.0.0.1`` is localhost, and ``514`` is the port.
+In case you're curious: ``@`` means UDP, ``127.0.0.1`` is localhost, and ``514`` is the port. Fortunately, our Graylog environment has an input to accept syslog messages on UDP port 514!
 
 .. image:: /images/gs_7-rsyslogadd.png
 
@@ -28,10 +30,10 @@ Restart rsyslog
 
 Type::
 
-  $sudo service rsyslog status
-  $sudo service rsyslog restart
+  $ sudo service rsyslog status
+  $ sudo service rsyslog restart
 
-If you have modified the config file and it is somehow invalid, the service command will not bring rsyslog back up - so don't worry, you can always delete the line!
+If you have modified the config file and it is somehow invalid, the service command will not bring rsyslog back up - but don't worry, you can always delete the line!
 
 Ingesting more log messages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

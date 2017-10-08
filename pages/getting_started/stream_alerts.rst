@@ -12,7 +12,7 @@ In order to set up an alert, we need to first create a stream. Streams process i
 
 .. image:: /images/gs_20-crstream.png
 
-Let’s create a stream for all incoming security/authentication error messages.  Click Create Stream.
+Let’s create a stream for all incoming security/authentication error messages.  Click *Create Stream*.
 
 Type in a Title and Description.
 
@@ -26,17 +26,17 @@ Hit the *Manage Rules* button.
 
 .. image:: /images/gs_22-editrules.png
 
-Pick the Syslog UDP Input, and click Add stream rule.
+Pick the Syslog UDP Input and click the *Add stream rule* button.
 
 .. image:: /images/gs_23-streamrule.png
 
-Then, type in the values shown below and hit save.
+Next, type in the values shown below and click the *Save* button.
 
 .. image:: /images/gs_28-streamrule-form.png
 
-Then click I’m done!
+Finally, click the *I'm done* button!
 
-We have just configured this stream to process in real time all the messages that come in from the security/authorization facility. 
+We have just configured this stream to process in real time all the messages that come in from the ``security/authorization`` facility. 
 
 Now let’s create the alert.
 
@@ -48,11 +48,11 @@ Click *Alerts* in the navigation bar and then *Manage conditions* on the Alerts 
 
 .. image:: /images/gs_24-alert.png
 
-In the Condition section, select the "Security/Auth Errors from Syslogs" stream and the "Message Count Alert Condition" from the Condition type menu.
+In the Condition section, select the "Security/Auth Errors from Syslogs" stream and the "Message Count Alert Condition" from the Condition type menu, and then click the *Add alert condition* button.
 
 .. image:: /images/gs_29-alertstream.png
 
-Configure the rest based on my screenshot (input 2’s in every field). Then click Add alert condition.
+Configure the rest based on my screenshot (input 2’s in every field) and then click the *Save* button.
 
 .. image:: /images/gs_25-alertcondition.png
 
@@ -71,7 +71,7 @@ Enter a title and your email address in the "E-Mail Receivers" section.
 
 .. image:: /images/gs_32-emailnotificationcreate.png
 
-After adding the notification, hit the blue "Send test alert" button.
+After adding the notification, hit the blue *Test* button to send a test alert.
 
 .. image:: /images/gs_26-alertemail.png
 
@@ -79,10 +79,16 @@ Going Further
 ^^^^^^^^^^^^^
 If you want to configure an SMTP server, you can refer to :ref:`graylog-ctl`.
 
-If you want to make this stream active, just go back to Streams and where you see the stream name, click the green *Start Stream* button.
+If you want to make this stream active, just go back to the *Streams* page and click its green *Start Stream* button.
+
 
 .. image:: /images/gs_27-streamactive.png
 
-You are done - go grab a Creamsicle, take a deep breath, and chillax. Tomorrow you can configure all your own logs and alerts. To help, go and get some deep knowledge in the official :doc:`documentation </index>` friendly people that will help and guide you can be found in our `support community <https://www.graylog.org/community-support>`__. 
+You can learn more about alerting on our :ref:`alerts` page.
 
-You can find more information on our :ref:`alerts` page.
+Wrapping Up
+^^^^^^^^^^^
+You're done with the Getting Started guide! Go grab a Creamsicle, take a deep breath, and chillax. Tomorrow you can configure all your own logs and alerts.
+
+To learn more, go and get some deep knowledge in the official :doc:`documentation </index>`.  There are also a bunch of friendly people that will help and guide in our `support community <https://www.graylog.org/community-support>`__.
+
