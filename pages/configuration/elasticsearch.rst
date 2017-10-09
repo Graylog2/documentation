@@ -65,6 +65,8 @@ The following configuration options are now being used to configure connectivity
 | ``elasticsearch_compression_enabled``              | boolean   | Enable GZIP compression of Elasticseach request payloads     | ``false``                   |
 +----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
 
+.. _automatic_node_discovery:
+
 Automatic node discovery
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
