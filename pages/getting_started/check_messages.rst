@@ -1,17 +1,17 @@
 Check If You Have Messages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-After that go back to  the *System / Inputs* page.
+Now that we've configured rsyslog, return to your browser and navigate to the *System / Inputs* page.
 
 .. image:: /images/gs/input_page.png
 
-Click on the  *Show received messages* button next to the *appliance-syslog-udp* input and you should see only the messages received from your syslog clients.
+Click on the *Show received messages* button next to the *appliance-syslog-udp* input.
+
+BOOM! You should now see the messages received on this input from your syslog clients. For now it's just our one virtual machine, but imagine the possibilities!  Here's where the fun really starts!
 
 .. image:: /images/gs_10-messages.png
 
-BOOM! Now that you have messages coming in, this is where the fun starts.
-
-*Skip the next section if you are all good.*
+*Skip the following section if you are all good.*
 
 If You Don't Have Messages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
