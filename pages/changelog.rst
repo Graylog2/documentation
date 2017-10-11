@@ -2,6 +2,27 @@
 Changelog
 *********
 
+Graylog 2.3.1
+=============
+
+Released: 2017-08-25
+
+https://www.graylog.org/blog/100-announcing-graylog-v2-3-1
+
+**Core**
+
+* Fix NullPointerException for field stats. `Graylog2/graylog2-server#4026 <https://github.com/Graylog2/graylog2-server/issues/4026>`_ `Graylog2/graylog2-server#4045 <https://github.com/Graylog2/graylog2-server/issues/4045>`_ `Graylog2/graylog2-server#4046 <https://github.com/Graylog2/graylog2-server/issues/4046>`_
+* Make GELF parser less strict. `Graylog2/graylog2-server#4055 <https://github.com/Graylog2/graylog2-server/issues/4055>`_
+* Fix search requests with selected fields by using source filtering. `Graylog2/graylog2-server#4069 <https://github.com/Graylog2/graylog2-server/issues/4069>`_ `Graylog2/graylog2-server#4077 <https://github.com/Graylog2/graylog2-server/issues/4077>`_ `Graylog2/graylog2-server#4068 <https://github.com/Graylog2/graylog2-server/issues/4068>`_
+* Add missing index for `session_id` in "sessions" MongoDB collection. `Graylog2/graylog2-server#4070 <https://github.com/Graylog2/graylog2-server/issues/4070>`_ `Graylog2/graylog2-server#4076 <https://github.com/Graylog2/graylog2-server/issues/4076>`_
+* Fix search errors when lots of indices will be used. `Graylog2/graylog2-server#4062 <https://github.com/Graylog2/graylog2-server/issues/4062>`_ `Graylog2/graylog2-server#4078 <https://github.com/Graylog2/graylog2-server/issues/4078>`_ `Graylog2/graylog2-server#4054 <https://github.com/Graylog2/graylog2-server/issues/4054>`_
+* Upgrade to Jest 2.4.7+jackson. `Graylog2/graylog2-server#4107 <https://github.com/Graylog2/graylog2-server/issues/4107>`_
+* Fix search term highlighting. `Graylog2/graylog2-server#4108 <https://github.com/Graylog2/graylog2-server/issues/4108>`_ `Graylog2/graylog2-server#4101 <https://github.com/Graylog2/graylog2-server/issues/4101>`_
+
+**Pipeline Processor Plugin**
+
+* Make ``locale`` parameter of ``parse_date()`` optional. `Graylog2/graylog-plugin-pipeline-processor#202 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/202>`_
+
 Graylog 2.3.0
 =============
 
@@ -316,7 +337,7 @@ https://www.graylog.org/blog/88-announcing-graylog-v2-2-0
 * Add contains string tester. `Graylog2/graylog2-server#3186 <https://github.com/Graylog2/graylog2-server/issues/3186>`__
 * Index set fixes. `Graylog2/graylog2-server#3193 <https://github.com/Graylog2/graylog2-server/issues/3193>`__
 * Add synthetic JavaBean getters to AutoValue classes. `Graylog2/graylog2-server#3188 <https://github.com/Graylog2/graylog2-server/issues/3188>`__
-* Improve IndexSetValidator. [Graylog2/graylog2-server#3197](https://github.com/Graylog2/graylog2-server/issues/3197)
+* Improve IndexSetValidator. `Graylog2/graylog2-server#3197 <https://github.com/Graylog2/graylog2-server/issues/3197>`_
 * Add custom Jackson (de-) serializer for ZonedDateTime and DateTime. `Graylog2/graylog2-server#3198 <https://github.com/Graylog2/graylog2-server/issues/3198>`__
 * Improved alarm callback testing. `Graylog2/graylog2-server#3196 <https://github.com/Graylog2/graylog2-server/issues/3196>`__
 * Fix DateTime serialization. `Graylog2/graylog2-server#3202 <https://github.com/Graylog2/graylog2-server/issues/3202>`__
