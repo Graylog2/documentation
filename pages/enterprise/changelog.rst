@@ -2,6 +2,29 @@
 Changelog
 *********
 
+Graylog Enterprise 2.3.1
+========================
+
+Released: 2017-08-25
+
+Plugin: Archive
+---------------
+
+* Lots of performance improvements (up to 7 times faster)
+* Do not delete an index if not all of its documents have been archived
+
+Graylog Enterprise 2.3.0
+========================
+
+Released: 2017-07-26
+
+Plugin: Archive
+---------------
+
+* Record checksums for archive segment files
+* Add two archive permission roles "admin" and "viewer"
+* Allow export of filenames from catalog search
+
 Graylog Enterprise 2.2.3
 ========================
 
