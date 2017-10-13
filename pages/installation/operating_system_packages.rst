@@ -157,6 +157,7 @@ Step-by-step guides
    os/ubuntu
    os/debian
    os/centos
+   os/sles
 
 
 Feedback

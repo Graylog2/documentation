@@ -85,7 +85,7 @@ followed by the installation of the latest release with ``sudo zypper install gr
 
 Make sure to follow the instructions in your ``/etc/graylog/server/server.conf`` and add ``password_secret`` and ``root_password_sha2``. These settings are mandatory and without them, Graylog will not start!
 
-You need to use the following command to create your ``password_secret``::
+You can use the following command to create your ``password_secret``::
 
     cat /dev/urandom | base64 | cut -c1-96 | head -1
 
