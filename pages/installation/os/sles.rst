@@ -73,7 +73,7 @@ After you have modified the configuration, you can start Elasticsearch::
 Graylog
 -------
 
-First install the Graylog GPG Key with ``rpm --import https://raw.githubusercontent.com/Graylog2/fpm-recipes/master/recipes/graylog-repository/files/rpm/RPM-GPG-KEY-graylog`` then add the repository file ``/etc/zypp/repos.d/graylog.repo`` with the following content::
+First install the Graylog GPG Key with ``rpm --import https://git.io/vdPub`` then add the repository file ``/etc/zypp/repos.d/graylog.repo`` with the following content::
 
     [graylog]
     name=graylog
