@@ -116,6 +116,8 @@ Here is a comparison between the available compression algorithms with test data
 .. note:: Results with your data may vary! Make sure to test the different compression types
           to find the one that is best for your data.
 
+.. warning:: The current implementation of LZ4 is not compatible with the LZ4 CLI tools, thus decompressing the LZ4 archives outside of Graylog is currently not possible.
+
 .. _archive-config-option-restore-batch-size:
 
 Restore Index Batch Size
