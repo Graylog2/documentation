@@ -215,6 +215,10 @@ other plugins in the marketplace.
       - Create a period with a specified number of millis.
     * - `period`_
       - Parses an ISO 8601 period from the specified string.
+    * - `lookup`_
+      - Looks a multi value up in the named lookup table.
+    * - `lookup_value`_
+      - Looks a single value up in the named lookup table.
 
 to_bool
 -------
@@ -706,3 +710,15 @@ period
 ``period(value: string)``
 
 Parses an ISO 8601 period from ``value``.
+
+lookup
+------
+``lookup(lookup_table: string, key: any, [default: any])``
+
+Looks a multi value up in the named lookup table.
+
+lookup_value
+------------
+``lookup_value(lookup_table: string, key: any, [default: any])``
+
+Looks a single value up in the named lookup table.
