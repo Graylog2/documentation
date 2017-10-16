@@ -5,16 +5,16 @@ Functions
 Overview
 ========
 
-Functions are the means of how to interact with the messages Graylog processes.
+Functions are the means of interacting with the messages Graylog processes.
 
-They are written in Java and are pluggable, allowing extending the capabilities of Graylog in a simple manner.
+Functions are written in Java and are pluggable, allowing Graylog's pipeline processing capabilities to be easily extended.
 
-Conceptually a function receives parameters, the current message context and returns a value. The data types of its
-return value and parameters determines where in the rules it can be used. Graylog makes sure the rules are sound
+Conceptually a function receives parameters, the current message context, and (potentially) returns a value. The data types of its
+return value and parameters determine where it can be used in a rule. Graylog ensures the rules are sound
 from a data type perspective.
 
-A function's parameters can be passed as named pairs or by position, as long as optional parameters are declared as coming
-last. The function's documentation below indicates which parameters are optional.
+A function's parameters can either be passed as named pairs or position, as long as optional parameters are declared as coming
+last. The functions' documentation below indicates which parameters are optional by wrapping them in square brackets.
 
 Let's look at a small example to illustrate these properties::
 
@@ -27,22 +27,21 @@ Let's look at a small example to illustrate these properties::
         set_field("transaction_year", new_date.year);
     end
 
-In this example, we check if the current message contains the field ``some_date`` and then, after converting it to a string,
+In this example, we check if the current message contains the field ``transaction_date`` and then, after converting it to a string,
 try to parse it according to the format string ``yyyy-MM-dd HH:mm:ss``, so for example the string ``2016-03-05 14:45:02``
-would match. Parse date returns a ``DateTime`` object from the Java Joda-Time library, allowing easier access to the date's
+would match. The ``parse_date`` function returns a ``DateTime`` object from the Java Joda-Time library, allowing easier access to the date's
 components.
 
-We then add the transaction's year as a new field to the message.
+We then add the transaction's year as a new field, ``transaction_year`` to the message.
 
-You'll note that we haven't said in which time zone the timestamp is in, but still Graylog had to pick one (Graylog never
-relies on the local time of your server as that makes it nearly impossible to figure out why date handling came up with its
-result).
+You'll note that we didn't specify a time zone for our date, but Graylog still had to pick one. Graylog never
+relies on the local time of your server, as that makes it nearly impossible to figure out why date handling came up with its result.
 
-The reason Graylog knows which timezone to pick is because ``parse_date`` actually takes four parameters rather than
+The reason Graylog knows which timezone to use is because ``parse_date`` actually takes four parameters, rather than
 the two we've given it in this example. The other two parameters are a ``String`` called ``timezone`` (default value: ``"UTC"``)
 and a ``String`` called ``locale`` (default value: the default locale of the system running Graylog) which both are optional.
 
-Let's assume we have another field in the message, called ``transaction_timezone``. It is send by the application and
+Let's assume we have another message field called ``transaction_timezone``, which is sent by the application and
 contains the time zone ID the transaction was done in (hopefully no application in the world sends its data like this, though)::
 
     rule "function howto"
@@ -58,10 +57,10 @@ contains the time zone ID the transaction was done in (hopefully no application 
         set_field("transaction_year", new_date.year);
     end
 
-Now, if the time zone is specified in the other field, we pass it to ``parse_date``.
+Now we're passing the ``parse_date`` function its ``timezone`` parameter the string value of the message's ``transaction_timezone`` field.
 
 In this case we only have a single optional parameter, which makes it easy to simply omit it from the end of the function
-call. However, if there are multiple ones, or if there are many parameters and it gets difficult to keep track of which
+call. However, if there are multiple optional parameters, or if there are so many parameters that it gets difficult to keep track of which
 positions correspond to which parameters, you can also use the named parameter variant of function calls. In this mode
 the order of the parameters does not matter, but all required ones still need to be there.
 
@@ -80,13 +79,13 @@ In our case the alternative version of calling ``parse_date`` would look like th
         set_field("transaction_year", new_date.year);
     end
 
-All parameters in Graylog's processing functions are named, please refer to the function index.
+All parameters in Graylog's processing functions, listed below, are named.
 
 Function Index
 ==============
 
-The following list describes the built in functions that ship with Graylog. Additional third party functions are available via
-other plugins in the marketplace.
+The following list describes the built-in functions that ship with Graylog. Additional third party functions are available via
+plugins in the marketplace.
 
 
 .. list-table:: Built-in Functions
@@ -215,6 +214,10 @@ other plugins in the marketplace.
       - Create a period with a specified number of millis.
     * - `period`_
       - Parses an ISO 8601 period from the specified string.
+    * - `lookup`_
+      - Looks up a multi value in the named lookup table.
+    * - `lookup_value`_
+      - Looks up a single value in the named lookup table.
 
 to_bool
 -------
@@ -706,3 +709,15 @@ period
 ``period(value: string)``
 
 Parses an ISO 8601 period from ``value``.
+
+lookup
+------
+``lookup(lookup_table: string, key: any, [default: any])``
+
+Looks up a multi value in the named lookup table.
+
+lookup_value
+------------
+``lookup_value(lookup_table: string, key: any, [default: any])``
+
+Looks up a single value in the named lookup table.
