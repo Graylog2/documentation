@@ -5,16 +5,15 @@ Pipelines
 Overview
 ========
 
-Pipelines are the central concept which tie together the processing steps Graylog applies to your messages.
+Pipelines are the central concept tying together the processing steps applied to your messages.
 
-They contain rules and can be connected to streams, allowing fine grained control which processing is done on which kinds of messages.
+Pipelines contain rules and can be connected to one or more streams, enabling fine-grained control of the processing applied to messages.
 
-Because processing rules are simply conditions followed by a list of actions and do not have control flow by themselves,
-pipelines have one additional concept: stages.
+Processing rules are simply conditions followed by a list of actions, and do not have control flow by themselves.  Therefore, pipelines have one additional concept: stages.
 
 Think of stages as groups of conditions and actions which need to run in order. All stages with the same priority run
-at the same time across all connected pipelines. They provide the necessary control flow to decide whether or not to run the
-rest of a pipeline.
+at the same time across all connected pipelines. Stages provide the necessary control flow to decide whether or not to run the
+remaining stages in a pipeline.
 
 Pipeline structure
 ==================
@@ -30,25 +29,27 @@ Internally pipelines are represented as code. Let's have a look at a simple exam
       rule "anonymize source IPs";
     end
 
-This code snippet declares a new pipeline with the name ``My new pipeline`` which declares two stages.
+This code snippet declares a new pipeline named ``My new pipeline``, which has two stages.
 
-Stages are run in the order of their given *priority* and aren't otherwise named. Stage priorities can be any integer, even negative ones.
-This allows flexible ordering to run certain rules before or after others, even without modifying existing pipelines, which can
-come in handy when dealing with changing data formats.
+Stages are ran in the order of their given *priority*, and aren't otherwise named. Stage priorities can be any integer, positive or negative, you prefer.
+In our example the first stage has a priority of 1 and the second stage a priority of 2, however -99 and 42 could be used instead.
+Ordering based upon stage priority gives you the ability to run certain rules before or after others, which might exist in other connected pipelines, without modifying those other connected pipelines.
+This is particularly handy when dealing with changing data formats.
 
-For example, if there was a second pipeline declared, which contained a stage with the priority 0, that would run before either
-of the ones from the example. The order in which stages are declared is irrelevant, they are sorted according to their priority.
+For example, if there was a second pipeline declared with a stage assigned priority 0, that stage's rules would run before either
+of the ones from the example (priorities 1 and 2, respectively). Note that the order in which stages are declared is irrelevant, since they are sorted according to their priority.
 
-Stages then list the *rule references* they want to be executed as well as declaring whether *any or all* rules' conditions need to be satisfied to
-continue to evaluate the pipeline.
+Stages then list the *rule references* they want to be executed, as well as whether *any* or *all* of the rules' conditions need to be satisfied to
+continue running the pipeline.
 
-In our example, imagine rule *"has firewall fields"* checks for the presence of two message fields: ``src_ip`` and ``dst_ip`` but does not have
-any actions to run. Then for messages that do not have both fields, the condition would be false, and the pipeline would be aborted after stage 1,
-because the stage requires that *all* rules need to be satisfied. Stage 2 would not begin to run in this case. ``match either`` acts as an ``OR``
-operator, only requiring a single (or more) rules to match. Actions are still being run for all matching rules, even if the pipeline stops
-after the stage.
+In our example, imagine rule *"has firewall fields"* checks for the presence of message fields ``src_ip`` and ``dst_ip``, but does not have
+any actions to run. For a message without both fields the rule's condition would evaluate to ``false`` and the pipeline would abort after stage 1,
+as the stage requires *all* rules be satisfied (``match all``). With the pipeline aborted, stage 2 would not run. 
 
-Rules are referenced by their names and can thus be shared among many different pipelines. The intention is to create building blocks which
-then make it easier to process the data specific to your organization or use case.
+``match either`` acts as an ``OR`` operator, only requiring a single rule's condition evaluate to ``true`` in order to continue pipeline processing.
+Note that actions are still ran for all matching rules in the stage, even if it is the final stage in the pipeline.
+
+Rules are referenced by their names, and can therefore be shared among many different pipelines. The intention is to enable creation of reusable building blocks,
+making it easier to process the data specific to your organization or use case.
 
 Read more about :doc:`rules` in the next section.
