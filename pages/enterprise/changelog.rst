@@ -2,6 +2,16 @@
 Changelog
 *********
 
+Graylog Enterprise 2.3.2
+========================
+
+Released: 2017-10-19
+
+Plugin: Archive
+---------------
+
+* Fix archive creation for indices with lots of shards.
+
 Graylog Enterprise 2.3.1
 ========================
 

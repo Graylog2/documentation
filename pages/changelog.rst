@@ -2,6 +2,19 @@
 Changelog
 *********
 
+Graylog 2.3.2
+=============
+
+Released: 2017-10-19
+
+https://www.graylog.org/blog/102-announcing-graylog-v2-3-2
+
+**Core**
+
+* Fix permission handling for editing/deleting roles. `Graylog2/graylog2-server#4270 <https://github.com/Graylog2/graylog2-server/issues/4270>`_ `Graylog2/graylog2-server#4254 <https://github.com/Graylog2/graylog2-server/issues/4254>`_
+* Fix CSV export when using lots of Elasticsearch index shards. `Graylog2/graylog2-server#4269 <https://github.com/Graylog2/graylog2-server/issues/4269>`_ `Graylog2/graylog2-server#4190 <https://github.com/Graylog2/graylog2-server/issues/4190>`_
+* Fix infinite redirect loop when accessing non-permitted resources/entities. `Graylog2/graylog2-server#4139 <https://github.com/Graylog2/graylog2-server/issues/4139>`_ `Graylog2/graylog2-server#4117 <https://github.com/Graylog2/graylog2-server/issues/4117>`_
+
 Graylog 2.3.1
 =============
 
