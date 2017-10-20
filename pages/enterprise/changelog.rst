@@ -2,6 +2,16 @@
 Changelog
 *********
 
+Graylog Enterprise 2.4.0-beta.1
+===============================
+
+Released: 2017-10-20
+
+Plugin: Archive
+---------------
+
+* Add support for Zstandard compression codec.
+
 Graylog Enterprise 2.3.2
 ========================
 
