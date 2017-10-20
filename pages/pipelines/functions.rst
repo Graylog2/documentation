@@ -162,6 +162,8 @@ plugins in the marketplace.
       - Checks whether the current message was received by the given input.
     * - `route_to_stream`_
       - Assigns the current message to the specified stream.
+    * - `remove_from_stream`_
+      - Removes the current message from the specified stream.
     * - `create_message`_
       - **Currently incomplete** Creates a new message which will be evaluated by the entire processing pipeline.
     * - `clone_message`_
@@ -468,7 +470,7 @@ specifying its ``name`` (the comparison ignores the case) or the ``id``.
 
 route_to_stream
 ---------------
-``route_to_stream(id: string | name: string, [message: Message])``
+``route_to_stream(id: string | name: string, [message: Message], [remove_from_default: boolean])``
 
 Routes the ``message`` to the given stream. The stream can be looked up by either
 specifying its ``name`` or the ``id``.
@@ -477,6 +479,21 @@ If ``message`` is omitted, this function uses the currently processed message.
 
 This causes the message to be evaluated on the pipelines connected to that stream, unless the stream has already been
 processed for this message.
+
+If ``remove_from_default`` is ``true``, the message is also removed from the default stream "All messages".
+
+remove_from_stream
+------------------
+``remove_from_stream(id: string | name: string, [message: Message])``
+
+Removes the ``message`` from the given stream. The stream can be looked up by either
+specifying its ``name`` or the ``id``.
+
+If ``message`` is omitted, this function uses the currently processed message.
+
+If the message ends up being on no stream anymore, it is implicitly routed back to the default stream "All messages".
+This ensures that you the message is not accidentally lost due to complex stream routing rules.
+If you want to discard the message entirely, use the ``drop_message`` function.
 
 create_message
 --------------
