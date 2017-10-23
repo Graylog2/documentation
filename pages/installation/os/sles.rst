@@ -55,6 +55,10 @@ First install the Elastic GPG key with ``rpm --import https://artifacts.elastic.
 
 followed by the installation of the latest release with ``sudo zypper install elasticsearch``.
 
+Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/5.4/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` additionally you need to uncomment (remove the # as first character) the line::
+
+    cluster.name: graylog
+
 In order to automatically start Elasticsearch on system boot, you have to activate the Elasticsearch service by running the following commands::
 
     $ sudo chkconfig elasticsearch on
