@@ -31,7 +31,7 @@ Installing MongoDB on CentOS should follow `the tutorial for RHEL and CentOS <ht
 
 After that, install the latest release of MongoDB with ``sudo yum install mongodb-org``.
 
-Additionally, run these last steps to start MongoDB during the operating system's boot and start it right away::
+In order to automatically start MongoDB on system boot, you have to activate the MongoDB service by running the following commands::
 
   $ sudo chkconfig --add mongod
   $ sudo systemctl daemon-reload
@@ -62,6 +62,9 @@ Make sure to modify the `Elasticsearch configuration file <https://www.elastic.c
     cluster.name: graylog
 
 After you have modified the configuration, you can start Elasticsearch::
+
+
+In order to automatically start Elasticsearch on system boot, you have to activate the Elasticsearch service by running the following commands::
 
     $ sudo chkconfig --add elasticsearch
     $ sudo systemctl daemon-reload
@@ -94,7 +97,7 @@ The last step is to enable Graylog during the operating system's startup::
   $ sudo systemctl enable graylog-server.service
   $ sudo systemctl start graylog-server.service
 
-The next step is to :ref:`ingest messages <ingest_data>` into your Graylog and extract the messages with :ref:`extractors <extractors>` or use :ref:`the Pipelines <pipelinestoc>` to work with the messages.
+The next step is to :ref:`ingest messages <ingest_data>` into your new Graylog Cluster and extract the messages with :ref:`extractors <extractors>` or use :ref:`the Pipelines <pipelinestoc>` to work with the messages.
 
 .. _selinux:
 
@@ -127,10 +130,10 @@ Further reading
 * https://www.digitalocean.com/community/tutorials/an-introduction-to-selinux-on-centos-7-part-1-basic-concepts
 
 
-Multiple Server Setup
+Cluster Setup
 ---------------------
 
-If you plan to have multiple server taking care of different roles in your cluster :ref:`like we have in this big production setup <big_production_setup>` you need to modify only a few settings. This is covered in our :ref:`Multi-node Setup guide<configure_multinode>`. The :ref:`default file location guide <default_file_location>` will give you the file you need to modify in your setup.
+If you plan to have multiple servers assuming different roles in your cluster :ref:`like we have in this big production setup <big_production_setup>` you need to modify only a few settings. This is covered in our :ref:`Multi-node Setup guide<configure_multinode>`. The :ref:`default file location guide <default_file_location>` lists the locations of the files you need to modify.
 
 
 Feedback
