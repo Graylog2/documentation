@@ -10,36 +10,32 @@ This guide describes the fastest way to install Graylog on SLES 12 SP3. All link
 Prerequisites
 -------------
 
-The following Patterns are use as a minimal server setup::
+he following patterns are required for a minimal setup (see `SLES 12 SP3 Deployment Guide <https://www.suse.com/documentation/sles-12/singlehtml/book_sle_deployment/book_sle_deployment.html#sec.i.yast2.proposal.sofware>`_)::
 
   - Base System
   - Minimal System (Appliances)
-  - Yast configuration packages
+  - YaST configuration packages
 
-.. warning:: This Guide makes the assumption that the firewall is disabled and communication is possible to the outside world.
+.. warning:: This Guide assumes that the firewall is disabled and communication is possible to the outside world.
 
-Taking a minimal server setup as base will need this additional packages::
+Assuming a minimal setup, you will need to install these additional packages::
 
   $ sudo zypper install java-1_8_0-openjdk
-
 
 MongoDB
 -------
 
-Installing MongoDB on SLES should follow `the tutorial for SLES <https://docs.mongodb.com/v3.4/tutorial/install-mongodb-on-suse/>`_ from the MongoDB documentation. Add the GPG Key and the Repository before you install MongoDB::
+Installing MongoDB on SLES should follow `the tutorial for SLES <https://docs.mongodb.com/v3.4/tutorial/install-mongodb-on-suse/>`_ from the MongoDB documentation. Add the GPG key and the repository before installing MongoDB::
 
   $ sudo rpm --import https://www.mongodb.org/static/pgp/server-3.4.asc
   $ sudo zypper addrepo --gpgcheck "https://repo.mongodb.org/zypper/suse/12/mongodb-org/3.4/x86_64/" mongodb
   $ sudo zypper -n install mongodb-org
 
-
-
-Additionally, run these last steps to start MongoDB during the operating system's boot and start it right away::
+In order to automatically start MongoDB on system boot, you have to activate the MongoDB service by running the following commands::
 
   $ sudo chkconfig mongod on
   $ sudo systemctl daemon-reload
   $ sudo systemctl restart mongod.service
-
 
 Elasticsearch
 -------------
@@ -59,16 +55,11 @@ First install the Elastic GPG key with ``rpm --import https://artifacts.elastic.
 
 followed by the installation of the latest release with ``sudo zypper install elasticsearch``.
 
-Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` additionally you need to uncomment (remove the # as first character) the line::
-
-    cluster.name: graylog
-
-After you have modified the configuration, you can start Elasticsearch::
+In order to automatically start Elasticsearch on system boot, you have to activate the Elasticsearch service by running the following commands::
 
     $ sudo chkconfig elasticsearch on
     $ sudo systemctl daemon-reload
     $ sudo systemctl restart elasticsearch.service
-
 
 Graylog
 -------
@@ -81,7 +72,7 @@ First install the Graylog GPG Key with ``rpm --import https://git.io/vdPub`` the
     gpgcheck=1
     gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-graylog
 
-followed by the installation of the latest release with ``sudo zypper install graylog-server``.
+After that, install the latest release with ``sudo zypper install graylog-server``.
 
 Make sure to follow the instructions in your ``/etc/graylog/server/server.conf`` and add ``password_secret`` and ``root_password_sha2``. These settings are mandatory and without them, Graylog will not start!
 
@@ -103,15 +94,12 @@ The last step is to enable Graylog during the operating system's startup::
   $ sudo systemctl daemon-reload
   $ sudo systemctl start graylog-server.service
 
-The next step is to :ref:`ingest messages <ingest_data>` into your Graylog and extract the messages with :ref:`extractors <extractors>` or use :ref:`the Pipelines <pipelinestoc>` to work with the messages.
+The next step is to :ref:`ingest messages <ingest_data>` into your new Graylog Cluster and extract the messages with :ref:`extractors <extractors>` or use :ref:`the Pipelines <pipelinestoc>` to work with the messages.
 
-
-
-Multiple Server Setup
+Cluster Setup
 ---------------------
 
-If you plan to have multiple server taking care of different roles in your cluster :ref:`like we have in this big production setup <big_production_setup>` you need to modify only a few settings. This is covered in our :ref:`Multi-node Setup guide<configure_multinode>`. The :ref:`default file location guide <default_file_location>` will give you the file you need to modify in your setup.
-
+If you plan to have multiple servers assuming different roles in your cluster :ref:`like we have in this big production setup <big_production_setup>` you need to modify only a few settings. This is covered in our :ref:`Multi-node Setup guide<configure_multinode>`. The :ref:`default file location guide <default_file_location>` lists the locations of the files you need to modify.
 
 Feedback
 --------
