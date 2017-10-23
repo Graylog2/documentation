@@ -61,9 +61,6 @@ Make sure to modify the `Elasticsearch configuration file <https://www.elastic.c
 
     cluster.name: graylog
 
-After you have modified the configuration, you can start Elasticsearch::
-
-
 In order to automatically start Elasticsearch on system boot, you have to activate the Elasticsearch service by running the following commands::
 
     $ sudo chkconfig --add elasticsearch
