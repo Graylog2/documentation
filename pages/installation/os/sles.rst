@@ -10,7 +10,7 @@ This guide describes the fastest way to install Graylog on SLES 12 SP3. All link
 Prerequisites
 -------------
 
-he following patterns are required for a minimal setup (see `SLES 12 SP3 Deployment Guide <https://www.suse.com/documentation/sles-12/singlehtml/book_sle_deployment/book_sle_deployment.html#sec.i.yast2.proposal.sofware>`_)::
+The following patterns are required for a minimal setup (see `SLES 12 SP3 Deployment Guide <https://www.suse.com/documentation/sles-12/singlehtml/book_sle_deployment/book_sle_deployment.html#sec.i.yast2.proposal.sofware>`_)::
 
   - Base System
   - Minimal System (Appliances)
@@ -18,7 +18,7 @@ he following patterns are required for a minimal setup (see `SLES 12 SP3 Deploym
 
 .. warning:: This Guide assumes that the firewall is disabled and communication is possible to the outside world.
 
-Assuming a minimal setup, you will need to install these additional packages::
+Assuming a minimal setup, you have to install the Java runtime environment::
 
   $ sudo zypper install java-1_8_0-openjdk
 
