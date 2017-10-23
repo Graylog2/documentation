@@ -2,13 +2,13 @@
 server.conf
 ***********
 
-The file ``server.conf`` is the Graylog configuration file.   
+The file ``server.conf`` is the Graylog configuration file.
 
-.. note:: Check :ref:`default_file_location` to locate it in you installation.  
+.. note:: Check :ref:`default_file_location` to locate it in you installation.
 
 It has to use ISO 8859-1/Latin-1 character encoding.
 Characters that cannot be directly represented in this encoding can be written using Unicode escapes as defined in `Java SE Specifications <https://docs.oracle.com/javase/specs/jls/se8/html/jls-3.html#jls-3.3>`_, using the \u prefix.
-For example, \u002c.  
+For example, \u002c.
 
 * Entries are generally expected to be a single line of the form, one of the following:
     * ``propertyName=propertyValue``
@@ -19,7 +19,7 @@ For example, \u002c.
     * ``name = Stephen``
 * White space at the beginning of the line is also ignored.
 * Lines that start with the comment characters ``!`` or ``#`` are ignored. Blank lines are also ignored.
-* The property value is generally terminated by the end of the line. White space following the property value is not ignored, and is treated as part of the property value.  
+* The property value is generally terminated by the end of the line. White space following the property value is not ignored, and is treated as part of the property value.
 
 * A property value can span several lines if each line is terminated by a backslash (``\``) character. For example::
 
@@ -29,7 +29,7 @@ For example, \u002c.
              Los Angeles
 
   This is equivalent to ``targetCities=Detroit,Chicago,Los Angeles`` (white space at the beginning of lines is ignored).
- 
+
 * The characters newline, carriage return, and tab can be inserted with characters ``\n``, ``\r``, and ``\t``, respectively.
 * The backslash character must be escaped as a double backslash. For example::
 
@@ -48,13 +48,13 @@ General
     * The auto-generated node ID will be stored in this file and read after restarts. It is a good idea to use an absolute file path here if you are starting Graylog server from init scripts or similar.
 * ``password_secret = <secret>``
     * You MUST set a secret that is used for password encryption and salting. The server will refuse to start if it's not set. Use at least 64 characters.  If you run multiple ``graylog-server`` nodes, make sure you use the same ``password_secret`` for all of them!
-    
+
     .. note:: Generate a secret with for example ``pwgen -N 1 -s 96``
-* ``root_username = admin`` 
+* ``root_username = admin``
     * The default root user is named **admin**.
 * ``root_password_sha2 = <SHA2>``
-    * A SHA2 hash of a password you will use for your initial login. Set this to a SHA2 hash generated with ``echo -n yourpassword | shasum -a 256`` and you will be able to log in to the web interface with username **admin** and password **yourpassword**.  
-    
+    * A SHA2 hash of a password you will use for your initial login. Set this to a SHA2 hash generated with ``echo -n yourpassword | shasum -a 256`` and you will be able to log in to the web interface with username **admin** and password **yourpassword**.
+
     .. caution:: You MUST specify a hash password for the root user (which you only need to initially set up the system and in case you lose connectivity to your authentication backend). This password cannot be changed using the API or via the web interface. If you need to change it, modify it in this file.
 * ``root_email = ""``
     * The email address of the root user. Default is empty.
@@ -76,7 +76,7 @@ General
 * ``rest_enable_gzip = false``
     * Enable GZIP support for REST API. This compresses API responses and therefore helps to reduce overall round trip times. This is enabled by default.
 * ``rest_enable_tls = true``
-    * Enable HTTPS support for the REST API. This secures the communication with the REST API with TLS to prevent request forgery and eavesdropping. This is disabled by default. 
+    * Enable HTTPS support for the REST API. This secures the communication with the REST API with TLS to prevent request forgery and eavesdropping. This is disabled by default.
 * ``rest_tls_cert_file = /path/to/graylog.crt``
     * The X.509 certificate chain file in PEM format to use for securing the REST API.
 * ``rest_tls_key_file = /path/to/graylog.key``
@@ -152,12 +152,12 @@ Elasticsearch
 * ``elasticsearch_discovery_enabled = false``
     * Enable automatic Elasticsearch node discovery through Nodes Info, see `Elasticsearch Reference » Cluster APIs » Nodes Info <https://www.elastic.co/guide/en/elasticsearch/reference/5.4/cluster-nodes-info.html>`_.
     * Default: ``false``
-    
+
     .. warning:: Automatic node discovery does not work if Elasticsearch requires authentication, e. g. with Shield.
-    
+
     .. warning:: This setting must be false on AWS Elasticsearch Clusters (the hosted ones) and should be used carefully. In case of trouble with connections to ES this should be the first option to be disabled. See :ref:`automatic_node_discovery` for more details.
-    
-    
+
+
 * ``elasticsearch_discovery_filter = rack:42``
     * Filter for including/excluding Elasticsearch nodes in discovery according to their custom attributes, see `Elastic Search Reference » Cluster APIs » Node Specification <https://www.elastic.co/guide/en/elasticsearch/reference/5.4/cluster.html#cluster-nodes>`_.
     * Default: empty
@@ -168,7 +168,7 @@ Elasticsearch
     * Enable payload compression for Elasticsearch requests.
     * Default: false
 
-Rotation 
+Rotation
 ^^^^^^^^
 
 .. attention:: The following settings identified with *!* in this section have been moved to the database in Graylog 2.0. When you upgrade, make sure to set these to your previous 1.x settings so they will be migrated to the database!
@@ -225,11 +225,11 @@ Rotation
     * Prefix for all Elasticsearch indices and index aliases managed by Graylog.
 * ``elasticsearch_template_name = graylog-internal`` *!!*
     * Name of the Elasticsearch index template used by Graylog to apply the mandatory index mapping.
-    * Default: graylog-internal    
+    * Default: graylog-internal
 * ``elasticsearch_analyzer = standard`` *!!*
     * Analyzer (tokenizer) to use for message and full_message field. The "standard" filter usually is a good idea.
     * All supported analyzers are: standard, simple, whitespace, stop, keyword, pattern, language, snowball, custom
-    * Elasticsearch documentation: https://www.elastic.co/guide/en/elasticsearch/reference/2.3/analysis.html
+    * Elasticsearch documentation: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/analysis.html
     * Note that this setting only takes effect on newly created indices.
 * ``disable_index_optimization = false`` *!!*
     * Disable the optimization of Elasticsearch indices after index cycling. This may take some load from Elasticsearch on heavily used systems with large indices, but it will decrease search performance. The default is to optimize cycled indices.
@@ -351,7 +351,7 @@ MongoDB
     * Number of threads allowed to be blocked by MongoDB connections multiplier. Default: 5
     * If ``mongodb_max_connections`` is 100, and ``mongodb_threads_allowed_to_block_multiplier`` is 5, then 500 threads can block. More than that and an exception will be thrown.
     * http://api.mongodb.com/java/current/com/mongodb/MongoOptions.html#threadsAllowedToBlockForConnectionMultiplier
-    
+
 Email
 ^^^^^
 
@@ -392,7 +392,7 @@ Others
 
 * ``rules_file = /etc/graylog/server/rules.drl``
     * Drools Rule File (Use to rewrite incoming log messages)
-    * See: http://docs.graylog.org/en/2.1/pages/drools.html
+    * See: http://docs.graylog.org/en/2.4/pages/drools.html
 * ``gc_warning_threshold = 1s``
       * The threshold of the garbage collection runs. If GC runs take longer than this threshold, a system notification will be generated to warn the administrator about possible problems with the system. Default is 1 second.
 * ``ldap_connection_timeout = 2000``
