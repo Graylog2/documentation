@@ -2,6 +2,22 @@
 Changelog
 *********
 
+Graylog 2.4.0-beta.2
+====================
+
+Released: 2017-11-07
+
+**Core**
+
+* Improve UI elements for field analyzers. `Graylog2/graylog2-server#4280 <https://github.com/Graylog2/graylog2-server/issues/4280>`_ `Graylog2/graylog2-server#4230 <https://github.com/Graylog2/graylog2-server/issues/4230>`_
+* Add upgrade notes for new plugins. `Graylog2/graylog2-server#4187 <https://github.com/Graylog2/graylog2-server/issues/4187>`_
+* Fix query button in QuickValues widget. `Graylog2/graylog2-server#4216 <https://github.com/Graylog2/graylog2-server/issues/4216>`_ `Graylog2/graylog2-server#4278 <https://github.com/Graylog2/graylog2-server/issues/4278>`_
+* Improve QuickValues histogram data. `Graylog2/graylog2-server#4312 <https://github.com/Graylog2/graylog2-server/issues/4312>`_ `Graylog2/graylog2-server#4309 <https://github.com/Graylog2/graylog2-server/issues/4309>`_
+* Add loading indicator when reloading field chart data. `Graylog2/graylog2-server#4319 <https://github.com/Graylog2/graylog2-server/issues/4319>`_
+* Add feedback on create widget modal. `Graylog2/graylog2-server#4320 <https://github.com/Graylog2/graylog2-server/issues/4320>`_ `Graylog2/graylog2-server#4318 <https://github.com/Graylog2/graylog2-server/issues/4318>`_
+* Improve robustness of QuickValues widget with stacked fields. `Graylog2/graylog2-server#4322 <https://github.com/Graylog2/graylog2-server/issues/4322>`_ `Graylog2/graylog2-server#4289 <https://github.com/Graylog2/graylog2-server/issues/4289>`_ `Graylog2/graylog2-server#4287 <https://github.com/Graylog2/graylog2-server/issues/4287>`_ `Graylog2/graylog2-server#4082 <https://github.com/Graylog2/graylog2-server/issues/4082>`_
+
+
 Graylog 2.4.0-beta.1
 ====================
 
