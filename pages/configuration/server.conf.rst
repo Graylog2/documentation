@@ -271,10 +271,14 @@ Rotation
     * The number of parallel running processors.
     * Raise this number if your buffers are filling up.
 
-
+  .. note:: The following settings (``outputbuffer_processor_*``) configure the thread pools backing each output buffer processor. See `ThreadPoolExecutor <https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ThreadPoolExecutor.html>`_ for technical details.
 * ``outputbuffer_processor_keep_alive_time = 5000``
+     * When the number of threads is greater than the core (see ``outputbuffer_processor_threads_core_pool_size``), this is the maximum time in milliseconds that excess idle threads will wait for new tasks before terminating.
 * ``outputbuffer_processor_threads_core_pool_size = 3``
+    * The number of threads to keep in the pool, even if they are idle
 * ``outputbuffer_processor_threads_max_pool_size = 30``
+    * The maximum number of threads to allow in the pool
+
 * ``udp_recvbuffer_sizes = 1048576``
     * UDP receive buffer size for all message inputs (e. g. SyslogUDPInput).
 
