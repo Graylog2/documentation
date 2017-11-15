@@ -229,6 +229,12 @@ Print any passed value as string in the Graylog log.
 
 Note that the debug message will only appear in the log of the Graylog node that was processing the message you are trying to debug.
 
+Example::
+
+    // Print: "INFO : org.graylog.plugins.pipelineprocessor.ast.functions.Function - PIPELINE DEBUG: Dropped message from <source>"
+    let debug_message = concat("Dropped message from ", to_string($message.source));
+    debug(debug_message);
+
 to_bool
 -------
 ``to_bool(value: any)``
