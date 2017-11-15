@@ -94,6 +94,8 @@ plugins in the marketplace.
 
     * - Name
       - Description
+    * - `debug`_
+      - Print the passed value as string in the Graylog log.
     * - `to_bool`_
       - Converts the single parameter to a boolean value using its string value.
     * - `to_double`_
@@ -220,6 +222,20 @@ plugins in the marketplace.
       - Looks up a multi value in the named lookup table.
     * - `lookup_value`_
       - Looks up a single value in the named lookup table.
+
+debug
+-----
+``debug(value: any)``
+
+Print any passed value as string in the Graylog log.
+
+Note that the debug message will only appear in the log of the Graylog node that was processing the message you are trying to debug.
+
+Example::
+
+    // Print: "INFO : org.graylog.plugins.pipelineprocessor.ast.functions.Function - PIPELINE DEBUG: Dropped message from <source>"
+    let debug_message = concat("Dropped message from ", to_string($message.source));
+    debug(debug_message);
 
 to_bool
 -------
