@@ -155,6 +155,23 @@ To be able to use a privileged port, you can use `authbind <https://en.wikipedia
 The input needs to be started on port 1514 in this case and will be made available on port 514 to the outside. The clients can then send data to port 514.
 
 
+What does "Uncommited messages deleted from journal" means?
+-----------------------------------------------------------
+Some messages were deleted from the Graylog journal before they could be written to Elasticsearch. Please
+verify that your Elasticsearch cluster is healthy and fast enough. You may also want to review your Graylog
+journal settings and set a higher limit.
+
+Most times Graylog is not able to connect to Elasticsearch or the Elasticsearch Cluster is not able to process the ingested messages in time. Add more resources to Elasticsearch or adjust :ref:`the output settings <output_batch_size>` from Graylog to Elasticsearch.
+
+
+What does "Journal utilization is too high" means?
+--------------------------------------------------
+Journal utilization is too high and may go over the limit soon. Please verify that your Elasticsearch cluster
+is healthy and fast enough. You may also want to review your Graylog journal settings and set a higher limit.
+
+Most times Graylog is not able to connect to Elasticsearch or the Elasticsearch Cluster is not able to process the ingested messages in time. Add more resources to Elasticsearch or adjust :ref:`the output settings <output_batch_size>` from Graylog to Elasticsearch.
+
+
 Graylog & Integrations
 ======================
 

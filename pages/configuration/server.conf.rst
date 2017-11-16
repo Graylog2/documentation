@@ -258,6 +258,7 @@ Rotation
 * ``index_ranges_cleanup_interval = 1h``
     * Time interval for index range information cleanups. This setting defines how often stale index range information is being purged from the database.
     * Default: 1h
+.. _output_batch_size:
 * ``output_batch_size = 500``
     * Batch size for the Elasticsearch output. This is the maximum (!) number of messages the Elasticsearch output module will get at once and write to Elasticsearch in a batch call. If the configured batch size has not been reached within ``output_flush_interval`` seconds, everything that is available will be flushed at once. Remember that every output buffer processor manages its own batch and performs its own batch write calls. (``outputbuffer_processors`` variable)
 * ``output_flush_interval = 1``
