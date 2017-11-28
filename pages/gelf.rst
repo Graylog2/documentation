@@ -142,8 +142,8 @@ Sending an example message to a GELF TCP input (running on host ``graylog.exampl
     echo -n -e '{ "version": "1.1", "host": "example.org", "short_message": "A short message", "level": 5, "_some_info": "foo" }'"\0" | nc -w0 graylog.example.com 12201
 
 
-Sending GELF messages via TCP using curl
-----------------------------------------
+Sending GELF messages via HTTP using curl
+-----------------------------------------
 
 Sending an example message to a GELF HTTP input (running on ``http://graylog.example.com:12201/gelf``)::
 
