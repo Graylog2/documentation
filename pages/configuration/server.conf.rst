@@ -4,7 +4,7 @@ server.conf
 
 The file ``server.conf`` is the Graylog configuration file.   
 
-.. note:: Check :ref:`default_file_location` to locate it in you installation.  
+.. note:: Check :ref:`default_file_location` to locate it in your installation.  
 
 It has to use ISO 8859-1/Latin-1 character encoding.
 Characters that cannot be directly represented in this encoding can be written using Unicode escapes as defined in `Java SE Specifications <https://docs.oracle.com/javase/specs/jls/se8/html/jls-3.html#jls-3.3>`_, using the \u prefix.
