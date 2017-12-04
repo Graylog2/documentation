@@ -2,6 +2,35 @@
 Changelog
 *********
 
+Graylog 2.4.0-beta.3
+====================
+
+Released: 2017-12-04
+
+**Core**
+
+* Improve documentation for outputbuffer settings. `Graylog2/graylog2-server#4331 <https://github.com/Graylog2/graylog2-server/issues/4331>`_
+* Improve QuickValues stacking. `Graylog2/graylog2-server#4343 <https://github.com/Graylog2/graylog2-server/issues/4343>`_
+* Improve auth providers UI. `Graylog2/graylog2-server#4347 <https://github.com/Graylog2/graylog2-server/issues/4347>`_
+* Add pluggable global notification area to page. `Graylog2/graylog2-server#4353 <https://github.com/Graylog2/graylog2-server/issues/4353>`_ `Graylog2/graylog2-server#4389 <https://github.com/Graylog2/graylog2-server/issues/4389>`_ `Graylog2/graylog2-server#4393 <https://github.com/Graylog2/graylog2-server/issues/4393>`_
+* Fix changing the default index set from the UI. `Graylog2/graylog2-server#4377 <https://github.com/Graylog2/graylog2-server/issues/4377>`_
+* Add global traffic counter to system overview page. `Graylog2/graylog2-server#4357 <https://github.com/Graylog2/graylog2-server/issues/4357>`_
+* Remove anonymous usage-stats plugin. `Graylog2/graylog2-server#4349 <https://github.com/Graylog2/graylog2-server/issues/4349>`_
+
+**AWS Plugin**
+
+* Add "logGroup" and "logStream" attributes to flow log and raw log codecs. `Graylog2/graylog-plugin-aws#55 <https://github.com/Graylog2/graylog-plugin-aws/issues/55>`_ `Graylog2/graylog-plugin-aws#54 <https://github.com/Graylog2/graylog-plugin-aws/issues/54>`_
+
+**CEF Plugin**
+
+* Upgrade to CEF parser 0.0.1.10. `Graylog2/graylog-plugin-cef#23 <https://github.com/Graylog2/graylog-plugin-cef/issues/23>`_ `Graylog2/graylog-plugin-cef#24 <https://github.com/Graylog2/graylog-plugin-cef/issues/24>`_
+
+**Threatintel Plugin**
+
+* Fix lookup table used in ``tor_lookup()`` function. `Graylog2/graylog-plugin-threatintel#71 <https://github.com/Graylog2/graylog-plugin-threatintel/issues/71>`_
+* Fix lookup table used in ``spamhaus_lookup_ip()`` function. `Graylog2/graylog-plugin-threatintel#73 <https://github.com/Graylog2/graylog-plugin-threatintel/issues/73>`_
+
+
 Graylog 2.4.0-beta.2
 ====================
 
