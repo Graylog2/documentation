@@ -2,6 +2,13 @@
 Changelog
 *********
 
+Graylog Enterprise 2.4.0-beta.3
+===============================
+
+Released: 2017-12-04
+
+No changes since 2.4.0-beta.2.
+
 Graylog Enterprise 2.4.0-beta.2
 ===============================
 
