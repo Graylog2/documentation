@@ -19,4 +19,6 @@ Due to restrictions of how Windows handles file locking the journal will not
 work correctly.
 
 **Please note that this impacts Graylog's ability to buffer messages, so we
-strongly recommend running the Linux-based OVAs on Windows.**
+strongly recommend running Graylog on Linux. Consider a Linux virtual machine
+on a Windows host. Graylog setups on Windows are no fun and not officially
+supported.**
