@@ -37,13 +37,13 @@ Messages where the field *type* includes the exact phrase *ssh login*::
 
   type:"ssh login"
 
-Messages that do not have the field *type*::
-
-  _missing_:type
-
 Messages that have the field *type*::
 
   _exists_:type
+
+Messages that do not have the field *type*::
+
+  NOT _exists_:type
 
 By default all terms or phrases are OR connected so all messages that have at least one hit are returned. You can use
 **Boolean operators and groups** for control over this::
