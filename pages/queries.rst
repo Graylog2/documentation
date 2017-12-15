@@ -37,13 +37,15 @@ Messages where the field *type* includes the exact phrase *ssh login*::
 
   type:"ssh login"
 
-Messages that do not have the field *type*::
-
-  _missing_:type
-
 Messages that have the field *type*::
 
   _exists_:type
+
+Messages that do not have the field *type*::
+
+  NOT _exists_:type
+
+.. note:: Elasticsearch 2.x allows to use ``_missing_:type`` instead of ``NOT _exsits_:type``. This query syntax has been removed in `Elasticsearch 5.0 <https://www.elastic.co/guide/en/elasticsearch/reference/5.0/breaking_50_search_changes.html#_deprecated_queries_removed>`__.
 
 By default all terms or phrases are OR connected so all messages that have at least one hit are returned. You can use
 **Boolean operators and groups** for control over this::
