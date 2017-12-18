@@ -64,7 +64,7 @@ All packages are located at `https://packages.graylog2.org <https://packages.gra
 DEB
 ~~~
 
-Download the plugins `from the repository <https://packages.graylog2.org/debian/pool/stable/2.4/g/graylog-enterprise-plugins>`_ and transfer them to the server. Use the following command to install the plugins via dpkg.
+Download the plugins `from the deb repository <https://packages.graylog2.org/debian/pool/stable/2.4/g/graylog-enterprise-plugins>`_ and transfer them to the server. Use the following command to install the plugins via dpkg.
 
 ::
 
@@ -73,7 +73,7 @@ Download the plugins `from the repository <https://packages.graylog2.org/debian/
 RPM
 ~~~
 
-Download the plugins `from the repository <https://packages.graylog2.org/el/stable/2.4/x86_64>`_ and transfer them to the server. Use the following command to install the plugins via rpm.
+Download the plugins `from the rpm repository <https://packages.graylog2.org/el/stable/2.4/x86_64>`_ and transfer them to the server. Use the following command to install the plugins via rpm.
 
 ::
 
