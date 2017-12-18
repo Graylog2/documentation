@@ -2,6 +2,29 @@
 Changelog
 *********
 
+Graylog 2.4.0-beta.4
+====================
+
+Released: 2017-12-15
+
+**Core**
+
+* Improve HTTPJSONPath lookup table data adapter UI. `Graylog2/graylog2-server#4406 <https://github.com/Graylog2/graylog2-server/issues/4406>`_
+* Add and use ExternalLink and ExternalLinkButton components. `Graylog2/graylog2-server#4414 <https://github.com/Graylog2/graylog2-server/issues/4414>`_
+* Improve UI components when user lacks permissions. `Graylog2/graylog2-server#4416 <https://github.com/Graylog2/graylog2-server/issues/4416>`_ `Graylog2/graylog2-server#4407 <https://github.com/Graylog2/graylog2-server/issues/4407>`_
+* Fix output traffic graph on "System/Overview". `Graylog2/graylog2-server#4418 <https://github.com/Graylog2/graylog2-server/issues/4418>`_ `Graylog2/graylog2-server#4395 <https://github.com/Graylog2/graylog2-server/issues/4395>`_
+* Improve query suggestions for field existence. `Graylog2/graylog2-server#4422 <https://github.com/Graylog2/graylog2-server/issues/4422>`_ `Graylog2/graylog2-server#4362 <https://github.com/Graylog2/graylog2-server/issues/4362>`_
+* Check node-id file permissions and improve error messages. `Graylog2/graylog2-server#4417 <https://github.com/Graylog2/graylog2-server/issues/4417>`_ `Graylog2/graylog2-server#4410 <https://github.com/Graylog2/graylog2-server/issues/4410>`_
+
+**Pipeline Processor Plugin**
+
+* Fix problem with ``null`` values in the ``select_jsonpath`` function. `Graylog2/graylog-plugin-pipeline-processor#233 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/233>`_ `Graylog2/graylog-plugin-pipeline-processor#232 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/232>`_
+
+**Threatintel Plugin**
+
+* Fix several issues with OTX and Whois data adapters. `Graylog2/graylog-plugin-threatintel#75 <https://github.com/Graylog2/graylog-plugin-threatintel/issues/75>`_
+
+
 Graylog 2.4.0-beta.3
 ====================
 
