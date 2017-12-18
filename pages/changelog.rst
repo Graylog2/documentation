@@ -24,6 +24,10 @@ Released: 2017-12-15
 
 * Fix several issues with OTX and Whois data adapters. `Graylog2/graylog-plugin-threatintel#75 <https://github.com/Graylog2/graylog-plugin-threatintel/issues/75>`_
 
+**Anonymous Usage-Stats Plugin**
+
+* The plugin got removed.
+
 
 Graylog 2.4.0-beta.3
 ====================
