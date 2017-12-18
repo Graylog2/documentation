@@ -2,6 +2,16 @@
 Changelog
 *********
 
+Graylog Enterprise 2.4.0-beta.4
+===============================
+
+Released: 2017-12-15
+
+Plugin: License
+---------------
+
+* The license page now shows more details about the installed licenses.
+
 Graylog Enterprise 2.4.0-beta.3
 ===============================
 
