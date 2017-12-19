@@ -2,6 +2,21 @@
 Changelog
 *********
 
+Graylog 2.4.0-rc.1
+==================
+
+Released: 2017-12-19
+
+**Core**
+
+* Fix problem with new node-id file check that got introduced in 2.4.0-beta.4. `Graylog2/graylog2-server#4428 <https://github.com/Graylog2/graylog2-server/issues/4428>`_ # 4427
+
+**Threatintel Plugin**
+
+* Improve Whois data adapter to always use the ARIN registry for now. `Graylog2/graylog2-server#78 <https://github.com/Graylog2/graylog2-server/issues/78>`_ 76
+* Fix object comparison in Whois data adapter. `Graylog2/graylog2-server#69 <https://github.com/Graylog2/graylog2-server/issues/69>`_
+
+
 Graylog 2.4.0-beta.4
 ====================
 
