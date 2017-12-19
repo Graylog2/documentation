@@ -42,11 +42,11 @@ The following list shows the minimum required Graylog versions for the Graylog E
 Installation
 ============
 
-Since Graylog 2.4 the Graylog Enterprise Plugins can be installed the same way Graylog is installed. In most setups this will be done with the package tool provided by the distribution you are using and the online repository.
+Since Graylog 2.4 the Graylog Enterprise plugins can be installed the same way Graylog is installed. In most setups this will be done with the package tool provided by the distribution you are using and the online repository.
 
-.. note:: For previous versions of Graylog Enterprise please contact your support representive.
+.. note:: For previous versions of Graylog Enterprise please contact your Graylog account manager.
 
-Once you installed the Graylog Enterprise Plugins you need to optain a License from `the Graylog Enterprise Page <https://www.graylog.org/enterprise/>`_. 
+Once you installed the Graylog Enterprise plugins you need to obtain a license from `the Graylog Enterprise web page <https://www.graylog.org/enterprise/>`_. 
 
 Should a simple `apt-get install graylog-enterprise-plugins` or `yum install graylog-enterprise-plugins` not work for you, the following information might help you.
 
@@ -55,36 +55,36 @@ Should a simple `apt-get install graylog-enterprise-plugins` or `yum install gra
 DEB / RPM Package
 -----------------
 
-We also provide DEB and RPM packages for the enterprise plugins, that can be obtained from our repository to apply them to server that are not able to download them online.
+The default installation should be done with the system package tools. It includes the repository installation that is described in the :doc:`/pages/installation/operating_system_packages` installation guides. 
 
-All packages are located at `https://packages.graylog2.org <https://packages.graylog2.org>`_  
+When the usage of online repositorys is not possible in your environment, you can download the Graylog Enterprise plugins at `https://packages.graylog2.org <https://packages.graylog2.org>`_. 
 
 .. note:: These packages can **only** be used when you installed Graylog via the :doc:`/pages/installation/operating_system_packages`!
 
 DEB
 ~~~
 
-Download the plugins `from the deb repository <https://packages.graylog2.org/debian/pool/stable/2.4/g/graylog-enterprise-plugins>`_ and transfer them to the server. Use the following command to install the plugins via dpkg.
+The installation on distributions like Debian or Ubuntu could be done with *apt-get* as installation tool from the previous installed online repository.  
 
 ::
+  
+  $ sudo apt-get install graylog-enterprise-plugins
 
-  $ sudo dpkg -i graylog-enterprise-plugins_2.4.0-1_all.deb
 
 RPM
 ~~~
 
-Download the plugins `from the rpm repository <https://packages.graylog2.org/el/stable/2.4/x86_64>`_ and transfer them to the server. Use the following command to install the plugins via rpm.
+The installation on distributions like CentOS or RedHat could be done with *yum* as installation tool from the previous installed online repository.
 
 ::
-
-  $ sudo rpm -Uvh graylog-enterprise-plugins-2.4.0-1.noarch.rpm
-
+  
+  $ sudo yum install graylog-enterprise-plugins
 
 
 Tarball
 -------
 
-If you have done a manual installation or want to include only parts of the enterprise plugins you can get the tarball from `the Graylog Enterprise Page <https://www.graylog.org/enterprise/>`_. 
+If you have done a manual installation or want to include only parts of the enterprise plugins you can get the tarball from `the Graylog Enterprise web page <https://www.graylog.org/enterprise/>`_. 
 
 The tarball includes the enterprise plugin JAR files.
 
@@ -158,10 +158,10 @@ License Installation
 
 The Graylog Enterprise plugins require a valid license to use the additional features.
 
-Once you have `optained a license <https://www.graylog.org/enterprise/>`_
+Once you have `obtained a license <https://www.graylog.org/enterprise/>`_
 you can import it into your Graylog setup by going through the following steps.
 
-#. As an admin user, open the System/License page from the menu in the web interface.
+#. As an admin user, open the System / License page from the menu in the web interface.
 #. Click the Import new license button in the top right hand corner.
 #. Copy the license text from the confirmation email and paste it into the text field.
 #. The license should be valid and a preview of your license details should appear below the text field.
