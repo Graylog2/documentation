@@ -2,10 +2,22 @@
 Changelog
 *********
 
+Graylog 2.4.0-rc.2
+==================
+
+Released: 2017-12-20
+
+**Core**
+
+* Fixed node-id validator problem by removing the validator for now. `Graylog2/graylog2-server#4433 <https://github.com/Graylog2/graylog2-server/issues/4433>`_
+
+
 Graylog 2.4.0-rc.1
 ==================
 
 Released: 2017-12-19
+
+https://www.graylog.org/blog/105-announcing-graylog-v2-4-0-rc-1
 
 **Core**
 
@@ -78,6 +90,8 @@ Graylog 2.4.0-beta.2
 
 Released: 2017-11-07
 
+https://www.graylog.org/blog/104-announcing-graylog-v2-4-0-beta-2
+
 **Core**
 
 * Improve UI elements for field analyzers. `Graylog2/graylog2-server#4280 <https://github.com/Graylog2/graylog2-server/issues/4280>`_ `Graylog2/graylog2-server#4230 <https://github.com/Graylog2/graylog2-server/issues/4230>`_
@@ -93,6 +107,8 @@ Graylog 2.4.0-beta.1
 ====================
 
 Released: 2017-10-20
+
+https://www.graylog.org/blog/103-announcing-graylog-v2-4-0-beta-1
 
 **Core**
 
