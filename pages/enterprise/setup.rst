@@ -64,7 +64,7 @@ When the usage of online repositorys is not possible in your environment, you ca
 DEB
 ~~~
 
-The installation on distributions like Debian or Ubuntu could be done with *apt-get* as installation tool from the previous installed online repository.  
+The installation on distributions like Debian or Ubuntu can be done with *apt-get* as installation tool from the previous installed online repository.  
 
 ::
   
@@ -74,7 +74,7 @@ The installation on distributions like Debian or Ubuntu could be done with *apt-
 RPM
 ~~~
 
-The installation on distributions like CentOS or RedHat could be done with *yum* as installation tool from the previous installed online repository.
+The installation on distributions like CentOS or RedHat can be done with *yum* as installation tool from the previous installed online repository.
 
 ::
   
