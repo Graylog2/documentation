@@ -327,7 +327,7 @@ Choose the Graylog version you want to install from the `list of Omnibus package
     -------------------
     Connection refused - connect(2) for "127.0.0.1" port 4001``
 
-  Please flush and restore the ``etcd`` database like it's shown in the :ref:`restore notes <restore_etcd>`.
+  Please flush and restore the ``etcd`` database like it's shown in the :ref:`restore etcd notes <restore_etcd>`.
 
 Migrate manually from 1.x to 2.x
 ================================

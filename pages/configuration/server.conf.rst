@@ -209,7 +209,9 @@ Rotation
 
     .. warning:: Using Graylog with unsupported and untested versions of Elasticsearch may lead to data loss!
 * ``no_retention = false``
-    * Disable message retention on this node, i. e. disable Elasticsearch index rotation.
+    * Disable message retention, i. e. disable Elasticsearch index rotation.
+    
+    .. note:: If this is set to *true* Graylog will never rotate indices - whatever is selected in the Webinterface.
 
 ================================
 

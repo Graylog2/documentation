@@ -40,7 +40,7 @@ In order to automatically start MongoDB on system boot, you have to activate the
 Elasticsearch
 -------------
 
-Graylog 2.3.x can be used with Elasticsearch 5.x, please follow the installation instructions from `the Elasticsearch installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/rpm.html>`_.
+Graylog 2.4.x should be used with Elasticsearch 5.x, please follow the installation instructions from `the Elasticsearch installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/rpm.html>`_.
 
 First install the Elastic GPG key with ``rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch`` then add the repository file ``/etc/zypp/repos.d/elasticsearch.repo`` with the following contents::
 
