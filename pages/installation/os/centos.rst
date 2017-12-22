@@ -112,7 +112,7 @@ If you're using SELinux on your system, you need to take care of the following s
 - Allow using MongoDB's default port (27017/tcp): ``sudo semanage port -a -t mongod_port_t -p tcp 27017``
 
 If you run a single server environment with :ref:`NGINX or Apache proxy <configuring_webif_nginx>`, enabling the Graylog REST API is enough. All other rules are only required in a multi-node setup. 
-Having SELinux disabled during installation and enable it later, forces you to check and controll all policy that need to be present for MongoDB, Elasticsearch and Graylog.
+Having SELinux disabled during installation and enabling it later, requires you to manually check the policies for MongoDB, Elasticsearch and Graylog.
 
 .. hint:: Depending on your actual setup and configuration, you might need to add more SELinux rules to get to a running setup.
 
