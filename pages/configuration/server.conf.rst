@@ -4,7 +4,7 @@ server.conf
 
 The file ``server.conf`` is the Graylog configuration file.   
 
-.. note:: Check :ref:`default_file_location` to locate it in you installation.  
+.. note:: Check :ref:`default_file_location` to locate it in your installation.  
 
 It has to use ISO 8859-1/Latin-1 character encoding.
 Characters that cannot be directly represented in this encoding can be written using Unicode escapes as defined in `Java SE Specifications <https://docs.oracle.com/javase/specs/jls/se8/html/jls-3.html#jls-3.3>`_, using the \u prefix.
@@ -307,8 +307,11 @@ Rotation
     * For a maximum of 12 hours or 5 GB whichever happens first.
     * During normal operation the journal will be smaller.
 * ``message_journal_flush_age = 1m``
+    * This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed.
 * ``message_journal_flush_interval = 1000000``
+    * This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages.
 * ``message_journal_segment_age = 1h``
+     * This configuration controls the period of time after which Graylog will force the log to roll even if the segment file isn’t full to ensure that retention can delete or compact old data.
 * ``message_journal_segment_size = 100mb``
 
 .. attention:: When the journal is full and it keeps receiving messages, it will start dropping messages as a FIFO queue: The first dropped message will be the first inserted and so on (and not some random).
