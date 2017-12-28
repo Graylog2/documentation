@@ -61,6 +61,8 @@ Debian 7               SysV        ``sudo update-rc.d graylog-server defaults 95
 Debian 8, Ubuntu 16.06 systemd     ``sudo systemctl enable graylog-server``
 ====================== =========== ==================================================
 
+.. _operating_package_upgrade_DEB-APT:
+
 Update to latest version
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -115,6 +117,8 @@ OS                  Init System Command
 CentOS 6            SysV        ``sudo update-rc.d graylog-server defaults 95 10``
 CentOS 7            systemd     ``sudo systemctl enable graylog-server``
 =================== =========== ==================================================
+
+.. _operating_package_upgrade_rpm-yum-dnf:
 
 Update to latest version
 ^^^^^^^^^^^^^^^^^^^^^^^^
