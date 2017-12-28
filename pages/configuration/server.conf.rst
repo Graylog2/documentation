@@ -240,6 +240,8 @@ Rotation
 
 ================================
 
+.. _output_batch_size:
+
 * ``allow_leading_wildcard_searches = false``
     * Do you want to allow searches with leading wildcards? This can be extremely resource hungry and should only be enabled with care.
     * See also: :ref:`queries`
