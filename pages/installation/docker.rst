@@ -336,19 +336,6 @@ Troubleshooting
 * The ``devicemapper`` storage driver can produce problems with Graylogs disk journal on some systems.
   In this case please `pick another driver <https://docs.docker.com/engine/userguide/storagedriver/selectadriver>`__ like ``aufs`` or ``overlay``.
 
-Production readiness
-====================
-
-You can use the Graylog appliances (OVA, Docker, AWS, ...) for small production setups but please consider to harden the security of the box before.
-
- * Set another password for the default ubuntu user
- * Disable remote password logins in /etc/ssh/sshd_config and deploy proper ssh keys
- * Separate the box network-wise from the outside, otherwise Elasticsearch and MongoDB can be reached by anyone
- * add additional RAM to the appliance and raise the :ref:`Java heap space <raise_java_heap>`!
- * add additional HDD to the appliance and :ref:`extend disk space <extend_ova_disk>`.
- * add the appliance to your monitoring and metric systems.
-
-If you want to create your own customised setup take a look at our :ref:`other installation methods <installing>`.
 
 Testing a beta version
 ======================
