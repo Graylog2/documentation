@@ -248,6 +248,22 @@ The best option, apart from not sending fields with dots, is to remember to writ
 
 For example, if an incoming message contains the field ``docker.container`` stream rules use that name, whereas alert conditions need to use ``docker_container``. You will notice that the search results also use the latter name.
 
+What does "Uncommited messages deleted from journal" mean?
+-----------------------------------------------------------
+Some messages were deleted from the Graylog journal before they could be written to Elasticsearch. Please
+verify that your Elasticsearch cluster is healthy and fast enough. You may also want to review your Graylog
+journal settings and set a higher limit.
+
+This can happen when Graylog is not able to connect to Elasticsearch or the Elasticsearch Cluster is not able to process the ingested messages in time. Add more resources to Elasticsearch or adjust :ref:`the output settings <output_batch_size>` from Graylog to Elasticsearch.
+
+
+What does "Journal utilization is too high" mean?
+--------------------------------------------------
+Journal utilization is too high and may go over the limit soon. Please verify that your Elasticsearch cluster
+is healthy and fast enough. You may also want to review your Graylog journal settings and set a higher limit.
+
+This can happen when Graylog is not able to connect to Elasticsearch or the Elasticsearch Cluster is not able to process the ingested messages in time. Add more resources to Elasticsearch or adjust :ref:`the output settings <output_batch_size>` from Graylog to Elasticsearch.
+
 
 Have another troubleshooting question?
 --------------------------------------
