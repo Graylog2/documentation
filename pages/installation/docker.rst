@@ -265,8 +265,12 @@ Start all services with exposed data directories::
 Plugins
 =======
 
-In order to add plugins you can build a new image based on the existing `graylog/graylog`_ Docker image with the needed plugin included. Simply
-create a new `Dockerfile <https://docs.docker.com/engine/reference/builder/>`_ in an empty directory with the following contents::
+In order to add plugins you can build a new image based on the existing `graylog/graylog`_ Docker image with the needed plugin included or you add a volume that points to the locally downloaded plugin file.
+
+New Docker image
+----------------
+
+Simply create a new `Dockerfile <https://docs.docker.com/engine/reference/builder/>`_ in an empty directory with the following contents::
 
   FROM graylog/graylog:2.3.0-1
   RUN wget -O /usr/share/graylog/plugin/graylog-plugin-auth-sso-2.3.0.jar https://github.com/Graylog2/graylog-plugin-auth-sso/releases/download/2.3.0/graylog-plugin-auth-sso-2.3.0.jar
@@ -290,6 +294,37 @@ The ``docker-compose.yml`` file has to reference the new Docker image::
     graylog:
       image: graylog-with-sso-plugin
       # Other settings [...]
+
+Volume-mounted plugin
+---------------------
+
+Instead of building a new docker image, you can also add additional plugins by mounting them directly and individually into the ``plugin`` folder of the original Docker image. This way, you don't have to create a new docker image every time you want to add a new plugin (or remove an old one).
+
+Simply create a ``plugin`` folder, download the plugin(s) you want to install into it and mount each file as an additional volume into the docker container::
+
+  $ mkdir -p ./graylog/plugin
+  $ wget -O ./graylog/plugin/graylog-plugin-auth-sso-2.3.0.jar https://github.com/Graylog2/graylog-plugin-auth-sso/releases/download/2.3.0/graylog-plugin-auth-sso-2.3.0.jar
+
+The ``docker-compose.yml`` file has to reference the new Docker image::
+
+  version: '2'
+  services:
+    mongo:
+      image: "mongo:3"
+      # Other settings [...]
+    elasticsearch:
+      image: docker.elastic.co/elasticsearch/elasticsearch:5.5.1
+      # Other settings [...]
+    graylog:
+      image: graylog/graylog:2.3.0-1
+      # Other settings [...]
+      volumes:
+        # Mount local plugin file into Docker container
+        - ./graylog/plugin/graylog-plugin-auth-sso-2.3.0.jar:/usr/share/graylog/plugin/graylog-plugin-auth-sso-2.3.0.jar
+        
+You can add as many of these links as you wish in your ``docker-compose.yml`` file. Simply restart the container and docker will recreate the graylog container with the new volumes included::
+
+  $ docker-compose restart 
 
 Troubleshooting
 ===============
