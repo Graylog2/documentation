@@ -7,6 +7,8 @@ Graylog 2.4.0
 
 Released: 2017-12-22
 
+https://www.graylog.org/blog/106-announcing-graylog-v2-4-0
+
 No changes since 2.4.0-rc.2.
 
 Graylog 2.4.0-rc.2
