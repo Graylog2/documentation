@@ -158,7 +158,7 @@ There are a number of CLI parameters you can pass to the call in your ``graylogc
 Problems with IPv6 vs. IPv4?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If your Graylog node refuses to listen on IPv4 addresses and always chooses for example a ``rest_listen_address`` like ``:::9000``
+If your Graylog node refuses to listen on IPv4 addresses and always chooses for example a ``http_bind_address`` like ``:::9000``
 you can tell the JVM to prefer the IPv4 stack.
 
 Add the ``java.net.preferIPv4Stack`` flag in your ``graylogctl`` script or from wherever you are calling the ``graylog.jar``::

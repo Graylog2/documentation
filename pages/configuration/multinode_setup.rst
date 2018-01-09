@@ -59,7 +59,7 @@ Graylog Multi-node
 
 After the installation of Graylog, you should take care that only one Graylog node is configured to be master with the configuration setting ``is_master = true``.
 
-The URI configured in ``rest_listen_uri`` (or ``rest_transport_uri``) must be accessable for all Graylog nodes of the cluster.
+The HTTP settings configured in ``http_bind_address`` (or ``http_publish_uri``) must be accessable for all Graylog nodes of the cluster.
 
 
 Graylog to MongoDB connection
@@ -82,8 +82,6 @@ To avoid issues with the connection to the Elasticsearch cluster you should add 
 
 Graylog web interface
 ---------------------
-
-By default, the web interface can be used on every instance of Graylog which hasn't disabled it with the configuration setting ``web_enable = false``.
 
 It's possible to use a :ref:`loadbalancer <loadbalancer_integration>` in front of all Graylog servers, please refer to :ref:`configuring_webif_nginx` for more details.
 

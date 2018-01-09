@@ -6,7 +6,7 @@ Graylog REST API
 
 The functionality Graylog REST API is very comprehensive; even the Graylog web interface is exclusively using Graylog REST API to interact with the Graylog cluster.
 
-To connect to the Graylog REST API with a web browser, just add ``api-browser`` to your current ``rest_listen_uri`` setting or use the **API browser** button on the nodes overview page (*System / Nodes* in the web interface).
+To connect to the Graylog REST API with a web browser, just add ``api-browser`` to your current ``http_publish_uri`` setting or use the **API browser** button on the nodes overview page (*System / Nodes* in the web interface).
 
 For example if your Graylog REST API is listening on ``http://192.168.178.26:9000/api/``, the API browser will be available at ``http://192.168.178.26:9000/api/api-browser/``.
 
