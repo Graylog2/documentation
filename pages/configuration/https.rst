@@ -8,7 +8,7 @@ Using HTTPS
 
 We highly recommend securing your Graylog installation using SSL/TLS to make sure that no sensitive data is sent over the wire in plain text. To make this work, you need to enable the ``http_enable_tls`` setting in your Graylog server configuration.
 
-You also need to make sure that you have proper certificates in place, which are valid and trusted by the clients. Not enabling TLS for either one of them will result in a browser error about mixed content and the web interface will cease to work.
+You also need to make sure that you have proper certificates in place, which are valid and trusted by the clients.
 
 .. note:: If you're operating a single-node setup and would like to use HTTPS for the Graylog web interface and the Graylog REST API, it's possible to use :ref:`NGINX or Apache as a reverse proxy <configuring_webif_nginx>`.
 
