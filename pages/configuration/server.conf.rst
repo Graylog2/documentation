@@ -90,7 +90,7 @@ Web & REST API
 * ``http_max_header_size = 8192``
     * The maximum size of the HTTP request headers in bytes.
 * ``http_thread_pool_size = 16``
-    * The size of the thread pool used exclusively for serving the HTTP interface and REST API.
+    * The size of the thread pool used exclusively for serving the HTTP interface.
 * ``http_enable_tls = false``
     * This secures the communication with the HTTP interface with TLS to prevent request forgery and eavesdropping.
 * ``http_tls_cert_file = /path/to/graylog.crt``
