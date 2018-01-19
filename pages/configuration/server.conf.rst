@@ -62,67 +62,45 @@ General
     * The time zone setting of the root user. See this `list of valid time zones <http://www.joda.org/joda-time/timezones.html>`_. Default is UTC.
 * ``plugin_dir = plugin``
     * Set plugin directory here (relative or absolute)
-* ``rest_listen_uri = http://127.0.0.1:9000/api/``
-    * REST API listen URI. Must be reachable by other Graylog server nodes if you run a cluster.
-    * When using Graylog Collectors, this URI will be used to receive heartbeat messages and must be accessible for all collectors.
-* ``rest_transport_uri = http://192.168.1.1:9000/api/``
-    * REST API transport address. Defaults to the value of ``rest_listen_uri``. Exception: If ``rest_listen_uri`` is set to a wildcard IP address (``0.0.0.0``) the first non-loopback IPv4 system address is used.
-    * If set, this will be promoted in the cluster discovery APIs, so other nodes may try to connect on this address and it is used to generate URLs addressing entities in the REST API. (see ``rest_listen_uri``)
-    * You will need to define this, if your Graylog server is running behind a HTTP proxy that is rewriting the scheme, host name or URI.
-    * This must not contain a wildcard address (``0.0.0.0``).
-* ``rest_enable_cors = false``
-    * Enable CORS headers for REST API. This is necessary for JS-clients accessing the server directly.
-    * If these are disabled, modern browsers will not be able to retrieve resources from the server. This is enabled by default.
-* ``rest_enable_gzip = false``
-    * Enable GZIP support for REST API. This compresses API responses and therefore helps to reduce overall round trip times. This is enabled by default.
-* ``rest_enable_tls = true``
-    * Enable HTTPS support for the REST API. This secures the communication with the REST API with TLS to prevent request forgery and eavesdropping. This is disabled by default.
-* ``rest_tls_cert_file = /path/to/graylog.crt``
-    * The X.509 certificate chain file in PEM format to use for securing the REST API.
-* ``rest_tls_key_file = /path/to/graylog.key``
-    * The PKCS#8 private key file in PEM format to use for securing the REST API.
-* ``rest_tls_key_password = secret``
-    * The password to unlock the private key used for securing the REST API.
-* ``rest_max_header_size = 8192``
+
+Web & REST API
+^^^^^^^^^^^^^^
+
+* ``http_bind_address = 127.0.0.1:9000``    
+    * The network interface used by the Graylog HTTP interface.
+    * This network interface must be accessible by all Graylog nodes in the cluster and by all clients using the Graylog web interface.
+    * If the port is omitted, Graylog will use port 9000 by default.
+* ``http_publish_uri = http://$http_bind_address/``
+    * The HTTP URI of this Graylog node which is used to communicate with the other Graylog nodes in the cluster and by all clients using the Graylog web interface.
+    * The URI will be published in the cluster discovery APIs, so that other Graylog nodes will be able to find and connect to this Graylog node.
+    * This configuration setting has to be used if this Graylog node is available on another network interface than $http_bind_address, for example if the machine has multiple network interfaces or is behind a NAT gateway.
+    * If ``http_bind_address`` contains a wildcard IPv4 address (0.0.0.0), the first non-loopback IPv4 address of this machine will be used.
+    * This configuration setting *must not* contain a wildcard address!
+* ``http_external_uri = $http_publish_uri``
+    * The public URI of Graylog which will be used by the Graylog web interface to communicate with the Graylog REST API.
+    * The external Graylog URI usually has to be specified, if Graylog is running behind a reverse proxy or load-balancer and it will be used to generate URLs addressing entities in the Graylog REST API (see $http_bind_address).
+    * When using Graylog Collector, this URI will be used to receive heartbeat messages and must be accessible for all collectors.
+    * This setting can be overriden on a per-request basis with the "X-Graylog-Server-URL" HTTP request header.
+* ``http_enable_cors = true``
+    * Enable CORS headers for HTTP interface.
+    * This is necessary for JS-clients accessing the server directly.
+    * If these are disabled, modern browsers will not be able to retrieve resources from the server.
+* ``http_enable_gzip = true``
+    * This compresses API responses and therefore helps to reduce overall round trip times.
+* ``http_max_header_size = 8192``
     * The maximum size of the HTTP request headers in bytes.
-* ``rest_max_initial_line_length = 4096``
-    * The maximal length of the initial HTTP/1.1 line in bytes.
-* ``rest_thread_pool_size = 16``
-    * The size of the thread pool used exclusively for serving the REST API.
+* ``http_thread_pool_size = 16``
+    * The size of the thread pool used exclusively for serving the HTTP interface.
+* ``http_enable_tls = false``
+    * This secures the communication with the HTTP interface with TLS to prevent request forgery and eavesdropping.
+* ``http_tls_cert_file = /path/to/graylog.crt``
+    * The X.509 certificate chain file in PEM format to use for securing the HTTP interface.
+* ``http_tls_key_file = /path/to/graylog.key``
+    * The PKCS#8 private key file in PEM format to use for securing the HTTP interface.
+* ``http_tls_key_password = secret``
+    * The password to unlock the private key used for securing the HTTP interface. (if key is encrypted)
 * ``trusted_proxies = 127.0.0.1/32, 0:0:0:0:0:0:0:1/128``
     * Comma separated list of trusted proxies that are allowed to set the client address with X-Forwarded-For header. May be subnets, or hosts.
-
-Web
-^^^
-
-* ``web_enable = true``
-      * Enable the embedded Graylog web interface. Enabled by default.
-* ``web_listen_uri = http://127.0.0.1:9000/``
-    * Web interface listen URI.
-    * Configuring a path for the URI here effectively prefixes all URIs in the web interface. This is a replacement for the application.context configuration parameter in pre-2.0 versions of the Graylog web interface.
-* ``web_endpoint_uri =``
-    * Web interface endpoint URI. This setting can be overriden on a per-request basis with the X-Graylog-Server-URL header.
-    * It takes the value of ``rest_transport_uri`` by default.
-* ``web_enable_cors = true``
-    * Enable CORS headers for the web interface. This is necessary for JS-clients accessing the server directly.
-    * If these are disabled, modern browsers will not be able to retrieve resources from the server.
-* ``web_enable_gzip = true``
-    * Enable/disable GZIP support for the web interface. This compresses HTTP responses and therefore helps to reduce overall round trip times. This is enabled by default.
-* ``web_enable_tls = false``
-    * Enable HTTPS support for the web interface. This secures the communication of the web browser with the web interface using TLS to prevent request forgery and eavesdropping.
-    * This is disabled by default. Set it to ``true`` to enable it and see the other related configuration settings.
-* ``web_tls_cert_file = /path/to/graylog-web.crt``
-    * The X.509 certificate chain file in PEM format to use for securing the web interface.
-* ``web_tls_key_file = /path/to/graylog-web.key``
-    * The PKCS#8 private key file in PEM format to use for securing the web interface.
-* ``web_tls_key_password = secret``
-    * The password to unlock the private key used for securing the web interface.
-* ``web_max_header_size = 8192``
-    * The maximum size of the HTTP request headers in bytes.
-* ``web_max_initial_line_length = 4096``
-    * The maximal length of the initial HTTP/1.1 line in bytes.
-* ``web_thread_pool_size = 16``
-    * The size of the thread pool used exclusively for serving the web interface.
 
 Elasticsearch
 ^^^^^^^^^^^^^
@@ -415,4 +393,4 @@ Others
     * Default: empty
 * ``proxied_requests_thread_pool_size = 32``
     * For some cluster-related REST requests, the node must query all other nodes in the cluster. This is the maximum number of threads available for this. Increase it, if ``/cluster/*`` requests take long to complete.
-    * Should be ``rest_thread_pool_size * average_cluster_size`` if you have a high number of concurrent users.
+    * Should be ``http_thread_pool_size * average_cluster_size`` if you have a high number of concurrent users.

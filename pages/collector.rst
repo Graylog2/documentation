@@ -641,5 +641,5 @@ This registration can fail if the collector cannot connect to the server via HTT
 **Possible solutions**
 
 * Make sure the server REST API is configured to listen on a reachable IP address.
-  Change the "rest_listen_uri" setting in the Graylog server config to this: ``rest_listen_uri = http://0.0.0.0:9000/api/``
+  Change the "http_bind_address" setting in the Graylog server config to this: ``http_bind_address = 0.0.0.0:9000``
 * Correctly configure any firewalls between the collector and the server to allow HTTP traffic to port ``9000``.

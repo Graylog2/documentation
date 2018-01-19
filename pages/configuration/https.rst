@@ -6,12 +6,9 @@
 Using HTTPS
 ***********
 
-We highly recommend securing your Graylog installation using SSL/TLS to make sure that no sensitive data is sent over the wire in plain text. To make this work, you need to do two things:
+We highly recommend securing your Graylog installation using SSL/TLS to make sure that no sensitive data is sent over the wire in plain text. To make this work, you need to enable the ``http_enable_tls`` setting in your Graylog server configuration.
 
-  - Enable TLS for the Graylog REST API (``rest_enable_tls``)
-  - Enable TLS for the web interface endpoint (``web_enable_tls``)
-
-You also need to make sure that you have proper certificates in place, which are valid and trusted by the clients. Not enabling TLS for either one of them will result in a browser error about mixed content and the web interface will cease to work.
+You also need to make sure that you have proper certificates in place, which are valid and trusted by the clients.
 
 .. note:: If you're operating a single-node setup and would like to use HTTPS for the Graylog web interface and the Graylog REST API, it's possible to use :ref:`NGINX or Apache as a reverse proxy <configuring_webif_nginx>`.
 
@@ -183,32 +180,18 @@ The working directory should now contain the PKCS#8 private key (``graylog-key.p
 
 The resulting PKCS#8 private key (``graylog-key.pem``) and the X.509 certificate (``graylog-certificate.pem``) can now be used to enable encrypted connections with Graylog by enabling TLS for the Graylog REST API and the web interface in the Graylog configuration file::
 
-  # Enable HTTPS support for the REST API. This secures the communication with the REST API
-  # using TLS to prevent request forgery and eavesdropping.
-  rest_enable_tls = true
+  # Enable HTTPS support for the HTTP interface.
+  # This secures the communication with the HTTP interface with TLS to prevent request forgery and eavesdropping.
+  http_enable_tls = true
 
-  # The X.509 certificate chain file in PEM format to use for securing the REST API.
-  rest_tls_cert_file = /path/to/graylog-certificate.pem
+  # The X.509 certificate chain file in PEM format to use for securing the HTTP interface.
+  http_tls_cert_file = /path/to/graylog-certificate.pem
 
-  # The PKCS#8 private key file in PEM format to use for securing the REST API.
-  rest_tls_key_file = /path/to/graylog-key.pem
+  # The PKCS#8 private key file in PEM format to use for securing the HTTP interface.
+  http_tls_key_file = /path/to/graylog-key.pem
 
-  # The password to unlock the private key used for securing the REST API.
-  rest_tls_key_password = secret
-
-  # Enable HTTPS support for the web interface. This secures the communication the web interface
-  # using TLS to prevent request forgery and eavesdropping.
-  web_enable_tls = true
-
-  # The X.509 certificate chain file in PEM format to use for securing the web interface.
-  web_tls_cert_file = /path/to/graylog-certificate.pem
-
-  # The PKCS#8 private key file in PEM format to use for securing the web interface.
-  web_tls_key_file = /path/to/graylog-key.pem
-
-  # The password to unlock the private key used for securing the web interface.
-  web_tls_key_password = secret
-
+  # The password to unlock the private key used for securing the HTTP interface. (if key is encrypted)
+  http_tls_key_password = secret
 
 Sample files
 ============
