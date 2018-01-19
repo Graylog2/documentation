@@ -2,6 +2,36 @@
 Changelog
 *********
 
+Graylog 2.4.1
+=============
+
+Released: 2018-01-19
+
+https://www.graylog.org/blog/107-announcing-graylog-v2-4-1
+
+**Core**
+
+* Fix SyslogCodecTest.testCiscoSyslogMessages. `Graylog2/graylog2-server#4446 <https://github.com/Graylog2/graylog2-server/issues/4446>`_
+* Fix privileges for input start/stop operations. `Graylog2/graylog2-server#4454 <https://github.com/Graylog2/graylog2-server/issues/4454>`_ `Graylog2/graylog2-server#4455 <https://github.com/Graylog2/graylog2-server/issues/4455>`_ `Graylog2/graylog2-server#4439 <https://github.com/Graylog2/graylog2-server/issues/4439>`_
+* Fix problem with Elasticsearch indexing over HTTPS. `Graylog2/graylog2-server#4485 <https://github.com/Graylog2/graylog2-server/issues/4485>`_ `Graylog2/graylog2-server#4232 <https://github.com/Graylog2/graylog2-server/issues/4232>`_
+* Fix web plugin compatibility problem. `Graylog2/graylog2-server#4496 <https://github.com/Graylog2/graylog2-server/issues/4496>`_
+* Fix problem that didn't allow a reader user to edit their own profile. `Graylog2/graylog2-server#4488 <https://github.com/Graylog2/graylog2-server/issues/4488>`_ `Graylog2/graylog2-server#4494 <https://github.com/Graylog2/graylog2-server/issues/4494>`_ `Graylog2/graylog2-server#4442 <https://github.com/Graylog2/graylog2-server/issues/4442>`_ `Graylog2/graylog2-server#4420 <https://github.com/Graylog2/graylog2-server/issues/4420>`_
+
+**Pipeline Processor Plugin**
+
+* Fix pipeline interpreter log message by handing change event. `Graylog2/graylog-plugin-pipeline-processor#235 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/235>`_ `Graylog2/graylog-plugin-pipeline-processor#241 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/241>`_
+
+**AWS Plugin**
+
+* Fix problem updating the AWS configuration in the UI. `Graylog2/graylog-plugin-aws#58 <https://github.com/Graylog2/graylog-plugin-aws/issues/58>`_ `Graylog2/graylog-plugin-aws#60 <https://github.com/Graylog2/graylog-plugin-aws/issues/60>`_
+* Add missing proxy configuration option to UI. `Graylog2/graylog-plugin-aws#59 <https://github.com/Graylog2/graylog-plugin-aws/issues/59>`_ `Graylog2/graylog-plugin-aws#61 <https://github.com/Graylog2/graylog-plugin-aws/issues/61>`_
+
+
+**Threatintel Plugin**
+
+* Fix ``otx_lookup_domain`` pipeline function. `Graylog2/graylog-plugin-threatintel#83 <https://github.com/Graylog2/graylog-plugin-threatintel/issues/83>`_ `Graylog2/graylog2-server#4489 <https://github.com/Graylog2/graylog2-server/issues/4489>`_
+
+
 Graylog 2.4.0
 =============
 
@@ -10,6 +40,7 @@ Released: 2017-12-22
 https://www.graylog.org/blog/106-announcing-graylog-v2-4-0
 
 No changes since 2.4.0-rc.2.
+
 
 Graylog 2.4.0-rc.2
 ==================
