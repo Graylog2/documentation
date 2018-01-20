@@ -2,7 +2,7 @@
 server.conf
 ***********
 
-The file ``server.conf`` is the Graylog configuration file.
+The file ``server.conf`` is the Graylog configuration file. It is not auto generated. You will need to copy this file to `/etc/graylog/server/` directory that will need to be created.
 
 .. note:: Check :ref:`default_file_location` to locate it in your installation.
 
