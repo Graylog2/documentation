@@ -2,6 +2,33 @@
 Changelog
 *********
 
+Graylog 2.4.3
+=============
+
+Released: 2018-01-24
+
+**Core**
+
+* Fix timezone issue when using the timestamp field in quick values. `Graylog2/graylog2-server#4519 <https://github.com/Graylog2/graylog2-server/issues/4519>`_ `Graylog2/graylog2-server#4509 <https://github.com/Graylog2/graylog2-server/issues/4509>`_
+
+
+Graylog 2.4.2
+=============
+
+Released: 2018-01-24
+
+**Core**
+
+* Fix issue with creating dashboards as non-admin user. `Graylog2/graylog2-server#4505 <https://github.com/Graylog2/graylog2-server/issues/4505>`_ `Graylog2/graylog2-server#4511 <https://github.com/Graylog2/graylog2-server/issues/4511>`_
+* Fix edge case in recent message loader for extractors. `Graylog2/graylog2-server#4513 <https://github.com/Graylog2/graylog2-server/issues/4513>`_ `Graylog2/graylog2-server#4510 <https://github.com/Graylog2/graylog2-server/issues/4510>`_
+* Fix formatting issue when using quick values on the timestamp field. `Graylog2/graylog2-server#4423 <https://github.com/Graylog2/graylog2-server/issues/4423>`_ `Graylog2/graylog2-server#4288 <https://github.com/Graylog2/graylog2-server/issues/4288>`_
+* Fix issue with handling the timestamp field in stacked quick value widgets. `Graylog2/graylog2-server#4516 <https://github.com/Graylog2/graylog2-server/issues/4516>`_ `Graylog2/graylog2-server#4509 <https://github.com/Graylog2/graylog2-server/issues/4509>`_
+
+**Threatintel Plugin**
+
+* Fix README.md about ``tor_lookup()`` function. `Graylog2/graylog2-server#86 <https://github.com/Graylog2/graylog2-server/issues/86>`_
+
+
 Graylog 2.4.1
 =============
 
