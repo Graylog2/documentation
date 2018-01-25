@@ -7,6 +7,8 @@ Graylog 2.4.3
 
 Released: 2018-01-24
 
+https://www.graylog.org/blog/108-announcing-graylog-v2-4-3
+
 **Core**
 
 * Fix timezone issue when using the timestamp field in quick values. `Graylog2/graylog2-server#4519 <https://github.com/Graylog2/graylog2-server/issues/4519>`_ `Graylog2/graylog2-server#4509 <https://github.com/Graylog2/graylog2-server/issues/4509>`_
