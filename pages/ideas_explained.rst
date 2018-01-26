@@ -55,20 +55,6 @@ data.
 
 .. image:: /images/architecture_comparison.png
 
-Unlimited data collection
--------------------------
-
-Volume based license models are making your job unnecessary hard. Price is a big factor here but it is even worse that volume based
-license models make you (or your manager makes you) try to save volume. This means that you will be finding yourself thinking about
-which data really needs to be ingested. The big problem is that you do not know what you might need the data for in the moment you
-are sending (or not sending) it. We have seen operations teams during a downtime wishing that they had collected the data of a certain
-log file that was now not searchable. **This is counter-productive and dangerous. You can be limited by disk space or other resources
-but never by the license that somebody bought.**
-
-It is also a law of the market that you have to build your volume pricing model on the amount of data that is usually collected
-**today**. The amount of generated data has increased dramatically and vendors are nailed to their pricing model from 2008. This
-is why you get quotes that fill you with sadness in today's world.
-
 Blackboxes
 ----------
 
