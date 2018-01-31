@@ -19,3 +19,8 @@ The Virtual Machine Appliance (OVA) and Amazon Web Services (AMI) Version of Gra
 
 Should the current installation use operating system packages, update the repository package to the target version and use the system tools to upgrade the package.
 For .rpm based systems :ref:`this update guide <operating_package_upgrade_rpm-yum-dnf>` and for .deb based systems :ref:`this update guide <operating_package_upgrade_DEB-APT>` should help.
+
+Upgrading Elasticsearch
+=======================
+
+When you update the Elasticsearch Cluster from 2.x to 5.x be sure to read `the upgrade guide <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/setup-upgrade.html>`_ provided by elastic. The Graylog :ref:`Elasticsearch configuration documentation <configuring_es>` contains information about the compatible Elasticsearch version. 
