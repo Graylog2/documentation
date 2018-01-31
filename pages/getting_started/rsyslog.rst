@@ -19,7 +19,7 @@ At the bottom of the file, add the following so messages will forward::
 
 In case you wanted to know, ``@`` means UDP, ``127.0.0.1`` is localhost, and ``5140`` is the port.
 
-.. image:: /images/gs_7-rsyslogadd.png
+You can find out more about ingesting syslog messages with Graylog in our `Syslog configuration guide <https://github.com/Graylog2/graylog-guide-syslog-linux>`__.
 
 Restart rsyslog
 ^^^^^^^^^^^^^^^
