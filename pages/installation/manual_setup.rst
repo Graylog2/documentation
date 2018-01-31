@@ -14,7 +14,7 @@ Graylog depends on MongoDB and Elasticsearch to operate, please refer to :ref:`t
 Downloading and extracting the server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Download the tar archive from the `download pages <https://www.graylog.org/download/>`_ and extract it on your system::
+Download the tar archive from the `download pages <https://www.graylog.org/downloads>`_ and extract it on your system::
 
   ~$ tar xvfz graylog-VERSION.tgz
   ~$ cd graylog-VERSION
