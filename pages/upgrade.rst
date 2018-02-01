@@ -23,4 +23,4 @@ For .rpm based systems :ref:`this update guide <operating_package_upgrade_rpm-yu
 Upgrading Elasticsearch
 =======================
 
-When you update the Elasticsearch Cluster from 2.x to 5.x be sure to read `the upgrade guide <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/setup-upgrade.html>`_ provided by elastic. The Graylog :ref:`Elasticsearch configuration documentation <configuring_es>` contains information about the compatible Elasticsearch version. 
+When you update the Elasticsearch Cluster from 2.x to 5.x be sure to read `the upgrade guide <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/setup-upgrade.html>`_ provided by elastic. The Graylog :ref:`Elasticsearch configuration documentation <configuring_es>` contains information about the compatible Elasticsearch version. After the upgrade you must :ref:`rotate the indices once manually <rotate_es_indices>`.

@@ -79,6 +79,8 @@ Graylog uses automatic node discovery to gather a list of all available Elastics
 Configuration of Elasticsearch nodes
 ------------------------------------
 
+.. _secure_es:
+
 Control access to Elasticsearch ports
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -475,6 +477,17 @@ After you've removed the index template, new indices will only have the original
       }
     }
   }
+
+
+.. _rotate_es_indices:
+
+.. note:: After you have added or deleted your index template you need to manually rotate your indices that the changes takes effect. 
+
+Rotate indices manually
+-----------------------
+
+In the Graylog Web interface go to ``System / Indices`` select the index you want to perform the action on by a click on the name of the index. In the upper right corner choose the ``Maintenance`` button and select ``Rotate active write index``.  
+
 
 .. _es_cluster_status:
 

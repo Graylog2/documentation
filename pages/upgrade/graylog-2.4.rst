@@ -4,7 +4,7 @@ Upgrading to Graylog 2.4.x
 
 .. _upgrade-from-23-to-24:
 
-You can just upgrade from Graylog 2.3.x to Graylog 2.4.x without the need to change the configuration of your Graylog server. 
+You can upgrade from Graylog 2.3.x to Graylog 2.4.x without the need to change the configuration of your Graylog server. 
 
 
 More plugins shipped by default
