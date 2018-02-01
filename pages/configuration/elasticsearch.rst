@@ -481,12 +481,14 @@ After you've removed the index template, new indices will only have the original
 
 .. _rotate_es_indices:
 
-.. note:: After you have added or deleted your index template you need to manually rotate your indices that the changes takes effect. 
+.. note:: Settings and index mappings in templates are only applied to new indices. After adding, modifying, or deleting an index template, you have to manually rotate the write-active indices of your index sets for the changes to take effect.
 
 Rotate indices manually
 -----------------------
 
-In the Graylog Web interface go to ``System / Indices`` select the index you want to perform the action on by a click on the name of the index. In the upper right corner choose the ``Maintenance`` button and select ``Rotate active write index``.  
+Select the desired index set on the ``System / Indices`` page in the Graylog web interface by clicking on the name of the index set, then select "Rotate active write index" from the "Maintenance" dropdown menu.  
+
+.. image:: /images/rotate_indices.gif
 
 
 .. _es_cluster_status:
