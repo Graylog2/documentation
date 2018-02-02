@@ -488,7 +488,9 @@ Rotate indices manually
 
 Select the desired index set on the ``System / Indices`` page in the Graylog web interface by clicking on the name of the index set, then select "Rotate active write index" from the "Maintenance" dropdown menu.  
 
-.. image:: /images/rotate_indices.gif
+.. image:: /images/rotate_index_1.png
+
+.. image:: /images/rotate_index_2.png
 
 
 .. _es_cluster_status:
