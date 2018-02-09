@@ -265,6 +265,33 @@ is healthy and fast enough. You may also want to review your Graylog journal set
 This can happen when Graylog is not able to connect to Elasticsearch or the Elasticsearch Cluster is not able to process the ingested messages in time. Add more resources to Elasticsearch or adjust :ref:`the output settings <output_batch_size>` from Graylog to Elasticsearch.
 
 
+How do I fix the "Deflector exists as an index and is not an alias" error message? 
+----------------------------------------------------------------------------------
+
+Graylog is using an Elasticsearch index alias per index set pointing to the active write index, the so-called "deflector", to write messages into Elasticsearch such as ``graylog_deflector`` in the default index set.
+
+Please refer to :ref:`index_model` for a more in-depth explanation of the Elasticsearch index model used by Graylog.
+
+In some rare situations, there might be an Elasticsearch index with a name which has been reserved for the deflector of an index set managed by Graylog, so that Graylog is unable to create the proper Elasticsearch index alias.
+
+This error situation leads to the following system notification in Graylog::
+
+> Deflector exists as an index and is not an alias.
+> The deflector is meant to be an alias but exists as an index. Multiple failures of infrastructure can lead to this. Your messages are still indexed but searches and all maintenance tasks will fail or produce incorrect results. It is strongly recommend that you act as soon as possible.
+
+The logs of the Graylog *master* node will contain a warning message similar to the following::
+
+  WARN  [IndexRotationThread] There is an index called [graylog_deflector]. Cannot fix this automatically and published a notification.
+
+#. Stop all Graylog nodes
+#. (*OPTIONAL*) If you want to keep the already ingested messages, reindex them into the Elasticsearch index with the greatest number, e. g. ``graylog_23`` if you want to fix the deflector ``graylog_deflector``, via the `Elasticsearch Reindex API <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docs-reindex.html>`_.
+#. Delete the ``graylog_deflector`` index via the `Elasticsearch Delete Index API <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/indices-delete-index.html>`_.
+#. Add ``action.auto_create_index: false`` to the configuration files of all Elasticsearch nodes in your cluster and restart these Elasticsearch nodes, see `Elasticsearch Index API - Automatic Index Creation <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docs-index_.html#index-creation>`_ and `Creating an Index <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/_creating_an_index.html>`_ for details.
+#. Start the Graylog *master* node.
+#. Manually rotate the active write index of the index set on the *System* / *Indices* / *Index Set* page in the *Maintenance* dropdown menu.
+#. (*OPTIONAL*) Start all remaining Graylog *slave* nodes.
+
+
 Have another troubleshooting question?
 --------------------------------------
 
