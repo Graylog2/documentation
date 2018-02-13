@@ -173,3 +173,11 @@ The license automatically applies to all nodes in your cluster without the need 
           The same license is also attached as a text file in case it is wrongly formatted in the email.
 
 .. image:: /images/enterprise-license-1.png
+
+
+License Verification
+====================
+
+Some Graylog licenses requires to check their validation on a regular base. This includes the free Enterprise license with a specific amount of traffic included. 
+
+If you have such a license you need to take care that your Graylog servers are able to communicate with the Graylog API found at ``https://api.graylog.com/report``. Should the environment need to use a proxy server, the :ref:`server.conf will take the configuration <http_config>`. 
