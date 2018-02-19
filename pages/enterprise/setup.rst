@@ -180,4 +180,6 @@ License Verification
 
 Some Graylog licenses requires to check their validation on a regular base. This includes the free Enterprise license with a specific amount of traffic included. 
 
-If you have such a license you need to take care that your Graylog servers are able to communicate with the Graylog API found at ``https://api.graylog.com/report``. Should the environment need to use a proxy server, the :ref:`server.conf will take the configuration <http_config>`. 
+If your network environment requires Graylog to use a proxy server in order to communicate with the external services via HTTPS, you'll have to configure the proxy server in the the :ref:`configuration file of Graylog <http_config>`. 
+
+The Graylog web interface will show you details of the license, but if you are still unclear about the requirements, please contact sales with your questions.
