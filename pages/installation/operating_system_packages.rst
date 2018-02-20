@@ -148,6 +148,7 @@ Now create a file named ``/etc/yum.repos.d/graylog.repo`` with the following con
   name=graylog
   baseurl=https://packages.graylog2.org/repo/el/stable/2.4/$basearch/
   gpgcheck=1
+  repo_gpgcheck=0
   gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-graylog
 
 .. _step_by_step_guides:
