@@ -19,9 +19,12 @@ Taking a minimal server setup as base will need this additional packages::
 MongoDB
 -------
 
-The Version included in Ubuntu 16.04 LTS can be used together with Graylog 2.4.x::
+The official MongoDB repository provides the most up-to-date version and is the recommended way of installing MongoDB for Graylog 2.4.x::
 
-    $ sudo apt-get install mongodb-server
+    $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 58712A2291FA4AD5
+    $ echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+    $ sudo apt-get update
+    $ sudo apt-get install -y mongodb-org
 
 
 Elasticsearch
