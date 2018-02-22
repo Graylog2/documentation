@@ -19,9 +19,12 @@ If you're starting from a minimal server setup, you will need to install these a
 MongoDB
 -------
 
-The version of MongoDB included in Debian Jessie is recent enough to be used with Graylog 2.3.x and higher::
+The official MongoDB repository provides the most up-to-date version and is the recommended way of installing MongoDB::
 
-  $ sudo apt install mongodb-server
+  $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 58712A2291FA4AD5
+  $ echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+  $ sudo apt-get update
+  $ sudo apt-get install -y mongodb-org
 
 
 Elasticsearch
