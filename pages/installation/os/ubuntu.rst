@@ -22,7 +22,7 @@ MongoDB
 The official MongoDB repository provides the most up-to-date version and is the recommended way of installing MongoDB for Graylog 2.4.x on Ubuntu 16.04 LTS::
 
     $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
-    $ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu `lsb_release -cs`/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+    $ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
     $ sudo apt-get update
     $ sudo apt-get install -y mongodb-org
 
