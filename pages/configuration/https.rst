@@ -317,7 +317,7 @@ To load the properties file into a JVM, you have to pass it to Java using the ``
 
   java -Djava.security.properties=/path/to/security.properties -jar /path/to/graylog.jar server
 
-Most start and init scripts for Graylog provide a ``JAVA_OPTS`` variable which can be used to pass the ``java.security.properties`` system property.
+Most start and :ref:`init scripts for Graylog <default_file_location>` provide a ``JAVA_OPTS`` variable which can be used to pass the ``java.security.properties`` system property.
 
 Further reading
 ---------------
