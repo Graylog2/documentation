@@ -27,8 +27,8 @@ MongoDB
 
 Installing MongoDB on SLES should follow `the tutorial for SLES <https://docs.mongodb.com/v3.4/tutorial/install-mongodb-on-suse/>`_ from the MongoDB documentation. Add the GPG key and the repository before installing MongoDB::
 
-  $ sudo rpm --import https://www.mongodb.org/static/pgp/server-3.4.asc
-  $ sudo zypper addrepo --gpgcheck "https://repo.mongodb.org/zypper/suse/12/mongodb-org/3.4/x86_64/" mongodb
+  $ sudo rpm --import https://www.mongodb.org/static/pgp/server-3.6.asc
+  $ sudo zypper addrepo --gpgcheck "https://repo.mongodb.org/zypper/suse/12/mongodb-org/3.6/x86_64/" mongodb
   $ sudo zypper -n install mongodb-org
 
 In order to automatically start MongoDB on system boot, you have to activate the MongoDB service by running the following commands::
