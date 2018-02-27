@@ -335,6 +335,20 @@ concat
 
 Returns a new string combining the text of ``first`` and ``second``.
 
+**Note**: When using concat to build a string containing values from multiples fields, it hast to be used multiple times.
+
+Example::
+
+        // Build a message like:
+        // 'TCP connect from 88.99.35.172 to 192.168.1.10 Port 443'
+        let build_message_0 = concat(to_string($message.protocol), " connect from ");
+        let build_message_1 = concat(build_message_0, to_string($message.src_ip));
+        let build_message_2 = concat(build_message_1, " to ");
+        let build_message_3 = concat(build_message_2, to_string($message.dst_ip));
+        let build_message_4 = concat(build_message_3, " Port ");
+        let build_message_5 = concat(build_message_4, to_string($message.dst_port));
+        set_field("message", build_message_5);
+
 split
 -----
 ``split(pattern: string, value: string, [limit: int])``
