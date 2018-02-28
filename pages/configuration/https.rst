@@ -296,13 +296,14 @@ In order for the JVM to pick up the new trust store, it has to be started with t
 
 Most start and init scripts for Graylog provide a ``JAVA_OPTS`` variable which can be used to pass the ``javax.net.ssl.trustStore`` and (optionally) ``javax.net.ssl.trustStorePassword`` system properties.
 
+.. _disable_ciphers_java:
 
 Disabling specific TLS ciphers and algorithms
 =============================================
 
 Since `Java 7u76 <http://www.oracle.com/technetwork/java/javase/7u76-relnotes-2389087.html>`_ it is possible to disable specific TLS algorithms and ciphers for secure connections.
 
-In order to disable specific TLS algorithms and ciphers, you need to provide a properties file with a list of disabled algorithms and ciphers. Take a look at the example `security.properties <https://github.com/Graylog2/graylog2-server/blob/2.3/misc/security.properties>`__ in the Graylog source repository.
+In order to disable specific TLS algorithms and ciphers, you need to provide a properties file with a list of disabled algorithms and ciphers. Take a look at the example `security.properties <https://github.com/Graylog2/graylog2-server/blob/2.4/misc/security.properties>`__ in the Graylog source repository.
 
 For example, if you want to disable all algorithms except for TLS 1.2, the properties file has to contain the following line::
 
@@ -316,7 +317,7 @@ To load the properties file into a JVM, you have to pass it to Java using the ``
 
   java -Djava.security.properties=/path/to/security.properties -jar /path/to/graylog.jar server
 
-Most start and init scripts for Graylog provide a ``JAVA_OPTS`` variable which can be used to pass the ``java.security.properties`` system property.
+Most start and :ref:`init scripts for Graylog <default_file_location>` provide a ``JAVA_OPTS`` variable which can be used to pass the ``java.security.properties`` system property.
 
 Further reading
 ---------------
