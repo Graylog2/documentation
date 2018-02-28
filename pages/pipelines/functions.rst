@@ -229,7 +229,7 @@ debug
 
 Print any passed value as string in the Graylog log.
 
-Note that the debug message will only appear in the log of the Graylog node that was processing the message you are trying to debug.
+.. note:: The debug message will only appear in the log of the Graylog node that was processing the message you are trying to debug.
 
 Example::
 
@@ -335,6 +335,20 @@ concat
 
 Returns a new string combining the text of ``first`` and ``second``.
 
+.. note:: The ``concat()`` function only concatenates two strings. If you want to build a string from more than two sub-strings, you'll have to use ``concat()`` multiple times, see the example below.
+
+Example::
+
+        // Build a message like:
+        // 'TCP connect from 88.99.35.172 to 192.168.1.10 Port 443'
+        let build_message_0 = concat(to_string($message.protocol), " connect from ");
+        let build_message_1 = concat(build_message_0, to_string($message.src_ip));
+        let build_message_2 = concat(build_message_1, " to ");
+        let build_message_3 = concat(build_message_2, to_string($message.dst_ip));
+        let build_message_4 = concat(build_message_3, " Port ");
+        let build_message_5 = concat(build_message_4, to_string($message.dst_port));
+        set_field("message", build_message_5);
+
 split
 -----
 ``split(pattern: string, value: string, [limit: int])``
@@ -342,8 +356,7 @@ split
 Split a ``value`` around matches of ``pattern``. Use ``limit`` to indicate the number of times the pattern
 should be applied.
 
-**Note**: Patterns have to be valid `Java String literals <https://docs.oracle.com/javase/tutorial/essential/regex/literals.html>`_,
-please ensure you escape any backslashes in your regular expressions!
+.. note:: Patterns have to be valid `Java String literals <https://docs.oracle.com/javase/tutorial/essential/regex/literals.html>`_, please ensure you escape any backslashes in your regular expressions!
 
 regex
 -----
@@ -353,8 +366,7 @@ Match the regular expression in ``pattern`` against ``value``. Returns a match o
 ``matches`` to indicate whether the regular expression matched and, if requested, the matching groups as ``groups``.
 The groups can optionally be named using the ``group_names`` array. If not named, the groups names are strings starting with ``"0"``.
 
-**Note**: Patterns have to be valid `Java String literals <https://docs.oracle.com/javase/tutorial/essential/regex/literals.html>`_,
-please ensure you escape any backslashes in your regular expressions!
+.. note:: Patterns have to be valid `Java String literals <https://docs.oracle.com/javase/tutorial/essential/regex/literals.html>`_, please ensure you escape any backslashes in your regular expressions!
 
 grok
 ----
@@ -363,8 +375,7 @@ grok
 Applies the grok pattern ``grok`` to ``value``. Returns a match object, containing a Map of field names and values.
 You can set ``only_named_captures`` to ``true`` to only return matches using named captures.
 
-**Tip**: The result of executing the ``grok`` function can be passed as argument for `set_fields`_ to set the extracted fields
-into a message.
+.. tip:: The result of executing the ``grok`` function can be passed as argument for `set_fields`_ to set the extracted fields into a message.
 
 key_value
 ---------
@@ -401,8 +412,7 @@ Extracts key-value pairs from the given ``value`` and returns them as a Map of f
 ``trim_value_chars``
   Characters to trim (remove from the beginning and end) from values. Default value: no trim.
 
-**Tip**: The result of executing the ``key_value`` function can be passed as argument for `set_fields`_ to set the extracted fields
-into a message.
+.. tip:: The result of executing the ``key_value`` function can be passed as argument for `set_fields`_ to set the extracted fields into a message.
 
 crc32
 -----

@@ -34,6 +34,14 @@ All parts of one Graylog installation will communicate over network sockets. Dep
 
 Each setup is unique in the requirements and ports might be changed by configuration, but you should limit who is able to connect to which service. In the :ref:`architecture description <big_production_setup>` you can see what components need to be exposed and communicate with each other.
 
+Configuring TLS ciphers
+=======================
+
+When running Graylog in untrusted environments such as the Internet, we strongly recommend to use SSL/TLS for all connections.
+
+It's possible to :ref:`disable unsafe or deprecated TLS ciphers <disable_ciphers_java>` in Graylog. When using :ref:`nginx or Apache httpd <configuring_webif_nginx>` for SSL termination the `Mozilla SSL Configuration Generator <https://mozilla.github.io/server-side-tls/ssl-config-generator/>`_ will help to create a reasonably secure configuration for them.
+
+
 Logging user activity
 =====================
 
