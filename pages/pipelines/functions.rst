@@ -106,10 +106,38 @@ plugins in the marketplace.
       - Converts the first parameter to its string representation.
     * - `to_url`_
       - Converts a value to a valid URL using its string representation.
+    * - `to_map`_
+      - Converts a value to a map.
     * - `is_null`_
-      - Checks whether a value is 'null'.
+      - Checks whether a value is ``null``.
     * - `is_not_null`_
-      - Checks whether a value is not 'null'.
+      - Checks whether a value is not ``null``.
+    * - `is_boolean`_
+      - Checks whether a value is a boolean value (``true`` or ``false``).
+    * - `is_number`_
+      - Checks whether a value is a numeric value (of type ``long`` or ``double``).
+    * - `is_double`_
+      - Checks whether a value is a floating point value (of type ``double``).
+    * - `is_long`_
+      - Checks whether a value is an integer value (of type ``long``).
+    * - `is_string`_
+      - Checks whether a value is a string.
+    * - `is_collection`_
+      - Checks whether a value is an iterable collection.
+    * - `is_list`_
+      - Checks whether a value is an iterable list.
+    * - `is_map`_
+      - Checks whether a value is a map.
+    * - `is_date`_
+      - Checks whether a value is a date (of type ``DateTime``).
+    * - `is_period`_
+      - Checks whether a value is a time period (of type ``Period``).
+    * - `is_ip`_
+      - Checks whether a value is an IP address (IPv4 or IPv6).
+    * - `is_json`_
+      - Checks whether a value is a parsed JSON tree.
+    * - `is_url`_
+      - Checks whether a value is a parsed URL.
     * - `abbreviate`_
       - Abbreviates a String using ellipses.
     * - `capitalize`_
@@ -124,6 +152,10 @@ plugins in the marketplace.
       - Swaps the case of a String.
     * - `contains`_
       - Checks if a string contains another string.
+    * - `starts_with`_
+      - Checks if a string starts with a given prefix.
+    * - `ends_with`_
+      - Checks if a string ends with a given suffix.
     * - `substring`_
       - Returns a substring of ``value`` with the given start and end offsets.
     * - `concat`_
@@ -196,6 +228,8 @@ plugins in the marketplace.
       - Parses a date and time from the given string, according to a strict pattern.
     * - `flex_parse_date`_
       - Attempts to parse a date and time using the Natty date parser.
+    * - `parse_unix_milliseconds`_
+      - Attempts to parse a UNIX millisecond timestamp (milliseconds since 1970-01-01T00:00:00.000Z).
     * - `format_date`_
       - Formats a date and time according to a given formatter pattern.
     * - `to_date`_
@@ -267,6 +301,25 @@ to_url
 
 Converts the given ``url`` to a valid URL.
 
+to_map
+------
+``to_map(value: any)``
+
+Converts the given map-like value to a valid map.
+
+The ``to_map()`` function currently only supports converting a parsed JSON tree into a map so that it can be used together with `set_fields`_.
+
+Example::
+
+    let json = parse_json(to_string($message.json_payload));
+    let map = to_map(json);
+    set_fields(map);
+
+**See also:**
+
+* `set_fields`_
+* `parse_json`_
+
 is_null
 -------
 ``is_null(value: any)``
@@ -279,6 +332,138 @@ is_not_null
 
 Checks if the given value is not ``null``.
 
+is_boolean
+----------
+``is_boolean(value: any)``
+
+Checks whether the given value is a boolean value (``true`` or ``false``).
+
+is_number
+---------
+``is_number(value: any)``
+
+Checks whether the given value is a numeric value (of type ``long`` or ``double``).
+
+**See also:**
+
+* `is_double`_
+* `to_double`_
+* `is_long`_
+* `to_long`_
+
+is_double
+---------
+``is_double(value: any)``
+
+Checks whether the given value is a floating point value (of type ``double``).
+
+**See also:**
+
+* `to_double`_
+
+is_long
+-------
+``is_long(value: any)``
+
+Checks whether the given value is an integer value (of type ``long``).
+
+**See also:**
+
+* `to_long`_
+
+is_string
+---------
+``is_string(value: any)``
+
+Checks whether the given value is a string.
+
+**See also:**
+
+* `to_string`_
+
+is_collection
+-------------
+``is_collection(value: any)``
+
+Checks whether the given value is an iterable collection.
+
+is_list
+-------
+``is_list(value: any)``
+
+Checks whether the given value is an iterable list.
+
+is_map
+------
+``is_map(value: any)``
+
+Checks whether the given value is a map.
+
+**See also:**
+
+* `to_map`_
+
+is_date
+-------
+``is_date(value: any)``
+
+Checks whether the given value is a date (of type ``DateTime``).
+
+**See also:**
+
+* `now`_
+* `parse_date`_
+* `flex_parse_date`_
+* `parse_unix_milliseconds`_
+
+is_period
+---------
+``is_period(value: any)``
+
+Checks whether the given value is a time period (of type ``Period``).
+
+**See also:**
+
+* `years`_
+* `months`_
+* `weeks`_
+* `days`_
+* `hours`_
+* `minutes`_
+* `seconds`_
+* `millis`_
+* `period`_
+ 
+is_ip
+-----
+``is_ip(value: any)``
+
+Checks whether the given value is an IP address (IPv4 or IPv6).
+
+**See also:**
+
+* `to_ip`_
+
+is_json
+-------
+``is_json(value: any)``
+
+Checks whether the given value is a parsed JSON tree.
+
+**See also:**
+
+* `parse_json`_
+
+is_url
+------
+``is_url(value: any)``
+
+Checks whether the given value is a parsed URL.
+
+**See also:**
+
+* `to_url`_
+ 
 abbreviate
 ----------
 ``abbreviate(value: string, width: long)``
@@ -321,6 +506,32 @@ contains
 ``contains(value: string, search: string, [ignore_case: boolean])``
 
 Checks if ``value`` contains ``search``, optionally ignoring the case of the search pattern.
+
+starts_with
+-----------
+``starts_with(value: string, prefix: string, [ignore_case: boolean])``
+
+Checks if ``value`` starts with ``prefix``, optionally ignoring the case of the string.
+
+Example::
+
+    // Returns true
+    starts_with("Foobar Baz Quux", "foo", true);
+    // Returns false
+    starts_with("Foobar Baz Quux", "Quux");
+
+ends_with
+---------
+``ends_with(value: string, suffix: string, [ignore_case: boolean])``
+
+Checks if ``value`` ends with ``suffix``, optionally ignoring the case of the string.
+
+Example::
+
+    // Returns true
+    starts_with("Foobar Baz Quux", "quux", true);
+    // Returns false
+    starts_with("Foobar Baz Quux", "Baz");
 
 substring
 ---------
@@ -377,6 +588,10 @@ You can set ``only_named_captures`` to ``true`` to only return matches using nam
 
 .. tip:: The result of executing the ``grok`` function can be passed as argument for `set_fields`_ to set the extracted fields into a message.
 
+**See also:**
+
+* `set_fields`_
+
 key_value
 ---------
 ::
@@ -413,6 +628,10 @@ Extracts key-value pairs from the given ``value`` and returns them as a Map of f
   Characters to trim (remove from the beginning and end) from values. Default value: no trim.
 
 .. tip:: The result of executing the ``key_value`` function can be passed as argument for `set_fields`_ to set the extracted fields into a message.
+
+**See also:**
+
+* `set_fields`_
 
 crc32
 -----
@@ -468,11 +687,20 @@ parse_json
 
 Parses the ``value`` string as JSON, returning the resulting JSON tree.
 
+**See also:**
+
+* `to_map`_
+
 select_jsonpath
 ---------------
 ``select_jsonpath(json: JsonNode, paths: Map<string, string>)``
 
 Evaluates the given ``paths`` against the ``json`` tree and returns the map of the resulting values.
+
+**See also:**
+
+* `is_json`_
+* `parse_json`_
 
 to_ip
 -----
@@ -480,12 +708,19 @@ to_ip
 
 Converts the given ``ip`` string to an IpAddress object.
 
+**See also:**
+
+* `cidr_match`_
+
 cidr_match
 ----------
 ``cidr_match(cidr: string, ip: IpAddress)``
 
 Checks whether the given ``ip`` address object matches the ``cidr`` pattern.
 
+**See also:**
+
+* `to_ip`_
 
 from_input
 ----------
@@ -572,6 +807,10 @@ The optional ``prefix`` and ``suffix`` parameters specify which prefix or suffix
 
 If ``message`` is omitted, this function uses the currently processed message.
 
+**See also:**
+
+* `set_fields`_
+
 .. _set_fields:
 
 set_fields
@@ -585,6 +824,13 @@ currently processed message especially when the key names are the result of a re
 The optional ``prefix`` and ``suffix`` parameters specify which prefix or suffix should be added to the inserted field names.
 
 If ``message`` is omitted, this function uses the currently processed message.
+
+**See also:**
+
+* `set_field`_
+* `to_map`_
+* `grok`_
+* `key_value`_
 
 rename_field
 ------------
@@ -621,6 +867,10 @@ now
 ``now([timezone: string])``
 
 Returns the current date and time. Uses the default time zone ``UTC``.
+
+**See also:**
+
+* `is_date`_
 
 parse_date
 ----------
@@ -675,6 +925,9 @@ Language Tag  Description
 ``de-CH``     German for Switzerland
 ============  ====================================
 
+**See also:**
+
+* `is_date`_
 
 flex_parse_date
 ---------------
@@ -685,6 +938,26 @@ the pattern, the optional timezone parameter is used as the assumed timezone. If
 
 In case the parser fails to detect a valid date and time the ``default`` date and time is being returned, otherwise the expression
 fails to evaluate and will be aborted.
+
+**See also:**
+
+* `is_date`_
+
+parse_unix_milliseconds
+-----------------------
+``parse_unix_milliseconds(value: long)``
+
+Attempts to parse a UNIX millisecond timestamp (milliseconds since 1970-01-01T00:00:00.000Z) into a proper ``DateTime`` object.
+
+Example::
+
+    // 1519902000000 == 2018-03-01T12:00:00.000Z
+    let timestamp = parse_unix_milliseconds(1519902000000);
+    set_field("timestamp", timestamp);
+
+**See also:**
+
+* `is_date`_
 
 format_date
 -----------
@@ -699,59 +972,114 @@ to_date
 
 Converts ``value`` to a date. If no ``timezone`` is given, it defaults to ``UTC``.
 
+**See also:**
+
+* `is_date`_
+
 years
 -----
 ``years(value: long)``
 
-Create a period with ``value`` number of years.
+Create a time period with ``value`` number of years.
+
+**See also:**
+
+* `is_period`_
+* `period`_
 
 months
 ------
 ``months(value: long)``
 
-Create a period with ``value`` number of months.
+Create a time period with ``value`` number of months.
+
+**See also:**
+
+* `is_period`_
+* `period`_
 
 weeks
 -----
 ``weeks(value: long)``
 
-Create a period with ``value`` number of weeks.
+Create a time period with ``value`` number of weeks.
+
+**See also:**
+
+* `is_period`_
+* `period`_
 
 days
 ----
 ``days(value: long)``
 
-Create a period with ``value`` number of days.
+Create a time period with ``value`` number of days.
+
+**See also:**
+
+* `is_period`_
+* `period`_
 
 hours
 -----
 ``hours(value: long)``
 
-Create a period with ``value`` number of hours.
+Create a time period with ``value`` number of hours.
+
+**See also:**
+
+* `is_period`_
+* `period`_
 
 minutes
 -------
 ``minutes(value: long)``
 
-Create a period with ``value`` number of minutes.
+Create a time period with ``value`` number of minutes.
+
+**See also:**
+
+* `is_period`_
+* `period`_
 
 seconds
 -------
 ``seconds(value: long)``
 
-Create a period with ``value`` number of seconds.
+Create a time period with ``value`` number of seconds.
+
+**See also:**
+
+* `is_period`_
+* `period`_
 
 millis
 ------
 ``millis(value: long)``
 
-Create a period with ``value`` number of milliseconds.
+Create a time period with ``value`` number of milliseconds.
+
+**See also:**
+
+* `is_period`_
+* `period`_
 
 period
 ------
 ``period(value: string)``
 
-Parses an ISO 8601 period from ``value``.
+Parses an ISO 8601 time period from ``value``.
+
+**See also:**
+
+* `is_period`_
+* `years`_
+* `months`_
+* `days`_
+* `hours`_
+* `minutes`_
+* `seconds`_
+* `millis`_
 
 lookup
 ------
