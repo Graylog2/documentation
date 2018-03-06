@@ -24,6 +24,13 @@ The version of MongoDB included in Debian Jessie is recent enough to be used wit
   $ sudo apt install mongodb-server
 
 
+The last step is to enable MongoDB during the operating system's startup::
+
+  $ sudo systemctl daemon-reload
+  $ sudo systemctl enable mongod.service
+  $ sudo systemctl restart mongod.service
+  
+
 Elasticsearch
 -------------
 
