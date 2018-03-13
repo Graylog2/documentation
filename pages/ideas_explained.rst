@@ -19,8 +19,8 @@ SaaS offerings for log management.
 Architectural considerations
 ----------------------------
 
-The probably most successful log management software, Splunk, has the most advanced architecture on the market **because it
-was built for log management from the beginning**. Software that stores and analyzes log data must have a very specific
+Graylog has been successful in providing log management software **because it was built for log management from the beginning**.
+Software that stores and analyzes log data must have a very specific
 architecture to do it efficiently. It is more than just a database or a full text search engine because it has to deal with both
 text data and metrics data on a time axis. Searches are always bound to a time frame (relative or absolute) and only going back
 into the past because future log data has not been written yet. **A general purpose database or full text search engine that could
@@ -50,24 +50,10 @@ data.
   without having to select indices and write tedious time range selection filters, etc. - Just submit the search query and Graylog
   will take care of the rest for you.
 * All parts of the system are tightly integrated and many parts speak to each other to make your job easier.
-* Like Wordpress makes MySQL a good solution for blogging, Graylog makes Elasticsearch a good solution for logging. You should never
+* Like WordPress makes MySQL a good solution for blogging, Graylog makes Elasticsearch a good solution for logging. You should never
   have a system or frontend query Elasticsearch directly for log management so we are putting ``graylog-server`` in front of it.
 
 .. image:: /images/architecture_comparison.png
-
-Unlimited data collection
--------------------------
-
-Volume based license models are making your job unnecessary hard. Price is a big factor here but it is even worse that volume based
-license models make you (or your manager makes you) try to save volume. This means that you will be finding yourself thinking about
-which data really needs to be ingested. The big problem is that you do not know what you might need the data for in the moment you
-are sending (or not sending) it. We have seen operations teams during a downtime wishing that they had collected the data of a certain
-log file that was now not searchable. **This is counter-productive and dangerous. You can be limited by disk space or other resources
-but never by the license that somebody bought.**
-
-It is also a law of the market that you have to build your volume pricing model on the amount of data that is usually collected
-**today**. The amount of generated data has increased dramatically and vendors are nailed to their pricing model from 2008. This
-is why you get quotes that fill you with sadness in today's world.
 
 Blackboxes
 ----------

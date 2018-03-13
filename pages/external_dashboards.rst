@@ -16,14 +16,3 @@ systems.
 .. image:: /images/cli_dashboard.png
 
 The CLI stream dashboard documentation `is available on GitHub <https://github.com/Graylog2/cli-dashboard>`__.
-
-Browser stream dashboard
-========================
-
-This official Graylog dashboard is showing live information of a specific stream in a web browser.
-It will display and automatically reload the most recent messages and alerts of a stream and is perfect to display
-on large screens in your office.
-
-.. image:: /images/browser_dashboard.png
-
-The browser stream dashboard documentation `is available on GitHub <https://github.com/Graylog2/graylog2-stream-dashboard>`__.

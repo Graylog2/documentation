@@ -4,17 +4,15 @@
 Processing Pipelines
 ********************
 
-Graylog's new processing pipelines plugin allows greater flexibility in routing, blacklisting, modifying and
+Graylog's new processing pipelines plugin allows greater flexibility in routing, blacklisting, modifying, and
 enriching messages as they flow through Graylog.
 
-.. warning:: This plugin is still under development and will not be as stable and fast as the rest of Graylog at this moment!
+Pipelines and rules are not configuration for pre-built code, as extractors and stream rules are, but are instead represented as code,
+much like Drools rules. This gives them great flexibility and extensibility, and enables live changes to Graylog's message processing behavior.
 
-Pipelines and rules are no longer configuration for pre-build code (like extractors and stream rules are) but are represented as code,
-much like Drools rules are. This gives them their great flexibility and extensibility.
+The language used for pipeline rules is very simple and can be extended by functions, which are fully pluggable.
 
-The language itself is very simple and can be extended by functions, which are fully pluggable.
-
-The following pages introduce the concepts of pipelines, rules, stream connections and the built in functions.
+The following pages introduce the concepts of pipelines, rules, stream connections, and the built-in functions.
 
 .. toctree::
    :titlesonly:

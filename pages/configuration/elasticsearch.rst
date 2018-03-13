@@ -8,105 +8,83 @@ We strongly recommend to use a dedicated Elasticsearch cluster for your Graylog 
 
 If you are using a shared Elasticsearch setup, a problem with indices unrelated to Graylog might turn the cluster status to YELLOW or RED and impact the availability and performance of your Graylog setup.
 
-.. important:: Graylog currently does not work with Elasticsearch clusters using the License or `Shield <https://www.elastic.co/guide/en/shield/2.3/index.html>`__ plugin.
-
 
 Elasticsearch versions
 ======================
 
-Graylog hosts an embedded Elasticsearch node which is joining the Elasticsearch cluster as a client node.
+Starting with version 2.3, Graylog uses the HTTP protocol to connect to your Elasticsearch cluster, so it does not have a hard requirement for the Elasticsearch version anymore. We can safely assume that any version starting from 2.x is working.
 
-The following table provides an overview over the Elasticsearch version in Graylog:
+.. caution:: Graylog 2.4 **does not** work with Elasticsearch 6.x yet!
 
-===============  =====================
-Graylog version  Elasticsearch version
-===============  =====================
-1.2.0-1.2.1      1.7.1
-1.3.0-1.3.3      1.7.3
-1.3.4            1.7.5
-2.0.0            2.3.1
-2.0.1-2.0.3      2.3.2
-2.1.0            2.3.5
-===============  =====================
-
+.. note:: Graylog works fine with the `Amazon Elasticsearch Service <https://aws.amazon.com/elasticsearch-service/>`_ using **Elasticsearch 5.3.x** or later.
 
 Configuration
 =============
 
+.. caution:: As Graylog has switched from an embedded Elasticsearch node client to a lightweight HTTP client in version 2.3, please check the :ref:`upgrade notes <upgrade-from-22-to-23>` how to migrate your configuration if you are switching from an earlier version.
+
 Graylog
 -------
 
-The most important settings to make a successful connection are the Elasticsearch cluster name, one or more addresses of Elasticsearch master nodes, and the local network bind address.
+The most important setting to make a successful connection is a list of comma-separated URIs to one or more Elasticsearch nodes. Graylog needs to know the address of at least one other Elasticsearch node given in the ``elasticsearch_hosts`` setting. The specified value should at least contain the scheme (``http://`` for unencrypted, ``https://`` for encrypted connections), the hostname or IP and the port of the HTTP listener (which is ``9200`` unless otherwise configured) of this node. Optionally, you can also specify an authentication section containing a user name and a password, if either your Elasticsearch node uses `Shield/X-Pack <https://www.elastic.co/products/x-pack/security>`_ or `Search Guard <http://floragunn.com/searchguard/>`_, or you have an intermediate HTTP proxy requiring authentication in between the Graylog server and the Elasticsearch node. Additionally you can specify an optional path prefix at the end of the URI.
 
-Graylog needs to know the address of at least one other Elasticsearch master node given in the ``elasticsearch_discovery_zen_ping_unicast_hosts`` setting. Vice versa, the Elasticsearch nodes need to be able to access the embedded Elasticsearch node in Graylog via the interface given in the ``elasticsearch_network_host`` setting.
+A sample specification of ``elasticsearch_hosts`` could look like this::
 
+  elasticsearch_hosts = http://es-node-1.example.org:9200/foo,https://someuser:somepassword@es-node-2.example.org:19200
 
-Cluster Name
-^^^^^^^^^^^^
+.. caution:: Graylog assumes that all nodes in the cluster are running the same versions of Elasticsearch. While it might work when patch-levels differ, we highly encourage to keep versions consistent.
 
-You need to tell Graylog which Elasticsearch cluster to join. The Elasticsearch default `cluster name <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup-configuration.html#cluster-name>`_ is ``elasticsearch`` and configured for every Elasticsearch node in the ``elasticsearch.yml`` configuration file with the ``cluster.name`` name.
+.. warning:: Graylog does not react to externally triggered index changes (creating/closing/reopening/deleting an index) anymore. All of these actions need to be performed through the Graylog REST API in order to retain index consistency.
 
-Configure the same cluster name in every Graylog configuration file (e. g. ``graylog.conf``) with the ``elasticsearch_cluster_name`` setting (default: ``graylog``).
+Available Elasticsearch configuration tunables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We recommend to call the cluster ``graylog-production`` or ``graylog``, but not ``elasticsearch`` to prevent accidental cluster name collisions.
+The following configuration options are now being used to configure connectivity to Elasticsearch:
 
-The Elasticsearch configuration file is typically located at ``/etc/elasticsearch/elasticsearch.yml``.
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
+| Config Setting                                     | Type      | Comments                                                     | Default                     |
++====================================================+===========+==============================================================+=============================+
+| ``elasticsearch_connect_timeout``                  | Duration  | Timeout when connection to individual Elasticsearch hosts    | ``10s`` (10 Seconds)        |
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
+| ``elasticsearch_hosts``                            | List<URI> | Comma-separated list of URIs of Elasticsearch hosts          | ``http://127.0.0.1:9200``   |
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
+| ``elasticsearch_idle_timeout``                     | Duration  | Timeout after which idle connections are terminated          | ``-1s`` (Never)             |
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
+| ``elasticsearch_max_total_connections``            | int       | Maximum number of total Elasticsearch connections            | ``20``                      |
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
+| ``elasticsearch_max_total_connections_per_route``  | int       | Maximum number of Elasticsearch connections per route/host   | ``2``                       |
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
+| ``elasticsearch_socket_timeout``                   | Duration  | Timeout when sending/receiving from Elasticsearch connection | ``60s`` (60 Seconds)        |
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
+| ``elasticsearch_discovery_enabled``                | boolean   | Enable automatic Elasticsearch node discovery                | ``false``                   |
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
+| ``elasticsearch_discovery_filter``                 | String    | Filter by node attributes for the discovered nodes           | empty (use all nodes)       |
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
+| ``elasticsearch_discovery_frequency``              | Duration  | Frequency of the Elasticsearch node discovery                | ``30s`` (30 Seconds)        |
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
+| ``elasticsearch_compression_enabled``              | boolean   | Enable GZIP compression of Elasticseach request payloads     | ``false``                   |
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
 
+.. _automatic_node_discovery:
 
-Network setup
-^^^^^^^^^^^^^
+Automatic node discovery
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-Graylog is using unicast discovery to find all the Elasticsearch nodes in the cluster.
+.. caution:: Authentication with the Elasticsearch cluster will not work if the automatic node discovery is being used.
 
-In order for this to work, Graylog has to know some master nodes of the Elasticsearch cluster which can be provided in the ``elasticsearch_discovery_zen_ping_unicast_hosts`` configuration setting.
+.. caution:: Automatic node discovery does not work when using the `Amazon Elasticsearch Service <https://aws.amazon.com/elasticsearch-service/>`_ because Amazon blocks certain Elasticsearch API endpoints.
 
-For example, add the following lines to your Graylog configuration file for an Elasticsearch cluster which includes the 2 Elasticsearch master nodes ``es-node-1.example.org`` and ``es-node-2.example.org``::
-
-  # List of Elasticsearch master nodes to connect to
-  elasticsearch_discovery_zen_ping_unicast_hosts = es-node-1.example.org:9300,es-node-2.example.org:9300
-
-Additionally, Graylog has to use a network interface for the embedded Elasticsearch node which the other Elasticsearch nodes in the cluster can connect to::
-
-  # Public IP address or host name of the Graylog node, accessible for the other Elasticsearch nodes
-  elasticsearch_network_host = 198.51.100.23
-
-
-Also make sure to configure `Zen unicast discovery <http://www.elastic.co/guide/en/elasticsearch/reference/2.3/modules-discovery-zen.html#unicast>`__ in
-the Elasticsearch configuration file by adding the ``discovery.zen.ping.multicast.enabled`` and ``discovery.zen.ping.unicast.hosts`` settings with the
-list of Elasticsearch nodes to ``elasticsearch.yml``::
-
-  discovery.zen.ping.multicast.enabled: false
-  discovery.zen.ping.unicast.hosts: ["es-node-1.example.org:9300" , "es-node-2.example.org:9300"]
-
-The Elasticsearch default communication port is *9300/tcp* (not to be confused with the HTTP interface running on port *9200/tcp* by default).
-
-The communication port can be changed in the Elasticsearch configuration file (``elasticsearch.yml``) with the configuration setting ``transport.tcp.port``.
-
-Last but not least, make sure that Elasticsearch is binding to a network interface that Graylog can connect to (see ``network.host`` and `Commonly Used Network Settings <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/modules-network.html#common-network-settings>`_).
-
+Graylog uses automatic node discovery to gather a list of all available Elasticsearch nodes in the cluster at runtime and distribute requests among them to potentially increase performance and availability. To enable this feature, you need to set the ``elasticsearch_discovery_enabled`` to ``true``. Optionally, you can define the a filter allowing to selectively include/exclude discovered nodes (details how to specify node filters are found in the `Elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/5.4/cluster.html#cluster-nodes>`_) using the ``elasticsearch_discovery_filter`` setting, or tuning the frequency of the node discovery using the ``elasticsearch_discovery_frequency`` configuration option.
 
 Configuration of Elasticsearch nodes
 ------------------------------------
 
-Disable dynamic scripting
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Elasticsearch prior to version 1.2 had an `insecure default configuration <http://bouk.co/blog/elasticsearch-rce/>`__ which could lead to a `remote code execution <https://groups.google.com/forum/#!msg/graylog2/-icrS0rIA-Q/cCTJaNjVrQAJ>`__.
-
-Make sure to add the following settings to the ``elasticsearch.yml`` file to disable the dynamic scripting feature and
-prevent possible remote code executions::
-
-  script.inline: false
-  script.indexed: false
-  script.file: false
-
-Details about dynamic scripting can be found in `the reference documentation of Elasticsearch <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/modules-scripting.html>`__.
+.. _secure_es:
 
 Control access to Elasticsearch ports
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Since Elasticsearch has no authentication mechanism at time of this writing, make sure to restrict access to the Elasticsearch
-ports (default: 9200/tcp and 9300/tcp). Otherwise the data is readable by anyone who has access to the machine over network.
+If you are not using `Shield/X-Pack <https://www.elastic.co/products/x-pack/security>`_ or `Search Guard <http://floragunn.com/searchguard/>`_ to authenticate access to your Elasticsearch nodes, make sure to restrict access to the Elasticsearch ports (default: 9200/tcp and 9300/tcp). Otherwise the data is readable by anyone who has access to the machine over network.
 
 Open file limits
 ^^^^^^^^^^^^^^^^
@@ -116,7 +94,7 @@ system defaults allow. **Set it to at least 64000 open file descriptors.**
 
 Graylog will show a notification in the web interface when there is a node in the Elasticsearch cluster which has a too low open file limit.
 
-Read about how to raise the open file limit in the corresponding `Elasticsearch documentation page <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup-configuration.html#file-descriptors>`__.
+Read about how to raise the open file limit in the corresponding `2.x <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup-configuration.html#file-descriptors>`__ / `5.x <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/file-descriptors.html>`__ documentation pages.
 
 Heap size
 ^^^^^^^^^
@@ -146,7 +124,7 @@ Tuning Elasticsearch
 
 Graylog is already setting specific configuration for every index it is managing. This is enough tuning for a lot of use cases and setups.
 
-A more detailed guide about tuning Elasticsearch will be published at a later time.
+More detailed information about the configuration of Elasticsearch can be found in the `official documentation <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/system-config.html>`__.
 
 
 Avoiding split-brain and shard shuffling
@@ -164,7 +142,7 @@ The previous mechanism can in some circumstances fail, causing a **split-brain e
 Avoiding split-brain events
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Elasticsearch nodes take a simple majority vote over who is master. If the majority agrees that they are the master, then most likely the disconnected minority has also come to conclusion that they can not be the master, and everything is just fine. This mechanism requires at least 3 nodes to work reliably however, because one or two nodes can not form a majority. 
+Elasticsearch nodes take a simple majority vote over who is master. If the majority agrees that they are the master, then most likely the disconnected minority has also come to conclusion that they can not be the master, and everything is just fine. This mechanism requires at least 3 nodes to work reliably however, because one or two nodes can not form a majority.
 
 The minimum amount of master nodes required to elect a master must be configured manually in ``elasticsearch.yml``::
 
@@ -189,7 +167,7 @@ The configuration values should typically for example:
 | 6            | 4                      |                                                                      |
 +--------------+------------------------+----------------------------------------------------------------------+
 
-Some of the master nodes may be *dedicated master nodes*, meaning they are configured just to handle lightweight operational (cluster management) responsibilities. They will not handle or store any of the cluster's data. The function of such nodes is similar to so called *witness servers* on other database products, and setting them up on dedicated witness sites will greatly reduce the chance of Elasticsearch cluster instability. 
+Some of the master nodes may be *dedicated master nodes*, meaning they are configured just to handle lightweight operational (cluster management) responsibilities. They will not handle or store any of the cluster's data. The function of such nodes is similar to so called *witness servers* on other database products, and setting them up on dedicated witness sites will greatly reduce the chance of Elasticsearch cluster instability.
 
 A dedicated master node has the following configuration in ``elasticsearch.yml``::
 
@@ -213,7 +191,7 @@ Elasticsearch has couple configuration options, which are designed to allow shor
   # Inform ElasticSearch how many nodes form a full cluster. If this number is met, start up immediately.
   gateway.expected_nodes: 10
 
-The configuration options should be set up so that only *minimal* node unavailability is tolerated. For example server restarts are common, and should be done in managed manner. The logic is that if you lose large part of your cluster, you probably should start re-shuffling the shards and replicas without tolerating the situation. 
+The configuration options should be set up so that only *minimal* node unavailability is tolerated. For example server restarts are common, and should be done in managed manner. The logic is that if you lose large part of your cluster, you probably should start re-shuffling the shards and replicas without tolerating the situation.
 
 
 Custom index mappings
@@ -326,7 +304,7 @@ The format of the ``ingest_time`` field is described in the Elasticsearch docume
 
 In order to apply the additional index mapping when Graylog creates a new index in Elasticsearch, it has to be added to an `index template <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/indices-templates.html>`_. The Graylog default template (``graylog-internal``) has the lowest priority and will be merged with the custom index template by Elasticsearch.
 
-.. warning:: If the default index mapping and the custom index mapping cannot be merged (e. g. because of conflicting field datatypes), Elasticsearch will throw an exception and won't create the index. So be extremeley cautious and conservative about the custom index mappings!
+.. warning:: If the default index mapping and the custom index mapping cannot be merged (e. g. because of conflicting field datatypes), Elasticsearch will throw an exception and won't create the index. So be extremely cautious and conservative about the custom index mappings!
 
 Creating a new index template
 -----------------------------
@@ -433,6 +411,9 @@ Every Elasticsearch index created from that time on, will have an index mapping 
     }
   }
 
+.. note:: When using different index sets every index set can have its own mapping.
+
+
 Deleting custom index templates
 -------------------------------
 
@@ -496,6 +477,21 @@ After you've removed the index template, new indices will only have the original
       }
     }
   }
+
+
+.. _rotate_es_indices:
+
+.. note:: Settings and index mappings in templates are only applied to new indices. After adding, modifying, or deleting an index template, you have to manually rotate the write-active indices of your index sets for the changes to take effect.
+
+Rotate indices manually
+-----------------------
+
+Select the desired index set on the ``System / Indices`` page in the Graylog web interface by clicking on the name of the index set, then select "Rotate active write index" from the "Maintenance" dropdown menu.  
+
+.. image:: /images/rotate_index_1.png
+
+.. image:: /images/rotate_index_2.png
+
 
 .. _es_cluster_status:
 

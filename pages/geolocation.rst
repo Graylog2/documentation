@@ -6,7 +6,7 @@ Geolocation
 
 Graylog lets you extract and visualize geolocation information from IP addresses in your logs.
 Here we will explain how to install and configure the geolocation resolution, and how to create a
-map with those geolocation.
+map with the extracted geo-information.
 
 Setup
 =====
@@ -69,8 +69,9 @@ extractors.
 That's it, at this point Graylog will start looking for fields **containing exclusively** an IPv4 or IPv6
 address, and extracting their geolocation into a ``<field>_geolocation`` field.
 
-**Note**: In case you are not sending structured logs to Graylog, you can use extractors to store the IPs
-in your messages into their own fields. Check out the :ref:`extractors` documentation for more information.
+.. note:: In case you are not sending structured logs to Graylog, you can use extractors to store the IP addresses in your messages into their own fields. Check out the :ref:`extractors` documentation for more information.
+
+.. important:: The GeoIP Resolver processor will **not process** any internal message fields, i. e. any field starting with ``gl2_`` such as ``gl2_remote_ip``.
 
 
 Verify the geolocation configuration (Optional)
@@ -128,11 +129,19 @@ Will Graylog extract IPs from all fields?
 -----------------------------------------
 Yes, as long as they contain exclusively an IP address.
 
-Where are the extracted geolocations stored?
---------------------------------------------
-Extracted geolocations are stored in a new field, named as the original field, with ``_geolocation``
-appended to it. That is, if the original field was called ``ip_address``, the extracted geolocation will be
-stored in the ``ip_address_geolocation`` field.
+What geo-information is extracted from IPs?
+-------------------------------------------
+Since version 2.2.0, Graylog extracts the IP coordinates, country ISO code, and the city name if available.
+
+Where is the extracted geo-information stored?
+----------------------------------------------
+Extracted geo-information is stored in new message fields, named as the original field, and appended suffix
+describing the stored information. That is, if the original field was called ``ip_address``, the extracted
+geo-information will be stored as follows:
+
+- ``ip_address_geolocation`` will contain the geo-coordinates
+- ``ip_address_country_code`` will contain the country ISO code
+- ``ip_address_city_name`` will contain the city name (if available) or ``N/A`` in other case
 
 Which geo-points format does Graylog use to store geolocation information?
 --------------------------------------------------------------------------

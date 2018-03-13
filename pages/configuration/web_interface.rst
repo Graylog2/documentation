@@ -134,18 +134,17 @@ NGINX
 
     server
     {
-      listen      80 default_server;
-      listen      [::]:80 default_server ipv6only=on;
-      server_name graylog.example.org;
+        listen 80 default_server;
+        listen [::]:80 default_server ipv6only=on;
+        server_name graylog.example.org;
 
-      location /
-        {
-            proxy_set_header    Host $http_host;
-            proxy_set_header    X-Forwarded-Host $host;
-            proxy_set_header    X-Forwarded-Server $host;
-            proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header    X-Graylog-Server-URL http://graylog.example.org/api;
-            proxy_pass          http://127.0.0.1:9000;
+        location / {
+          proxy_set_header Host $http_host;
+          proxy_set_header X-Forwarded-Host $host;
+          proxy_set_header X-Forwarded-Server $host;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Graylog-Server-URL http://$server_name/api;
+          proxy_pass       http://127.0.0.1:9000;
         }
     }
 
@@ -164,10 +163,12 @@ If you are running multiple Graylog Server you might want to use HTTPS/SSL to co
 
         location /
         {
-            proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header    Host $http_host;
-            proxy_set_header    X-Graylog-Server-URL https://graylog.example.org/api;
-            proxy_pass          http://127.0.0.1:9000;
+          proxy_set_header Host $http_host;
+          proxy_set_header X-Forwarded-Host $host;
+          proxy_set_header X-Forwarded-Server $host;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Graylog-Server-URL https://$server_name/api;
+          proxy_pass       http://127.0.0.1:9000;
         }
     }
 
@@ -192,7 +193,27 @@ Apache httpd 2.x
 
     </VirtualHost>
 
-.. CAUTION:: Using Apache 2.2 needs the configuration above, if you have Apache 2.4 you need to switch the Locations. This means ``/api/`` must go after ``/``
+**REST API and Web Interface on one port (using HTTPS/SSL)**::
+
+    <VirtualHost *:443>
+        ServerName graylog.example.org
+        ProxyRequests Off
+        SSLEngine on
+        # <- your SSL Settings here!
+
+        <Proxy *>
+            Order deny,allow
+            Allow from all
+        </Proxy>
+
+        <Location />
+            RequestHeader set X-Graylog-Server-URL "https://graylog.example.org/api/"
+            ProxyPass http://127.0.0.1:9000/
+            ProxyPassReverse http://127.0.0.1:9000/
+        </Location>
+
+    </VirtualHost>
+
 
 HAProxy 1.6
 -----------
@@ -214,3 +235,24 @@ HAProxy 1.6
         http-request set-header X-Graylog-Server-URL http://graylog.example.org/api
         use-server graylog_1
         server graylog_1 127.0.0.1:9000 maxconn 20 check
+
+
+**Multiple Backends (roundrobin) with Health-Check (using HTTP)**::
+
+    frontend graylog_http
+        bind *:80
+        option forwardfor
+        http-request add-header X-Forwarded-Host %[req.hdr(host)]
+        http-request add-header X-Forwarded-Server %[req.hdr(host)]
+        http-request add-header X-Forwarded-Port %[dst_port]
+        acl is_graylog hdr_dom(host) -i -m str graylog.example.org
+        use_backend     graylog
+
+    backend graylog
+        description     The Graylog Web backend.
+        balance roundrobin
+        option httpchk HEAD /api/system/lbstatus
+        http-request set-header X-Graylog-Server-URL http://graylog.example.org/api
+        server graylog1 192.168.0.10:9000 maxconn 20 check
+        server graylog2 192.168.0.11:9000 maxconn 20 check
+        server graylog3 192.168.0.12:9000 maxconn 20 check

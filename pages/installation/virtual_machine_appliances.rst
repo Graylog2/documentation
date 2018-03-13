@@ -4,10 +4,17 @@
 Virtual Machine Appliances
 **************************
 
+Pre-Considerations
+==================
+
+This is a showcase of Graylog and its cluster mode. Please run this appliance always in a separated network that is isolated from the internet.
+Read also the notes about production readiness_!
+
 Download
 ========
 
-Download the `OVA image <https://packages.graylog2.org/appliances/ova>`_.
+Download the `OVA image <https://packages.graylog2.org/appliances/ova>`_. If you are unsure what the latest version number is, take a look at our `release page <https://www.graylog.org/releases>`__.
+
 
 Run the image
 =============
@@ -35,12 +42,21 @@ completed:
 
 .. image:: /images/virtualbox3.png
 
+
+
+.. note:: If you don't have a working DHCP server for your virtual machine, you will get the error message:
+   
+      "Your appliance came up without a configured IP address. Graylog is probable not running correctly!"
+   
+   In this case, you have to login and edit ``/etc/network/interfaces`` in order to setup a fixed IP address. Then manually reconfigure Graylog as shown in the following paragraphs.
+
+
 Logging in
 ==========
 
 You can log into the shell of the operating system of the appliance with the
 user *ubuntu* and the password *ubuntu*. You should of course change those
-credentials if you plan to go into production with the appliance.
+credentials.
 
 The web interface is reachable on port 80 at the IP address of your virtual
 machine. The login prompt of the shell is showing you this IP address, too. (See
@@ -76,16 +92,11 @@ Update OVA to latest Version
 
 You can update your Appliance to the :ref:`newest release <upgrade_graylog_omnibus>` without deploying a new template.
 
+.. _readiness:
+
 Production readiness
 ====================
 
-You can use the Graylog appliances (OVA, Docker, AWS, ...) for small production setups but please consider to harden the security of the box before.
+The Graylog appliance is not created to provide a production ready solution. It is build to offer a fast and easy way to try the software itself and not wasting time to install Graylog and it components to any kind of server. 
 
- * Set another password for the default ubuntu user
- * Disable remote password logins in /etc/ssh/sshd_config and deploy proper ssh keys
- * Seperate the box network-wise from the outside, otherwise Elasticsearch can be reached by anyone
- * add additional RAM to the appliance and raise the :ref:`java heap  <raise_java_heap>`!
- * add additional HDD to the appliance and :ref:`extend disk space <extend_ova_disk>`.
- * add the appliance to your monitoring and metric systems.
-
-If you want to create your own customised setup take a look at our :ref:`other installation methods <installing>`.
+If you want to create your own production ready setup take a look at our :ref:`other installation methods <installing>`.

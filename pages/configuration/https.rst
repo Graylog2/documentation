@@ -21,36 +21,52 @@ Certificate/Key file format
 
 When you are configuring TLS, you need to make sure that your certificate/key files are in the right format, which is X.509 for certificates and PKCS#8 for the private keys. Both must to be stored in PEM format.
 
-If no X.509 certificate and/or no PKCS#8 private key have been provided, Graylog will automatically try to generate a self-signed private key and certificate with the hostname part of ``web_listen_uri`` as Common Name (CN) of the certificate.
-
 .. _creating-a-self-signed-private-key-certificate:
 
 Creating a self-signed private key/certificate
 ==============================================
 
-Create PKCS#5 and X.509 certificate::
+Create a file named ``openssl-graylog.cnf`` with the following content (customized to your needs)::
+
+  [req]
+  distinguished_name = req_distinguished_name
+  x509_extensions = v3_req
+  prompt = no
+  
+  # Details about the issuer of the certificate
+  [req_distinguished_name]
+  C = US
+  ST = Some-State
+  L = Some-City
+  O = My Company
+  OU = My Division
+  CN = graylog.example.com
+
+  [v3_req]
+  keyUsage = keyEncipherment, dataEncipherment
+  extendedKeyUsage = serverAuth
+  subjectAltName = @alt_names
+
+  # IP addresses and DNS names the certificate should include
+  # Use IP.### for IP addresses and DNS.### for DNS names,
+  # with "###" being a consecutive number.
+  [alt_names]
+  IP.1 = 203.0.113.42
+  DNS.1 = graylog.example.com
+
+
+Create PKCS#5 private key and X.509 certificate::
 
   $ openssl version
   OpenSSL 0.9.8zh 14 Jan 2016
-  $ openssl req -x509 -days 365 -nodes -newkey rsa:2048 -keyout pkcs5-plain.pem -out cert.pem
+  $ openssl req -x509 -days 365 -nodes -newkey rsa:2048 -config openssl-graylog.cnf -keyout pkcs5-plain.pem -out cert.pem
   Generating a 2048 bit RSA private key
   ............................+++
   .+++
   writing new private key to 'pkcs5-plain.pem'
-  ====-
-  [...]
-  If you enter '.', the field will be left blank.
-  ====-
-  Country Name (2 letter code) [AU]:DE
-  State or Province Name (full name) [Some-State]:Hamburg
-  Locality Name (eg, city) []:Hamburg
-  Organization Name (eg, company) [Internet Widgits Pty Ltd]:Graylog, Inc.
-  Organizational Unit Name (eg, section) []:
-  Common Name (e.g. server FQDN or YOUR name) []:graylog.example.com
-  Email Address []:hostmaster@graylog.example.com
+  -----
 
-
-Convert PKCS#5 private key into a *plaintext* PKCS#8 private key::
+Convert PKCS#5 private key into a *unencrypted* PKCS#8 private key::
 
   $ openssl pkcs8 -in pkcs5-plain.pem -topk8 -nocrypt -out pkcs8-plain.pem
 
@@ -142,7 +158,7 @@ The working directory should now contain the PKCS#8 private key (``graylog-key.p
 
   $ head graylog-key.pem graylog-certificate.pem
   ==> graylog-key.pem <==
-  ====-BEGIN ENCRYPTED PRIVATE KEY====-
+  -----BEGIN ENCRYPTED PRIVATE KEY-----
   MIIE6TAbBgkqhkiG9w0BBQMwDgQIwMhLa5bw9vgCAggABIIEyN42AeYJJNBEiqhI
   mWqJDot4Jokw2vB4abcIJ5Do4+7tjtMrecVRCDSvBZzjkXjnbumBHEoxexe5f0/z
   wgq6f/UDyTM3uKYQTG91fcqTyMDUlo3Wc8OqSqsNehOAQzA7hMCehqgNJHO0Zfny
@@ -159,7 +175,7 @@ The working directory should now contain the PKCS#8 private key (``graylog-key.p
       localKeyID: 54 69 6D 65 20 31 34 36 32 38 36 37 38 32 33 30 39 32
   subject=/C=DE/ST=Hamburg/L=Hamburg/O=Graylog, Inc./OU=Unknown/CN=graylog.example.com
   issuer=/C=DE/ST=Hamburg/L=Hamburg/O=Graylog, Inc./OU=Unknown/CN=graylog.example.com
-  ====-BEGIN CERTIFICATE====-
+  -----BEGIN CERTIFICATE-----
   MIIDkTCCAnmgAwIBAgIEKzODLTANBgkqhkiG9w0BAQsFADB5MQswCQYDVQQGEwJE
   RTEQMA4GA1UECBMHSGFtYnVyZzEQMA4GA1UEBxMHSGFtYnVyZzEWMBQGA1UEChMN
   R3JheWxvZywgSW5jLjEQMA4GA1UECxMHVW5rbm93bjEcMBoGA1UEAxMTZ3JheWxv
@@ -201,39 +217,39 @@ This section show the difference between following private key formats with samp
 
 PKCS#5 plain private key::
 
-  ====-BEGIN RSA PRIVATE KEY====-
+  -----BEGIN RSA PRIVATE KEY-----
   MIIBOwIBAAJBANxtmQ1Kccdp7HBNt8zgTai48Vv617bj4SnhkcMN99sCQ2Naj/sp
   [...]
   NiCYNLiCawBbpZnYw/ztPVACK4EwOpUy+u19cMB0JA==
-  ====-END RSA PRIVATE KEY====-
+  -----END RSA PRIVATE KEY-----
 
 PKCS#8 plain private key::
 
-  ====-BEGIN PRIVATE KEY====-
+  -----BEGIN PRIVATE KEY-----
   MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEA6GZN0rQFKRIVaPOz
   [...]
   LaLGdd9G63kLg85eldSy55uIAXsvqQIgfSYaliVtSbAgyx1Yfs3hJ+CTpNKzTNv/
   Fx80EltYV6k=
-  ====-END PRIVATE KEY====-
+  -----END PRIVATE KEY-----
 
 PKCS#5 encrypted private key::
 
-  ====-BEGIN RSA PRIVATE KEY====-
+  -----BEGIN RSA PRIVATE KEY-----
   Proc-Type: 4,ENCRYPTED
   DEK-Info: DES-EDE3-CBC,E83B4019057F55E9
 
   iIPs59nQn4RSd7ppch9/vNE7PfRSHLoQFmaAjaF0DxjV9oucznUjJq2gphAB2E2H
   [...]
   y5IT1MZPgN3LNkVSsLPWKo08uFZQdfu0JTKcn7NPyRc=
-  ====-END RSA PRIVATE KEY====-
+  -----END RSA PRIVATE KEY-----
 
 PKCS#8 encrypted private key::
 
-  ====-BEGIN ENCRYPTED PRIVATE KEY====-
+  -----BEGIN ENCRYPTED PRIVATE KEY-----
   MIIBpjBABgkqhkiG9w0BBQ0wMzAbBgkqhkiG9w0BBQwwDgQIU9Y9p2EfWucCAggA
   [...]
   IjsZNp6zmlqf/RXnETsJjGd0TXRWaEdu+XOOyVyPskX2177X9DUJoD31
-  ====-END ENCRYPTED PRIVATE KEY====-
+  -----END ENCRYPTED PRIVATE KEY-----
 
 
 Adding a self-signed certificate to the JVM trust store
@@ -280,13 +296,14 @@ In order for the JVM to pick up the new trust store, it has to be started with t
 
 Most start and init scripts for Graylog provide a ``JAVA_OPTS`` variable which can be used to pass the ``javax.net.ssl.trustStore`` and (optionally) ``javax.net.ssl.trustStorePassword`` system properties.
 
+.. _disable_ciphers_java:
 
 Disabling specific TLS ciphers and algorithms
 =============================================
 
 Since `Java 7u76 <http://www.oracle.com/technetwork/java/javase/7u76-relnotes-2389087.html>`_ it is possible to disable specific TLS algorithms and ciphers for secure connections.
 
-In order to disable specific TLS algorithms and ciphers, you need to provide a properties file with a list of disabled algorithms and ciphers. Take a look at the example `security.properties <https://github.com/Graylog2/graylog2-server/blob/2.1/misc/security.properties>`__ in the Graylog source repository.
+In order to disable specific TLS algorithms and ciphers, you need to provide a properties file with a list of disabled algorithms and ciphers. Take a look at the example `security.properties <https://github.com/Graylog2/graylog2-server/blob/2.4/misc/security.properties>`__ in the Graylog source repository.
 
 For example, if you want to disable all algorithms except for TLS 1.2, the properties file has to contain the following line::
 
@@ -300,7 +317,7 @@ To load the properties file into a JVM, you have to pass it to Java using the ``
 
   java -Djava.security.properties=/path/to/security.properties -jar /path/to/graylog.jar server
 
-Most start and init scripts for Graylog provide a ``JAVA_OPTS`` variable which can be used to pass the ``java.security.properties`` system property.
+Most start and :ref:`init scripts for Graylog <default_file_location>` provide a ``JAVA_OPTS`` variable which can be used to pass the ``java.security.properties`` system property.
 
 Further reading
 ---------------

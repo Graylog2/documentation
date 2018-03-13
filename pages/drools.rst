@@ -24,7 +24,7 @@ Getting Started
 ===============
 
   #. Uncomment the ``rules_file`` line in the Graylog configuration file.
-  #. Copy the `sample rules file <https://github.com/Graylog2/graylog2-server/blob/2.1/misc/graylog.drl>`_ to the location specified in your Graylog configuration file.
+  #. Copy the `sample rules file <https://github.com/Graylog2/graylog2-server/blob/2.4/misc/graylog.drl>`_ to the location specified in your Graylog configuration file.
   #. Modify the rules file to parse/rewrite/filter messages as needed.
 
 
@@ -81,7 +81,7 @@ Another example: Adding additional fields and changing the message itself
 -------------------------------------------------------------------------
 
 We send Squid access logs to Graylog using Syslog. The problem is that the ``host`` field of the message was set to the
-IP addrress of the Squid proxy, which not very useful. This rule overwrites the source and adds other fields::
+IP address of the Squid proxy, which not very useful. This rule overwrites the source and adds other fields::
 
   import java.util.regex.Matcher
   import java.util.regex.Pattern

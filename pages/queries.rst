@@ -1,3 +1,5 @@
+.. _queries:
+
 *********
 Searching
 *********
@@ -35,13 +37,15 @@ Messages where the field *type* includes the exact phrase *ssh login*::
 
   type:"ssh login"
 
-Messages that do not have the field *type*::
-
-  _missing_:type
-
 Messages that have the field *type*::
 
   _exists_:type
+
+Messages that do not have the field *type*::
+
+  NOT _exists_:type
+
+.. note:: Elasticsearch 2.x allows to use ``_missing_:type`` instead of ``NOT _exsits_:type``. This query syntax has been removed in `Elasticsearch 5.0 <https://www.elastic.co/guide/en/elasticsearch/reference/5.0/breaking_50_search_changes.html#_deprecated_queries_removed>`__.
 
 By default all terms or phrases are OR connected so all messages that have at least one hit are returned. You can use
 **Boolean operators and groups** for control over this::
@@ -63,17 +67,23 @@ You can also use the NOT operator::
   source:exam?le.*
 
 **Note that leading wildcards are disabled to avoid excessive memory consumption!** You can enable them in
-your ``graylog-server.conf``: ``allow_leading_wildcard_searches = true``
+your Graylog configuration file::
 
-Also note that `message`, `full_message`, and `source` are the only fields that can be searched via wildcard by default.
+  allow_leading_wildcard_searches = true
 
-**Fuzziness:** You can search for similar but not equal terms::
+Also note that ``message``, ``full_message``, and ``source`` are the only fields that are being analyzed by default.
+While wildcard searches (using ``*`` and ``?``) work on all indexed fields, analyzed fields will behave a little bit different.
+See `wildcard and regexp queries <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/_wildcard_and_regexp_queries.html>`_ for details.
+
+**Fuzziness:** You can search for similar terms::
 
   ssh logni~
   source:exmaple.org~
 
-This is using the `Damerau–Levenshtein distance <http://en.wikipedia.org/wiki/Damerau-Levenshtein_distance>`_ with a default
-distance of *2*. You can change the distance like this::
+This example is using the `Damerau–Levenshtein distance <http://en.wikipedia.org/wiki/Damerau-Levenshtein_distance>`_ with a default
+distance of *2* and will match "ssh login" and "example.org" (intentionally misspelled in the query).
+
+You can change the distance like this::
 
   source:exmaple.org~1
 
@@ -117,7 +127,7 @@ Time frame selector
 
 The time frame selector defines in what time range to search in. It offers three different ways of selecting a time range and
 is vital for search speed: If you know you are only interested in messages of the last hour, only search in that time frame.
-This will make Graylog search in :doc:`relevant indices <index_model>` only and greatly reduce system load and required resources.
+This will make Graylog search in :doc:`relevant indices <configuration/index_model>` only and greatly reduce system load and required resources.
 
 .. image:: /images/queries_time_range_selector.png
 
@@ -170,6 +180,17 @@ search by selecting *Saved search* -> *Delete saved search*.
 
 .. image:: /images/saved_search_update.png
 
+Histogram
+=========
+The search page includes a search result histogram, where you can view in a concise way the number of messages received grouped by a certain time period that Graylog will adjust for you.
+
+The histogram also allows you to further narrow down the cause for an issue:
+
+- Delimit the search time range by brushing over the histogram. Just click and drag with your mouse over the chart to select the time range you want to use, and click on the search button to perform that search
+- See the time where alerts are triggered in the graph annotations. If you are searching in a stream, you will only see alerts related to that stream
+
+.. image:: /images/search_histogram.png
+
 Analysis
 ========
 Graylog provides several tools to analyze your search results. It is possible to save these analysis into dashboards, so you can check them over
@@ -221,6 +242,8 @@ screenshots:
 
 Field graphs appear every time you perform a search, allowing you to compare data, or combine graphs coming from different streams.
 
+.. _decorators:
+
 Decorators
 ==========
 Decorators allow you to alter message fields during search time automatically, while *preserving the unmodified message on disk*. Decorators
@@ -243,6 +266,8 @@ to apply from the dropdown, and click on *Apply*. Once you save your changes, th
 
 When you apply multiple decorators to the same search results, you can change the order in which they are applied at any time by using
 drag and drop in the decorator list.
+
+.. _syslog_severity_mapper:
 
 Syslog severity mapper
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -313,8 +338,8 @@ sidebar, click on the *More actions* button, and select *Export as CSV*.
 
 .. image:: /images/export_as_csv.png
 
-**Hint**: Some Graylog inputs keep the original message in the the `full_message` field. If you need to export the original message, you
-can do so by clicking on the *List all fields* link at the bottom of the sidebar, and then selecting the `full_message` field.
+**Hint**: Some Graylog inputs keep the original message in the the ``full_message`` field. If you need to export the original message, you
+can do so by clicking on the *List all fields* link at the bottom of the sidebar, and then selecting the ``full_message`` field.
 
 Search result highlighting
 ==========================
@@ -327,9 +352,9 @@ Enabling/Disabling search result highlighting
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Using search result highlighting will result in slightly higher resource consumption of searches. You can enable and disable
-it using a configuration parameter in the ``graylog.conf`` of your ``graylog-server`` nodes::
+it using a configuration parameter in the ``graylog.conf`` of your Graylog nodes::
 
-    allow_highlighting = true
+  allow_highlighting = true
 
 
 Search configuration
