@@ -175,3 +175,13 @@ The license automatically applies to all nodes in your cluster without the need 
           The same license is also attached as a text file in case it is wrongly formatted in the email.
 
 .. image:: /images/enterprise-license-1.png
+
+
+License Verification
+====================
+
+Some Graylog licenses require to check their validity on a regular basis. This includes the free Graylog Enterprise license with a specific amount of traffic included. 
+
+If your network environment requires Graylog to use a proxy server in order to communicate with the external services via HTTPS, you'll have to configure the proxy server in the :ref:`Graylog configuration file<http_config>`. 
+
+The Graylog web interface shows all details about the license, but if you are still unclear about the requirements, please contact our `sales team <https://www.graylog.org/contact-sales>`_ with your questions.
