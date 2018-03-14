@@ -380,6 +380,8 @@ Email
     * Specify this to include links to the stream in your stream alert mails.
     * This should define the fully qualified base url to your web interface exactly the same way as it is accessed by your users.
 
+.. _http_config:
+
 HTTP
 ^^^^
 
