@@ -78,14 +78,14 @@ See `wildcard and regexp queries <https://www.elastic.co/guide/en/elasticsearch/
 **Fuzziness:** You can search for similar terms::
 
   ssh logni~
-  source:exmaple.org~
+  source:example.org~
 
 This example is using the `Damerau–Levenshtein distance <http://en.wikipedia.org/wiki/Damerau-Levenshtein_distance>`_ with a default
 distance of *2* and will match "ssh login" and "example.org" (intentionally misspelled in the query).
 
 You can change the distance like this::
 
-  source:exmaple.org~1
+  source:example.org~1
 
 You can also use the fuzzyness operator to do a **proximity** search where the terms in a phrase can have different/fuzzy
 distances from each other and don't have to be in the defined order::
