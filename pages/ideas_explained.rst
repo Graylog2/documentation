@@ -60,7 +60,7 @@ Blackboxes
 
 Closed source systems tend to become black boxes that you cannot extend or adapt to fit the needs of your use case. This is an important
 thing to consider especially for log management software. The use cases can range from simple syslog centralization to ultra flexible
-data bus requirements. A closed source system will always make you depending on the vendor because there is no way to adapt. As your
+data bus requirements. A closed source system will always make you dependent on the vendor because there is no way to adapt. As your
 setup reaches a certain point of flexibility you might hit a wall earlier than expected.
 
 Consider spending a part of the money you would spend for the wrong license model for developing your own plugins or integrations.
