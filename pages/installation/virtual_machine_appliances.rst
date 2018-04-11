@@ -13,7 +13,7 @@ Read also the notes about production readiness_!
 Download
 ========
 
-Download the `OVA image <https://packages.graylog2.org/appliances/ova>`_. If you are unsure what the latest version number is, take a look at our `release page <https://www.graylog.org/releases>`__.
+Download the `OVA image <https://packages.graylog2.org/appliances/ova>`_. If you are unsure what the latest version number is, take a look at our `release page <https://www.graylog.org/downloads>`__.
 
 
 Run the image
