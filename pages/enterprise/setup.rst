@@ -38,6 +38,14 @@ The following list shows the minimum required Graylog versions for the Graylog E
       - 2.3.2
     * - 2.4.0
       - 2.4.0
+    * - 2.4.1
+      - 2.4.1
+    * - 2.4.2
+      - 2.4.2
+    * - 2.4.3
+      - 2.4.3
+
+
 
 Installation
 ============
@@ -84,7 +92,7 @@ The installation on distributions like CentOS or RedHat can be done with *yum* a
 Tarball
 -------
 
-If you have done a manual installation or want to include only parts of the enterprise plugins you can get the tarball from `the Graylog Enterprise web page <https://www.graylog.org/enterprise/>`_. 
+If you have done a manual installation or want to include only parts of the enterprise plugins you can get the tarball from `the Graylog download server <https://downloads.graylog.org/releases/graylog-enterprise/plugin-bundle/tgz/graylog-enterprise-plugins-2.4.3.tgz>`_. 
 
 The tarball includes the enterprise plugin JAR files.
 
