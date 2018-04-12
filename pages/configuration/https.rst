@@ -279,6 +279,10 @@ In order for the JVM to pick up the new trust store, it has to be started with t
 
 Most start and init scripts for Graylog provide a ``JAVA_OPTS`` variable which can be used to pass the ``javax.net.ssl.trustStore`` and (optionally) ``javax.net.ssl.trustStorePassword`` system properties.
 
+.. note:: The default location to change the JVM parameter depends on your installation type and is documented :ref:`with all other default locations <default_file_location>`.
+
+.. warning:: Without adding the keystore to your startup parameter Graylog is not able to work with your self-signed certificates or your local CA signed certificates.
+
 .. _disable_ciphers_java:
 
 Disabling specific TLS ciphers and algorithms
