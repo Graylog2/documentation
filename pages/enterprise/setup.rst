@@ -32,6 +32,10 @@ The following list shows the minimum required Graylog versions for the Graylog E
       - 2.2.1
     * - 2.3.0
       - 2.3.0
+    * - 2.3.1
+      - 2.3.1
+    * - 2.3.2
+      - 2.3.2
 
 
 Installation
@@ -45,13 +49,28 @@ you will get download links for the tarballs and DEB/RPM packages in the confirm
 Tarball
 -------
 
+If you have done a manual installation or want to include only parts of the enterprise plugins you can get the tarball from the download locations listed in the following table.
+
+.. list-table:: Enterprise Plugins download
+    :header-rows: 1
+
+    * - Enterprise Version
+      - Download URL
+    * - 2.3.0
+      - :enterprise-plugins-tar:`2.3.0`
+    * - 2.3.1
+      - :enterprise-plugins-tar:`2.3.1`
+    * - 2.3.2
+      - :enterprise-plugins-tar:`2.3.2`
+
+
 The tarball includes the enterprise plugin JAR files.
 
 ::
 
-  $ tar -tzf graylog-enterprise-plugins-1.0.0.tgz
-  graylog-enterprise-plugins-1.0.0/plugin/graylog-plugin-archive-1.0.0.jar
-  graylog-enterprise-plugins-1.0.0/plugin/graylog-plugin-license-1.0.0.jar
+  $ tar -tzf graylog-enterprise-plugins-2.3.0.tgz
+  graylog-enterprise-plugins-1.0.0/plugin/graylog-plugin-archive-2.3.0.jar
+  graylog-enterprise-plugins-1.0.0/plugin/graylog-plugin-license-2.3.0.jar
 
 Depending on the Graylog setup method you have used, you have to install the plugins into different locations.
 
@@ -65,13 +84,13 @@ Your plugin directory should look similar to this after installing the enterpris
 ::
 
   plugin/
-  ├── graylog-plugin-archive-1.0.0.jar
-  ├── graylog-plugin-collector-1.0.2.jar
-  ├── graylog-plugin-enterprise-integration-1.0.2.jar
-  ├── graylog-plugin-license-1.0.0.jar
-  ├── graylog-plugin-map-widget-1.0.2.jar
-  ├── graylog-plugin-pipeline-processor-1.0.0-beta.4.jar
-  └── usage-statistics-2.0.2.jar
+  ├── graylog-plugin-archive-2.3.0.jar
+  ├── graylog-plugin-collector-2.3.0.jar
+  ├── graylog-plugin-enterprise-integration-2.3.0.jar
+  ├── graylog-plugin-license-2.3.0.jar
+  ├── graylog-plugin-map-widget-2.3.0.jar
+  ├── graylog-plugin-pipeline-processor-2.3.0.jar
+  └── usage-statistics-2.3.0.jar
 
 
 DEB / RPM Package
