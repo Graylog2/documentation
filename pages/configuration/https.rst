@@ -281,7 +281,7 @@ Most start and init scripts for Graylog provide a ``JAVA_OPTS`` variable which c
 
 .. note:: The default location to change the JVM parameter depends on your installation type and is documented :ref:`with all other default locations <default_file_location>`.
 
-.. warning:: Without adding the keystore to your startup parameter Graylog is not able to work with your self-signed certificates or your local CA signed certificates.
+.. warning:: Without adding the previously created Java keystore to the JVM parameters, Graylog won't be able to verify any self-signed certificates or custom CA certificates.
 
 .. _disable_ciphers_java:
 
