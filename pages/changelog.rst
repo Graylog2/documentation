@@ -5,6 +5,32 @@ Changelog
 Graylog 2.4.3
 =============
 
+Released: 2018-05-02
+
+**Core**
+
+- Fix issues with loading example message for extractor. `Graylog2/graylog2-server#4553 <https://github.com/Graylog2/graylog2-server/issues/4553>`_ `Graylog2/graylog2-server#4559 <https://github.com/Graylog2/graylog2-server/pull/4559>`_
+- Allow ``:`` character in password. `Graylog2/graylog2-server/#4557 <https://github.com/Graylog2/graylog2-server/pull/4557>`_
+- Fix lookup table cache entry count metric. `Graylog2/graylog2-server#4558 <https://github.com/Graylog2/graylog2-server/pull/4558>`_
+- Simplify plugin development for lookup table plugins. `Graylog2/graylog2-server#4586 <https://github.com/Graylog2/graylog2-server/pull/4586>`_ `Graylog2/graylog2-server#4587 <https://github.com/Graylog2/graylog2-server/pull/4587>`_
+- Fix security issue with unescaped text in notification and dashboard names. `Graylog2/graylog2-server#4727 <https://github.com/Graylog2/graylog2-server/pull/4727>`_ `Graylog2/graylog2-server#4739 <https://github.com/Graylog2/graylog2-server/pull/4739>`_
+- Improve high-availability behavior with missing Elasticsearch nodes. `Graylog2/graylog2-server#4738 <https://github.com/Graylog2/graylog2-server/issues/4738>`_
+- Fix issue with updating saved searches. `Graylog2/graylog2-server#2285 <https://github.com/Graylog2/graylog2-server/pull/2285>`_ `Graylog2/graylog2-server#4743 <https://github.com/Graylog2/graylog2-server/pull/4743>`_
+- Fix issue assigning stream outputs to the default stream. `Graylog2/graylog2-server#4747 <https://github.com/Graylog2/graylog2-server/pull/4747>`_ `Graylog2/graylog2-server#4754 <https://github.com/Graylog2/graylog2-server/pull/4754>`_
+- Improve rendering of input configuration forms.  `Graylog2/graylog2-server#4755 <https://github.com/Graylog2/graylog2-server/pull/4755>`_ `Graylog2/graylog2-server#4745 <https://github.com/Graylog2/graylog2-server/issues/4745>`_ by `@Al2Klimov <https://github.com/Al2Klimov>`_
+- Add code to allow HTTP proxy authentication in ``http_proxy_uri`` config option. `Graylog2/graylog2-server#4594 <https://github.com/Graylog2/graylog2-server/issues/4594>`_ `Graylog2/graylog2-server#4758 <https://github.com/Graylog2/graylog2-server/pull/4758>`_
+
+**ThreatIntel Plugin**
+
+- Fix issue with missing threat names in lookup results. `Graylog2/graylog-plugin-threatintel#99 <https://github.com/Graylog2/graylog-plugin-threatintel/pull/99>`_ by `@pbr0ck3r <https://github.com/pbr0ck3r>`_
+
+**AWS Plugin**
+
+- Support new AWS regions. `Graylog2/graylog-plugin-aws#71 <https://github.com/Graylog2/graylog-plugin-aws/pull/71>`_ `Graylog2/graylog-plugin-aws#73 <https://github.com/Graylog2/graylog-plugin-aws/pull/73>`_ `Graylog2/graylog-plugin-aws#75 <https://github.com/Graylog2/graylog-plugin-aws/pull/75>`_
+
+Graylog 2.4.3
+=============
+
 Released: 2018-01-24
 
 https://www.graylog.org/blog/108-announcing-graylog-v2-4-3

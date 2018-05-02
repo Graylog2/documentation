@@ -2,6 +2,13 @@
 Changelog
 *********
 
+Graylog Enterprise 2.4.4
+========================
+
+Released: 2018-05-02
+
+No changes since 2.4.3.
+
 Graylog Enterprise 2.4.3
 ========================
 
