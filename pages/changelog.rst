@@ -2,7 +2,7 @@
 Changelog
 *********
 
-Graylog 2.4.3
+Graylog 2.4.4
 =============
 
 Released: 2018-05-02
