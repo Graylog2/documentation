@@ -47,9 +47,6 @@ The following list shows the minimum required Graylog versions for the Graylog E
     * - 3.0.0
       - 3.0.0
 
-
->>>>>>> ae5af4b... Add download location of enterprise plugins (#436)
-
 Installation
 ============
 
