@@ -6,7 +6,7 @@ When upgrading from a previous version of Graylog you follow the previous used i
 
 The following Upgrade notes should be read carefully before you start the upgrade process. Breaking changes and dependency upgrades are documented in those upgrade notes.
 
-You should always follow minor versions when updating across multiple versions to make sure necessary migrations are run corretly. The upgrade notes are always written coming from the stable release before.
+You should always follow minor versions when updating across multiple versions to make sure necessary migrations are run correctly. The upgrade notes are always written coming from the stable release before.
 
 .. toctree::
    :titlesonly:
