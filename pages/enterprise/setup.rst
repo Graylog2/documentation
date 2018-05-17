@@ -208,3 +208,21 @@ Some Graylog licenses require to check their validity on a regular basis. This i
 If your network environment requires Graylog to use a proxy server in order to communicate with the external services via HTTPS, you'll have to configure the proxy server in the :ref:`Graylog configuration file<http_config>`. 
 
 The Graylog web interface shows all details about the license, but if you are still unclear about the requirements, please contact our `sales team <https://www.graylog.org/contact-sales>`_ with your questions.
+
+Details on License Verification
+-------------------------------
+
+
+Graylog Enterprise periodically sends the following information to
+'api.graylog.com' via HTTPS on TCP port 443 for each installed
+license:
+
+* A nonce to avoid modified reports
+* The ID of the license
+* The ID of the Graylog cluster
+* A flag indicating if the license is violated
+* A flag indicating if the license has expired
+* A flag indicating if Graylog detected that the traffic measuring mechanisms have been modified
+* A list of how much traffic was received and written by Graylog in the recent days, in bytes
+
+
