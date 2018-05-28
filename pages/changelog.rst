@@ -11,7 +11,7 @@ Released: 2018-05-28
 
 - Improve HTTP proxy authentication to support more proxy server software. `Graylog2/graylog2-server#4788 <https://github.com/Graylog2/graylog2-server/issues/4788>`_ `Graylog2/graylog2-server#4790 <https://github.com/Graylog2/graylog2-server/issues/4790>`_
 - Fix an issue where the Elasticsearch URL credentials have been written to the Graylog log file. `Graylog2/graylog2-server#4804 <https://github.com/Graylog2/graylog2-server/issues/4804>`_ `Graylog2/graylog2-server#4806 <https://github.com/Graylog2/graylog2-server/issues/4806>`_
-- Fix issue with deleting dashboard widgets. `Graylog2/graylog2-server#4225 <https://github.com/Graylog2/graylog2-server/issues/4225>`_ `Graylog2/graylog2-server#4808 <https://github.com/Graylog2/graylog2-server/issues/4808>`_
+- Fix issue with deleting dashboard widgets. `Graylog2/graylog2-server#4525 <https://github.com/Graylog2/graylog2-server/issues/4525>`_ `Graylog2/graylog2-server#4808 <https://github.com/Graylog2/graylog2-server/issues/4808>`_
 
 Graylog 2.4.4
 =============
