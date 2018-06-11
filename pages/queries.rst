@@ -45,9 +45,9 @@ Messages that do not have the field *type*::
 
   NOT _exists_:type
 
-Messages that match RegExp *FastEthernet[0-9]+* (ElasticSearch will convert messages to lowercase)::
+Messages that match regular expression ``ethernet[0-9]+``::
 
-  /fastethernet[0-9]+/
+  /ethernet[0-9]+/
 
 .. note:: Elasticsearch 2.x allows to use ``_missing_:type`` instead of ``NOT _exists_:type``. This query syntax has been removed in `Elasticsearch 5.0 <https://www.elastic.co/guide/en/elasticsearch/reference/5.0/breaking_50_search_changes.html#_deprecated_queries_removed>`__.
 
