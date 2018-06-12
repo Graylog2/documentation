@@ -335,6 +335,8 @@ MongoDB
     * If ``mongodb_max_connections`` is 100, and ``mongodb_threads_allowed_to_block_multiplier`` is 5, then 500 threads can block. More than that and an exception will be thrown.
     * http://api.mongodb.com/java/current/com/mongodb/MongoOptions.html#threadsAllowedToBlockForConnectionMultiplier
 
+.. _email_config:
+
 Email
 ^^^^^
 
@@ -343,7 +345,12 @@ Email
 * ``transport_email_port = 587``
 * ``transport_email_use_auth = true``
 * ``transport_email_use_tls = true``
+    * Enable SMTP with STARTTLS for encrypted connections.
 * ``transport_email_use_ssl = true``
+    * Enable SMTP over SSL (SMTPS) for encrypted connections.
+
+.. attention:: Make sure to enable only *one* of these two settings because most (or all) SMTP services only support one of the encryption mechanisms on the same port. Most SMTP services support SMTP with STARTTLS while SMTPS is deprecated on most SMTP services.
+
 * ``transport_email_auth_username = you@example.com``
 * ``transport_email_auth_password = secret``
 * ``transport_email_subject_prefix = [graylog]``
