@@ -42,10 +42,12 @@ When running Graylog in untrusted environments such as the Internet, we strongly
 It's possible to :ref:`disable unsafe or deprecated TLS ciphers <disable_ciphers_java>` in Graylog. When using :ref:`nginx or Apache httpd <configuring_webif_nginx>` for SSL termination the `Mozilla SSL Configuration Generator <https://mozilla.github.io/server-side-tls/ssl-config-generator/>`_ will help to create a reasonably secure configuration for them.
 
 
+Security related topics
+=======================
 
 .. toctree::
-   :caption: Security related topics
    :titlesonly:
    :glob:
 
-   security/sec_*
+   sec_*
+

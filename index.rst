@@ -19,7 +19,7 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/installation
    pages/upgrade
    pages/configuration
-   pages/security/securing
+   pages/secure/securing
    pages/sending_data
    pages/collector_sidecar
    pages/collector
