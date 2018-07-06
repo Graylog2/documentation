@@ -48,4 +48,4 @@ It's possible to :ref:`disable unsafe or deprecated TLS ciphers <disable_ciphers
    :titlesonly:
    :glob:
 
-   security/sec_*
+   sec_*
