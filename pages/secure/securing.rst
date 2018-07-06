@@ -49,11 +49,5 @@ Security related topics
    :titlesonly:
    :glob:
 
-<<<<<<< HEAD:pages/secure/securing.rst
-   sec_*
 
-||||||| make multiple pages from one
-   security/sec_*
-=======
    sec_*
->>>>>>> update_security:pages/security/securing.rst
