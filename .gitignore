@@ -16,3 +16,7 @@ share
 pyvenv.cfg
 .venv
 pip-selfcheck.json
+
+# Windows specific files
+Scripts
+tcl
