@@ -57,7 +57,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Graylog'
-copyright = u'2015-2017 Graylog, Inc.'
+copyright = u'2015-2018 Graylog, Inc.'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
