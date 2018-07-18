@@ -14,12 +14,12 @@ The typical workflow to make changes to the documentation and preview them befor
 After the above is done, changes can be made and previewed with the following
 
 - create git branch for your changes
-- change in the virtual environment
+- change to the virtual environment
 - make the modifications/additions
 - run the build and check for errors
 - push the branch to GitHub and create a pull request
 
-Now a review of the changes is needed and finally, it will be merged, by the reviewer into the branch/version of the documentation you created the pull request for. Should the change be available in other versions of the documentation this should be written in the pull request that the reviewer can push this to the specific versions too.
+Now a review of the changes is needed and, finally, it will be merged by the reviewer into the branch/version of the documentation you created the pull request for. Should the change be available in other versions of the documentation this should be written in the pull request that the reviewer can push this to the specific versions too.
 
 
 ## Building locally
@@ -34,7 +34,7 @@ Now a review of the changes is needed and finally, it will be merged, by the rev
 
 #### Mac & Linux
 
-It is very likely that you already have all needed software available. If not we recommend [homebrew](https://brew.sh/) for Mac and the package manager of the Linux distribution. 
+It is very likely that you already have all needed software available. If not we recommend [homebrew](https://brew.sh/) for Mac and the package manager of the Linux distribution you are using.
 
 ##### first time preparation
 
@@ -56,13 +56,13 @@ Install [Sphinx](http://sphinx-doc.org), [the theme we are using](https://github
 
 #### Windows
 
-For Windows we recommend [chocolaty](https://chocolatey.org/) to install the requirements, should that not be possible to use - downloand and install the software from the project webpages.   
+For Windows we recommend [chocolatey](https://chocolatey.org/) to install the requirements. If that is not possible to use, download and install the software from the project webpages.   
 
 ##### Windows Installation in detail
 
-_This can't be a complete guide, but this might give you some guidance._
+_This can not be a complete guide, but this might give you some guidance._
 
-Installation the needed software using [chocolaty](https://chocolatey.org/). Github Desktop and Notepad+ are optional, but a good addition. The commands need to be run in your administrator Powershell.
+Installation the needed software using [chocolatey](https://chocolatey.org/). Github Desktop and Notepad+ are optional, but a good addition. The commands need to be run in your administrator Powershell.
     
 	# choco install python
     # choco install git
