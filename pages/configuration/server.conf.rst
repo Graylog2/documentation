@@ -349,7 +349,7 @@ Rotation
 
 MongoDB
 ^^^^^^^
-* ``mongodb_uri = mongdb://...``
+* ``mongodb_uri = mongodb://...``
     * MongoDB connection string. Enter your MongoDB connection and authentication information here.
     * See https://docs.mongodb.com/manual/reference/connection-string/ for details.
     * Examples:
