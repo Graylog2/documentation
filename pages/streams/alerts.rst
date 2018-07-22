@@ -103,6 +103,8 @@ Email alert notification
 
 The email alert notification can be used to send an email to the configured alert receivers when the conditions are triggered.
 
+Make sure to check the :ref:`email-related configuration settings<email_config>` in the Graylog configuration file.
+
 Three configuration options are available for the alert notification to customize the email that will be sent.
 The *email body* and *email subject* are `JMTE <https://github.com/DJCordhose/jmte>`__ templates. JMTE is a minimal template engine that supports variables, loops and conditions. See the `JMTE documentation <https://cdn.rawgit.com/DJCordhose/jmte/master/doc/index.html>`__ for a language reference.
 
