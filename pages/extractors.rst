@@ -202,13 +202,13 @@ with an example message::
 
 Using the default settings, that message would be extracted into these fields:
 
-details.tags
+details_tags
   one, two, three
 level
   ERROR
-details.controller
+details_controller
   IndexController
-details.message
+details_message
   This is an example error message
 
 In the create extractor page, you can also customize how to separate list of elements, keys, and key/values. It is also possible
