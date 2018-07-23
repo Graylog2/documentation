@@ -1,4 +1,4 @@
-
+.. _queries:
 
 *********
 Searching
