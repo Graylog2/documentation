@@ -1,4 +1,4 @@
-.. _queries:
+
 
 *********
 Searching
@@ -44,6 +44,16 @@ Messages that have the field *type*::
 Messages that do not have the field *type*::
 
   NOT _exists_:type
+
+.. note:: Elasticsearch 2.x allows to use ``_missing_:type`` instead of ``NOT _exists_:type``. This query syntax has been removed in `Elasticsearch 5.0 <https://www.elastic.co/guide/en/elasticsearch/reference/5.0/breaking_50_search_changes.html#_deprecated_queries_removed>`__.
+
+Messages that match regular expression ``ethernet[0-9]+``::
+
+  /ethernet[0-9]+/
+
+.. note:: Please refer to the Elasticsearch documentation about the `Regular expression syntax <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/query-dsl-regexp-query.html#regexp-syntax>`_ for details about the supported regular expression dialect.
+
+.. note:: Elasticsearch 2.x allows to use ``_missing_:type`` instead of ``NOT _exists_:type``. This query syntax has been removed in `Elasticsearch 5.0 <https://www.elastic.co/guide/en/elasticsearch/reference/5.0/breaking_50_search_changes.html#_deprecated_queries_removed>`__.
 
 By default all terms or phrases are OR connected so all messages that have at least one hit are returned. You can use
 **Boolean operators and groups** for control over this::
