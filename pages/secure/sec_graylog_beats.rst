@@ -15,7 +15,7 @@ Create a CA with our `shadowCA <https://github.com/graylog-labs/shadowCA>`__ or 
 The CA certificate need to be imported on all machines that are part of the setup using the `documented steps <https://github.com/graylog-labs/shadowCA/blob/master/docs/add_ca_to_truststore.md>`__. Depending on your Browser you might need to add the ``.der`` to your Browser to trust the CA. In addition the CA ``.der`` file is added to a JVM Keystore that is used by Graylog.
 
 adding of .der to JVM Keystore
------------------------------
+------------------------------
 
 Graylog need to know the CA that is used to verify the certificates. The prime advantage is that it only needs the CA certificate and not all known self-signed certificates in the setup.::
 
@@ -99,4 +99,4 @@ Collector-Sidecar
 
 Place the certificate and key on the server where the collector-sidecar is running (e.g. place it in ``/etc/graylog/collector-sidecar/ssl``). Then reference those files in the beats output configuration at the Graylog web interface. The :ref:`description how to secure sidecar <sidecar_secure>` only refers to self signed certificates not how to use your own CA. 
 
-You need to place the ``shadowCA.pem`` and the ``.crt`` and ``.key`` in the directory at the collector-sidecar server.  
+You need to place the ``shadowCA.pem`` and the ``.crt`` and ``.key`` in the directory at the collector-sidecar server.   
