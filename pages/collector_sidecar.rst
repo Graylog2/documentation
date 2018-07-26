@@ -250,12 +250,13 @@ For the Beats platform you can enable each Beat individually, e.g on a Windows h
     list_log_files:
       - /var/log
     node_id: graylog-collector-sidecar
-    collector_id: file:/etc/graylog/collector-sidecar/collector-id
-    log_path: /var/log/graylog/collector-sidecar
+    collector_id: file:C:\Program Files\graylog\collector-sidecar\collector-id
+    cache_path: C:\Program Files\graylog\collector-sidecar\cache
+    log_path: C:\Program Files\graylog\collector-sidecar\logs
     log_rotation_time: 86400
     log_max_age: 604800
     tags:
-      - linux
+      - windows
       - apache
       - redis
     backends:
