@@ -31,7 +31,7 @@ Internally pipelines are represented as code. Let's have a look at a simple exam
 
 This code snippet declares a new pipeline named ``My new pipeline``, which has two stages.
 
-Stages are ran in the order of their given *priority*, and aren't otherwise named. Stage priorities can be any integer, positive or negative, you prefer.
+Stages are run in the order of their given *priority*, and aren't otherwise named. Stage priorities can be any integer, positive or negative, you prefer.
 In our example the first stage has a priority of 1 and the second stage a priority of 2, however -99 and 42 could be used instead.
 Ordering based upon stage priority gives you the ability to run certain rules before or after others, which might exist in other connected pipelines, without modifying those other connected pipelines.
 This is particularly handy when dealing with changing data formats.
