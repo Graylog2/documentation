@@ -349,7 +349,7 @@ Rotation
 
 MongoDB
 ^^^^^^^
-* ``mongodb_uri = mongdb://...``
+* ``mongodb_uri = mongodb://...``
     * MongoDB connection string. Enter your MongoDB connection and authentication information here.
     * See https://docs.mongodb.com/manual/reference/connection-string/ for details.
     * Examples:
@@ -406,6 +406,13 @@ HTTP
     * Default: 10s
 * ``http_proxy_uri =``
     * HTTP proxy for outgoing HTTP connections
+
+.. attention:: If you configure a proxy, make sure to also configure the "http_non_proxy_hosts" option so internal HTTP connections with other nodes does not go through the proxy.
+
+* ``http_non_proxy_hosts =``
+    * A list of hosts that should be reached directly, bypassing the configured proxy server.
+    * This is a list of patterns separated by ",". The patterns may start or end with a "*" for wildcards.
+    * Any host matching one of these patterns will be reached through a direct connection instead of through a proxy.    
 
 Others
 ^^^^^^

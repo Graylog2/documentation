@@ -72,7 +72,7 @@ will make the following examples more obvious for you.
   * **Top log sources today**
 
     * Example search: ``*``, timeframe: Last 24 hours
-    * Expand the ``source`` field in the the sidebar and hit *Quick values*
+    * Expand the ``source`` field in the sidebar and hit *Quick values*
     * Add quick values to dashboard
 
   * **Number of exceptions in a given app today**

@@ -280,13 +280,19 @@ First start
 Once you installed the Sidecar package you are ready to start the service for the first time. Decide which backend you want to use. Enable or disable the single
 backends by setting ``enabled: true`` or respectively to ``false``. Now start the Sidecar, depending on your operating system you can do this with:
 
-+---------------+---------------------------------------------------------------------------------------------+
-| Debian/Ubuntu | ``sudo start collector-sidecar``                                                            |
-+---------------+---------------------------------------------------------------------------------------------+
-| RedHat/CentOS | ``sudo systemctl start collector-sidecar``                                                  |
-+---------------+---------------------------------------------------------------------------------------------+
-| Windows       | ``C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe -service start`` |
-+---------------+---------------------------------------------------------------------------------------------+
++-------------+----------------------------------------------------------------------------------------------+
+| systemd     | ``sudo systemctl start collector-sidecar``                                                   |
++-------------+----------------------------------------------------------------------------------------------+
+| SysV        | ``sudo start collector-sidecar``                                                             |
++-------------+----------------------------------------------------------------------------------------------+
+| Windows     | ``C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe -service start``  |
++-------------+----------------------------------------------------------------------------------------------+
+
+If you're unsure which init system your Linux distribution is using, execute the following command to print the name of the used init system::
+
+    # ps -h -o comm -p 1
+
+Otherwise please refer to the handbook of your Linux distribution and look up which init system is being used.
 
 Afterwards you will most likely see an error like this in the log file::
 
