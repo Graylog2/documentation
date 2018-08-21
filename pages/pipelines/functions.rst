@@ -336,8 +336,8 @@ Checks if ``value`` contains ``search``, optionally ignoring the case of the sea
 
 Example::
 
-        // Check if the `computer.corp.net` is in the `hostname` field. Ignore case.
-        contains(to_string($message.hostname), "computer.corp.net", true)
+        // Check if the `example.org` is in the `hostname` field. Ignore case.
+        contains(to_string($message.hostname), "example.org", true)
 
 substring
 ---------
@@ -526,6 +526,9 @@ processed for this message.
 If ``remove_from_default`` is ``true``, the message is also removed from the default stream "All messages".
 
 Example::
+
+        // Route the current processed message to a stream with ID `512bad1a535b43bd6f3f5e86` (preferred method)
+        route_to_stream("512bad1a535b43bd6f3f5e86");
 
         // Route the current processed message to a stream named `Custom Stream`
         route_to_stream("Custom Stream");
