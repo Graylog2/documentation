@@ -273,11 +273,23 @@ is_null
 
 Checks if the given value is ``null``.
 
+Example::
+
+        // Check if the `src_addr` field is null (empty).
+        // If null, boolean true is returned. If not null, boolean false is returned.
+        is_null(src_addr)
+
 is_not_null
 -----------
 ``is_not_null(value: any)``
 
 Checks if the given value is not ``null``.
+
+Example::
+
+        // Check if the `src_addr` field is not null.
+        // If not null, boolean true is returned. If null, boolean false is returned.
+        is_not_null(src_addr)
 
 abbreviate
 ----------
@@ -321,6 +333,11 @@ contains
 ``contains(value: string, search: string, [ignore_case: boolean])``
 
 Checks if ``value`` contains ``search``, optionally ignoring the case of the search pattern.
+
+Example::
+
+        // Check if the `example.org` is in the `hostname` field. Ignore case.
+        contains(to_string($message.hostname), "example.org", true)
 
 substring
 ---------
@@ -507,6 +524,14 @@ This causes the message to be evaluated on the pipelines connected to that strea
 processed for this message.
 
 If ``remove_from_default`` is ``true``, the message is also removed from the default stream "All messages".
+
+Example::
+
+        // Route the current processed message to a stream with ID `512bad1a535b43bd6f3f5e86` (preferred method)
+        route_to_stream("512bad1a535b43bd6f3f5e86");
+
+        // Route the current processed message to a stream named `Custom Stream`
+        route_to_stream("Custom Stream");
 
 remove_from_stream
 ------------------
@@ -764,3 +789,8 @@ lookup_value
 ``lookup_value(lookup_table: string, key: any, [default: any])``
 
 Looks up a single value in the named lookup table.
+
+Example::
+
+        // Lookup a value in lookup table "ip_lookup" where the key is the string representation of the src_addr field.
+        lookup_value("ip_lookup", to_string($message.src_addr));
