@@ -248,7 +248,6 @@ For the Beats platform you can enable each Beat individually, e.g on a Windows h
     tls_skip_verify: true
     send_status: true
     list_log_files:
-      - /var/log
     node_id: graylog-collector-sidecar
     collector_id: file:C:\Program Files\graylog\collector-sidecar\collector-id
     cache_path: C:\Program Files\graylog\collector-sidecar\cache
