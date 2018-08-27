@@ -12,12 +12,12 @@ SSL/TLS prework
 
 Create a CA with our `shadowCA <https://github.com/graylog-labs/shadowCA>`__ or use your already given CA. That is needed to create all certificates. The examples will take the given names from our shadowCA and reference to that only, please adjust this to your local needs. If in doubt check the shadowCA scripts what kind of certificate is created and used.
 
-The CA certificate need to be imported on all machines that are part of the setup using the `documented steps <https://github.com/graylog-labs/shadowCA/blob/master/docs/add_ca_to_truststore.md>`__. Depending on your Browser you might need to add the ``.der`` to your Browser to trust the CA. In addition the CA ``.der`` file is added to a JVM Keystore that is used by Graylog.
+The CA certificate needs to be imported on all machines that are part of the setup using the `documented steps <https://github.com/graylog-labs/shadowCA/blob/master/docs/add_ca_to_truststore.md>`__. Depending on your Browser you might need to add the ``.der`` to your Browser to trust the CA. In addition the CA ``.der`` file is added to a JVM Keystore that is used by Graylog.
 
 adding of .der to JVM Keystore
 ------------------------------
 
-Graylog need to know the CA that is used to verify the certificates. The prime advantage is that it only needs the CA certificate and not all known self-signed certificates in the setup.::
+Graylog needs to know the CA that is used to verify the certificates. The prime advantage is that it only needs the CA certificate and not all known self-signed certificates in the setup.::
 
 	# test the .der file
 	keytool -v -printcert -file shadowCA.der
@@ -53,18 +53,18 @@ Graylog
 HTTPS
 ^^^^^
 
-Place the ``.key`` and ``.crt file`` to your Graylog server in the configuration dir (/etc/graylog/server/) and add them to the Graylog server.conf. In addition change the ``rest_listen_uri`` and ``web_listen_uri`` to **https**. You might need to cover other settings in a multinode cluster or special setups - just read the comments of the settings inside of the server.conf.
+Place the ``.key`` and ``.crt file`` on your Graylog server in the configuration dir (/etc/graylog/server/) and add them to the Graylog server.conf. In addition change the ``rest_listen_uri`` and ``web_listen_uri`` to **https**. You might need to cover other settings in a multinode cluster or special setups - just read the comments of the settings inside of the server.conf.
 
 When using the collector-sidecar, use the **https** URI in the ``sidecar_configuration.yml``.
 
-After restart of Graylog the web interface and the API is served via https only. No automatically redirect from http to https is made.
+After restart of Graylog the web interface and the API is served via https only. No automatic redirect from http to https is made.
 
 TLS Beats Input
 ^^^^^^^^^^^^^^^
 
 To enable TLS on the input one certificate - the certificate file and the private key file - that can be used for the input. We recommend to use the same certificate that is already used to secure the webinterface. Just reference the files `TLS cert file` and `TLS private key file` in the Beats Input configuration and restart the input. 
 
-The ingesting client will verify the presented certificate against his know CA certificates, if that is successfull communication will be establised using TLS. 
+The ingesting client will verify the presented certificate against his know CA certificates, if that is successful communication will be establised using TLS. 
 
 
 Add client authentication to beats input
@@ -89,9 +89,9 @@ When using the stock beat that is `provided by elastic <https://www.elastic.co/d
   		ssl.key: "/etc/client.key"
 
 
-Place your previous create certificates on the server where you installed beats and adjust the configuration to your needs.
+Place your previouly create certificates on the server where you installed beats and adjust the configuration to your needs.
 
-The certificate (``.crt``) file of the beat need to be placed at the Graylog server in the configured directory for trusted clients, only if you have enabled that feature at the beats input in Graylog and want client authentication.
+The certificate (``.crt``) file of the beats needs to be placed at the Graylog server in the configured directory for trusted clients only if you have enabled that feature at the beats input in Graylog and want client authentication.
 
 
 Collector-Sidecar
