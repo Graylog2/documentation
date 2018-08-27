@@ -62,7 +62,7 @@ After restart of Graylog the web interface and the API is served via https only.
 TLS Beats Input
 ^^^^^^^^^^^^^^^
 
-To enable TLS on the input one certificate - the certificate file and the private key file - that can be used for the input. We recommend to use the same certificate that is already used to secure the webinterface. Just reference the files `TLS cert file` and `TLS private key file` in the Beats Input configuration and restart the input. 
+To enable TLS on the input, a certificate (and private key file) is needed. It can be the same or a different certificate as the one of your REST/web interface, as long as it matches all hostnames of your input. Just reference the files `TLS cert file` and `TLS private key file` in the Beats Input configuration and restart the input. 
 
 The ingesting client will verify the presented certificate against his know CA certificates, if that is successful communication will be establised using TLS. 
 
