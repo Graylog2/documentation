@@ -12,7 +12,7 @@ SSL/TLS prework
 
 Create a CA with our `shadowCA <https://github.com/graylog-labs/shadowCA>`__ or use your already given CA. That is needed to create all certificates. The examples will take the given names from our shadowCA and reference to that only, please adjust this to your local needs. If in doubt check the shadowCA scripts what kind of certificate is created and used.
 
-The CA certificate needs to be imported on all machines that are part of the setup using the `documented steps <https://github.com/graylog-labs/shadowCA/blob/master/docs/add_ca_to_truststore.md>`__. Depending on your Browser you might need to add the ``.der`` to your Browser to trust the CA. In addition the CA ``.der`` file is added to a JVM Keystore that is used by Graylog.
+The CA certificate needs to be imported on all machines that are part of the setup using the `documented steps <https://github.com/graylog-labs/shadowCA/blob/master/docs/add_ca_to_truststore.md>`__. Depending on your Browser you might need to import the ``.der`` to your Browser to trust the CA. In addition the CA ``.der`` file is imported to a JVM Keystore that is used by Graylog.
 
 adding of .der to JVM Keystore
 ------------------------------
@@ -70,7 +70,7 @@ The ingesting client will verify the presented certificate against his know CA c
 Add client authentication to beats input
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Create one directory (``/etc/graylog/server/trusted_clients``) that will hold all client certificates you allow to connect to the beats input - that must be available on all Graylog server that have the input enabled. Write that path in the beats input configuration `TLS Client Auth Trusted Certs` and select **required** for the option `TLS client authentication`.
+Create one directory (``/etc/graylog/server/trusted_clients``) that will hold all client certificates you allow to connect to the beats input. This directory must be available on all Graylog server that have the input enabled. Write that path in the beats input configuration `TLS Client Auth Trusted Certs` and select **required** for the option `TLS client authentication`.
 
 After this setting is saved only clients that provide a certificate that is trusted by the CA and is placed inside the configured directory (``/etc/graylog/server/trusted_clients``) can deliver messages to Graylog.
 
@@ -89,7 +89,7 @@ When using the stock beat that is `provided by elastic <https://www.elastic.co/d
   		ssl.key: "/etc/client.key"
 
 
-Place your previouly create certificates on the server where you installed beats and adjust the configuration to your needs.
+Place your previously created certificates on the server where you installed beats and adjust the configuration to your needs.
 
 The certificate (``.crt``) file of the beats needs to be placed at the Graylog server in the configured directory for trusted clients only if you have enabled that feature at the beats input in Graylog and want client authentication.
 
