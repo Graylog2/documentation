@@ -356,6 +356,7 @@ MongoDB
         - Simple: ``mongodb://localhost/graylog``
         - Authenticate against the MongoDB server: ``mongodb_uri = mongodb://grayloguser:secret@localhost:27017/graylog``
         - Use a replica set instead of a single host: ``mongodb://grayloguser:secret@localhost:27017,localhost:27018,localhost:27019/graylog``
+        - `DNS Seedlist <https://docs.mongodb.com/manual/reference/connection-string/#dns-seedlist-connection-format>`_ is set as ``mongodb+srv://server.example.org/graylog``.
 * ``mongodb_max_connections = 1000``
     * Increase this value according to the maximum connections your MongoDB server can handle from a single client if you encounter MongoDB connection problems.
 * ``mongodb_threads_allowed_to_block_multiplier = 5``
