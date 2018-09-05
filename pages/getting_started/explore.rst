@@ -91,9 +91,11 @@ An Index is the basic unit of storage for data in Elasticsearch.  Index sets pro
 Collectors/Sidecars
 """""""""""""""""""
 
-Graylog created the Sidecar agent to manage fleets of log shippers like Beats or NXLog. These log shippers are used to collect OS logs from Windows servers, but also for OS logs from *nix systems. Log shippers are often the simplest way to read logs written locally to a flat file and send them to a centralized log management solution. Graylog supports management of any log shipper as a back-end, but includes Beats and NXLog binaries in the agent package.
+Graylog created the Sidecar agent to manage fleets of log shippers like Beats or NXLog. These log shippers are used to collect OS logs from Windows servers, but also for OS logs from \*nix systems. Log shippers are often the simplest way to read logs written locally to a flat file and send them to a centralized log management solution. Graylog supports management of any log shipper as a back-end, but includes Beats and NXLog binaries in the agent package.
 
 For more details, please see :ref:`graylog-collector-sidecar`.
+
+
 
 Pipelines
 """""""""
