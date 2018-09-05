@@ -22,7 +22,7 @@ Additional inputs may be installed via content packs. Content packs are bundles 
 for a data source. Some content packs are shipped with Graylog by default and some are available from the website. Content packs that
 were downloaded from `the Graylog Marketplace <http://marketplace.graylog.org>`__ can be imported using the Graylog web interface.
 
-You can load and even create your own content packs from the ``System -> Content Packs`` section of your Graylog web interface.
+You can load and even create your own content packs from the ``System / Content Packs`` page of the Graylog web interface.
 
 Create an Input
 ===============

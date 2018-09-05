@@ -1,19 +1,28 @@
 Explore Graylog
 ---------------
 
-Once messages are being received, you may want to poke around and explore a bit. There are several pages available, though not all may be visible to all users, depending on individual permissions. The following is a brief description of each page’s purpose and function.  
+Once messages are being received, you may want to poke around and explore a bit. There are several pages available, though not all pages may be visible to all users, depending on individual permissions. The following is a brief description of each page’s purpose and function.  
  
 Streams
 ^^^^^^^
 
-Streams are a core feature of Graylog and may be thought of as a form of tagging for incoming messages. Streams are a mechanism used to route messages into categories in real-time. Stream rules instruct Graylog which message to route into which streams. Streams have many uses. First, they are used to route data for storage into an index. They are also used to control access to data, route messages for parsing, enrichment or other modification and determine which messages will be archived. Streams may be used in conjunction with Alerts to notify users or otherwise respond when a message meets a set of conditions. 
+Streams are a core feature of Graylog and may be thought of as a form of tagging for incoming messages. Streams are a mechanism used to route messages into categories in real-time. Stream rules instruct Graylog which message to route into which streams. 
+
+Streams have many uses. First, they are used to route data for storage into an index. They are also used to control access to data, route messages for parsing, enrichment or other modification and determine which messages will be archived. 
+
+Streams may be used in conjunction with Alerts to notify users or otherwise respond when a message meets a set of conditions. 
+
 Messages may belong to one or to multiple streams. For additional detail, please see :ref:`streams`.
 
 
 Searches
 ^^^^^^^^
 
-The Graylog Search page is the interface used to search logs directly. Graylog uses a simplified syntax, very similar to Lucene. Relative or absolute time ranges are configurable from drop down menus. Searches may be saved or visualized as dashboard widgets that may be added directly to dashboards from within the search screen. Users may configure their own views and may choose to see either summary or complete data from event messages. Saved Searches may be imported and exported via content packs and search results may be exported to file. For additional detail, please see :ref:`queries`.
+The Graylog Search page is the interface used to search logs directly. Graylog uses a simplified syntax, very similar to Lucene. Relative or absolute time ranges are configurable from drop down menus. Searches may be saved or visualized as dashboard widgets that may be added directly to dashboards from within the search screen. 
+
+Users may configure their own views and may choose to see either summary or complete data from event messages. Saved Searches may be imported and exported via content packs and search results may be exported to file. 
+
+For additional detail, please see :ref:`queries`.
 
 
 Dashboards
@@ -21,13 +30,19 @@ Dashboards
 
 Graylog Dashboards are visualizations or summaries of information contained in log events. Each dashboard is populated by one or more widget, Widgets visualize or summarize event log data with data derived from field values such as counts, averages, or totals. Trend indicators, charts, graphs, and maps are easily created to visualize the data. 
 
-Dashboard widgets and dashboard layouts are configurable. Dashboard access is controlled via Graylog’s role based access control. Dashboards may be imported and exported via content packs. For additional detail, please see :ref:`dashboards`.
+Dashboard widgets and dashboard layouts are configurable. Dashboard access is controlled via Graylog’s role based access control. Dashboards may be imported and exported via content packs. 
+
+For additional detail, please see :ref:`dashboards`.
 
 
 Alerts
 ^^^^^^
 
-Alerts are comprised of two related elements. Alert conditions and alert notifications. Alert conditions are tied to streams and may be based on the content of a field, the aggregated value of a field, or message count thresholds. An alert notification triggers when a condition is met,, typically sending an email or HTTP call back to an analyst or another system. Additional output types may also be created via plugins. Alerts may be imported and exported via content packs. For additional detail, please see :ref:`alerts`.
+Alerts are composed of two related elements, alert conditions and alert notifications. Alert conditions are tied to streams and may be based on the content of a field, the aggregated value of a field, or message count thresholds. An alert notification triggers when a condition is met, typically sending an email or HTTP call back to an analyst or another system. 
+
+Additional output types may also be created via plugins. Alerts may be imported and exported via content packs. 
+
+For additional detail, please see :ref:`alerts`.
 
 
 .. Views
@@ -80,13 +95,26 @@ Any program element created within Graylog may be exported as Content Packs for 
 
 Users may download content packs created and shared by other users via the :ref:`marketplace`. User created content packs are not supported by Graylog, but instead by their authors.
 
-.. List of Supported Elements
+**List of Elements Supported in Content Packs**
+
+* Inputs
+* Grok Patterns
+* Outputs
+* Streams
+* Dashboards
+* Lookup Tables
+* Lookup Caches
+* Lookup Data Adapters
 
 
 Indices
 """""""
 
-An Index is the basic unit of storage for data in Elasticsearch.  Index sets provide configuration for retention, sharding, and replication of the stored data. Values, like retention and rotation strategy, are set on a per index basis, so different data may be subjected to different handling rules. For more details, please see :ref:`index_model`.
+An Index is the basic unit of storage for data in Elasticsearch.  Index sets provide configuration for retention, sharding, and replication of the stored data. 
+
+Values, like retention and rotation strategy, are set on a per index basis, so different data may be subjected to different handling rules. 
+
+For more details, please see :ref:`index_model`.
 
 Collectors/Sidecars
 """""""""""""""""""

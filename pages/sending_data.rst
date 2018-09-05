@@ -31,6 +31,17 @@ were downloaded from `the Graylog Marketplace <http://marketplace.graylog.org>`_
 
 You can load and even create own content packs from the *System -> Content Packs* section of your Graylog web interface.
 
+**List of Elements Supported in Content Packs**
+
+* Inputs
+* Grok Patterns
+* Outputs
+* Streams
+* Dashboards
+* Lookup Tables
+* Lookup Caches
+* Lookup Data Adapters
+
 Syslog
 ======
 

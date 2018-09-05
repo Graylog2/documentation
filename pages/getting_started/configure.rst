@@ -4,16 +4,16 @@ Initial Configuration
 
 Once the application is installed, there are a few items that must be configured before Graylog may be started for the first time. Both the Graylog ``server.conf`` and Elasticsearch ``elasticsearch.yml`` files are configuration files that contain key details needed for intial configuration. 
 
-This guide will provide you with the essential settings to get Graylog up and running. There are many other important settings in these files and we encourage you to review them once you are up and running. For more details, please see :ref:`server/.conf`
+This guide will provide you with the essential settings to get Graylog up and running. There are many other important settings in these files and we encourage you to review them once you are up and running. For more details, please see :ref:`server/.conf`.
 
-.. note:: If you are using the virtual appliance, please skip this section and go directly to :ref:`connect`
+.. note:: If you are using the virtual appliance, please skip this section and go directly to :ref:`connect`.
 
 server.conf
 -----------
 
-The file ``server.conf`` is the Graylog configuration file. The default location for ``server.conf`` is: ``/etc/graylog/server/server.conf`` 
+The file ``server.conf`` is the Graylog configuration file. The default location for ``server.conf`` is: ``/etc/graylog/server/server.conf``. 
 
-.. note:: All default file locations are written down :ref:`at this overview<default_file_location>`.
+.. note:: All default file locations are listed :ref:`here<default_file_location>`.
 
 * Entries are generally expected to be a single line of the form, one of the following:
     * ``propertyName=propertyValue``
@@ -36,7 +36,7 @@ General Properties
 * ``password_secret = <secret>``
     * You MUST set a secret that is used for password encryption and salting. The server will refuse to start if this value is not set. Use at least 64 characters.  If you run multiple ``graylog-server`` nodes, make sure you use the same ``password_secret`` for all of them!
 
-    .. note:: Generate a secret with for example ``pwgen -N 1 -s 96``
+    .. note:: Generate a secret with for example ``pwgen -N 1 -s 96``.
 	
 * ``root_username = admin``
     * The default root user is named **admin**.
@@ -120,7 +120,7 @@ Several values must be properly configured in order for elasticsearch to work pr
 *  ``discovery.zen.ping.unicast.hosts: ["es01.acme.org", "es02.acme.org"]``
 
 	* Elasticsearch uses a custom discovery implementation called "Zen Discovery" for node-to-node clustering and master election. To form a cluster with nodes on other servers, you have to provide a seed list of other nodes in the cluster that are likely to be live and contactable. 
-	* May be specified as IP address or FQDN
+	* May be specified as IP address or FQDN.
 
 
 

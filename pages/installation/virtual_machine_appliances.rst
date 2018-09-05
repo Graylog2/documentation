@@ -38,7 +38,7 @@ Press *Import* to finish loading the OVA into Virtualbox:
 
 .. image:: /images/virtualbox2.png
 
-You can now start the VM and should see a login shell like this when the boot
+You can now start the VM and should see a login shell like this when the boot sequence is
 completed:
 
 .. image:: /images/virtualbox3.png
@@ -47,7 +47,7 @@ completed:
 
 .. note:: If you don't have a working DHCP server for your virtual machine, you will get the error message:
    
-      "Your appliance came up without a configured IP address. Graylog is probable not running correctly!"
+      "Your appliance came up without a configured IP address. Graylog is probably not running correctly!"
    
    In this case, you have to login and edit ``/etc/network/interfaces`` in order to setup a fixed IP address. Then manually reconfigure Graylog as shown in the following paragraphs.
 
@@ -69,8 +69,8 @@ The standard user for the web interface is *admin* with the password *admin*.
 Basic configuration
 ===================
 
-We are shipping the ``graylog-ctl`` tool with the virtual machine appliances to get you started
-with a customised setup as quickly as possible. Run these (optional) commands to configure the
+We ship the ``graylog-ctl`` tool with the virtual machine appliances to get you started
+with a customized setup as quickly as possible. Run these (optional) commands to configure the
 most basic settings of Graylog in the appliance::
 
   sudo graylog-ctl set-email-config <smtp server> [--port=<smtp port> --user=<username> --password=<password>]
@@ -78,8 +78,8 @@ most basic settings of Graylog in the appliance::
   sudo graylog-ctl set-timezone <zone acronym>
   sudo graylog-ctl reconfigure
 
-The ``graylog-ctl`` has much more :ref:`functionality <graylog-ctl>` documented .
-We strongly recommend to learn more about it to ensure smooth operation of your virtual appliance.
+The ``graylog-ctl`` has much more :ref:`functionality <graylog-ctl>` documented.
+We strongly recommend learning more about it to ensure smooth operation of your virtual appliance.
 
 VMWare tools
 ============
@@ -98,7 +98,7 @@ You can update your Appliance to the :ref:`newest release <upgrade_graylog_omnib
 Production readiness
 ====================
 
-The Graylog appliance is not designed to provide a production ready solution. It is built to offer a fast and easy way to try the software itself and not wasting time to install Graylog and it components to any kind of server. 
+The Graylog appliance is not designed to provide a production ready solution. It is built to offer a fast and easy way to try the software itself.
 
 If you must use an appliance in production, please harden the security of the box before deployment. 
 

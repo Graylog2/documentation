@@ -17,12 +17,12 @@ Graylog may be installed on the following operating systems.
 * RHEL/CentOS
 * SLES
 
-Most customers use package tools like DEB or RPM to install the Graylog software. Details are included in the section, :ref:`ospackages`
+Most customers use package tools like DEB or RPM to install the Graylog software. Details are included in the section, :ref:`ospackages`.
 
 
 Configuration Management
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Customers who prefer to deploy graylog via configuration management tools may do so. Graylog currently supports :ref:`confmgt`
+Customers who prefer to deploy graylog via configuration management tools may do so. Graylog currently supports :ref:`confmgt`.
 
 
 Containers
@@ -41,14 +41,15 @@ Virtual Appliances may be downloaded from `virtual appliance download page <http
 * OVA
 * AWS-AMI
 
-Deployment guide for :ref:`virtual-machine-appliances`
+Deployment guide for :ref:`virtual-machine-appliances`.
 
-Deployment guide for :ref:`AMI`
+Deployment guide for :ref:`AMI`.
 
 **Supported Virtual Appliance Configuration Platforms**
 
-* Deployment guide for :ref:`Vagrant`
-* Deployment guide for :ref:`OpenStack`
+Deployment guide for :ref:`Vagrant`.
+
+Deployment guide for :ref:`OpenStack`.
 
 
 Virtual Appliance Caveats
