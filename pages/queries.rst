@@ -45,6 +45,12 @@ Messages that do not have the field *type*::
 
   NOT _exists_:type
 
+Messages that match regular expression ``ethernet[0-9]+``::
+
+  /ethernet[0-9]+/
+
+.. note:: Please refer to the Elasticsearch documentation about the `Regular expression syntax <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/query-dsl-regexp-query.html#regexp-syntax>`_ for details about the supported regular expression dialect.
+
 .. note:: Elasticsearch 2.x allows to use ``_missing_:type`` instead of ``NOT _exists_:type``. This query syntax has been removed in `Elasticsearch 5.0 <https://www.elastic.co/guide/en/elasticsearch/reference/5.0/breaking_50_search_changes.html#_deprecated_queries_removed>`__.
 
 By default all terms or phrases are OR connected so all messages that have at least one hit are returned. You can use
@@ -234,8 +240,7 @@ the values, the graph interpolation, as well as the time resolution.
 .. image:: /images/field_graph.png
 
 Once you have customized some field graphs, you can also combine them by dragging them from the hamburger icon on the top corner of the graph,
-and dropping them into another field graph. You can see the location of the hamburger icon and the end result in the the following
-screenshots:
+and dropping them into another field graph. You can see the location of the hamburger icon and the end result in the following screenshots:
 
 .. image:: /images/stacked_graph_1.png
 .. image:: /images/stacked_graph_2.png
@@ -338,7 +343,7 @@ sidebar, click on the *More actions* button, and select *Export as CSV*.
 
 .. image:: /images/export_as_csv.png
 
-**Hint**: Some Graylog inputs keep the original message in the the ``full_message`` field. If you need to export the original message, you
+**Hint**: Some Graylog inputs keep the original message in the ``full_message`` field. If you need to export the original message, you
 can do so by clicking on the *List all fields* link at the bottom of the sidebar, and then selecting the ``full_message`` field.
 
 .. Warning:: Exporting results to a CSV will **not** preserve sorting because Graylog is using the virtual ``_doc`` field to "sort" documents for performance reasons. If you need to have the exported data ordered you will need to either make a `scroll query to ElasticSearch <https://www.elastic.co/guide/en/elasticsearch/reference/2.4/search-request-scroll.html>`__ and process it after, or to download the file and post process it via other means.

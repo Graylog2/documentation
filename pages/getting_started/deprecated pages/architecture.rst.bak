@@ -1,0 +1,13 @@
+Architecture 
+-------------
+
+
+Every Graylog System is composed of at least one instance of Graylog Server, MongoDB and Elasticsearch. Each of these components are required and cannot be substituted with any other technology. 
+
+
+
+**Basic** - In a basic Graylog deployment, all three components are installed on a single host. 
+
+**Small Multi-Node** - In a Simple Multi-Node system, Graylog and Elasticsearch components each reside on their own hosts. Most customers install MongoDB on same host as the Graylog Server. Since it is used primarily for application configuration information, the load on MongoDB is low enough that it does not typically need it’s own host. 
+
+**Medium/Large Multi-Node** - For larger environments, or where High Availability is required, Graylog may be deployed in a more complex multi-node configuration. Both Graylog and Elasticsearch may be clustered to provide resilience in case of a node failure. Complex multi-node systems are often required in order support a high volume of events.

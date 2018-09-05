@@ -1,5 +1,7 @@
+.. _AMI:
+
 *******************
-Amazon Web Services
+AWS - AMIs
 *******************
 
 AMIs

@@ -7,8 +7,9 @@ Virtual Machine Appliances
 Pre-Considerations
 ==================
 
-This is a showcase of Graylog and its cluster mode. Please run this appliance always in a separated network that is isolated from the internet.
-Read also the notes about production readiness_!
+The Graylog Virtual Machine Appliance was designed only as a showcase of Graylog and its cluster mode. This appliance is intended for proof of concept, testing, lab or other such applications. Please, deploy this appliance in a network that is isolated from the internet. In most cases, Graylog does not recommend using this appliance in a production environment. 
+
+Please review the notes about production readiness_!
 
 Download
 ========
@@ -97,6 +98,17 @@ You can update your Appliance to the :ref:`newest release <upgrade_graylog_omnib
 Production readiness
 ====================
 
-The Graylog appliance is not created to provide a production ready solution. It is build to offer a fast and easy way to try the software itself and not wasting time to install Graylog and it components to any kind of server. 
+The Graylog appliance is not designed to provide a production ready solution. It is built to offer a fast and easy way to try the software itself and not wasting time to install Graylog and it components to any kind of server. 
 
-If you want to create your own production ready setup take a look at our :ref:`other installation methods <installing>`.
+If you must use an appliance in production, please harden the security of the box before deployment. 
+
+Graylog recommends the following minimum steps be taken
+
+* Set another password for the default ubuntu user
+* Disable remote password logins in /etc/ssh/sshd_config and deploy proper ssh keys
+* Deploy appliance on a network that is properly isolated and secured against access from unauthorized sources. Under no circumstances should the appliance be reachable from the public internet.
+* Add additional RAM to the appliance and raise the java heap!
+* Add additional HDD to the appliance and extend disk space.
+* Add the appliance to your monitoring and metric systems.
+
+If you need to create your own production ready setup take a look at our :ref:`other installation methods <installing>`.

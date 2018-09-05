@@ -2,6 +2,22 @@
 Changelog
 *********
 
+Graylog 2.4.6
+=============
+
+Released: 2018-07-16
+
+**Core**
+
+- Unbreak input throttling by publishing throttle state again. `Graylog2/graylog2-server#4850 <https://github.com/Graylog2/graylog2-server/issues/4850>`_ `Graylog2/graylog2-server#4321 <https://github.com/Graylog2/graylog2-server/issues/4321>`_
+- Check for permission before terminating input. `Graylog2/graylog2-server#4867 <https://github.com/Graylog2/graylog2-server/issues/4867>`_ `Graylog2/graylog2-server#4858 <https://github.com/Graylog2/graylog2-server/issues/4858>`_
+- Require user to be authenticated to retrieve plugin list. `Graylog2/graylog2-server#4868 <https://github.com/Graylog2/graylog2-server/issues/4868>`_ `Graylog2/graylog2-server#4863 <https://github.com/Graylog2/graylog2-server/issues/4863>`_
+- Add missing permission checks. `Graylog2/graylog2-server#4873 <https://github.com/Graylog2/graylog2-server/issues/4873>`_ `Graylog2/graylog2-server#4861 <https://github.com/Graylog2/graylog2-server/issues/4861>`_ `Graylog2/graylog2-server#4859 <https://github.com/Graylog2/graylog2-server/issues/4859>`_
+- UI fixes for index rotation strategy dropdown. `Graylog2/graylog2-server#4826 <https://github.com/Graylog2/graylog2-server/issues/4826>`_ `Graylog2/graylog2-server#4769 <https://github.com/Graylog2/graylog2-server/issues/4769>`_
+- XSS fix for typeahead components. `Graylog2/graylog2-server#4904 <https://github.com/Graylog2/graylog2-server/issues/4904>`_
+- Fix potential NullPointerException in csv and maxmind data adapters. `Graylog2/graylog2-server#4912 <https://github.com/Graylog2/graylog2-server/issues/4912>`_ `Graylog2/graylog2-server#4748 <https://github.com/Graylog2/graylog2-server/issues/4748>`_
+- Add "http_non_proxy_hosts" configuration option. `Graylog2/graylog2-server#4915 <https://github.com/Graylog2/graylog2-server/issues/4915>`_ `Graylog2/graylog2-server#4905 <https://github.com/Graylog2/graylog2-server/issues/4905>`_ `Graylog2/graylog2-server#4392 <https://github.com/Graylog2/graylog2-server/issues/4392>`_
+
 Graylog 2.4.5
 =============
 

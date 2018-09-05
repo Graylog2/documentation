@@ -248,14 +248,14 @@ For the Beats platform you can enable each Beat individually, e.g on a Windows h
     tls_skip_verify: true
     send_status: true
     list_log_files:
-      - /var/log
     node_id: graylog-collector-sidecar
-    collector_id: file:/etc/graylog/collector-sidecar/collector-id
-    log_path: /var/log/graylog/collector-sidecar
+    collector_id: file:C:\Program Files\graylog\collector-sidecar\collector-id
+    cache_path: C:\Program Files\graylog\collector-sidecar\cache
+    log_path: C:\Program Files\graylog\collector-sidecar\logs
     log_rotation_time: 86400
     log_max_age: 604800
     tags:
-      - linux
+      - windows
       - apache
       - redis
     backends:
@@ -280,13 +280,19 @@ First start
 Once you installed the Sidecar package you are ready to start the service for the first time. Decide which backend you want to use. Enable or disable the single
 backends by setting ``enabled: true`` or respectively to ``false``. Now start the Sidecar, depending on your operating system you can do this with:
 
-+---------------+---------------------------------------------------------------------------------------------+
-| Debian/Ubuntu | ``sudo start collector-sidecar``                                                            |
-+---------------+---------------------------------------------------------------------------------------------+
-| RedHat/CentOS | ``sudo systemctl start collector-sidecar``                                                  |
-+---------------+---------------------------------------------------------------------------------------------+
-| Windows       | ``C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe -service start`` |
-+---------------+---------------------------------------------------------------------------------------------+
++-------------+----------------------------------------------------------------------------------------------+
+| systemd     | ``sudo systemctl start collector-sidecar``                                                   |
++-------------+----------------------------------------------------------------------------------------------+
+| SysV        | ``sudo start collector-sidecar``                                                             |
++-------------+----------------------------------------------------------------------------------------------+
+| Windows     | ``C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe -service start``  |
++-------------+----------------------------------------------------------------------------------------------+
+
+If you're unsure which init system your Linux distribution is using, execute the following command to print the name of the used init system::
+
+    # ps -h -o comm -p 1
+
+Otherwise please refer to the handbook of your Linux distribution and look up which init system is being used.
 
 Afterwards you will most likely see an error like this in the log file::
 
@@ -351,6 +357,8 @@ logfiles and ship them with a Filebeat collector to a Beats input that is listen
 .. image:: /images/sidecar_sbs7.png
 
 - Congratulations your collector setup is working now!
+
+.. _sidecar_secure:
 
 Secure Sidecar Communication
 ============================

@@ -1,8 +1,10 @@
+.. _server/.conf:
+
 ***********
 server.conf
 ***********
 
-The file ``server.conf`` is the Graylog configuration file.
+The file ``server.conf`` is the Graylog configuration file. `
 
 .. note:: Check :ref:`default_file_location` to locate it in your installation.
 
@@ -349,7 +351,7 @@ Rotation
 
 MongoDB
 ^^^^^^^
-* ``mongodb_uri = mongdb://...``
+* ``mongodb_uri = mongodb://...``
     * MongoDB connection string. Enter your MongoDB connection and authentication information here.
     * See https://docs.mongodb.com/manual/reference/connection-string/ for details.
     * Examples:
@@ -363,6 +365,8 @@ MongoDB
     * If ``mongodb_max_connections`` is 100, and ``mongodb_threads_allowed_to_block_multiplier`` is 5, then 500 threads can block. More than that and an exception will be thrown.
     * http://api.mongodb.com/java/current/com/mongodb/MongoOptions.html#threadsAllowedToBlockForConnectionMultiplier
 
+.. _email_config:
+
 Email
 ^^^^^
 
@@ -371,7 +375,12 @@ Email
 * ``transport_email_port = 587``
 * ``transport_email_use_auth = true``
 * ``transport_email_use_tls = true``
+    * Enable SMTP with STARTTLS for encrypted connections.
 * ``transport_email_use_ssl = true``
+    * Enable SMTP over SSL (SMTPS) for encrypted connections.
+
+.. attention:: Make sure to enable only *one* of these two settings because most (or all) SMTP services only support one of the encryption mechanisms on the same port. Most SMTP services support SMTP with STARTTLS while SMTPS is deprecated on most SMTP services.
+
 * ``transport_email_auth_username = you@example.com``
 * ``transport_email_auth_password = secret``
 * ``transport_email_subject_prefix = [graylog]``
@@ -399,6 +408,13 @@ HTTP
     * Default: 10s
 * ``http_proxy_uri =``
     * HTTP proxy for outgoing HTTP connections
+
+.. attention:: If you configure a proxy, make sure to also configure the "http_non_proxy_hosts" option so internal HTTP connections with other nodes does not go through the proxy.
+
+* ``http_non_proxy_hosts =``
+    * A list of hosts that should be reached directly, bypassing the configured proxy server.
+    * This is a list of patterns separated by ",". The patterns may start or end with a "*" for wildcards.
+    * Any host matching one of these patterns will be reached through a direct connection instead of through a proxy.    
 
 Others
 ^^^^^^

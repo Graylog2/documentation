@@ -14,6 +14,12 @@ Message inputs are the Graylog parts responsible for accepting log messages. The
 (or the REST API) in the *System -> Inputs* section and are launched and configured without the need to restart any
 part of the system.
 
+Inputs can collect either structured or unstructured data. The type of message input you use will be determined by the format of the event sent by the source/device. 
+
+For example, a device sending RFC 5424 and RFC 3164 (strictly) compliant syslog messages should use a syslog message input. On the other hand, many devices are sending noncompliant messages, despite sending data on the same port (514) and using the same transport method (UDP). 
+
+To be handled properly by Graylog, these non-compliant sources will require a plain-text message input. Please note, events arriving from plain-text sources will not be parsed by default. In order to parse these messages, please configure a Processing Pipeline.
+
 .. _content_packs:
 
 Content packs

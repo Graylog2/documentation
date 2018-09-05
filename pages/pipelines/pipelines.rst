@@ -7,13 +7,11 @@ Overview
 
 Pipelines are the central concept tying together the processing steps applied to your messages.
 
-Pipelines contain rules and can be connected to one or more streams, enabling fine-grained control of the processing applied to messages.
+Pipelines contain rules and can be connected to one or more streams, enabling fine-grained control over which processing steps are performed on a given type of message.
 
-Processing rules are simply conditions followed by a list of actions, and do not have control flow by themselves.  Therefore, pipelines have one additional concept: stages.
+Processing rules are simply conditions followed by a list of actions, and do not have control flow by themselves.  To control the order in which processing rules are applied, pipelines utilize stages.
 
-Think of stages as groups of conditions and actions which need to run in order. All stages with the same priority run
-at the same time across all connected pipelines. Stages provide the necessary control flow to decide whether or not to run the
-remaining stages in a pipeline.
+Stages are groups of conditions and actions which need to run in order. This is done by assigning a priority value. All stages with the same priority run at the same time across all connected pipelines. Stages provide the necessary control flow to decide whether or not to run the remaining stages in a pipeline.
 
 Pipeline structure
 ==================
@@ -31,7 +29,12 @@ Internally pipelines are represented as code. Let's have a look at a simple exam
 
 This code snippet declares a new pipeline named ``My new pipeline``, which has two stages.
 
-Stages are ran in the order of their given *priority*, and aren't otherwise named. Stage priorities can be any integer, positive or negative, you prefer.
+
+Stages 
+======
+
+Stages are run in the order of their given *priority*, and aren't otherwise named. Stage priorities can be any integer you prefer, positive or negative.
+
 In our example the first stage has a priority of 1 and the second stage a priority of 2, however -99 and 42 could be used instead.
 Ordering based upon stage priority gives you the ability to run certain rules before or after others, which might exist in other connected pipelines, without modifying those other connected pipelines.
 This is particularly handy when dealing with changing data formats.
@@ -47,7 +50,7 @@ any actions to run. For a message without both fields the rule's condition would
 as the stage requires *all* rules be satisfied (``match all``). With the pipeline aborted, stage 2 would not run. 
 
 ``match either`` acts as an ``OR`` operator, only requiring a single rule's condition evaluate to ``true`` in order to continue pipeline processing.
-Note that actions are still ran for all matching rules in the stage, even if it is the final stage in the pipeline.
+Note that actions are still run for all matching rules in the stage, even if it is the final stage in the pipeline.
 
 Rules are referenced by their names, and can therefore be shared among many different pipelines. The intention is to enable creation of reusable building blocks,
 making it easier to process the data specific to your organization or use case.
