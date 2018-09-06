@@ -1,3 +1,5 @@
+.. _ospackages:
+
 *************************
 Operating System Packages
 *************************

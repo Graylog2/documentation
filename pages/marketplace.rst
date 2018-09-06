@@ -1,3 +1,5 @@
+.. _marketplace:
+
 *******************
 Graylog Marketplace
 *******************
