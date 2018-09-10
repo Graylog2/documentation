@@ -96,6 +96,7 @@ The condition must not be empty, but can simply consist of the boolean literal `
 
 If a condition calls a function which is not present (perhaps due to a typo or missing plugin) the call evaluates to ``false``.
 
+.. note:: Comparing two fields can be done when you use the same data type, e.g.  ``to_string($message.src_ip) == to_string($message.dst_ip)`` will compare the two strings and will become ``true`` on match.
 
 Actions
 =======
