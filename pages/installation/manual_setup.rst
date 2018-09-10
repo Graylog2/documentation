@@ -129,7 +129,6 @@ One such example ``log4j2.xml`` configuration is shown below::
         <Logger name="org.apache.directory.api.ldap.model.message.BindRequestImpl" level="error"/>
         <Logger name="org.elasticsearch.script" level="warn"/>
         <Logger name="org.graylog2.periodical.VersionCheckThread" level="off"/>
-        <Logger name="org.drools.compiler.kie.builder.impl.KieRepositoryImpl" level="warn"/>
         <Logger name="com.joestelmach.natty.Parser" level="warn"/>
         <Logger name="kafka.log.Log" level="warn"/>
         <Logger name="kafka.log.OffsetIndex" level="warn"/>

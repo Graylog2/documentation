@@ -29,8 +29,6 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/extractors
    pages/pipelines
    pages/lookuptables
-   pages/drools
-   pages/blacklisting
    pages/geolocation
    pages/indexer_failures
    pages/users_and_roles
