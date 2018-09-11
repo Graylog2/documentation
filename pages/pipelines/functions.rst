@@ -817,6 +817,7 @@ Example::
             regex(to_string($message.message), "^.{16383,}$").matches == true
         then
             drop_message();
+            // added debug message to be notified about the dropped message
             debug( concat("dropped oversized message from ", to_string($message.source)));
         end
 
