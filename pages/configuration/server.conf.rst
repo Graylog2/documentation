@@ -389,9 +389,6 @@ HTTP
 Others
 ^^^^^^
 
-* ``rules_file = /etc/graylog/server/rules.drl``
-    * Drools Rule File (Use to rewrite incoming log messages)
-    * See: http://docs.graylog.org/en/2.4/pages/drools.html
 * ``gc_warning_threshold = 1s``
       * The threshold of the garbage collection runs. If GC runs take longer than this threshold, a system notification will be generated to warn the administrator about possible problems with the system. Default is 1 second.
 * ``ldap_connection_timeout = 2000``

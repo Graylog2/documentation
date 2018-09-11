@@ -797,6 +797,8 @@ clone_message
 
 Clones a message. If ``message`` is omitted, this function uses the currently processed message.
 
+.. _drop_message:
+
 drop_message
 ------------
 ``drop_message(message: Message)``
@@ -806,6 +808,19 @@ The processing pipeline will remove the given ``message`` after the rule is fini
 If ``message`` is omitted, this function uses the currently processed message.
 
 This can be used to implement flexible blacklisting based on various conditions.
+
+Example::
+
+        rule "drop messages over 16383 characters"
+        when
+            has_field("message") AND
+            regex(to_string($message.message), "^.{16383,}$").matches == true
+        then
+            drop_message();
+            // added debug message to be notified about the dropped message
+            debug( concat("dropped oversized message from ", to_string($message.source)));
+        end
+
 
 has_field
 ---------
