@@ -1,8 +1,10 @@
+.. _server/.conf:
+
 ***********
 server.conf
 ***********
 
-The file ``server.conf`` is the Graylog configuration file.
+The file ``server.conf`` is the Graylog configuration file. `
 
 .. note:: Check :ref:`default_file_location` to locate it in your installation.
 
@@ -356,6 +358,7 @@ MongoDB
         - Simple: ``mongodb://localhost/graylog``
         - Authenticate against the MongoDB server: ``mongodb_uri = mongodb://grayloguser:secret@localhost:27017/graylog``
         - Use a replica set instead of a single host: ``mongodb://grayloguser:secret@localhost:27017,localhost:27018,localhost:27019/graylog``
+        - `DNS Seedlist <https://docs.mongodb.com/manual/reference/connection-string/#dns-seedlist-connection-format>`_ is set as ``mongodb+srv://server.example.org/graylog``.
 * ``mongodb_max_connections = 1000``
     * Increase this value according to the maximum connections your MongoDB server can handle from a single client if you encounter MongoDB connection problems.
 * ``mongodb_threads_allowed_to_block_multiplier = 5``
@@ -377,7 +380,7 @@ Email
 * ``transport_email_use_ssl = true``
     * Enable SMTP over SSL (SMTPS) for encrypted connections.
 
-.. attention:: Make sure to enable only *one* of these two settings because most (or all) SMTP services only support one of the encryption mechanisms on the same port. Most SMTP services support SMTP with STARTTLS while SMTPS is deprecated on most SMTP services.
+.. attention:: Make sure to enable only *one* of these two settings because most (or all) SMTP services only support one of the encryption mechanisms on the same port. Most SMTP services support SMTP with STARTTLS while SMTPS is deprecated on most SMTP services. Setting both to ``false`` is needed when you want to sent via unencrypted connection.
 
 * ``transport_email_auth_username = you@example.com``
 * ``transport_email_auth_password = secret``
