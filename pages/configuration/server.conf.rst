@@ -1,3 +1,5 @@
+.. _server/.conf:
+
 ***********
 server.conf
 ***********
