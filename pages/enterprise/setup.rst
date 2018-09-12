@@ -114,6 +114,8 @@ If you have done a manual installation or want to include only parts of the ente
       - :enterprise-plugins-tar:`2.4.4`
     * - 2.4.5
       - :enterprise-plugins-tar:`2.4.5`
+    * - 2.4.6
+      - :enterprise-plugins-tar:`2.4.6`
 
 The tarball includes the enterprise plugin JAR files.
 
