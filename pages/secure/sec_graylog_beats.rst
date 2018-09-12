@@ -53,7 +53,7 @@ Graylog
 HTTPS
 ^^^^^
 
-Place the ``.key`` and ``.crt file`` on your Graylog server in the configuration dir (/etc/graylog/server/) and add them to the Graylog server.conf. In addition change the ``rest_listen_uri`` and ``web_listen_uri`` to **https**. You might need to cover other settings in a multinode cluster or special setups - just read the comments of the settings inside of the server.conf.
+Place the ``.key`` and ``.crt`` file on your Graylog server in the configuration dir (/etc/graylog/server/) and add them to the Graylog server.conf. In addition change the ``rest_listen_uri`` and ``web_listen_uri`` to **https**. You might need to cover other settings in a multinode cluster or special setups - just read the comments of the settings inside of the server.conf.
 
 When using the collector-sidecar, use the **https** URI in the ``sidecar_configuration.yml``.
 
@@ -83,7 +83,7 @@ Stock
 When using the stock beat that is `provided by elastic <https://www.elastic.co/downloads/beats>`__ configure a `logstash output <https://www.elastic.co/guide/en/beats/filebeat/6.x/logstash-output.html#logstash-output>`__. The SSL configuration can be found as the second point in the `description by elastic <https://www.elastic.co/guide/en/beats/filebeat/6.x/configuring-ssl-logstash.html>`__ . This is::
 
 	output.logstash:
-  		hosts: ["logs.mycompany.com:5044"]
+  		hosts: ["graylog.example.org:5044"]
   		ssl.certificate_authorities: ["/etc/ca.pem"]
   		ssl.certificate: "/etc/client.crt"
   		ssl.key: "/etc/client.key"
