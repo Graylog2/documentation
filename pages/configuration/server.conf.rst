@@ -1,8 +1,10 @@
+.. _server/.conf:
+
 ***********
 server.conf
 ***********
 
-The file ``server.conf`` is the Graylog configuration file.
+The file ``server.conf`` is the Graylog configuration file. `
 
 .. note:: Check :ref:`default_file_location` to locate it in your installation.
 

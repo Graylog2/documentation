@@ -358,6 +358,8 @@ logfiles and ship them with a Filebeat collector to a Beats input that is listen
 
 - Congratulations your collector setup is working now!
 
+.. _sidecar_secure:
+
 Secure Sidecar Communication
 ============================
 
