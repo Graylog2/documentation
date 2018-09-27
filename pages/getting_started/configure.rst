@@ -44,18 +44,27 @@ General Properties
     * A SHA2 hash of the password you will use for your initial login. Insert a SHA2 hash generated with ``echo -n yourpassword | shasum -a 256`` and you will be able to log in to the web interface with username **admin** and password **yourpassword**.
 
     .. caution:: You MUST specify a hash password for the root user (which you only need to initially set up the system and in case you lose connectivity to your authentication backend). This password cannot be changed using the API or via the web interface. If you need to change it, modify it in this file.
+* ``rest_listen_uri = http://127.0.0.1:9000/api/``
+	* REST API listen URI. Must be reachable by other Graylog server nodes if you run a cluster. 
+	* Typically, this will be the "internal" IP address of the Graylog server.
+	* When using Graylog Collectors, this URI will be used to receive heartbeat messages and must be accessible for all collectors.
+* ``rest_transport_uri = http://192.168.1.1:9000/api/``
+    * REST API transport address. Defaults to the value of ``rest_listen_uri``. Exception: If ``rest_listen_uri`` is set to a wildcard IP address (``0.0.0.0``) the first non-loopback IPv4 system address is used.
+    * Typically, this will be the "external" or publicly accessible IP address of the Graylog server.
+    * You will need to define this if your Graylog server is running behind a HTTP proxy that is rewriting the scheme, host name or URI.
+    * If set, this will be promoted in the cluster discovery APIs, so other nodes may try to connect on this address and it is used to generate URLs addressing entities in the REST API. (see ``rest_listen_uri``)
+    * This must not contain a wildcard address (``0.0.0.0``).
 
 Web Properties
 ^^^^^^^^^^^^^^
 
-* ``http_bind_address = 127.0.0.1:9000``
-        * The network interface used by the Graylog HTTP interface.
-        * This address and port is used by default in the ``http_publish_uri``
-
-* ``http_publish_uri = http://$http_bind_address/``
-
+* ``web_listen_uri = http://127.0.0.1:9000/``
 	* Web interface listen URI.
-        * The HTTP URI of this Graylog node which is used by all clients using the Graylog web interface.
+	* Typically, this will be the "internal" IP address of the Graylog server.
+	* Configuring a path for the URI here effectively prefixes all URIs in the web interface. This is a replacement for the application.context configuration parameter in pre-2.0 versions of the Graylog web interface.
+* ``web_endpoint_uri =``
+    * Web interface endpoint URI. This setting can be overriden on a per-request basis with the X-Graylog-Server-URL header.
+    * It takes the value of ``rest_transport_uri`` by default. If the Graylog server is not behind a proxy or load balancer, changing the default setting is not necessary.
 
 Elasticsearch Properties
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -77,8 +86,8 @@ MongoDB
         - Authenticate against the MongoDB server: ``mongodb_uri = mongodb://grayloguser:secret@localhost:27017/graylog``
         - Use a replica set instead of a single host: ``mongodb_uri = mongodb://grayloguser:secret@localhost:27017,localhost:27018,localhost:27019/graylog``
 
-Outgoing HTTP
-^^^^^^^^^^^^^
+HTTP
+^^^^
 
 * ``http_proxy_uri =``
     * HTTP proxy for outgoing HTTP connections
