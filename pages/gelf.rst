@@ -111,11 +111,7 @@ Example payload
 ===============
 
 This is an example GELF message payload. Any graylog-server node accepts and stores this as a message when GZIP/ZLIB compressed or even when sent
-uncompressed over a plain socket (without newlines).
-
-.. note:: Newlines must be denoted with the ``\n`` escape sequence to ensure the payload is valid JSON as per `RFC 7159 <https://tools.ietf.org/html/rfc7159#page-8>`_.
-
-::
+uncompressed over a plain socket (without newlines)::
 
   {
     "version": "1.1",
