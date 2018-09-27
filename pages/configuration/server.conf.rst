@@ -76,8 +76,8 @@ Web & REST API
     * The HTTP URI of this Graylog node which is used to communicate with the other Graylog nodes in the cluster and by all clients using the Graylog web interface.
     * The URI will be published in the cluster discovery APIs, so that other Graylog nodes will be able to find and connect to this Graylog node.
     * This configuration setting has to be used if this Graylog node is available on another network interface than $http_bind_address, for example if the machine has multiple network interfaces or is behind a NAT gateway.
-    * If ``http_bind_address`` contains a wildcard IPv4 address (0.0.0.0), the first non-loopback IPv4 address of this machine will be used.
-    * This configuration setting *must not* contain a wildcard address!
+    * This configuration setting *must not* be configured to a wildcard address!
+    * If ``http_bind_address`` contains a wildcard IPv4 address (0.0.0.0), ``http_publish_uri`` will be filled with the first non-loopback IPv4 address of this machine instead.
 * ``http_external_uri = $http_publish_uri``
     * The public URI of Graylog which will be used by the Graylog web interface to communicate with the Graylog REST API.
     * The external Graylog URI usually has to be specified, if Graylog is running behind a reverse proxy or load-balancer and it will be used to generate URLs addressing entities in the Graylog REST API (see $http_bind_address).
