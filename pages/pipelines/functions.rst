@@ -79,7 +79,7 @@ In our case the alternative version of calling ``parse_date`` would look like th
         set_field("transaction_year", new_date.year);
     end
 
-More examples of the usage of various functions in pipeline rules can be found in the `graylog2-server repo <https://github.com/Graylog2/graylog2-server/tree/master/graylog2-server/src/test/resources/org/graylog/plugins/pipelineprocessor/functions>`_.
+More examples of the usage of various functions in pipeline rules can be found in the `graylog2-server repo <https://github.com/Graylog2/graylog-plugin-pipeline-processor/tree/master/plugin/src/test/resources/org/graylog/plugins/pipelineprocessor/functions>`_.
 
 All parameters in Graylog's processing functions, listed below, are named.
 
