@@ -12,15 +12,15 @@ You also need to make sure that you have proper certificates in place, which are
 
 .. note:: If you're operating a single-node setup and would like to use HTTPS for the Graylog web interface and the Graylog REST API, it's possible to use :ref:`NGINX or Apache as a reverse proxy <configuring_webif_nginx>`.
 
-Thinks to consider
+Things to consider
 ==================
 
-You have multiple options to ensure that your connection is secure and save. The first would be to create a self-signed certificate, add that to the previous  copied java keystore and use this keystore with your Graylog java options.
-As you would need todo this for every certificate and every truststore this becomes unmaintenable in any form of cluster setup. Each node need to know all certificates of all nodes.
+You have multiple options to ensure that your connection is secure and safe. The first would be to create a self-signed certificate, add that to the previously  copied java keystore and use this keystore with your Graylog java options.
+Since you will need to do this for every certificate and every trust store, this quickly becomes unmanageable in a clustered architecture. Each node needs to trust all certificates from all other nodes.
 
 The second option would be to create your own certificate authority. You only add the certificate authority once to the key store and all certificates that are created with this authority will be trusted.
 
-The same can be done if you have already your own certificate authorify, you only need the certificates and keys in the format that can be used with Graylog. Add the certificate authority key to the keystore and all certificates that are signed by this certificate authority will be trusted.  
+The same can be done if you have already your own certificate authority, you only need the certificates and keys in the format that can be used with Graylog. Add the certificate authority key to the keystore and all certificates that are signed by this certificate authority will be trusted.  
 Same when you pay for certificates or use a free Certificate authority like let's encrypt to get the server certificates.
 
 Just add the certificate authority to the keystore and all certificates are trusted.
