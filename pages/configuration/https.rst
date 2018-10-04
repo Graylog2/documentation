@@ -88,7 +88,7 @@ Convert PKCS#5 private key into an *encrypted* PKCS#8 private key (using the pas
 Converting a PKCS #12 (PFX) file to private key and certificate pair
 ====================================================================
 
-PKCS #12 key stores (PFX files) are commonly used on Microsoft Windows. This need to be done only if you have to konvert PKCS #12 Keys to be used with Graylog.
+PKCS #12 key stores (PFX files) are commonly used on Microsoft Windows. This needs to be done only if you have to convert PKCS #12 Keys to be used with Graylog.
 
 In this example, the PKCS #12 (PFX) file is named ``keystore.pfx``::
 
@@ -102,7 +102,7 @@ The resulting ``graylog-certificate.pem`` and ``graylog-key.pem`` can be used in
 Converting an existing Java Keystore to private key/certificate pair
 ====================================================================
 
-This section describes how to export a private key and certificate from an existing Java KeyStore in JKS format. This is needed if you want to get the certificates exported from the Java KeyStore. 
+This section describes how to export a private key and certificate from an existing Java KeyStore in JKS format. This is needed if you want to export the certificates from the Java KeyStore. 
 
 The starting point is an existing Java KeyStore in JKS format which contains a private key and certificate which should be used in Graylog::
 
