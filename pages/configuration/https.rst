@@ -12,11 +12,24 @@ You also need to make sure that you have proper certificates in place, which are
 
 .. note:: If you're operating a single-node setup and would like to use HTTPS for the Graylog web interface and the Graylog REST API, it's possible to use :ref:`NGINX or Apache as a reverse proxy <configuring_webif_nginx>`.
 
+Things to consider
+==================
+
+You have multiple options to ensure that your connection is secure and safe. The first would be to create a self-signed certificate, add that to the previously  copied java keystore and use this keystore with your Graylog java options.
+Since you will need to do this for every certificate and every trust store, this quickly becomes unmanageable in a clustered architecture. Each node needs to trust all certificates from all other nodes.
+
+The second option would be to create your own certificate authority. You only add the certificate authority once to the key store and all certificates that are created with this authority will be trusted.
+
+The same can be done if you have already your own certificate authority, you only need the certificates and keys in the format that can be used with Graylog. Add the certificate authority key to the keystore and all certificates that are signed by this certificate authority will be trusted.  
+Same when you pay for certificates or use a free Certificate authority like let's encrypt to get the server certificates.
+
+Just add the certificate authority to the keystore and all certificates are trusted.
 
 Certificate/Key file format
 ===========================
 
 When you are configuring TLS, you need to make sure that your certificate/key files are in the right format, which is X.509 for certificates and PKCS#8 for the private keys. Both must to be stored in PEM format.
+
 
 .. _creating-a-self-signed-private-key-certificate:
 
@@ -75,7 +88,7 @@ Convert PKCS#5 private key into an *encrypted* PKCS#8 private key (using the pas
 Converting a PKCS #12 (PFX) file to private key and certificate pair
 ====================================================================
 
-PKCS #12 key stores (PFX files) are commonly used on Microsoft Windows.
+PKCS #12 key stores (PFX files) are commonly used on Microsoft Windows. This needs to be done only if you have to convert PKCS #12 Keys to be used with Graylog.
 
 In this example, the PKCS #12 (PFX) file is named ``keystore.pfx``::
 
@@ -89,7 +102,7 @@ The resulting ``graylog-certificate.pem`` and ``graylog-key.pem`` can be used in
 Converting an existing Java Keystore to private key/certificate pair
 ====================================================================
 
-This section describes how to export a private key and certificate from an existing Java KeyStore in JKS format.
+This section describes how to export a private key and certificate from an existing Java KeyStore in JKS format. This is needed if you want to export the certificates from the Java KeyStore. 
 
 The starting point is an existing Java KeyStore in JKS format which contains a private key and certificate which should be used in Graylog::
 
@@ -196,7 +209,7 @@ The resulting PKCS#8 private key (``graylog-key.pem``) and the X.509 certificate
 Sample files
 ============
 
-This section show the difference between following private key formats with samples.
+This section shows the difference between following private key formats with samples. It will help you to identify between the following private key formats and provides samples.
 
 PKCS#5 plain private key::
 
