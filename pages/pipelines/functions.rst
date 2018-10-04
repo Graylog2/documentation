@@ -79,6 +79,8 @@ In our case the alternative version of calling ``parse_date`` would look like th
         set_field("transaction_year", new_date.year);
     end
 
+More examples of the usage of various functions in pipeline rules can be found in the `graylog2-server repo <https://github.com/Graylog2/graylog2-server/tree/master/graylog2-server/src/test/resources/org/graylog/plugins/pipelineprocessor/functions>`_.
+
 All parameters in Graylog's processing functions, listed below, are named.
 
 Function Index
@@ -346,6 +348,12 @@ substring
 Returns a substring of ``value`` starting at the ``start`` offset (zero based indices), optionally ending at
 the ``end`` offset. Both offsets can be negative, indicating positions relative to the end of ``value``.
 
+Example::
+
+        // Extract the substring starting at offset 0 and stopping at offset 2
+        // Below example will return "ab"
+        substring("abc", 0, 2)
+
 concat
 ------
 ``concat(first: string, second: string)``
@@ -393,6 +401,21 @@ Applies the grok pattern ``grok`` to ``value``. Returns a match object, containi
 You can set ``only_named_captures`` to ``true`` to only return matches using named captures.
 
 .. tip:: The result of executing the ``grok`` function can be passed as argument for `set_fields`_ to set the extracted fields into a message.
+
+.. note:: The GROK pattern used in this function must be first imported into the Graylog "GROK Patterns" page.
+
+Example::
+
+        // Apply the Grok pattern NGINXACCESS to the string representation of the "message" field
+        // Only return named captures from GROK pattern
+        grok(%{NGINXACCESS}, to_string($message.message), true)
+
+Example::
+
+        // Let "nginxaccessfields" hold the Map returned by the grok function
+        // Use the "set_fields" function to use the "nginxaccessfields" object to set individual field names and values.
+        let nginxaccessfields = grok(%{NGINXACCESS}, to_string($message.message), true);
+        set_fields(nginxaccessfields);
 
 key_value
 ---------
@@ -503,6 +526,12 @@ cidr_match
 
 Checks whether the given ``ip`` address object matches the ``cidr`` pattern.
 
+Example::
+
+        // Check whether the value in the src_addr field is in the subnet "192.0.0.0/8"
+        // If it is, return boolean "True". Else, return boolean "False"
+        cidr_match("192.0.0.0/8", to_ip($message.src_addr))
+
 
 from_input
 ----------
@@ -551,7 +580,7 @@ create_message
 ``create_message([message: string], [source: string], [timestamp: DateTime])``
 
 Creates a new message with from the given parameters. If any of them is omitted, its value is taken from the corresponding
-fields of the currently processed message. If ``timestamp`` is omitted, the timestamp of the created message will 
+fields of the currently processed message. If ``timestamp`` is omitted, the timestamp of the created message will
 be the timestamp at that moment.
 
 clone_message
