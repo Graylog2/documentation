@@ -209,7 +209,7 @@ The resulting PKCS#8 private key (``graylog-key.pem``) and the X.509 certificate
 Sample files
 ============
 
-This section show the difference between following private key formats with samples. It will help you to identify what file you have.
+This section shows the difference between following private key formats with samples. It will help you to identify between the following private key formats and provides samples.
 
 PKCS#5 plain private key::
 
