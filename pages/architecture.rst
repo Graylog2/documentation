@@ -18,7 +18,7 @@ Our :ref:`Virtual Machine Appliances <virtual-machine-appliances>` are using thi
 
 Simple Multi-Node
 -----------------
-In a Simple Multi-Node system, Graylog and Elasticsearch components each reside on their own hosts. Most customers install MongoDB on same host as the Graylog Server. Since it is used primarily for application configuration information, the load on MongoDB is low enough that it does not typically need it’s own host. 
+In a Simple Multi-Node system, Graylog and Elasticsearch components each reside on their own hosts. Most customers install MongoDB on same host as the Graylog Server. Since it is used primarily for application configuration information, the load on MongoDB is low enough that it does not typically need its own host. 
 
 .. _big_production_setup:
 
