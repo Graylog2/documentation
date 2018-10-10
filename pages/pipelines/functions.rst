@@ -408,13 +408,13 @@ Example::
 
         // Apply the Grok pattern NGINXACCESS to the string representation of the "message" field
         // Only return named captures from GROK pattern
-        grok(%{NGINXACCESS}, to_string($message.message), true)
+        grok("%{NGINXACCESS}", to_string($message.message), true)
 
 Example::
 
         // Let "nginxaccessfields" hold the Map returned by the grok function
         // Use the "set_fields" function to use the "nginxaccessfields" object to set individual field names and values.
-        let nginxaccessfields = grok(%{NGINXACCESS}, to_string($message.message), true);
+        let nginxaccessfields = grok("%{NGINXACCESS}", to_string($message.message), true);
         set_fields(nginxaccessfields);
 
 key_value
