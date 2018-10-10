@@ -45,9 +45,9 @@ Messages that do not have the field *type*::
 
   NOT _exists_:type
 
-Messages that match regular expression ``ethernet[0-9]+``::
+Messages that match regular expression ``ethernet[0-9]+`` in field *type*::
 
-  /ethernet[0-9]+/
+  type:/ethernet[0-9]+/
 
 .. note:: Please refer to the Elasticsearch documentation about the `Regular expression syntax <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/query-dsl-regexp-query.html#regexp-syntax>`_ for details about the supported regular expression dialect.
 
