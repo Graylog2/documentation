@@ -41,7 +41,7 @@ General Properties
 * ``root_username = admin``
     * The default root user is named **admin**.
 * ``root_password_sha2 = <SHA2>``
-    * A SHA2 hash of the password you will use for your initial login. Insert a SHA2 hash generated with ``echo -n yourpassword | shasum -a 256`` and you will be able to log in to the web interface with username **admin** and password **yourpassword**.
+    * A SHA2 hash of the password you will use for your initial login. Insert a SHA2 hash generated with ``echo -n "Enter Password: " && head -1 </dev/stdin | tr -d '\n' | sha256sum | cut -d" " -f1`` and you will be able to log in to the web interface with username **admin** and password **yourpassword**.
 
     .. caution:: You MUST specify a hash password for the root user (which you only need to initially set up the system and in case you lose connectivity to your authentication backend). This password cannot be changed using the API or via the web interface. If you need to change it, modify it in this file.
 * ``rest_listen_uri = http://127.0.0.1:9000/api/``
