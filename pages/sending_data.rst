@@ -269,3 +269,43 @@ Log files come in a lot of different flavors and formats, much more than any sin
 To support this use case, we provide the :ref:`Collector Sidecar <graylog-collector-sidecar>` which acts as a supervisor process for other programs, such as nxlog and Filebeats, which have specifically been built to collect log messages from local files and ship them to remote systems like Graylog.
 
 Of course you can still use any program supporting the GELF or syslog protocol (among others) to send your logs to Graylog.
+
+Input Throttling
+================
+
+Throttling allows certain Graylog Inputs to slow their message intake rates (by temporarily pausing intake processing) if
+contention occurs in the Graylog Journal.
+
+Graylog Inputs that support throttling
+--------------------------------------
+
+ * AWS Flow Logs
+ * AWS Logs
+ * CEF AMQP Input
+ * CEF Kafka Input
+ * GELF AMQP
+ * GELF Kafka
+ * JSON path from HTTP API
+ * Raw/Plaintext AMQP
+ * Raw/Plaintext Kafka
+ * Syslog AMQP
+ * Syslog Kafka
+
+Enabling throttling
+-------------------
+
+To enable throttling for one of these inputs, edit it in *System > Inputs* and check the *Allow throttling this input*
+checkbox.
+
+Throttling criteria
+-------------------
+
+When enabled, the following criteria will be used to determine if throttling will occur:
+
+ #. If there are zero uncommitted entries in the Graylog Journal, throttling will not occur. No further checks will be performed.
+ #. Throttling will occur if the Journal has more than 100k uncommitted entries.
+ #. Throttling will occur if the Journal is growing in size rapidly (approximately 20k entries per second or greater).
+ #. Throttling will occur if the process ring buffer is full.
+ #. Nothing is currently being written to the Journal, throttling will not occur. No further checks will be performed.
+ #. Throttling will occur if the Journal is more than 90% full.
+ #. Throttling will occur if the Journal write rate is more than twice as high as the read rate.
