@@ -39,7 +39,7 @@ Configure at least the following variables in ``/etc/graylog/server/server.conf`
       a secret with for example ``pwgen -N 1 -s 96``.  If you run multiple ``graylog-server`` nodes, make sure you use the same
       ``password_secret`` for all of them!
  * ``root_password_sha2``
-    * A SHA2 hash of a password you will use for your initial login. Set this to a SHA2 hash generated with ``echo -n yourpassword | shasum -a 256``
+    * A SHA2 hash of a password you will use for your initial login. Set this to a SHA2 hash generated with ``"Enter Password: " && head -1 </dev/stdin | tr -d '\n' | sha256sum | cut -d" " -f1``
       and you will be able to log in to the web interface with username **admin** and password **yourpassword**.
  * ``elasticsearch_shards = 4``
     * The number of shards for your indices. A good setting here highly depends on the number of nodes in your Elasticsearch cluster. If you have

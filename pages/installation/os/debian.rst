@@ -69,7 +69,7 @@ Follow the instructions in your ``/etc/graylog/server/server.conf`` and add ``pa
 
 You need to use the following command to create your ``root_password_sha2``::
 
-  echo -n yourpassword | sha256sum
+  "Enter Password: " && head -1 </dev/stdin | tr -d '\n' | sha256sum | cut -d" " -f1
 
 To be able to connect to Graylog you should set ``rest_listen_uri`` and ``web_listen_uri`` to the public host name or a public IP address of the machine you can connect to. More information about these settings can be found in :ref:`Configuring the web interface <configuring_webif>`.
 
