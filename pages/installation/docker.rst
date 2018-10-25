@@ -64,7 +64,7 @@ In this case you can login to Graylog with the username and password ``admin``.
 
 Generate your own admin password with the following command and put the SHA-256 hash into the ``GRAYLOG_ROOT_PASSWORD_SHA2`` environment variable::
 
-  "Enter Password: " && head -1 </dev/stdin | tr -d '\n' | sha256sum | cut -d" " -f1
+  echo -n "Enter Password: " && head -1 </dev/stdin | tr -d '\n' | sha256sum | cut -d" " -f1
 
 
 All these settings and command line parameters can be put in a ``docker-compose.yml`` file, so that they don't have to be executed one after the other.
