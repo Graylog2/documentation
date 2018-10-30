@@ -24,11 +24,11 @@ If you simply want to checkout Graylog without any further customization, you ca
   $ docker run --name mongo -d mongo:3
   $ docker run --name elasticsearch \
       -e "http.host=0.0.0.0" -e "xpack.security.enabled=false" \
-      -d docker.elastic.co/elasticsearch/elasticsearch:5.6.2
+      -d docker.elastic.co/elasticsearch/elasticsearch:5.6.12
   $ docker run --link mongo --link elasticsearch \
       -p 9000:9000 -p 12201:12201 -p 514:514 \
       -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" \
-      -d graylog/graylog:2.4.0-1
+      -d graylog/graylog:2.4
 
 How to get log data in
 ----------------------
@@ -40,7 +40,7 @@ For example, to start a Raw/Plaintext TCP input on port 5555, stop your containe
   $ docker run --link mongo --link elasticsearch \
       -p 9000:9000 -p 12201:12201 -p 514:514 -p 5555:5555 \
       -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" \
-      -d graylog/graylog:2.4.0-1
+      -d graylog/graylog:2.4
 
 
 Similarly, the same can be done for UDP by appending ``-p 5555:5555/udp``.
@@ -78,13 +78,18 @@ Example::
       image: mongo:3
     # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
+      image: docker.elastic.co/elasticsearch/elasticsearch:5.6.12
       environment:
         - http.host=0.0.0.0
         - transport.host=localhost
         - network.host=0.0.0.0
         # Disable X-Pack security: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/security-settings.html#general-security-settings
         - xpack.security.enabled=false
+        - xpack.watcher.enabled=false
+        - xpack.monitoring.enabled=false
+        - xpack.security.audit.enabled=false
+        - xpack.ml.enabled=false
+        - xpack.graph.enabled=false
         - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       ulimits:
         memlock:
@@ -93,7 +98,7 @@ Example::
       mem_limit: 1g
     # Graylog: https://hub.docker.com/r/graylog/graylog/
     graylog:
-      image: graylog/graylog:2.4.0-1
+      image: graylog/graylog:2.4
       environment:
         # CHANGE ME!
         - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
@@ -137,10 +142,10 @@ For example, setting up the SMTP configuration for sending Graylog alert notific
       image: "mongo:3"
       # Other settings [...]
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
+      image: docker.elastic.co/elasticsearch/elasticsearch:5.6.12
       # Other settings [...]
     graylog:
-      image: graylog/graylog:2.4.0-1
+      image: graylog/graylog:2.4
       # Other settings [...]
       environment:
         GRAYLOG_TRANSPORT_EMAIL_ENABLED: "true"
@@ -177,10 +182,10 @@ This can be done by adding an entry to the `volumes <https://docs.docker.com/com
       image: mongo:3
       # Other settings [...]
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
+      image: docker.elastic.co/elasticsearch/elasticsearch:5.6.12
       # Other settings [...]
     graylog:
-      image: graylog/graylog:2.4.0-1
+      image: graylog/graylog:2.4
       # Other settings [...]
       volumes:
         # Mount local configuration directory into Docker container
@@ -208,7 +213,7 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
         - mongo_data:/data/db
     # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
+      image: docker.elastic.co/elasticsearch/elasticsearch:5.6.12
       volumes:
         - es_data:/usr/share/elasticsearch/data
       environment:
@@ -217,6 +222,11 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
         - network.host=0.0.0.0
         # Disable X-Pack security: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/security-settings.html#general-security-settings
         - xpack.security.enabled=false
+        - xpack.watcher.enabled=false
+        - xpack.monitoring.enabled=false
+        - xpack.security.audit.enabled=false
+        - xpack.ml.enabled=false
+        - xpack.graph.enabled=false
         - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       ulimits:
         memlock:
@@ -225,7 +235,7 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
       mem_limit: 1g
     # Graylog: https://hub.docker.com/r/graylog/graylog/
     graylog:
-      image: graylog/graylog:2.4.0-1
+      image: graylog/graylog:2.4
       volumes:
         - graylog_journal:/usr/share/graylog/data/journal
       environment:
@@ -274,7 +284,7 @@ New Docker image
 
 Simply create a new `Dockerfile <https://docs.docker.com/engine/reference/builder/>`_ in an empty directory with the following contents::
 
-  FROM graylog/graylog:2.4.0-1
+  FROM graylog/graylog:2.4
   RUN wget -O /usr/share/graylog/plugin/graylog-plugin-auth-sso-2.4.0.jar https://github.com/Graylog2/graylog-plugin-auth-sso/releases/download/2.4.0/graylog-plugin-auth-sso-2.4.0.jar
 
 Build a new image from the new ``Dockerfile`` (also see `docker build <https://docs.docker.com/engine/reference/commandline/build/>`_)::
@@ -291,7 +301,7 @@ The ``docker-compose.yml`` file has to reference the new Docker image::
       image: "mongo:3"
       # Other settings [...]
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
+      image: docker.elastic.co/elasticsearch/elasticsearch:5.6.12
       # Other settings [...]
     graylog:
       image: graylog-with-sso-plugin
@@ -305,7 +315,7 @@ Instead of building a new docker image, you can also add additional plugins by m
 Simply create a ``plugin`` folder, download the plugin(s) you want to install into it and mount each file as an additional volume into the docker container::
 
   $ mkdir -p ./graylog/plugin
-  $ wget -O ./graylog/plugin/graylog-plugin-auth-sso-2.3.0.jar https://github.com/Graylog2/graylog-plugin-auth-sso/releases/download/2.3.0/graylog-plugin-auth-sso-2.3.0.jar
+  $ wget -O ./graylog/plugin/graylog-plugin-auth-sso-2.4.0.jar https://github.com/Graylog2/graylog-plugin-auth-sso/releases/download/2.4.0/graylog-plugin-auth-sso-2.4.0.jar
 
 The ``docker-compose.yml`` file has to reference the new Docker image::
 
@@ -315,14 +325,14 @@ The ``docker-compose.yml`` file has to reference the new Docker image::
       image: "mongo:3"
       # Other settings [...]
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch:5.5.1
+      image: docker.elastic.co/elasticsearch/elasticsearch:5.6.12
       # Other settings [...]
     graylog:
-      image: graylog/graylog:2.3.0-1
+      image: graylog/graylog:2.4
       # Other settings [...]
       volumes:
         # Mount local plugin file into Docker container
-        - ./graylog/plugin/graylog-plugin-auth-sso-2.3.0.jar:/usr/share/graylog/plugin/graylog-plugin-auth-sso-2.3.0.jar
+        - ./graylog/plugin/graylog-plugin-auth-sso-2.4.0.jar:/usr/share/graylog/plugin/graylog-plugin-auth-sso-2.4.0.jar
         
 You can add as many of these links as you wish in your ``docker-compose.yml`` file. Simply restart the container and docker will recreate the graylog container with the new volumes included::
 
