@@ -48,6 +48,8 @@ The following list shows the minimum required Graylog versions for the Graylog E
       - 2.4.4
     * - 2.4.5
       - 2.4.5
+    * - 2.4.6
+      - 2.4.6
 
 
 Installation
