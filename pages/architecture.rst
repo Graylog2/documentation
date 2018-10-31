@@ -10,7 +10,7 @@ Minimum
 -------
 In a minimum Graylog deployment, all three components are installed on a single host. A minimum Graylog setup that can be used for smaller, non-critical, or test setups.
 
-None of the components is redundant but it is easy and quick to set up.
+None of the components are redundant but it is easy and quick to set up.
 
 .. image:: /images/architec_small_setup.png
 
