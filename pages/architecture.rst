@@ -17,7 +17,7 @@ Minimum setup
 -------------
 
 This is a minimum Graylog setup that can be used for smaller, non-critical, or test setups.
-None of the components is redundant but it is easy and quick to setup.
+None of the components are redundant, and they are easy and quick to setup.
 
 .. image:: /images/architec_small_setup.png
 
