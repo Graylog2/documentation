@@ -20,14 +20,14 @@ If you want to use ``pwgen`` later on you need to Setup `EPEL <https://fedorapro
 MongoDB
 -------
 
-Installing MongoDB on CentOS should follow `the tutorial for RHEL and CentOS <https://docs.mongodb.com/master/tutorial/install-mongodb-on-red-hat>`_ from the MongoDB documentation. First add the repository file ``/etc/yum.repos.d/mongodb-org-3.2.repo`` with the following contents::
+Installing MongoDB on CentOS should follow `the tutorial for RHEL and CentOS <https://docs.mongodb.com/master/tutorial/install-mongodb-on-red-hat>`_ from the MongoDB documentation. First add the repository file ``/etc/yum.repos.d/mongodb-org-3.6.repo`` with the following contents::
 
-  [mongodb-org-3.2]
+  [mongodb-org-3.6]
   name=MongoDB Repository
-  baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
+  baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.6/x86_64/
   gpgcheck=1
   enabled=1
-  gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc
+  gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
 
 After that, install the latest release of MongoDB with ``sudo yum install mongodb-org``.
 
