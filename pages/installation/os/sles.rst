@@ -25,10 +25,10 @@ Assuming a minimal setup, you have to install the Java runtime environment::
 MongoDB
 -------
 
-Installing MongoDB on SLES should follow `the tutorial for SLES <https://docs.mongodb.com/v3.4/tutorial/install-mongodb-on-suse/>`_ from the MongoDB documentation. Add the GPG key and the repository before installing MongoDB::
+Installing MongoDB on SLES should follow `the tutorial for SLES <https://docs.mongodb.com/v3.6/tutorial/install-mongodb-on-suse/>`_ from the MongoDB documentation. Add the GPG key and the repository before installing MongoDB::
 
-  $ sudo rpm --import https://www.mongodb.org/static/pgp/server-3.4.asc
-  $ sudo zypper addrepo --gpgcheck "https://repo.mongodb.org/zypper/suse/12/mongodb-org/3.4/x86_64/" mongodb
+  $ sudo rpm --import https://www.mongodb.org/static/pgp/server-3.6.asc
+  $ sudo zypper addrepo --gpgcheck "https://repo.mongodb.org/zypper/suse/12/mongodb-org/3.6/x86_64/" mongodb
   $ sudo zypper -n install mongodb-org
 
 In order to automatically start MongoDB on system boot, you have to activate the MongoDB service by running the following commands::
@@ -105,10 +105,4 @@ Cluster Setup
 
 If you plan to have multiple servers assuming different roles in your cluster :ref:`like we have in this big production setup <big_production_setup>` you need to modify only a few settings. This is covered in our :ref:`Multi-node Setup guide<configure_multinode>`. The :ref:`default file location guide <default_file_location>` lists the locations of the files you need to modify.
 
-Feedback
---------
 
-Please file a `bug report in the GitHub repository for the operating system packages <https://github.com/Graylog2/fpm-recipes>`__ if you
-run into any packaging related issues.
-
-If you found this documentation confusing or have more questions, please open an `issue in the Github repository for the documentation <https://github.com/Graylog2/documentation/issues>`__.
