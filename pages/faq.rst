@@ -291,6 +291,19 @@ The logs of the Graylog *master* node will contain a warning message similar to 
 #. Manually rotate the active write index of the index set on the *System* / *Indices* / *Index Set* page in the *Maintenance* dropdown menu.
 #. (*OPTIONAL*) Start all remaining Graylog *slave* nodes.
 
+How do I enable debug logging for a specific plugin or area of Graylog?
+-----------------------------------------------------------------------
+
+When troubleshooting an issue in Graylog, it might be useful to enable ``debug`` or ``trace`` logging for the entire Graylog
+subsystem in (*System > Logging*). However, you may find that this generates too much log output (possibly making it
+difficult to review log messages for a particular area of concern).
+
+Graylog supports the ability to enable ``debug`` or ``trace`` logging for specific application areas or plugins. To do this,
+execute the following terminal command against a particular Graylog node.::
+
+  curl -I -X PUT http://<graylog-username>:<graylog-password>@<graylog-node-ip>:9000/api/system/loggers/<application-package>/level/debug
+
+.. note:: The ``application-package`` is the Java package for the area of concern (eg. ``org.graylog.aws``  for the AWS plugin or ``org.graylog2.lookup`` for Lookup Tables). You might need to look at the Graylog source code to identify the desired application-package.
 
 Have another troubleshooting question?
 --------------------------------------
