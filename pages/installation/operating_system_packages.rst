@@ -11,9 +11,9 @@ and configuring new software a matter of a single command and a few minutes of t
 
 Graylog offers official ``DEB`` and ``RPM`` package repositories. The packages have been tested on the following operating systems:
 
-* Ubuntu 12.04, 14.04, 16.04, 18.04
-* Debian 7, 8, 9
-* RHEL/CentOS 6, 7
+* Ubuntu 14.04, 16.04, 18.04
+* Debian 8, 9
+* RHEL/CentOS 7
 
 The repositories can be setup by installing a single package. Once that's done the Graylog packages can be installed via ``apt-get`` or
 ``yum``. The packages can also be downloaded with a web browser at https://packages.graylog2.org/ if needed.
@@ -27,7 +27,7 @@ Make sure to install and configure the following software before installing and 
 * MongoDB (>= 3.6)
 * Elasticsearch (>= 5.x)
 
-.. caution:: Graylog 2.3 **does not** work with Elasticsearch 6.x!
+.. caution:: Graylog 3.0-alpha **does not** work with Elasticsearch 6.x yet! (support for version ES 6.x will be in Graylog 3.0 GA)
 
 .. _operating_package_DEB-APT:
 
@@ -45,23 +45,23 @@ via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is i
 
 After the installation completed successfully, Graylog can be started with the following commands. Make sure to use the correct command for your operating system.
 
-====================== =========== =======================================
-OS                     Init System Command
-====================== =========== =======================================
-Ubuntu 14.04, 12.04    upstart     ``sudo start graylog-server``
-Debian 7               SysV        ``sudo service graylog-server start``
-Debian 8, Ubuntu 16.04 systemd     ``sudo systemctl start graylog-server``
-====================== =========== =======================================
+============================ =========== =======================================
+OS                           Init System Command
+============================ =========== =======================================
+Ubuntu 14.04                 upstart     ``sudo start graylog-server``
+Debian 7                     SysV        ``sudo service graylog-server start``
+Debian 8, Ubuntu 16.04/18.04 systemd     ``sudo systemctl start graylog-server``
+============================ =========== =======================================
 
 The packages are configured to **not** start any Graylog services during boot. You can use the following commands to start Graylog when the operating system is booting.
 
-====================== =========== ==================================================
-OS                     Init System Command
-====================== =========== ==================================================
-Ubuntu 14.04, 12.04    upstart     ``sudo rm -f /etc/init/graylog-server.override``
-Debian 7               SysV        ``sudo update-rc.d graylog-server defaults 95 10``
-Debian 8, Ubuntu 16.06 systemd     ``sudo systemctl enable graylog-server``
-====================== =========== ==================================================
+============================ =========== ==================================================
+OS                           Init System Command
+============================ =========== ==================================================
+Ubuntu 14.04                 upstart     ``sudo rm -f /etc/init/graylog-server.override``
+Debian 7                     SysV        ``sudo update-rc.d graylog-server defaults 95 10``
+Debian 8, Ubuntu 16.06/18.04 systemd     ``sudo systemctl enable graylog-server``
+============================ =========== ==================================================
 
 .. _operating_package_upgrade_DEB-APT:
 
