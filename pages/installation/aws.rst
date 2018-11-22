@@ -7,7 +7,7 @@ AWS - AMIs
 AMIs
 ----
 
-Select your `AMI and AWS Region <https://github.com/Graylog2/graylog2-images/tree/2.4/aws>`_.
+Select your `AMI and AWS Region <https://github.com/Graylog2/graylog2-images/tree/2.5/aws>`_.
 
 Usage
 -----

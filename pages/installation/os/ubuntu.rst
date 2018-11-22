@@ -37,14 +37,14 @@ The last step is to enable MongoDB during the operating system's startup::
 Elasticsearch
 -------------
 
-Graylog 2.4.x should be used with Elasticsearch 5.x, please follow the installation instructions from `the Elasticsearch installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/deb.html>`__::
+Graylog 2.5.x should be used with Elasticsearch 6.x, please follow the installation instructions from `the Elasticsearch installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/deb.html>`__::
 
 
     $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-    $ echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
+    $ echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
     $ sudo apt-get update && sudo apt-get install elasticsearch
 
-Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` additionally you need to uncomment (remove the # as first character) the line::
+Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` additionally you need to uncomment (remove the # as first character) the line::
 
     cluster.name: graylog
 
@@ -60,8 +60,8 @@ Graylog
 
 Now install the Graylog repository configuration and Graylog itself with the following commands::
 
-    $ wget https://packages.graylog2.org/repo/packages/graylog-2.4-repository_latest.deb
-    $ sudo dpkg -i graylog-2.4-repository_latest.deb
+    $ wget https://packages.graylog2.org/repo/packages/graylog-2.5-repository_latest.deb
+    $ sudo dpkg -i graylog-2.5-repository_latest.deb
     $ sudo apt-get update && sudo apt-get install graylog-server
 
 Follow the instructions in your ``/etc/graylog/server/server.conf`` and add ``password_secret`` and ``root_password_sha2``. These settings are mandatory and without them, Graylog will not start!

@@ -68,8 +68,8 @@ Index sets have a variety of different settings related to how Graylog will stor
 * **Analyzer**: (default: ``standard``) The Elasticsearch `analyzer <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/configuring-analyzers.html>`_ for the index set.
 * **Index shards**: (default: 4) The number of Elasticsearch shards used per index.
 * **Index replicas**: (default: 0) The number of Elasticsearch replicas used per index.
-* **Max. number of segments**: (default: 1) The maximum number of segments per Elasticsearch index after `index optimization (force merge) <https://www.elastic.co/guide/en/elasticsearch/reference/2.4/indices-forcemerge.html>`_, see `Segment Merging <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/merge-process.html>`_ for details.
-* **Disable index optimization after rotation**: Disable Elasticsearch `index optimization (force merge) <https://www.elastic.co/guide/en/elasticsearch/reference/2.4/indices-forcemerge.html>`_ after index rotation. Only activate this if you have serious problems with the performance of your Elasticsearch cluster during the optimization process.
+* **Max. number of segments**: (default: 1) The maximum number of segments per Elasticsearch index after `index optimization (force merge) <https://www.elastic.co/guide/en/elasticsearch/reference/2.5/indices-forcemerge.html>`_, see `Segment Merging <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/merge-process.html>`_ for details.
+* **Disable index optimization after rotation**: Disable Elasticsearch `index optimization (force merge) <https://www.elastic.co/guide/en/elasticsearch/reference/2.5/indices-forcemerge.html>`_ after index rotation. Only activate this if you have serious problems with the performance of your Elasticsearch cluster during the optimization process.
 
 
 .. _index_rotation:
@@ -88,8 +88,8 @@ Index rotation
 Index retention
 ---------------
 
-* **Delete**: `Delete indices <https://www.elastic.co/guide/en/elasticsearch/reference/2.4/indices-delete-index.html>`_ in Elasticsearch to minimize resource consumption.
-* **Close**: `Close indices <https://www.elastic.co/guide/en/elasticsearch/reference/2.4/indices-open-close.html>`_ in Elasticsearch to reduce resource consumption.
+* **Delete**: `Delete indices <https://www.elastic.co/guide/en/elasticsearch/reference/2.5/indices-delete-index.html>`_ in Elasticsearch to minimize resource consumption.
+* **Close**: `Close indices <https://www.elastic.co/guide/en/elasticsearch/reference/2.5/indices-open-close.html>`_ in Elasticsearch to reduce resource consumption.
 * **Do nothing**
 * **Archive**: Commercial feature, see :doc:`../archiving`.
 

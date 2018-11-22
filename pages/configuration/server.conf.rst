@@ -152,7 +152,7 @@ Elasticsearch
     * Maximum number of times Graylog will retry failed requests to Elasticsearch.
     * Default: 2
 * ``elasticsearch_discovery_enabled = false``
-    * Enable automatic Elasticsearch node discovery through Nodes Info, see `Elasticsearch Reference » Cluster APIs » Nodes Info <https://www.elastic.co/guide/en/elasticsearch/reference/5.4/cluster-nodes-info.html>`_.
+    * Enable automatic Elasticsearch node discovery through Nodes Info, see `Elasticsearch Reference » Cluster APIs » Nodes Info <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/cluster-nodes-info.html>`_.
     * Default: ``false``
 
     .. warning:: Automatic node discovery does not work if Elasticsearch requires authentication, e. g. with Shield.
@@ -161,7 +161,7 @@ Elasticsearch
 
 
 * ``elasticsearch_discovery_filter = rack:42``
-    * Filter for including/excluding Elasticsearch nodes in discovery according to their custom attributes, see `Elastic Search Reference » Cluster APIs » Node Specification <https://www.elastic.co/guide/en/elasticsearch/reference/5.4/cluster.html#cluster-nodes>`_.
+    * Filter for including/excluding Elasticsearch nodes in discovery according to their custom attributes, see `Elastic Search Reference » Cluster APIs » Node Specification <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/cluster.html#cluster-nodes>`_.
     * Default: empty
 * ``elasticsearch_discovery_frequency = 30s``
     * Frequency of the Elasticsearch node discovery.
@@ -233,7 +233,7 @@ Rotation
 * ``elasticsearch_analyzer = standard`` *!!*
     * Analyzer (tokenizer) to use for message and full_message field. The "standard" filter usually is a good idea.
     * All supported analyzers are: standard, simple, whitespace, stop, keyword, pattern, language, snowball, custom
-    * Elasticsearch documentation: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/analysis.html
+    * Elasticsearch documentation: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/analysis.html
     * Note that this setting only takes effect on newly created indices.
 * ``disable_index_optimization = false`` *!!*
     * Disable the optimization of Elasticsearch indices after index cycling. This may take some load from Elasticsearch on heavily used systems with large indices, but it will decrease search performance. The default is to optimize cycled indices.
@@ -422,7 +422,7 @@ Others
 
 * ``rules_file = /etc/graylog/server/rules.drl``
     * Drools Rule File (Use to rewrite incoming log messages)
-    * See: http://docs.graylog.org/en/2.4/pages/drools.html
+    * See: http://docs.graylog.org/en/2.5/pages/drools.html
 * ``gc_warning_threshold = 1s``
       * The threshold of the garbage collection runs. If GC runs take longer than this threshold, a system notification will be generated to warn the administrator about possible problems with the system. Default is 1 second.
 * ``ldap_connection_timeout = 2000``

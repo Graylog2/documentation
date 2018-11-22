@@ -42,13 +42,13 @@ Additionally, run these last steps to start MongoDB during the operating system'
 Elasticsearch
 -------------
 
-Graylog 2.4.x should be used with Elasticsearch 5.x, please follow the installation instructions from `the Elasticsearch installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/rpm.html>`_.
+Graylog 2.5.x should be used with Elasticsearch 6.x, please follow the installation instructions from `the Elasticsearch installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/rpm.html>`_.
 
 First install the Elastic GPG key with ``rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch`` then add the repository file ``/etc/yum.repos.d/elasticsearch.repo`` with the following contents::
 
-    [elasticsearch-5.x]
-    name=Elasticsearch repository for 5.x packages
-    baseurl=https://artifacts.elastic.co/packages/5.x/yum
+    [elasticsearch-6.x]
+    name=Elasticsearch repository for 6.x packages
+    baseurl=https://artifacts.elastic.co/packages/6.x/yum
     gpgcheck=1
     gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
     enabled=1
@@ -57,7 +57,7 @@ First install the Elastic GPG key with ``rpm --import https://artifacts.elastic.
 
 followed by the installation of the latest release with ``sudo yum install elasticsearch``.
 
-Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` additionally you need to uncomment (remove the # as first character) the line::
+Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` additionally you need to uncomment (remove the # as first character) the line::
 
     cluster.name: graylog
 
@@ -74,7 +74,7 @@ Graylog
 
 Now install the Graylog repository configuration and Graylog itself with the following commands::
 
-  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-2.4-repository_latest.rpm
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-2.5-repository_latest.rpm
   $ sudo yum install graylog-server
 
 Follow the instructions in your ``/etc/graylog/server/server.conf`` and add ``password_secret`` and ``root_password_sha2``. These settings are mandatory and without them, Graylog will not start!

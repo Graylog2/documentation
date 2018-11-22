@@ -45,13 +45,13 @@ If your MongoDB needs to be reachable over network you should set the IP with ``
 Elasticsearch cluster
 =====================
 
-The `Elasticsearch setup documentation <https://www.elastic.co/guide/en/elasticsearch/reference/5.4/setup.html>`__ should help you to install Elasticsearch with a robust base configuration.
+The `Elasticsearch setup documentation <https://www.elastic.co/guide/en/elasticsearch/reference/6.5/setup.html>`__ should help you to install Elasticsearch with a robust base configuration.
 
 It is important to name the Elasticsearch cluster not simply named `elasticsearch` to avoid accidental conflicts with Elasticsearch nodes using the default configuration. Just choose anything else (we recommend `graylog`), because this is the default name and any Elasticsearch instance that is started in the same network will try to connect to this cluster.
 
 The Elasticsearch servers need one IP that can be reached over network set in ``network.host`` and some participants of the cluster in ``discovery.zen.ping.unicast.hosts``. That is enough to have a minimal cluster setup.
 
-When you secure your Elasticsearch with `User Authentification <https://www.elastic.co/guide/en/x-pack/5.4/xpack-security.html#preventing-unauthorized-access>`__ you need to add credentials to the `Graylog configuration <https://github.com/Graylog2/graylog2-server/blob/2.3.0-beta.1/misc/graylog.conf#L172-L178>`__ to be able to use the secured Elasticsearch cluster with Graylog.
+When you secure your Elasticsearch with `User Authentification <https://www.elastic.co/guide/en/x-pack/6.5/xpack-security.html#preventing-unauthorized-access>`__ you need to add credentials to the `Graylog configuration <https://github.com/Graylog2/graylog2-server/blob/2.3.0-beta.1/misc/graylog.conf#L172-L178>`__ to be able to use the secured Elasticsearch cluster with Graylog.
 
 
 Graylog Multi-node
@@ -75,7 +75,7 @@ Finally, the MongoDB connection string in the Graylog configuration file should 
 Graylog to Elasticsearch connection
 -----------------------------------
 
-Graylog will connect to the Elasticsearch `REST API <https://www.elastic.co/guide/en/elasticsearch/reference/5.4/_exploring_your_cluster.html>`__.
+Graylog will connect to the Elasticsearch `REST API <https://www.elastic.co/guide/en/elasticsearch/reference/6.5/_exploring_your_cluster.html>`__.
 
 To avoid issues with the connection to the Elasticsearch cluster you should add some of the network addresses of the Elasticsearch nodes to ``elasticsearch_hosts``.
 

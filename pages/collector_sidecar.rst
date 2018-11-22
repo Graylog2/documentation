@@ -37,13 +37,13 @@ To get the Sidecar working `Download a package <https://github.com/Graylog2/coll
 
 Please follow the version matrix to pick the right package:
 
-+-----------------+------------------------+
-| Sidecar version | Graylog server version |
-+=================+========================+
-| 0.0.9           | 2.1.x                  |
-+-----------------+------------------------+
-| 0.1.x           | 2.2.x,2.3.x,2.4.x      |
-+-----------------+------------------------+
++-----------------+------------------------------+
+| Sidecar version | Graylog server version       |
++=================+==============================+
+| 0.0.9           | 2.1.x                        |
++-----------------+------------------------------+
+| 0.1.x           | 2.2.x,2.3.x,2.4.x,2.5.x      |
++-----------------+------------------------------+
 
 All following commands should be executed on the **remote machine** where you want to collect log data from.
 

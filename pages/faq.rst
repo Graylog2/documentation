@@ -284,9 +284,9 @@ The logs of the Graylog *master* node will contain a warning message similar to 
   WARN  [IndexRotationThread] There is an index called [graylog_deflector]. Cannot fix this automatically and published a notification.
 
 #. Stop all Graylog nodes
-#. (*OPTIONAL*) If you want to keep the already ingested messages, reindex them into the Elasticsearch index with the greatest number, e. g. ``graylog_23`` if you want to fix the deflector ``graylog_deflector``, via the `Elasticsearch Reindex API <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docs-reindex.html>`_.
-#. Delete the ``graylog_deflector`` index via the `Elasticsearch Delete Index API <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/indices-delete-index.html>`_.
-#. Add ``action.auto_create_index: false`` to the configuration files of all Elasticsearch nodes in your cluster and restart these Elasticsearch nodes, see `Elasticsearch Index API - Automatic Index Creation <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docs-index_.html#index-creation>`_ and `Creating an Index <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/_creating_an_index.html>`_ for details.
+#. (*OPTIONAL*) If you want to keep the already ingested messages, reindex them into the Elasticsearch index with the greatest number, e. g. ``graylog_23`` if you want to fix the deflector ``graylog_deflector``, via the `Elasticsearch Reindex API <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docs-reindex.html>`_.
+#. Delete the ``graylog_deflector`` index via the `Elasticsearch Delete Index API <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/indices-delete-index.html>`_.
+#. Add ``action.auto_create_index: false`` to the configuration files of all Elasticsearch nodes in your cluster and restart these Elasticsearch nodes, see `Elasticsearch Index API - Automatic Index Creation <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docs-index_.html#index-creation>`_ and `Creating an Index <https://www.elastic.co/guide/en/elasticsearch/guide/2.x/_creating_an_index.html>`_ for details.
 #. Start the Graylog *master* node.
 #. Manually rotate the active write index of the index set on the *System* / *Indices* / *Index Set* page in the *Maintenance* dropdown menu.
 #. (*OPTIONAL*) Start all remaining Graylog *slave* nodes.
