@@ -2,6 +2,38 @@
 Changelog
 *********
 
+Graylog 2.5.0
+=============
+
+Released: tba
+
+**Core**
+
+- Improve CSRF protection by requiring a custom HTTP header for non-GET requests sent to the API. (`requires sidecar 0.1.7 <https://github.com/Graylog2/collector-sidecar/releases/tag/0.1.7)>`_) `Graylog2/graylog2-server#4998 <https://github.com/Graylog2/graylog2-server/issues/4998>`_ `Graylog2/graylog2-server#5012 <https://github.com/Graylog2/graylog2-server/issues/5012>`_ `Graylog2/graylog2-server#5182 <https://github.com/Graylog2/graylog2-server/issues/5182>`_
+- Improve alert conditions by making the query string configurable. `Graylog2/graylog2-server#5277 <https://github.com/Graylog2/graylog2-server/issues/5277>`_ `Graylog2/graylog2-server#3966 <https://github.com/Graylog2/graylog2-server/issues/3966>`_
+- Improve alert overview for streams. `Graylog2/graylog2-server#5311 <https://github.com/Graylog2/graylog2-server/issues/5311>`_
+- Add test button for alert conditions. `Graylog2/graylog2-server#5322 <https://github.com/Graylog2/graylog2-server/issues/5322>`_
+- Add DNS lookup adapter that supports foward and reverse lookups. `Graylog2/graylog2-server#5274 <https://github.com/Graylog2/graylog2-server/issues/5274>`_ `Graylog2/graylog2-server#4200 <https://github.com/Graylog2/graylog2-server/issues/4200>`_ `Graylog2/graylog2-server#5124 <https://github.com/Graylog2/graylog2-server/issues/5124>`_ `Graylog2/graylog-plugin-threatintel#64 <https://github.com/Graylog2/graylog-plugin-threatintel/issues/64>`_
+- Add support for Elasticsearch 6.x. `Graylog2/graylog2-server#5020 <https://github.com/Graylog2/graylog2-server/issues/5020>`_ `Graylog2/graylog2-server#5064 <https://github.com/Graylog2/graylog2-server/issues/5064>`_
+- Add support for re-indexed Elasticsearch indices. `Graylog2/graylog2-server#5300 <https://github.com/Graylog2/graylog2-server/issues/5300>`_
+- Add API endpoing to update Graylog index templates in Elasticsearch. `Graylog2/graylog2-server#5315 <https://github.com/Graylog2/graylog2-server/issues/5315>`_
+- Update time zone database for the web interface. `Graylog2/graylog2-server#5260 <https://github.com/Graylog2/graylog2-server/issues/5260>`_ `Graylog2/graylog2-server#5245 <https://github.com/Graylog2/graylog2-server/issues/5245>`_
+- Fix description and default values for the DSV HTTP lookup table adapter. `Graylog2/graylog2-server#4973 <https://github.com/Graylog2/graylog2-server/issues/4973>`_ `@zionio <https://github.com/zionio>`_
+- Fix slow and unreliable CSV export by using a bigger default batch size. `Graylog2/graylog2-server#5172 <https://github.com/Graylog2/graylog2-server/issues/5172>`_ `Graylog2/graylog2-server#5304 <https://github.com/Graylog2/graylog2-server/issues/5304>`_
+- Fix index stats in index set overview. `Graylog2/graylog2-server#5306 <https://github.com/Graylog2/graylog2-server/issues/5306>`_
+- Fix security issue with the users API where regular users could retrieve details of other users. `Graylog2/graylog2-server#5308 <https://github.com/Graylog2/graylog2-server/issues/5308>`_ `Graylog2/graylog2-server#5068 <https://github.com/Graylog2/graylog2-server/issues/5068>`_ `@radykal-com <https://github.com/radykal-com>`_
+- Fix backslash escaping for phrase searches. `Graylog2/graylog2-server#5314 <https://github.com/Graylog2/graylog2-server/issues/5314>`_ `Graylog2/graylog2-server#4111 <https://github.com/Graylog2/graylog2-server/issues/4111>`_ `Graylog2/graylog2-server#5266 <https://github.com/Graylog2/graylog2-server/issues/5266>`_
+
+**AWS Plugin**
+
+- Add throttling support to the AWS Flow Logs input. `Graylog2/graylog-plugin-aws#94 <https://github.com/Graylog2/graylog-plugin-aws/issues/94>`_ `Graylog2/graylog-plugin-aws#85 <https://github.com/Graylog2/graylog-plugin-aws/issues/85>`_
+- Improve logging for the CloudTrail input. `Graylog2/graylog-plugin-aws#95 <https://github.com/Graylog2/graylog-plugin-aws/issues/95>`_ `Graylog2/graylog-plugin-aws#80 <https://github.com/Graylog2/graylog-plugin-aws/issues/80>`_
+
+**Pipeline Processor Plugin**
+
+- Fix key-value function to be more robust with splitting values. `Graylog2/graylog-plugin-pipeline-processor#249 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/249>`_ `Graylog2/graylog2-server#4920 <https://github.com/Graylog2/graylog2-server/issues/4920>`_ `@radykal-com <https://github.com/radykal-com>`_
+- Add support for decimal IPv4 representation in the ``to_ip`` function. `Graylog2/graylog-plugin-pipeline-processor#253 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/253>`_ `Graylog2/graylog2-server#5268 <https://github.com/Graylog2/graylog2-server/issues/5268>`_
+
 Graylog 2.4.6
 =============
 
