@@ -70,20 +70,20 @@ We have included a links to a few recent versions here for reference.
 
 Version 8.1
 
-* `Traffic Log Fields <https://www.paloaltonetworks.com/documentation/81/pan-os/pan-os/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/traffic-log-fields>`_
-* `Threat Log Fields <https://www.paloaltonetworks.com/documentation/81/pan-os/pan-os/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields>`_
-* `System Log Fields <https://www.paloaltonetworks.com/documentation/81/pan-os/pan-os/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/system-log-fields>`_
+* `8.1 - Traffic Log Fields <https://www.paloaltonetworks.com/documentation/81/pan-os/pan-os/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/traffic-log-fields>`_
+* `8.1 - Threat Log Fields <https://www.paloaltonetworks.com/documentation/81/pan-os/pan-os/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields>`_
+* `8.1 - System Log Fields <https://www.paloaltonetworks.com/documentation/81/pan-os/pan-os/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/system-log-fields>`_
 
 Version 8.0
 
-* `Traffic Log Fields <https://www.paloaltonetworks.com/documentation/80/pan-os/pan-os/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/traffic-log-fields>`_
-* `Threat Log Fields <https://www.paloaltonetworks.com/documentation/80/pan-os/pan-os/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields>`_
-* `System Log Fields <https://www.paloaltonetworks.com/documentation/80/pan-os/pan-os/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/system-log-fields>`_
+* `8.0 - Traffic Log Fields <https://www.paloaltonetworks.com/documentation/80/pan-os/pan-os/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/traffic-log-fields>`_
+* `8.0 - Threat Log Fields <https://www.paloaltonetworks.com/documentation/80/pan-os/pan-os/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields>`_
+* `8.0 - System Log Fields <https://www.paloaltonetworks.com/documentation/80/pan-os/pan-os/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/system-log-fields>`_
 
 Version 7.1
 
-* `Traffic Log Fields <https://www.paloaltonetworks.com/documentation/71/pan-os/pan-os/monitoring/syslog-field-descriptions#41809>`_
-* `Threat Log Fields <https://www.paloaltonetworks.com/documentation/71/pan-os/pan-os/monitoring/syslog-field-descriptions#67983>`_
-* `System Log Fields <https://www.paloaltonetworks.com/documentation/71/pan-os/pan-os/monitoring/syslog-field-descriptions#74679>`_
+* `7.1 - Traffic Log Fields <https://www.paloaltonetworks.com/documentation/71/pan-os/pan-os/monitoring/syslog-field-descriptions#41809>`_
+* `7.1 - Threat Log Fields <https://www.paloaltonetworks.com/documentation/71/pan-os/pan-os/monitoring/syslog-field-descriptions#67983>`_
+* `7.1 - System Log Fields <https://www.paloaltonetworks.com/documentation/71/pan-os/pan-os/monitoring/syslog-field-descriptions#74679>`_
 
 Also see `Documentation for older PAN OS versions <https://www.paloaltonetworks.com/documentation/eol>`_.
