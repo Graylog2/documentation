@@ -10,15 +10,16 @@ Graylog Enterprise includes the following integrations. An additional Integratio
 Palo Alto Networks Input (TCP)
 ------------------------------
 
-This input allows Graylog to receive ``SYSTEM``, ``THREAT`` and ``TRAFFIC`` logs from both a Palo Alto device
-and the Palo Alto Panorama system.
-
-
-Both Palo Alto systems will send logs with a typical Syslog header followed by a comma-separated list of fields. The
+This input allows Graylog to receive ``SYSTEM``, ``THREAT`` and ``TRAFFIC`` logs directly from a Palo Alto device
+and the Palo Alto Panorama system. Logs are sent with a typical Syslog header followed by a comma-separated list of fields. The
 fields order might change between version of [PAN OS](https://www.paloaltonetworks.com/documentation/81/pan-os).
 
+Example ``SYSTEM`` message::
+
+    <14>1 2018-09-19T11:50:35-05:00 Panorama-1 - - - - 1,2018/09/19 11:50:35,000710000506,SYSTEM,general,0,2018/09/19 11:50:35,,general,,0,0,general,informational,"Deviating device: Prod--2, Serial: 007255000045717, Object: N/A, Metric: mp-cpu, Value: 34",1163103,0x0,0,0,0,0,,Panorama-1
+
 To get started, add a new Palo Alto Networks Input (TCP) in the ``System`` > ``Inputs`` area in Graylog. Specify the
-Graylog Node, Bind address and Port to get started.
+Graylog Node, Bind address, Port, and adjust the field mappings as needed.
 
 This input ships with a field configuration that is compatible with [PAN OS 8.1](https://www.paloaltonetworks.com/documentation/81/pan-os).
 Other versions can easily be supported by customizing the ``SYSTEM``, ``THREAT`` and ``TRAFFIC`` mappings on the Add/Edit
@@ -34,16 +35,16 @@ For example::
     3,type,STRING
     4,content_threat_type,STRING
     5,future_use1,STRING
+    ...
 
-Accepted values:
+Accepted values for each column:
 
 
 ============  ===============
 Field         Accepted Values
 ============  ===============
 ``position``  A positive integer value.
-``field``     A contiguous string value to use for the field name.
-              Must not include the reserved field names: ``_id``, ``message``, ``full_message``, ``source``, ``timestamp``,  ``level``, ``streams``
+``field``     A contiguous string value to use for the field name. Must not include the reserved field names: ``_id``, ``message``, ``full_message``, ``source``, ``timestamp``,  ``level``, ``streams``
 ``type``      One of the following supported types: ``BOOLEAN``, ``LONG``, ``STRING``
 ============  ===============
 
