@@ -48,8 +48,11 @@ Field         Accepted Values
 ``type``      One of the following supported types: ``BOOLEAN``, ``LONG``, ``STRING``
 ============  ===============
 
-The mappings built into the plugin by default are based on the following PAN OS 8.1 specifications.
-If you are running a different version of PAN OS, please reference the mappings page that that version.
+The mappings built into the plugin by default are based on the following PAN OS 8.1 specifications. If you are running
+PAN OS 8.1, then there is no need to edit the mappings. However, if you are running a different version of PAN OS,
+please reference the official Palo Alto Networks log fields documentation that that version and customize the mappings
+on the Add/Edit Input page accordingly.
+
 We have included a links to a few recent versions here for reference.
 
 Version 8.1
