@@ -175,3 +175,36 @@ There are two lookup functions that can be used in a pipeline rule,
 of the lookup result, the second returns the **single value**.
 
 .. image:: /images/lookuptables/usage-pipeline-rule.png
+
+Built-in Data Adapters
+----------------------
+
+The following Data Adapters are shipped with Graylog by default. Detailed on-screen documentation for each is available
+on the Add/Edit Data Adapter page in Graylog.
+
+CSV File Adapter
+^^^^^^^^^^^^^^^^
+
+Preforms key/value lookups from a CSV file.
+
+DNS Lookup Adapter
+^^^^^^^^^^^^^^^^^^
+
+Provides the ability to perform the following types of DNS resolutions:
+
+- Resolve hostname to IPv4 address (A records)
+- Resolve hostname to IPv6 address (AAAA records)
+- Resolve hostname to IPv4 and IPv6 address (A and AAAA records)
+- Reverse lookup (PTR record)
+- Text lookup (TXT records)
+
+DSV File from HTTP Adapter
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Performs key/value from a DSV file. This adapter supports more advanced customization than the
+CSV File adapter (such a custom delimiter and customizable key/value columns).
+
+HTTP JSONPath Adapter
+^^^^^^^^^^^^^^^^^^^^^
+
+Executes HTTP GET requests to lookup a key and parses the result based on configured JSONPath expressions.
