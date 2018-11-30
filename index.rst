@@ -47,5 +47,6 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/enterprise/intro
    pages/enterprise/setup
    pages/archiving
+   pages/enterprise/integrations
    pages/auditlog
    pages/enterprise/changelog
