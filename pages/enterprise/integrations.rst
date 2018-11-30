@@ -48,6 +48,19 @@ Field         Accepted Values
 ``type``      One of the following supported types: ``BOOLEAN``, ``LONG``, ``STRING``
 ============  ===============
 
+The validity of each CSV configuration is checked when the Palo Alto input is started. If the CSV is malformed (or
+contains invalid properties), the input will fail to start. An error describing the specific issue will be logged in
+the ``graylog-server`` log file and also displayed at the top of the ``http://<grayloghost>/system/overview`` page for
+the affected node.
+
+For example:
+
+.. image:: /images/integrations/input_failed_to_start.png
+
+The mappings for each type look like this on the add/edit input page:
+
+.. image:: /images/integrations/system_message_mappings.png
+
 The mappings built into the plugin by default are based on the following PAN OS 8.1 specifications. If you are running
 PAN OS 8.1, then there is no need to edit the mappings. However, if you are running a different version of PAN OS,
 please reference the official Palo Alto Networks log fields documentation that that version and customize the mappings
