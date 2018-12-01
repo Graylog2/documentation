@@ -2,10 +2,20 @@
 Changelog
 *********
 
+Graylog 2.5.1 (unreleased)
+==========================
+
+Released: tba
+
+**Core**
+
+- Add support for re-indexed Elasticsearch indices. `Graylog2/graylog2-server#5300 <https://github.com/Graylog2/graylog2-server/issues/5300>`_
+- Add API endpoint to update Graylog index templates in Elasticsearch. `Graylog2/graylog2-server#5315 <https://github.com/Graylog2/graylog2-server/issues/5315>`_
+
 Graylog 2.5.0
 =============
 
-Released: tba
+Released: 2018-11-30
 
 **Core**
 
@@ -15,8 +25,6 @@ Released: tba
 - Add test button for alert conditions. `Graylog2/graylog2-server#5322 <https://github.com/Graylog2/graylog2-server/issues/5322>`_
 - Add DNS lookup adapter that supports foward and reverse lookups. `Graylog2/graylog2-server#5274 <https://github.com/Graylog2/graylog2-server/issues/5274>`_ `Graylog2/graylog2-server#4200 <https://github.com/Graylog2/graylog2-server/issues/4200>`_ `Graylog2/graylog2-server#5124 <https://github.com/Graylog2/graylog2-server/issues/5124>`_ `Graylog2/graylog-plugin-threatintel#64 <https://github.com/Graylog2/graylog-plugin-threatintel/issues/64>`_
 - Add support for Elasticsearch 6.x. `Graylog2/graylog2-server#5020 <https://github.com/Graylog2/graylog2-server/issues/5020>`_ `Graylog2/graylog2-server#5064 <https://github.com/Graylog2/graylog2-server/issues/5064>`_
-- Add support for re-indexed Elasticsearch indices. `Graylog2/graylog2-server#5300 <https://github.com/Graylog2/graylog2-server/issues/5300>`_
-- Add API endpoint to update Graylog index templates in Elasticsearch. `Graylog2/graylog2-server#5315 <https://github.com/Graylog2/graylog2-server/issues/5315>`_
 - Update time zone database for the web interface. `Graylog2/graylog2-server#5260 <https://github.com/Graylog2/graylog2-server/issues/5260>`_ `Graylog2/graylog2-server#5245 <https://github.com/Graylog2/graylog2-server/issues/5245>`_
 - Fix description and default values for the DSV HTTP lookup table adapter. `Graylog2/graylog2-server#4973 <https://github.com/Graylog2/graylog2-server/issues/4973>`_ `@zionio <https://github.com/zionio>`_
 - Fix slow and unreliable CSV export by using a bigger default batch size. `Graylog2/graylog2-server#5172 <https://github.com/Graylog2/graylog2-server/issues/5172>`_ `Graylog2/graylog2-server#5304 <https://github.com/Graylog2/graylog2-server/issues/5304>`_
