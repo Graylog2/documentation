@@ -2,13 +2,15 @@
 Integrations
 ************
 
-Graylog Enterprise includes the following integrations. An additional Integrations installation package is required (TBD).
+The following integrations are currently available with Graylog Enterprise.
 
 * `Palo Alto Networks Input (TCP)`_
 
 
 Palo Alto Networks Input (TCP)
 ------------------------------
+
+*COMING SOON*
 
 This input allows Graylog to receive ``SYSTEM``, ``THREAT`` and ``TRAFFIC`` logs directly from a Palo Alto device
 and the Palo Alto Panorama system. Logs are sent with a typical Syslog header followed by a comma-separated list of fields. The
