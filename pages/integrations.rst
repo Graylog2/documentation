@@ -14,7 +14,7 @@ Palo Alto Networks Input (TCP)
 
 This input allows Graylog to receive ``SYSTEM``, ``THREAT`` and ``TRAFFIC`` logs directly from a Palo Alto device
 and the Palo Alto Panorama system. Logs are sent with a typical Syslog header followed by a comma-separated list of fields. The
-fields order might change between version of [PAN OS](https://www.paloaltonetworks.com/documentation/81/pan-os).
+fields order might change between versions of `PAN OS <https://www.paloaltonetworks.com/documentation/81/pan-os>`_.
 
 Example ``SYSTEM`` message::
 
@@ -23,7 +23,7 @@ Example ``SYSTEM`` message::
 To get started, add a new Palo Alto Networks Input (TCP) in the ``System`` > ``Inputs`` area in Graylog. Specify the
 Graylog Node, Bind address, Port, and adjust the field mappings as needed.
 
-This input ships with a field configuration that is compatible with [PAN OS 8.1](https://www.paloaltonetworks.com/documentation/81/pan-os).
+This input ships with a field configuration that is compatible with `PAN OS 8.1 <https://www.paloaltonetworks.com/documentation/81/pan-os>`_.
 Other versions can easily be supported by customizing the ``SYSTEM``, ``THREAT`` and ``TRAFFIC`` mappings on the Add/Edit
 input page in Graylog.
 
