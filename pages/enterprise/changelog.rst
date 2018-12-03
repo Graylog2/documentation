@@ -2,13 +2,6 @@
 Changelog
 *********
 
-Graylog Enterprise 2.5.1 (unreleased)
-=====================================
-
-Released: tba
-
-No changes since 2.5.0.
-
 Graylog Enterprise 2.5.0
 ========================
 
