@@ -2,16 +2,6 @@
 Changelog
 *********
 
-Graylog 2.5.1 (unreleased)
-==========================
-
-Released: tba
-
-**Core**
-
-- Add support for re-indexed Elasticsearch indices. `Graylog2/graylog2-server#5300 <https://github.com/Graylog2/graylog2-server/issues/5300>`_
-- Add API endpoint to update Graylog index templates in Elasticsearch. `Graylog2/graylog2-server#5315 <https://github.com/Graylog2/graylog2-server/issues/5315>`_
-
 Graylog 2.5.0
 =============
 
