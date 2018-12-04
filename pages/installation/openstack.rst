@@ -26,6 +26,17 @@ the username `ubuntu` and your selected ssh key. Run the reconfigure program in 
 
 Open `http://<vm ip>` in your browser to access the Graylog web interface. Default username and password is `admin`.
 
+Networking
+===================
+
+Your browser needs access to port 80 or 443 for reaching the web interface. The interface itself creates a connection back to the REST API of the Graylog server on port 9000. As long as you are in the same private Neutron Network, this works out of the box. 
+But in the most common OpenStack deployment topology if you want to use the OpenStack floating IP address of your VM, this mechanism doesn’t work automatically anymore. You have to tell Graylog how to reach the API from the users browser perspective::
+
+  sudo graylog-ctl set-external-ip http://<floating ip>:9000/api/
+  sudo graylog-ctl reconfigure
+
+Also make sure that port 80, 443 and 9000 is allowed for incoming traffic on a security group assigned the the VM.
+
 Basic configuration
 ===================
 
