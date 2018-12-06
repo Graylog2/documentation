@@ -89,3 +89,13 @@ Version 7.1
 * `7.1 - System Log Fields <https://www.paloaltonetworks.com/documentation/71/pan-os/pan-os/monitoring/syslog-field-descriptions#74679>`_
 
 Also see `Documentation for older PAN OS versions <https://www.paloaltonetworks.com/documentation/eol>`_.
+
+Changelog
+---------
+
+Enterprise Integrations 2.5.0+0
+===============================
+
+Released: 2018-12-05
+
+* Add Palo Alto input
