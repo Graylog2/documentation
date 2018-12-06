@@ -10,7 +10,7 @@ The following integrations are currently available with Graylog Enterprise.
 Palo Alto Networks Input (TCP)
 ------------------------------
 
-*COMING SOON*
+.. note:: This input is available for Graylog Server version 2.5.0.  Installation of an additional package ``graylog-plugin-enterprise-integrations`` is required. Please contact `Graylog Sales <https://www.graylog.org/products/enterprise>`_ for information on how to obtain the package.
 
 This input allows Graylog to receive ``SYSTEM``, ``THREAT`` and ``TRAFFIC`` logs directly from a Palo Alto device
 and the Palo Alto Panorama system. Logs are sent with a typical Syslog header followed by a comma-separated list of fields. The
