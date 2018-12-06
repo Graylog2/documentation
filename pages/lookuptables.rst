@@ -204,6 +204,8 @@ DSV File from HTTP Adapter
 Performs key/value from a DSV file. This adapter supports more advanced customization than the
 CSV File adapter (such a custom delimiter and customizable key/value columns).
 
+.. note:: The column count starts with 0 and not 1
+
 HTTP JSONPath Adapter
 ^^^^^^^^^^^^^^^^^^^^^
 
