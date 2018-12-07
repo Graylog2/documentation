@@ -61,7 +61,19 @@ Since Graylog 2.4 the Graylog Enterprise plugins can be installed the same way G
 
 .. note:: For previous versions of Graylog Enterprise please contact your Graylog account manager.
 
-Once you installed the Graylog Enterprise plugins you need to obtain a license from `the Graylog Enterprise web page <https://www.graylog.org/enterprise/>`_. 
+Two separate packages should be installed to ensure that all enterprise features are available.
+
+**Graylog Enterprise Plugins Package**
+
+This package is named ``graylog-enterprise-plugins``. It includes the ``archive``, ``auditlog``, and ``license`` plugins.
+This enables :doc:`Archiving <../archiving>` and :doc:`Audit Log <../auditlog>` functionality.
+
+**Graylog Enterprise Integrations Package**
+
+This package is named ``graylog-enterprise-integrations``. It includes the ``graylog-enterprise-integrations`` plugin.
+this enables :doc:`Enterprise Integrations <../integrations>` functionality.
+
+Once you have installed the Graylog Enterprise plugins you need to obtain a license from `the Graylog Enterprise web page <https://www.graylog.org/enterprise/>`_.
 
 Should a simple `apt-get install graylog-enterprise-plugins` or `yum install graylog-enterprise-plugins` not work for you, the following information might help you.
 
@@ -83,7 +95,7 @@ The installation on distributions like Debian or Ubuntu can be done with *apt-ge
 
 ::
   
-  $ sudo apt-get install graylog-enterprise-plugins
+  $ sudo apt-get install graylog-enterprise-plugins graylog-plugin-enterprise-integrations
 
 
 RPM
@@ -93,23 +105,20 @@ The installation on distributions like CentOS or RedHat can be done with *yum* a
 
 ::
   
-  $ sudo yum install graylog-enterprise-plugins
+  $ sudo yum install graylog-enterprise-plugins graylog-plugin-enterprise-integrations
 
 
-Tarball
--------
+Jar Files
+---------
 
-If you have done a manual installation or want to include only parts of the enterprise plugins you can get the tarball from the download locations listed in the following table.
+If you have done a manual installation or want to include only parts of the enterprise plugins you can download the ``.jar`` files from the following locations.
 
-.. list-table:: Enterprise Plugins download
-    :header-rows: 1
+:enterprise-plugins-tar:`2.5.0`
 
-    * - Enterprise Version
-      - Download URL
-    * - 2.5.0
-      - :enterprise-plugins-tar:`2.5.0`
+:enterprise-integrations-plugin-jar:`2.5.0+0`
 
-The tarball includes the enterprise plugin JAR files.
+
+Make sure to extract the `graylog-enterprise-plugins` tarball file. It includes the enterprise plugin JAR files.
 
 ::
 
@@ -139,6 +148,7 @@ Your plugin directory should look similar to this after installing the enterpris
   ├── graylog-plugin-aws-2.5.0.jar
   ├── graylog-plugin-pipeline-processor-2.5.0.jar
   ├── graylog-plugin-enterprise-integration-2.5.0.jar
+  ├── graylog-plugin-enterprise-integrations-2.5.0+0.jar
   ├── graylog-plugin-map-widget-2.5.0.jar
   ├── graylog-plugin-cef-2.5.0.jar
   ├── graylog-plugin-license-2.5.0.jar
