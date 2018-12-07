@@ -70,7 +70,7 @@ This enables :doc:`Archiving <../archiving>` and :doc:`Audit Log <../auditlog>` 
 
 **Graylog Enterprise Integrations Package**
 
-This package is named ``graylog-enterprise-integrations``. It includes the ``graylog-enterprise-integrations`` plugin.
+This package is named ``graylog-plugin-enterprise-integrations``. It includes the ``graylog-plugin-enterprise-integrations`` plugin.
 this enables :doc:`Enterprise Integrations <../integrations>` functionality.
 
 Once you have installed the Graylog Enterprise plugins you need to obtain a license from `the Graylog Enterprise web page <https://www.graylog.org/enterprise/>`_.

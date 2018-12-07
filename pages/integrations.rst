@@ -4,7 +4,7 @@ Integrations
 
 The integrations can be plugins to add new inputs, lookup tables or authentication. But might be also content packs or similar.
 
-Currently, all integrations are for Graylog Enterprise only and require a Graylog Enterprise license.
+Currently, all integrations are for Graylog Enterprise only and require a license.
 
 
 
