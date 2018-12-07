@@ -359,5 +359,22 @@ epub_exclude_files = ['search.html']
 # If false, no index is generated.
 #epub_use_index = True
 
-extlinks = {'enterprise-plugins-tar': ('https://downloads.graylog.org/releases/graylog-enterprise/plugin-bundle/tgz/graylog-enterprise-plugins-%s.tgz', None),
-            'enterprise-integrations-plugin-jar': ('https://downloads.graylog.org/releases/graylog-integrations/jar/graylog-plugin-enterprise-integrations-%s.jar', None)}
+extlinks = {
+    'enterprise-plugins-tar': (
+        'https://downloads.graylog.org/releases/graylog-enterprise/plugin-bundle/tgz/graylog-enterprise-plugins-%s.tgz', None),
+
+    'enterprise-integrations-plugin-jar': (
+        'https://downloads.graylog.org/releases/graylog-integrations/jar/graylog-plugin-enterprise-integrations-%s.jar', None),
+
+    'enterprise-plugins-deb': (
+        'https://downloads.graylog.org/releases/graylog-enterprise/plugin-bundle/deb/graylog-enterprise-plugins-%s.deb', None),
+
+    'enterprise-integrations-plugin-deb': (
+        'https://downloads.graylog.org/releases/graylog-integrations/deb/graylog-plugin-enterprise-integrations-%s.deb', None),
+
+    'enterprise-plugins-rpm': (
+        'https://downloads.graylog.org/releases/graylog-enterprise/plugin-bundle/rpm/graylog-enterprise-plugins-%s-1.noarch.rpm', None),
+
+    'enterprise-integrations-plugin-rpm': (
+        'https://downloads.graylog.org/releases/graylog-integrations/rpm/graylog-plugin-enterprise-integrations-%s-1.noarch.rpm', None),
+}
