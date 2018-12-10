@@ -82,7 +82,7 @@ DEB / RPM Packages
 
 The default installation should be done with the system package tools. It includes the repository installation that is described in the :doc:`/pages/installation/operating_system_packages` installation guides. 
 
-When the usage of online repositorys is not possible in your environment, you can download the Graylog Enterprise packages from the URLs indicated in each section.
+When the usage of online repositories is not possible in your environment, you can download the Graylog Enterprise packages from the URLs indicated in each section.
 
 .. note:: These packages can **only** be used when you installed Graylog via the :doc:`/pages/installation/operating_system_packages`!
 
