@@ -75,8 +75,6 @@ this enables :doc:`Enterprise Integrations <../integrations>` functionality.
 
 Once you have installed the Graylog Enterprise plugins you need to obtain a license from `the Graylog Enterprise web page <https://www.graylog.org/enterprise/>`_.
 
-Should a simple `apt-get install graylog-enterprise-plugins` or `yum install graylog-enterprise-plugins` not work for you, the following information might help you.
-
 .. important:: The Graylog Enterprise plugins need to be installed on all your Graylog nodes!
 
 DEB / RPM Packages
