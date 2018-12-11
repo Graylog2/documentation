@@ -523,7 +523,7 @@ YELLOW
 
 The YELLOW status means that all of the primary shards are available but some or all shard replicas are not.
 
-When the index configuration include replication with a count that is equal or higher than the number of nodes, your cluster cannot become green. In most cases, this can be solved by adding another Elasticsearch node to the cluster or by reducing the replication factor of the indices.
+When the index configuration includes replication with a count that is equal or higher than the number of nodes, your cluster cannot become green. In most cases, this can be solved by adding another Elasticsearch node to the cluster or by reducing the replication factor of the indices.
 
 
 GREEN
