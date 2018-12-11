@@ -12,7 +12,7 @@ Overview
 
 The Graylog web interface was rewritten in JavaScript for 2.0 to be a client-side single-page browser application. This means its code is running solely in your browser, fetching all data via HTTP(S) from the REST API of your Graylog server.
 
-.. note:: The HTTP address must be accessible by everyone using the web interface. This means that Graylog *must* listen on a public network interface *or* be exposed to one using a proxy or NAT!
+.. note:: The HTTP address must be accessible by everyone using the web interface. This means that Graylog *must* listen on a public network interface *or* be exposed to one using a proxy, NAT or a load balancer!
 
 Configuration Options
 =====================
