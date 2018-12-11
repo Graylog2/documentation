@@ -78,7 +78,7 @@ This condition triggers whenever the stream received at least one message since 
 
 .. Important:: We do not recommend to run this on analyzed fields like ``message`` or ``full_message`` because it is broken down to terms and you might get unexpected alerts. For example a check for `security` would also alert if a message with the field set to `no security` is received because it was broken down to `no` and `security`. This only happens on the analyzed ``message`` and ``full_message`` in Graylog.
 
-Please also take note that only a single alert is raised for this condition during the alerting interval, although multiple messages containing the given value may have been received since the last alert.
+Please also take note that only a single alert is raised for this condition during the alerting interval, although multiple messages containing the given value may have been received since the last alert. The alerting interval is the time that is configured as ``alert_check_interval`` in the Graylog ``server.conf``. 
 
 
 Notifications
