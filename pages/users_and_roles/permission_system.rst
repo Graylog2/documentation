@@ -45,7 +45,7 @@ Creating the role
 
 You can create a new role using the REST API like this::
 
-  curl -v -XPOST -u ADMIN:PASSWORD -H 'Content-Type: application/json' 'http://graylog.example.org:9000/api/roles' -d '{"read_only": false,"permissions": ["processing:changestate"],"name": "Change processing state","description": "Permission to start or stop processing on Graylog nodes"}'
+  curl -v -XPOST -u ADMIN:PASSWORD -H 'Content-Type: application/json' -H 'X-Requested-By: cli' 'http://graylog.example.org:8999/api/roles' -d '{"read_only": false,"permissions": ["processing:changestate"],"name": "Change processing state","description": "Permission to start or stop processing on Graylog nodes"}'
 
 Notice the ``processing:changestate`` permission that we assigned. Every user with this role will be able to start and
 stop processing on ``graylog-server`` nodes. Graylog's standard ``reader`` permissions do not provide any access to data

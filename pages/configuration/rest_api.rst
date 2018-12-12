@@ -33,6 +33,9 @@ Naturally, the same operations the API browser offers can be used on the command
 .. note::
    In the following examples, the username ``GM`` and password ``superpower`` will be used to demonstrate how to work with the Graylog REST API running at ``http://192.168.178.26:9000/api``.
 
+.. warning::
+   Since Graylog 2.5.0, and to prevent CSRF attacks, all non-GET API requests **must include and set a value** for the ``X-Requested-By`` HTTP header.
+
 
 The following command displays Graylog cluster information as JSON, exactly the same information the web interface is displaying on the *System / Nodes* page::
 
@@ -99,7 +102,7 @@ In order to create a new access token, you need to send a ``POST`` request to th
 
 The following example will create an access token named ``icinga`` for the user ``GM``::
 
-    curl -u GM:superpower -H 'Accept: application/json' -X POST 'http://192.168.178.26:9000/api/users/GM/tokens/icinga?pretty=true'
+    curl -u GM:superpower -H 'Accept: application/json' -H 'X-Requested-By: cli' -X POST 'http://192.168.178.26:9000/api/users/GM/tokens/icinga?pretty=true'
 
 The response will include the access token in the ``token`` field::
 
@@ -125,7 +128,7 @@ When an access token is no longer needed, it can be delete on the Graylog REST A
 
 The following example deletes the previously created access token ``htgi84ut7jpivsrcldd6l4lmcigvfauldm99ofcb4hsfcvdgsru`` of the user ``GM``::
 
-    curl -u GM:superpower -H 'Accept: application/json' -X DELETE' http://192.168.178.26:9000/api/users/GM/tokens/ap84p4jehbf2jddva8rdmjr3k7m3kdnuqbai5s0h5a48e7069po?pretty=true'
+    curl -u GM:superpower -H 'Accept: application/json' -H 'X-Requested-By: cli' -X DELETE' http://192.168.178.26:9000/api/users/GM/tokens/ap84p4jehbf2jddva8rdmjr3k7m3kdnuqbai5s0h5a48e7069po?pretty=true'
 
 
 Creating and using Session Token
@@ -135,7 +138,7 @@ While access tokens can be used for permanent access, session tokens will expire
 
 Getting a new session token can be obtained  via ``POST`` request to the Graylog REST API. Username and password are required to get a valid session ID. The following example will create an session token for the user ``GM``::
 
-    curl -i -X POST -H 'Content-Type: application/json' -H 'Accept: application/json' 'http://192.168.178.26:9000/api/system/sessions' -d '{"username":"GM", "password":"superpower", "host":""}'
+    curl -i -X POST -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'X-Requested-By: cli' 'http://192.168.178.26:9000/api/system/sessions' -d '{"username":"GM", "password":"superpower", "host":""}'
 
 The response will include the session token in the field ``session_id`` and the time of expiration::
 
