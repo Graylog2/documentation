@@ -57,7 +57,7 @@ do this.
 
 An index can be archived with a simple curl command::
 
-   $ curl -s -u admin -X POST http://127.0.0.1:9000/api/plugins/org.graylog.plugins.archive/archives/graylog_386
+   $ curl -s -u admin -H 'X-Requested-By: cli' -X POST http://127.0.0.1:9000/api/plugins/org.graylog.plugins.archive/archives/graylog_386
    Enter host password for user 'admin': ***************
    {
       "archive_job_config" : {
@@ -133,7 +133,7 @@ REST API
 As with archive creation you can also use the REST API to restore an
 archived index into the Elasticsearch cluster::
 
-   $ curl -s -u admin -X POST http://127.0.0.1:9000/api/plugins/org.graylog.plugins.archive/archives/graylog_386/restore
+   $ curl -s -u admin -H 'X-Requested-By: cli' -X POST http://127.0.0.1:9000/api/plugins/org.graylog.plugins.archive/archives/graylog_386/restore
    Enter host password for user 'admin': ***************
    {
       "archive_metadata": {
