@@ -2,17 +2,25 @@
 Integrations
 ************
 
-The integrations can be plugins to add new inputs, lookup tables or authentication. But might be also content packs or similar.
+Integrations are tools that help Graylog work with external systems. Integrations will typically be content packs, inputs, or lookup tables.
 
-Currently, all integrations are for Graylog Enterprise only and require a license.
+Setup
+-----
 
+Please reference the :doc:`Integrations Setup <integrations/setup>` document for installation instructions.
 
-
+Graylog Open Source Integrations
+-------------------------------
 .. toctree::
-   :caption: Graylog Enterprise Integrations Plugins
    :titlesonly:
 
-   integrations/plugins/palo_alto_networks_input
+   integrations/palo_alto_networks_input
+
+
+Graylog Enterprise Integrations
+-------------------------------
+
+`(None at this time)`
 
 
 Changelog

@@ -35,6 +35,7 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/geolocation
    pages/indexer_failures
    pages/users_and_roles
+   pages/integrations
    pages/plugins
    pages/external_dashboards
    pages/marketplace
@@ -51,5 +52,4 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/enterprise/setup
    pages/archiving
    pages/auditlog
-   pages/integrations
    pages/enterprise/changelog
