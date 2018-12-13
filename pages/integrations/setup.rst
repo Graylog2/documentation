@@ -31,7 +31,7 @@ To install the ``graylog-plugin-integrations`` plugin, you can use one of the fo
 DEB / RPM Packages
 ------------------
 
-If you have installed Graylog with operating system packages, (as described in the :doc:`/pages/installation/operating_system_packages` installation guides).
+If you have installed Graylog with operating system packages (as described in the :doc:`/pages/installation/operating_system_packages` installation guides), then you can use the following operating system packages.
 
 When the usage of online repositories is not possible in your environment, you can download the Integrations packages from the URLs indicated in each section.
 
@@ -80,20 +80,9 @@ Your plugin directory should look similar to this after installing the integrati
 ::
 
   plugin/
-  ├── graylog-plugin-auditlog-2.5.0.jar
-  ├── graylog-plugin-threatintel-2.5.0.jar
-  ├── graylog-plugin-archive-2.5.0.jar
-  ├── graylog-plugin-beats-2.5.0.jar
-  ├── graylog-plugin-netflow-2.5.0.jar
-  ├── graylog-plugin-aws-2.5.0.jar
-  ├── graylog-plugin-pipeline-processor-2.5.0.jar
-  ├── graylog-plugin-enterprise-integration-2.5.0.jar
+  ├── ...
   ├── graylog-plugin-integrations-2.5.0+0.jar
-  ├── graylog-plugin-map-widget-2.5.0.jar
-  ├── graylog-plugin-cef-2.5.0.jar
-  ├── graylog-plugin-license-2.5.0.jar
-  └── graylog-plugin-collector-2.5.0.jar
-
+  └── ...
 
 
 Server Restart
