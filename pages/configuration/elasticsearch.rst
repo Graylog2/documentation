@@ -523,9 +523,7 @@ YELLOW
 
 The YELLOW status means that all of the primary shards are available but some or all shard replicas are not.
 
-With only one Elasticsearch node, the cluster state cannot become green because shard replicas cannot be assigned.
-
-In most cases, this can be solved by adding another Elasticsearch node to the cluster or by reducing the replication factor of the indices (which means less resiliency against node outages, though).
+When the index configuration includes replication with a count that is equal or higher than the number of nodes, your cluster cannot become green. In most cases, this can be solved by adding another Elasticsearch node to the cluster or by reducing the replication factor of the indices.
 
 
 GREEN
