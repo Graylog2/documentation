@@ -34,7 +34,7 @@ Naturally, the same operations the API browser offers can be used on the command
    In the following examples, the username ``GM`` and password ``superpower`` will be used to demonstrate how to work with the Graylog REST API running at ``http://192.168.178.26:9000/api``.
 
 .. warning::
-   Since Graylog 2.5.0, and to prevent CSRF attacks, all non-GET API requests **must include and set a value** for the ``X-Requested-By`` HTTP header.
+   Since Graylog 2.5.0, all non-GET API requests **must include and set a value** for the ``X-Requested-By`` HTTP header. This is needed to prevent CSRF attacks.
 
 
 The following command displays Graylog cluster information as JSON, exactly the same information the web interface is displaying on the *System / Nodes* page::
