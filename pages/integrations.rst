@@ -10,7 +10,7 @@ Setup
 Please reference the :doc:`Integrations Setup <integrations/setup>` document for installation instructions.
 
 Graylog Open Source Integrations
--------------------------------
+--------------------------------
 .. toctree::
    :titlesonly:
 

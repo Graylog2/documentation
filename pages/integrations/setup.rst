@@ -64,7 +64,7 @@ The installation on distributions like CentOS or RedHat can be done with *yum* a
 :integrations-plugin-rpm:`2.5.0+0`
 
 Jar File
----------
+--------
 
 :integrations-plugin-jar:`2.5.0+0`
 
@@ -94,7 +94,9 @@ You should see something like the following in your Graylog server logs. It indi
 
 ::
 
-2018-12-10T17:39:10.811+01:00 INFO  [CmdLineTool] Loaded plugin: Integrations Plugin 2.5.0 [org.graylog.integrations.IntegrationsPlugin]
+    2018-12-10T17:39:10.811+01:00 INFO  [CmdLineTool] Loaded plugin: Integrations Plugin 2.5.0 [org.graylog.integrations.IntegrationsPlugin]
+
+
 
 Cluster Setup
 =============
