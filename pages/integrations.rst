@@ -12,19 +12,12 @@ Integrations are tools that help Graylog work with external systems. Integration
 
 Please reference the :doc:`Integrations Setup <integrations/setup>` document for installation instructions.
 
-Find the Changelog for Integrations on this :doc:`seperate page <integrations/changelog>`.
-
-Graylog Open Source Integrations
---------------------------------
+Inputs
+------
 .. toctree::
    :titlesonly:
 
    integrations/inputs/palo_alto_networks_input
 
 
-Graylog Enterprise Integrations
--------------------------------
-
-`(None at this time)`
-
-
+Also see the :doc:`Change Log <integrations/changelog>`.
