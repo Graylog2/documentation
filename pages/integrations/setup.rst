@@ -17,8 +17,8 @@ The following list shows the Graylog versions that the Integrations plugin is co
 
     * - Integrations Versions
       - Required Graylog Version
-    * - 2.5.0+0
-      - 2.5.0
+    * - 3.0.0+0
+      - 3.0.0
 
 
 Installation
@@ -48,7 +48,7 @@ The installation on distributions like Debian or Ubuntu can be done with *apt-ge
 
 **Download Url**
 
-:integrations-plugin-deb:`2.5.0+0`
+:integrations-plugin-deb:`3.0.0+0`
 
 RPM
 ~~~
@@ -61,12 +61,12 @@ The installation on distributions like CentOS or RedHat can be done with *yum* a
 
 **Download Url**
 
-:integrations-plugin-rpm:`2.5.0+0`
+:integrations-plugin-rpm:`3.0.0+0`
 
 Jar File
 --------
 
-:integrations-plugin-jar:`2.5.0+0`
+:integrations-plugin-jar:`3.0.0+0`
 
 Depending on the Graylog setup method you have used, you have to install the plugins into different locations.
 
@@ -81,7 +81,7 @@ Your plugin directory should look similar to this after installing the Integrati
 
   plugin/
   ├── ...
-  ├── graylog-plugin-enterprise-integrations-2.5.0+0.jar
+  ├── graylog-plugin-enterprise-integrations-3.0.0+0.jar
   └── ...
 
 
@@ -94,7 +94,7 @@ You should see something like the following in your Graylog server logs. It indi
 
 ::
 
-    2018-12-10T17:39:10.811+01:00 INFO  [CmdLineTool] Loaded plugin: Integrations Plugin 2.5.0 [org.graylog.integrations.IntegrationsPlugin]
+    2018-12-10T17:39:10.811+01:00 INFO  [CmdLineTool] Loaded plugin: Integrations Plugin 3.0.0 [org.graylog.integrations.IntegrationsPlugin]
 
 
 
