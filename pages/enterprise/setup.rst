@@ -210,7 +210,6 @@ The Graylog web interface shows all details about the license, but if you are st
 Details on License Verification
 -------------------------------
 
-
 Graylog Enterprise periodically sends the following information to
 'api.graylog.com' via HTTPS on TCP port 443 for each installed
 license:
