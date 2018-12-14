@@ -359,4 +359,8 @@ epub_exclude_files = ['search.html']
 # If false, no index is generated.
 #epub_use_index = True
 
-extlinks = {'enterprise-plugins-tar': ('https://downloads.graylog.org/releases/graylog-enterprise/plugin-bundle/tgz/graylog-enterprise-plugins-%s.tgz', None)}
+extlinks = {
+    'enterprise-plugins-tar': ( 'https://downloads.graylog.org/releases/graylog-enterprise/plugin-bundle/tgz/graylog-enterprise-plugins-%s.tgz', None),
+    'integrations-plugin-jar': ( 'https://downloads.graylog.org/releases/graylog-integrations/jar/graylog-plugin-enterprise-integrations-%s.jar', None),
+    'integrations-plugin-deb': ( 'https://downloads.graylog.org/releases/graylog-integrations/deb/graylog-plugin-enterprise-integrations-%s.deb', None),
+    'integrations-plugin-rpm': ( 'https://downloads.graylog.org/releases/graylog-integrations/rpm/graylog-plugin-enterprise-integrations-%s-1.noarch.rpm', None), }
