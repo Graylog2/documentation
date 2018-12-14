@@ -61,7 +61,7 @@ Since Graylog 2.4 the Graylog Enterprise plugins can be installed the same way G
 
 .. note:: For previous versions of Graylog Enterprise please contact your Graylog account manager.
 
-Once you installed the Graylog Enterprise plugins you need to obtain a license from `the Graylog Enterprise web page <https://www.graylog.org/enterprise/>`_.
+Once you installed the Graylog Enterprise plugins you need to obtain a license from `the Graylog Enterprise web page <https://www.graylog.org/enterprise/>`_. 
 
 Should a simple `apt-get install graylog-enterprise-plugins` or `yum install graylog-enterprise-plugins` not work for you, the following information might help you.
 
@@ -70,19 +70,19 @@ Should a simple `apt-get install graylog-enterprise-plugins` or `yum install gra
 DEB / RPM Package
 -----------------
 
-The default installation should be done with the system package tools. It includes the repository installation that is described in the :doc:`/pages/installation/operating_system_packages` installation guides.
+The default installation should be done with the system package tools. It includes the repository installation that is described in the :doc:`/pages/installation/operating_system_packages` installation guides. 
 
-When the usage of online repositorys is not possible in your environment, you can download the Graylog Enterprise plugins at `https://packages.graylog2.org <https://packages.graylog2.org>`_.
+When the usage of online repositorys is not possible in your environment, you can download the Graylog Enterprise plugins at `https://packages.graylog2.org <https://packages.graylog2.org>`_. 
 
 .. note:: These packages can **only** be used when you installed Graylog via the :doc:`/pages/installation/operating_system_packages`!
 
 DEB
 ~~~
 
-The installation on distributions like Debian or Ubuntu can be done with *apt-get* as installation tool from the previous installed online repository.
+The installation on distributions like Debian or Ubuntu can be done with *apt-get* as installation tool from the previous installed online repository.  
 
 ::
-
+  
   $ sudo apt-get install graylog-enterprise-plugins
 
 
@@ -92,7 +92,7 @@ RPM
 The installation on distributions like CentOS or RedHat can be done with *yum* as installation tool from the previous installed online repository.
 
 ::
-
+  
   $ sudo yum install graylog-enterprise-plugins
 
 
@@ -143,7 +143,7 @@ Your plugin directory should look similar to this after installing the enterpris
   ├── graylog-plugin-cef-2.5.0.jar
   ├── graylog-plugin-license-2.5.0.jar
   └── graylog-plugin-collector-2.5.0.jar
-
+  
 
 
 Server Restart
@@ -209,6 +209,7 @@ The Graylog web interface shows all details about the license, but if you are st
 
 Details on License Verification
 -------------------------------
+
 
 Graylog Enterprise periodically sends the following information to
 'api.graylog.com' via HTTPS on TCP port 443 for each installed
