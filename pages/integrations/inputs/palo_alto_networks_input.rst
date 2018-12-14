@@ -2,7 +2,7 @@
 Palo Alto Networks Input
 ************************
 
-.. note:: This input is available for Graylog version 2.5.0. Installation of an additional ``graylog-plugin-integrations`` package is required. See the :doc:`Integrations Setup <../setup>` page for more info.
+.. note:: This input is available for Graylog version 2.5.0. Installation of an additional ``graylog-plugin-enterprise-integrations`` package is required. See the :doc:`Integrations Setup <../setup>` page for more info.
 
 This input allows Graylog to receive ``SYSTEM``, ``THREAT`` and ``TRAFFIC`` logs directly from a Palo Alto device
 and the Palo Alto Panorama system. Logs are sent with a typical Syslog header followed by a comma-separated list of fields. The
