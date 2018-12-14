@@ -62,6 +62,10 @@ General
     * The email address of the root user. Default is empty.
 * ``root_timezone = UTC``
     * The time zone setting of the root user. See this `list of valid time zones <http://www.joda.org/joda-time/timezones.html>`_. Default is UTC.
+* ``bin_dir = bin``
+    * This directory contains binaries that are used by the Graylog server. (relative or absolute)
+* ``data_dir = data``
+    * This directory is used to store Graylog server state. (relative or absolute)  
 * ``plugin_dir = plugin``
     * Set plugin directory here (relative or absolute)
 
@@ -349,7 +353,7 @@ Email
 * ``transport_email_use_auth = true``
 * ``transport_email_use_tls = true``
     * Enable SMTP with STARTTLS for encrypted connections.
-* ``transport_email_use_ssl = true``
+* ``transport_email_use_ssl = false``
     * Enable SMTP over SSL (SMTPS) for encrypted connections.
 
 .. attention:: Make sure to enable only *one* of these two settings because most (or all) SMTP services only support one of the encryption mechanisms on the same port. Most SMTP services support SMTP with STARTTLS while SMTPS is deprecated on most SMTP services. Setting both to ``false`` is needed when you want to sent via unencrypted connection.
