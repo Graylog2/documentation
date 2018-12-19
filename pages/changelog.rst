@@ -2,6 +2,24 @@
 Changelog
 *********
 
+Graylog 2.5.1
+=============
+
+Released: 2018-12-19
+
+**Core**
+
+- Improve description of ``web_endpoint_uri`` in ``graylog.conf``. `Graylog2/graylog2-server#5359 <https://github.com/Graylog2/graylog2-server/issues/5359>`_
+- Add CSRF backward compatibility for older Sidecars. `Graylog2/graylog2-server#5388 <https://github.com/Graylog2/graylog2-server/issues/5388>`_ `Graylog2/graylog2-server#4987 <https://github.com/Graylog2/graylog2-server/issues/4987>`_
+
+**AWS Plugin**
+
+- Remove low limit for GZIP decompression of AWS events. `Graylog2/graylog-plugin-aws#98 <https://github.com/Graylog2/graylog-plugin-aws/issues/98>`_
+
+**Pipeline Processor Plugin**
+
+- Fix IPv6 handling in IPv4 ``cidr_match`` pipeline function. `Graylog2/graylog-plugin-pipeline-processor#254 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/254>`_ `Graylog2/graylog2-server#5405 <https://github.com/Graylog2/graylog2-server/issues/5405>`_
+
 Graylog 2.5.0
 =============
 
