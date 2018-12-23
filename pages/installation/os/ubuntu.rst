@@ -47,6 +47,8 @@ Graylog 2.5.x should be used with Elasticsearch 6.x, please follow the installat
 Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` additionally you need to uncomment (remove the # as first character) the line::
 
     cluster.name: graylog
+    
+    $ sudo sed -i 's/#cluster.name: my-application/cluster.name: graylog/g' /etc/elasticsearch/elasticsearch.yml
 
 After you have modified the configuration, you can start Elasticsearch::
 
