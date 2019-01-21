@@ -24,7 +24,7 @@ If you simply want to checkout Graylog without any further customization, you ca
   $ docker run --name mongo -d mongo:3
   $ docker run --name elasticsearch \
       -e "http.host=0.0.0.0" -e "xpack.security.enabled=false" \
-      -d docker.elastic.co/elasticsearch/elasticsearch:6.5.1
+      -d docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.4
   $ docker run --link mongo --link elasticsearch \
       -p 9000:9000 -p 12201:12201 -p 514:514 \
       -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" \
@@ -78,18 +78,11 @@ Example::
       image: mongo:3
     # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch:6.5.1
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.4
       environment:
         - http.host=0.0.0.0
         - transport.host=localhost
         - network.host=0.0.0.0
-        # Disable X-Pack security: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/security-settings.html#general-security-settings
-        - xpack.security.enabled=false
-        - xpack.watcher.enabled=false
-        - xpack.monitoring.enabled=false
-        - xpack.security.audit.enabled=false
-        - xpack.ml.enabled=false
-        - xpack.graph.enabled=false
         - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       ulimits:
         memlock:
@@ -142,7 +135,7 @@ For example, setting up the SMTP configuration for sending Graylog alert notific
       image: "mongo:3"
       # Other settings [...]
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch:6.5.1
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.4
       # Other settings [...]
     graylog:
       image: graylog/graylog:2.5
@@ -182,7 +175,7 @@ This can be done by adding an entry to the `volumes <https://docs.docker.com/com
       image: mongo:3
       # Other settings [...]
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch:6.5.1
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.4
       # Other settings [...]
     graylog:
       image: graylog/graylog:2.5
@@ -213,20 +206,13 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
         - mongo_data:/data/db
     # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch:6.5.1
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.4
       volumes:
         - es_data:/usr/share/elasticsearch/data
       environment:
         - http.host=0.0.0.0
         - transport.host=localhost
         - network.host=0.0.0.0
-        # Disable X-Pack security: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/security-settings.html#general-security-settings
-        - xpack.security.enabled=false
-        - xpack.watcher.enabled=false
-        - xpack.monitoring.enabled=false
-        - xpack.security.audit.enabled=false
-        - xpack.ml.enabled=false
-        - xpack.graph.enabled=false
         - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       ulimits:
         memlock:
@@ -301,7 +287,7 @@ The ``docker-compose.yml`` file has to reference the new Docker image::
       image: "mongo:3"
       # Other settings [...]
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch:6.5.1
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.4
       # Other settings [...]
     graylog:
       image: graylog-with-sso-plugin
@@ -325,7 +311,7 @@ The ``docker-compose.yml`` file has to reference the new Docker image::
       image: "mongo:3"
       # Other settings [...]
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch:6.5.1
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.4
       # Other settings [...]
     graylog:
       image: graylog/graylog:2.5
@@ -362,4 +348,4 @@ Follow the `documentation for the Graylog image on Docker Hub <https://hub.docke
 
   $ docker run --link mongo --link elasticsearch -p 9000:9000 -p 12201:12201 -p 514:514 \
       -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" \
-      -d graylog/graylog:2.5.0-1
+      -d graylog/graylog:3.0.0-beta.3-1
