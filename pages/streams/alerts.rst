@@ -69,7 +69,7 @@ This condition triggers whenever the stream received more than X messages in the
 Field aggregation condition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Triggers whenever the result of a statistical computation of a numerical message field in the stream is higher or lower than a given threshold. Perfect to monitor performance problems: *Be alerted whenever the standard deviation of the response time of your application was higher than X in the last Y minutes.*
+This condition triggers whenever the result of a statistical computation of a numerical message field in the stream is higher or lower than a given threshold. Perfect to monitor performance problems: *Be alerted whenever the standard deviation of the response time of your application was higher than X in the last Y minutes.*
 
 Field content condition
 ^^^^^^^^^^^^^^^^^^^^^^^
