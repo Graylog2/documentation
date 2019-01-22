@@ -52,7 +52,9 @@ The following list shows the minimum required Graylog versions for the Graylog E
       - 2.4.6
     * - 2.5.0
       - 2.5.0
-
+    * - 2.5.1
+      - 2.5.1
+    
 
 Installation
 ============
@@ -106,18 +108,18 @@ If you have done a manual installation or want to include only parts of the ente
 
     * - Enterprise Version
       - Download URL
-    * - 2.5.0
-      - :enterprise-plugins-tar:`2.5.0`
+    * - 2.5.1
+      - :enterprise-plugins-tar:`2.5.1`
 
 The tarball includes the enterprise plugin JAR files.
 
 ::
 
-  $ tar -tzf graylog-enterprise-plugins-2.5.0.tgz
-    graylog-enterprise-plugins-2.5.0/LICENSE
-    graylog-enterprise-plugins-2.5.0/plugin/graylog-plugin-archive-2.5.0.jar
-    graylog-enterprise-plugins-2.5.0/plugin/graylog-plugin-auditlog-2.5.0.jar
-    graylog-enterprise-plugins-2.5.0/plugin/graylog-plugin-license-2.5.0.jar
+  $ tar -tzf graylog-enterprise-plugins-2.5.1.tgz
+    graylog-enterprise-plugins-2.5.1/LICENSE
+    graylog-enterprise-plugins-2.5.1/plugin/graylog-plugin-archive-2.5.1.jar
+    graylog-enterprise-plugins-2.5.1/plugin/graylog-plugin-auditlog-2.5.1.jar
+    graylog-enterprise-plugins-2.5.1/plugin/graylog-plugin-license-2.5.1.jar
 
 Depending on the Graylog setup method you have used, you have to install the plugins into different locations.
 
@@ -131,18 +133,18 @@ Your plugin directory should look similar to this after installing the enterpris
 ::
 
   plugin/
-  ├── graylog-plugin-auditlog-2.5.0.jar
-  ├── graylog-plugin-threatintel-2.5.0.jar
-  ├── graylog-plugin-archive-2.5.0.jar
-  ├── graylog-plugin-beats-2.5.0.jar
-  ├── graylog-plugin-netflow-2.5.0.jar
-  ├── graylog-plugin-aws-2.5.0.jar
-  ├── graylog-plugin-pipeline-processor-2.5.0.jar
-  ├── graylog-plugin-enterprise-integration-2.5.0.jar
-  ├── graylog-plugin-map-widget-2.5.0.jar
-  ├── graylog-plugin-cef-2.5.0.jar
-  ├── graylog-plugin-license-2.5.0.jar
-  └── graylog-plugin-collector-2.5.0.jar
+  ├── graylog-plugin-auditlog-2.5.1.jar
+  ├── graylog-plugin-threatintel-2.5.1.jar
+  ├── graylog-plugin-archive-2.5.1.jar
+  ├── graylog-plugin-beats-2.5.1.jar
+  ├── graylog-plugin-netflow-2.5.1.jar
+  ├── graylog-plugin-aws-2.5.1.jar
+  ├── graylog-plugin-pipeline-processor-2.5.1.jar
+  ├── graylog-plugin-enterprise-integration-2.5.1.jar
+  ├── graylog-plugin-map-widget-2.5.1.jar
+  ├── graylog-plugin-cef-2.5.1.jar
+  ├── graylog-plugin-license-2.5.1.jar
+  └── graylog-plugin-collector-2.5.1.jar
   
 
 
@@ -158,17 +160,17 @@ You should see something like the following in your Graylog server logs. It indi
 
 ::
 
-  2017-12-18T17:39:10.797+01:00 INFO  [CmdLineTool] Loaded plugin: AWS plugins 2.5.0 [org.graylog.aws.plugin.AWSPlugin]
-  2017-12-18T17:39:10.803+01:00 INFO  [CmdLineTool] Loaded plugin: Audit Log 2.5.0 [org.graylog.plugins.auditlog.AuditLogPlugin]
-  2017-12-18T17:39:10.805+01:00 INFO  [CmdLineTool] Loaded plugin: Elastic Beats Input 2.5.0 [org.graylog.plugins.beats.BeatsInputPlugin]
-  2017-12-18T17:39:10.807+01:00 INFO  [CmdLineTool] Loaded plugin: CEF Input 2.5.0 [org.graylog.plugins.cef.CEFInputPlugin]
-  2017-12-18T17:39:10.809+01:00 INFO  [CmdLineTool] Loaded plugin: Collector 2.5.0 [org.graylog.plugins.collector.CollectorPlugin]
-  2017-12-18T17:39:10.811+01:00 INFO  [CmdLineTool] Loaded plugin: Enterprise Integration Plugin 2.5.0 [org.graylog.plugins.enterprise_integration.EnterpriseIntegrationPlugin]
-  2017-12-18T17:39:10.812+01:00 INFO  [CmdLineTool] Loaded plugin: License Plugin 2.5.0 [org.graylog.plugins.license.LicensePlugin]
-  2017-12-18T17:39:10.814+01:00 INFO  [CmdLineTool] Loaded plugin: MapWidgetPlugin 2.5.0 [org.graylog.plugins.map.MapWidgetPlugin]
-  2017-12-18T17:39:10.815+01:00 INFO  [CmdLineTool] Loaded plugin: NetFlow Plugin 2.5.0 [org.graylog.plugins.netflow.NetFlowPlugin]
-  2017-12-18T17:39:10.826+01:00 INFO  [CmdLineTool] Loaded plugin: Pipeline Processor Plugin 2.5.0 [org.graylog.plugins.pipelineprocessor.ProcessorPlugin]
-  2017-12-18T17:39:10.827+01:00 INFO  [CmdLineTool] Loaded plugin: Threat Intelligence Plugin 2.5.0 [org.graylog.plugins.threatintel.ThreatIntelPlugin]
+  2017-12-18T17:39:10.797+01:00 INFO  [CmdLineTool] Loaded plugin: AWS plugins 2.5.1 [org.graylog.aws.plugin.AWSPlugin]
+  2017-12-18T17:39:10.803+01:00 INFO  [CmdLineTool] Loaded plugin: Audit Log 2.5.1 [org.graylog.plugins.auditlog.AuditLogPlugin]
+  2017-12-18T17:39:10.805+01:00 INFO  [CmdLineTool] Loaded plugin: Elastic Beats Input 2.5.1 [org.graylog.plugins.beats.BeatsInputPlugin]
+  2017-12-18T17:39:10.807+01:00 INFO  [CmdLineTool] Loaded plugin: CEF Input 2.5.1 [org.graylog.plugins.cef.CEFInputPlugin]
+  2017-12-18T17:39:10.809+01:00 INFO  [CmdLineTool] Loaded plugin: Collector 2.5.1 [org.graylog.plugins.collector.CollectorPlugin]
+  2017-12-18T17:39:10.811+01:00 INFO  [CmdLineTool] Loaded plugin: Enterprise Integration Plugin 2.5.1 [org.graylog.plugins.enterprise_integration.EnterpriseIntegrationPlugin]
+  2017-12-18T17:39:10.812+01:00 INFO  [CmdLineTool] Loaded plugin: License Plugin 2.5.1 [org.graylog.plugins.license.LicensePlugin]
+  2017-12-18T17:39:10.814+01:00 INFO  [CmdLineTool] Loaded plugin: MapWidgetPlugin 2.5.1 [org.graylog.plugins.map.MapWidgetPlugin]
+  2017-12-18T17:39:10.815+01:00 INFO  [CmdLineTool] Loaded plugin: NetFlow Plugin 2.5.1 [org.graylog.plugins.netflow.NetFlowPlugin]
+  2017-12-18T17:39:10.826+01:00 INFO  [CmdLineTool] Loaded plugin: Pipeline Processor Plugin 2.5.1 [org.graylog.plugins.pipelineprocessor.ProcessorPlugin]
+  2017-12-18T17:39:10.827+01:00 INFO  [CmdLineTool] Loaded plugin: Threat Intelligence Plugin 2.5.1 [org.graylog.plugins.threatintel.ThreatIntelPlugin]
 
 Cluster Setup
 =============

@@ -46,7 +46,7 @@ First install the Elastic GPG key with ``rpm --import https://artifacts.elastic.
 
     [elasticsearch-6.x]
     name=Elasticsearch repository for 6.x packages
-    baseurl=https://artifacts.elastic.co/packages/6.x/yum
+    baseurl=https://artifacts.elastic.co/packages/oss-6.x/yum
     gpgcheck=1
     gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
     enabled=1
