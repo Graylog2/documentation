@@ -44,9 +44,9 @@ Graylog 2.3.x can be used with Elasticsearch 5.x, please follow the installation
 
 First install the Elastic GPG key with ``rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch`` then add the repository file ``/etc/zypp/repos.d/elasticsearch.repo`` with the following contents::
 
-    [elasticsearch-5.x]
-    name=Elasticsearch repository for 5.x packages
-    baseurl=https://artifacts.elastic.co/packages/5.x/yum
+    [elasticsearch-6.x]
+    name=Elasticsearch repository for 6.x packages
+    baseurl=https://artifacts.elastic.co/packages/oss-6.x/yum
     gpgcheck=1
     gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
     enabled=1
