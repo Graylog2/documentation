@@ -250,7 +250,7 @@ Script alert notification
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Script alert notification lets you configure a script that will be called when the alert is triggered.
-Make sure to check the :ref:`script related configuration settings<script_alert>` in the Graylog configuration file.
+Make sure to check the :ref:`script related configuration settings<script_alert_callback>` in the Graylog configuration file.
 The following arguments can be are acquired when the script is executed.
 
 ``stream``

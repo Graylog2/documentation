@@ -393,7 +393,7 @@ HTTP
     * This is a list of patterns separated by ",". The patterns may start or end with a "*" for wildcards.
     * Any host matching one of these patterns will be reached through a direct connection instead of through a proxy.    
 
-.. _script_alert_calback:
+.. _script_alert_callback:
 
 Script alert callback
 ^^^^^^^^^^^^^^^^^^^^^
