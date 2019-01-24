@@ -98,6 +98,7 @@ In this section we explain what the default alert notifications included in Gray
 
 .. important:: In previous versions of Graylog (before 2.2.0), the email alarm notification was used, when alert conditions existed for a stream, but no alarm notification had been created before. This has been changed, so that if there is no alarm notification existing for a stream, alerts will be shown in the interface but no other action is performed. To help users coming from earlier version, there is a migration job which is being run once, creating the email alarm notification explicitly for qualifying streams, so the old behavior is preserved.
 
+
 Email alert notification
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -139,6 +140,8 @@ We expose the following objects to the templates.
   The ``message.fields`` fields can be useful to get access to arbitrary fields that are defined in the message. For example ``message.fields.full_message`` would return the ``full_message`` of a GELF message.
 
 .. image:: /images/alerts_email_notification.png
+
+
 
 HTTP alert notification
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -241,3 +244,37 @@ Graylog will send a POST request to the notification URL including information a
       }
   }
 
+
+
+Script alert notification
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Script alert notification lets you configure a script that will be called when the alert is triggered.
+Make sure to check the :ref:`script related configuration settings<script_alert>` in the Graylog configuration file.
+The following arguments can be are acquired when the script is executed.
+
+``stream``
+  The stream this alert belongs to.
+
+  * ``stream_id`` ID of the stream
+  * ``stream_name`` title of the stream
+  * ``stream_description`` stream description
+  * ``stream_url`` A string that contains the HTTP URL to the stream.
+
+``alert``
+  The check result object for this stream.
+
+  * ``alert_description`` text that describes the check result
+  * ``alert_triggered_at`` date when this condition was triggered
+
+``condition``
+  //THESE NEED TO BE TWEAKED
+
+  * ``condition_id`` ID of the condition
+  * ``condition_description`` description of the condition
+  * ``condition_title`` title of the condition
+  * ``condition_type`` type of condition
+  * ``condition_grace`` grace period for the condition
+  * ``condition_repeat_notification`` repeat notification of the script
+
+.. image:: /images/alerts_script_notification.png

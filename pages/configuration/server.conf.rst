@@ -393,6 +393,17 @@ HTTP
     * This is a list of patterns separated by ",". The patterns may start or end with a "*" for wildcards.
     * Any host matching one of these patterns will be reached through a direct connection instead of through a proxy.    
 
+.. _script_alert_calback:
+
+Script alert callback
+^^^^^^^^^^^^^^^^^^^^^
+
+* ``integration_script_alert_web_interface_url = https://graylog.example.com``
+    * The default url is set as the localhost.
+* ``integration_script_alert_permitted_root_path = /usr/share/graylog-server/scripts``
+    * The default script directory is relative to the plugins directory.
+
+
 Others
 ^^^^^^
 
