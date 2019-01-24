@@ -247,7 +247,7 @@ Graylog will send a POST request to the notification URL including information a
 
 
 Script alert notification
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Script alert notification lets you configure a script that will be called when the alert is triggered.
 Make sure to check the :ref:`script related configuration settings<script_alert>` in the Graylog configuration file.
@@ -268,7 +268,6 @@ The following arguments can be are acquired when the script is executed.
   * ``alert_triggered_at`` date when this condition was triggered
 
 ``condition``
-  //THESE NEED TO BE TWEAKED
 
   * ``condition_id`` ID of the condition
   * ``condition_description`` description of the condition
