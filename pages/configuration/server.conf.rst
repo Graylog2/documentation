@@ -399,7 +399,7 @@ Script alert callback
 ^^^^^^^^^^^^^^^^^^^^^
 
 * ``integration_script_alert_web_interface_url = https://graylog.example.com``
-    * The default url is set as the localhost.
+    * No default is set.
 * ``integration_script_alert_permitted_root_path = /usr/share/graylog-server/scripts``
     * The default script directory is relative to the plugins directory.
 

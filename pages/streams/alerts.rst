@@ -249,37 +249,36 @@ Graylog will send a POST request to the notification URL including information a
 Script alert notification
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Script alert notification lets you configure a script that will be called when the alert is triggered.
-Make sure to edit the defaults for the :ref:`script related configuration settings<script_alert_callback>` in the Graylog configuration file.
-The following arguments can be are acquired when the script is executed.
+The Script alert notification lets you configure a script that will be executed when the alert is triggered.
+This is an Enterprise Integrations plugin feature and thus requires an :ref:`Enterprise license <enterprise_features>`.
 
-:ref:`Configuration<script_alert_callback>`
+.. image:: /images/alerts_script_notification.png
 
-* ``Script Path``
-    The path to where the script is located. Must me within the :ref:`permitted script path<script_alert_callback>`.
+These are the supported configuration options.
 
-* ``Script Timeout``
-    The maximum time the script will be allowed to execute before being forcefully terminated.
+Script Path
+    The path to where the script is located. Must me within the :ref:`permitted script path<script_alert_callback>` (which is customizable).
 
-* ``Script Arguments``
+Script Timeout
+    The maximum time (in milliseconds) the script will be allowed to execute before being forcefully terminated.
+
+Script Arguments
     String of parameters in which the delimiters are either a space-delimited or a new-line. The following argument variables may be used:
 
-    ``stream``
+    Stream
      The stream this alert belongs to.
 
       * ``stream_id`` ID of the stream
       * ``stream_name`` title of the stream
       * ``stream_description`` stream description
-      * ``stream_url`` A string that contains the HTTP URL to the stream.
+      * ``stream_url`` a string that contains the URL to the view the relevant messages for the alert. Make sure to set the :ref:`HTTP URL<script_alert_callback>` configuration parameter, as there is no default.
 
-    ``alert``
+    Alert
      The check result object for this stream.
 
       * ``alert_description`` text that describes the check result
       * ``alert_triggered_at`` date when this condition was triggered
-
-
-    ``condition``
+    Condition
      The available conditions to request are
 
       * ``condition_id`` ID of the condition
@@ -288,35 +287,113 @@ The following arguments can be are acquired when the script is executed.
       * ``condition_type`` type of condition
       * ``condition_grace`` grace period for the condition
       * ``condition_repeat_notification`` repeat notification of the script
-
-* ``Send Alert Data Through STDIN``
+Send Alert Data Through STDIN
     Sends JSON alert data through standard in. You can use a JSON parser in your script. ::
 
 
-        final String standardOutString = new String(standardOutputStream.toByteArray());
-        }
-        LOG.debug("STDOUT from execution of script [{}]: {}", scriptPath, standardOutString);
+     {
+       "stream_id": "000000000000000000000001",
+       "stream_name": "All messages",
+       "stream_description": "Stream containing all messages",
+       "stream_url": "http://localhost:8080///streams/000000000000000000000001/messages?rangetype=absolute&from=2019-01-25T20:57:50.793Z&to=2019-01-25T21:02:50.793Z&q=*",
+       "alert_description": "Stream received messages matching <has_field:\"true\"> (Current grace time: 0 minutes)",
+       "alert_triggered_at": "2019-01-25T21:02:50.793Z",
+       "condition_id": "ea9fcdff-2037-44f9-801e-099bf4bb3dbd",
+       "condition_description": "field: has_field, value: true, grace: 0, repeat notifications: false",
+       "condition_title": "has_field",
+       "condition_type": "field_content_value",
+       "condition_grace": 0,
+       "condition_parameters": {
+         "backlog": 10,
+         "repeat_notifications": false,
+         "field": "has_field",
+         "query": "*",
+         "grace": 0,
+         "value": "true"
+       },
+       "condition_repeat_notifications": false,
+       "message_backlog": [
+         {
+           "has_field": "true",
+           "gl2_remote_ip": "127.0.0.1",
+           "gl2_remote_port": 56246,
+           "streams": [
+             "000000000000000000000001"
+           ],
+           "gl2_source_node": "e065896b-8a9a-4f45-83f2-e740525ed035",
+           "_id": "92839500-20e4-11e9-8175-0637e3f7ecfc",
+           "source": "example.org",
+           "message": "Hello there",
+           "gl2_source_input": "5c2e99687a90e30a3512f766",
+           "facility": "test",
+           "timestamp": "2019-01-25T21:02:49.423Z"
+         },
+         {
+           "has_field": "true",
+           "gl2_remote_ip": "127.0.0.1",
+           "gl2_remote_port": 56245,
+           "streams": [
+             "000000000000000000000001"
+           ],
+           "gl2_source_node": "e065896b-8a9a-4f45-83f2-e740525ed035",
+           "_id": "928087c0-20e4-11e9-8175-0637e3f7ecfc",
+           "source": "example.org",
+           "message": "Hello there",
+           "gl2_source_input": "5c2e99687a90e30a3512f766",
+           "facility": "test",
+           "timestamp": "2019-01-25T21:02:49.403Z"
+         }
+       ],
+       "message_backlog_size": 5
+     }
 
-        final String standardErrorString = new String(standardErrorStream.toByteArray());
-        if (!Strings.isNullOrEmpty(standardErrorString)) {
-                LOG.error("STDERR from execution of script [{}]: {}", scriptPath, standardErrorString);
-        }
+    Script Alert Callback success is determined by its exit value; success equals zero.
+    Any non-zero exit value will cause it to fail.
+    Returning any error text through STDERR will also cause the alarm callback to fail.
 
-        // Fail execution if non-zero exit value, or if any standard error is returned
-        if (exitValue != 0 || !Strings.isNullOrEmpty(standardErrorString)) {
-                LOG.error("Script error: Exit Value [{}] STDERR [{}]", exitValue, standardErrorString);
-                throw new AlarmCallbackException(standardErrorString);
-        }
+    Here is a sample Python script that shows all of the supported Script Alert Notification
+    functionality (argument parsing, STDIN JSON parsing, STDOUT, exit values, and returning an exit value).::
 
-* ``Script Execution Result``
-    Script Alert Callback success is determined by its return value; success equals zero, anything else is considered a fail.
-    Any non-zero exit value will cause it to fail. Returning any error text through STDERR will also cause
-    the alarm callback to fail. ::
+        #!/usr/bin/env python3
+        import json
+        import sys
+        import time
 
 
-            int exitValue;
-            ...
-            exitValue = executor.execute(cmdLine);
+        # Function that prints text to standard error
+        def print_stderr(*args, **kwargs):
+            print(*args, file=sys.stderr, **kwargs)
 
+        # Main function
+        if __name__ == "__main__":
 
-.. image:: /images/alerts_script_notification.png
+            # Print out all input arguments.
+            sys.stdout.write("All Arguments Passed In: " + ' '.join(sys.argv[1:]) + "\n")
+            sys.stdout.write("Stream Name: " + sys.argv[2] + "\n")
+            sys.stdout.write("Stream Description: " + sys.argv[3] + "\n")
+            sys.stdout.write("Alert Triggered At: " + sys.argv[6] + "\n")
+
+            # Turn stdin.readlines() array into a string
+            std_in_string = ''.join(sys.stdin.readlines())
+
+            # Load JSON
+            alert_object = json.loads(std_in_string)
+
+            # Extract some values from the JSON.
+            sys.stdout.write("Values from JSON: \n")
+            sys.stdout.write("Stream ID: " + alert_object["stream_id"] + "\n")
+            sys.stdout.write("Stream Name: " + alert_object["stream_name"] + "\n")
+            sys.stdout.write("Alert Triggered At: " + alert_object["alert_triggered_at"] + "\n")
+
+            # Extract Message Backlog field from JSON.
+            sys.stdout.write("\n\nFields:\n")
+            for message in alert_object["message_backlog"]:
+                for field in message.keys():
+                    print("Field: " + field)
+                    print("Value: " + str(message[field]))
+
+            # Write to stderr if desired
+            # print_stderr("Test return through standard error")
+
+            # Return an exit value. Zero is success, non-zero indicates failure.
+            exit(0)
