@@ -250,30 +250,73 @@ Script alert notification
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Script alert notification lets you configure a script that will be called when the alert is triggered.
-Make sure to check the :ref:`script related configuration settings<script_alert_callback>` in the Graylog configuration file.
+Make sure to edit the defaults for the :ref:`script related configuration settings<script_alert_callback>` in the Graylog configuration file.
 The following arguments can be are acquired when the script is executed.
 
-``stream``
-  The stream this alert belongs to.
+:ref:`Configuration<script_alert_callback>`
 
-  * ``stream_id`` ID of the stream
-  * ``stream_name`` title of the stream
-  * ``stream_description`` stream description
-  * ``stream_url`` A string that contains the HTTP URL to the stream.
+* ``Script Path``
+    The path to where the script is located. Must me within the :ref:`permitted script path<script_alert_callback>`.
 
-``alert``
-  The check result object for this stream.
+* ``Script Timeout``
+    The maximum time the script will be allowed to execute before being forcefully terminated.
 
-  * ``alert_description`` text that describes the check result
-  * ``alert_triggered_at`` date when this condition was triggered
+* ``Script Arguments``
+    String of parameters in which the delimiters are either a space-delimited or a new-line. The following argument variables may be used:
 
-``condition``
+    ``stream``
+     The stream this alert belongs to.
 
-  * ``condition_id`` ID of the condition
-  * ``condition_description`` description of the condition
-  * ``condition_title`` title of the condition
-  * ``condition_type`` type of condition
-  * ``condition_grace`` grace period for the condition
-  * ``condition_repeat_notification`` repeat notification of the script
+      * ``stream_id`` ID of the stream
+      * ``stream_name`` title of the stream
+      * ``stream_description`` stream description
+      * ``stream_url`` A string that contains the HTTP URL to the stream.
+
+    ``alert``
+     The check result object for this stream.
+
+      * ``alert_description`` text that describes the check result
+      * ``alert_triggered_at`` date when this condition was triggered
+
+
+    ``condition``
+     The available conditions to request are
+
+      * ``condition_id`` ID of the condition
+      * ``condition_description`` description of the condition
+      * ``condition_title`` title of the condition
+      * ``condition_type`` type of condition
+      * ``condition_grace`` grace period for the condition
+      * ``condition_repeat_notification`` repeat notification of the script
+
+* ``Send Alert Data Through STDIN``
+    Sends JSON alert data through standard in. You can use a JSON parser in your script. ::
+
+
+        final String standardOutString = new String(standardOutputStream.toByteArray());
+        }
+        LOG.debug("STDOUT from execution of script [{}]: {}", scriptPath, standardOutString);
+
+        final String standardErrorString = new String(standardErrorStream.toByteArray());
+        if (!Strings.isNullOrEmpty(standardErrorString)) {
+                LOG.error("STDERR from execution of script [{}]: {}", scriptPath, standardErrorString);
+        }
+
+        // Fail execution if non-zero exit value, or if any standard error is returned
+        if (exitValue != 0 || !Strings.isNullOrEmpty(standardErrorString)) {
+                LOG.error("Script error: Exit Value [{}] STDERR [{}]", exitValue, standardErrorString);
+                throw new AlarmCallbackException(standardErrorString);
+        }
+
+* ``Script Execution Result``
+    Script Alert Callback success is determined by its return value; success equals zero, anything else is considered a fail.
+    Any non-zero exit value will cause it to fail. Returning any error text through STDERR will also cause
+    the alarm callback to fail. ::
+
+
+            int exitValue;
+            ...
+            exitValue = executor.execute(cmdLine);
+
 
 .. image:: /images/alerts_script_notification.png
