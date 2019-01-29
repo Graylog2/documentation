@@ -245,19 +245,22 @@ Graylog will send a POST request to the notification URL including information a
   }
 
 
+.. _alerts_script_alert:
 
 Script alert notification
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Script alert notification lets you configure a script that will be executed when the alert is triggered.
-This is an Enterprise Integrations plugin feature and thus requires an :ref:`Enterprise license <enterprise_features>`.
+
+.. important:: Script Alert Notification is an Enterprise Integrations plugin feature and thus requires an :ref:`Enterprise license <enterprise_features>`.
+
 
 .. image:: /images/alerts_script_notification.png
 
 These are the supported configuration options.
 
 Script Path
-    The path to where the script is located. Must me within the :ref:`permitted script path<script_alert_callback>` (which is customizable).
+    The path to where the script is located. Must me within the :ref:`permitted script path<config_script_alert>` (which is customizable).
 
 Script Timeout
     The maximum time (in milliseconds) the script will be allowed to execute before being forcefully terminated.

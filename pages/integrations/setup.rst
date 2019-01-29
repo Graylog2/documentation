@@ -66,8 +66,8 @@ The following server log message will indicate that each plugin was installed pr
 
 **Downloads URLs**
 
-* :integrations-plugin-deb:`3.0.0+0`
+* :integrations-plugin-deb:`3.0.0`
 
-* :integrations-plugin-rpm:`3.0.0+0`
+* :integrations-plugin-rpm:`3.0.0`
 
-* :integrations-plugin-jar:`3.0.0+0`
+* :integrations-plugin-jar:`3.0.0`
