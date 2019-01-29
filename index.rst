@@ -33,6 +33,7 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/indexer_failures
    pages/users_and_roles
    pages/integrations/integrations
+   pages/integrations/inputs/palo_alto_networks_input
    pages/plugins
    pages/external_dashboards
    pages/marketplace
