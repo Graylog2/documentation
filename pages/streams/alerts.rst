@@ -274,7 +274,7 @@ Script Arguments
       * ``stream_id`` ID of the stream
       * ``stream_name`` title of the stream
       * ``stream_description`` stream description
-      * ``stream_url`` a string that contains the URL to the view the relevant messages for the alert. Make sure to set the :ref:`HTTP URL<script_alert_callback>` configuration parameter, as there is no default.
+      * ``stream_url`` a string that contains the URL to the view the relevant messages for the alert. Make sure to set the :ref:`HTTP URL<config_script_alert>` configuration parameter, as there is no default.
 
     Alert
      The check result object for this stream.
