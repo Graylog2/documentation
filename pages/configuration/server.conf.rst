@@ -395,8 +395,8 @@ HTTP
 
 .. _config_script_alert:
 
-Script alert callback
-^^^^^^^^^^^^^^^^^^^^^
+Script alert notification
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * ``integration_script_alert_web_interface_url = https://graylog.example.com``
     * No default is set.

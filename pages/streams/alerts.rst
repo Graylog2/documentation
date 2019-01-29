@@ -250,7 +250,7 @@ Graylog will send a POST request to the notification URL including information a
 Script alert notification
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Script alert notification lets you configure a script that will be executed when the alert is triggered.
+The Script Alert Notification lets you configure a script that will be executed when the alert is triggered.
 
 .. important:: Script Alert Notification is an Enterprise Integrations plugin feature and thus requires an :ref:`Enterprise license <enterprise_features>`.
 
@@ -350,7 +350,7 @@ Send Alert Data Through STDIN
        "message_backlog_size": 5
      }
 
-    Script Alert Callback success is determined by its exit value; success equals zero.
+    Script Alert Notification success is determined by its exit value; success equals zero.
     Any non-zero exit value will cause it to fail.
     Returning any error text through STDERR will also cause the alarm callback to fail.
 
