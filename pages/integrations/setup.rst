@@ -6,8 +6,8 @@ Integrations are tools that help Graylog work with external systems and will typ
 
 Integrations are distributed in two plugins:
 
-* ``graylog-plugin-integrations``
-* ``graylog-plugin-enterprise-integrations``
+* ``graylog-integrations-plugins``
+* ``graylog-enterprise-integrations-plugins``
 
 .. important:: The plugins needs to be installed on all your Graylog nodes!
 
@@ -29,7 +29,7 @@ The installation on distributions like Debian or Ubuntu can be done with *apt-ge
 
 ::
 
-  $ sudo apt-get install graylog-plugin-integrations graylog-plugin-enterprise-integrations
+  $ sudo apt-get install graylog-integrations-plugins graylog-enterprise-integrations-plugins
 
 
 RPM
@@ -39,13 +39,13 @@ The installation on distributions like CentOS or RedHat can be done with *yum* a
 
 ::
 
-  $ sudo yum install graylog-plugin-integrations graylog-plugin-enterprise-integrations
+  $ sudo yum install graylog-integrations-plugins graylog-enterprise-integrations-plugins
 
 
 Jar File
 ~~~~~~~~
 
-You can also download and install the plugin JAR files. See the :ref:`Plugins <installing_and_loading_plugins>` page for instructions.
+You can also download the JAR plugin files from the `Graylog Downloads <https://www.graylog.org/downloads>`_ page.
 
 
 Server Restart
@@ -63,11 +63,3 @@ The following server log message will indicate that each plugin was installed pr
     INFO: [CmdLineTool] Loaded plugin: Integrations Plugin 3.0.0 [org.graylog.integrations.IntegrationsPlugin]
     INFO: [CmdLineTool] Loaded plugin: Enterprise Integrations Plugin 3.0.0 [org.graylog.integrations.EnterpriseIntegrationsPlugin]
 
-
-**Downloads URLs**
-
-* :integrations-plugin-deb:`3.0.0`
-
-* :integrations-plugin-rpm:`3.0.0`
-
-* :integrations-plugin-jar:`3.0.0`
