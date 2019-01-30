@@ -27,8 +27,6 @@ Make sure to install and configure the following software before installing and 
 * MongoDB (>= 3.6)
 * Elasticsearch (>= 5.x)
 
-.. caution:: Graylog 3.0-alpha **does not** work with Elasticsearch 6.x yet! (support for version ES 6.x will be in Graylog 3.0 GA)
-
 .. _operating_package_DEB-APT:
 
 DEB / APT
