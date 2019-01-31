@@ -224,5 +224,33 @@ license:
 * A flag indicating if the license has expired
 * A flag indicating if Graylog detected that the traffic measuring mechanisms have been modified
 * A list of how much traffic was received and written by Graylog in the recent days, in bytes
+  
+Details on licensed traffic
+---------------------------
+
+Graylog has four counters, only the last is counted for the licensed traffic.
+
+- ``org.graylog2.traffic.input``
+   the incoming message without any decoding, what is written to the journal before any processing.
+- ``org.graylog2.traffic.decoded``
+   the message after the codec of the input has parsed the message (for example syslog parser)
+- ``org.graylog2.traffic.system-output-traffic``  
+   currently, this is stored in memory only and includes the traffic from archive restores.
+- ``org.graylog2.traffic.output`` 
+   what is written to Elasticsearch after all processing is done. 
+
+Only the Elasticsearch output is measured, all other outgoing traffic does not count.  The measurement happens when the message is serialized to elasticsearch. If a message is written to multiple indices the message will count for each index. It does not matter how many copies (replicas) the index has configured as this is done in elasticsearch. 
+
+Each of the counters follows these rules:
+
+- count the length of the field name.
+- If the content of the field is a string, the length of the string is counted not the bytes of that string
+- for non-string content in the field, the byte length of that content is counted
+    - byte = 1 byte
+    - char/short = 2 bytes
+    - bool/int/floar = 4 bytes
+    - long/double = 8 bytes
+    - dates = 8 bytes
+- all internal fields are not countent (those meta information that are created by Graylog)
 
 
