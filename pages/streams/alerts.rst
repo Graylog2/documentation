@@ -98,7 +98,6 @@ In this section we explain what the default alert notifications included in Gray
 
 .. important:: In previous versions of Graylog (before 2.2.0), the email alarm notification was used, when alert conditions existed for a stream, but no alarm notification had been created before. This has been changed, so that if there is no alarm notification existing for a stream, alerts will be shown in the interface but no other action is performed. To help users coming from earlier version, there is a migration job which is being run once, creating the email alarm notification explicitly for qualifying streams, so the old behavior is preserved.
 
-
 Email alert notification
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -140,8 +139,6 @@ We expose the following objects to the templates.
   The ``message.fields`` fields can be useful to get access to arbitrary fields that are defined in the message. For example ``message.fields.full_message`` would return the ``full_message`` of a GELF message.
 
 .. image:: /images/alerts_email_notification.png
-
-
 
 HTTP alert notification
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -243,7 +240,6 @@ Graylog will send a POST request to the notification URL including information a
           "content_pack": null
       }
   }
-
 
 .. _alerts_script_alert:
 
