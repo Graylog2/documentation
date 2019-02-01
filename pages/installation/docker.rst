@@ -23,7 +23,7 @@ If you simply want to checkout Graylog without any further customization, you ca
 
   $ docker run --name mongo -d mongo:3
   $ docker run --name elasticsearch \
-      -e "http.host=0.0.0.0" -e "xpack.security.enabled=false" \
+      -e "http.host=0.0.0.0" \
       -d docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.4
   $ docker run --link mongo --link elasticsearch \
       -p 9000:9000 -p 12201:12201 -p 514:514 \
