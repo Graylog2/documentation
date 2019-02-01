@@ -92,6 +92,8 @@ Graylog
 +-----------------------+--------------------------------------+
 | Plugins               | ``/usr/share/graylog-server/plugin`` |
 +-----------------------+--------------------------------------+
+| Scripts               | ``/usr/share/graylog-server/scripts``|
++-----------------------+--------------------------------------+
 | JVM settings          | ``/etc/sysconfig/graylog-server``    |
 +-----------------------+--------------------------------------+
 | Message journal files | ``/var/lib/graylog-server/journal``  |
