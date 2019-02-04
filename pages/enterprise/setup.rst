@@ -102,16 +102,7 @@ The installation on distributions like CentOS or RedHat can be done with *yum* a
 Tarball
 -------
 
-If you have done a manual installation or want to include only parts of the enterprise plugins you can get the tarball from the download locations listed in the following table.
-
-.. list-table:: Enterprise Plugins download
-    :header-rows: 1
-
-    * - Enterprise Version
-      - Download URL
-    * - 3.0.0
-      - :enterprise-plugins-tar:`3.0.0`
-
+If you have done a manual installation or want to include only parts of the enterprise plugins you can get the tarball from the `Graylog Downloads <https://www.graylog.org/downloads>`_ page.
 
 The tarball includes the enterprise plugin JAR files.
 
