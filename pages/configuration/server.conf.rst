@@ -398,11 +398,11 @@ HTTP
 Script alert notification
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* ``web_interface_url = https://graylog.example.com``
+* ``integrations_web_interface_url = https://graylog.example.com``
     * Specify this to include a search page link (that displays relevant alert messages) in the script arguments or standard in JSON.
     * This should define the fully qualified base url to your web interface exactly the same way as it is accessed by your users.
     * Default: none
-* ``scripts_directory = /usr/share/graylog-server/scripts``
+* ``integrations_scripts_dir = /usr/share/graylog-server/scripts``
     * An absolute or relative path where scripts are permitted to be executed from.
     * If specified, this overrides the default location (see the :ref:`File Locations <scripts_dir>` document.
 
