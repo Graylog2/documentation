@@ -66,6 +66,16 @@ How do I create a Content Pack?
    take a close look if all needed configurations are included.
 8. To finish the creation click on **Create** or **Create and Download**.
 
+Upload a content pack
+=====================
+
+Content packs can be downloaded at the
+`Graylog Marketplace <https://marketplace.graylog.org/>`__.
+To upload these content packs navigate to **System / Content Pack** and
+click on **Upload**. The now showing modal has a file finder to select
+the downloaded content pack. Click on **Upload** to finish the process.
+Now you can install the uploaded content pack to use it in your Graylog. 
+
 Installing a content pack
 =========================
 
