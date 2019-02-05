@@ -1,3 +1,5 @@
+.. _palo_alto_network_input:
+
 ************************
 Palo Alto Networks Input
 ************************

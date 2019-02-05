@@ -13,6 +13,7 @@ DEB package
 This paragraph covers Graylog installations on Ubuntu Linux, Debian Linux, and Debian derivates installed with the :ref:`DEB package <operating_package_DEB-APT>`.
 
 .. _deb-graylog:
+.. _scripts_dir:
 
 Graylog
 -------
@@ -25,6 +26,8 @@ Graylog
 | Logging configuration | ``/etc/graylog/server/log4j2.xml``   |
 +-----------------------+--------------------------------------+
 | Plugins               | ``/usr/share/graylog-server/plugin`` |
++-----------------------+--------------------------------------+
+| Scripts               | ``/usr/share/graylog-server/scripts``|
 +-----------------------+--------------------------------------+
 | JVM settings          | ``/etc/default/graylog-server``      |
 +-----------------------+--------------------------------------+
@@ -88,6 +91,8 @@ Graylog
 | Logging configuration | ``/etc/graylog/server/log4j2.xml``   |
 +-----------------------+--------------------------------------+
 | Plugins               | ``/usr/share/graylog-server/plugin`` |
++-----------------------+--------------------------------------+
+| Scripts               | ``/usr/share/graylog-server/scripts``|
 +-----------------------+--------------------------------------+
 | JVM settings          | ``/etc/sysconfig/graylog-server``    |
 +-----------------------+--------------------------------------+

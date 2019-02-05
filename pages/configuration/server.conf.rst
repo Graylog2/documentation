@@ -393,6 +393,19 @@ HTTP
     * This is a list of patterns separated by ",". The patterns may start or end with a "*" for wildcards.
     * Any host matching one of these patterns will be reached through a direct connection instead of through a proxy.    
 
+.. _config_script_alert:
+
+Script alert notification
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* ``integrations_web_interface_url = https://graylog.example.com``
+    * Specify this to include a search page link (that displays relevant alert messages) in the script arguments or standard in JSON.
+    * This should define the fully qualified base url to your web interface exactly the same way as it is accessed by your users.
+    * Default: none
+* ``integrations_scripts_dir = /usr/share/graylog-server/scripts``
+    * An absolute or relative path where scripts are permitted to be executed from.
+    * If specified, this overrides the default location (see the :ref:`File Locations <scripts_dir>` document.
+
 Others
 ^^^^^^
 
