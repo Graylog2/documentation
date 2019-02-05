@@ -398,7 +398,7 @@ HTTP
 Script alert notification
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* ``integrations_web_interface_url = https://graylog.example.com``
+* ``integrations_web_interface_uri = https://graylog.example.com``
     * Specify this to include a search page link (that displays relevant alert messages) in the script arguments or standard in JSON.
     * This should define the fully qualified base url to your web interface exactly the same way as it is accessed by your users.
     * Default: none
