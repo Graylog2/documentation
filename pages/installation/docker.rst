@@ -349,3 +349,13 @@ Follow the `documentation for the Graylog image on Docker Hub <https://hub.docke
   $ docker run --link mongo --link elasticsearch -p 9000:9000 -p 12201:12201 -p 514:514 \
       -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" \
       -d graylog/graylog:3.0.0-beta.3-1
+
+
+Kubernetes automatic master selection
+=====================================
+
+There is a problem specifying the MASTER via the GRAYLOG_IS_MASTER environment variable in case if grаylog starts in kubernetes via statefulset since all the members get an identical set of environment variables.
+The problem is solved by calculating the name of the pod. For a statefulset, the name of the first pod in a cluster always ends with ```-0``` <https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#pod-identity>. So, master selection mechanism in docker-entrypoint.sh is
+* Determine that graylog is running inside kubernetes
+* Determine that the pod name ends in -0
+* Set GRAYLOG_IS_MASTER for this container to true, and false for others.
