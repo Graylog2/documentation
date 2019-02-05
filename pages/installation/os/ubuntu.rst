@@ -44,7 +44,7 @@ Graylog 2.5 can be used with Elasticsearch 6.x, please follow the installation i
     $ echo "deb https://artifacts.elastic.co/packages/oss-6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
     $ sudo apt-get update && sudo apt-get install elasticsearch-oss
 
-Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` additionally you need to uncomment (remove the # as first character) the line in additon add ``action.auto_create_index: false`` to the configuration file::
+Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` additionally you need to uncomment (remove the # as first character) the line, and add ``action.auto_create_index: false`` to the configuration file::
 
     cluster.name: graylog
     action.auto_create_index: false
