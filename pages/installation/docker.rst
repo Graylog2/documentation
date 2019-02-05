@@ -355,7 +355,10 @@ Kubernetes automatic master selection
 =====================================
 
 There is a problem specifying the MASTER via the GRAYLOG_IS_MASTER environment variable in case if grаylog starts in kubernetes via statefulset since all the members get an identical set of environment variables.
-The problem is solved by calculating the name of the pod. For a statefulset, the name of the first pod in a cluster always ends with ```-0``` <https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#pod-identity>. So, master selection mechanism in docker-entrypoint.sh is
+The problem is solved by calculating the name of the pod. For a statefulset, the name of the first pod in a cluster always ends with ``-0``. `Documentation about statefulset <https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#pod-identity>`__ . So, master selection mechanism in docker-entrypoint.sh is
+
 * Determine that graylog is running inside kubernetes
+
 * Determine that the pod name ends in -0
+
 * Set GRAYLOG_IS_MASTER for this container to true, and false for others.
