@@ -27,8 +27,8 @@ MongoDB
 
 Installing MongoDB on SLES should follow `the tutorial for SLES <https://docs.mongodb.com/v3.4/tutorial/install-mongodb-on-suse/>`_ from the MongoDB documentation. Add the GPG key and the repository before installing MongoDB::
 
-  $ sudo rpm --import https://www.mongodb.org/static/pgp/server-3.6.asc
-  $ sudo zypper addrepo --gpgcheck "https://repo.mongodb.org/zypper/suse/12/mongodb-org/3.6/x86_64/" mongodb
+  $ sudo rpm --import https://www.mongodb.org/static/pgp/server-4.0.asc
+  $ sudo zypper addrepo --gpgcheck "https://repo.mongodb.org/zypper/suse/12/mongodb-org/4.0/x86_64/" mongodb
   $ sudo zypper -n install mongodb-org
 
 In order to automatically start MongoDB on system boot, you have to activate the MongoDB service by running the following commands::
@@ -53,11 +53,12 @@ First install the Elastic GPG key with ``rpm --import https://artifacts.elastic.
     autorefresh=1
     type=rpm-md
 
-followed by the installation of the latest release with ``sudo zypper install elasticsearch``.
+followed by the installation of the latest release with ``sudo zypper install elasticsearch-oss``.
 
-Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` additionally you need to uncomment (remove the # as first character) the line::
+Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` additionally you need to uncomment (remove the # as first character) the line, and add ``action.auto_create_index: false`` to the configuration file::
 
     cluster.name: graylog
+    action.auto_create_index: false
 
 In order to automatically start Elasticsearch on system boot, you have to activate the Elasticsearch service by running the following commands::
 

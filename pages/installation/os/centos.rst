@@ -22,12 +22,13 @@ MongoDB
 
 Installing MongoDB on CentOS should follow `the tutorial for RHEL and CentOS <https://docs.mongodb.com/master/tutorial/install-mongodb-on-red-hat>`_ from the MongoDB documentation. First add the repository file ``/etc/yum.repos.d/mongodb-org-3.6.repo`` with the following contents::
 
-  [mongodb-org-3.6]
+  [mongodb-org-4.0]
   name=MongoDB Repository
-  baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.6/x86_64/
+  baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.0/x86_64/
   gpgcheck=1
   enabled=1
-  gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
+  gpgkey=https://www.mongodb.org/static/pgp/server-4.0.asc
+
 
 After that, install the latest release of MongoDB with ``sudo yum install -y mongodb-org``.
 
@@ -55,11 +56,12 @@ First install the Elastic GPG key with ``rpm --import https://artifacts.elastic.
     autorefresh=1
     type=rpm-md
 
-followed by the installation of the latest release with ``sudo yum install elasticsearch``.
+followed by the installation of the latest release with ``sudo yum install elasticsearch-oss``.
 
-Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` additionally you need to uncomment (remove the # as first character) the line::
+Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` additionally you need to uncomment (remove the # as first character) the line, and add ``action.auto_create_index: false`` to the configuration file::
 
     cluster.name: graylog
+    action.auto_create_index: false
 
 After you have modified the configuration, you can start Elasticsearch::
 
