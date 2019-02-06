@@ -21,7 +21,7 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/configuration
    pages/secure/securing
    pages/sending_data
-   pages/collector_sidecar
+   pages/sidecar
    pages/queries
    pages/streams
    pages/streams/alerts

@@ -1,0 +1,452 @@
+.. _graylog-sidecar:
+
+*************************
+Graylog Sidecar
+*************************
+
+.. note::
+ In Graylog 3.0, we have rewritten the existing Collector Sidecar implementation.
+ We still support the old **Graylog Collector Sidecars**, which can be found in the ``System / Collectors (legacy)`` menu entry.
+ In case you need to configure legacy **Graylog Collector Sidecar** please refer to the `Graylog Collector Sidecar documentation <..2.5/collector_sidecar.html>`_.
+ We encourage users to migrate to the new **Graylog Sidecars**, which are covered by this document.
+
+**Graylog Sidecar** is a lightweight configuration management system for different log collectors, also called `Backends`_.
+The Graylog node(s) act as a centralized hub containing the configurations of log collectors.
+On supported message-producing devices/hosts, Sidecar can run as a service (Windows host) or daemon (Linux host).
+
+.. image:: /images/sidecar_overview.png
+
+The log collector configurations are centrally managed through the Graylog web interface.
+Periodically, the Sidecar daemon will fetch all relevant configurations for the target, using the :doc:`REST API <configuration/rest_api>`.
+On its first run, or when a configuration change has been detected, Sidecar will *generate* (render) relevant backend configuration files. Then it will start, or restart, those reconfigured log collectors.
+
+
+Backends
+========
+
+Currently we are shipping default collector configurations for Filebeat, Winlogbeat and NXLog.
+But since you're able to define your own collector backends, there is nothing stopping you from
+running sysmon, auditd or packetbeat.
+On the server side you can share inputs with multiple collectors. E.g. All Filebeat and Winlogbeat instances
+can send logs into a single Graylog-Beats input.
+
+Installation
+============
+
+Currently we provide pre-compiled packages on the Github releases page of the project. Once the Sidecar project is settled and matured
+we will add the packages to the DEB and YUM online repositories.
+To get the Sidecar working `Download a package <https://github.com/Graylog2/collector-sidecar/releases>`_ and install it on the target system.
+
+Please follow the version matrix to pick the right package:
+
++-----------------+----------------------------------+
+| Sidecar version | Graylog server version           |
++=================+==================================+
+| 0.0.9           | 2.1.x                            |
++-----------------+----------------------------------+
+| 0.1.x           | 2.2.x,2.3.x,2.4.x,2.5.x,3.0.x    |
++-----------------+----------------------------------+
+| 1.0.x           | 3.0.x                            |
++-----------------+----------------------------------+
+
+All following commands should be executed on the **remote machine** where you want to collect log data from.
+
+Install the Sidecar
+-------------
+
+Ubuntu
+~~~~~~
+::
+
+    $ sudo dpkg -i graylog-sidecar_1.0.0-1_amd64.deb
+
+..
+        Configure the URL to your Graylog server and the Sidecar API key.
+        Edit::
+
+            /etc/graylog/sidecar/sidecar.yml
+
+        You should set at least the correct URL to your Graylog server and
+        the Sidecar API key. XXX link?
+
+Edit the configuration (see :ref:`Configuration <sidecar-configuration>`) and
+activate the Sidecar as a system service::
+
+    $ vi /etc/graylog/sidecar/sidecar.yml
+
+    $ sudo graylog-sidecar -service install
+
+    [Ubuntu 14.04 with Upstart]
+    $ sudo start graylog-sidecar
+
+    [Ubuntu 16.04 with Systemd]
+    $ sudo systemctl start graylog-sidecar
+
+CentOS
+~~~~~~
+Install the RPM package on RedHat based systems ::
+
+    $ sudo rpm -i graylog-sidecar-1.0.0-1.x86_64.rpm
+
+Edit the configuration (see :ref:`Configuration <sidecar-configuration>`) and
+activate the Sidecar as a system service::
+
+    $ vi /etc/graylog/sidecar/sidecar.yml
+
+    $ sudo graylog-sidecar -service install
+    $ sudo systemctl start graylog-sidecar
+
+Windows
+~~~~~~~
+Use the Windows installer, it can be run interactively::
+
+    $ graylog_sidecar_installer_1.0.0-1.exe
+
+Or in silent mode with::
+
+    $ graylog_sidecar_installer_1.0.0-1.exe /S -SERVERURL=http://10.0.2.2:9000/api -APITOKEN=yourapitoken
+
+Optionally edit the configuration (see :ref:`Configuration <sidecar-configuration>`) and register the system service::
+
+    notepad.exe C:\Program Files\Graylog\sidecar\sidecar.yml
+
+    & "C:\Program Files\Graylog\graylog-sidecar.exe" -service install
+    & "C:\Program Files\Graylog\graylog-sidecar.exe" -service start
+
+Beats backend
+-------------
+
+Linux
+~~~~~
+Install Filebeat or another beats package following the instructions on the official download `page <https://www.elastic.co/downloads/beats/filebeat>`_.
+
+Windows
+~~~~~~~
+
+The Windows Sidecar package already includes Filebeat and Winlogbeat.
+
+NXLog backend
+-------------
+
+Ubuntu
+~~~~~~
+
+Install the NXLog package from the official download `page <https://nxlog.org/products/nxlog-community-edition/download>`_. Because the Sidecar takes control of stopping and starting NXlog it's
+necessary to stop all running instances of NXlog and unconfigure the default system service::
+
+    $ sudo /etc/init.d/nxlog stop
+    $ sudo update-rc.d -f nxlog remove
+    $ sudo gpasswd -a nxlog adm
+    $ sudo chown -R nxlog.nxlog /var/spool/collector-sidecar/nxlog
+
+
+CentOS
+~~~~~~
+
+The same on a RedHat based system::
+
+    $ sudo service nxlog stop
+    $ sudo chkconfig --del nxlog
+    $ sudo gpasswd -a nxlog root
+    $ sudo chown -R nxlog.nxlog /var/spool/collector-sidecar/nxlog
+
+
+Windows
+~~~~~~~
+
+Install the NXLog package from the official download `page <https://nxlog.org/products/nxlog-community-edition/download>`_ and deactivate the
+system service. We just need the binaries installed on the system::
+
+    $ C:\Program Files (x86)\nxlog\nxlog -u
+
+
+.. _sidecar-configuration:
+
+Configuration
+=============
+
+On the command line you can provide a path to the configuration file with the ``-c`` switch. If no path is specified it looks on Linux systems for::
+
+    /etc/graylog/sidecar/sidecar.yml
+
+and on Windows machines under::
+
+    C:\Program Files\Graylog\sidecar\sidecar.yml
+
+Most configuration parameters come with built-in defaults. The only mandatory parameters are ``server_url`` and ``server_api_token``.
+
+.. |br| raw:: html
+
+     <br>
+
+
++-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
+| Parameter                           | Description                                                                                                         |
++=====================================+=====================================================================================================================+
+| server_url                          | URL to the Graylog API, e.g. ``http://192.168.1.1:9000/api/``                                                       |
++-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
+| server_api_token                    | The API token to use to authenticate against the Graylog server API. |br|                                           |
+|                                     | e.g ``1jq26cssvc6rj4qac4bt9oeeh0p4vt5u5kal9jocl1g9mdi4og3n``  |br|                                                  |
+|                                     | The token is not optional and needs to be configured.                                                               |
++-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
+| node_id                             | The node ID of the sidecar. This can be a path to a file or an ID string. |br|                                      |
+|                                     | Example file path: ``file:/etc/graylog/sidecar/node-id`` |br|                                                       |
+|                                     | Example ID string: ``6033137e-d56b-47fc-9762-cd699c11a5a9`` |br|                                                    |
+|                                     | ATTENTION: Every sidecar instance needs a unique ID! |br|                                                           |
+|                                     | Default: ``file:/etc/graylog/sidecar/node-id``                                                                      |
++-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
+| node_name                           | Name of the Sidecar instance, will also show up in the web interface. |br| The hostname will be used if not set.    |
++-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
+| update_interval                     | The interval in seconds the sidecar will fetch new configurations from the Graylog server |br| Default: ``10``      |
++-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
+| tls_skip_verify                     | This configures if the sidecar should skip the verification of TLS connections. Default: ``false``                  |
++-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
+| send_status                         | This controls the transmission of detailed sidecar information like collector status, |br|                          |
+|                                     | metrics and log file lists. It can be disabled to reduce load on the Graylog server if needed. |br|                 |
+|                                     | Default: ``true``                                                                                                   |
++-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
+| list_log_files                      | Send a directory listing to Graylog and display it on the host status page, |br|                                    |
+|                                     | e.g. ``/var/log``. This can also be a list of directories. Default: ``[]``                                          |
++-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
+| cache_path                          | The directory where the sidecar stores internal data. Default: ``/var/cache/graylog-sidecar``                       |
++-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
+| collector_configuration_directory   | The directory where the sidecar generates configurations for collectors. |br|                                       |
+|                                     | Default: ``/var/lib/graylog-sidecar/generated``                                                                     |
++-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
+| log_path                            | The directory where the sidecar stores its logs. Default: ``/var/log/graylog-sidecar``                              |
++-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
+| log_rotate_max_file_size            | The maximum size of the log file before it gets rotated. Default: ``10MiB``                                         |
++-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
+| log_rotate_keep_files               | The maximum number of old log files to retain.                                                                      |
++-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
+| collector_binaries_whitelist        | A list of binaries which are allowed to be executed by the Sidecar. |br|                                            |
+|                                     | An empty list disables the white list feature. |br| Default:                                                        |
+|                                     | ``/usr/bin/filebeat, /usr/bin/packetbeat, /usr/bin/metricbeat, /usr/bin/heartbeat,`` |br|                           |
+|                                     | ``/usr/bin/auditbeat, /usr/bin/journalbeat, /usr/share/filebeat/bin/filebeat,`` |br|                                |
+|                                     | ``/usr/share/packetbeat/bin/packetbeat, /usr/share/metricbeat/bin/metricbeat,`` |br|                                |
+|                                     | ``/usr/share/heartbeat/bin/heartbeat, /usr/share/auditbeat/bin/auditbeat,`` |br|                                    |
+|                                     | ``/usr/share/journalbeat/bin/journalbeat, /usr/bin/nxlog, /opt/nxlog/bin/nxlog``                                    |
+|                                     |                                                                                                                     |
++-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
+
+
+First start
+-----------
+
+Once you installed the Sidecar package and started the service for the first time,
+you can verify that it shows up in the :ref:`Sidecars Overview <sidecar_overview>` page.
+A new sidecar instance will not have any configurations assigned yet.
+Take the :ref:`sidecar_step-by-step` to create your first configuration.
+
+When the Sidecar is assigned a configuration via the Graylog web interface, it will write a configuration file into the
+``collector_configuration_directory`` directory for each collector backend.  E.g. if you assigned a Filebeat collector you will find a
+``filebeat.yml`` file in that directory. All changes have to be made in the Graylog web interface.
+Every time the Sidecar detects an update to its configuration it will
+rewrite the corresponding collector configuration file. So it doesn't make sense to manually edit those files.
+
+Every time a collector configuration file is changed the collector process is restarted. The Sidecar takes care of the collector processes and reports the status back to the web interface
+
+Sidecar Status
+--------------
+
+Each Sidecar instance is able to send status information back to Graylog. By enabling the option ``send_status`` metrics like load or the IP address of the host Sidecar is running on
+are sent. Also metrics that are relevant for a stable operation e.g. disk volumes over 75% utilization are included. Additionally with the ``list_log_files`` option a directory listing is displayed in
+the Graylog web interface. In that way an administrator can see which files are available for collecting. The list is periodically updated and files with write access are highlighted for easy identification.
+After enabling ``send_status`` or ``send_status`` + ``list_log_files`` go to the collector overview and click on one of them, a status page with the configured information will be displayed.
+
+.. _sidecar_step-by-step:
+
+Step-by-step guide
+~~~~~~~~~~~~~~~~~~
+
+We have prepared an example on how to configure the Sidecar using the Graylog web interface. The assumption is that we want to collect Apache
+logfiles and ship them with a Filebeat collector to a Beats input that is listening on Port 5044 on your Graylog Server.
+
+
+- The first step is to create a Beats input where collectors can send data to. Click on ``System / Inputs`` and start a global Beats input on the listening address 0.0.0.0 and port 5044.
+
+.. image:: /images/sidecar_sbs0.png
+
+.. _sidecar_overview:
+
+- Navigate to the Sidecars overview. In your Graylog web interface click on ``System / Sidecars``.
+
+.. image:: /images/sidecars_overview.png
+
+- Navigate to the Sidecar configurations.
+
+.. image:: /images/sidecar_sbs1.png
+
+- Next we create a new configuration: We give the configuration a name and select ``filebeat on Linux`` as collector.
+  This collector definition is shipped with Graylog, and comes with a default configuration.
+  Most of the configuration defaults should work for you. However you need to change the ``hosts:`` setting to point
+  to your Beats input. And you might want to change the ``paths:`` to point to your Apache logs.
+  When done click ``Create`` to save your configuration.
+
+.. image:: /images/sidecar_sbs2.png
+
+- Next we need to assign our newly created configuration (and therefore the Filebeat collector) to our sidecar.
+  Go to the ``Collector Administration`` page.
+
+.. image:: /images/sidecar_sbs3.png
+
+- You will see a list of sidecars and underneath them a list of collectors that could be assigned to them.
+  Please note that collectors are assigned to sidecars by means of applying a collector configuration to the sidecar.
+  Therefore, we first select the ``filebeat`` collector and then click on the ``Configure`` menu, where we
+  can select the ``filebeat-conf`` configuration we created earlier.
+
+.. image:: /images/sidecar_sbs4.png
+
+- Confirming the assignment, will directly push this configuration to your sidecar which will go and start
+  the Filebeat collector with this configuration.
+
+.. image:: /images/sidecar_sbs5.png
+
+- If everything went fine, you should see the status ``running`` on the administration page.
+
+.. image:: /images/sidecar_sbs6.png
+
+- Congratulations your collector setup is working now!
+  You can go back to the Sidecars overview and click on the ``Show messages`` button to
+  search for logs that have been collected via your sidecar.
+
+.. image:: /images/sidecar_sbs7.png
+
+.. _sidecar_secure:
+
+Secure Sidecar Communication
+============================
+
+The Communication between Sidecar and Graylog will be secured if your API :ref:`use SSL <https_setup>`.
+
+To secure the communication between the Collector and Graylog you just need to mark ``Enable TLS`` in your Beats Input. Without giving additional Information, Graylog will now create a self-signed certificate for this Input.
+Now in the Sidecar Beats Output Configuration you just mark ``Enable TLS Support`` and ``Insecure TLS connection``. After this is saved, the communication between Beats and Graylog will use TLS.
+
+
+Certificate based client authentication
+-----------------------------------------
+
+If you want to allow Graylog only to accept data from certificated clients you will need to build your own `certificate authority <https://en.wikipedia.org/wiki/Certificate_authority>`__  and provide this to the Input and the Client Output configuration.
+
+Run Sidecar as non-root user
+============================
+
+The default is that the Sidecar is started with the root user to allow access to all log files. But this is not mandatory. If you like to start it with a daemon user, proceede like the following:
+
+  - Create a daemon user e.g. ``collector``
+
+The Sidecar itself is accessing the following files and directories:
+
+  - ``collector_sidecar.yml`` - /etc/graylog/collector-sidecar/collector_sidecar.yml
+  - backend ``configuration_path`` - /etc/graylog/collector-sidecar/generated/
+  - ``collector_id`` - /etc/graylog/collector-sidecar/collector-id
+  - ``cache_path`` - /var/cache/graylog/collector-sidecar/
+  - ``log_path`` - /var/log/graylog/collector-sidecar/
+
+So to make these directories readable for the ``collector`` user, use:
+
+  - ``chown -R collector /etc/graylog``
+  - ``chown -R collector /var/cache/graylog``
+  - ``chown -R collector /etc/graylog``
+
+You can change all paths to different places in the filesystem. If you prefer to store all Sidecar data in the home directory of the ``collector`` user, just change the paths accordingly.
+
+Now ``systemd`` needs to know that the Sidecar should be started with a non-root user. Open ``/etc/systemd/system/collector-sidecar.service`` with an editor and navigate to the ``[Service]`` section, add::
+
+  User=collector
+  Group=collector
+
+To make use of these settings reload systemd::
+
+  $ sudo systemctl daemon-reload
+  $ sudo systemctl restart collector-sidecar
+
+Check the log files in ``/var/log/graylog/collector-sidecar`` for any errors. Understand that not only the Sidecar but also all backends, like ``filebeat``, will be started as ``collector`` user after these changes.
+So all log files that the backend should observe also need to be readable by the ``collector`` user. Depending on the Linux distribution there is usually an adminstrator group which has access to most log files.
+By adding the ``collector`` user to that group you can grant access fairly easy. For example on Debian/Ubuntu systems this group is called ``adm`` (see `System Groups in Debian Wiki <https://wiki.debian.org/SystemGroups>`_ or `Security/Privileges - Monitor system logs in Ubuntu wiki <https://wiki.ubuntu.com/Security/Privileges#Monitor_system_logs>`_).
+
+
+Sidecar Glossary
+================
+
+To understand the different parts of the Graylog Sidecar they are explained in the following section.
+
+Configuration
+-------------
+
+A collector configuration is an abstract representation of a collector configuration file. It contains one or many Outputs, Inputs and Snippets.
+Based on the selected backend the Sidecar will then render a working configuration file for the particular collector.
+To match a configuration for a Sidecar instance both sides need to be started with the same tag. If the tags of a Sidecar instance match multiple configurations
+all Out-,Inputs and Snippets are merged together to a single configuration.
+
+Tags
+----
+
+Tags are used to match Sidecar instances with configurations on the Graylog server side. E.g. a user can create a configuration for Apache access log files.
+The configuration gets the tag ``apache``. On all web servers running the Apache daemon the Sidecar can also be started with the ``apache`` tag to fetch this configuration
+and to collect web access log files. There can be multiple tags on both sides the Sidecar and the Graylog server side. But to keep the overview the administrator should
+use at least on one side discrete tags that the assignment is always 1:1 or 1:n.
+
+Outputs
+-------
+
+Outputs are used to send data from a collector back to the Graylog server. E.g. NXLog is able to send directly messages in the GELF format. So the natural fit is to create a
+GELF output in a NXLog configuration. Instructing NXlog to send GELF messages is of course just half the way, we also need a receiver for that. So an administrator
+needs to create a proper receiver under  ``System / Inputs``.
+
+Inputs
+------
+
+Inputs are the way how collectors ingest data. An input can be a log file that the collector should continuous read or a connection to the Windows event system that emits log events.
+An input is connected to an output, otherwise there would be no way of sending the data to the next hop. So first create an output and then associate one or many inputs with it.
+
+Snippets
+--------
+
+Snippets are simply plain text configuration fragments. Sometimes it's not possible to represent the needed configuration through the provided system. E.g. a user would
+like to load a special collector module. She could put the directive into a snippet which will be added to the final collector configuration without any modification.
+It's also conceivable to put a full configuration file into a snippet and skip all of the input and output mechanism.
+Before the snippet is actually rendered into the configuration file the Sidecar is sending it through a template engine. It's using Go's own text template `engine <https://golang.org/pkg/text/template/>`_
+for that. A usage of that can be seen in the ``nxlog-default`` snippet. It detects which operating the Sidecar is running on and depending on the result, paths for some collector settings
+change.
+
+Actions
+-------
+
+Resources like inputs, output or snippets have all the same actions: create, edit, clone
+Usually there are only little differences between certain configurations so you can create a resource once, clone it and modify only the fields you need. In this way
+it's possible to manage a fairly large amount of configurations.
+
+.. image:: /images/sidecar_configuration.png
+
+Debug
+=====
+
+The Sidecar is writing log files to the directory configured in ``log_path``. One file for each backend, there you can check for general issues like
+file permissions or log transmission problems. The Sidecar itself is writing to ``collector_sidecar.log`` problems like failed connection to the Graylog API can
+be found there.
+
+You can also start the Sidecar in foreground and monitor the output of the process::
+
+    $ graylog-collector-sidecar -debug -c /etc/graylog/collector-sidecar/collector_sidecar.yml
+
+Uninstall
+=============
+XXX TODO
+To perform an uninstall on Windows::
+
+    $ C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe -service stop
+    $ C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe -service uninstall
+
+
+Known Problems
+==============
+
+Currently we know of two problems with NXLog:
+
+  - Since version 2.9.17 timestamps are transmitted `without millisecond precision <https://nxlog.co/question/1855/gelf-timestamp-field-missing-millisecond-precision>`_
+  - On Windows machines NXlog is not able to store its collector state so features like file tailing don't work correctly in combination with Sidecar. Use Sidecar version 0.1.0-alpha.1 or newer.
+
+Known issue if you use a loadbalancer or firewall in front of Graylog's API:
+
+  - The Sidecar is using a persistent connection for API requests. Therefore it logs ``408 Request Time-out`` if the loadbalancer session or http timeout is lower than the configured ``update_interval``.
