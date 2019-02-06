@@ -324,6 +324,27 @@ You can add as many of these links as you wish in your ``docker-compose.yml`` fi
 
   $ docker-compose restart 
 
+
+Kubernetes automatic master selection
+=====================================
+
+Running Graylog in Kubernetes opens the challenge to set the ``is_master=true`` setting only for one node in the cluster. The problem can be solved by calculating the name of the pod if Graylog is running in a stafeful set with the following environment variable::
+
+      env:
+      - name: POD_NAME
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.name
+
+
+For a stateful set, the name of the first pod in a cluster always ends with ``-0``. See the `Documentation about stateful set <https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#pod-identity>`__ . The master selection mechanism in docker-entrypoint.sh file does the following:
+
+
+* Examine if Graylog is running inside Kubernetes
+* Verify that the pod name ends in ``-0``
+* Set ``is_master=true`` for this container
+
+
 Troubleshooting
 ===============
 
