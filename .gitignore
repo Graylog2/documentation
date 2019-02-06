@@ -1,4 +1,3 @@
-_static
 _build
 
 .DS_Store
@@ -20,3 +19,6 @@ pip-selfcheck.json
 # Windows specific files
 Scripts
 tcl
+
+# vim bak files
+*.swp
