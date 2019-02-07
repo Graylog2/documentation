@@ -18,3 +18,4 @@ can verify that the scheduled reporting deliveries are working as expected.
    :titlesonly:
 
    reporting/setup
+   reporting/usage
