@@ -344,37 +344,38 @@ Run Sidecar as non-root user
 
 The default is that the Sidecar is started with the root user to allow access to all log files. But this is not mandatory. If you like to start it with a daemon user, proceede like the following:
 
-  - Create a daemon user e.g. ``collector``
+  - Create a daemon user e.g. ``sidecar``
 
 The Sidecar itself is accessing the following files and directories:
 
-  - ``collector_sidecar.yml`` - /etc/graylog/collector-sidecar/collector_sidecar.yml
-  - backend ``configuration_path`` - /etc/graylog/collector-sidecar/generated/
-  - ``collector_id`` - /etc/graylog/collector-sidecar/collector-id
-  - ``cache_path`` - /var/cache/graylog/collector-sidecar/
-  - ``log_path`` - /var/log/graylog/collector-sidecar/
+  - ``sidecar.yml`` - /etc/graylog/sidecar/sidecar.yml
+  - ``collector_configuration_directory`` - /var/lib/graylog-sidecar/generated/
+  - ``node_id`` - /etc/graylog/sidecar/node-id
+  - ``cache_path`` - /var/cache/graylog-sidecar/
+  - ``log_path`` - /var/log/graylog-sidecar/
 
-So to make these directories readable for the ``collector`` user, use:
+So to make these directories readable for the ``sidecar`` user, use:
 
-  - ``chown -R collector /etc/graylog``
-  - ``chown -R collector /var/cache/graylog``
-  - ``chown -R collector /etc/graylog``
+  - ``chown -R sidecar /etc/graylog/sidecar``
+  - ``chown -R sidecar /var/cache/graylog-sidecar``
+  - ``chown -R sidecar /var/lib/graylog-sidecar``
+  - ``chown -R sidecar /var/log/graylog-sidecar``
 
-You can change all paths to different places in the filesystem. If you prefer to store all Sidecar data in the home directory of the ``collector`` user, just change the paths accordingly.
+You can change all paths to different places in the filesystem. If you prefer to store all Sidecar data in the home directory of the ``sidecar`` user, just change the paths accordingly.
 
 Now ``systemd`` needs to know that the Sidecar should be started with a non-root user. Open ``/etc/systemd/system/collector-sidecar.service`` with an editor and navigate to the ``[Service]`` section, add::
 
-  User=collector
-  Group=collector
+  User=sidecar
+  Group=sidecar
 
 To make use of these settings reload systemd::
 
   $ sudo systemctl daemon-reload
-  $ sudo systemctl restart collector-sidecar
+  $ sudo systemctl restart graylog-sidecar
 
-Check the log files in ``/var/log/graylog/collector-sidecar`` for any errors. Understand that not only the Sidecar but also all backends, like ``filebeat``, will be started as ``collector`` user after these changes.
-So all log files that the backend should observe also need to be readable by the ``collector`` user. Depending on the Linux distribution there is usually an adminstrator group which has access to most log files.
-By adding the ``collector`` user to that group you can grant access fairly easy. For example on Debian/Ubuntu systems this group is called ``adm`` (see `System Groups in Debian Wiki <https://wiki.debian.org/SystemGroups>`_ or `Security/Privileges - Monitor system logs in Ubuntu wiki <https://wiki.ubuntu.com/Security/Privileges#Monitor_system_logs>`_).
+Check the log files in ``/var/log/graylog-sidecar`` for any errors. Understand that not only the Sidecar but also all backends, like ``filebeat``, will be started as ``sidecar`` user after these changes.
+So all log files that the backend should observe also need to be readable by the ``sidecar`` user. Depending on the Linux distribution there is usually an adminstrator group which has access to most log files.
+By adding the ``sidecar`` user to that group you can grant access fairly easy. For example on Debian/Ubuntu systems this group is called ``adm`` (see `System Groups in Debian Wiki <https://wiki.debian.org/SystemGroups>`_ or `Security/Privileges - Monitor system logs in Ubuntu wiki <https://wiki.ubuntu.com/Security/Privileges#Monitor_system_logs>`_).
 
 
 Sidecar Glossary
@@ -385,25 +386,10 @@ To understand the different parts of the Graylog Sidecar they are explained in t
 Configuration
 -------------
 
-A collector configuration is an abstract representation of a collector configuration file. It contains one or many Outputs, Inputs and Snippets.
-Based on the selected backend the Sidecar will then render a working configuration file for the particular collector.
-To match a configuration for a Sidecar instance both sides need to be started with the same tag. If the tags of a Sidecar instance match multiple configurations
-all Out-,Inputs and Snippets are merged together to a single configuration.
-
-Tags
-----
-
-Tags are used to match Sidecar instances with configurations on the Graylog server side. E.g. a user can create a configuration for Apache access log files.
-The configuration gets the tag ``apache``. On all web servers running the Apache daemon the Sidecar can also be started with the ``apache`` tag to fetch this configuration
-and to collect web access log files. There can be multiple tags on both sides the Sidecar and the Graylog server side. But to keep the overview the administrator should
-use at least on one side discrete tags that the assignment is always 1:1 or 1:n.
-
-Outputs
--------
-
-Outputs are used to send data from a collector back to the Graylog server. E.g. NXLog is able to send directly messages in the GELF format. So the natural fit is to create a
-GELF output in a NXLog configuration. Instructing NXlog to send GELF messages is of course just half the way, we also need a receiver for that. So an administrator
-needs to create a proper receiver under  ``System / Inputs``.
+A configuration is the representation of a log collector configuration file in the Graylog web interface.
+A configuration can be assigned to Sidecars, which also assigns the corresponding collector.
+You can have multiple configurations for a single log collector. However, you can not
+assign the same collector twice to a Sidecar.
 
 Inputs
 ------
@@ -411,43 +397,24 @@ Inputs
 Inputs are the way how collectors ingest data. An input can be a log file that the collector should continuous read or a connection to the Windows event system that emits log events.
 An input is connected to an output, otherwise there would be no way of sending the data to the next hop. So first create an output and then associate one or many inputs with it.
 
-Snippets
---------
-
-Snippets are simply plain text configuration fragments. Sometimes it's not possible to represent the needed configuration through the provided system. E.g. a user would
-like to load a special collector module. She could put the directive into a snippet which will be added to the final collector configuration without any modification.
-It's also conceivable to put a full configuration file into a snippet and skip all of the input and output mechanism.
-Before the snippet is actually rendered into the configuration file the Sidecar is sending it through a template engine. It's using Go's own text template `engine <https://golang.org/pkg/text/template/>`_
-for that. A usage of that can be seen in the ``nxlog-default`` snippet. It detects which operating the Sidecar is running on and depending on the result, paths for some collector settings
-change.
-
-Actions
--------
-
-Resources like inputs, output or snippets have all the same actions: create, edit, clone
-Usually there are only little differences between certain configurations so you can create a resource once, clone it and modify only the fields you need. In this way
-it's possible to manage a fairly large amount of configurations.
-
-.. image:: /images/sidecar_configuration.png
 
 Debug
 =====
 
 The Sidecar is writing log files to the directory configured in ``log_path``. One file for each backend, there you can check for general issues like
-file permissions or log transmission problems. The Sidecar itself is writing to ``collector_sidecar.log`` problems like failed connection to the Graylog API can
+file permissions or log transmission problems. The Sidecar itself is writing to ``sidecar.log``. Problems like failed connection to the Graylog API can
 be found there.
 
 You can also start the Sidecar in foreground and monitor the output of the process::
 
-    $ graylog-collector-sidecar -debug -c /etc/graylog/collector-sidecar/collector_sidecar.yml
+    $ graylog-sidecar -debug
 
 Uninstall
 =============
-XXX TODO
-To perform an uninstall on Windows::
+On Linux just uninstall the package, to perform an uninstall on Windows run::
 
-    $ C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe -service stop
-    $ C:\Program Files\graylog\collector-sidecar\graylog-collector-sidecar.exe -service uninstall
+    & "C:\Program Files\Graylog\graylog-sidecar.exe" -service stop
+    & "C:\Program Files\Graylog\graylog-sidecar.exe" -service uninstall
 
 
 Known Problems
