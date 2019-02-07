@@ -360,6 +360,46 @@ Let's assume you want your sidecar to run `rsyslogd(8)` for you.
 - Next up you can use your newly created collector by creating a configuration
   for it and assign it to a Sidecar. Please follow the :ref:`sidecar_step-by-step` accordingly.
 
+Using Configuration Variables
+=============================
+
+Configuration variables can contain arbitrary strings like
+the IP address of your Graylog server or the port of an input.
+The variables can then be used in multiple collector configurations,
+which avoids duplication and simplifies management.
+
+To create a configuration variable go any ``Collector Configuration`` page:
+
+.. image:: /images/sidecar_sbs2.png
+  :scale: 100
+
+On the right you'll find a box ``Collector Configuration Reference`` which
+contains `Runtime Variables` and `Variables`.
+Click on ``Variables`` and then ``Create Variable`` to receive the following
+modal:
+
+.. image:: /images/sidecar_conf_variable.png
+  :scale: 100
+
+In this example we replace the hard coded IP and Port from our
+Beats input with a new variable named ``${user.BeatsInput}``:
+
+.. image:: /images/sidecar_conf_variable2.png
+  :scale: 100
+
+We can now use this variable in all our configurations.
+If we ever need to change the IP/port of our input,
+we just change the variable.
+
+Runtime Variables
+-----------------
+Runtime variables contain runtime informations from each Sidecar that
+is requesting this configuration.
+An important example is the ``${sidecar.nodeId}`` variable.
+The collector configuration should contain an instruction to fill
+that variable in an extra field `gl2_source_collector`.
+This allows Graylog to relate messages to the Sidecar that produced
+them. (This is what makes the ``Show messages`` button on the Sidecars overview page work)
 
 .. _sidecar_secure:
 
