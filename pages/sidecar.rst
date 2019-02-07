@@ -113,25 +113,28 @@ Optionally edit the configuration (see :ref:`Configuration <sidecar-configuratio
     & "C:\Program Files\Graylog\graylog-sidecar.exe" -service install
     & "C:\Program Files\Graylog\graylog-sidecar.exe" -service start
 
-Beats backend
--------------
+Install collectors
+------------------
 
-Linux
-~~~~~
-Install Filebeat or another beats package following the instructions on the official download `page <https://www.elastic.co/downloads/beats/filebeat>`_.
+Next up you can decide which collectors you want to use with your Sidecar and install
+them as well. We only cover the installation of the most common ones here, you are free to use
+other collectors as well. (XXX ref creating new backend)
 
-Windows
-~~~~~~~
 
+Beats on Linux
+~~~~~~~~~~~~~~
+Install Filebeat or another Beats package by following the instructions on the official download `page <https://www.elastic.co/downloads/beats/filebeat>`_.
+
+Beats on Windows
+~~~~~~~~~~~~~~~~
 The Windows Sidecar package already includes Filebeat and Winlogbeat.
+For other Beats packages follow the instructions on the official download `page <https://www.elastic.co/downloads/beats/filebeat>`_.
 
-NXLog backend
--------------
+NXLog on Ubuntu
+~~~~~~~~~~~~~~~
 
-Ubuntu
-~~~~~~
-
-Install the NXLog package from the official download `page <https://nxlog.org/products/nxlog-community-edition/download>`_. Because the Sidecar takes control of stopping and starting NXlog it's
+Install the NXLog package from the official download `page <https://nxlog.org/products/nxlog-community-edition/download>`_.
+Because the Sidecar takes control of stopping and starting NXlog it is
 necessary to stop all running instances of NXlog and unconfigure the default system service::
 
     $ sudo /etc/init.d/nxlog stop
@@ -140,8 +143,8 @@ necessary to stop all running instances of NXlog and unconfigure the default sys
     $ sudo chown -R nxlog.nxlog /var/spool/collector-sidecar/nxlog
 
 
-CentOS
-~~~~~~
+NXLog on CentOS
+~~~~~~~~~~~~~~~
 
 The same on a RedHat based system::
 
@@ -151,8 +154,8 @@ The same on a RedHat based system::
     $ sudo chown -R nxlog.nxlog /var/spool/collector-sidecar/nxlog
 
 
-Windows
-~~~~~~~
+NXlog on Windows
+~~~~~~~~~~~~~~~~
 
 Install the NXLog package from the official download `page <https://nxlog.org/products/nxlog-community-edition/download>`_ and deactivate the
 system service. We just need the binaries installed on the system::
@@ -162,8 +165,8 @@ system service. We just need the binaries installed on the system::
 
 .. _sidecar-configuration:
 
-Configuration
-=============
+Sidecar Configuration
+=====================
 
 On the command line you can provide a path to the configuration file with the ``-c`` switch.
 The default configuration path on Linux systems is ``/etc/graylog/sidecar/sidecar.yml`` on Linux
@@ -173,6 +176,9 @@ and ``C:\Program Files\Graylog\sidecar\sidecar.yml`` on Windows.
 Most configuration parameters come with built-in defaults.
 The only parameters that need adjustment are ``server_url`` and ``server_api_token``.
 You can get your API token by following the link on the :ref:`Sidecars Overview <sidecar_overview>` page.
+
+sidecar.yml Reference
+---------------------
 
 .. |br| raw:: html
 
