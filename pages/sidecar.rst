@@ -42,11 +42,11 @@ Please follow the version matrix to pick the right package:
 +-----------------+----------------------------------+
 | Sidecar version | Graylog server version           |
 +=================+==================================+
-| 0.0.9           | 2.1.x                            |
+| 1.0.x           | 3.0.x                            |
 +-----------------+----------------------------------+
 | 0.1.x           | 2.2.x,2.3.x,2.4.x,2.5.x,3.0.x    |
 +-----------------+----------------------------------+
-| 1.0.x           | 3.0.x                            |
+| 0.0.9           | 2.1.x                            |
 +-----------------+----------------------------------+
 
 All following commands should be executed on the **remote machine** where you want to collect log data from.
@@ -165,15 +165,14 @@ system service. We just need the binaries installed on the system::
 Configuration
 =============
 
-On the command line you can provide a path to the configuration file with the ``-c`` switch. If no path is specified it looks on Linux systems for::
+On the command line you can provide a path to the configuration file with the ``-c`` switch.
+The default configuration path on Linux systems is ``/etc/graylog/sidecar/sidecar.yml`` on Linux
+and ``C:\Program Files\Graylog\sidecar\sidecar.yml`` on Windows.
 
-    /etc/graylog/sidecar/sidecar.yml
 
-and on Windows machines under::
-
-    C:\Program Files\Graylog\sidecar\sidecar.yml
-
-Most configuration parameters come with built-in defaults. The only mandatory parameters are ``server_url`` and ``server_api_token``.
+Most configuration parameters come with built-in defaults.
+The only parameters that need adjustment are ``server_url`` and ``server_api_token``.
+You can get your API token by following the link on the :ref:`Sidecars Overview <sidecar_overview>` page.
 
 .. |br| raw:: html
 
@@ -238,6 +237,9 @@ you can verify that it shows up in the :ref:`Sidecars Overview <sidecar_overview
 A new sidecar instance will not have any configurations assigned yet.
 Take the :ref:`sidecar_step-by-step` to create your first configuration.
 
+Mode of Operation
+-----------------
+
 When the Sidecar is assigned a configuration via the Graylog web interface, it will write a configuration file into the
 ``collector_configuration_directory`` directory for each collector backend.  E.g. if you assigned a Filebeat collector you will find a
 ``filebeat.yml`` file in that directory. All changes have to be made in the Graylog web interface.
@@ -257,7 +259,7 @@ After enabling ``send_status`` or ``send_status`` + ``list_log_files`` go to the
 .. _sidecar_step-by-step:
 
 Step-by-step guide
-~~~~~~~~~~~~~~~~~~
+==================
 
 We have prepared an example on how to configure the Sidecar using the Graylog web interface. The assumption is that we want to collect Apache
 logfiles and ship them with a Filebeat collector to a Beats input that is listening on Port 5044 on your Graylog Server.
