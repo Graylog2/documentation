@@ -87,6 +87,8 @@ the background.
 To open the Report history page for a report, click on the "More actions" button
 for that report, and select "Report history".
 
+.. image:: /images/reporting-history-page.png
+
 Generating report on demand
 ===========================
 
