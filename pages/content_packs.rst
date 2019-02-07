@@ -91,9 +91,11 @@ which will ask for a **Install Comment** and the values of the parameters.
 It also shows the list of configurations that will be installed on the
 system. Click on **Install** to complete the installation.
 
-.. note:: When installing a configuration of a type where the title must be
-          unique (e.g Lookup Tables) the configuration will be only installed
-          once, even when the configuration differs.
+.. note:: Some entities need a unique title or name (e.g Lookup Table).
+          When installing such an entity and the title is already
+          present on the system, then Graylog will use the installed
+          entity instead of installing a new one. Even when the
+          new configuration differs from the already installed one. 
 
 Uninstalling a content pack
 ===========================
@@ -108,8 +110,3 @@ On the left, select the version of the content pack.
 Below that is a list of installations of that content pack.
 Click **Uninstall** next to the desired installation.
 A list of entities about to be removed will be displayed.
-
-.. note:: When uninstalling a content pack Graylog keeps track of the remaining
-          installations of configurations with unique names.
-          Only when the last installation of that configuration will be
-          removed the configuration itself will be removed as well.
