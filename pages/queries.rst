@@ -355,6 +355,15 @@ Graylog supports search result highlighting since v0.20.2:
 
 .. image:: /images/search_result_highlighting.png
 
+Search result truncation
+========================
+
+By default the search result table only shows the first 2048 of each
+field. While this ensure the front-end is always responsive and fast,
+it can sometimes bury important information. Use the "Truncate
+Results" input at the bottom of the search sidebar to disable this
+behaviour.
+
 Enabling/Disabling search result highlighting
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
