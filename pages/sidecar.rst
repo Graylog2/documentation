@@ -268,16 +268,19 @@ logfiles and ship them with a Filebeat collector to a Beats input that is listen
 - The first step is to create a Beats input where collectors can send data to. Click on ``System / Inputs`` and start a global Beats input on the listening address 0.0.0.0 and port 5044.
 
 .. image:: /images/sidecar_sbs0.png
+  :scale: 100
 
 .. _sidecar_overview:
 
 - Navigate to the Sidecars overview. In your Graylog web interface click on ``System / Sidecars``.
 
 .. image:: /images/sidecars_overview.png
+  :scale: 100
 
 - Navigate to the Sidecar configurations.
 
 .. image:: /images/sidecar_sbs1.png
+  :scale: 100
 
 - Next we create a new configuration: We give the configuration a name and select ``filebeat on Linux`` as collector.
   This collector definition is shipped with Graylog, and comes with a default configuration.
@@ -286,11 +289,13 @@ logfiles and ship them with a Filebeat collector to a Beats input that is listen
   When done click ``Create`` to save your configuration.
 
 .. image:: /images/sidecar_sbs2.png
+  :scale: 100
 
 - Next we need to assign our newly created configuration (and therefore the Filebeat collector) to our sidecar.
   Go to the ``Collector Administration`` page.
 
 .. image:: /images/sidecar_sbs3.png
+  :scale: 100
 
 - You will see a list of sidecars and underneath them a list of collectors that could be assigned to them.
   Please note that collectors are assigned to sidecars by means of applying a collector configuration to the sidecar.
@@ -298,21 +303,25 @@ logfiles and ship them with a Filebeat collector to a Beats input that is listen
   can select the ``filebeat-conf`` configuration we created earlier.
 
 .. image:: /images/sidecar_sbs4.png
+  :scale: 100
 
 - Confirming the assignment, will directly push this configuration to your sidecar which will go and start
   the Filebeat collector with this configuration.
 
 .. image:: /images/sidecar_sbs5.png
+  :scale: 100
 
 - If everything went fine, you should see the status ``running`` on the administration page.
 
 .. image:: /images/sidecar_sbs6.png
+  :scale: 100
 
 - Congratulations your collector setup is working now!
   You can go back to the Sidecars overview and click on the ``Show messages`` button to
   search for logs that have been collected via your sidecar.
 
 .. image:: /images/sidecar_sbs7.png
+  :scale: 100
 
 .. _sidecar_secure:
 
