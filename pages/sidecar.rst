@@ -323,6 +323,44 @@ logfiles and ship them with a Filebeat collector to a Beats input that is listen
 .. image:: /images/sidecar_sbs7.png
   :scale: 100
 
+Creating a new Log Collector
+============================
+Graylog comes with a few predefined log collectors which can be easily extended
+and changed to your needs.
+Let's assume you want your sidecar to run `rsyslogd(8)` for you.
+
+- Navigate to the Sidecars overview. In your Graylog web interface click on ``System / Sidecars``.
+
+.. image:: /images/sidecars_overview.png
+  :scale: 100
+
+- Navigate to the Sidecar ``Configuration`` page.
+
+.. image:: /images/sidecar_sbs1.png
+  :scale: 100
+
+- After we click on ``Create Log Collector``, we are presented with the following page,
+  where we have to fill out some fields for our new collector.
+  We give the collector a unique name and select ``Linux`` and ``Foreground Execution``.
+  Given that you installed rsyslogd(8) under ``/usr/sbin/rsyslogd`` we configure the
+  executable path accordingly.
+  If you are using ``Foreground Execution`` make sure that the collector you are running
+  does not daemonize itself. Otherwise the sidecar has no way of controlling the collector
+  once it has forked off into the background.
+  For rsyslogd we therefore provide ``-n`` as `Execute Parameter`.
+  If your collector supports configuration validation, it is advised to use it.
+  This acts as a pre-check, so that sidecar won't restart a collector with
+  a broken configuration. For rsyslogd the option to do a config check is ``-N 1``.
+  Optionally you can provide a `Default Template` which will be proposed
+  once you create a configuration for this collector.
+
+.. image:: /images/sidecar_new_collector.png
+  :scale: 100
+
+- Next up you can use your newly created collector by creating a configuration
+  for it and assign it to a Sidecar. Please follow the :ref:`sidecar_step-by-step` accordingly.
+
+
 .. _sidecar_secure:
 
 Secure Sidecar Communication
