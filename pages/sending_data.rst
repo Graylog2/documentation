@@ -112,52 +112,6 @@ Microsoft Windows
 Sending syslog data from Windows is
 `described on the Graylog Marketplace <https://marketplace.graylog.org/addons/0bf65c6f-6fe8-4420-9c30-249706c9e55c>`__.
 
-Heroku
-======
-
-Heroku allows you to forward the logs of your application to a custom syslog server by creating a so called
-`Syslog drain <https://devcenter.heroku.com/articles/logging#syslog-drains>`__. The drain sends all logs to the configured
-server(s) via TCP. Following example shows you how to configure Graylog to receive the Heroku logs and extract the
-different fields into a structured log message.
-
-Configuring Graylog to receive Heroku log messages
---------------------------------------------------
-The `Graylog Marketplace <http://marketplace.graylog.org>`__ contains a
-`content pack for Heroku logs <https://marketplace.graylog.org/addons/e28c42a5-eba1-4302-a7b7-cde6485ab341>`__, including extractors to parse
-the Heroku log format. You can download and use that :ref:`content pack <content_packs>` to configure Graylog to be able to receive Heroku logs.
-
-Go to *System* -> *Content packs*, and click on *Import content pack*. Select the content pack downloaded from the Graylog Marketplace,
-and click *Upload*
-
-.. image:: /images/heroku_1.png
-
-On the same page, select *Heroku* on the *SaaS* category on the left column, and click on *Apply*.
-
-.. image:: /images/heroku_2.png
-
-That's it! You can verify that there is a new input for Heroku, containing a set of extractors to parse your log messages. Make sure your
-firewall setup allows incoming connections on the inputs port!
-
-.. image:: /images/heroku_3.png
-
-Configuring Heroku to send data to your Graylog setup
------------------------------------------------------
-
-Heroku has a detailed `documentation <https://devcenter.heroku.com/articles/logging#syslog-drains>`__ regarding the Syslog drains feature.
-The following example shows everything that is needed to setup the drain for you application::
-
-  $ cd path/to/your/heroku/app
-  $ heroku drains
-  No drains for this app
-  $ heroku drains:add syslog://graylog.example.com:5556
-  Successfully added drain syslog://graylog.example.com:5556
-  $ heroku drains
-  syslog://graylog.example.com:5556 (d.8cf52d32-7d79-4653-baad-8cb72bb23ee1)
-
-The `Heroku CLI tool <https://devcenter.heroku.com/articles/heroku-command>`__ needs to be installed for this to work.
-
-You Heroku application logs should now show up in the search results of your Graylog instance.
-
 Ruby on Rails
 =============
 

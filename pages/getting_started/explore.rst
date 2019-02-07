@@ -20,7 +20,7 @@ Searches
 
 The Graylog Search page is the interface used to search logs directly. Graylog uses a simplified syntax, very similar to Lucene. Relative or absolute time ranges are configurable from drop down menus. Searches may be saved or visualized as dashboard widgets that may be added directly to dashboards from within the search screen. 
 
-Users may configure their own views and may choose to see either summary or complete data from event messages. Saved Searches may be imported and exported via content packs and search results may be exported to file. 
+Users may configure their own views and may choose to see either summary or complete data from event messages. 
 
 For additional detail, please see :ref:`queries`.
 
@@ -89,7 +89,7 @@ The Authentication page is used to configure Graylog's authentication providers 
 Content Packs
 """""""""""""
 
-Content packs accelerate the set-up process for a specific data source. A content pack can include inputs/extractors, streams, dashboards, alerts, saved searches and pipeline processors. 
+Content packs accelerate the set-up process for a specific data source. A content pack can include inputs/extractors, streams, dashboards, alerts and pipeline processors. 
 
 Any program element created within Graylog may be exported as Content Packs for use on other systems. These may be kept private by the author, for use in quick deployment of new nodes internally, or may be shared with the community via the Graylog Marketplace. For example, users may create custom Inputs, Streams, Dashboards, and Alerts to support a security use case. These elements may be exported in a content pack and then imported on a newly  installed Graylog instance to save configuration time and effort. 
 
