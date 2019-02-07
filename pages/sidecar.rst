@@ -21,15 +21,6 @@ Periodically, the Sidecar daemon will fetch all relevant configurations for the 
 On its first run, or when a configuration change has been detected, Sidecar will *generate* (render) relevant backend configuration files. Then it will start, or restart, those reconfigured log collectors.
 
 
-Backends
-========
-
-Currently we are shipping default collector configurations for Filebeat, Winlogbeat and NXLog.
-But since you're able to define your own collector backends, there is nothing stopping you from
-running sysmon, auditd or packetbeat.
-On the server side you can share inputs with multiple collectors. E.g. All Filebeat and Winlogbeat instances
-can send logs into a single Graylog-Beats input.
-
 Installation
 ============
 
@@ -116,9 +107,12 @@ Optionally edit the configuration (see :ref:`Configuration <sidecar-configuratio
 Install collectors
 ------------------
 
-Next up you can decide which collectors you want to use with your Sidecar and install
-them as well. We only cover the installation of the most common ones here, you are free to use
-other collectors as well. (XXX ref creating new backend)
+Next up, you can decide which collectors you want to use with your Sidecar and install
+them as well. We only cover the installation of the most common ones here, but you are free to use
+other collectors as well.
+Graylog contains default collector configurations for Filebeat, Winlogbeat and NXLog.
+But since you're able to define your own collector backends, there is nothing stopping you from
+running e.g. sysmon, auditd or packetbeat.
 
 
 Beats on Linux
@@ -283,15 +277,15 @@ logfiles and ship them with a Filebeat collector to a Beats input that is listen
 .. image:: /images/sidecars_overview.png
   :scale: 100
 
-- Navigate to the Sidecar configurations.
+- Navigate to the Sidecar ``Configuration`` page.
 
 .. image:: /images/sidecar_sbs1.png
   :scale: 100
 
 - Next we create a new configuration: We give the configuration a name and select ``filebeat on Linux`` as collector.
-  This collector definition is shipped with Graylog, and comes with a default configuration.
-  Most of the configuration defaults should work for you. However you need to change the ``hosts:`` setting to point
-  to your Beats input. And you might want to change the ``paths:`` to point to your Apache logs.
+  (This collector definition is shipped with Graylog, and comes with a default configuration template).
+  Most of the configuration defaults should work for you. However you need to change the ``hosts:`` setting and point it
+  to your Beats input. You also might want to change the ``paths:`` to the location of your Apache logs.
   When done click ``Create`` to save your configuration.
 
 .. image:: /images/sidecar_sbs2.png
