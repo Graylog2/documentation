@@ -90,7 +90,7 @@ Contributing content packs
 
 Graylog content packs can be shared on the Marketplace by following these steps:
 
-#. Export a Graylog content pack from the Graylog Web Interface and save the
+#. Download a Graylog content pack from the Graylog Web Interface and save the
    generated JSON in a file called ``content_pack.json``.
 #. Create a GitHub repository for your content pack
 #. Include a :ref:`README <mpreadme>` and a :ref:`LICENSE <mplicense>` file in
