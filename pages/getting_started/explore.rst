@@ -116,12 +116,12 @@ Values, like retention and rotation strategy, are set on a per index basis, so d
 
 For more details, please see :ref:`index_model`.
 
-Collectors/Sidecars
-"""""""""""""""""""
+Sidecars
+""""""""
 
-Graylog created the Sidecar agent to manage fleets of log shippers like Beats or NXLog. These log shippers are used to collect OS logs from Windows servers, but also for OS logs from \*nix systems. Log shippers are often the simplest way to read logs written locally to a flat file and send them to a centralized log management solution. Graylog supports management of any log shipper as a back-end, but includes Beats and NXLog binaries in the agent package.
+Graylog created the Sidecar agent to manage fleets of log shippers like Beats or NXLog. These log shippers are used to collect OS logs from Linux and Windows servers. Log shippers are often the simplest way to read logs written locally to a flat file and send them to a centralized log management solution. Graylog supports management of any log shipper as a backend.
 
-For more details, please see :ref:`graylog-collector-sidecar`.
+For more details, please see :ref:`graylog-sidecar`.
 
 
 

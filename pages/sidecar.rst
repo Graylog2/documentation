@@ -79,7 +79,7 @@ activate the Sidecar as a system service::
     [Ubuntu 14.04 with Upstart]
     $ sudo start graylog-sidecar
 
-    [Ubuntu 16.04 with Systemd]
+    [Ubuntu 16.04 and later with Systemd]
     $ sudo systemctl start graylog-sidecar
 
 CentOS
@@ -187,7 +187,7 @@ Most configuration parameters come with built-in defaults. The only mandatory pa
 +-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
 | server_api_token                    | The API token to use to authenticate against the Graylog server API. |br|                                           |
 |                                     | e.g ``1jq26cssvc6rj4qac4bt9oeeh0p4vt5u5kal9jocl1g9mdi4og3n``  |br|                                                  |
-|                                     | The token is not optional and needs to be configured.                                                               |
+|                                     | The token is mandatory and needs to be configured.                                                                  |
 +-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
 | node_id                             | The node ID of the sidecar. This can be a path to a file or an ID string. |br|                                      |
 |                                     | Example file path: ``file:/etc/graylog/sidecar/node-id`` |br|                                                       |
