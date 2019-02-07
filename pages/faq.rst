@@ -123,7 +123,7 @@ Do we have a user audit log for compliance?
 Does Graylog have reporting functionality?
 ------------------------------------------
 
-Since Graylog 3.0, `Graylog Enterprise <https://www.graylog.org/enterprise>`_ includes a reporting capabilities. Take a look at the :ref:`documentation <reporting_toc>` for more details.
+Since Graylog 3.0, `Graylog Enterprise <https://www.graylog.org/enterprise>`_ includes reporting capabilities. Take a look at the :ref:`documentation <reporting_toc>` for more details.
 
 Can I filter inbound messages before they are processed by the Graylog server?
 ------------------------------------------------------------------------------
