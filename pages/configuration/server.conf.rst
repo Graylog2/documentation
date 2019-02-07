@@ -417,13 +417,6 @@ Others
     * Disable the use of SIGAR for collecting system stats.
 * ``dashboard_widget_default_cache_time = 10s``
     * The default cache time for dashboard widgets. (Default: 10 seconds, minimum: 1 second)
-* ``content_packs_loader_enabled = true``
-    * Automatically load content packs in "content_packs_dir" on the first start of Graylog.
-* ``content_packs_dir = data/contentpacks``
-    * The directory which contains content packs which should be loaded on the first start of Graylog.
-* ``content_packs_auto_load = grok-patterns.json``
-    * A comma-separated list of content packs (files in "content_packs_dir") which should be applied on the first start of Graylog.
-    * Default: empty
 * ``proxied_requests_thread_pool_size = 32``
     * For some cluster-related REST requests, the node must query all other nodes in the cluster. This is the maximum number of threads available for this. Increase it, if ``/cluster/*`` requests take long to complete.
     * Should be ``http_thread_pool_size * average_cluster_size`` if you have a high number of concurrent users.
