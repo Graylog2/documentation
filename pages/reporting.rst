@@ -17,3 +17,4 @@ can verify that the scheduled reporting deliveries are working as expected.
 .. toctree::
    :titlesonly:
 
+   reporting/setup

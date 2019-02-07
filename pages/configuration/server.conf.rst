@@ -69,10 +69,13 @@ General
 * ``plugin_dir = plugin``
     * Set plugin directory here (relative or absolute)
 
+
+.. _web_rest_api_options:
+
 Web & REST API
 ^^^^^^^^^^^^^^
 
-* ``http_bind_address = 127.0.0.1:9000``    
+* ``http_bind_address = 127.0.0.1:9000``
     * The network interface used by the Graylog HTTP interface.
     * This network interface must be accessible by all Graylog nodes in the cluster and by all clients using the Graylog web interface.
     * If the port is omitted, Graylog will use port 9000 by default.
