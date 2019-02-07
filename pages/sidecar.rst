@@ -52,7 +52,7 @@ Please follow the version matrix to pick the right package:
 All following commands should be executed on the **remote machine** where you want to collect log data from.
 
 Install the Sidecar
--------------
+-------------------
 
 Ubuntu
 ~~~~~~
