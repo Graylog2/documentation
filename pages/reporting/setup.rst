@@ -26,7 +26,7 @@ options in case you need to do some advanced configuration.
     * - Name
       - Description
     * - ``report_disable_sandbox``
-      - Controls wether report generation can be run as root or not.
+      - Disables report generation sandbox.
     * - ``report_generation_timeout_seconds``
       - Timeout in seconds to wait for a report generation.
     * - ``report_user``
@@ -40,13 +40,17 @@ report_disable_sandbox
 ----------------------
 Default value: ``false``.
 
-For security reasons, report generation will not run as root user. You
-can force it to do so by setting this option to ``true``.
+For security reasons, report generation will run in a sandbox and not as root
+user. There are two cases where you may consider enabling this option:
+
+- Environments where you want or must use the root user to run reporting
+  generation.
+- Environments that provide limited kernel capabilities, like a docker container.
 
 report_generation_timeout_seconds
 ---------------------------------
 Default value: ``180``.
-  
+
 Time in seconds to wait for a report to load in the background. You may
 need to increase this value if your reports are doing expensive queries
 or your ES cluster is a bit slow.
