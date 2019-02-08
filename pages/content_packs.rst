@@ -13,6 +13,11 @@ certain type of log format, can so easily share his efforts with the community.
 
 Content packs can be found on the `Graylog Marketplace <https://marketplace.graylog.org/>`__.
 
+.. Warning:: Content packs in 3.0 have changed fundamentally from previous
+             versions. Graylog will try to support older versions in the
+             future, but at this point there is no guarantee that older
+             content packs still work.
+
 Parameter
 ---------
 
