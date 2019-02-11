@@ -10,7 +10,7 @@ Graylog Sidecar
  In case you need to configure legacy **Collector Sidecar** please refer to the `Graylog Collector Sidecar documentation <..2.5/collector_sidecar.html>`_.
  We encourage users to migrate to the new **Sidecar**, which is covered by this document.
 
-**Graylog Sidecar** is a lightweight configuration management system for different log collectors, also called `Backends`_.
+**Graylog Sidecar** is a lightweight configuration management system for different log collectors, also called `Backends`.
 The Graylog node(s) act as a centralized hub containing the configurations of log collectors.
 On supported message-producing devices/hosts, Sidecar can run as a service (Windows host) or daemon (Linux host).
 
@@ -113,7 +113,7 @@ Install Filebeat or another Beats package by following the instructions on the o
 Beats on Windows
 ~~~~~~~~~~~~~~~~
 The Windows Sidecar package already includes Filebeat and Winlogbeat.
-For other Beats packages follow the instructions on the official download `page <https://www.elastic.co/downloads/beats/filebeat>`_.
+For other Beats packages follow the instructions on the official download `page <https://www.elastic.co/downloads/beats>`_.
 
 NXLog on Ubuntu
 ~~~~~~~~~~~~~~~
