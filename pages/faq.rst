@@ -118,12 +118,12 @@ Yup, we’re all over this too with read/write roles and group permissions.  To 
 Do we have a user audit log for compliance?
 -------------------------------------------
 
-`Graylog Enterprise <https://www.graylog.org/enterprise>`_ includes an audit log plugin. You can explore the :ref:`documentation <auditlog_toc>` for more details.
+`Graylog Enterprise <https://www.graylog.org/enterprise>`_ includes audit log functionality. You can explore the :ref:`documentation <auditlog_toc>` for more details.
 
-It seems like Graylog has no reporting functionality?
------------------------------------------------------
+Does Graylog have reporting functionality?
+------------------------------------------
 
-That’s correct. We currently don’t have built-in reporting functionality that sends automated reports. However, you can use our REST API to generate and send you own reports. A cron job and the scripting language of your choice should do the trick.
+Since Graylog 3.0, `Graylog Enterprise <https://www.graylog.org/enterprise>`_ includes reporting capabilities. Take a look at the :ref:`documentation <reporting_toc>` for more details.
 
 Can I filter inbound messages before they are processed by the Graylog server?
 ------------------------------------------------------------------------------
