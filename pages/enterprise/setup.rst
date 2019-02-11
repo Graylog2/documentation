@@ -137,7 +137,20 @@ Your plugin directory should look similar to this after installing the enterpris
 
 **Binary files**
 
-Check the ``bin_dir`` configuration option set in your Graylog server configuration file. That is the location where you need to copy the binaries included in the Graylog Enterprise tarball.
+Depending on the Graylog setup method you have used, you have to copy the binaries into different locations.
+
+.. list-table:: Binaries Installation Locations
+    :header-rows: 1
+    :widths: 7 20
+
+    * - Installation Method
+      - Directory
+    * - :doc:`/pages/installation/operating_system_packages`
+      - ``/usr/share/graylog-server/bin/``
+    * - :doc:`/pages/installation/manual_setup`
+      - ``/<extracted-graylog-tarball-path>/bin/``
+
+Make sure to check the ``bin_dir`` configuration option set in your Graylog server configuration file, as the default may have changed.
 
 Server Restart
 ==============
