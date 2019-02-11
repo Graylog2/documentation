@@ -6,7 +6,6 @@ Configuring Graylog
    :titlesonly:
 
    configuration/server.conf
-   configuration/graylog_ctl
    configuration/web_interface
    configuration/load_balancers
    configuration/https
