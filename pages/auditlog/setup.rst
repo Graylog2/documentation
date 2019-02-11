@@ -2,21 +2,20 @@
 Setup
 *****
 
-The Audit Log plugin is a commercial Graylog feature that can be installed in
+Graylog Audit Log is a commercial feature that can be installed in
 addition to the Graylog open source server.
 
 Installation
 ============
 
-Please see the :ref:`Graylog Enterprise setup page <enterprise-setup>` for details on how to install
-the Audit Log plugin.
-
-.. note:: Make sure the Audit Log plugin is installed on every node in your Graylog cluster.
+Audit Log functionality is part of the Graylog Enterprise plugin, please check
+the :ref:`Graylog Enterprise setup page <enterprise-setup>` for details on how
+to install it.
 
 Configuration
 =============
 
-The audit log plugin provides two ways of writing audit log entries:
+Graylog Audit Log provides two ways of writing audit log entries:
 
 1. Database
 2. Log file via `log4j2 <https://logging.apache.org/log4j/2.x/>`_ appender
@@ -86,8 +85,8 @@ Example::
 auditlog_mongodb_collection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This configures the name of the MongoDB collection where the audit log plugin#
-stores the audit log entries.
+This configures the name of the MongoDB collection where audit log entries will
+be stored.
 
 The default value for this is ``audit_log``.
 
@@ -227,10 +226,10 @@ Caveats
 You have to make sure that the log4j2 related settings in the Graylog server
 config file and the ``log4j2.xml`` file are the same on **every node in your cluster**!
 
-Since every Graylog server writes its own audit log entries when the plugin
-is installed, the log files configured in the ``log4j2.xml`` file are written
-on every node. But **only** the entries from the local node will show up in
-that file.
+Since every Graylog server writes its own audit log entries when the Graylog
+Enterprise plugin is installed, the log files configured in the ``log4j2.xml``
+file are written on every node. But **only** the entries from the local node
+will show up in that file.
 
 If you have more than one node, you have to search in all configured files
 on all nodes to get a complete view of the audit trail.

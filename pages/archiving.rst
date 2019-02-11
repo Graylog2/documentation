@@ -20,7 +20,7 @@ even print them out if you need to! If you need to search through archived data 
 selection of archived messages back into the Graylog archive folder, and the web interface will enable
 you to temporarily import the archive so you can analyze the messages again in Graylog.
 
-.. note:: The archive plugin is a commercial feature and part of `Graylog Enterprise <https://www.graylog.org/enterprise>`_.
+.. note:: Archiving is a commercial feature and part of `Graylog Enterprise <https://www.graylog.org/enterprise>`_.
 
 .. toctree::
    :titlesonly:
