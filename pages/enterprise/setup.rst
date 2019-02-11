@@ -4,8 +4,8 @@
 Setup
 *****
 
-Graylog Enterprise comes as a set of Graylog server plugins which need to be
-installed in addition to the Graylog open source setup.
+Graylog Enterprise comes as a Graylog server plugin which need to be installed
+in addition to the Graylog open source setup.
 
 Requirements
 ============
@@ -60,22 +60,22 @@ The following list shows the minimum required Graylog versions for the Graylog E
 Installation
 ============
 
-Since Graylog 2.4 the Graylog Enterprise plugins can be installed the same way Graylog is installed. In most setups this will be done with the package tool provided by the distribution you are using and the online repository.
+Since Graylog 2.4 the Graylog Enterprise plugin can be installed the same way Graylog is installed. In most setups this will be done with the package tool provided by the distribution you are using and the online repository.
 
 .. note:: For previous versions of Graylog Enterprise please contact your Graylog account manager.
 
-Once you installed the Graylog Enterprise plugins you need to obtain a license from `the Graylog Enterprise web page <https://www.graylog.org/enterprise/>`_.
+Once you installed the Graylog Enterprise plugin you need to obtain a license from `the Graylog Enterprise web page <https://www.graylog.org/enterprise/>`_.
 
 Should a simple `apt-get install graylog-enterprise-plugins` or `yum install graylog-enterprise-plugins` not work for you, the following information might help you.
 
-.. important:: The Graylog Enterprise plugins need to be installed on all your Graylog nodes!
+.. important:: The Graylog Enterprise plugin need to be installed on all your Graylog nodes!
 
 DEB / RPM Package
 -----------------
 
 The default installation should be done with the system package tools. It includes the repository installation that is described in the :doc:`/pages/installation/operating_system_packages` installation guides.
 
-When the usage of online repositorys is not possible in your environment, you can download the Graylog Enterprise plugins at `https://packages.graylog2.org <https://packages.graylog2.org>`_.
+When the usage of online repositories is not possible in your environment, you can download the Graylog Enterprise plugins at `https://packages.graylog2.org <https://packages.graylog2.org>`_.
 
 .. note:: These packages can **only** be used when you installed Graylog via the :doc:`/pages/installation/operating_system_packages`!
 
@@ -102,19 +102,23 @@ The installation on distributions like CentOS or RedHat can be done with *yum* a
 Tarball
 -------
 
-If you have done a manual installation or want to include only parts of the enterprise plugins you can get the tarball from the `Graylog Downloads <https://www.graylog.org/downloads>`_ page.
+If you have done a manual installation you can get the tarball from the `Graylog Downloads <https://www.graylog.org/downloads>`_ page.
 
-The tarball includes the enterprise plugin JAR files.
+The tarball includes the enterprise plugin JAR file and required binaries that need to be installed.
 
 ::
 
   $ tar -tzf graylog-enterprise-plugins-3.0.0.tgz
     graylog-enterprise-plugins-3.0.0/LICENSE
-    graylog-enterprise-plugins-3.0.0/plugin/graylog-plugin-archive-3.0.0.jar
-    graylog-enterprise-plugins-3.0.0/plugin/graylog-plugin-auditlog-3.0.0.jar
-    graylog-enterprise-plugins-3.0.0/plugin/graylog-plugin-license-3.0.0.jar
+    graylog-enterprise-plugins-3.0.0/plugin/graylog-plugin-enterprise-3.0.0.jar
+    graylog-enterprise-plugins-3.0.0/bin/headless_shell
+    graylog-enterprise-plugins-3.0.0/bin/chromedriver
+    graylog-enterprise-plugins-3.0.0/bin/chromedriver_start.sh
 
-Depending on the Graylog setup method you have used, you have to install the plugins into different locations.
+
+**JAR file**
+
+Depending on the Graylog setup method you have used, you have to install the plugin into different locations.
 
 .. include:: /includes/plugin-installation-locations.rst
 
@@ -126,20 +130,14 @@ Your plugin directory should look similar to this after installing the enterpris
 ::
 
   plugin/
-  ├── graylog-plugin-auditlog-3.0.0.jar
-  ├── graylog-plugin-threatintel-3.0.0.jar
-  ├── graylog-plugin-archive-3.0.0.jar
-  ├── graylog-plugin-beats-3.0.0.jar
-  ├── graylog-plugin-netflow-3.0.0.jar
   ├── graylog-plugin-aws-3.0.0.jar
-  ├── graylog-plugin-pipeline-processor-3.0.0.jar
-  ├── graylog-plugin-enterprise-integration-3.0.0.jar
-  ├── graylog-plugin-map-widget-3.0.0.jar
-  ├── graylog-plugin-cef-3.0.0.jar
-  ├── graylog-plugin-license-3.0.0.jar
-  └── graylog-plugin-collector-3.0.0.jar
+  ├── graylog-plugin-collector-3.0.0.jar
+  ├── graylog-plugin-enterprise-3.0.0.jar
+  └── graylog-plugin-threatintel-3.0.0.jar
 
+**Binary files**
 
+Check the ``bin_dir`` configuration option set in your Graylog server configuration file. That is the location where you need to copy the binaries included in the Graylog Enterprise tarball.
 
 Server Restart
 ==============
@@ -154,15 +152,9 @@ You should see something like the following in your Graylog server logs. It indi
 ::
 
   2017-12-18T17:39:10.797+01:00 INFO  [CmdLineTool] Loaded plugin: AWS plugins 3.0.0 [org.graylog.aws.plugin.AWSPlugin]
-  2017-12-18T17:39:10.803+01:00 INFO  [CmdLineTool] Loaded plugin: Audit Log 3.0.0 [org.graylog.plugins.auditlog.AuditLogPlugin]
-  2017-12-18T17:39:10.805+01:00 INFO  [CmdLineTool] Loaded plugin: Elastic Beats Input 3.0.0 [org.graylog.plugins.beats.BeatsInputPlugin]
-  2017-12-18T17:39:10.807+01:00 INFO  [CmdLineTool] Loaded plugin: CEF Input 3.0.0 [org.graylog.plugins.cef.CEFInputPlugin]
   2017-12-18T17:39:10.809+01:00 INFO  [CmdLineTool] Loaded plugin: Collector 3.0.0 [org.graylog.plugins.collector.CollectorPlugin]
   2017-12-18T17:39:10.811+01:00 INFO  [CmdLineTool] Loaded plugin: Enterprise Integration Plugin 3.0.0 [org.graylog.plugins.enterprise_integration.EnterpriseIntegrationPlugin]
-  2017-12-18T17:39:10.812+01:00 INFO  [CmdLineTool] Loaded plugin: License Plugin 3.0.0 [org.graylog.plugins.license.LicensePlugin]
-  2017-12-18T17:39:10.814+01:00 INFO  [CmdLineTool] Loaded plugin: MapWidgetPlugin 3.0.0 [org.graylog.plugins.map.MapWidgetPlugin]
-  2017-12-18T17:39:10.815+01:00 INFO  [CmdLineTool] Loaded plugin: NetFlow Plugin 3.0.0 [org.graylog.plugins.netflow.NetFlowPlugin]
-  2017-12-18T17:39:10.826+01:00 INFO  [CmdLineTool] Loaded plugin: Pipeline Processor Plugin 3.0.0 [org.graylog.plugins.pipelineprocessor.ProcessorPlugin]
+  2017-12-18T17:39:10.805+01:00 INFO  [CmdLineTool] Loaded plugin: Graylog Enterprise 3.0.0 [org.graylog.plugins.enterprise.EnterprisePlugin]
   2017-12-18T17:39:10.827+01:00 INFO  [CmdLineTool] Loaded plugin: Threat Intelligence Plugin 3.0.0 [org.graylog.plugins.threatintel.ThreatIntelPlugin]
 
 Cluster Setup
@@ -196,9 +188,9 @@ The license automatically applies to all nodes in your cluster without the need 
 License Verification
 ====================
 
-Some Graylog licenses require to check their validity on a regular basis. This includes the free Graylog Enterprise license with a specific amount of traffic included. 
+Some Graylog licenses require to check their validity on a regular basis. This includes the free Graylog Enterprise license with a specific amount of traffic included.
 
-If your network environment requires Graylog to use a proxy server in order to communicate with the external services via HTTPS, you'll have to configure the proxy server in the :ref:`Graylog configuration file<http_config>`. 
+If your network environment requires Graylog to use a proxy server in order to communicate with the external services via HTTPS, you'll have to configure the proxy server in the :ref:`Graylog configuration file<http_config>`.
 
 The Graylog web interface shows all details about the license, but if you are still unclear about the requirements, please contact our `sales team <https://www.graylog.org/contact-sales>`_ with your questions.
 
@@ -217,7 +209,7 @@ license:
 * A flag indicating if the license has expired
 * A flag indicating if Graylog detected that the traffic measuring mechanisms have been modified
 * A list of how much traffic was received and written by Graylog in the recent days, in bytes
-  
+
 Details on licensed traffic
 ---------------------------
 
