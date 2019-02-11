@@ -19,38 +19,30 @@ Usage
 -----
 
 Launch a new instance of the image, make sure to reserve at least 4GB ram for the instance. After spinning up, login with
-the username `ubuntu` and your selected ssh key. Run the reconfigure program in order to setup Graylog and start all services::
-
-  $ ssh ubuntu@<vm IP>
-  $ sudo graylog-ctl reconfigure
+the username `ubuntu` and your selected ssh key.
 
 Open `http://<vm ip>` in your browser to access the Graylog web interface. Default username and password is `admin`.
 
 Networking
-===================
+==========
 
-Your browser needs access to port 80 or 443 for reaching the web interface. The interface itself creates a connection back to the REST API of the Graylog server on port 9000. As long as you are in the same private Neutron Network, this works out of the box. 
-But in the most common OpenStack deployment topology if you want to use the OpenStack floating IP address of your VM, this mechanism doesn’t work automatically anymore. You have to tell Graylog how to reach the API from the users browser perspective::
+Your browser needs access to port 80 or 443 for reaching the web interface. The interface itself creates a connection back to the REST API of the Graylog server on port 9000. As long as you are in the same private Neutron Network, this works out of the box.
 
-  sudo graylog-ctl set-external-ip http://<floating ip>:9000/api/
-  sudo graylog-ctl reconfigure
+In the most common OpenStack deployment topology if you want to use the OpenStack floating IP address of your VM, this mechanism doesn’t work automatically anymore.
+In order to tell Graylog how to reach the API from the users browser perspective, you need to set the ``http_external_uri`` in the :ref:`Graylog configuration file <web_rest_api_options>`::
+   http_external_uri = <floating ip>:9000
+
+Make sure to restart your server after the configuration change.
 
 Also make sure that port 80, 443 and 9000 is allowed for incoming traffic on a security group assigned the the VM.
 
-Basic configuration
-===================
+Configuration
+=============
 
-We are shipping the ``graylog-ctl`` tool with the virtual machine appliances to get you started
-with a customised setup as quickly as possible. Run these (optional) commands to configure the
-most basic settings of Graylog in the appliance::
-
-  sudo graylog-ctl set-email-config <smtp server> [--port=<smtp port> --user=<username> --password=<password>]
-  sudo graylog-ctl set-admin-password <password>
-  sudo graylog-ctl set-timezone <zone acronym>
-  sudo graylog-ctl reconfigure
-
-The ``graylog-ctl`` has much more :ref:`functionality <graylog-ctl>` documented.
-We strongly recommend to learn more about it to ensure smooth operation of your virtual appliance.
+Starting with Graylog 3.0.0, virtual machine appliances also use the
+:doc:`Graylog Operating System packages </pages/installation/operating_system_packages>`.
+Please check the :doc:`Graylog configuration file </pages/configuration/server.conf>`
+documentation, if you need to further customize your appliance.
 
 Production readiness
 ====================
