@@ -60,8 +60,9 @@ credentials.
 
 The web interface is reachable on port 80 at the IP address of your virtual
 machine. The login prompt of the shell is showing you this IP address, too. (See
-screenshot above). DHCP should be enabled in your network otherwise take a look into
-the ``graylog-ctl`` command to apply a static IP address to the appliance.
+screenshot above). DHCP should be enabled in your network otherwise you may
+need to edit the :doc:`Graylog configuration file </pages/configuration/server.conf>`
+to configure the static IP.
 
 The standard user for the web interface is *admin* with the password *admin*.
 
