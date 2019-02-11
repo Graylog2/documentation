@@ -179,7 +179,7 @@ The Graylog Enterprise plugins require a valid license to use the additional fea
 Once you have `obtained a license <https://www.graylog.org/enterprise/>`_
 you can import it into your Graylog setup by going through the following steps.
 
-#. As an admin user, open the System / License page from the menu in the web interface.
+#. As an admin user, open the "Enterprise/License" page from the menu in the web interface.
 #. Click the Import new license button in the top right hand corner.
 #. Copy the license text from the confirmation email and paste it into the text field.
 #. The license should be valid and a preview of your license details should appear below the text field.

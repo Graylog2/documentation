@@ -17,7 +17,7 @@ indices.
 Web Interface
 -------------
 
-You can manually create an archive on the "System/Archives" page in the
+You can manually create an archive on the "Enterprise/Archives" page in the
 web interface.
 
 .. image:: /images/archiving-usage-create-web.png
@@ -119,7 +119,7 @@ anymore.
 Web Interface
 -------------
 
-In the web interface you can restore an archive on the "System/Archives" page
+In the web interface you can restore an archive on the "Enterprise/Archives" page
 by selecting an archive from the list, open the archive details and clicking
 the "Restore Index" button.
 

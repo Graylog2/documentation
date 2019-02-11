@@ -18,7 +18,7 @@ Configuration
 Graylog Archive can be configured via the Graylog web interface and does
 not need any changes in the Graylog server configuration file.
 
-In the web interface menu navigate to "System/Archives" and click "Configuration"
+In the web interface menu navigate to "Enterprise/Archives" and click "Configuration"
 to adjust the configuration.
 
 .. image:: /images/archiving-setup-config.png
