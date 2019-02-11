@@ -30,7 +30,8 @@ Your browser needs access to port 80 or 443 for reaching the web interface. The 
 
 In the most common OpenStack deployment topology if you want to use the OpenStack floating IP address of your VM, this mechanism doesn’t work automatically anymore.
 In order to tell Graylog how to reach the API from the users browser perspective, you need to set the ``http_external_uri`` in the :ref:`Graylog configuration file <web_rest_api_options>`::
-   http_external_uri = <floating ip>:9000
+
+  http_external_uri = <floating ip>:9000
 
 Make sure to restart your server after the configuration change.
 
