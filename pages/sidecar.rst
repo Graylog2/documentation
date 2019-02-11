@@ -51,15 +51,6 @@ Ubuntu
 
     $ sudo dpkg -i graylog-sidecar_1.0.0-1_amd64.deb
 
-..
-        Configure the URL to your Graylog server and the Sidecar API key.
-        Edit::
-
-            /etc/graylog/sidecar/sidecar.yml
-
-        You should set at least the correct URL to your Graylog server and
-        the Sidecar API key. XXX link?
-
 Edit the configuration (see :ref:`Configuration <sidecar-configuration>`) and
 activate the Sidecar as a system service::
 
@@ -350,7 +341,7 @@ Let's assume you want your sidecar to run `rsyslogd(8)` for you.
   For rsyslogd we therefore provide ``-n`` as `Execute Parameter`.
   If your collector supports configuration validation, it is advised to use it.
   This acts as a pre-check, so that sidecar won't restart a collector with
-  a broken configuration. For rsyslogd the option to do a config check is ``-N 1``.
+  a broken configuration. For rsyslogd the option to do a configuration check is ``-N 1``.
   Optionally you can provide a `Default Template` which will be proposed
   once you create a configuration for this collector.
 
@@ -413,14 +404,14 @@ Now in the Sidecar Beats Output Configuration you just mark ``Enable TLS Support
 
 
 Certificate based client authentication
------------------------------------------
+---------------------------------------
 
-If you want to allow Graylog only to accept data from certificated clients you will need to build your own `certificate authority <https://en.wikipedia.org/wiki/Certificate_authority>`__  and provide this to the Input and the Client Output configuration.
+If you want Graylog to only accept data from authenticated Collectors please follow the steps at :ref:`Secured Graylog and Beats input <sec_graylog_beats>`
 
 Run Sidecar as non-root user
 ============================
 
-The default is that the Sidecar is started with the root user to allow access to all log files. But this is not mandatory. If you like to start it with a daemon user, proceede like the following:
+The default is that the Sidecar is started with the root user to allow access to all log files. But this is not mandatory. If you like to start it with a daemon user, proceed like the following:
 
   - Create a daemon user e.g. ``sidecar``
 
@@ -439,7 +430,7 @@ So to make these directories readable for the ``sidecar`` user, use:
   - ``chown -R sidecar /var/lib/graylog-sidecar``
   - ``chown -R sidecar /var/log/graylog-sidecar``
 
-You can change all paths to different places in the filesystem. If you prefer to store all Sidecar data in the home directory of the ``sidecar`` user, just change the paths accordingly.
+You can change all paths to different places in the file system. If you prefer to store all Sidecar data in the home directory of the ``sidecar`` user, just change the paths accordingly.
 
 Now ``systemd`` needs to know that the Sidecar should be started with a non-root user. Open ``/etc/systemd/system/collector-sidecar.service`` with an editor and navigate to the ``[Service]`` section, add::
 
@@ -452,7 +443,7 @@ To make use of these settings reload systemd::
   $ sudo systemctl restart graylog-sidecar
 
 Check the log files in ``/var/log/graylog-sidecar`` for any errors. Understand that not only the Sidecar but also all backends, like ``filebeat``, will be started as ``sidecar`` user after these changes.
-So all log files that the backend should observe also need to be readable by the ``sidecar`` user. Depending on the Linux distribution there is usually an adminstrator group which has access to most log files.
+So all log files that the backend should observe also need to be readable by the ``sidecar`` user. Depending on the Linux distribution there is usually an administrator group which has access to most log files.
 By adding the ``sidecar`` user to that group you can grant access fairly easy. For example on Debian/Ubuntu systems this group is called ``adm`` (see `System Groups in Debian Wiki <https://wiki.debian.org/SystemGroups>`_ or `Security/Privileges - Monitor system logs in Ubuntu wiki <https://wiki.ubuntu.com/Security/Privileges#Monitor_system_logs>`_).
 
 

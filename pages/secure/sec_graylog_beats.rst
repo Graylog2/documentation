@@ -1,3 +1,5 @@
+.. _sec_graylog_beats:
+
 *******************************
 Secured Graylog and Beats input
 *******************************
@@ -14,7 +16,7 @@ Create a CA with our `shadowCA <https://github.com/graylog-labs/shadowCA>`__ or 
 
 The CA certificate needs to be imported on all machines that are part of the setup using the `documented steps <https://github.com/graylog-labs/shadowCA/blob/master/docs/add_ca_to_truststore.md>`__. Depending on your Browser you might need to import the ``.der`` to your Browser to trust the CA. In addition the CA ``.der`` file is imported to a JVM Keystore that is used by Graylog.
 
-adding of .der to JVM Keystore
+Adding of .der to JVM Keystore
 ------------------------------
 
 Graylog needs to know the CA that is used to verify the certificates. The prime advantage is that it only needs the CA certificate and not all known self-signed certificates in the setup.::
@@ -31,12 +33,12 @@ Graylog needs to know the CA that is used to verify the certificates. The prime 
 	# will only work if the default password & user is not changed.
 	keytool -importcert -alias shadowCA -keystore /etc/graylog/server/cacerts.jks -storepass changeit -file shadowCA.der
 
-custom JVM Keystore for Graylog
+Custom JVM Keystore for Graylog
 -------------------------------
 
 Modify the :ref:`JVM Setting <default_file_location>` to include ``-Djavax.net.ssl.trustStore=/etc/graylog/server/cacerts.jks`` in the ``GRAYLOG_JAVA_OPTS``.
 
-create certificates
+Create certificates
 ===================
 
 Create certificates for each server, all hostnames and IPs that might be used later to connect from and to this server should be included in the certificates. See `README of shadowCA <https://github.com/graylog-labs/shadowCA#create-certificates>`__ for the possible options. The most common error is that the certificate name does not match the hostname that is used for the connection.
@@ -55,7 +57,8 @@ HTTPS
 
 Place the ``.key`` and ``.crt`` file on your Graylog server in the configuration dir (/etc/graylog/server/) and add them to the Graylog server.conf. In addition change the ``rest_listen_uri`` and ``web_listen_uri`` to **https**. You might need to cover other settings in a multinode cluster or special setups - just read the comments of the settings inside of the server.conf.
 
-When using the collector-sidecar, use the **https** URI in the ``sidecar_configuration.yml``.
+When using the Sidecar, use the **https** URI in the :ref:`sidecar.yml <sidecar-configuration>`
+
 
 After restart of Graylog the web interface and the API is served via https only. No automatic redirect from http to https is made.
 
@@ -67,20 +70,17 @@ To enable TLS on the input, a certificate (and private key file) is needed. It c
 The ingesting client will verify the presented certificate against his know CA certificates, if that is successful communication will be establised using TLS. 
 
 
-Add client authentication to beats input
+Add client authentication to Beats input
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Create one directory (``/etc/graylog/server/trusted_clients``) that will hold all client certificates you allow to connect to the beats input. This directory must be available on all Graylog server that have the input enabled. Write that path in the beats input configuration `TLS Client Auth Trusted Certs` and select **required** for the option `TLS client authentication`.
 
 After this setting is saved only clients that provide a certificate that is trusted by the CA and is placed inside the configured directory (``/etc/graylog/server/trusted_clients``) can deliver messages to Graylog.
 
-Beats
------
+Beats Shipper
+-------------
 
-Stock
-^^^^^
-
-When using the stock beat that is `provided by elastic <https://www.elastic.co/downloads/beats>`__ configure a `logstash output <https://www.elastic.co/guide/en/beats/filebeat/6.x/logstash-output.html#logstash-output>`__. The SSL configuration can be found as the second point in the `description by elastic <https://www.elastic.co/guide/en/beats/filebeat/6.x/configuring-ssl-logstash.html>`__ . This is::
+When using Beats configure a `logstash output <https://www.elastic.co/guide/en/beats/filebeat/6.x/logstash-output.html#logstash-output>`__. The SSL configuration can be found as the second point in the `description by elastic <https://www.elastic.co/guide/en/beats/filebeat/6.x/configuring-ssl-logstash.html>`__ . This is::
 
 	output.logstash:
   		hosts: ["graylog.example.org:5044"]
@@ -93,10 +93,3 @@ Place your previously created certificates on the server where you installed bea
 
 The certificate (``.crt``) file of the beats needs to be placed at the Graylog server in the configured directory for trusted clients only if you have enabled that feature at the beats input in Graylog and want client authentication.
 
-
-Collector-Sidecar
-^^^^^^^^^^^^^^^^^ 
-
-Place the certificate and key on the server where the collector-sidecar is running (e.g. place it in ``/etc/graylog/collector-sidecar/ssl``). Then reference those files in the beats output configuration at the Graylog web interface. The :ref:`description how to secure sidecar <sidecar_secure>` only refers to self signed certificates not how to use your own CA. 
-
-You need to place the ``shadowCA.pem`` and the ``.crt`` and ``.key`` in the directory at the collector-sidecar server.   
