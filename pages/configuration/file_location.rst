@@ -27,6 +27,8 @@ Graylog
 +-----------------------+--------------------------------------+
 | Plugins               | ``/usr/share/graylog-server/plugin`` |
 +-----------------------+--------------------------------------+
+| Binaries              | ``/usr/share/graylog-server/bin``    |
++-----------------------+--------------------------------------+
 | Scripts               | ``/usr/share/graylog-server/scripts``|
 +-----------------------+--------------------------------------+
 | JVM settings          | ``/etc/default/graylog-server``      |
@@ -92,6 +94,8 @@ Graylog
 +-----------------------+--------------------------------------+
 | Plugins               | ``/usr/share/graylog-server/plugin`` |
 +-----------------------+--------------------------------------+
+| Binaries              | ``/usr/share/graylog-server/bin``    |
++-----------------------+--------------------------------------+
 | Scripts               | ``/usr/share/graylog-server/scripts``|
 +-----------------------+--------------------------------------+
 | JVM settings          | ``/etc/sysconfig/graylog-server``    |
@@ -137,65 +141,3 @@ MongoDB
 | Log files     | ``/var/log/mongodb/`` |
 +---------------+-----------------------+
 
-
-Omnibus package
-===============
-
-This paragraph covers Graylog installations via OVA, on AWS (via AMI), and on OpenStack using the `Graylog Omnibus package <https://github.com/Graylog2/omnibus-graylog2#readme>`_.
-
-.. _omnibus-graylog:
-
-Graylog
--------
-
-+-----------------------+---------------------------------------------------------+
-|                       | File system path                                        |
-+=======================+=========================================================+
-| Configuration         | ``/opt/graylog/conf/graylog.conf``                      |
-+-----------------------+---------------------------------------------------------+
-| Logging configuration | ``/opt/graylog/conf/log4j2.xml``                        |
-+-----------------------+---------------------------------------------------------+
-| Plugins               | ``/opt/graylog/plugin``                                 |
-+-----------------------+---------------------------------------------------------+
-| JVM settings          | :ref:`/etc/graylog/graylog-settings.json <graylog-ctl>` |
-+-----------------------+---------------------------------------------------------+
-| Message journal files | ``/var/opt/graylog/data/journal``                       |
-+-----------------------+---------------------------------------------------------+
-| Log files             | ``/var/log/graylog/server/``                            |
-+-----------------------+---------------------------------------------------------+
-
-
-.. _omnibus-elasticsearch:
-
-Elasticsearch
--------------
-
-.. note:: These are only the most common file locations. Please refer to the `Elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup-dir-layout.html#default-paths>`__ for a comprehensive list of default file locations.
-
-+---------------+---------------------------------------------------------+
-|               | File system path                                        |
-+===============+=========================================================+
-| Configuration | ``/opt/graylog/conf/elasticsearch/``                    |
-+---------------+---------------------------------------------------------+
-| JVM settings  | :ref:`/etc/graylog/graylog-settings.json <graylog-ctl>` |
-+---------------+---------------------------------------------------------+
-| Data files    | ``/var/opt/graylog/data/elasticsearch``                 |
-+---------------+---------------------------------------------------------+
-| Log files     | ``/var/log/graylog/elasticsearch/``                     |
-+---------------+---------------------------------------------------------+
-
-
-.. _omnibus-mongodb:
-
-MongoDB
--------
-
-+---------------+---------------------------------------------------------+
-|               | File system path                                        |
-+===============+=========================================================+
-| Configuration | :ref:`/etc/graylog/graylog-settings.json <graylog-ctl>` |
-+---------------+---------------------------------------------------------+
-| Data files    | ``/var/opt/graylog/data/mongodb``                       |
-+---------------+---------------------------------------------------------+
-| Log files     | ``/var/log/graylog/mongodb/``                           |
-+---------------+---------------------------------------------------------+
