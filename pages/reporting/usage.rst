@@ -49,6 +49,10 @@ Report Configuration page.
 Scheduling
 ----------
 
+.. warning:: Please ensure the :ref:`email configuration <email_config>` in
+   your Graylog configuration file is working before you enable report
+   scheduling.
+
 .. note:: Scheduling Reports will use resources in the background on both your
    Graylog and ES cluster. To avoid performance issues, make sure to allocate
    enough resources for your setup and also disable scheduling of Reports you
@@ -64,7 +68,6 @@ as email.
 Once you update the information, make sure to click on "Update scheduling" to save
 your changes.
 
-Please ensure the :ref:`email configuration <email_config>` in your Graylog configuration file is working before you enable report scheduling.
 
 Layout
 ------
