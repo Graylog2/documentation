@@ -1,3 +1,5 @@
+.. _graylog_configuration:
+
 *******************
 Configuring Graylog
 *******************

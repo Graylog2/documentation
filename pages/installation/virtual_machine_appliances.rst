@@ -7,7 +7,7 @@ Virtual Machine Appliances
 Pre-Considerations
 ==================
 
-This is a showcase of Graylog and its cluster mode. Please run this appliance always in a separated network that is isolated from the internet.
+Please run this appliance always in a separated network that is isolated from the internet.
 Read also the notes about production readiness_!
 
 Download
@@ -48,7 +48,7 @@ completed:
    
       "Your appliance came up without a configured IP address. Graylog is probable not running correctly!"
    
-   In this case, you have to login and edit ``/etc/network/interfaces`` in order to setup a fixed IP address. Then manually reconfigure Graylog as shown in the following paragraphs.
+   In this case, you have to login and edit ``/etc/network/interfaces`` in order to setup a fixed IP address. Then create the file `/var/lib/graylog-server/firstboot` and reboot.
 
 
 Logging in
@@ -60,17 +60,13 @@ credentials.
 
 The web interface is reachable on port 80 at the IP address of your virtual
 machine. The login prompt of the shell is showing you this IP address, too. (See
-screenshot above). DHCP should be enabled in your network otherwise you may
-need to edit the :doc:`Graylog configuration file </pages/configuration/server.conf>`
-to configure the static IP.
+screenshot above).
 
-The standard user for the web interface is *admin* with the password *admin*.
+The standard user for the web interface is *admin*, the password is shown on first boot.
 
 Configuration
 =============
 
-Starting with Graylog 3.0.0, Vagrant virtual machines also use the
-:doc:`Graylog Operating System packages </pages/installation/operating_system_packages>`.
 Please check the :doc:`Graylog configuration file </pages/configuration/server.conf>`
 documentation, if you need to further customize your appliance.
 
@@ -98,5 +94,3 @@ Production readiness
 ====================
 
 The Graylog appliance is not created to provide a production ready solution. It is build to offer a fast and easy way to try the software itself and not wasting time to install Graylog and it components to any kind of server.
-
-If you want to create your own production ready setup take a look at our :ref:`other installation methods <installing>`.

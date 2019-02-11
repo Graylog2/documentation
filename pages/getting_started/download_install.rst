@@ -45,15 +45,9 @@ Deployment guide for :ref:`virtual-machine-appliances`.
 
 Deployment guide for :ref:`AMI`.
 
-**Supported Virtual Appliance Configuration Platforms**
-
-Deployment guide for :ref:`Vagrant`.
-
-Deployment guide for :ref:`OpenStack`.
-
 
 Virtual Appliance Caveats
 =========================
-**Virtual appliances are not suitable for production deployment**. They are created for lab or evaluation purposes. They do not have sufficient storage, nor do they offer capabilities like index replication that meet high availability requirements.
+**Virtual appliances are not suitable for production deployment out of the box**. They do not have sufficient storage, nor do they offer capabilities like index replication that meet high availability requirements.
 
-Also, because they are intended for internal testing and evaluation only, the virtual appliances are not hardened or otherwise secured. Use at your own risk and apply all security measures required by your organization.
+The virtual appliances are not hardened or otherwise secured. Use at your own risk and apply all security measures required by your organization.
