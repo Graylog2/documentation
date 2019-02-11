@@ -27,15 +27,8 @@ The default login is Username: `admin`, Password: `admin`.
 Configuration
 =============
 
-We are shipping the ``graylog-ctl`` tool with the virtual machine appliances to get you started
-with a customised setup as quickly as possible. Run these (optional) commands to configure the
-most basic settings of Graylog in the appliance::
+Starting with Graylog 3.0.0, Vagrant virtual machines also use the
+:doc:`Graylog Operating System packages </pages/installation/operating_system_packages>`.
+Please check the :doc:`Graylog configuration file </pages/configuration/server.conf>`
+documentation, if you need to further customize your appliance.
 
-  sudo graylog-ctl set-email-config <smtp server> [--port=<smtp port> --user=<username> --password=<password>]
-  sudo graylog-ctl set-admin-password <password>
-  sudo graylog-ctl set-timezone <zone acronym>
-  sudo graylog-ctl reconfigure
-
-The ``graylog-ctl`` has much more :ref:`functionality <graylog-ctl>` documented. We strongly recommend to learn more about it to ensure smooth operation of your virtual appliance.
-
-If you want to create your own customised setup take a look at our :ref:`other installation methods <installing>`.
