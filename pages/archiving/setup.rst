@@ -2,22 +2,23 @@
 Setup
 *****
 
-The archive plugin is a commercial Graylog feature that can be installed in
-addition to the Graylog open source server.
+Graylog Archive is a commercial feature that can be installed in addition to
+the Graylog open source server.
 
 Installation
 ============
 
-Please see the :doc:`Graylog Enterprise setup page </pages/enterprise/setup>` for details on how to install
-the Archive plugin.
+Archiving is part of the Graylog Enterprise plugin, please check the
+:doc:`Graylog Enterprise setup page </pages/enterprise/setup>` for details on
+how to install it.
 
 Configuration
 =============
 
-The archive plugin can be configured via the Graylog web interface and does
+Graylog Archive can be configured via the Graylog web interface and does
 not need any changes in the Graylog server configuration file.
 
-In the web interface menu navigate to "System/Archives" and click "Configuration"
+In the web interface menu navigate to "Enterprise/Archives" and click "Configuration"
 to adjust the configuration.
 
 .. image:: /images/archiving-setup-config.png
@@ -25,7 +26,7 @@ to adjust the configuration.
 Archive Options
 ---------------
 
-There are several configuration options to configure the archive plugin.
+There are several configuration options to configure archiving.
 
 .. list-table:: Configuration Options
     :header-rows: 1
@@ -238,8 +239,8 @@ Graylog is using configurable index retention strategies to delete old
 indices. By default indices can be *closed* or *deleted* if you have more
 than the configured limit.
 
-The archive plugin offers a new index retention strategy that you can configure
-to automatically archive an index before closing or deleting it.
+Graylog Archive offers a new index retention strategy that you can configure to
+automatically archive an index before closing or deleting it.
 
 Index retention strategies can be configured in the system menu under
 "System/Indices". Select an index set and click "Edit" to change the index rotation

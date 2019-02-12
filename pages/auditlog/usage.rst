@@ -2,14 +2,14 @@
 Usage
 *****
 
-Once you installed the Audit Log plugin, Graylog will automatically write
+Once you installed the Graylog Enterprise plugin, Graylog will automatically write
 audit log entries into the database.
 
 View Audit Log Entries
 ======================
 
-The plugin adds a new page to the web interface which can be reached via
-"System/Audit Log". You can view and export existing audit log entries in
+Graylog Audit Log adds a new page to the web interface which can be reached via
+"Enterprise/Audit Log". You can view and export existing audit log entries in
 the database.
 
 It also provides a simple search form to search and filter for audit events

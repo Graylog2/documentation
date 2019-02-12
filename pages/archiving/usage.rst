@@ -17,7 +17,7 @@ indices.
 Web Interface
 -------------
 
-You can manually create an archive on the "System/Archives" page in the
+You can manually create an archive on the "Enterprise/Archives" page in the
 web interface.
 
 .. image:: /images/archiving-usage-create-web.png
@@ -34,7 +34,7 @@ changing your :ref:`index retention configuration <archive-config-index-retentio
 Index Retention
 ---------------
 
-The archive plugin ships with an index retention strategy that can be used
+Graylog Archive ships with an index retention strategy that can be used
 to automatically create archives before closing or deleting Elasticsearch
 indices.
 
@@ -49,7 +49,7 @@ on how to configure it.
 REST API
 --------
 
-The archive plugin also offers a REST API that you can use to automate archive
+Graylog Archive also offers a REST API that you can use to automate archive
 creation if you have some special requirements and need a more flexible way to
 do this.
 
@@ -99,12 +99,12 @@ Restoring Archives
           behaves. Also use the :ref:`Restore Index Batch Size <archive-config-option-restore-batch-size>`
           setting to control the Elasticsearch batch size on re-index.
 
-The archive plugin offer two ways to restore archived indices.
+Graylog Archive offers two ways to restore archived indices.
 
 * :ref:`Web Interface <archive-restore-web-interface>`
 * :ref:`REST API <archive-restore-rest-api>`
 
-The archive plugin restores all indices into the "Restored Archives" index set
+Graylog Archive restores all indices into the "Restored Archives" index set
 to avoid conflicts with the original indices. (should those still exist)
 
 .. image:: /images/archiving-usage-restore-web-result.png
@@ -119,7 +119,7 @@ anymore.
 Web Interface
 -------------
 
-In the web interface you can restore an archive on the "System/Archives" page
+In the web interface you can restore an archive on the "Enterprise/Archives" page
 by selecting an archive from the list, open the archive details and clicking
 the "Restore Index" button.
 
