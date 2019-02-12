@@ -351,6 +351,10 @@ Let's assume you want your sidecar to run `rsyslogd(8)` for you.
 - Next up you can use your newly created collector by creating a configuration
   for it and assign it to a Sidecar. Please follow the :ref:`sidecar_step-by-step` accordingly.
 
+- **Note**: Your Sidecar might refuse to start your collector, because it needs
+  to be added to the ``collector_binaries_whitelist`` first. Please edit your
+  :ref:`Configuration <sidecar-configuration>` and restart your Sidecar.
+
 Using Configuration Variables
 =============================
 
