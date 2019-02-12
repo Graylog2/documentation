@@ -1,4 +1,4 @@
-.. :orphan:
+:orphan:
 
 .. _graylog-ctl:
 .. _extend_ova_disk:
