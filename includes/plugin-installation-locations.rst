@@ -4,8 +4,6 @@
 
     * - Installation Method
       - Directory
-    * - :doc:`/pages/installation/virtual_machine_appliances`
-      - ``/opt/graylog/plugins/``
     * - :doc:`/pages/installation/operating_system_packages`
       - ``/usr/share/graylog-server/plugin/``
     * - :doc:`/pages/installation/manual_setup`

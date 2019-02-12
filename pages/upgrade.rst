@@ -17,7 +17,13 @@ You should always follow minor versions when updating across multiple versions t
 Upgrading Graylog Originally Installed from Image
 -------------------------------------------------
 
-The Virtual Machine Appliance (OVA) and Amazon Web Services (AMI) installations of Graylog use the Omnibus package. The upgrade documentation using Omnibus is :ref:`part of the graylog-ctl documentation <upgrade_graylog_omnibus>`.
+2.x
+   It is not possible to upgrade previous OVAs to Graylog 3.0.0.
+
+3.0
+   Starting with Graylog 3.0.0, OVAs use the Operating System packages, so
+   you can upgrade your appliance by following
+   :ref:`this update guide <operating_package_upgrade_DEB-APT>`.
 
 Upgrading Graylog Originally Installed from Package
 ---------------------------------------------------
@@ -43,3 +49,4 @@ When upgrading from Elasticsearch 5.x to Elasticsearch 6.x, make sure to read th
    :glob:
 
    upgrade/elasticsearch-*
+

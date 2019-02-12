@@ -7,7 +7,7 @@ Virtual Machine Appliances
 Pre-Considerations
 ==================
 
-This is a showcase of Graylog and its cluster mode. Please run this appliance always in a separated network that is isolated from the internet.
+Please run this appliance always in a separated network that is isolated from the internet.
 Read also the notes about production readiness_!
 
 Download
@@ -48,7 +48,7 @@ completed:
    
       "Your appliance came up without a configured IP address. Graylog is probable not running correctly!"
    
-   In this case, you have to login and edit ``/etc/network/interfaces`` in order to setup a fixed IP address. Then manually reconfigure Graylog as shown in the following paragraphs.
+   In this case, you have to login and edit ``/etc/network/interfaces`` in order to setup a fixed IP address. Then create the file `/var/lib/graylog-server/firstboot` and reboot.
 
 
 Logging in
@@ -60,25 +60,15 @@ credentials.
 
 The web interface is reachable on port 80 at the IP address of your virtual
 machine. The login prompt of the shell is showing you this IP address, too. (See
-screenshot above). DHCP should be enabled in your network otherwise take a look into
-the ``graylog-ctl`` command to apply a static IP address to the appliance.
+screenshot above).
 
-The standard user for the web interface is *admin* with the password *admin*.
+The standard user for the web interface is *admin*, the password is shown in the console of the virtual server on the first boot.
 
-Basic configuration
-===================
+Configuration
+=============
 
-We are shipping the ``graylog-ctl`` tool with the virtual machine appliances to get you started
-with a customised setup as quickly as possible. Run these (optional) commands to configure the
-most basic settings of Graylog in the appliance::
-
-  sudo graylog-ctl set-email-config <smtp server> [--port=<smtp port> --user=<username> --password=<password>]
-  sudo graylog-ctl set-admin-password <password>
-  sudo graylog-ctl set-timezone <zone acronym>
-  sudo graylog-ctl reconfigure
-
-The ``graylog-ctl`` has much more :ref:`functionality <graylog-ctl>` documented .
-We strongly recommend to learn more about it to ensure smooth operation of your virtual appliance.
+Please check the :doc:`Graylog configuration file </pages/configuration/server.conf>`
+documentation, if you need to further customize your appliance.
 
 VMWare tools
 ============
@@ -90,13 +80,17 @@ If you are using the appliance on a VMWare host, you might want to install the h
 Update OVA to latest Version
 ============================
 
-You can update your Appliance to the :ref:`newest release <upgrade_graylog_omnibus>` without deploying a new template.
+2.x
+   It is not possible to upgrade previous OVAs to Graylog 3.0.0.
+
+3.0
+   Starting with Graylog 3.0.0, OVAs use the Operating System packages, so
+   you can upgrade your appliance by following
+   :ref:`this update guide <operating_package_upgrade_DEB-APT>`.
 
 .. _readiness:
 
 Production readiness
 ====================
 
-The Graylog appliance is not created to provide a production ready solution. It is build to offer a fast and easy way to try the software itself and not wasting time to install Graylog and it components to any kind of server. 
-
-If you want to create your own production ready setup take a look at our :ref:`other installation methods <installing>`.
+The Graylog appliance is not created to provide a production ready solution. It is build to offer a fast and easy way to try the software itself and not wasting time to install Graylog and it components to any kind of server.
