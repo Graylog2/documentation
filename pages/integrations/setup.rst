@@ -41,12 +41,13 @@ The installation on distributions like CentOS or RedHat can be done with *yum* a
 
   $ sudo yum install graylog-integrations-plugins graylog-enterprise-integrations-plugins
 
+Tarballs
+^^^^^^^^
 
-Jar File
-~~~~~~~~
+If you have done a manual installation, you download the tarballs from the following links.
 
-You can also download the JAR plugin files from the `Graylog Downloads <https://www.graylog.org/downloads>`_ page.
-
+* :enterprise-integrations-plugins-tar:`3.0.0`
+* :integrations-plugins-tar:`3.0.0`
 
 Server Restart
 ==============
