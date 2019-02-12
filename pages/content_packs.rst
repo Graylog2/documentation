@@ -34,7 +34,7 @@ the new system.
 How do I create a Content Pack?
 ===============================
 
-1. Navigate to **System / Content Pack**.
+1. Navigate to **System / Content Packs**.
 2. Click on **Create a Content Pack** on the upper right side of the page.
    A new content pack is created in a wizard. On the left side
    of that page is the navigation of the wizard. There are 3 steps to
@@ -80,7 +80,7 @@ Upload a content pack
 
 Content packs may be downloaded at the
 `Graylog Marketplace <https://marketplace.graylog.org/>`__.
-To upload these content packs navigate to **System / Content Pack** and
+To upload these content packs navigate to **System / Content Packs** and
 click on **Upload**. The now showing modal has a file finder to select
 the downloaded content pack. Click on **Upload** to finish the process.
 The uploaded content pack may now be installed on the new Graylog system.
@@ -89,7 +89,7 @@ Installing a content pack
 =========================
 
 To install the newest version of a content pack, navigate to
-**System / Content Pack**.
+**System / Content Packs**.
 This page shows the list of uploaded and created content packs.
 By clicking **Install** on the desired content pack, a modal will open
 which will ask for a **Install Comment** and the values of the parameters.
@@ -105,7 +105,7 @@ system. Click on **Install** to complete the installation.
 Uninstalling a content pack
 ===========================
 
-Navigate to **System / Content Pack** and click on the name of the content
+Navigate to **System / Content Packs** and click on the name of the content
 pack that should be uninstalled.
 The displayed page shows the details of a uploaded or created content pack.
 
