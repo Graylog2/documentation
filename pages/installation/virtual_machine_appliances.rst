@@ -62,7 +62,7 @@ The web interface is reachable on port 80 at the IP address of your virtual
 machine. The login prompt of the shell is showing you this IP address, too. (See
 screenshot above).
 
-The standard user for the web interface is *admin*, the password is shown on first boot.
+The standard user for the web interface is *admin*, the password is shown in the console of the virtual server on the first boot.
 
 Configuration
 =============
