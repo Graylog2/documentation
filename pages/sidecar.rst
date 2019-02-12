@@ -108,17 +108,17 @@ running e.g. sysmon, auditd or packetbeat.
 
 Beats on Linux
 ~~~~~~~~~~~~~~
-Install Filebeat or another Beats package by following the instructions on the official download `page <https://www.elastic.co/downloads/beats/filebeat>`_.
+Install Filebeat or another Beats package by following the instructions on the official `Filebeat <https://www.elastic.co/downloads/beats/filebeat>`_ download page.
 
 Beats on Windows
 ~~~~~~~~~~~~~~~~
 The Windows Sidecar package already includes Filebeat and Winlogbeat.
-For other Beats packages follow the instructions on the official download `page <https://www.elastic.co/downloads/beats>`_.
+For other Beats packages follow the instructions on the official `Beats <https://www.elastic.co/downloads/beats>`_ download page.
 
 NXLog on Ubuntu
 ~~~~~~~~~~~~~~~
 
-Install the NXLog package from the official download `page <https://nxlog.org/products/nxlog-community-edition/download>`_.
+Install the NXLog package from the official `NXLog <https://nxlog.org/products/nxlog-community-edition/download>`_ download page.
 Because the Sidecar takes control of stopping and starting NXlog it is
 necessary to stop all running instances of NXlog and unconfigure the default system service::
 
