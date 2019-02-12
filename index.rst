@@ -34,6 +34,7 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/users_and_roles
    pages/integrations
    pages/plugins
+   pages/content_packs
    pages/external_dashboards
    pages/marketplace
    pages/faq
