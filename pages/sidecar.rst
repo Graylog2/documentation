@@ -502,7 +502,9 @@ There are a few things that might need attention after an upgrade:
   which allows Graylog to relate messages to a Sidecar.
   You should replace the hardcoded values of ``gl2_source_collector`` and
   ``collector_node_id`` with runtime variables.
+
   In case of a Beats collector this would be::
+
     fields.gl2_source_collector: ${sidecar.nodeId}
     fields.collector_node_id: ${sidecar.nodeName}
 
