@@ -302,3 +302,23 @@ The defaults of the configuration settings for the email alarm callback with reg
 Furthermore, it's not possible anymore to enable both settings (SMTP with STARTTLS and SMTP over SSL) at the same time because this led to errors at runtime when Graylog tried to upgrade the connection to TLS with STARTTLS in an already existing SMTPS connection.
 
 Most SMTP services prefer SMTP with STARTTLS to provide an encrypted connection.
+
+Legacy Content Packs
+====================
+
+The implementation of content packs where fundamentally reworked. Parameters
+were added and checks implemented to give the user better usability.
+This rework did come with the cost that old content packs might not
+work any longer and stop the new content packs from loading.
+If the content packs page does not finish loading we recommend to remove
+the old content packs from your MongoDB.
+For that, please connect to your MongoDB shell and remove all content packs
+with the following command:
+
+.. code:: java
+
+   > db.content_packs.deleteMany({})
+
+This command will only remove the content packs, it will not remove the
+installed configurations.
+
