@@ -95,41 +95,34 @@ For security reasons, using the username and password directly on the command li
 
 To prevent having to use the clear text credentials, Graylog allows to create access tokens which can be used for authentication instead.
 
-In order to create a new access token, you need to send a ``POST`` request to the Graylog REST API which includes the username and the name of the new access token.
-
 .. note::
    Users require the permissions ``users:tokenlist``, ``users:tokencreate``, and ``users:tokenremove`` to manage their access tokens. Please check the documentation on :ref:`permissions` for more information. Also note that users, even administrators, may only manage their *own* tokens.
 
-The following example will create an access token named ``icinga`` for the user ``GM``::
+The following example will create an access token named ``agents`` for the user ``graylog-sidecar``:
 
-    curl -u GM:superpower -H 'Accept: application/json' -H 'X-Requested-By: cli' -X POST 'http://192.168.178.26:9000/api/users/GM/tokens/icinga?pretty=true'
+- Navigate to the users configuration menu ``System /  Authentication``.
 
-The response will include the access token in the ``token`` field::
+.. image:: /images/api_tokens_1-fs8.png
+  :scale: 100
 
-    {
-       "name" : "icinga",
-       "token" : "htgi84ut7jpivsrcldd6l4lmcigvfauldm99ofcb4hsfcvdgsru",
-       "last_access" : "1970-01-01T00:00:00.000Z"
-    }
+- Select the user you want to create a token for and click on ``Edit tokens``.
 
-The received access token can now be used as username in a request to the Graylog REST API using Basic Auth together with the literal password ``token``.
+.. image:: /images/api_tokens_2-fs8.png
+  :scale: 100
 
-Now the first ``curl`` example would look as follows::
+- Give the token a name and create it.
 
-    curl -u htgi84ut7jpivsrcldd6l4lmcigvfauldm99ofcb4hsfcvdgsru:token -H 'Accept: application/json' -X GET 'http://192.168.178.26:9000/api/cluster?pretty=true'
+.. image:: /images/api_tokens_3-fs8.png
+  :scale: 100
 
-If you need to know which access tokens have already been created by a user, just use ``GET /users/{username}/tokens/`` on the Graylog REST API to request a list of all access tokens that are present for this user.
+- You should see now the token in the list.
 
-The following example will request all access tokens of the user ``GM``::
+.. image:: /images/api_tokens_4-fs8.png
+  :scale: 100
 
-    curl -u GM:superpower -H 'Accept: application/json' -X GET 'http://192.168.178.26:9000/api/users/GM/tokens/?pretty=true'
+Either by unchecking the hide option or by copying the token to the clipboard you can access the token. The received access token can now be used as username in a request to the Graylog REST API using Basic Auth together with the literal password ``token``.
 
-When an access token is no longer needed, it can be delete on the Graylog REST API via ``DELETE /users/{username}/tokens/{token}``.
-
-The following example deletes the previously created access token ``htgi84ut7jpivsrcldd6l4lmcigvfauldm99ofcb4hsfcvdgsru`` of the user ``GM``::
-
-    curl -u GM:superpower -H 'Accept: application/json' -H 'X-Requested-By: cli' -X DELETE' http://192.168.178.26:9000/api/users/GM/tokens/ap84p4jehbf2jddva8rdmjr3k7m3kdnuqbai5s0h5a48e7069po?pretty=true'
-
+When an access token is no longer needed, it can be delete on the Graylog UI via the ``Delete`` button.
 
 Creating and using Session Token
 --------------------------------
