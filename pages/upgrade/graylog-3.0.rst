@@ -311,7 +311,7 @@ were added and checks implemented to give the user better usability.
 This rework did come with the cost that old content packs might not
 work any longer and stop the new content packs from loading.
 If the content packs page does not finish loading we recommend to remove
-the old content packs from your mongodb.
+the old content packs from your MongoDB.
 For that, please connect to your mongodb and remove all content packs
 with following command:
 
