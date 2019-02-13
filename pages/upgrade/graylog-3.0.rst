@@ -313,7 +313,7 @@ work any longer and stop the new content packs from loading.
 If the content packs page does not finish loading we recommend to remove
 the old content packs from your MongoDB.
 For that, please connect to your MongoDB shell and remove all content packs
-with following command:
+with the following command:
 
 .. code:: java
 
