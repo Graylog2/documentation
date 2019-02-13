@@ -185,7 +185,7 @@ on the Add/Edit Data Adapter page in Graylog.
 CSV File Adapter
 ^^^^^^^^^^^^^^^^
 
-Preforms key/value lookups from a CSV file.
+Performs key/value lookups from a CSV file.
 
 DNS Lookup Adapter
 ^^^^^^^^^^^^^^^^^^
@@ -208,3 +208,10 @@ HTTP JSONPath Adapter
 ^^^^^^^^^^^^^^^^^^^^^
 
 Executes HTTP GET requests to lookup a key and parses the result based on configured JSONPath expressions.
+
+Geo IP - MaxMind Databases
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Provides the ability to extract geolocation information of IP addresses
+from MaxMind Country and City databases.
+
