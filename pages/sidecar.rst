@@ -457,6 +457,8 @@ Check the log files in ``/var/log/graylog-sidecar`` for any errors. Understand t
 So all log files that the backend should observe also need to be readable by the ``sidecar`` user. Depending on the Linux distribution there is usually an administrator group which has access to most log files.
 By adding the ``sidecar`` user to that group you can grant access fairly easy. For example on Debian/Ubuntu systems this group is called ``adm`` (see `System Groups in Debian Wiki <https://wiki.debian.org/SystemGroups>`_ or `Security/Privileges - Monitor system logs in Ubuntu wiki <https://wiki.ubuntu.com/Security/Privileges#Monitor_system_logs>`_).
 
+.. _graylog-upgrade-sidecar:
+
 Upgrading from the Collector Sidecar
 ====================================
 

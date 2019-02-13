@@ -299,3 +299,10 @@ The defaults of the configuration settings for the email alarm callback with reg
 Furthermore, it's not possible anymore to enable both settings (SMTP with STARTTLS and SMTP over SSL) at the same time because this led to errors at runtime when Graylog tried to upgrade the connection to TLS with STARTTLS in an already existing SMTPS connection.
 
 Most SMTP services prefer SMTP with STARTTLS to provide an encrypted connection.
+
+Collector Sidecar is deprecated
+===============================
+Graylog 3.0 comes with a new Sidecar implementation.
+We still support the old **Collector Sidecars**, which can be found in the ``System / Collectors (legacy)`` menu entry.
+For more information check the :ref:`Sidecar documentation <graylog-sidecar>` and the :ref:`Upgrade guide <graylog-upgrade-sidecar>`.
+
