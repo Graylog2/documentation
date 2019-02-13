@@ -4,9 +4,6 @@ Upgrading to Graylog 3.0.x
 
 .. _upgrade-from-25-to-30:
 
-This file only contains the upgrade note for the upcoming release.
-Please see `our documentation <http://docs.graylog.org/en/latest/pages/upgrade.html>`_
-for the complete upgrade notes.
 
 Elasticsearch Version Requirements
 ==================================
