@@ -20,6 +20,7 @@ The log collector configurations are centrally managed through the Graylog web i
 Periodically, the Sidecar daemon will fetch all relevant configurations for the target, using the :doc:`REST API <configuration/rest_api>`.
 On its first run, or when a configuration change has been detected, Sidecar will *generate* (render) relevant backend configuration files. Then it will start, or restart, those reconfigured log collectors.
 
+.. _sidecar_installation:
 
 Installation
 ============
@@ -220,6 +221,8 @@ sidecar.yml Reference
 +-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
 
 
+.. _sidecar_first_start:
+
 First start
 -----------
 
@@ -281,6 +284,8 @@ logfiles and ship them with a Filebeat collector to a Beats input that is listen
 
 .. image:: /images/sidecar_sbs2.png
   :scale: 100
+
+.. _sidecar_assign_config_sbs:
 
 - Next we need to assign our newly created configuration (and therefore the Filebeat collector) to our sidecar.
   Go to the ``Collector Administration`` page.
@@ -386,6 +391,8 @@ We can now use this variable in all our configurations.
 If we ever need to change the IP/port of our input,
 we just change the variable.
 
+.. _sidecar_runtime_variables:
+
 Runtime Variables
 -----------------
 Runtime variables contain runtime informations from each Sidecar that
@@ -449,6 +456,113 @@ To make use of these settings reload systemd::
 Check the log files in ``/var/log/graylog-sidecar`` for any errors. Understand that not only the Sidecar but also all backends, like ``filebeat``, will be started as ``sidecar`` user after these changes.
 So all log files that the backend should observe also need to be readable by the ``sidecar`` user. Depending on the Linux distribution there is usually an administrator group which has access to most log files.
 By adding the ``sidecar`` user to that group you can grant access fairly easy. For example on Debian/Ubuntu systems this group is called ``adm`` (see `System Groups in Debian Wiki <https://wiki.debian.org/SystemGroups>`_ or `Security/Privileges - Monitor system logs in Ubuntu wiki <https://wiki.ubuntu.com/Security/Privileges#Monitor_system_logs>`_).
+
+Upgrading from the Collector Sidecar
+====================================
+
+This guide describes how you can perform an upgrade from the deprecated
+**Collector Sidecars** (0.1.x) to the new **Sidecars** (1.x).
+
+The major difference between the old and the new Sidecars, is that
+we replaced the UI based collector configuration approach with
+one where you can manage the plain text configuration of the collectors directly.
+This might seem like an inconvenience at first, but
+gives you the flexibility to configure any collector backend you want.
+
+
+1. Install New Sidecar
+----------------------
+
+The new Sidecar has different paths and executable names, so it can coexist with the old one.
+Install the new Sidecar by following the :ref:`Installation instructions <sidecar_installation>`
+and have your Sidecar running as described in :ref:`First Start <sidecar_first_start>`.
+
+**Note**: In case you were using filebeat on Linux, please make sure to also install
+the official collector package, since the filebeat binary is not part of the Sidecar package anymore.
+
+
+2. Migrate configuration
+------------------------
+
+Next, we need to migrate the configuration that was previously rendered
+on each host by the **Collector Sidecar**, to a new **Collector Configuration**.
+
+We recommend to use the :ref:`Sidecar Configuration Migrator <config_migrator>`.
+However, retrieving the old configuration can also be done manually by fetching it from
+your host at the ``/etc/graylog/collector-sidecar/generated/`` directory.
+
+3. Adopt configuration to Graylog 3.0
+-------------------------------------
+
+There are a few things that might need attention after an upgrade:
+
+- Use :ref:`Runtime variables <sidecar_runtime_variables>` for static fields
+
+  The imported configuration contains instructions that add static fields
+  which allows Graylog to relate messages to a Sidecar.
+  You should replace the hardcoded values of ``gl2_source_collector`` and
+  ``collector_node_id`` with runtime variables.
+
+  In case of a Beats collector this would be::
+
+    fields.gl2_source_collector: ${sidecar.nodeId}
+    fields.collector_node_id: ${sidecar.nodeName}
+
+
+- Migrate to the new Beats input
+
+  Graylog 3.0 comes with a new Beats input. The former one was renamed
+  to ``Beats (deprecated)``.
+  The new input handles fields a little different. Therefore you
+  should define ``fields_under_root: true`` for the new input
+  to get the Graylog fields work.
+
+4. Switch over to the new Sidecar
+---------------------------------
+
+Once you're done creating a new configuration, you can assign
+it to your Sidecar (see :ref:`Step-by-Step guide <sidecar_assign_config_sbs>`).
+If everything works as expected, make sure to uninstall the old
+**Collector Sidecar** to avoid collecting your logs twice.
+
+.. _config_migrator:
+
+Sidecar Configuration Migrator
+------------------------------
+The task of the Sidecar configuration migrator is to extract the configuration
+from existing **Collector Sidecars** and convert it into new **Sidecar** configurations.
+
+This feature needs a **Collector Sidecar** with version 0.1.8 or greater.
+Please upgrade the instance you want to import configurations from, if necessary.
+
+- Navigate to the Collectors (legacy) overview. In your Graylog web interface click on ``System / Collectors (legacy)``.
+
+.. image:: /images/sidecar_mig_1.png
+  :scale: 100
+
+- Click on the name of the Collector you want to import configurations from
+
+.. image:: /images/sidecar_mig_2.png
+  :scale: 100
+
+- Click the ``Import Configuration`` button on a backend to import a configuration.
+  If the import was successful, follow the link to create a new Sidecar configuration:
+
+.. image:: /images/sidecar_mig_3.png
+  :scale: 100
+
+- After clicking on ``Create Configuration`` use the ``Migrate`` button
+  underneath the configuration editor:
+
+.. image:: /images/sidecar_mig_4.png
+  :scale: 100
+
+- A modal opens up and lets you pick already imported configurations.
+  Clicking ``Apply`` will paste the configuration into the editor.
+  Afterwards you can edit and save the configuration as usual.
+
+.. image:: /images/sidecar_mig_5.png
+  :scale: 100
 
 
 Sidecar Glossary
