@@ -7,7 +7,7 @@ Graylog Sidecar
 .. note::
  Graylog 3.0 comes with a new Sidecar implementation.
  We still support the old **Collector Sidecars**, which can be found in the ``System / Collectors (legacy)`` menu entry.
- In case you need to configure legacy **Collector Sidecar** please refer to the `Graylog Collector Sidecar documentation <..2.5/collector_sidecar.html>`_.
+ In case you need to configure legacy **Collector Sidecar** please refer to the `Graylog Collector Sidecar documentation <../2.5/collector_sidecar.html>`_.
  We encourage users to migrate to the new **Sidecar**, which is covered by this document.
 
 **Graylog Sidecar** is a lightweight configuration management system for different log collectors, also called `Backends`.
@@ -456,6 +456,8 @@ To make use of these settings reload systemd::
 Check the log files in ``/var/log/graylog-sidecar`` for any errors. Understand that not only the Sidecar but also all backends, like ``filebeat``, will be started as ``sidecar`` user after these changes.
 So all log files that the backend should observe also need to be readable by the ``sidecar`` user. Depending on the Linux distribution there is usually an administrator group which has access to most log files.
 By adding the ``sidecar`` user to that group you can grant access fairly easy. For example on Debian/Ubuntu systems this group is called ``adm`` (see `System Groups in Debian Wiki <https://wiki.debian.org/SystemGroups>`_ or `Security/Privileges - Monitor system logs in Ubuntu wiki <https://wiki.ubuntu.com/Security/Privileges#Monitor_system_logs>`_).
+
+.. _graylog-upgrade-sidecar:
 
 Upgrading from the Collector Sidecar
 ====================================
