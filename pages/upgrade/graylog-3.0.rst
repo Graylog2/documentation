@@ -306,3 +306,22 @@ Graylog 3.0 comes with a new Sidecar implementation.
 We still support the old **Collector Sidecars**, which can be found in the ``System / Collectors (legacy)`` menu entry.
 For more information check the :ref:`Sidecar documentation <graylog-sidecar>` and the :ref:`Upgrade guide <graylog-upgrade-sidecar>`.
 
+Legacy Content Packs
+====================
+
+The implementation of content packs where fundamentally reworked. Parameters
+were added and checks implemented to give the user better usability.
+This rework did come with the cost that old content packs might not
+work any longer and stop the new content packs from loading.
+If the content packs page does not finish loading we recommend to remove
+the old content packs from your MongoDB.
+For that, please connect to your MongoDB shell and remove all content packs
+with the following command:
+
+.. code:: java
+
+   > db.content_packs.deleteMany({})
+
+This command will only remove the content packs, it will not remove the
+installed configurations.
+
