@@ -238,7 +238,7 @@ When the Sidecar is assigned a configuration via the Graylog web interface, it w
 ``collector_configuration_directory`` directory for each collector backend.  E.g. if you assigned a Filebeat collector you will find a
 ``filebeat.yml`` file in that directory. All changes have to be made in the Graylog web interface.
 Every time the Sidecar detects an update to its configuration it will
-rewrite the corresponding collector configuration file. So it doesn't make sense to manually edit those files.
+rewrite the corresponding collector configuration file. Manually editing these files is not recommended.
 
 Every time a collector configuration file is changed the collector process is restarted. The Sidecar takes care of the collector processes and reports the status back to the web interface
 
@@ -408,7 +408,7 @@ them. (This is what makes the ``Show messages`` button on the Sidecars overview 
 Secure Sidecar Communication
 ============================
 
-The Communication between Sidecar and Graylog will be secured if your API :ref:`use SSL <https_setup>`.
+The Communication between Sidecar and Graylog will be secured if your API :ref:`uses SSL <https_setup>`.
 
 To secure the communication between the Collector and Graylog you just need to mark ``Enable TLS`` in your Beats Input. Without giving additional Information, Graylog will now create a self-signed certificate for this Input.
 Now in the Sidecar Beats Output Configuration you just mark ``Enable TLS Support`` and ``Insecure TLS connection``. After this is saved, the communication between Beats and Graylog will use TLS.
@@ -559,7 +559,7 @@ Please upgrade the instance you want to import configurations from, if necessary
 .. image:: /images/sidecar_mig_4.png
   :scale: 100
 
-- A modal opens up and lets you pick already imported configurations.
+- A window opens up and lets you pick already imported configurations.
   Clicking ``Apply`` will paste the configuration into the editor.
   Afterwards you can edit and save the configuration as usual.
 
@@ -583,7 +583,7 @@ assign the same collector twice to a Sidecar.
 Inputs
 ------
 
-Inputs are the way how collectors ingest data. An input can be a log file that the collector should continuous read or a connection to the Windows event system that emits log events.
+Inputs are the way how collectors ingest data. An input can be a log file that the collector should continuously read or a connection to the Windows event system that emits log events.
 An input is connected to an output, otherwise there would be no way of sending the data to the next hop. So first create an output and then associate one or many inputs with it.
 
 
