@@ -2,6 +2,16 @@
 Changelog
 *********
 
+Graylog 3.0.0
+=============
+
+Released: 2019-02-14
+
+- Announcement blog post: https://www.graylog.org/post/announcing-graylog-v3-0-ga
+- Upgrade notes: :doc:`/pages/upgrade/graylog-3.0`
+
+A detailed changelog is following soon!
+
 Graylog 2.5.1
 =============
 
