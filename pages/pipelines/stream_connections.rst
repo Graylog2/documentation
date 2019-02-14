@@ -26,6 +26,8 @@ However, if you prefer to use the original stream matching functionality (i.e. s
 *Message Filter Chain* (in the *Message Processors Configuration* section of the *System -> Configurations* page) and connect pipelines to existing streams.
 This gives you fine-grained control over the extraction, conversion, and enrichment process.
 
+.. _message_processor_ordering:
+
 The importance of message processor ordering
 ============================================
 It's important to note that the order of message processors may have a significant impact on how your messages get processed.

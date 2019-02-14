@@ -81,6 +81,8 @@ and a multi value.
 
 .. image:: /images/lookuptables/example-multi-value.png
 
+.. _lookuptables_setup:
+
 Setup
 -----
 
@@ -131,6 +133,8 @@ be used if a lookup operation does not return any result.
 
 .. image:: /images/lookuptables/setup-table-defaults.png
 
+
+.. _lookuptables_usage:
 
 Usage
 -----
