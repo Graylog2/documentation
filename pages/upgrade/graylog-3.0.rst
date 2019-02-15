@@ -21,6 +21,8 @@ The changes in this release finally merge the HTTP listeners for the Graylog RES
 
 The path of the Graylog REST API is now hard-coded to ``/api``, so if you're still using the legacy URI on port 12900/tcp or have been using a custom path (via the ``rest_listen_uri`` or ``rest_transport_uri`` settings), you'll have to update the URI used to access the Graylog REST API.
 
+This might also affect your **Graylog Collector Sidecars**. Make sure to check each ``collector_sidecar.yml`` and update the ``server_url`` accordingly.
+
 If you are using a reverse proxy in front of Graylog (like nginx) and configured it to set the ``X-Graylog-Server-URL`` HTTP header, you have to remove the ``api/`` suffix because that is now the default. (as mentioned above)
 
 Example::
