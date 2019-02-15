@@ -53,7 +53,10 @@ the sandbox cannot be used:
 
 - Environments where you want or must use the ``root`` user to run reporting
   generation.
-- Environments that provide limited kernel capabilities, like a docker container.
+- Environments that provide limited kernel capabilities. On the one hand Docker containers
+  limit the kernel capabilities in a way that sandboxing doesn't work. On the other hand
+  some RedHat/CentOS based systems come with older kernel versions which also lack the necessary
+  capabilities. Systems with a kernel version >= 4.x should be fine for the default settings.
 
 In case your Graylog server runs in one of those scenarios, you may consider
 disabling the sandbox.
