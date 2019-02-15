@@ -29,13 +29,13 @@ Message Processor, please check the
 Download the database
 ---------------------
 
-In first place, you need to download a geolocation database. The Lookup Table
+In the first place, you need to download a geolocation database. The Lookup Table
 Geo IP Data Adapter supports both **MaxMind City and Country databases** in
 the **MaxMind DB format**, as the
 `GeoIP2 Databases <https://www.maxmind.com/en/geoip2-databases>`_ or
 `GeoLite2 Databases <https://dev.maxmind.com/geoip/geoip2/geolite2/>`_ that MaxMind provides.
 
-The next step is to store the geolocation database in all servers running
+The next step is to store the geolocation database on all servers running
 Graylog. Make sure you grant the right permissions to the file so the user
 running Graylog can read the database.
 
