@@ -27,7 +27,7 @@ If you simply want to checkout Graylog without any further customization, you ca
       -d docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.4
   $ docker run --link mongo --link elasticsearch \
       -p 9000:9000 -p 12201:12201 -p 514:514 \
-      -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" \
+      -e GRAYLOG_HTTP_BIND_ADDRESS="http://127.0.0.1:9000/api" \
       -d graylog/graylog:3.0
 
 How to get log data in
@@ -39,7 +39,7 @@ For example, to start a Raw/Plaintext TCP input on port 5555, stop your containe
 
   $ docker run --link mongo --link elasticsearch \
       -p 9000:9000 -p 12201:12201 -p 514:514 -p 5555:5555 \
-      -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" \
+      -e GRAYLOG_HTTP_BIND_ADDRESS="http://127.0.0.1:9000/api" \
       -d graylog/graylog:3.0
 
 
@@ -58,7 +58,7 @@ Graylog comes with a default configuration that works out of the box but you hav
 Both settings can be configured via environment variables (also see :ref:`configuration`)::
 
   -e GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
-  -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api"
+  -e GRAYLOG_HTTP_BIND_ADDRESS="http://127.0.0.1:9000/api"
 
 In this case you can login to Graylog with the username and password ``admin``.
 
@@ -97,7 +97,7 @@ Example::
         - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
         # Password: admin
         - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
-        - GRAYLOG_WEB_ENDPOINT_URI=http://127.0.0.1:9000/api
+        - GRAYLOG_HTTP_BIND_ADDRESS=http://127.0.0.1:9000/api
       links:
         - mongodb:mongo
         - elasticsearch
@@ -229,7 +229,7 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
         - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
         # Password: admin
         - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
-        - GRAYLOG_WEB_ENDPOINT_URI=http://127.0.0.1:9000/api
+        - GRAYLOG_HTTP_BIND_ADDRESS=http://127.0.0.1:9000/api
       links:
         - mongodb:mongo
         - elasticsearch
@@ -347,5 +347,5 @@ The pre-releases are tagged in the `graylog/graylog`_ Docker image.
 Follow the `documentation for the Graylog image on Docker Hub <https://hub.docker.com/r/graylog/graylog/>`__ and pick an alpha/beta/rc tag like this::
 
   $ docker run --link mongo --link elasticsearch -p 9000:9000 -p 12201:12201 -p 514:514 \
-      -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" \
+      -e GRAYLOG_HTTP_BIND_ADDRESS="http://127.0.0.1:9000/api" \
       -d graylog/graylog:3.0.0-beta.3-1
