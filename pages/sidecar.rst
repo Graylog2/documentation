@@ -262,16 +262,19 @@ logfiles and ship them with a Filebeat collector to a Beats input that is listen
 - The first step is to create a Beats input where collectors can send data to. Click on ``System / Inputs`` and start a global Beats input on the listening address 0.0.0.0 and port 5044.
 
 .. image:: /images/sidecar_sbs0.png
+  :width: 100 %
 
 .. _sidecar_overview:
 
 - Navigate to the Sidecars overview. In your Graylog web interface click on ``System / Sidecars``.
 
 .. image:: /images/sidecars_overview.png
+  :width: 100 %
 
 - Navigate to the Sidecar ``Configuration`` page.
 
 .. image:: /images/sidecar_sbs1.png
+  :width: 100 %
 
 - Next we create a new configuration: We give the configuration a name and select ``filebeat on Linux`` as collector.
   (This collector definition is shipped with Graylog, and comes with a default configuration template).
@@ -280,6 +283,7 @@ logfiles and ship them with a Filebeat collector to a Beats input that is listen
   When done click ``Create`` to save your configuration.
 
 .. image:: /images/sidecar_sbs2.png
+  :width: 100 %
 
 .. _sidecar_assign_config_sbs:
 
@@ -287,6 +291,7 @@ logfiles and ship them with a Filebeat collector to a Beats input that is listen
   Go to the ``Collector Administration`` page.
 
 .. image:: /images/sidecar_sbs3.png
+  :width: 100 %
 
 - You will see a list of sidecars and underneath them a list of collectors that could be assigned to them.
   Please note that collectors are assigned to sidecars by means of applying a collector configuration to the sidecar.
@@ -294,21 +299,25 @@ logfiles and ship them with a Filebeat collector to a Beats input that is listen
   can select the ``filebeat-conf`` configuration we created earlier.
 
 .. image:: /images/sidecar_sbs4.png
+  :width: 100 %
 
 - Confirming the assignment, will directly push this configuration to your sidecar which will go and start
   the Filebeat collector with this configuration.
 
 .. image:: /images/sidecar_sbs5.png
+  :width: 100 %
 
 - If everything went fine, you should see the status ``running`` on the administration page.
 
 .. image:: /images/sidecar_sbs6.png
+  :width: 100 %
 
 - Congratulations your collector setup is working now!
   You can go back to the Sidecars overview and click on the ``Show messages`` button to
   search for logs that have been collected via your sidecar.
 
 .. image:: /images/sidecar_sbs7.png
+  :width: 100 %
 
 Creating a new Log Collector
 ============================
@@ -319,10 +328,12 @@ Let's assume you want your sidecar to run `rsyslogd(8)` for you.
 - Navigate to the Sidecars overview. In your Graylog web interface click on ``System / Sidecars``.
 
 .. image:: /images/sidecars_overview.png
+  :width: 100 %
 
 - Navigate to the Sidecar ``Configuration`` page.
 
 .. image:: /images/sidecar_sbs1.png
+  :width: 100 %
 
 - After we click on ``Create Log Collector``, we are presented with the following page,
   where we have to fill out some fields for our new collector.
@@ -340,6 +351,7 @@ Let's assume you want your sidecar to run `rsyslogd(8)` for you.
   once you create a configuration for this collector.
 
 .. image:: /images/sidecar_new_collector.png
+  :width: 100 %
 
 - Next up you can use your newly created collector by creating a configuration
   for it and assign it to a Sidecar. Please follow the :ref:`sidecar_step-by-step` accordingly.
@@ -359,6 +371,7 @@ which avoids duplication and simplifies management.
 To create a configuration variable go any ``Collector Configuration`` page:
 
 .. image:: /images/sidecar_sbs2.png
+  :width: 100 %
 
 On the right you'll find a box ``Collector Configuration Reference`` which
 contains `Runtime Variables` and `Variables`.
@@ -366,11 +379,13 @@ Click on ``Variables`` and then ``Create Variable`` to receive the following
 modal:
 
 .. image:: /images/sidecar_conf_variable.png
+  :width: 100 %
 
 In this example we replace the hard coded IP and Port from our
 Beats input with a new variable named ``${user.BeatsInput}``:
 
 .. image:: /images/sidecar_conf_variable2.png
+  :width: 100 %
 
 We can now use this variable in all our configurations.
 If we ever need to change the IP/port of our input,
@@ -525,26 +540,31 @@ Please upgrade the instance you want to import configurations from, if necessary
 - Navigate to the Collectors (legacy) overview. In your Graylog web interface click on ``System / Collectors (legacy)``.
 
 .. image:: /images/sidecar_mig_1.png
+  :width: 100 %
 
 - Click on the name of the Collector you want to import configurations from
 
 .. image:: /images/sidecar_mig_2.png
+  :width: 100 %
 
 - Click the ``Import Configuration`` button on a backend to import a configuration.
   If the import was successful, follow the link to create a new Sidecar configuration:
 
 .. image:: /images/sidecar_mig_3.png
+  :width: 100 %
 
 - After clicking on ``Create Configuration`` use the ``Migrate`` button
   underneath the configuration editor:
 
 .. image:: /images/sidecar_mig_4.png
+  :width: 100 %
 
 - A window opens up and lets you pick already imported configurations.
   Clicking ``Apply`` will paste the configuration into the editor.
   Afterwards you can edit and save the configuration as usual.
 
 .. image:: /images/sidecar_mig_5.png
+  :width: 100 %
 
 
 Sidecar Glossary
