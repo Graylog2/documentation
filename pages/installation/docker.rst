@@ -19,7 +19,7 @@ We will use the following Docker images in this chapter:
 Quick start
 ===========
 
-If you simply want to checkout Graylog without any further customization, you can run the following three commands to create the necessary environment::
+If you simply want to checkout Graylog on your local desktop without any further customization, you can run the following three commands to create the necessary environment::
 
   $ docker run --name mongo -d mongo:3
   $ docker run --name elasticsearch \
@@ -59,6 +59,7 @@ Both settings can be configured via environment variables (also see :ref:`config
 
   -e GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
   -e GRAYLOG_HTTP_BIND_ADDRESS="127.0.0.1:9000"
+  -e GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
 
 In this case you can login to Graylog with the username and password ``admin``.
 
@@ -98,6 +99,7 @@ Example::
         # Password: admin
         - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
         - GRAYLOG_HTTP_BIND_ADDRESS=127.0.0.1:9000
+        - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
       links:
         - mongodb:mongo
         - elasticsearch
@@ -116,7 +118,7 @@ Example::
         # GELF UDP
         - 12201:12201/udp
 
-After starting all three Docker containers by running ``docker-compose up``, you can open the URL ``http://127.0.0.1:9000`` in a web browser and log in with username ``admin`` and password ``admin`` (make sure to change the password later).
+After starting all three Docker containers by running ``docker-compose up``, you can open the URL ``http://127.0.0.1:9000`` in a web browser and log in with username ``admin`` and password ``admin`` (make sure to change the password later). Change ``GRAYLOG_HTTP_EXTERNAL_URI=`` to your server IP if you run Docker remotely. 
 
 
 .. _configuration:
@@ -230,6 +232,7 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
         # Password: admin
         - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
         - GRAYLOG_HTTP_BIND_ADDRESS=127.0.0.1:9000
+        - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
       links:
         - mongodb:mongo
         - elasticsearch
