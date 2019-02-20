@@ -93,8 +93,8 @@ Optionally edit the configuration (see :ref:`Configuration <sidecar-configuratio
 
     notepad.exe C:\Program Files\Graylog\sidecar\sidecar.yml
 
-    & "C:\Program Files\Graylog\graylog-sidecar.exe" -service install
-    & "C:\Program Files\Graylog\graylog-sidecar.exe" -service start
+    & "C:\Program Files\graylog\sidecar\graylog-sidecar.exe" -service install
+    & "C:\Program Files\graylog\sidecar\graylog-sidecar.exe" -service start
 
 Install collectors
 ------------------
