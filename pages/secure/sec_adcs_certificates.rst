@@ -1,8 +1,9 @@
 .. _sec_adcs_certificates.rst:
 
-****************
+*************************************************************
 Generating Graylog certificates and keys with Microsoft AD CS
-****************
+*************************************************************
+
 In order to really make your Graylog installation "your own" Graylog, you will need to add TLS certificates issued and trusted by your own organization. Many organizations rely upon Microsoft's ADCS (Active Directory Certificate Services) for the issuance of their internal certificates. Here, we will explain the basic requirements and workflow of setting up all keys and certificates for a Graylog stack. 
 
 In these examples we will assume a Graylog cluster, consisting of:
@@ -15,7 +16,7 @@ In these examples we will assume a Graylog cluster, consisting of:
 
 
 Required certificates
-===============
+=====================
 
 In order to provide your full cluster with all required certificates, we'll need to make all of the following keypairs and certificates. For each certificate you'll need to gather the relevant hostnames, DNS aliases and IP addresses, because we want the certificates to work for all of these.
 
@@ -121,7 +122,7 @@ In order to provide your full cluster with all required certificates, we'll need
 
 
 Graylog stack certificate template
-===============
+==================================
 
 The certificates for the Graylog stack and all of its components need some pretty specific settings. In order to achieve these, you will need to define a new certificate template in ADCS. 
 
@@ -148,11 +149,11 @@ Defining the new template is done through the ADCS management tool "*Certificati
 If you are going to be generating all the keypairs on your issuing CA or on another management station, then you will need to add the following as well, which will allow you to export the keypair for migration to the Graylog stack servers.
 
 5. Request handling tab:
-  a. Allow the private key to be exported is set to Yes.
+  a. **Allow the private key to be exported** is set to *Yes*.
 
 
 Generating the keypair and certificates - preparation
-===============
+=====================================================
 
 The following instructions assume that you generate all the keypairs on a Windows administrative workstation, or on the issuing CA itself (meaning, you'll need that extra "*Allow the private key to be exported*" flag). You can of course generate all keys on the Graylog stack servers and then simply submit the CSR (certificate signing request) to the CA.
 
@@ -187,7 +188,7 @@ The above is only one of the needed .INF files; you will need one for each keypa
 
 
 Generating the keypair and certificates - execution
-===============
+===================================================
 
 As said, we're assuming that you're generating the keypairs on your Windows administration station. If you're generating the keypairs on the Graylog Linux hosts, then you will need to use different instructions. 
 
@@ -221,14 +222,12 @@ SearchGuard is used to add TLS/SSL encryption onto ElasticSearch for free. The p
 
 
 Generating the keypair and certificates - conversion
-===============
+====================================================
 
 We showed earlier (in the table above) that each part of the Graylog stack has specific requirements for the format and files that are used to submit the keypair and the certificate. We will need to convert everything we have right now, in order to make them usable.
 
 
-**WARNING**
-
-Key materials are very sensitive information! You should not leave them lying around! Once you have finished the setup of all keys and certificates on the Graylog stack, you must delete all the files we've put into D:\secrets\graylog. Never leave key materials lying around!
+.. warning:: Key materials are very sensitive information! You should not leave them lying around! Once you have finished the setup of all keys and certificates on the Graylog stack, you must delete all the files we've put into D:\secrets\graylog. Never leave key materials lying around!
 
 Also, please use strong passwords on all PFX and PKCS files! Store these passwords safely, in a password vaulting application.
 
