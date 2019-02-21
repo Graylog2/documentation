@@ -133,23 +133,31 @@ Be careful:
 
 Defining the new template is done through the ADCS management tool "*Certification Authority*". 
 
-1. Duplicate the default ADCS WebServer template, rename it to your liking.
-2. General tab:
-  a. Set the name to something recognizable, for example "Graylog Stack Template".
-  b. The software will automatically generate the internal name, which removes all spaces: "GraylogStackTemplate".
-3. Cryptography tab:
-  a. **Provider** is the *Key Storage Provider*
-  b. **Requests can use any provider available on the subject's computer** is true
-  c. **Algorithm** is *RSA 2048*
-  d. **Request hash** is *SHA256*
-  e. **Use alternate signature hash** must be set to false.
-4. Extensions tab:
-  a. **Application policies** is set to both *server auth* as well as *client auth*.
+#. Duplicate the default ADCS WebServer template, rename it to your liking.
+#. General tab:
 
-If you are going to be generating all the keypairs on your issuing CA or on another management station, then you will need to add the following as well, which will allow you to export the keypair for migration to the Graylog stack servers.
+   #. Set the name to something recognizable, for example "Graylog Stack Template".
+   #. The software will automatically generate the internal name, which removes all spaces: "GraylogStackTemplate".
 
-5. Request handling tab:
-  a. **Allow the private key to be exported** is set to *Yes*.
+#. Cryptography tab:
+
+   #. **Provider** is the *Key Storage Provider*
+   #. **Requests can use any provider available on the subject's computer** is true
+   #. **Algorithm** is *RSA 2048*
+   #. **Request hash** is *SHA256*
+   #. **Use alternate signature hash** must be set to false.
+
+#. Extensions tab:
+
+   #. **Application policies** is set to both *server auth* as well as *client auth*.
+
+#. Request handling tab:
+
+   .. note:: If you are going to be generating all the keypairs on your issuing CA or on another management station, then you will need to add the following as well, which will allow you to export the keypair for migration to the Graylog stack servers.
+   #. **Allow the private key to be exported** is set to *Yes*.
+
+
+
 
 
 Generating the keypair and certificates - preparation
