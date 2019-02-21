@@ -1129,6 +1129,19 @@ lookup
 
 Looks up a multi value in the named lookup table.
 
+Example::
+
+        rule "dst_ip geoip lookup"
+        when
+          has_field("dst_ip")
+        then
+          let geo = lookup("geoip-lookup", to_string($message.dst_ip));
+          set_field("dst_ip_geolocation", geo["coordinates"]);
+          set_field("dst_ip_geo_country_code", geo["country"].iso_code);
+          set_field("dst_ip_geo_country_name", geo["country"].names.en);
+          set_field("dst_ip_geo_city_name", geo["city"].names.en);
+        end
+
 lookup_value
 ------------
 ``lookup_value(lookup_table: string, key: any, [default: any])``
