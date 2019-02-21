@@ -154,11 +154,8 @@ Defining the new template is done through the ADCS management tool "*Certificati
 #. Request handling tab:
 
    .. note:: If you are going to be generating all the keypairs on your issuing CA or on another management station, then you will need to add the following as well, which will allow you to export the keypair for migration to the Graylog stack servers.
+   
    #. **Allow the private key to be exported** is set to *Yes*.
-
-
-
-
 
 Generating the keypair and certificates - preparation
 =====================================================
