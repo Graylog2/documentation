@@ -13,7 +13,7 @@ Prerequisites
 Taking a minimal server setup as base will need this additional packages::
 
     $ sudo apt-get update && sudo apt-get upgrade
-    $ sudo apt-get install apt-transport-https openjdk-8-jre-headless uuid-runtime pwgen
+    $ sudo apt-get install apt-transport-https gnupg openjdk-8-jre-headless uuid-runtime pwgen
 
 
 MongoDB
