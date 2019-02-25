@@ -152,6 +152,9 @@ To be able to use a privileged port, you can use `authbind <https://en.wikipedia
 
 The input needs to be started on port 1514 in this case and will be made available on port 514 to the outside. The clients can then send data to port 514.
 
+Can I Integrate Graylog with Zabbix by sending application alerts?
+------------------------------------------------------------------
+
 
 Graylog & Integrations
 ======================
