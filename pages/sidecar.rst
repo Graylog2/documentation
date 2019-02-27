@@ -465,11 +465,14 @@ Upgrading from the Collector Sidecar
 This guide describes how you can perform an upgrade from the deprecated
 **Collector Sidecars** (0.1.x) to the new **Sidecars** (1.x).
 
-The major difference between the old and the new Sidecars, is that
+One major difference between the old and the new Sidecars, is that
 we replaced the UI based collector configuration approach with
 one where you can manage the plain text configuration of the collectors directly.
 This might seem like an inconvenience at first, but
 gives you the flexibility to configure any collector backend you want.
+
+Additionally, the new Sidecars don't assign configurations based on tags anymore.
+Instead you have to assign configurations explicitly (see :ref:`Step-by-Step guide <sidecar_assign_config_sbs>`).
 
 
 1. Install New Sidecar
