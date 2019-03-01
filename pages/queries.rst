@@ -31,7 +31,11 @@ Messages where the field *type* includes *ssh*::
 
 Messages where the field *type* includes *ssh* or *login*::
 
-  type:(ssh login)
+  type:(ssh OR login)
+
+.. note:: Elasticsearch 2.x and 5.x split queries on whitespace, so the query ``type:(ssh login)`` was equivalent to ``type:(ssh OR login)``.
+  This is no longer the case in `Elasticsearch 6.0 <https://www.elastic.co/guide/en/elasticsearch/reference/6.6/breaking-changes-6.0.html#_changes_to_queries>`__
+  and you must now include an ``OR`` operator between each term.
 
 Messages where the field *type* includes the exact phrase *ssh login*::
 
