@@ -60,6 +60,15 @@ Released: 2018-11-30
 - Fix key-value function to be more robust with splitting values. `Graylog2/graylog-plugin-pipeline-processor#249 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/249>`_ `Graylog2/graylog2-server#4920 <https://github.com/Graylog2/graylog2-server/issues/4920>`_ `@radykal-com <https://github.com/radykal-com>`_
 - Add support for decimal IPv4 representation in the ``to_ip`` function. `Graylog2/graylog-plugin-pipeline-processor#253 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/253>`_ `Graylog2/graylog2-server#5268 <https://github.com/Graylog2/graylog2-server/issues/5268>`_
 
+Graylog 2.4.7
+=============
+
+Released: 2019-03-01
+
+**Core**
+
+- Mask password fields of inputs returned by the REST API. `Graylog2/graylog2-server#5408 <https://github.com/Graylog2/graylog2-server/issues/5408>`_ `Graylog2/graylog2-server#5734 <https://github.com/Graylog2/graylog2-server/issues/5734>`_
+
 Graylog 2.4.6
 =============
 
