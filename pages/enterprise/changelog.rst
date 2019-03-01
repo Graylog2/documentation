@@ -16,6 +16,16 @@ Released: 2018-11-30
 
 No changes since 2.4.6.
 
+Graylog Enterprise 2.4.7
+========================
+
+Released: 2019-03-01
+
+Plugin: License
+---------------
+
+* Add missing authorization checks to license resources.
+
 Graylog Enterprise 2.4.6
 ========================
 
