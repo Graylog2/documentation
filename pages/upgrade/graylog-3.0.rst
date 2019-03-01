@@ -330,7 +330,7 @@ installed configurations.
 Elasticsearch 6 changes
 =======================
 
-There is a breaking change in Elasticsearch 6 that may affect some queries on your searches and dashboards::
+There is a breaking change in Elasticsearch 6 that may affect some queries on your searches and dashboards:
 
 Before Elasticsearch 6, queries for keyword fields were split by whitespaces and combined with ``OR`` operators
 resulting, for example, in ``type:(ssh login)`` and ``type:(ssh OR login)`` being equivalent. This is no longer
