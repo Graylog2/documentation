@@ -2,6 +2,15 @@
 Changelog
 *********
 
+Graylog 2.4.7
+=============
+
+Released: 2019-03-01
+
+**Core**
+
+- Mask password fields of inputs returned by the REST API. `Graylog2/graylog2-server#5408 <https://github.com/Graylog2/graylog2-server/issues/5408>`_ `Graylog2/graylog2-server#5734 <https://github.com/Graylog2/graylog2-server/issues/5734>`_
+
 Graylog 2.4.6
 =============
 
