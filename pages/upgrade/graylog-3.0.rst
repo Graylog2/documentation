@@ -327,3 +327,15 @@ with the following command:
 This command will only remove the content packs, it will not remove the
 installed configurations.
 
+Elasticsearch 6 changes
+=======================
+
+There is a breaking change in Elasticsearch 6 that may affect some queries on your searches and dashboards:
+
+Before Elasticsearch 6, queries for keyword fields were split by whitespaces and combined with ``OR`` operators
+resulting, for example, in ``type:(ssh login)`` and ``type:(ssh OR login)`` being equivalent. This is no longer
+the case in Elasticsearch 6 and now those queries are different: the former looking for the ``ssh login`` value,
+the second for either ``ssh`` or ``login`` values.
+
+Please ensure to look for those queries in your Graylog setup before upgrading to Elasticsearch 6 and add the
+``OR`` operators where needed.

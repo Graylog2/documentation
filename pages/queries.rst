@@ -31,7 +31,11 @@ Messages where the field *type* includes *ssh*::
 
 Messages where the field *type* includes *ssh* or *login*::
 
-  type:(ssh login)
+  type:(ssh OR login)
+
+.. note:: Elasticsearch 2.x and 5.x split queries on whitespace, so the query ``type:(ssh login)`` was equivalent to ``type:(ssh OR login)``.
+  This is no longer the case in `Elasticsearch 6.0 <https://www.elastic.co/guide/en/elasticsearch/reference/6.6/breaking-changes-6.0.html#_changes_to_queries>`__
+  and you must now include an ``OR`` operator between each term.
 
 Messages where the field *type* includes the exact phrase *ssh login*::
 
@@ -53,7 +57,6 @@ Messages that match regular expression ``ethernet[0-9]+``::
 
 .. note:: Please refer to the Elasticsearch documentation about the `Regular expression syntax <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/query-dsl-regexp-query.html#regexp-syntax>`_ for details about the supported regular expression dialect.
 
-.. note:: Elasticsearch 2.x allows to use ``_missing_:type`` instead of ``NOT _exists_:type``. This query syntax has been removed in `Elasticsearch 5.0 <https://www.elastic.co/guide/en/elasticsearch/reference/5.0/breaking_50_search_changes.html#_deprecated_queries_removed>`__.
 
 By default all terms or phrases are OR connected so all messages that have at least one hit are returned. You can use
 **Boolean operators and groups** for control over this::

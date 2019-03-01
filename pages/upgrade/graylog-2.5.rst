@@ -16,3 +16,16 @@ Graylog web interface and our plugins, so if you don't use any scripts or 3rd pa
 don't have to do anything else.
 
 If you are using the Graylog Sidecar, you either have to use Graylog version 2.5.1 or update the Sidecar to `version 0.1.7 <https://github.com/Graylog2/collector-sidecar/releases/tag/0.1.7>`_. That version is using the correct CSRF headers for HTTP requests against the Graylog server API.
+
+Elasticsearch 6 changes
+=======================
+
+There is a breaking change in Elasticsearch 6 that may affect some queries on your searches and dashboards:
+
+Before Elasticsearch 6, queries for keyword fields were split by whitespaces and combined with ``OR`` operators
+resulting, for example, in ``type:(ssh login)`` and ``type:(ssh OR login)`` being equivalent. This is no longer
+the case in Elasticsearch 6 and now those queries are different: the former looking for the ``ssh login`` value,
+the second for either ``ssh`` or ``login`` values.
+
+Please ensure to look for those queries in your Graylog setup before upgrading to Elasticsearch 6 and add the
+``OR`` operators where needed.
