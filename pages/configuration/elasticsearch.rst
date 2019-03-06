@@ -338,7 +338,7 @@ Save the following index template for the custom index mapping into a file named
 
 Finally, load the index mapping into Elasticsearch with the following command::
 
-  $ curl -X PUT -d @'graylog-custom-mapping.json' 'http://localhost:9200/_template/graylog-custom-mapping?pretty'
+  $ curl -X PUT -d @'graylog-custom-mapping.json' -H 'Content-Type: application/json' 'http://localhost:9200/_template/graylog-custom-mapping?pretty'
   {
     "acknowledged" : true
   }
@@ -478,6 +478,7 @@ After you've removed the index template, new indices will only have the original
     }
   }
 
+Additional information on Elasticsearch Index Templates can be found in the official `Elasticseach Documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-templates.html>`: 
 
 .. _rotate_es_indices:
 
@@ -486,7 +487,7 @@ After you've removed the index template, new indices will only have the original
 Rotate indices manually
 -----------------------
 
-Select the desired index set on the ``System / Indices`` page in the Graylog web interface by clicking on the name of the index set, then select "Rotate active write index" from the "Maintenance" dropdown menu.  
+Select the desired index set on the ``System / Indices`` page in the Graylog web interface by clicking on the name of the index set, then select "Rotate active write index" from the "Maintenance" dropdown menu.
 
 .. image:: /images/rotate_index_1.png
 
