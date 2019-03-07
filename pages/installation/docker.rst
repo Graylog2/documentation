@@ -27,7 +27,7 @@ If you want to checkout Graylog on your local desktop without any further custom
       -e "ES_JAVA_OPTS=-Xms512m -Xmx512m" \
       -d docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.1
   $ docker run --name graylog --link mongo --link elasticsearch \
-      -p 9000:9000 -p 12201:12201 -p 514:514 \
+      -p 9000:9000 -p 12201:12201 -p 1514:1514 \
       -e GRAYLOG_HTTP_EXTERNAL_URI="http://127.0.0.1:9000/" \
       -d graylog/graylog:3.0
 
@@ -43,7 +43,7 @@ You can create different kinds of inputs under *System / Inputs*, however you ca
 For example, to start a Raw/Plaintext TCP input on port 5555, stop your container and recreate it, whilst appending ``-p 5555:5555`` to your `docker run <https://docs.docker.com/engine/reference/run/>`_ command::
 
   $ docker run --link mongo --link elasticsearch \
-      -p 9000:9000 -p 12201:12201 -p 514:514 -p 5555:5555 \
+      -p 9000:9000 -p 12201:12201 -p 1514:1514 -p 5555:5555 \
       -e GRAYLOG_HTTP_EXTERNAL_URI="http://127.0.0.1:9000/" \
       -d graylog/graylog:3.0
 
@@ -113,9 +113,9 @@ Example::
         # Graylog web interface and REST API
         - 9000:9000
         # Syslog TCP
-        - 514:514
+        - 1514:1514
         # Syslog UDP
-        - 514:514/udp
+        - 1514:1514/udp
         # GELF TCP
         - 12201:12201
         # GELF UDP
@@ -245,9 +245,9 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
         # Graylog web interface and REST API
         - 9000:9000
         # Syslog TCP
-        - 514:514
+        - 1514:1514
         # Syslog UDP
-        - 514:514/udp
+        - 1514:1514/udp
         # GELF TCP
         - 12201:12201
         # GELF UDP
@@ -361,8 +361,6 @@ Troubleshooting
   In this case please `pick another driver <https://docs.docker.com/engine/userguide/storagedriver/selectadriver>`__ like ``aufs`` or ``overlay``.
 
 
-
-
 Testing a beta version
 ======================
 
@@ -374,6 +372,6 @@ The pre-releases are tagged in the `graylog/graylog`_ Docker image.
 
 Follow the `documentation for the Graylog image on Docker Hub <https://hub.docker.com/r/graylog/graylog/>`__ and pick an alpha/beta/rc tag like this::
 
-  $ docker run --link mongo --link elasticsearch -p 9000:9000 -p 12201:12201 -p 514:514 \
+  $ docker run --link mongo --link elasticsearch -p 9000:9000 -p 12201:12201 -p 1514:1514 \
       -e GRAYLOG_HTTP_BIND_ADDRESS="127.0.0.1:9000" \
       -d graylog/graylog:3.0.0-beta.3-1
