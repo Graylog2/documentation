@@ -74,7 +74,7 @@ Automatic node discovery
 
 .. caution:: Automatic node discovery does not work when using the `Amazon Elasticsearch Service <https://aws.amazon.com/elasticsearch-service/>`_ because Amazon blocks certain Elasticsearch API endpoints.
 
-Graylog uses automatic node discovery to gather a list of all available Elasticsearch nodes in the cluster at runtime and distribute requests among them to potentially increase performance and availability. To enable this feature, you need to set the ``elasticsearch_discovery_enabled`` to ``true``. Optionally, you can define the a filter allowing to selectively include/exclude discovered nodes (details how to specify node filters are found in the `Elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/5.4/cluster.html#cluster-nodes>`_) using the ``elasticsearch_discovery_filter`` setting, or tuning the frequency of the node discovery using the ``elasticsearch_discovery_frequency`` configuration option.
+Graylog uses automatic node discovery to gather a list of all available Elasticsearch nodes in the cluster at runtime and distribute requests among them to potentially increase performance and availability. To enable this feature, you need to set the ``elasticsearch_discovery_enabled`` to ``true``. Optionally, you can define the a filter allowing to selectively include/exclude discovered nodes (details how to specify node filters are found in the `Elasticsearch cluster documentation <https://www.elastic.co/guide/en/elasticsearch/reference/6.6/cluster.html#cluster-nodes>`_) using the ``elasticsearch_discovery_filter`` setting, or tuning the frequency of the node discovery using the ``elasticsearch_discovery_frequency`` configuration option.
 
 Configuration of Elasticsearch nodes
 ------------------------------------
@@ -94,7 +94,7 @@ system defaults allow. **Set it to at least 64000 open file descriptors.**
 
 Graylog will show a notification in the web interface when there is a node in the Elasticsearch cluster which has a too low open file limit.
 
-Read about how to raise the open file limit in the corresponding `2.x <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup-configuration.html#file-descriptors>`__ / `5.x <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/file-descriptors.html>`__ documentation pages.
+Read about how to raise the open file limit in the corresponding `2.x <https://www.elastic.co/guide/en/elasticsearch/reference/6.6/setup-configuration.html#file-descriptors>`__ / `6.x <https://www.elastic.co/guide/en/elasticsearch/reference/6.6/file-descriptors.html>`__ documentation pages.
 
 Heap size
 ^^^^^^^^^
@@ -124,7 +124,7 @@ Tuning Elasticsearch
 
 Graylog is already setting specific configuration for every index it is managing. This is enough tuning for a lot of use cases and setups.
 
-More detailed information about the configuration of Elasticsearch can be found in the `official documentation <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/system-config.html>`__.
+More detailed information about the configuration of Elasticsearch can be found in the `official documentation <https://www.elastic.co/guide/en/elasticsearch/reference/6.6/system-config.html>`__.
 
 
 Avoiding split-brain and shard shuffling
@@ -300,9 +300,9 @@ This would translate to the following additional index mapping in Elasticsearch:
     }
   }
 
-The format of the ``ingest_time`` field is described in the Elasticsearch documentation about the `format mapping parameter <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/mapping-date-format.html>`_. Also make sure to check the Elasticsearch documentation about `Field datatypes <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/mapping-types.html>`_.
+The format of the ``ingest_time`` field is described in the Elasticsearch documentation about the `format mapping parameter <https://www.elastic.co/guide/en/elasticsearch/reference/6.6/mapping-date-format.html>`_. Also make sure to check the Elasticsearch documentation about `Field datatypes <https://www.elastic.co/guide/en/elasticsearch/reference/6.6/mapping-types.html>`_.
 
-In order to apply the additional index mapping when Graylog creates a new index in Elasticsearch, it has to be added to an `index template <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/indices-templates.html>`_. The Graylog default template (``graylog-internal``) has the lowest priority and will be merged with the custom index template by Elasticsearch.
+In order to apply the additional index mapping when Graylog creates a new index in Elasticsearch, it has to be added to an `index template <https://www.elastic.co/guide/en/elasticsearch/reference/6.6/indices-templates.html>`_. The Graylog default template (``graylog-internal``) has the lowest priority and will be merged with the custom index template by Elasticsearch.
 
 .. warning:: If the default index mapping and the custom index mapping cannot be merged (e. g. because of conflicting field datatypes), Elasticsearch will throw an exception and won't create the index. So be extremely cautious and conservative about the custom index mappings!
 
@@ -478,7 +478,7 @@ After you've removed the index template, new indices will only have the original
     }
   }
 
-Additional information on Elasticsearch Index Templates can be found in the official `Elasticsearch Documentation <https://www.elastic.co/guide/en/elasticsearch/reference/6.6/indices-templates.html>`_
+Additional information on Elasticsearch Index Templates can be found in the official `Elasticsearch Template Documentation <https://www.elastic.co/guide/en/elasticsearch/reference/6.6/indices-templates.html>`_
 
 
 .. _rotate_es_indices:
@@ -500,7 +500,7 @@ Select the desired index set on the ``System / Indices`` page in the Graylog web
 Cluster Status explained
 ========================
 
-Elasticsearch provides a classification for the `cluster health <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/cluster-health.html>`_.
+Elasticsearch provides a classification for the `cluster health <https://www.elastic.co/guide/en/elasticsearch/reference/6.6/cluster-health.html>`_.
 
 The cluster status applies to different levels:
 
