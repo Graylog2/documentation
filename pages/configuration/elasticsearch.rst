@@ -478,7 +478,8 @@ After you've removed the index template, new indices will only have the original
     }
   }
 
-Additional information on Elasticsearch Index Templates can be found in the official `Elasticseach Documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-templates.html>`: 
+Additional information on Elasticsearch Index Templates can be found in the official `Elasticsearch Documentation <https://www.elastic.co/guide/en/elasticsearch/reference/6.6/indices-templates.html>`_
+
 
 .. _rotate_es_indices:
 
