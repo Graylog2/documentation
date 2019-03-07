@@ -19,17 +19,21 @@ We will use the following Docker images in this chapter:
 Quick start
 ===========
 
-If you simply want to checkout Graylog on your local desktop without any further customization, you can run the following three commands to create the necessary environment::
+If you want to checkout Graylog on your local desktop without any further customization, you can run the following three commands to create the necessary environment::
 
   $ docker run --name mongo -d mongo:3
   $ docker run --name elasticsearch \
       -e "http.host=0.0.0.0" \
       -e "ES_JAVA_OPTS=-Xms512m -Xmx512m" \
-      -d docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.4
-  $ docker run --link mongo --link elasticsearch \
-      -p 9000:9000 -p 12201:12201 -p 514:514 \
-      -e GRAYLOG_HTTP_BIND_ADDRESS="127.0.0.1:9000" \
+      -d docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.1
+  $ docker run --name graylog --link mongo --link elasticsearch \
+      -p 9000:9000 -p 12201:12201 -p 1514:1514 \
+      -e GRAYLOG_HTTP_EXTERNAL_URI="http://127.0.0.1:9000/" \
       -d graylog/graylog:3.0
+
+
+.. warning:: All configuration examples are created to run on the local computer. Should those be used on external servers, adjust ``GRAYLOG_HTTP_EXTERNAL_URI`` and add ``GRAYLOG_HTTP_PUBLISH_URI`` and ``GRAYLOG_HTTP_EXTERNAL_URI`` according to the :ref:`server.conf documentation <web_rest_api_options>`.
+
 
 How to get log data in
 ----------------------
@@ -39,8 +43,8 @@ You can create different kinds of inputs under *System / Inputs*, however you ca
 For example, to start a Raw/Plaintext TCP input on port 5555, stop your container and recreate it, whilst appending ``-p 5555:5555`` to your `docker run <https://docs.docker.com/engine/reference/run/>`_ command::
 
   $ docker run --link mongo --link elasticsearch \
-      -p 9000:9000 -p 12201:12201 -p 514:514 -p 5555:5555 \
-      -e GRAYLOG_HTTP_BIND_ADDRESS="127.0.0.1:9000" \
+      -p 9000:9000 -p 12201:12201 -p 1514:1514 -p 5555:5555 \
+      -e GRAYLOG_HTTP_EXTERNAL_URI="http://127.0.0.1:9000/" \
       -d graylog/graylog:3.0
 
 
@@ -59,8 +63,7 @@ Graylog comes with a default configuration that works out of the box but you hav
 Both settings can be configured via environment variables (also see :ref:`configuration`)::
 
   -e GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
-  -e GRAYLOG_HTTP_BIND_ADDRESS="127.0.0.1:9000"
-  -e GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
+  -e GRAYLOG_HTTP_EXTERNAL_URI="http://127.0.0.1:9000/"
 
 In this case you can login to Graylog with the username and password ``admin``.
 
@@ -78,9 +81,9 @@ Example::
     # MongoDB: https://hub.docker.com/_/mongo/
     mongodb:
       image: mongo:3
-    # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html
+    # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.6/docker.html
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.4
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.1
       environment:
         - http.host=0.0.0.0
         - transport.host=localhost
@@ -99,7 +102,6 @@ Example::
         - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
         # Password: admin
         - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
-        - GRAYLOG_HTTP_BIND_ADDRESS=127.0.0.1:9000
         - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
       links:
         - mongodb:mongo
@@ -111,9 +113,9 @@ Example::
         # Graylog web interface and REST API
         - 9000:9000
         # Syslog TCP
-        - 514:514
+        - 1514:1514
         # Syslog UDP
-        - 514:514/udp
+        - 1514:1514/udp
         # GELF TCP
         - 12201:12201
         # GELF UDP
@@ -138,7 +140,7 @@ For example, setting up the SMTP configuration for sending Graylog alert notific
       image: "mongo:3"
       # Other settings [...]
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.4
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.1
       # Other settings [...]
     graylog:
       image: graylog/graylog:3.0
@@ -178,7 +180,7 @@ This can be done by adding an entry to the `volumes <https://docs.docker.com/com
       image: mongo:3
       # Other settings [...]
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.4
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.1
       # Other settings [...]
     graylog:
       image: graylog/graylog:3.0
@@ -209,7 +211,7 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
         - mongo_data:/data/db
     # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.4
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.1
       volumes:
         - es_data:/usr/share/elasticsearch/data
       environment:
@@ -232,7 +234,6 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
         - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
         # Password: admin
         - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
-        - GRAYLOG_HTTP_BIND_ADDRESS=127.0.0.1:9000
         - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
       links:
         - mongodb:mongo
@@ -244,9 +245,9 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
         # Graylog web interface and REST API
         - 9000:9000
         # Syslog TCP
-        - 514:514
+        - 1514:1514
         # Syslog UDP
-        - 514:514/udp
+        - 1514:1514/udp
         # GELF TCP
         - 12201:12201
         # GELF UDP
@@ -291,7 +292,7 @@ The ``docker-compose.yml`` file has to reference the new Docker image::
       image: "mongo:3"
       # Other settings [...]
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.4
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.1
       # Other settings [...]
     graylog:
       image: graylog-with-sso-plugin
@@ -315,7 +316,7 @@ The ``docker-compose.yml`` file has to reference the new Docker image::
       image: "mongo:3"
       # Other settings [...]
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.4
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.1
       # Other settings [...]
     graylog:
       image: graylog/graylog:3.0
@@ -371,6 +372,6 @@ The pre-releases are tagged in the `graylog/graylog`_ Docker image.
 
 Follow the `documentation for the Graylog image on Docker Hub <https://hub.docker.com/r/graylog/graylog/>`__ and pick an alpha/beta/rc tag like this::
 
-  $ docker run --link mongo --link elasticsearch -p 9000:9000 -p 12201:12201 -p 514:514 \
+  $ docker run --link mongo --link elasticsearch -p 9000:9000 -p 12201:12201 -p 1514:1514 \
       -e GRAYLOG_HTTP_BIND_ADDRESS="127.0.0.1:9000" \
       -d graylog/graylog:3.0.0-beta.3-1
