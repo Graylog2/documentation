@@ -333,6 +333,7 @@ MongoDB
 * ``mongodb_uri = mongodb://...``
     * MongoDB connection string. Enter your MongoDB connection and authentication information here.
     * See https://docs.mongodb.com/manual/reference/connection-string/ for details.
+    * Take notice that ``+``-signs in the username or password need to be replaced by ``%2B``.
     * Examples:
         - Simple: ``mongodb://localhost/graylog``
         - Authenticate against the MongoDB server: ``mongodb_uri = mongodb://grayloguser:secret@localhost:27017/graylog``
