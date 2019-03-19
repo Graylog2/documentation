@@ -2,6 +2,17 @@
 Changelog
 *********
 
+Graylog Enterprise 2.5.2
+========================
+
+Released: 2019-03-15
+
+Plugin: License
+---------------
+
+- Add missing permissions to license HTTP API resources.
+- Only show upcoming license expiration warning to admin users.
+
 Graylog Enterprise 2.5.1
 ========================
 
