@@ -41,10 +41,11 @@ Configure at least the following variables in ``/etc/graylog/server/server.conf`
  * ``root_password_sha2``
     * A SHA2 hash of a password you will use for your initial login. Set this to a SHA2 hash generated with ``echo -n "Enter Password: " && head -1 </dev/stdin | tr -d '\n' | sha256sum | cut -d" " -f1``
       and you will be able to log in to the web interface with username **admin** and password **yourpassword**.
-* ``elasticsearch_hosts```
+ * ``elasticsearch_hosts``
     * List of Elasticsearch hosts Graylog should connect to. 
  * ``mongodb_uri``
     * Enter your MongoDB connection and authentication information here.
+
 
 Starting the server
 ^^^^^^^^^^^^^^^^^^^
