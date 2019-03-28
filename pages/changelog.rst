@@ -12,6 +12,19 @@ Released: 2019-02-14
 
 A detailed changelog is following soon!
 
+Graylog 2.5.2
+=============
+
+Released: 2019-03-15
+
+**Core**
+
+- Mask password fields of inputs returned by the REST API.  `Graylog2/graylog2-server#5432 <https://github.com/Graylog2/graylog2-server/issues/5432>`_ `Graylog2/graylog2-server#5733 <https://github.com/Graylog2/graylog2-server/issues/5733>`_
+
+**Integrations**
+
+- Fix input parsing problem in PaloAlto input. `Graylog2/graylog-plugin-integrations#10 <https://github.com/Graylog2/graylog-plugin-integrations/issues/10>`_ `Graylog2/graylog-plugin-integrations#11 <https://github.com/Graylog2/graylog-plugin-integrations/issues/11>`_
+
 Graylog 2.5.1
 =============
 

@@ -814,7 +814,7 @@ Example::
         rule "drop messages over 16383 characters"
         when
             has_field("message") AND
-            regex(to_string($message.message), "^.{16383,}$").matches == true
+            regex(pattern: "^.{16383,}$", value: to_string($message.message)).matches == true
         then
             drop_message();
             // added debug message to be notified about the dropped message

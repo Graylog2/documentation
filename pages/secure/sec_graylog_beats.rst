@@ -55,7 +55,7 @@ Graylog
 HTTPS
 ^^^^^
 
-Place the ``.key`` and ``.crt`` file on your Graylog server in the configuration dir (/etc/graylog/server/) and add them to the Graylog server.conf. In addition change the ``rest_listen_uri`` and ``web_listen_uri`` to **https**. You might need to cover other settings in a multinode cluster or special setups - just read the comments of the settings inside of the server.conf.
+Place the ``.key`` and ``.crt`` file on your Graylog server in the configuration dir (/etc/graylog/server/) and add them to the Graylog server.conf. In addition change ``http_enable_tls`` to **true**. You might need to cover other settings in a multinode cluster or special setups - just read the comments of the settings inside of the server.conf.
 
 When using the Sidecar, use the **https** URI in the :ref:`sidecar.yml <sidecar-configuration>`
 
