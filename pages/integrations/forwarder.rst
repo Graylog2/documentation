@@ -4,7 +4,7 @@
 Graylog Forwarder
 *****************
 
-.. note:: This input is available since Graylog version 3.0.1. Installation of an additional ``graylog-plugin-enterprise-integrations`` package and an enterprise license is required. See the :doc:`Integrations Setup <../setup>` page for more info.
+.. note:: This input is available since Graylog version 3.0.1. Installation of an additional ``graylog-plugin-enterprise-integrations`` package and an enterprise license is required. See the :doc:`Integrations Setup <setup>` page for more info.
 
 The Graylog Forwarder provides the ability to forward messages from one Graylog cluster to another over HTTP/2.
 The Graylog Forwarder may be used for a variety of use cases, but the most common is to centralize log messages
