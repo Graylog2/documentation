@@ -2,6 +2,27 @@
 Changelog
 *********
 
+Graylog 3.0.1
+=============
+
+Released: 2019-04-01
+
+**Core**
+
+- Fix dashboard position migration. `Graylog2/graylog2-server#5737 <https://github.com/Graylog2/graylog2-server/issues/5737>`_ `Graylog2/graylog2-server#5763 <https://github.com/Graylog2/graylog2-server/issues/5763>`_
+- Fix HTTP 100 handling in http inputs. `Graylog2/graylog2-server#5690 <https://github.com/Graylog2/graylog2-server/issues/5690>`_ `Graylog2/graylog2-server#5725 <https://github.com/Graylog2/graylog2-server/issues/5725>`_
+- Fix http input keep-alive handling. `Graylog2/graylog2-server#5720 <https://github.com/Graylog2/graylog2-server/issues/5720>`_ `Graylog2/graylog2-server#5728 <https://github.com/Graylog2/graylog2-server/issues/5728>`_
+- Fix running Graylog web interface under a path prefix. `Graylog2/graylog2-server#5702 <https://github.com/Graylog2/graylog2-server/issues/5702>`_ `Graylog2/graylog2-server#5703 <https://github.com/Graylog2/graylog2-server/issues/5703>`_
+- Fix issue with wildcards in the search query parser when running with newer Elasticsearch versions. `Graylog2/graylog2-server#5719 <https://github.com/Graylog2/graylog2-server/issues/5719>`_ `Graylog2/graylog2-server#5766 <https://github.com/Graylog2/graylog2-server/issues/5766>`_
+- Fix Grok patterns that use "OR" to not return "null" values. `Graylog2/graylog2-server#4773 <https://github.com/Graylog2/graylog2-server/issues/4773>`_ `Graylog2/graylog2-server#5749 <https://github.com/Graylog2/graylog2-server/issues/5749>`_
+- Fix NetFlow parsing for Cisco ASA devices. `Graylog2/graylog2-server#5715 <https://github.com/Graylog2/graylog2-server/issues/5715>`_ `Graylog2/graylog2-server#5729 <https://github.com/Graylog2/graylog2-server/issues/5729>`_
+- Fix Grok patterns to support underscores in match group names again. `Graylog2/graylog2-server#5704 <https://github.com/Graylog2/graylog2-server/issues/5704>`_ `Graylog2/graylog2-server#5563 <https://github.com/Graylog2/graylog2-server/issues/5563>`_ `Graylog2/graylog2-server#5800 <https://github.com/Graylog2/graylog2-server/issues/5800>`_
+- Document password escaping issue for the MongoDB connection URL. `Graylog2/graylog2-server#5680 <https://github.com/Graylog2/graylog2-server/issues/5680>`_ `Graylog2/graylog2-server#5764 <https://github.com/Graylog2/graylog2-server/issues/5764>`_
+
+**Threatintel Plugin**
+
+- Fix problem with content pack migration. `Graylog2/graylog-plugin-threatintel#123 <https://github.com/Graylog2/graylog-plugin-threatintel/issues/123>`_
+
 Graylog 3.0.0
 =============
 
@@ -20,10 +41,6 @@ Released: 2019-03-15
 **Core**
 
 - Mask password fields of inputs returned by the REST API.  `Graylog2/graylog2-server#5432 <https://github.com/Graylog2/graylog2-server/issues/5432>`_ `Graylog2/graylog2-server#5733 <https://github.com/Graylog2/graylog2-server/issues/5733>`_
-
-**Integrations**
-
-- Fix input parsing problem in PaloAlto input. `Graylog2/graylog-plugin-integrations#10 <https://github.com/Graylog2/graylog-plugin-integrations/issues/10>`_ `Graylog2/graylog-plugin-integrations#11 <https://github.com/Graylog2/graylog-plugin-integrations/issues/11>`_
 
 Graylog 2.5.1
 =============
@@ -617,7 +634,7 @@ https://www.graylog.org/blog/92-announcing-graylog-v2-2-3
 **Pipeline Processor**
 
 * Use uppercase timezone in TimezoneAwareFunction and fix default value. `Graylog2/graylog-plugin-pipeline-processor#169 <https://github.com/Graylog2/graylog-plugin-pipeline-processor/issues/169>`__
- 
+
 Graylog 2.2.2
 =============
 
@@ -1423,7 +1440,7 @@ https://www.graylog.org/blog/58-graylog-v2-0-3-released
 * Calculate keyword from and to values on the fly `Graylog2/graylog2-server#2335 <https://github.com/Graylog2/graylog2-server/pull/2335>`_ `Graylog2/graylog2-server#2301 <https://github.com/Graylog2/graylog2-server/pull/2301>`_
 * Make MemoryAppender thread-safe `Graylog2/graylog2-server#2307 <https://github.com/Graylog2/graylog2-server/pull/2307>`_ `Graylog2/graylog2-server#2302 <https://github.com/Graylog2/graylog2-server/pull/2302>`_
 * Use right metrics to display buffer usage `Graylog2/graylog2-server#2300 <https://github.com/Graylog2/graylog2-server/pull/2300>`_ `Graylog2/graylog2-server#2299 <https://github.com/Graylog2/graylog2-server/pull/2299>`_
-* Check if props actually contain configuration fields before copying them `Graylog2/graylog2-server#2298 <https://github.com/Graylog2/graylog2-server/pull/2298>`_ `Graylog2/graylog2-server#2297 <https://github.com/Graylog2/graylog2-server/pull/2297>`_ 
+* Check if props actually contain configuration fields before copying them `Graylog2/graylog2-server#2298 <https://github.com/Graylog2/graylog2-server/pull/2298>`_ `Graylog2/graylog2-server#2297 <https://github.com/Graylog2/graylog2-server/pull/2297>`_
 
 
 Graylog 2.0.2
