@@ -19,10 +19,6 @@ Released: 2019-04-01
 - Fix Grok patterns to support underscores in match group names again. `Graylog2/graylog2-server#5704 <https://github.com/Graylog2/graylog2-server/issues/5704>`_ `Graylog2/graylog2-server#5563 <https://github.com/Graylog2/graylog2-server/issues/5563>`_ `Graylog2/graylog2-server#5800 <https://github.com/Graylog2/graylog2-server/issues/5800>`_
 - Document password escaping issue for the MongoDB connection URL. `Graylog2/graylog2-server#5680 <https://github.com/Graylog2/graylog2-server/issues/5680>`_ `Graylog2/graylog2-server#5764 <https://github.com/Graylog2/graylog2-server/issues/5764>`_
 
-**Integrations**
-
-- Fix syslog parsing issue in PaloAlto input.
-
 **Threatintel Plugin**
 
 - Fix problem with content pack migration. `Graylog2/graylog-plugin-threatintel#123 <https://github.com/Graylog2/graylog-plugin-threatintel/issues/123>`_
