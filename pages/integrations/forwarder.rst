@@ -1,85 +1,48 @@
 .. _forwarder:
 
-*****************
-Graylog Forwarder
-*****************
+***********
+Forwarder
+***********
 
-.. note:: This input is available since Graylog version 3.0.1. Installation of an additional ``graylog-plugin-enterprise-integrations`` package and an enterprise license is required to use it. See the :doc:`Integrations Setup <setup>` page for more info.
+The Forwarder provides the ability to forward messages from one Graylog cluster source to another Graylog cluster destination
+over HTTP/2.This allows for centralizing log messages from multiple distributed Graylog clusters into one. This also
+allows for centralized alerting, reporting, and oversight of multiple Graylog clusters.
 
-The Graylog Forwarder provides the ability to forward messages from one Graylog cluster to another over HTTP/2.
-The Graylog Forwarder may be used for a variety of use cases, but the most common is to centralize log messages
-from multiple distributed Graylog clusters (which allows centralized alerting, reporting, and oversight).
-Messages are forwarded at the very end of the message processing pipeline in the source Graylog cluster (at the same
-time as they are written to Elasticsearch).
+.. note:: This is an enterprise integration feature and is only available since Graylog version 3.0.1 and thus requires an enterprise license. See the :doc:`Integrations Setup <setup>` page for more info.
 
-The Graylog Forwarder features an on-disk journal, which messages are written to before attempting to send over the
-network to the destination Graylog cluster. This provides an extra layer of reliability in the case that the remote
-Graylog cluster is temporarily unavailable.
+Overview
+---------
 
-Components
-----------
-Two components are required for the Forwarder to operate: The Forwarder Output and the Forwarder Input.
+Two Graylog clusters are required for this component, a Graylog cluster source (Forwarder Output) and a Graylog cluster
+destination (Forwarder Input). The Graylog cluster source will allow message to be forwarded, and the Graylog cluster
+destination will receive messages being forwarded.
 
 Forwarder Output
-~~~~~~~~~~~~~~~~
-The Forwarder Output must exist in the source Graylog cluster. It is responsible for forwarding messages to the
-Forwarder Input in the destination cluster. Messages are written to an on-disk journal within the output before they
-are sent over the network.
+^^^^^^^^^^^^^^^^^
+The Forwarder Output (Graylog cluster source) is responsible for forwarding messages to the
+Graylog cluster destination. It first writes the messages to an on-disk journal in the Graylog cluster source
+(**Forwarder Output**). Messages stay in the on-disk journal until the Graylog cluster destination is available to receive messages.
+
+Messages are only forwarded until after they are done being processed through the pipeline of the Graylog cluster
+source, but simultaneously as they are written to Elasticsearch.
+
+Forwarder Journal
+^^^^^^^^^^^^^^^^^^^
+The Forwarder is equipped with a disk journal. This journal immediately persists messages received from the Graylog
+Output system to disk before attempting to send them to the remote Graylog cluster. This allows the Forwarder to
+keep receiving and reliably queuing messages, even if the remote Graylog cluster is temporarily unavailable due to
+network issues. The Journal has many configuration options (such as Maximum Journal Size) available and described on
+the Edit Forwarder Output page.
+
 
 Forwarder Input
-~~~~~~~~~~~~~~~
-The Forwarder Input must exist in the destination Graylog cluster. It is responsible for receiving messages from the
-source Graylog cluster.
+^^^^^^^^^^^^^^^^
 
-Throughput Considerations
--------------------------
-The Graylog Forwarder is capable of forwarding messages at very high throughput rates.
-Many hardware factors will affect throughput (such as CPU clock speed, number of CPU cores, available memory, and
-network bandwidth). Several Forwarder Output configuration options are also available to help you tune performance
-for your throughput requirements and environment.
+The Forwarder Input (Graylog cluster destination) is responsible for receiving messages that have been
+forwarded from the Graylog cluster source.
 
-Concurrent Network Senders
-    The number of concurrent network senders. Each sender establishes one HTTP/2 connection. Use multiple senders to
-    increase throughput and also take advantage of :ref:`load balancing<forwarder_load_balancing>`. Start with a low
-    number, and increase gradually until throughput stops increasing. This number generally should not exceed the
-    number of cores on a machine.
-
-Journal Buffer Size
-    The size of the pre-journal buffer. This number must be a power of two. This number must be sufficiently large to
-    avoid blocking the Graylog output system. Recommended value: 65536
-
-Number of Handlers Journal Buffer
-    The number of concurrent journal encoders. This prepares the messages to be written to the journal
-    and is a fast operation. This number generally should not exceed the number of cores on a machine.
-
-Maximum Journal Read Batch Size
-    The maximum number of messages read from the journal at once. Increase this value to reduce excessive disk I/O.
-    Recommended range: 500-5000.
-
-Sender Encoders
-    The number of concurrent send encoders. These prepare the message to be sent over the network.
-    This number generally should not exceed the number of cores on a machine.
-
-Send Buffer Size
-    The size of the post-journal send buffer. This number must be a power of two.
-    Recommended value: two times the Maximum Journal Read Batch Size rounded up to the next power of 2.
-
-TLS
----
-TLS encryption is supported to ensure secure transport of forwarded messages. You can enable it by checking the Enable
-TLS check box on both the Forwarder input and output. The certificate and key must be specified on in the Forwarder
-input, and only the certificate is required on the Forwarder output. Note that the following requirements apply when
-using TLS with the Forwarder.
-
-* Only X.509 certificates and keys in PEM format are supported.
-
-* TLS Authentication is not currently supported.
-
-Forwarder Message Fields
-------------------------
-The following fields will be added to all forwarded messages when received in the destination Forwarder input.
-You can use these in the destination Graylog cluster to identify where the messages originated from and perform
-any desired actions (such as assigning to streams or running pipeline rules).
+When the Graylog cluster destination (Forwarder Input) receives the forwarded messages, the following relevant fields
+are added in order to keep the integrity of the messages in tact.
 
 * ``gl2_source_cluster_id``
     * The id of the source Graylog cluster.
@@ -87,19 +50,101 @@ any desired actions (such as assigning to streams or running pipeline rules).
 * ``gl2_source_node_id``
     * The id of the source Graylog node.
 
-Forwarder Journal
------------------
-The Forwarder is equipped with a disk journal. This journal immediately persists messages received from the Graylog
-Output system to disk before attempting to send them to the remote Graylog cluster. This allows the Forwarder to
-keep receiving and reliably queuing messages, even if the remote Graylog cluster is temporarily unavailable due to
-network issues. The Journal has many configuration options (such as Maximum Journal Size) available and described on
-the Edit Forwarder Output page.
 
-.. _forwarder_load_balancing:
+Forwarder Output Options
+------------------------
 
-Load Balancing
---------------
-The Forwarder uses HTTP/2 (gRPC) for transport. Each Concurrent Network Sender establishes one connection to the remote
-Forwarder input. Load balancing will direct each of these sender connections persistently to a back-end host. The load
-is balanced by using multiple senders for which connections are distributed amongst the available back-end hosts.
-See `Load Balancing gRPC <https://grpc.io/blog/loadbalancing>`__ for more information.
+The Graylog Forwarder is capable of forwarding messages at very high throughput rates.
+Many hardware factors will affect throughput (such as CPU clock speed, number of CPU cores, available memory, and
+network bandwidth). Several Forwarder Output configuration options are also available to help you tune performance
+for your throughput requirements and environment.
+
+* ``Hostname``
+    The destination host name or IP address where the Graylog Forwarder input is running.
+
+* ``Port``
+    The destination port that the Graylog Forwarder input is listening on.
+
+* ``Journal Segment Size``
+    The soft maximum for the size of a segment file in the log.
+
+* ``Journal Segment Age``
+    The disk journal segment age.
+
+* ``Maximum Journal Size``
+    The maximum size for the disk journal.
+
+* ``Maximum Journal Message Age``
+    The maximum time that a message will be stored in the disk journal.
+
+* ``Journal Message Flush Interval``
+    The number of messages that can be written to the log before a flush is forced.
+
+* ``Maximum Journal Flush Age``
+    The amount of time the log can have dirty data before a flush is forced.
+
+* ``Journal Buffer Size``
+    The size of the pre-journal buffer. This number must be a power of two. This number must be sufficiently large to
+    avoid blocking the Graylog output system. Recommended value: 65536
+
+* ``Number of Handlers Journal Buffer``
+    The number of concurrent journal encoders. This prepares the messages to be written to the journal
+    and is a fast operation. This number generally should not exceed the number of cores on a machine.
+
+* ``Send Buffer Size``
+    The size of the post-journal send buffer. This number must be a power of two.
+    Recommended value: two times the Maximum Journal Read Batch Size rounded up to the next power of 2.
+
+* ``Sender Encoders``
+    The number of concurrent send encoders. These prepare the message to be sent over the network.
+    This number generally should not exceed the number of cores on a machine.
+
+* ``Concurrent Network Senders``
+    The number of concurrent senders forwarding messages simultaneously. Each sender establishes one HTTP/2 connection.
+    Use multiple senders to increase throughput and also take advantage of :ref:`load balancing<forwarder_load_balancing>`.
+    The number of concurrent senders should not exceed the number of cores on a machine.
+
+* ``GRPC Request Timeout``
+    Request timeout for GRPC in milliseconds
+
+* ``Maximum Journal Read Batch Size``
+    The maximum number of messages read from the journal at once. Increase this value to reduce excessive disk I/O.
+    Recommended range: 500-5000.
+
+* ``Enable Compression``
+    The option to compress messages when they are transported
+
+* ``TLS Trusted Certificate Chain File``
+    Path to the trusted certificate chain file for verifying the remote endpoint's certificate.
+    The file should contain an X.509 certificate collection in PEM format.
+
+* ``Enable TLS``
+    Option to enable TLS.
+
+Forwarder Input Options
+------------------------
+
+* ``Bind Address``
+    Address to listen on. For example 0.0.0.0 or 127.0.0.1.
+
+* ``Port``
+    Port number to listen on
+
+* ``Enable TLS``
+    Option to enable TLS for connection
+
+* ``TLS Trusted Certificate Chain File``
+    Path to the trusted certificate chain file. The file should contain an X.509 certificate collection in PEM format.
+
+* ``TLS Private Key File``
+    Path to the TLS private key file. The file should be in PEM format
+
+SSL/TLS
+^^^^^^^^^
+TLS encryption is supported to ensure secure transport of forwarded messages. You can enable it by checking the Enable
+TLS check box on both the Forwarder input and output. The Forwarder Input requires that both the certificate and key
+locations must be specified. The Forwarder Output requires only the certification location be specified.
+
+.. note:: Only X.509 certificates and keys in PEM format are supported. TLS Authentication is not currently supported.
+
+.. attention:: Having too many Concurrent Network Sender will increase message throughput, however it is the onus of the user to determine what is the appropriate number of concurrent network senders the Graylog cluster destination (Forwarder Input) can handle at once. Load balancing factors must be considered and determined by the user.
