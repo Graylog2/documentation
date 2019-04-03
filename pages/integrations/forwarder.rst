@@ -8,8 +8,9 @@ Graylog Forwarder
 
 The Graylog Forwarder provides the ability to forward messages from one Graylog cluster to another over HTTP/2.
 The Graylog Forwarder may be used for a variety of use cases, but the most common is to centralize log messages
-from multiple Graylog instances. Messages are forwarded at the very end of the message processing pipeline in the
-source Graylog cluster (at the same time as they are written to Elasticsearch).
+from multiple distributed Graylog clusters (which allows centralized alerting, reporting, and oversight).
+Messages are forwarded at the very end of the message processing pipeline in the source Graylog cluster (at the same
+time as they are written to Elasticsearch).
 
 The Graylog Forwarder features an on-disk journal, which messages are written to before attempting to send over the
 network to the destination Graylog cluster. This provides an extra layer of reliability in the case that the remote
@@ -22,8 +23,8 @@ Two components are required for the Forwarder to operate: The Forwarder Output a
 Forwarder Output
 ~~~~~~~~~~~~~~~~
 The Forwarder Output must exist in the source Graylog cluster. It is responsible for forwarding messages to the
-Forwarder Input in the destination cluster. Messages are written to an on-disk journal before they are sent over
-the network.
+Forwarder Input in the destination cluster. Messages are written to an on-disk journal within the output before they
+are sent over the network.
 
 Forwarder Input
 ~~~~~~~~~~~~~~~
@@ -32,7 +33,7 @@ source Graylog cluster.
 
 Throughput Considerations
 -------------------------
-The Graylog forwarder is capable of forwarding messages to a remote Graylog cluster at very high throughput rates.
+The Graylog Forwarder is capable of forwarding messages at very high throughput rates.
 Many hardware factors will affect throughput (such as CPU clock speed, number of CPU cores, available memory, and
 network bandwidth). Several Forwarder Output configuration options are also available to help you tune performance
 for your throughput requirements and environment.
@@ -48,7 +49,7 @@ Journal Buffer Size
     avoid blocking the Graylog output system. Recommended value: 65536
 
 Number of Handlers Journal Buffer
-    Encoders The number of concurrent journal encoders. This prepares the messages to be written to the journal
+    The number of concurrent journal encoders. This prepares the messages to be written to the journal
     and is a fast operation. This number generally should not exceed the number of cores on a machine.
 
 Maximum Journal Read Batch Size
@@ -65,9 +66,10 @@ Send Buffer Size
 
 TLS
 ---
-TLS encryption is supported. You can enable it by checking the Enable TLS check box on both the Forwarder input and
-output. The certificate and key must be specified on in the Forwarder input, and only the certificate is required
-on the Forwarder output. Note that the following requirements apply when using TLS with the Forwarder.
+TLS encryption is supported to ensure secure transport of forwarded messages. You can enable it by checking the Enable
+TLS check box on both the Forwarder input and output. The certificate and key must be specified on in the Forwarder
+input, and only the certificate is required on the Forwarder output. Note that the following requirements apply when
+using TLS with the Forwarder.
 
 * Only X.509 certificates and keys in PEM format are supported.
 
