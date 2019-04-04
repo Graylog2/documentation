@@ -32,7 +32,7 @@ Enterprise
 Enterprise Integrations plugin feature require an `Graylog Enterprise license <https://www.graylog.org/enterprise>`_ .
 For a comprehensive list of available features included, see our  :ref:`Enterprise List page<enterprise_features>`
 
-* :doc:`Graylog Forwarder <integrations/forwarder>`
+* :doc:`Forwarder <integrations/forwarder>`
 * :ref:`Script Alert Notification<alerts_script_alert>`
 
 
