@@ -2,6 +2,15 @@
 Changelog
 *********
 
+Graylog Enterprise 3.0.1
+========================
+
+Released: 2019-04-01
+
+- Fix missing authorization checks in the license management.
+- Fix view sharing issue for regular users.
+- Fix memory leak in the reporting system.
+
 Graylog Enterprise 3.0.0
 ========================
 
