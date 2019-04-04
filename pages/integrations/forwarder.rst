@@ -148,8 +148,10 @@ locations must be specified. The Forwarder Output requires only the certificatio
 
 .. note:: Only X.509 certificates and keys in PEM format are supported. TLS Authentication is not currently supported.
 
+.. _forwarder_load_balancing:
+
 Load Balancing
---------------
+^^^^^^^^^^^^^^
 The Forwarder uses HTTP/2 (gRPC) for transport. When only one Concurrent Network Sender is used,
 then load balancing is not supported. However, if more than one Concurrent Network Senders are used, then
 load balancing is supported, which allows each of these sender connections to be distributed to the destination host.
