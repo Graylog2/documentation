@@ -41,67 +41,6 @@ Many hardware factors will affect throughput (such as CPU clock speed, number of
 network bandwidth). Several Forwarder Output configuration options are also available to help you tune performance
 for your throughput requirements and environment.
 
-Hostname
-    The destination host name or IP address where the Graylog Forwarder input is running.
-
-Port
-    The destination port that the Graylog Forwarder input is listening on.
-
-Journal Segment Size
-    The soft maximum for the size of a segment file in the log.
-
-Journal Segment Age
-    The disk journal segment age.
-
-Maximum Journal Size
-    The maximum size for the disk journal.
-
-Maximum Journal Message Age
-    The maximum time that a message will be stored in the disk journal.
-
-Journal Message Flush Interval
-    The number of messages that can be written to the log before a flush is forced.
-
-Maximum Journal Flush Age
-    The amount of time the log can have dirty data before a flush is forced.
-
-Journal Buffer Size
-    The size of the pre-journal buffer. This number must be a power of two. This number must be sufficiently large to
-    avoid blocking the Graylog output system. Recommended value: 65536
-
-Number of Handlers Journal Buffer
-    The number of concurrent journal encoders. This prepares the messages to be written to the journal
-    and is a fast operation. This number generally should not exceed the number of cores on a machine.
-
-Send Buffer Size
-    The size of the post-journal send buffer. This number must be a power of two.
-    Recommended value: two times the Maximum Journal Read Batch Size rounded up to the next power of 2.
-
-Sender Encoders
-    The number of concurrent send encoders. These prepare the message to be sent over the network.
-    This number generally should not exceed the number of cores on a machine.
-
-Concurrent Network Senders
-    The number of concurrent senders forwarding messages simultaneously. Each sender establishes one HTTP/2 connection.
-    Use multiple senders to increase throughput and also take advantage of :ref:`load balancing<forwarder_load_balancing>`.
-    The number of concurrent senders should not exceed the number of cores on a machine.
-
-GRPC Request Timeout
-    Request timeout for GRPC in milliseconds
-
-Maximum Journal Read Batch Size
-    The maximum number of messages read from the journal at once. Increase this value to reduce excessive disk I/O.
-    Recommended range: 500-5000.
-
-Enable Compression
-    The option to compress messages when they are transported
-
-TLS Trusted Certificate Chain File
-    Path to the trusted certificate chain file for verifying the remote endpoint's certificate.
-    The file should contain an X.509 certificate collection in PEM format.
-
-Enable TLS
-    Option to enable TLS.
 
 .. image:: /images/forwarder_output.png
 
@@ -124,20 +63,6 @@ are added to help track which Graylog cluster and node the messages originated f
 Forwarder Input Options
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Bind Address
-    Address to listen on. For example 0.0.0.0 or 127.0.0.1.
-
-Port
-    Port number to listen on
-
-Enable TLS
-    Option to enable TLS for connection
-
-TLS Trusted Certificate Chain File
-    Path to the trusted certificate chain file. The file should contain an X.509 certificate collection in PEM format.
-
-TLS Private Key File
-    Path to the TLS private key file. The file should be in PEM format
 
 .. image:: /images/forwarder_input.png
 
