@@ -40,7 +40,7 @@ How to get log data in
 
 You can create different kinds of inputs under *System / Inputs*, however you can only use ports that have been properly mapped to your docker container, otherwise data will not go through.
 
-For example, to start a Raw/Plaintext TCP input on port 5555, stop your container and recreate it, whilst appending ``-p 5555:5555`` to your `docker run <https://docs.docker.com/engine/reference/run/>`_ command::
+For example, to start a Raw/Plaintext TCP input on port 5555, stop your container and recreate it, while appending ``-p 5555:5555`` to your `docker run <https://docs.docker.com/engine/reference/run/>`_ command::
 
   $ docker run --link mongo --link elasticsearch \
       -p 9000:9000 -p 12201:12201 -p 1514:1514 -p 5555:5555 \
