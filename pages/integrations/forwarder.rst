@@ -14,6 +14,8 @@ destination cluster will receive messages being forwarded.
 
 .. note:: This is an Enterprise Integrations feature and is only available since Graylog version 3.0.1 and thus requires an Enterprise license. See the :doc:`Integrations Setup <setup>` page for more info.
 
+.. image:: /images/forwarder_diagram.png
+
 Forwarder Output
 ----------------
 
