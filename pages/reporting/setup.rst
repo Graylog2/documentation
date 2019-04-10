@@ -11,6 +11,17 @@ Installation
 Reporting is part of the Graylog Enterprise plugin, please check the :doc:`Graylog Enterprise setup page </pages/enterprise/setup>`
 for details on how to install it.
 
+The PDF generation needs the ``fontconfig`` package installed on the server it is running on.
+
+On a Debian based system use ``apt`` to install it, e.g.::
+
+  $ sudo apt-get install fontconfig
+
+Respectively on a RedHat based systems use::
+
+  $ sudo yum install fontconfig
+
+
 Configuration
 =============
 
@@ -25,6 +36,10 @@ options in case you need to do some advanced configuration.
 
     * - Name
       - Description
+    * - ``bin_dir``
+      - Directory with binaries needed for PDF generation.
+    * - ``data_dir``
+      - Cache directory for PDF generation.
     * - ``report_disable_sandbox``
       - Disables report generation sandbox.
     * - ``report_generation_timeout_seconds``
@@ -35,6 +50,21 @@ options in case you need to do some advanced configuration.
       - URI to connect to Graylog Web Interface.
     * - ``report_render_engine_port``
       - Port to communicate with background process.
+
+bin_dir
+-------
+Default value: ``bin`` - relative to Graylog working directory
+
+The default distribution comes with two binaries needed for PDF generation 'headless_shell' and 'chromedriver'.
+These binaries are usually located in ``/usr/share/graylog-server/bin``.
+
+data_dir
+--------
+Default value: ``data`` - relative to Graylog working directory
+
+The PDF generation happens on disk in the first place so Graylog needs a place to write out temporary files.
+The system packages create ``/var/lib/graylog-server`` for this purpose. Make sure this directory is correctly configured
+and read-, and writable for the Graylog Server user.
 
 report_disable_sandbox
 ----------------------

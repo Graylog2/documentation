@@ -6,7 +6,7 @@ Operating System Packages
 
 Until configuration management systems made their way into broader markets and many datacenters, one of the most common ways to install
 software on Linux servers was to use operating system packages. Debian has ``DEB``, Red Hat has ``RPM`` and many other distributions are
-based on those or come with own package formats. Online repositories of software packages and corresponding package managers make installing
+based on those or come with their own package formats. Online repositories of software packages and corresponding package managers make installing
 and configuring new software a matter of a single command and a few minutes of time.
 
 Graylog offers official ``DEB`` and ``RPM`` package repositories. The packages have been tested on the following operating systems:
@@ -15,7 +15,7 @@ Graylog offers official ``DEB`` and ``RPM`` package repositories. The packages h
 * Debian 7, 8, 9
 * RHEL/CentOS 6, 7
 
-The repositories can be setup by installing a single package. Once that's done the Graylog packages can be installed via ``apt-get`` or
+The repositories can be set up by installing a single package. Once that's done, the Graylog packages can be installed via ``apt-get`` or
 ``yum``. The packages can also be downloaded with a web browser at https://packages.graylog2.org/ if needed.
 
 Prerequisites
