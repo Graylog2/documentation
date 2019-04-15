@@ -14,7 +14,7 @@ Elasticsearch versions
 
 Starting with version 2.3, Graylog uses the HTTP protocol to connect to your Elasticsearch cluster, so it does not have a hard requirement for the Elasticsearch version anymore. We can safely assume that any version starting from 2.x is working.
 
-.. caution:: Graylog 2.4 **does not** work with Elasticsearch 6.x yet!
+.. caution:: Graylog 2.4 **does not** work with Elasticsearch 6.x!
 
 .. note:: Graylog works fine with the `Amazon Elasticsearch Service <https://aws.amazon.com/elasticsearch-service/>`_ using **Elasticsearch 5.3.x** or later.
 
@@ -94,7 +94,7 @@ system defaults allow. **Set it to at least 64000 open file descriptors.**
 
 Graylog will show a notification in the web interface when there is a node in the Elasticsearch cluster which has a too low open file limit.
 
-Read about how to raise the open file limit in the corresponding `2.x <https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup-configuration.html#file-descriptors>`__ / `6.x <https://www.elastic.co/guide/en/elasticsearch/reference/6.7/file-descriptors.html>`__ documentation pages.
+Read about how to raise the open file limit in the corresponding `5.x <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/setup-configuration.html#file-descriptors>`__ / `6.x <https://www.elastic.co/guide/en/elasticsearch/reference/6.7/file-descriptors.html>`__ documentation pages.
 
 Heap size
 ^^^^^^^^^
