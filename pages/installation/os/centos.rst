@@ -20,7 +20,7 @@ If you want to use ``pwgen`` later on you need to Setup `EPEL <https://fedorapro
 MongoDB
 -------
 
-Installing MongoDB on CentOS should follow `the tutorial for RHEL and CentOS <https://docs.mongodb.com/master/tutorial/install-mongodb-on-red-hat>`_ from the MongoDB documentation. First add the repository file ``/etc/yum.repos.d/mongodb-org-3.6.repo`` with the following contents::
+Installing MongoDB on CentOS should follow `the tutorial for RHEL and CentOS <https://docs.mongodb.com/master/tutorial/install-mongodb-on-red-hat>`_ from the MongoDB documentation. First add the repository file ``/etc/yum.repos.d/mongodb-org.repo`` with the following contents::
 
   [mongodb-org-4.0]
   name=MongoDB Repository
@@ -42,7 +42,7 @@ Additionally, run these last steps to start MongoDB during the operating system'
 Elasticsearch
 -------------
 
-Graylog 2.5 can be used with Elasticsearch 6.x, please follow the installation instructions from `the Elasticsearch installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/rpm.html>`_.
+Graylog can be used with Elasticsearch 6.x, please follow the installation instructions from `the Elasticsearch installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/6.6/rpm.html>`_.
 
 First install the Elastic GPG key with ``rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch`` then add the repository file ``/etc/yum.repos.d/elasticsearch.repo`` with the following contents::
 
