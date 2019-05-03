@@ -2,6 +2,21 @@
 Integrations Changelog
 **********************
 
+Integrations 3.0.2
+==================
+
+Released: 2019-05-03
+
+**Open Source**
+
+- Fix issue handling quoted values in PaloAlto input `Graylog2/graylog-plugin-integrations#15 <https://github.com/Graylog2/graylog-plugin-integrations/issues/15>`_ `Graylog2/graylog-plugin-integrations#16 <https://github.com/Graylog2/graylog-plugin-integrations/issues/16>`_
+
+**Enterprise**
+
+- Improve Graylog Forwarder configuration defaults.
+- Improve Graylog Forwarder error handling.
+- Update Graylog Forwarder dependencies.
+
 Integrations 3.0.1
 ==================
 
