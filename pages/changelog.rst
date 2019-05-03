@@ -2,6 +2,13 @@
 Changelog
 *********
 
+Graylog 3.0.2
+=============
+
+Released: 2019-05-03
+
+No changes since 3.0.1.
+
 Graylog 3.0.1
 =============
 
