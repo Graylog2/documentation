@@ -36,7 +36,7 @@ System requirements
 The Graylog server application has the following prerequisites:
 
 * Some modern Linux distribution (Debian Linux, Ubuntu Linux, or CentOS recommended)
-* `Elasticsearch 5 or later <https://www.elastic.co/downloads/elasticsearch>`_
+* `Elasticsearch 5 or 6 <https://www.elastic.co/downloads/elasticsearch>`_
 * `MongoDB 3.6 or later <https://docs.mongodb.org/manual/administration/install-on-linux/>`_ (latest stable version is recommended)
 * Oracle Java SE 8 (OpenJDK 8 also works; latest stable update is recommended)
 
