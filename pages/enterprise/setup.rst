@@ -109,19 +109,19 @@ If you have done a manual installation you can get the tarball from the download
 
     * - Enterprise Version
       - Download URL
-    * - 3.0.0
-      - :enterprise-plugins-tar:`3.0.0`
+    * - 3.0.2
+      - :enterprise-plugins-tar:`3.0.2`
 
 The tarball includes the enterprise plugin JAR file and required binaries that need to be installed.
 
 ::
 
-  $ tar -tzf graylog-enterprise-plugins-3.0.0.tgz
-    graylog-enterprise-plugins-3.0.0/LICENSE
-    graylog-enterprise-plugins-3.0.0/plugin/graylog-plugin-enterprise-3.0.0.jar
-    graylog-enterprise-plugins-3.0.0/bin/headless_shell
-    graylog-enterprise-plugins-3.0.0/bin/chromedriver
-    graylog-enterprise-plugins-3.0.0/bin/chromedriver_start.sh
+  $ tar -tzf graylog-enterprise-plugins-3.0.2.tgz
+    graylog-enterprise-plugins-3.0.2/LICENSE
+    graylog-enterprise-plugins-3.0.2/plugin/graylog-plugin-enterprise-3.0.2.jar
+    graylog-enterprise-plugins-3.0.2/bin/headless_shell
+    graylog-enterprise-plugins-3.0.2/bin/chromedriver
+    graylog-enterprise-plugins-3.0.2/bin/chromedriver_start.sh
 
 
 **JAR file**
