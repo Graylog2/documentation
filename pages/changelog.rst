@@ -7,7 +7,10 @@ Graylog 3.0.2
 
 Released: 2019-05-03
 
-No changes since 3.0.1.
+**Integrations Plugin**
+
+- Fix issue handling quoted values in PaloAlto input `Graylog2/graylog-plugin-integrations#15 <https://github.com/Graylog2/graylog-plugin-integrations/issues/15>`_ `Graylog2/graylog-plugin-integrations#16 <https://github.com/Graylog2/graylog-plugin-integrations/issues/16>`_
+
 
 Graylog 3.0.1
 =============
@@ -25,6 +28,10 @@ Released: 2019-04-01
 - Fix NetFlow parsing for Cisco ASA devices. `Graylog2/graylog2-server#5715 <https://github.com/Graylog2/graylog2-server/issues/5715>`_ `Graylog2/graylog2-server#5729 <https://github.com/Graylog2/graylog2-server/issues/5729>`_
 - Fix Grok patterns to support underscores in match group names again. `Graylog2/graylog2-server#5704 <https://github.com/Graylog2/graylog2-server/issues/5704>`_ `Graylog2/graylog2-server#5563 <https://github.com/Graylog2/graylog2-server/issues/5563>`_ `Graylog2/graylog2-server#5800 <https://github.com/Graylog2/graylog2-server/issues/5800>`_
 - Document password escaping issue for the MongoDB connection URL. `Graylog2/graylog2-server#5680 <https://github.com/Graylog2/graylog2-server/issues/5680>`_ `Graylog2/graylog2-server#5764 <https://github.com/Graylog2/graylog2-server/issues/5764>`_
+
+**Integrations Plugin**
+
+- Fix input parsing problem in PaloAlto input. `Graylog2/graylog-plugin-integrations#10 <https://github.com/Graylog2/graylog-plugin-integrations/issues/10>`_ `Graylog2/graylog-plugin-integrations#11 <https://github.com/Graylog2/graylog-plugin-integrations/issues/11>`_
 
 **Threatintel Plugin**
 
@@ -48,6 +55,10 @@ Released: 2019-03-15
 **Core**
 
 - Mask password fields of inputs returned by the REST API.  `Graylog2/graylog2-server#5432 <https://github.com/Graylog2/graylog2-server/issues/5432>`_ `Graylog2/graylog2-server#5733 <https://github.com/Graylog2/graylog2-server/issues/5733>`_
+
+**Integrations Plugin**
+
+- Fix input parsing problem in PaloAlto input. `Graylog2/graylog-plugin-integrations#10 <https://github.com/Graylog2/graylog-plugin-integrations/issues/10>`_ `Graylog2/graylog-plugin-integrations#11 <https://github.com/Graylog2/graylog-plugin-integrations/issues/11>`_
 
 Graylog 2.5.1
 =============
@@ -86,6 +97,10 @@ Released: 2018-11-30
 - Fix index stats in index set overview. `Graylog2/graylog2-server#5306 <https://github.com/Graylog2/graylog2-server/issues/5306>`_
 - Fix security issue with the users API where regular users could retrieve details of other users. `Graylog2/graylog2-server#5308 <https://github.com/Graylog2/graylog2-server/issues/5308>`_ `Graylog2/graylog2-server#5068 <https://github.com/Graylog2/graylog2-server/issues/5068>`_ `@radykal-com <https://github.com/radykal-com>`_
 - Fix backslash escaping for phrase searches. `Graylog2/graylog2-server#5314 <https://github.com/Graylog2/graylog2-server/issues/5314>`_ `Graylog2/graylog2-server#4111 <https://github.com/Graylog2/graylog2-server/issues/4111>`_ `Graylog2/graylog2-server#5266 <https://github.com/Graylog2/graylog2-server/issues/5266>`_
+
+**Integrations Plugin**
+
+* Add Palo Alto input
 
 **AWS Plugin**
 

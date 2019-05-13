@@ -6,7 +6,6 @@ Integrations
    :hidden:
 
    integrations/setup
-   integrations/changelog
 
 
 Integrations are tools that help Graylog work with external systems. Integrations will typically be content packs, inputs, or lookup tables and can either be open source or Enterprise.
@@ -34,9 +33,6 @@ For a comprehensive list of available features included, see our  :ref:`Enterpri
 
 * :doc:`Forwarder <integrations/forwarder>`
 * :ref:`Script Alert Notification<alerts_script_alert>`
-
-
-Also see the :doc:`Change Log <integrations/changelog>`.
 
 .. toctree::
    :hidden:
