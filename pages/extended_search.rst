@@ -9,7 +9,9 @@ Views
 A views contains a set of queries. Each query has a collection of widgets
 which display messages and charts depending on the search string entered
 in the search bar and the selected time range. A view can be saved with
-a name and that way reused and enhanced later on.
+a name and that way reused and enhanced later on. For a better work
+flow Parameters can be added in the search query. Parameters are part of
+the Graylog Enterprise plugin.
 
 .. image:: /images/views_1.png
 
@@ -55,11 +57,11 @@ in a modal in the edit mode.
    by default up to 15 elements of the selected field and apply the
    selected **METRICS** function to the data points.
    *Example* The ``timestamp`` field is aggregated with ``avg()`` on
-   ``took_ms``. The column ``action`` will give answer the average loading
+   ``took_ms``. The column ``action`` will give the average loading
    time for a page per action for every 5 minutes.
 
 :VISUALIZATION:
-   To display the result of the visualization it is often easier to
+   To display the result of an aggregation it is often easier to
    compare lots of result values graphically. ``Bar Chart``,
    ``Data Table``, ``Line Chart``, ``Pie Chart``, ``Scatter Plot``,
    ``Single Number`` or ``World Map`` can be used as **VISUALIZATION**.
@@ -73,12 +75,17 @@ in a modal in the edit mode.
 Message Table
 =============
 
-The Message Table displays the messages and their fields. The Message Table
-can be configured to show the messages field and the actual message.
+The Message Table displays the messages and their fields.
+The Message Table can be configured to show the messages field and
+the actual message. The actual message is rendered in a blue font,
+below the fields.
 Clicking on a message row opens the detailed view of a message with
 all its fields.
 
-.. add screenshot
+.. image:: /images/views_messages.png
 
 Value and Field Actions
 =======================
+In the Sidebar and on Data Tables and Detail Message Rows are values and
+fields visible. By clicking on a value or a field a context menu will be
+shown where different actions can be executed.
