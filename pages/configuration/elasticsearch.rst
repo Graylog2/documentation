@@ -105,6 +105,7 @@ running on a dedicated host) to leave enough space for the system caches that El
 
 Merge throttling
 ^^^^^^^^^^^^^^^^
+ As of ES 6.2 Merge Throttling settings have been deprecated. (https://www.elastic.co/guide/en/elasticsearch/reference/6.2/breaking_60_settings_changes.html)
 
 Elasticsearch is throttling the merging of Lucene segments to allow extremely fast searches. This throttling however has default values
 that are very conservative and can lead to slow ingestion rates when used with Graylog. You would see the message journal growing without
