@@ -2,6 +2,17 @@
 Changelog
 *********
 
+Graylog Enterprise 3.0.2
+========================
+
+Released: 2019-05-03
+
+**Integrations Plugin**
+
+- Improve Graylog Forwarder configuration defaults.
+- Improve Graylog Forwarder error handling.
+- Update Graylog Forwarder dependencies.
+
 Graylog Enterprise 3.0.1
 ========================
 
@@ -10,6 +21,10 @@ Released: 2019-04-01
 - Fix missing authorization checks in the license management.
 - Fix view sharing issue for regular users.
 - Fix memory leak in the reporting system.
+
+**Integrations Plugin**
+
+- Add Graylog Forwarder feature.
 
 Graylog Enterprise 3.0.0
 ========================
@@ -20,6 +35,10 @@ Released: 2019-02-14
 - Upgrade notes: :doc:`/pages/upgrade/graylog-3.0`
 
 A detailed changelog is following soon!
+
+**Integrations Plugin**
+
+* Add Script Alert Notification
 
 Graylog Enterprise 2.5.2
 ========================
