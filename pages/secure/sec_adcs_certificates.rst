@@ -177,11 +177,11 @@ The .INF input file for the *certreq* command would look similar to the followin
       CertificateTemplate="GraylogStackTemplate"
       [Extensions]
       2.5.29.17="{text}"
-      _continue=_"dns=hostname5&" 
-      _continue=_"dns=hostname5.mydomain.local&" 
-      _continue=_"dns=graylogreceiveralias.mydomain.local&" 
-      _continue=_"dns=graylogreceiveralias&" 
-      _continue=_"ipaddress=192.168.100.105&" 
+      _continue_="dns=hostname5&" 
+      _continue_="dns=hostname5.mydomain.local&" 
+      _continue_="dns=graylogreceiveralias.mydomain.local&" 
+      _continue_="dns=graylogreceiveralias&" 
+      _continue_="ipaddress=192.168.100.105" 
 
 If you're one of the edge-cases where you will be using an older *Internet Explorer* to talk to the IP address of the host, as opposed to the hostname or its alias, you will need to add::
 
