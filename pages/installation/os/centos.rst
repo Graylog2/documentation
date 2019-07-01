@@ -33,7 +33,6 @@ After that, install the latest release of MongoDB with ``sudo yum install mongod
 
 Additionally, run these last steps to start MongoDB during the operating system's boot and start it right away::
 
-  $ sudo chkconfig --add mongod
   $ sudo systemctl daemon-reload
   $ sudo systemctl enable mongod.service
   $ sudo systemctl start mongod.service
@@ -64,7 +63,6 @@ Make sure to modify the `Elasticsearch configuration file <https://www.elastic.c
 
 After you have modified the configuration, you can start Elasticsearch::
 
-    $ sudo chkconfig --add elasticsearch
     $ sudo systemctl daemon-reload
     $ sudo systemctl enable elasticsearch.service
     $ sudo systemctl restart elasticsearch.service
@@ -90,7 +88,6 @@ To be able to connect to Graylog you should set ``http_bind_address`` to the pub
 
 The last step is to enable Graylog during the operating system's startup::
 
-  $ sudo chkconfig --add graylog-server
   $ sudo systemctl daemon-reload
   $ sudo systemctl enable graylog-server.service
   $ sudo systemctl start graylog-server.service
