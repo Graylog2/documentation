@@ -89,3 +89,64 @@ Value and Field Actions
 In the Sidebar and on Data Tables and Detail Message Rows are values and
 fields visible. By clicking on a value or a field a context menu will be
 shown where different actions can be executed.
+
+Field actions
+-------------
+Based on the type of the field and where the menu is opened different
+actions can be executed from a field.
+
+.. image:: /images/views_field_actions.png
+
+:Chart:
+   This will generate a new Widget containing a line chart where the fields
+   average value is displayed over time. This chart can be taken as an
+   starting point for a more defined aggregation. This is only possible
+   on fields from a numerical type.
+:Aggregate:
+   This action will generate a new Widget containing a data table
+   where the fields value are listed in the rows and the count
+   of occurrence will be displayed next to it.
+:Statistics:
+   Here the field values will be given to various statistics function
+   depending on the type of the field. The result will be displayed
+   in a Data Table Widget.
+:Add to table:
+   Add the field to the displayed fields of the message table where
+   the Field Actions menu is shown.
+:Add to all tables:
+   Add the field to the displayed fields of all tables.
+:Remove from table:
+   Remove the field from the list displayed fields from this table.
+:Remove from table:
+   Remove the field from the list displayed fields from all tables.
+
+Value actions
+-------------
+The value actions produce different results depending on the type of the
+value and where the menu is opened. Following actions can be executed.
+
+.. image:: /images/views_value_actions.png
+
+:Insert into view:
+   This action will open up a modal where a view can be selected.
+   A select-able list of Parameters will be shown from the selected
+   view and after choosing a parameter a new browser tab will be
+   opened containing the view with the value used in the parameter.
+   This action is only available in enterprise Graylog.
+:Exclude from results:
+   Will add `NOT field:value` to the query to exclude all results
+   where the field contains the value of the value action.
+:Add to query:
+   Will add `field:value` to the query to filter the results
+   additionally for where the field has the value of the value action.
+:Use in new query:
+   Will open a new view tab with `field:value` as query string.
+:Show documents for value:
+   Available in Data Tables it will show the documents which
+   where aggregated to display this value.
+:Create extractor:
+   For values of type string in Message Tables a short cut to create
+   an extractor is given with this action.
+:Highlight this value:
+   This action will highlight this value for this field in all
+   Message Tables and Data Tables.
