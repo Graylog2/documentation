@@ -9,9 +9,10 @@ Views
 A views contains a set of queries. Each query has a collection of widgets
 which display messages and charts depending on the search string entered
 in the search bar and the selected time range. A view can be saved with
-a name and that way reused and enhanced later on. For a better work
-flow Parameters can be added in the search query. Parameters are part of
-the Graylog Enterprise plugin.
+a name to keep the current progress and continue later on.
+Saved views can be shared, so other people can use them in their processes.
+For a better work flow Parameters can be added in the search query.
+Parameters are part of the Graylog Enterprise plugin.
 
 .. image:: /images/views_1.png
 
@@ -20,7 +21,7 @@ Widgets
 A widget is either a Message Table or an Aggregation. It can be freely
 placed inside a query. A widget can be edited or duplicated by clicking
 on the chevron on the right side in the head of the widget.
-Beside the chevron is a filter symbol, where filters can be add to the
+Next to the chevron is a filter symbol, where filters can be added to the
 top search query.
 
 .. image:: /images/views_widget.png
@@ -28,11 +29,11 @@ top search query.
 Aggregation
 ===========
 The goal of an aggregation is to reduce the number of data points
-in a meaningful way to get an answer of them. Data points can be
-numeric field types in a message (e.g. the took_ms field which contains how
+in a meaningful way to get an answer from them. Data points can be
+numeric field types in a message (e.g. a took_ms field which contains how
 long a page needed to be rendered).
 Or string values which can be used for grouping the aggregation
-(e.g the action field which contains the name of the controller action).
+(e.g an action field which contains the name of the controller action).
 
 Creating an aggregation
 -----------------------
@@ -51,9 +52,9 @@ in a modal in the edit mode.
    numeric data points ``took_ms`` around the configured grouping. 
 
 :ROWS/COLUMNS:
-   Here can the fields be selected, where the aggregation will apply the
-   **METRICS** function. If the field is a ``timestamp`` for a row it will
-   divided the data points in to intervals. Otherwise the aggregation will take
+   Allows selecting fields whose values will be used to group results into
+   new rows/columns. If the field is a ``timestamp`` for a row it will
+   divide the data points into intervals. Otherwise the aggregation will take
    by default up to 15 elements of the selected field and apply the
    selected **METRICS** function to the data points.
    *Example* The ``timestamp`` field is aggregated with ``avg()`` on
@@ -65,7 +66,7 @@ in a modal in the edit mode.
    compare lots of result values graphically. ``Bar Chart``,
    ``Data Table``, ``Line Chart``, ``Pie Chart``, ``Scatter Plot``,
    ``Single Number`` or ``World Map`` can be used as **VISUALIZATION**.
-   The ``World Map`` needs geographical points inform of ``latitude,longitude``.
+   The ``World Map`` needs geographical points in the form of ``latitude,longitude``.
 
 :SORTING/DIRECTION:
    The order of the result values can be configured here. **SORTING** defines
@@ -76,7 +77,7 @@ Message Table
 =============
 
 The Message Table displays the messages and their fields.
-The Message Table can be configured to show the messages field and
+The Message Table can be configured to show the message fields and
 the actual message. The actual message is rendered in a blue font,
 below the fields.
 Clicking on a message row opens the detailed view of a message with
@@ -93,7 +94,7 @@ shown where different actions can be executed.
 Field actions
 -------------
 Based on the type of the field and where the menu is opened different
-actions can be executed from a field.
+Field actions are shown when a field name (and not its value) is clicked.
 
 .. image:: /images/views_field_actions.png
 
@@ -106,6 +107,7 @@ actions can be executed from a field.
    This action will generate a new Widget containing a data table
    where the fields value are listed in the rows and the count
    of occurrence will be displayed next to it.
+   This was formerly known as the "Quick Values" action.
 :Statistics:
    Here the field values will be given to various statistics function
    depending on the type of the field. The result will be displayed
@@ -123,7 +125,7 @@ actions can be executed from a field.
 Value actions
 -------------
 The value actions produce different results depending on the type of the
-value and where the menu is opened. Following actions can be executed.
+value and where the menu is opened. The following actions can be executed.
 
 .. image:: /images/views_value_actions.png
 
