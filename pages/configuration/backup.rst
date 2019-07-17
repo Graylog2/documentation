@@ -13,7 +13,7 @@ The data within your Elasticsearch Cluster can take the advantage of the `Snapsh
 Disaster recovery
 =================
 
-To be able to restore Graylog after a total System crash you need the Graylog ``server.conf``file - to be exact you need the key you used for ``password_secret`` in the configuration. The second important part is the MongoDB. This database contains all configuration. Possible options how-to `backup MongoDB can be found at the MongoDB documentation <https://docs.mongodb.com/manual/core/backups/#back-up-by-copying-underlying-data-files>`_.
+To be able to restore Graylog after a total System crash you need the Graylog ``server.conf`` file - to be exact you need the key you used for ``password_secret`` in the configuration. The second important part is the MongoDB. This database contains all configuration. Possible options how-to `backup MongoDB can be found at the MongoDB documentation <https://docs.mongodb.com/manual/core/backups/#back-up-by-copying-underlying-data-files>`_.
 
 If you need to restore log data, you can do this using the archiving feature of Graylog enterprise or any other elasticsearch backup and restore option. It is not enough to copy the data directories of your Elasticsearch nodes, you might not be able to restore from that.
 
