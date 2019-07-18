@@ -26,7 +26,7 @@ The official MongoDB repository provides the most up-to-date version and is the 
     $ sudo apt-get update
     $ sudo apt-get install -y mongodb-org  
   
-.. notice:: For e.g. corporate proxies and other non-free environments you can use a keyserver approach via wget.
+.. warning:: For e.g. corporate proxies and other non-free environments you can use a keyserver approach via wget.
     `wget -qO- 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x9DA31620334BD75D9DCB49F368818C72E52529D4' | sudo apt-key add -`
 
 The last step is to enable MongoDB during the operating system's startup::
