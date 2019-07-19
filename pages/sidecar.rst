@@ -126,7 +126,7 @@ necessary to stop all running instances of NXlog and unconfigure the default sys
     $ sudo /etc/init.d/nxlog stop
     $ sudo update-rc.d -f nxlog remove
     $ sudo gpasswd -a nxlog adm
-    $ sudo chown -R nxlog.nxlog /var/spool/collector-sidecar/nxlog
+    $ sudo chown -R nxlog.nxlog /var/spool/nxlog
 
 
 NXLog on CentOS
@@ -137,7 +137,7 @@ The same on a RedHat based system::
     $ sudo service nxlog stop
     $ sudo chkconfig --del nxlog
     $ sudo gpasswd -a nxlog root
-    $ sudo chown -R nxlog.nxlog /var/spool/collector-sidecar/nxlog
+    $ sudo chown -R nxlog.nxlog /var/spool/nxlog
 
 
 NXlog on Windows
