@@ -10,7 +10,7 @@ futures==3.2.0
 idna==2.8
 imagesize==1.1.0
 Jinja2==2.10.1
-livereload==2.6.0
+livereload==2.6.1
 MarkupSafe==1.1.1
 packaging==19.0
 pathtools==0.1.2
