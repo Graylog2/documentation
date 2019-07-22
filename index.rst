@@ -23,6 +23,7 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/sending_data
    pages/sidecar
    pages/queries
+   pages/extended_search
    pages/streams
    pages/streams/alerts
    pages/dashboards
