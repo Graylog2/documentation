@@ -189,7 +189,7 @@ This can be done by adding an entry to the `volumes <https://docs.docker.com/com
         # Mount local configuration directory into Docker container
         - ./graylog/config:/usr/share/graylog/data/config
 
-
+.. warning:: Graylog is running as USER graylog with the ID ``1100`` in Docker. That ID need to be able to read the configuration files you place into the container. 
 
 .. _persisting-data:
 

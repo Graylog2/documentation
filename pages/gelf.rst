@@ -50,6 +50,7 @@ Prepend the following structure to your GELF message to make it chunked:
 
 All chunks **MUST** arrive within 5 seconds or the server will discard all already arrived and still arriving chunks. A message **MUST NOT** consist of more than 128 chunks.
 
+.. attention:: Please note, that the UDP-Inputs of Graylog use the ``SO_REUSEPORT`` socket option, which was introduced in Linux kernel version 3.9. So be aware, that UDP inputs will **NOT** work on Linux kernel versions prior to 3.9.
 
 Compression
 -----------

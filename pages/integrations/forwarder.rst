@@ -4,7 +4,7 @@
 Forwarder
 *********
 
-The Forwarder provides the ability to forward messages from a one Graylog cluster to another over HTTP/2.
+The Forwarder provides the ability to forward messages from one Graylog cluster to another over HTTP/2.
 This centralizes log messages from multiple distributed Graylog source clusters into one destination cluster,
 which allows centralized alerting, reporting, and oversight.
 
