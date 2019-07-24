@@ -122,6 +122,12 @@ It is also possible to combine unbounded range operators::
 
   http_response_code:(>=400 AND <500)
 
+It is possible make a **range query** on the date field. It is important that the selected period of time at the timepicker fits the range you want to search in. If you search in the last 5 minutes, but the searched time is a week in the past the query will not return anything. The dates needs to be UTC and the format needs to be like Graylog displays them.::
+
+  timestamp:["2019-07-23 09:53:08.175" TO "2019-07-23 09:53:08.575"]
+
+
+
 Escaping
 ^^^^^^^^
 
