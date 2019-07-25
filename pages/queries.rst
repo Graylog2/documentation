@@ -133,7 +133,7 @@ Escaping
 
 The following characters must be escaped with a backslash::
 
-  && || : \ / + - ! ( ) { } [ ] ^ " ~ * ?
+  & | : \ / + - ! ( ) { } [ ] ^ " ~ * ?
 
 Example::
 
