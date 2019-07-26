@@ -164,6 +164,8 @@ plugins in the marketplace.
       - Split a string around matches of this pattern (Java syntax).
     * - `regex`_
       - Match a regular expression against a string, with matcher groups.
+    * - `regex_replace`_
+      - Match a regular expression against a string and replace with string.
     * - `grok`_
       - Applies a Grok pattern to a string.
     * - `key_value`_
