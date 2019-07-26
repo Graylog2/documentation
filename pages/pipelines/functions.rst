@@ -152,6 +152,8 @@ plugins in the marketplace.
       - Swaps the case of a String.
     * - `contains`_
       - Checks if a string contains another string.
+    * - `replace`_
+      - Replaces the first "max" or all occurrences of a string within another string
     * - `starts_with`_
       - Checks if a string starts with a given prefix.
     * - `ends_with`_
