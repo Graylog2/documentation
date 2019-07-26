@@ -598,6 +598,23 @@ The groups can optionally be named using the ``group_names`` array. If not named
 
 .. note:: Patterns have to be valid `Java String literals <https://docs.oracle.com/javase/tutorial/essential/regex/literals.html>`_, please ensure you escape any backslashes in your regular expressions!
 
+regex_replace
+-------------
+``regex_replace(pattern: string, value: string, replacement: string, [replace_all: boolean])``
+
+Match the regular expression in ``pattern`` against ``value`` and replace it, if matched, with ``replacement``. You can use numbered capturing groups and reuse them in the replacement string.
+If ``replace_all`` is set to ``true``, then all matches will be replaced, otherwise only the first match will be replaced.
+
+Examples::
+
+          // message = 'logged in user: mike'
+          let username = regex_replace(".*user: (.*)", to_string($message.message), "$1");
+
+          // message = 'logged in user: mike'
+          let string = regex_replace("logged (in|out) user: (.*)", to_string($message.message), "User $2 is now logged $1");
+
+.. note:: Patterns have to be valid `Java String literals <https://docs.oracle.com/javase/tutorial/essential/regex/literals.html>`_, please ensure you escape any backslashes in your regular expressions!
+
 grok
 ----
 ``grok(pattern: string, value: string, [only_named_captures: boolean])``
