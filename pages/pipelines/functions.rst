@@ -529,6 +529,18 @@ Example::
         // Check if the `example.org` is in the `hostname` field. Ignore case.
         contains(to_string($message.hostname), "example.org", true)
 
+replace
+-------
+``replace(value: string, search: string, [replacement: string], [max: long])``
+
+Replaces the first ``max`` or all occurences of a string within another string. ``max`` is ``-1`` per defaults which means to replace **all** occurences, ``1`` only the first one, ``2`` the first two and so on.
+
+Example::
+
+        // Correct misspelled message "foo rooft oota"
+        let new_field = replace(to_string($message.message), "oo", "u");    // "fu ruft uta"
+        let new_field = replace(to_string($message.message), "oo", "u", 1); // "fu rooft oota"
+
 
 starts_with
 -----------
