@@ -20,7 +20,7 @@ Upgrading Graylog Originally Installed from Image
 2.x
    It is not possible to upgrade previous OVAs to Graylog 3.0.0.
 
-3.0
+3.x
    Starting with Graylog 3.0.0, OVAs use the Operating System packages, so
    you can upgrade your appliance by following
    :ref:`this update guide <operating_package_upgrade_DEB-APT>`.
