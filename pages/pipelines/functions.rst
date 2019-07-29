@@ -162,6 +162,8 @@ plugins in the marketplace.
       - Returns a substring of ``value`` with the given start and end offsets.
     * - `concat`_
       - Concatenates two strings.
+    * - `join`_
+      - Joins the elements of the provided array into a single String
     * - `split`_
       - Split a string around matches of this pattern (Java syntax).
     * - `regex`_
@@ -594,6 +596,28 @@ Example::
         let build_message_4 = concat(build_message_3, " Port ");
         let build_message_5 = concat(build_message_4, to_string($message.dst_port));
         set_field("message", build_message_5);
+
+join
+----
+``join(elements, [delimiter], [start], [end])``
+
+Joins the elements of the provided array into a single string.
+
+``elements``
+  The list of strings to join together, may be null (``Object``)
+``delimiter``
+  Optional: The delimiter that separates each element. Default: none (``String``)
+``start``
+  Optional: The first index to start joining from. It is an error to pass in an index larger than the number of elements (``Long``)
+``end``
+  Optional: The index to stop joining from (exclusive). It is an error to pass in an index larger than the number of elements (``Long``)
+
+Example::
+
+        let array = ["one", "two", "three"];
+        let string = join(array, ", ");         // result: one, two, three
+        let string2 = join(array, ", ", 2);     // result: three
+        let string3 = join(array, ", ", 1, 2);  // result: two
 
 split
 -----
