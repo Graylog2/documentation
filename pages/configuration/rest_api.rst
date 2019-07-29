@@ -103,22 +103,18 @@ The following example will create an access token named ``agents`` for the user 
 - Navigate to the users configuration menu ``System /  Authentication``.
 
 .. image:: /images/api_tokens_1-fs8.png
-  :scale: 100
 
 - Select the user you want to create a token for and click on ``Edit tokens``.
 
 .. image:: /images/api_tokens_2-fs8.png
-  :scale: 100
 
 - Give the token a name and create it.
 
 .. image:: /images/api_tokens_3-fs8.png
-  :scale: 100
 
 - You should see now the token in the list.
 
 .. image:: /images/api_tokens_4-fs8.png
-  :scale: 100
 
 Either by unchecking the hide option or by copying the token to the clipboard you can access the token. The received access token can now be used as username in a request to the Graylog REST API using Basic Auth together with the literal password ``token``.
 
