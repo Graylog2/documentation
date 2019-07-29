@@ -152,6 +152,8 @@ plugins in the marketplace.
       - Swaps the case of a String.
     * - `contains`_
       - Checks if a string contains another string.
+    * - `replace`_
+      - Replaces the first "max" or all occurrences of a string within another string
     * - `starts_with`_
       - Checks if a string starts with a given prefix.
     * - `ends_with`_
@@ -164,6 +166,8 @@ plugins in the marketplace.
       - Split a string around matches of this pattern (Java syntax).
     * - `regex`_
       - Match a regular expression against a string, with matcher groups.
+    * - `regex_replace`_
+      - Match a regular expression against a string and replace with string.
     * - `grok`_
       - Applies a Grok pattern to a string.
     * - `key_value`_
@@ -525,6 +529,18 @@ Example::
         // Check if the `example.org` is in the `hostname` field. Ignore case.
         contains(to_string($message.hostname), "example.org", true)
 
+replace
+-------
+``replace(value: string, search: string, [replacement: string], [max: long])``
+
+Replaces the first ``max`` or all occurences of a string within another string. ``max`` is ``-1`` per defaults which means to replace **all** occurences, ``1`` only the first one, ``2`` the first two and so on.
+
+Example::
+
+        // Correct misspelled message "foo rooft oota"
+        let new_field = replace(to_string($message.message), "oo", "u");    // "fu ruft uta"
+        let new_field = replace(to_string($message.message), "oo", "u", 1); // "fu rooft oota"
+
 
 starts_with
 -----------
@@ -595,6 +611,23 @@ regex
 Match the regular expression in ``pattern`` against ``value``. Returns a match object, with the boolean property
 ``matches`` to indicate whether the regular expression matched and, if requested, the matching groups as ``groups``.
 The groups can optionally be named using the ``group_names`` array. If not named, the groups names are strings starting with ``"0"``.
+
+.. note:: Patterns have to be valid `Java String literals <https://docs.oracle.com/javase/tutorial/essential/regex/literals.html>`_, please ensure you escape any backslashes in your regular expressions!
+
+regex_replace
+-------------
+``regex_replace(pattern: string, value: string, replacement: string, [replace_all: boolean])``
+
+Match the regular expression in ``pattern`` against ``value`` and replace it, if matched, with ``replacement``. You can use numbered capturing groups and reuse them in the replacement string.
+If ``replace_all`` is set to ``true``, then all matches will be replaced, otherwise only the first match will be replaced.
+
+Examples::
+
+          // message = 'logged in user: mike'
+          let username = regex_replace(".*user: (.*)", to_string($message.message), "$1");
+
+          // message = 'logged in user: mike'
+          let string = regex_replace("logged (in|out) user: (.*)", to_string($message.message), "User $2 is now logged $1");
 
 .. note:: Patterns have to be valid `Java String literals <https://docs.oracle.com/javase/tutorial/essential/regex/literals.html>`_, please ensure you escape any backslashes in your regular expressions!
 
