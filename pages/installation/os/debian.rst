@@ -19,13 +19,15 @@ If you're starting from a minimal server setup, you will need to install these a
 MongoDB
 -------
 
-The official MongoDB repository provides the most up-to-date version and is the recommended way of installing MongoDB::
+The official MongoDB repository provides the most up-to-date version and is the recommended way of installing MongoDB [#]_::
 
   $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
   $ echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/4.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
   $ sudo apt-get update 
   $ sudo apt-get install -y mongodb-org
 
+.. [#] For e.g. corporate proxies and other non-free environments you can use a keyserver approach via wget.
+    ``wget -qO- 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x9DA31620334BD75D9DCB49F368818C72E52529D4' | sudo apt-key add -``
 
 The last step is to enable MongoDB during the operating system's startup::
 

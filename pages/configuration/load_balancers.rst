@@ -25,9 +25,9 @@ To query the current load balancer status of a Graylog instance, all you need to
 
   GET /api/system/lbstatus
 
-The status knows two different states, ``ALIVE`` and ``DEAD``, which is also the ``text/plain`` response of the
+The status knows three different states, ``ALIVE``, ``THROTTLED`` and ``DEAD``, which is also the ``text/plain`` response of the
 resource. Additionally, the same information is reflected in the HTTP status codes: If the state is ``ALIVE``
-the return code will be ``200 OK``, for ``DEAD`` it will be ``503 Service unavailable``. This is done to make
+the return code will be ``200 OK``, for ``THROTTLED`` it will be ``429 (too many request)`` and for ``DEAD`` it will be ``503 Service unavailable``. This is done to make
 it easier to configure a wide range of load balancer types and vendors to be able to react to the status.
 
 The resource is accessible without authentication to make it easier for load balancers to access it.
@@ -36,6 +36,7 @@ To programmatically change the load balancer status, an additional endpoint is e
 
   PUT /api/system/lbstatus/override/alive
   PUT /api/system/lbstatus/override/dead
+  PUT /api/system/lbstatus/override/throttled  
 
 Only authenticated and authorized users are able to change the status, in the currently released Graylog version
 this means only admin users can change it.
