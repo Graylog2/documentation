@@ -370,8 +370,9 @@ You can also run a pre-release (alpha, beta, or release candidate) version of Gr
 
 The pre-releases are tagged in the `graylog/graylog`_ Docker image.
 
-Follow the `documentation for the Graylog image on Docker Hub <https://hub.docker.com/r/graylog/graylog/>`__ and pick an alpha/beta/rc tag like this::
+
+See the `available tags for the Graylog image on Docker Hub <https://hub.docker.com/r/graylog/graylog/tags/>`__ and pick an alpha/beta/rc tag like this::
 
   $ docker run --link mongo --link elasticsearch -p 9000:9000 -p 12201:12201 -p 1514:1514 \
       -e GRAYLOG_HTTP_BIND_ADDRESS="127.0.0.1:9000" \
-      -d graylog/graylog:3.0.0-beta.3-1
+      -d graylog/graylog:3.1.0-beta.3-1
