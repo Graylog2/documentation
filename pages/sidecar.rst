@@ -96,6 +96,20 @@ Optionally edit the configuration (see :ref:`Configuration <sidecar-configuratio
     & "C:\Program Files\graylog\sidecar\graylog-sidecar.exe" -service install
     & "C:\Program Files\graylog\sidecar\graylog-sidecar.exe" -service start
 
+Install Sidecar to list of servers whith PowerShell (.ps1 script) and `PsExec <https://docs.microsoft.com/en-us/sysinternals/downloads/psexec>`_::
+    
+    $installer = "PATH_TO\graylog_sidecar_installer_1.0.1-1.exe"
+    $server_list = ".\servers.txt"
+    $sidecar_exe = "C:\Program Files\graylog\sidecar\graylog-sidecar.exe"
+    $apitoken = "yourapitoken"
+    $server_url = "http://10.0.2.2:9000/api"
+    foreach($line in Get-Content $server_list) {          
+	    PsExec.exe \\$line -c $installer /S -SERVERURL=$server_url -APITOKEN=$apitoken -NODENAME=$line
+	    PsExec.exe \\$line $sidecar_exe -service install
+	    PsExec.exe \\$line $sidecar_exe -service start    
+    }
+
+
 Install collectors
 ------------------
 
