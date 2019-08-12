@@ -22,3 +22,6 @@ tcl
 
 # vim bak files
 *.swp
+
+# VS Code settings
+.vscode
