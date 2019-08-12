@@ -822,10 +822,10 @@ If ``remove_from_default`` is ``true``, the message is also removed from the def
 Example::
 
         // Route the current processed message to a stream with ID `512bad1a535b43bd6f3f5e86` (preferred method)
-        route_to_stream("512bad1a535b43bd6f3f5e86");
+        route_to_stream(id: "512bad1a535b43bd6f3f5e86");
 
         // Route the current processed message to a stream named `Custom Stream`
-        route_to_stream("Custom Stream");
+        route_to_stream(name: "Custom Stream");
 
 remove_from_stream
 ------------------
