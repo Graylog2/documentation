@@ -10,7 +10,7 @@ Released: 2019-xx-xx
 **Views & Extended Search**
 
 - This feature was partially (everything besides support for parameters in queries)  open-sourced in this version. Formerly it was accessible only through the commercial enterprise plugin.
-- The API prefix for the views/extended search endpoints has changed from `/api/plugins/org.graylog.plugins.enterprise/(views|search)` to `/api/views`/`/api/views/search`.
+- The API prefix for the views/extended search endpoints has changed from `/api/plugins/org.graylog.plugins.enterprise/(views|search)` to `/api/views` & `/api/views/search`.
 - The configuration file directive specifying the maximum age of an unreferenced search object before it is purged has changed from `enterprise_search_maximum_search_age` to `views_maximum_search_age`.
 
 Graylog 3.0.2
