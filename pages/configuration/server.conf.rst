@@ -315,9 +315,6 @@ Rotation
     * This will impact the processing of the entire server. To keep such misbehaving stream rules from impacting other streams, Graylog limits the execution time for each stream.
     * The default values are noted below, the timeout is in milliseconds.
     * If the stream matching for one stream took longer than the timeout value, and this happened more than "max_faults" times that stream is disabled and a notification is shown in the web interface.
-* ``alert_check_interval = 60``
-    * Length of the interval in seconds in which the alert conditions for all streams should be checked and alarms are being sent.
-
 
 .. note:: Since 0.21 the Graylog server supports pluggable output modules. This means a single message can be written to multiple outputs. The next setting defines the timeout for a single output module, including the default output module where all messages end up.
 
@@ -396,6 +393,26 @@ HTTP
     * A list of hosts that should be reached directly, bypassing the configured proxy server.
     * This is a list of patterns separated by ",". The patterns may start or end with a "*" for wildcards.
     * Any host matching one of these patterns will be reached through a direct connection instead of through a proxy.    
+
+.. _processing_status:
+
+Processing Status
+^^^^^^^^^^^^^^^^^
+
+.. note:: The settings for processing status usually don't need to be tweaked.
+
+* ``processing_status_persist_interval = 1s``
+    * The server is writing processing status information to the database on a regular basis. This setting controls how often the data is written to the database.
+    * Values must be a positive duration and cannot be less than one second.
+    * Default: 1s (one second)
+* ``processing_status_update_threshold = 1m``
+    * Configures the threshold for detecting outdated processing status records. Any records that haven't been updated in the configured threshold will be ignored.
+    * Values must be a positive duration and cannot be less than one second.
+    * Default: 1m (one minute)
+* ``processing_status_journal_write_rate_threshold= 1``
+    * Configures the journal write rate threshold for selecting processing status records. Any records that have a lower one minute rate than the configured value might be ignored. (dependent on number of messages in the journal)
+    * Values must be a positive duration.
+    * Default: 1
 
 .. _config_script_alert:
 
