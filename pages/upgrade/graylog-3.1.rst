@@ -54,6 +54,9 @@ Alarm Callback Plugins
 
 The new Alerts & Events system is supporting the execution of legacy Alarm Callback plugins for now. We recommend to switch event definitions over to event notifications, though. At some point in the future support for legacy Alarm Callback plugins will be removed.
 
+.. note:: Please note, that the data sent via a legacy Alarm Callback might be slightly different than via the old Alerts system. If you've built automation on top of alerts, you might want to check that everything still works after the migration.
+
+
 Alert Condition Plugins
 -----------------------
 
@@ -126,3 +129,22 @@ Event Definitions and Event Notifications as well as search for events:
 +-------------------------------+
 | ``/api/events/search``        |
 +-------------------------------+
+
+Configuration File Changes
+--------------------------
+
+The following alerting related configuration file settings changed in this release:
+
++----------------------------------------------------+---------+----------------------------------------------------+
+| Setting                                            | Status  | Description                                        |
++====================================================+=========+====================================================+
+| ``alert_check_interval``                           | removed | Was part of the old and now removed alerts system. |
++----------------------------------------------------+---------+----------------------------------------------------+
+| ``processing_status_persist_interval``             | added   | Related to the new alerts system.                  |
++----------------------------------------------------+---------+----------------------------------------------------+
+| ``processing_status_update_threshold``             | added   | Related to the new alerts system.                  |
++----------------------------------------------------+---------+----------------------------------------------------+
+| ``processing_status_journal_write_rate_threshold`` | added   | Related to the new alerts system.                  |
++----------------------------------------------------+---------+----------------------------------------------------+
+
+See :ref:`server configuration page <server/.conf>` for details on the new settings.
