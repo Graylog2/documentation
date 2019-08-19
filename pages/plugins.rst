@@ -34,8 +34,7 @@ Graylog comes with a stable plugin API for the following plugin types:
    :hidden:
 
    plugins/general_concepts
-   plugins/alert_conditions
-   plugins/alert_notifications
+   plugins/event_notifications
    plugins/decorators
 
 .. _plugin_prerequisites:
