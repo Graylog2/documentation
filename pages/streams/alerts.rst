@@ -3,94 +3,75 @@
 Alerts
 ******
 
-Alerts are always based on streams. You can define conditions that trigger alerts. For example whenever the stream *All production exceptions* has more than 50 messages per minute or when the field *milliseconds* had a too high standard deviation in the last five minutes.
+.. Important::The Alerting system for Graylog 3.1.x has been completely rewritten and the procedure for creating alerts differs greatly from releases 3.0.x and prior. Please refer to the version of Graylog you are running to avoid confusion. You can select the version of Graylog documentation by referring to the bottom of the bar at the left of the screen.
 
-Navigate to the *alerts* section from the top navigation bar to see already configured alerts, alerts that were fired in the past or to configure new alert conditions and notifications.
+Alerts are created using Event Definitions that consist of Conditions. When a given condition is met it will be stored as an Event and can be used to trigger a notification. If your system has an enterprise license, then Events may be combined to create Correlations.
+
 
 Graylog ships with default *alert conditions* and *alert notifications*, and both can be extended with :ref:`Plugins <plugins>`.
 
-
-Alert states
-------------
-Graylog alerts are periodical searches that can trigger some notifications when a defined condition is satisfied. Since Graylog 2.2.0, alerts can have two states:
-
-Unresolved
-  Alerts have an unresolved state while the defined condition is satisfied. New alerts are triggered in this state, and they also execute the notifications attached to the stream. These alerts usually require an action on your side.
-Resolved
-  Graylog automatically resolves alerts once their alert condition is no longer satisfied. This is the final state of an alert, as Graylog will create a new alert if the alert condition is satisfied again in the future. After an alert is resolved, Graylog will apply the *grace period* you defined in the alert condition, waiting a certain time before creating a new alert for this alert condition.
-
-
-Alerts overview
+Alerts & Events
 ---------------
-The alerts overview page lets you find out which alerts currently require your attention in an easy way, while also allowing you to check alerts that were triggered in the past and are now resolved.
+As of Graylog 3.1.0, the Alerts page has changed to reflect a new method of generating Alerts. An Alert is triggered when a defined Event is detected.
+An Event is a condition that matches a log to a time period or aggregation. The Event may be used to group similar fields, change field content,
+or create new field content for use with Alerting and Correlation (an enterprise feature.)
 
-.. image:: /images/alerts_alerts_overview.png
+If no Events have been defined, the Alerts & Events page will display the "Get Started!" button as shown below.
 
-You can click on an alert name at any time to see more details about it.
+.. image:: /images/alerts_starting_page_no_events.png
 
-Alert details
+Defining an Event
+-----------------
+Event Details
 =============
-From the alert details page you can quickly check the reason why an alert was triggered, the status and configuration of notifications sent by Graylog, and the search results in the time frame when the alert was unresolved.
+When you click on the "Get Started!" button you will be presented with a set of dialogues that allow you to set
+Title, Description, and Priority. You may click back on the selection bar to step backward in the definition
+process at any time.
 
-.. image:: /images/alerts_alert_details.png
+.. image:: /images/alerts_event_details.png
 
-Alert timeline
-^^^^^^^^^^^^^^
-From within the alert details page, you can see a timeline of what occurred since Graylog detected an alert condition was satisfied. This includes the time when Graylog evaluated the condition that triggered the alert, the time when notifications were executed and the results of executing them, and the time when the alert was resolved (if that is the case).
+Filter & Aggregation
+====================
+Filter
+^^^^^^
+By combining a Filter and an Aggregation you can specifically describe the criteria of an Event.
+Define a Filter by using Search Query in the same syntax as the Search page. Select a Stream in
+which the message can found. Define the window of time that the Filter will search backward to match messages.
+The search will be executed at the given interval. If the Filter matches an Event can be created.
+However, it may be useful to augment the filtered data with an aggregation
 
-Triggered notifications
-^^^^^^^^^^^^^^^^^^^^^^^
-Sometimes sending alert notifications may fail for some reason. Graylog includes details of the configured notifications at the time an alert was triggered and the result of executing those notifications, helping you to debug and fix any problems that may arise.
+.. image:: /images/alerts_filter_definition.png
 
-Search results
-^^^^^^^^^^^^^^
-You can quickly look at messages received while the alert was unresolved from within the alert details page. It is also possible to open that search in the search page, allowing you to further analyse the problem at hand.
+If the defined Filter matches messages currently within the Graylog Server, they will be displayed
+in the Filter Preview panel on the right.
 
+Aggregation
+^^^^^^^^^^^
+An Aggregation can run a mathematical operation on either a numeric field value or the raw count of
+messages generated that match the Filter. Also, Aggregation can now group matches by a selected field
+before making the comparison. For instance, if the field username is defined, then it is possible to
+alert on five successive failed logins by a particular username.
+This use case is shown below.
 
-Conditions
-----------
-The first step of managing alerts with Graylog is defining alert conditions.
+.. image:: /images/alerts_aggregation_example.png
 
-Alert conditions specify searches that Graylog will execute periodically, and also indicate under which circumstances Graylog should consider those search results as exceptional, triggering an alert in that case.
+Fields
+======
+Creating Custom Fields allows the Event to populate data from the original log into the
+Graylog Events index. This prevents the operator from having to run subsequent searches to get
+vital information. This can also be used to limit the amount of data sent to
+a Notification target. The Event will be recorded to the "All Events" stream
+and will contain the Custom Field, as well as the result of the Aggregation that triggered
+the Event.
 
-Click on *Manage conditions* in the *Alerts* section to see your current conditions details, modify them, or add new ones. Clicking on an alert condition's title will open a detail page where you can also see the notifications that will be executed when the condition is satisfied.
-
-.. image:: /images/alerts_alert_condition.png
-
-Alert condition types explained
-===============================
-In this section we explain what the default alert conditions included in Graylog do, and how to configure them. Since Graylog 2.2.0, alert conditions can be extended via :ref:`plugins`, you can find more types in the `Graylog Marketplace <http://marketplace.graylog.org>`__ or even create your own.
-
-Message count condition
-^^^^^^^^^^^^^^^^^^^^^^^
-
-This condition triggers whenever the stream received more than X messages in the last Y minutes. Perfect for example to be alerted when there are many exceptions on your platform. Create a stream that catches every error message and be alerted when that stream exceeds normal throughput levels.
-
-Field aggregation condition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This condition triggers whenever the result of a statistical computation of a numerical message field in the stream is higher or lower than a given threshold. Perfect to monitor performance problems: *Be alerted whenever the standard deviation of the response time of your application was higher than X in the last Y minutes.*
-
-Field content condition
-^^^^^^^^^^^^^^^^^^^^^^^
-
-This condition triggers whenever the stream received at least one message since the last alert run that has a field set to a given value. *Get an alert when a message with the field `type` set to `security` arrives in the stream.*
-
-.. Important:: We do not recommend to run this on analyzed fields like ``message`` or ``full_message`` because it is broken down to terms and you might get unexpected alerts. For example a check for `security` would also alert if a message with the field set to `no security` is received because it was broken down to `no` and `security`. This only happens on the analyzed ``message`` and ``full_message`` in Graylog.
-
-Please also take note that only a single alert is raised for this condition during the alerting interval, although multiple messages containing the given value may have been received since the last alert. The alerting interval is the time that is configured as ``alert_check_interval`` in the Graylog ``server.conf``. 
-
+.. image:: /images/alerts_customField_display.png
 
 Notifications
--------------
-
-.. Warning:: Starting in Graylog 2.2.0, alert notifications are only triggered **once**, just when a new alert is created. As long as the alert is unresolved or in grace period, **Graylog will not send further notifications**. This will help you reducing the noise and annoyance of getting notified way too often when a problem persists for a while. Should your setup require repeated notifications you can enable this during the creation of the alert condition since Graylog 2.2.2.
-
-Notifications (previously known as Alarm Callbacks) enable you to take actions on external systems when an alert is triggered. In this way, you can rely on Graylog to know when something is not right in your logs.
-
-Click on *Manage notifications* in the *Alerts* section to see your current notification details, modify them, test them, or add new ones. Remember that notifications are associated to streams, so **all conditions evaluated in a stream will share the same notifications**.
-
-.. image:: /images/alerts_alert_notification.png
+=============
+After defining the Events that are needed to trigger an Alert it is possible to attach a Notifcation.
+By attaching a Notification to an Event or group of Events we can determine how and when information
+will flow out from Graylog. Notifications can be created by selecting the Notifications button under
+the Alerts tab, or by defining them in the Event workflow.
 
 Alert notifications types explained
 ===================================
@@ -243,7 +224,7 @@ Graylog will send a POST request to the notification URL including information a
 
 .. _alerts_script_alert:
 
-Script alert notification
+Legacy Script alert notification
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Script Alert Notification lets you configure a script that will be executed when the alert is triggered.
@@ -396,3 +377,21 @@ Send Alert Data Through STDIN
 
             # Return an exit value. Zero is success, non-zero indicates failure.
             exit(0)
+
+
+
+Event Summary
+=============
+When all of the components have been defined the Event Summary will be displayed to the user.
+At this time, the user may select a previous point in the Workflow to change a parameter.
+The user may also cancel out of the workflow, select done. The Event may be viewed under
+Alerts>Event Definitions.
+
+
+
+All events stream
+---------------
+The All events stream can be used to view all previous Events that have been triggered.
+The Event is recorded with the fields defined in the Custom Fields portion of the Event.
+
+.. image:: /images/alerts_all_events_stream.png
