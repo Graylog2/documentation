@@ -79,7 +79,7 @@ After creating the configuration class the actual notification code can be writt
 
   public class HTTPEventNotification implements EventNotification
 
-There is just a single methode to override. The notification logic goes into ``execute(EventNotificationContext ctx)``.
+There is just a single method to override. The notification logic goes into ``execute(EventNotificationContext ctx)``.
 
 The context object is keeping data about the event that lead to the notification, see `this class <https://github.com/Graylog2/graylog2-server/blob/3.1/graylog2-server/src/main/java/org/graylog/events/notifications/EventNotificationContext.java>`_ for more informations.
 
