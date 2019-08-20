@@ -91,6 +91,7 @@ The *email body* and *email subject* are `JMTE <https://github.com/DJCordhose/jm
 
 We expose the following objects to the templates.
 
+
 ``stream``
   The stream this alert belongs to.
 
