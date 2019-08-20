@@ -71,7 +71,7 @@ On the API level, inputs should be validated, put the checks here.
 
 **public EventNotificationConfigEntity toContentPackEntity(EntityDescriptorIds entityDescriptorIds)**
 
-If content-pack support is desired this methode is called to transfer a notification to a content pack entity.
+If content-pack support is desired this method is called to transfer a notification to a content pack entity.
 
 Take a look at the examples for more details on this.
 
