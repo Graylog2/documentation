@@ -21,7 +21,7 @@ The interfaces to implement are ``org.graylog.events.notifications.EventNotifica
 Example Event Notification
 ==========================
 
-You can use the build-in notifications as full examples one for a `configuration class <https://github.com/Graylog2/graylog2-server/blob/3.1/graylog2-server/src/main/java/org/graylog/events/notifications/types/HTTPEventNotificationConfig.java>`_,
+You can use the built-in notifications as full examples one for a `configuration class <https://github.com/Graylog2/graylog2-server/blob/3.1/graylog2-server/src/main/java/org/graylog/events/notifications/types/HTTPEventNotificationConfig.java>`_,
 and one for a `notification class <https://github.com/Graylog2/graylog2-server/blob/3.1/graylog2-server/src/main/java/org/graylog/events/notifications/types/HTTPEventNotification.java>`_.
 
 To create an event notification plugin start by implementing the ``EventNotificationConfig`` interface::
