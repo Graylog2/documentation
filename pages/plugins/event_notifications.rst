@@ -4,7 +4,7 @@
 Event Notifications
 *******************
 
-Event Notifications are responsible for sending information about events to external systems, such as sending an email, push notifications, opening tickets, writing to chat systems etc.
+Event Notifications are responsible for sending information about events to external systems, such as sending an email, push notifications, opening tickets, writing to chat systems, etc.
 
 They receive the event they were triggered for as well as a context object with additional metadata. Each notification consists of two classes. A configuration class, keeping parameters for the notification, and a second class with the actual notification code.
 
