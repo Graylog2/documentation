@@ -17,7 +17,7 @@ pathtools==0.1.2
 port-for==0.3.1
 Pygments==2.4.2
 pyparsing==2.4.1.1
-pytz==2019.1
+pytz==2019.2
 PyYAML==5.1.1
 requests==2.22.0
 singledispatch==3.4.0.3
