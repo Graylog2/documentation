@@ -5,7 +5,7 @@ Changelog
 Graylog 3.1.0
 =============
 
-Released: 2019-xx-xx
+Released: 2019-08-16
 
 **Views & Extended Search**
 
