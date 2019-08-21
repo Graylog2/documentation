@@ -226,7 +226,7 @@ Graylog will send a POST request to the notification URL including information a
 .. _alerts_script_alert:
 
 Legacy Script alert notification
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Script Alert Notification lets you configure a script that will be executed when the alert is triggered.
 
@@ -391,7 +391,7 @@ Alerts>Event Definitions.
 
 
 All events stream
----------------
+-----------------
 The All events stream can be used to view all previous Events that have been triggered.
 The Event is recorded with the fields defined in the Custom Fields portion of the Event.
 
