@@ -77,6 +77,8 @@ The update basically works like a fresh installation::
   $ sudo apt-get update
   $ sudo apt-get install graylog-server
 
+.. caution:: If you have the :ref:`Integrations Plugins <integrations_plugins>` or the :ref:`Enterprise Plugins <enterprise_features>` installed, you need to update them together with the Graylog server package. The following command updates all official provided packages by Graylog at the same time: ``sudo apt-get install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins`` 
+
 
 Manual Repository Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -134,6 +136,9 @@ The update basically works like a fresh installation::
   $ sudo yum install graylog-server
 
 Running ``yum clean all`` is required because YUM might use a stale cache and thus might be unable to find the latest version of the ``graylog-server`` package.
+
+.. caution:: If you have the :ref:`Integrations Plugins <integrations_plugins>` or the :ref:`Enterprise Plugins <enterprise_features>` installed, you need to update them together with the Graylog server package. The following command updates all official provided packages by Graylog at the same time: ``sudo yum install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins`` 
+
 
 Manual Repository Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
