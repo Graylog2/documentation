@@ -441,3 +441,7 @@ Others
 * ``proxied_requests_thread_pool_size = 32``
     * For some cluster-related REST requests, the node must query all other nodes in the cluster. This is the maximum number of threads available for this. Increase it, if ``/cluster/*`` requests take long to complete.
     * Should be ``http_thread_pool_size * average_cluster_size`` if you have a high number of concurrent users.
+* ``default_events_index_prefix = gl-events``
+    * The default index prefix for graylog events.
+* ``default_system_events_index_prefix = gl-system-events``
+    * The default index prefix for graylog system events.
