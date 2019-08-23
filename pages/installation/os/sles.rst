@@ -79,6 +79,8 @@ First install the Graylog GPG Key with ``rpm --import https://packages.graylog2.
 
 After that, install the latest release with ``sudo zypper install graylog-server``.
 
+.. hint:: If you want the :ref:`Integrations Plugins <integrations_plugins>` or the :ref:`Enterprise Plugins <enterprise_features>` installed, you need to install them now. The following install all official provided packages by Graylog at the same time: ``sudo zypper install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins`` 
+
 Make sure to follow the instructions in your ``/etc/graylog/server/server.conf`` and add ``password_secret`` and ``root_password_sha2``. These settings are mandatory and without them, Graylog will not start!
 
 You can use the following command to create your ``password_secret``::

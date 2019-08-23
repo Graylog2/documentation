@@ -43,6 +43,8 @@ via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is i
   $ sudo apt-get update
   $ sudo apt-get install graylog-server
 
+.. hint:: If you want the :ref:`Integrations Plugins <integrations_plugins>` or the :ref:`Enterprise Plugins <enterprise_features>` installed, you need to install them now. The following install all official provided packages by Graylog at the same time: ``sudo apt-get install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins`` 
+
 After the installation completed successfully, Graylog can be started with the following commands. Make sure to use the correct command for your operating system.
 
 
@@ -103,6 +105,8 @@ via ``rpm(8)``::
 
   $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-3.1-repository_latest.rpm
   $ sudo yum install graylog-server
+
+.. hint:: If you want the :ref:`Integrations Plugins <integrations_plugins>` or the :ref:`Enterprise Plugins <enterprise_features>` installed, you need to install them now. The following install all official provided packages by Graylog at the same time: ``sudo yum install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins`` 
 
 After the installation completed successfully, Graylog can be started with the following commands. Make sure to use the correct command for your operating system.
 
