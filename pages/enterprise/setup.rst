@@ -66,7 +66,9 @@ Since Graylog 2.4 the Graylog Enterprise plugin can be installed the same way Gr
 
 Once you installed the Graylog Enterprise plugin you need to obtain a license from `the Graylog Enterprise web page <https://www.graylog.org/enterprise/>`_.
 
-Should a simple `apt-get install graylog-enterprise-plugins` or `yum install graylog-enterprise-plugins` not work for you, the following information might help you.
+Should a simple ``apt-get install graylog-enterprise-plugins`` or ``yum install graylog-enterprise-plugins`` not work for you, the following information might help you.
+
+.. hint:: You might want the :ref:`Integrations Plugins <integrations_plugins>` in addition to the Enterprise Plugins. See following the names of all official provides package: ``graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins``
 
 .. important:: The Graylog Enterprise plugin need to be installed on all your Graylog nodes!
 
