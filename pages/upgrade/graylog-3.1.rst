@@ -146,5 +146,9 @@ The following alerting related configuration file settings changed in this relea
 +----------------------------------------------------+---------+----------------------------------------------------+
 | ``processing_status_journal_write_rate_threshold`` | added   | Related to the new alerts system.                  |
 +----------------------------------------------------+---------+----------------------------------------------------+
+| ``default_events_index_prefix``                    | added   | Related to the new alerts system.                  |
++----------------------------------------------------+---------+----------------------------------------------------+
+| ``default_system_events_index_prefix``             | added   | Related to the new alerts system.                  |
++----------------------------------------------------+---------+----------------------------------------------------+
 
 See :ref:`server configuration page <server/.conf>` for details on the new settings.

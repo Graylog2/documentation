@@ -2,6 +2,26 @@
 Changelog
 *********
 
+Graylog Enterprise 3.1.0
+========================
+
+Released: 2019-08-16
+
+**Added**
+
+- Add correlation engine and UI for new alerts and events system.
+- Add Enterprise job scheduler implementation.
+
+**Removed**
+
+- Moved views feature to open-source. (except parameter support)
+
+**Fixed**
+
+- Fix report service memory leak.
+- Fix auto-completion in drop-down fields.
+- Fix rendering of archive configuration page
+
 Graylog Enterprise 3.0.2
 ========================
 
