@@ -18,11 +18,13 @@ Below are the available features:
 Open Source
 ^^^^^^^^^^^
 
+* :ref:`Kinesis/CloudWatch Input<kinesis_cloudwatch_input>`
 * :ref:`Palo Alto Network Input<palo_alto_network_input>`
 
 .. toctree::
    :hidden:
 
+   integrations/inputs/kinesis_cloudwatch_input
    integrations/inputs/palo_alto_networks_input
 
 
