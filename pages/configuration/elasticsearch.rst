@@ -18,6 +18,8 @@ Starting with version 2.3, Graylog uses the HTTP protocol to connect to your Ela
 
 .. note:: Graylog works fine with the `Amazon Elasticsearch Service <https://aws.amazon.com/elasticsearch-service/>`_ using **Elasticsearch 5.3.x** or later.
 
+.. caution:: Graylog 3.x **does not** work with Elasticsearch 7.x or later!
+
 Configuration
 =============
 
