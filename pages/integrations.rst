@@ -20,7 +20,7 @@ Below are the available features:
 Open Source
 ^^^^^^^^^^^
 
-* :ref:`Kinesis/CloudWatch Input<kinesis_cloudwatch_input>`
+* :ref:`AWS Kinesis/CloudWatch Input<aws_kinesis_cloudwatch_input>`
 * :ref:`Palo Alto Network Input<palo_alto_network_input>`
 
 .. toctree::
