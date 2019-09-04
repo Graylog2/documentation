@@ -36,6 +36,8 @@ Graylog version  Elasticsearch version
 
 
 
+.. caution:: Graylog 3.x **does not** work with Elasticsearch 7.x or later!
+
 Configuration
 =============
 
