@@ -14,9 +14,10 @@ Elasticsearch versions
 
 Starting with version 2.3, Graylog uses the HTTP protocol to connect to your Elasticsearch cluster, so it does not have a hard requirement for the Elasticsearch version anymore. We can safely assume that any version starting from 2.x is working.
 
-.. caution:: Graylog 2.4 **does not** work with Elasticsearch 6.x!
+.. caution:: Graylog prior to 2.3 **does not** work with Elasticsearch 5.x!
+.. caution:: Graylog 3.x **does not** work with Elasticsearch 7.x!
 
-.. note:: Graylog works fine with the `Amazon Elasticsearch Service <https://aws.amazon.com/elasticsearch-service/>`_ using **Elasticsearch 5.3.x** or later.
+.. note:: Graylog works fine with the `Amazon Elasticsearch Service <https://aws.amazon.com/elasticsearch-service/>`_ using Elasticsearch 5 or 6.
 
 Configuration
 =============
