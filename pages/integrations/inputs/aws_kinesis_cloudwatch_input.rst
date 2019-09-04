@@ -1,4 +1,4 @@
-.. _kinesis_cloudwatch_input:
+.. _aws_kinesis_cloudwatch_input:
 
 ************************
 AWS Kinesis/CloudWatch Input
@@ -73,9 +73,12 @@ setup to function as expected, the Recommended Policy shown below must be allowe
 4) AWS Kinesis Review
     Final step to review and finalize the details for the input.
 
+
 .. image:: /images/aws_kinesis_setup_auto.png
 
+
 .. image:: /images/aws_kinesis_auto_setup_agreement.png
+
 
 .. image:: /images/aws_kinesis_execute_auto_setup.png
 
