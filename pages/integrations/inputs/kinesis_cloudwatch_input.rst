@@ -77,17 +77,11 @@ setup to function as expected, the Recommended Policy shown below must be allowe
     Final step to review and finalize the details for the input.
 
 .. image:: /images/aws_kinesis_setup_auto.png
-    :scale: 40 %
-    :align: center
 
 .. image:: /images/aws_kinesis_auto_setup_agreement.png
-    :scale: 40 %
-    :align: left
-
 
 .. image:: /images/aws_kinesis_execute_auto_setup.png
-    :scale: 25 %
-    :align: right
+
 
 
 
@@ -95,17 +89,16 @@ Permission Policies
 ===================
 
 Manual Setup Flow Permissions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: /images/aws_permissions_manual_setup.png
-    :scale: 30 %
-    :align: left
 
 
 Automatic Setup Flow Permissions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: /images/aws_permissions_autosetup.png
-    :scale: 30 %
-    :align: left
+
 
 
 
