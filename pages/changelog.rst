@@ -9,7 +9,7 @@ Released: 2019-09-04
 
 **Integrations Plugin**
 
-- Add a new `AWS Kinesis/CloudWatch <https://add_docs_link_here>`_ input to Graylog, which guides the user through the setup process and performs checks
+- Add a new :doc:`/pages/integrations/inputs/aws_kinesis_cloudwatch_input` to Graylog, which guides the user through the setup process and performs checks
   along the way. It also supports an automated CloudWatch Logs to Kinesis Streams setup which helps to automate much
   of the complicated manual setup.
 
