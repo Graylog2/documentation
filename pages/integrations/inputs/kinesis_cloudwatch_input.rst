@@ -1,12 +1,12 @@
 .. _kinesis_cloudwatch_input:
 
 ************************
-Kinesis/CloudWatch Input
+AWS Kinesis/CloudWatch Input
 ************************
 
 .. note:: This input is available since Graylog version 3.1.1. Installation of an additional ``graylog-integrations-plugins`` package is required. See the :doc:`Integrations Setup <../setup>` page for more info.
 
-.. attention:: An understanding of how AWS `CloudWatch <https://docs.aws.amazon.com/cloudwatch/>`_ and `Kinesis <https://docs.aws.amazon.com/kinesis/>`_. works is required.
+.. attention:: An understanding of how AWS `CloudWatch <https://docs.aws.amazon.com/cloudwatch/>`_ and `Kinesis <https://docs.aws.amazon.com/kinesis/>`_  is required.
 
 This input allows Graylog to read log messages from CloudWatch via Kinesis. When reading logs from CloudWatch, Kinesis
 is required in order to stream messages to Graylog.
@@ -41,12 +41,9 @@ For this setup to function as expected, the Least Privilege Policy shown below m
     Final step to review and finalize the details for the input.
 
 .. image:: /images/aws_kinesis_authorize.png
-    :scale: 33 %
-    :align: center
 
 .. image:: /images/aws_kinesis_setup_default.png
-    :scale: 40 %
-    :align: center
+
 
 
 Automatic Setup Flow
@@ -65,13 +62,13 @@ setup to function as expected, the Recommended Policy shown below must be allowe
     for the Kinesis stream name, and select a Cloudwatch log Group from the dropdown list and click the **Begin Automated Setup** button.
 
     You will be prompted with   *Kinesis Auto Setup Agreement* and will need to acknowledge that you are aware of the
-    resources that will be created and click the **I Agree! Create these AWS resources now.** button. (See images below)
+    resources that will be created and click the **I Agree! Create these AWS resources now.** button. (See images below).
 
     Once agreed and acknowledge, the auto-setup will detail and reference the resources that were created and you can
-     click the **Continue Setup** button. (see *Executing Auto-Setup* image below)
+    click the **Continue Setup** button. (see *Executing Auto-Setup* image below)
 
 3) AWS CloudWatch Health Check
-    Graylog will read a message from the Kinesis stream and check it's format. Graylog will attempt to automatically parse the message if it is of a known type.
+    Graylog will read a message from the Kinesis stream and check its format. Graylog will attempt to automatically parse the message if it is of a known type.
 
 4) AWS Kinesis Review
     Final step to review and finalize the details for the input.
