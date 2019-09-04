@@ -16,7 +16,7 @@ Released: 2019-09-04
 **Fixed**
 
 - Error when loading a view. `Graylog2/graylog2-server#6346 <https://github.com/Graylog2/graylog2-server/pull/6346>`_
-- Fix server startup issue resulting from long index name. `Graylog2/graylog2-server#6322 <https://github.com/Graylog2/graylog2-server/issues/6322>`_
+- Fix server startup issue resulting from long index name (only affected users upgrading from 3.1.0). `Graylog2/graylog2-server#6322 <https://github.com/Graylog2/graylog2-server/issues/6322>`_
 
 Graylog 3.1.0
 =============
