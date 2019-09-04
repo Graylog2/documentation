@@ -25,9 +25,9 @@ Graylog version  Elasticsearch version
 2.0.1-2.0.3      2.3.2
 2.1.0-2.1.3      2.3.5
 2.2.0-2.2.3      2.4.4
-2.3.x-2.4.x      2.x, 5.x
-2.5.x            2.x, 5.x, 6.x
-3.0-3.1          5.x, 6.x
+2.3.x-2.4.x      2.4.x, 5.6.x
+2.5.x            2.4.x, 5.6.x, 6.8.x
+3.0-3.1          5.6.x, 6.8.x
 ===============  =====================
 
 .. caution:: Graylog 3.x **does not** work with Elasticsearch 7.x!
