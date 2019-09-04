@@ -2,6 +2,13 @@
 Changelog
 *********
 
+Graylog Enterprise 3.1.1
+========================
+
+Released: 2019-09-04
+
+No changes since 3.1.0.
+
 Graylog Enterprise 3.1.0
 ========================
 
