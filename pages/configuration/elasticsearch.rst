@@ -35,9 +35,6 @@ Graylog version  Elasticsearch version
 .. note:: Graylog works fine with the `Elastic Cloud <https://cloud.elastic.co>`_ using Elasticsearch 5 or 6.
 
 
-
-.. caution:: Graylog 3.x **does not** work with Elasticsearch 7.x or later!
-
 Configuration
 =============
 

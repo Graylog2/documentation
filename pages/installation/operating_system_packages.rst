@@ -23,7 +23,7 @@ Prerequisites
 
 Make sure to install and configure the following software before installing and starting any Graylog services:
 
-* Java ( 8 or 11 )
+* Java ( >= 8 )
 * Elasticsearch (5.x or 6.x)
 * MongoDB (3.6 or 4.0)
   

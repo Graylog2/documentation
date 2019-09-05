@@ -81,7 +81,7 @@ Example::
     # MongoDB: https://hub.docker.com/_/mongo/
     mongodb:
       image: mongo:3
-    # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.8/docker.html
+    # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html
     elasticsearch:
       image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2
       environment:
@@ -209,7 +209,7 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
       image: mongo:3
       volumes:
         - mongo_data:/data/db
-    # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.8/docker.html
+    # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html
     elasticsearch:
       image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2
       volumes:
