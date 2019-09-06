@@ -257,7 +257,7 @@ Graylog nodes inside a cluster need to communicate with each other using the Gra
 
 The default trust store of an installed Java runtime environment can be found at ``$JAVA_HOME/jre/lib/security/cacerts``. In order not to "pollute" the official trust store, we make a copy of it which we will use with Graylog instead::
 
-  $ cp -a "${JAVA_HOME}/jre/lib/security/cacerts" /path/to/cacerts.jks
+  $ cp -a "${JAVA_HOME}/lib/security/cacerts" /path/to/cacerts.jks
 
 After the original key store file has been copied, we can add the self-signed certificate (``cert.pem``, see :ref:`creating-a-self-signed-private-key-certificate`) to the key store (the default password is ``changeit``)::
 
