@@ -300,9 +300,7 @@ Graylog supports the ability to enable ``debug`` or ``trace`` logging for specif
 execute the following terminal command against a particular Graylog node.::
 
   curl -I -X PUT http://<graylog-username>:<graylog-password>@<graylog-node-ip>:9000/api/system/loggers/<application-package>/level/debug \
-  -H 'X-Requested-By: graylog-api-user' \
-  -X PUT \
-  -I
+  -H 'X-Requested-By: graylog-api-user'
 
 .. note:: The ``application-package`` is the Java package for the area of concern (eg. ``org.graylog.aws``  for the AWS plugin or ``org.graylog2.lookup`` for Lookup Tables). You might need to look at the Graylog source code to identify the desired application-package.
 
