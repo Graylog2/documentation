@@ -3,7 +3,7 @@ argh==0.26.2
 Babel==2.7.0
 backports-abc==0.5
 backports.ssl-match-hostname==3.7.0.1
-certifi==2019.3.9
+certifi==2019.9.11
 chardet==3.0.4
 docutils==0.15.2
 futures==3.1.1
