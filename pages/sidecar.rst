@@ -155,8 +155,7 @@ Sidecar Configuration
 =====================
 
 On the command line you can provide a path to the configuration file with the ``-c`` switch.
-The default configuration path on Linux systems is ``/etc/graylog/sidecar/sidecar.yml`` on Linux
-and ``C:\Program Files\Graylog\sidecar\sidecar.yml`` on Windows.
+The default configuration path on Linux systems is ``/etc/graylog/sidecar/sidecar.yml`` and ``C:\Program Files\Graylog\sidecar\sidecar.yml`` on Windows.
 
 
 Most configuration parameters come with built-in defaults.
