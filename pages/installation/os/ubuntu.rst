@@ -15,6 +15,9 @@ Taking a minimal server setup as base will need this additional packages::
     $ sudo apt-get update && sudo apt-get upgrade
     $ sudo apt-get install apt-transport-https openjdk-8-jre-headless uuid-runtime pwgen
 
+If you get an the error *Unable to locate package* you likely need to enable the universe repository with the following command, at which point you can run the previous commands again::
+    
+    $ sudo add-apt-repository universe
 
 MongoDB
 -------
