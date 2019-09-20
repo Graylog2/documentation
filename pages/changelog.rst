@@ -2,6 +2,18 @@
 Changelog
 *********
 
+Graylog 3.1.2
+=============
+
+Released: 2019-09-12
+
+**Fixed**
+
+- Cannot read property 'query' of undefined when replaying search `Graylog2/graylog2-server#6355 <https://github.com/Graylog2/graylog2-server/pull/6355>`_
+- Cannot focus input fields in modal form (Dashboard) `Graylog2/graylog2-server#6356 <https://github.com/Graylog2/graylog2-server/pull/6356>`_
+- Server start fails with `Index with name: compound_0 already exists with a different name` `Graylog2/graylog2-server#6383 <https://github.com/Graylog2/graylog2-server/pull/6383>`_
+- Alerting not working if cluster contains nodes with no active inputs `Graylog2/graylog2-server#6415 <https://github.com/Graylog2/graylog2-server/pull/6415>`_
+
 Graylog 3.1.1
 =============
 
