@@ -75,7 +75,7 @@ MongoDB
     * Examples:
         - Simple: ``mongodb_uri = mongodb://localhost/graylog``
         - Authenticate against the MongoDB server: ``mongodb_uri = mongodb://grayloguser:secret@localhost:27017/graylog``
-        - Use a replica set instead of a single host: ``mongodb_uri = mongodb://grayloguser:secret@localhost:27017,localhost:27018,localhost:27019/graylog``
+        - Use a replica set instead of a single host: ``mongodb_uri = mongodb://grayloguser:secret@localhost:27017,localhost:27018,localhost:27019/graylog?replicaSet=rs01``
 
 Outgoing HTTP
 ^^^^^^^^^^^^^
