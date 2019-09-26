@@ -52,7 +52,7 @@ Web Properties
         * The network interface used by the Graylog HTTP interface.
         * This address and port is used by default in the ``http_publish_uri``
 
-* ``http_publish_uri = http://$http_bind_address/``
+* ``http_publish_uri = http://127.0.0.1:9000/``
         * Web interface listen URI.
         * The HTTP URI of this Graylog node which is used by all clients using the Graylog web interface.
 
@@ -108,7 +108,6 @@ Several values must be properly configured in order for elasticsearch to work pr
 	* Port Elasticsearch will listen on. We recommend using the default value.
 
 *  ``discovery.zen.ping.unicast.hosts: ["es01.acme.org", "es02.acme.org"]``
-
 	* Elasticsearch uses a custom discovery implementation called "Zen Discovery" for node-to-node clustering and master election. To form a cluster with nodes on other servers, you have to provide a seed list of other nodes in the cluster that are likely to be live and contactable. 
 	* May be specified as IP address or FQDN.
 
