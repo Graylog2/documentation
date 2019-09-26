@@ -7,6 +7,9 @@ Graylog 3.1.2
 
 Released: 2019-09-12
 
+Core
+^^^^
+
 **Fixed**
 
 - Cannot read property 'query' of undefined when replaying search `Graylog2/graylog2-server#6355 <https://github.com/Graylog2/graylog2-server/pull/6355>`_
@@ -19,16 +22,22 @@ Graylog 3.1.1
 
 Released: 2019-09-04
 
-**Integrations Plugin**
-
-- Add a new :doc:`/pages/integrations/inputs/aws_kinesis_cloudwatch_input` to Graylog, which guides the user through the setup process and performs checks
-  along the way. It also supports an automated CloudWatch Logs to Kinesis Streams setup which helps to automate much
-  of the complicated manual setup.
+Core
+^^^^
 
 **Fixed**
 
 - Error when loading a view. `Graylog2/graylog2-server#6346 <https://github.com/Graylog2/graylog2-server/pull/6346>`_
 - Fix server startup issue resulting from long index name. `Graylog2/graylog2-server#6322 <https://github.com/Graylog2/graylog2-server/issues/6322>`_
+
+Integrations Plugin
+^^^^^^^^^^^^^^^^^^^
+
+**Added**
+
+- Add a new :doc:`/pages/integrations/inputs/aws_kinesis_cloudwatch_input` to Graylog, which guides the user through the setup process and performs checks
+  along the way. It also supports an automated CloudWatch Logs to Kinesis Streams setup which helps to automate much
+  of the complicated manual setup.
 
 Graylog 3.1.0
 =============
