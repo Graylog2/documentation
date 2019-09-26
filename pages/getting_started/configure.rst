@@ -53,8 +53,7 @@ Web Properties
         * This address and port is used by default in the ``http_publish_uri``
 
 * ``http_publish_uri = http://$http_bind_address/``
-
-	* Web interface listen URI.
+        * Web interface listen URI.
         * The HTTP URI of this Graylog node which is used by all clients using the Graylog web interface.
 
 Elasticsearch Properties
