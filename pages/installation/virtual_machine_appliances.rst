@@ -73,7 +73,7 @@ documentation, if you need to further customize your appliance.
 VMWare ESXi
 ===========
 
-.. note:: The appliances are build technically with VirtualBox. However most ESXi versions are able to import and run the appliance but be prepared for unexpected troubles especially during import.
+.. warning:: The appliances are build technically with VirtualBox. However most ESXi versions are able to import and run the appliance but be prepared for unexpected troubles especially during import.
 
 If you are using the appliance on a VMWare host, you might want to install the hypervisor tools::
 
