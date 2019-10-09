@@ -52,7 +52,7 @@ The migration will log the number of migrated legacy alert conditions and alarm 
 Alarm Callback Plugins
 ----------------------
 
-The new Alerts & Events system is supporting the execution of legacy Alarm Callback plugins for now. We recommend to switch event definitions over to event notifications, though. At some point in the future support for legacy Alarm Callback plugins will be removed.
+The new Alerts & Events system is supporting the execution of legacy Alarm Callback plugins for now. We recommend to switch event definitions over to event notifications, though. At some point in the future support for legacy Alarm Callback plugins will be removed. More information for plugin developers can be found on the :ref:`event_notifications_api` page.
 
 .. note:: Please note, that the data sent via a legacy Alarm Callback might be slightly different than via the old Alerts system. If you've built automation on top of alerts, you might want to check that everything still works after the migration.
 
