@@ -48,7 +48,7 @@ completed:
    
       "Your appliance came up without a configured IP address. Graylog is probably not running correctly!"
    
-   In this case, you have to login and edit ``/etc/network/interfaces`` in order to setup a fixed IP address. Then create the file ``/var/lib/graylog-server/firstboot`` and reboot.
+   In this case, you have to login and edit configuration files under ``/etc/netplan/`` in order to setup a fixed IP address. Then create the file ``/var/lib/graylog-server/firstboot`` and reboot.
 
 
 Logging in
@@ -73,7 +73,7 @@ documentation, if you need to further customize your appliance.
 VMWare ESXi
 ===========
 
-.. note:: The appliances are build technically with VirtualBox. However most ESXi versions are able to import and run the appliance but be prepared for unexpected troubles especially during import.
+.. warning:: The appliances are build technically with VirtualBox. However most ESXi versions are able to import and run the appliance but be prepared for unexpected troubles especially during import.
 
 If you are using the appliance on a VMWare host, you might want to install the hypervisor tools::
 
