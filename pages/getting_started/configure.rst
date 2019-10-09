@@ -93,7 +93,7 @@ Outgoing HTTP
 elasticsearch.yml
 -----------------
 
-``Elasticsearch.yml`` is  the Elasticsearch configuration file. The default location for server.conf is: ``/etc/elasticsearch/elasticsearch.yml``.
+``Elasticsearch.yml`` is  the Elasticsearch configuration file. The default location for elasticsearch.yml is: ``/etc/elasticsearch/elasticsearch.yml``.
 
 Several values must be properly configured in order for elasticsearch to work properly.
 

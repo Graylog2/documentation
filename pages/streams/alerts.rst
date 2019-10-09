@@ -129,98 +129,71 @@ The HTTP alert notification lets you configure an endpoint that will be called w
 Graylog will send a POST request to the notification URL including information about the alert. Here is an example of the payload included in a notification::
 
   {
-      "check_result": {
-          "result_description": "Stream had 2 messages in the last 1 minutes with trigger condition more than 1 messages. (Current grace time: 1 minutes)",
-          "triggered_condition": {
-              "id": "5e7a9c8d-9bb1-47b6-b8db-4a3a83a25e0c",
-              "type": "MESSAGE_COUNT",
-              "created_at": "2015-09-10T09:44:10.552Z",
-              "creator_user_id": "admin",
-              "grace": 1,
-              "parameters": {
-                  "grace": 1,
-                  "threshold": 1,
-                  "threshold_type": "more",
-                  "backlog": 5,
-                  "time": 1
-              },
-              "description": "time: 1, threshold_type: more, threshold: 1, grace: 1",
-              "type_string": "MESSAGE_COUNT",
-              "backlog": 5
-          },
-          "triggered_at": "2015-09-10T09:45:54.749Z",
-          "triggered": true,
-          "matching_messages": [
-              {
-                  "index": "graylog2_7",
-                  "message": "WARN: System is failing",
-                  "fields": {
-                      "gl2_remote_ip": "127.0.0.1",
-                      "gl2_remote_port": 56498,
-                      "gl2_source_node": "41283fec-36b4-4352-a859-7b3d79846b3c",
-                      "gl2_source_input": "55f15092bee8e2841898eb53"
-                  },
-                  "id": "b7b08150-57a0-11e5-b2a2-d6b4cd83d1d5",
-                  "stream_ids": [
-                      "55f1509dbee8e2841898eb64"
-                  ],
-                  "source": "127.0.0.1",
-                  "timestamp": "2015-09-10T09:45:49.284Z"
-              },
-              {
-                  "index": "graylog2_7",
-                  "message": "ERROR: This is an example error message",
-                  "fields": {
-                      "gl2_remote_ip": "127.0.0.1",
-                      "gl2_remote_port": 56481,
-                      "gl2_source_node": "41283fec-36b4-4352-a859-7b3d79846b3c",
-                      "gl2_source_input": "55f15092bee8e2841898eb53"
-                  },
-                  "id": "afd71342-57a0-11e5-b2a2-d6b4cd83d1d5",
-                  "stream_ids": [
-                      "55f1509dbee8e2841898eb64"
-                  ],
-                  "source": "127.0.0.1",
-                  "timestamp": "2015-09-10T09:45:36.116Z"
-              }
-          ]
+      'event_definition_id': '5d5ae2a165ea93218fcd7382',
+      'event_definition_type': 'aggregation-v1',
+      'event_definition_title': 'example',
+      'event_definition_description': 'Message count alert condition',
+      'job_definition_id': '5d5ae769683c3dba791b74bd',
+      'job_trigger_id': '5d8cd93365ea937cbc6be163',
+      'event': {
+          'id': '01DNQ30W0Y20SZAMJZQS7HV4BN',
+          'event_definition_type': 'aggregation-v1',
+          'event_definition_id': '5d5ae2a165ea93218fcd7382',
+          'origin_context': None,
+          'timestamp': '2019-09-26T15:27:49.644Z',
+          'timestamp_processing': '2019-09-26T15:28:51.230Z',
+          'timerange_start': '2019-09-26T15:27:45.679Z',
+          'timerange_end': '2019-09-26T15:28:45.678Z',
+          'streams': [],
+          'source_streams': ['5a5e3147683c3d7cd137d667'],
+          'message': 'event: count()=2.0',
+          'source': 'graylog.example.com',
+          'key_tuple': [],
+          'key': '',
+          'priority': 2,
+          'alert': True,
+          'fields': {}
       },
-      "stream": {
-          "creator_user_id": "admin",
-          "outputs": [],
-          "matching_type": "AND",
-          "description": "test stream",
-          "created_at": "2015-09-10T09:42:53.833Z",
-          "disabled": false,
-          "rules": [
-              {
-                  "field": "gl2_source_input",
-                  "stream_id": "55f1509dbee8e2841898eb64",
-                  "id": "55f150b5bee8e2841898eb7f",
-                  "type": 1,
-                  "inverted": false,
-                  "value": "55f15092bee8e2841898eb53"
-              }
-          ],
-          "alert_conditions": [
-              {
-                  "creator_user_id": "admin",
-                  "created_at": "2015-09-10T09:44:10.552Z",
-                  "id": "5e7a9c8d-9bb1-47b6-b8db-4a3a83a25e0c",
-                  "type": "message_count",
-                  "parameters": {
-                      "grace": 1,
-                      "threshold": 1,
-                      "threshold_type": "more",
-                      "backlog": 5,
-                      "time": 1
-                  }
-              }
-          ],
-          "id": "55f1509dbee8e2841898eb64",
-          "title": "test",
-          "content_pack": null
-      }
+      'backlog': [{
+              'index': 'graylog_1097',
+              'message': 'ERROR: This is an example error message',
+              'timestamp': '2019-09-26T15:27:46.408Z',
+              'source': '127.0.0.1',
+              'stream_ids': ['579a14fee96e9f287aa9fd79', '5a5e3147683c3d7cd137d667'],
+              'fields': {
+                  'via_input': 'input_name',
+                  'level': 6,
+                  'alert': 'example',
+                  'gl2_remote_ip': '127.0.0.1',
+                  'gl2_remote_port': 514,
+                  'gl2_message_id': '01DNQ2YWQFHSJZE9T6JEBSYSVY',
+                  'gl2_source_node': '7a05ad73-6141-43fa-a324-2ec2598e3645',
+                  'gl2_source_input': '5799f612e96e9f287aa9dcb0',
+                  'extreme_timestamp': 'Sep 26 10:27:46',
+                  'facility': 'local6'
+              },
+              'id': '30f9c681-e072-11e9-8e57-0050568a570f'
+          }, {
+              'index': 'graylog_1097',
+              'message': 'ERROR: This is an example error message',
+              'timestamp': '2019-09-26T15:27:49.644Z',
+              'source': '127.0.0.1',
+              'stream_ids': ['579a14fee96e9f287aa9fd79', '5a5e3147683c3d7cd137d667'],
+              'fields': {
+                  'via_input': 'input_name',
+                  'level': 6,
+                  'alert': 'example',
+                  'gl2_remote_ip': '127.0.0.1',
+                  'gl2_remote_port': 514,
+                  'gl2_message_id': '01DNQ2YZWK5J8B6BXNGQVJX57D',
+                  'gl2_source_node': '113a4960-7cf2-43fc-b827-d81592dd1aea',
+                  'gl2_source_input': '5799f612e96e9f287aa9dcb0',
+                  'extreme_timestamp': 'Sep 26 10:27:49',
+                  'facility': 'local6'
+              },
+              'id': '32e78cc0-e072-11e9-8358-0050568a6438'
+          }
+      ]
   }
 
 .. _alerts_script_alert:
