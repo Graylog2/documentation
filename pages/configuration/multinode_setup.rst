@@ -51,7 +51,7 @@ It is important to name the Elasticsearch cluster not simply named `elasticsearc
 
 The Elasticsearch servers need one IP that can be reached over network set in ``network.host`` and some participants of the cluster in ``discovery.zen.ping.unicast.hosts``. That is enough to have a minimal cluster setup.
 
-When you secure your Elasticsearch with `User Authentification <https://www.elastic.co/guide/en/x-pack/5.4/xpack-security.html#preventing-unauthorized-access>`__ you need to add credentials to the `Graylog configuration <https://github.com/Graylog2/graylog2-server/blob/2.3.0-beta.1/misc/graylog.conf#L172-L178>`__ to be able to use the secured Elasticsearch cluster with Graylog.
+When you secure your Elasticsearch with `User Authentication <https://www.elastic.co/guide/en/x-pack/5.4/xpack-security.html#preventing-unauthorized-access>`__ you need to add credentials to the `Graylog configuration <https://github.com/Graylog2/graylog2-server/blob/2.3.0-beta.1/misc/graylog.conf#L172-L178>`__ to be able to use the secured Elasticsearch cluster with Graylog.
 
 
 Graylog Multi-node
