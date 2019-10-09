@@ -75,10 +75,7 @@ Use it like this::
   $ git clone git@github.com:Graylog2/graylog-project.git
 
 
-This will create a checkout of the meta project in your current work dir. Now change to the ``graylog-project`` directory and execute the step which to download the necessary base modules::
-
-  $ graylog-project bootstrap
-
+This will create a checkout of the meta project in your current work dir. Now change to the ``graylog-project`` directory and follow the ``Install CLI Tool`` and ``Bootstrap`` from its README.
 
 Now you can bootstrap the plugin you want to write from here, by doing::
 
