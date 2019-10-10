@@ -56,6 +56,14 @@ There are lots of different ways to get those on your local machine, unfortunate
 
 Graylog uses a couple of conventions and techniques in its code, so be sure to read about the :ref:`general_concepts_api` for an overview.
 
+.. _sample_plugin:
+
+Sample Plugin
+-------------
+
+In the following sections we will create a plugin skeleton based on a maven archetype. The skeleton is similar to the `sample plugin on Github <https://github.com/Graylog2/graylog-plugin-sample/tree/2.2>`_.
+This documentation will link to specific parts for your reference. It is fully functional, even though it does not implement any useful functionality. Its purpose to provide a reference for helping to implement your own plugins.
+
 .. _creating_plugin_skeleton:
 
 Creating a plugin skeleton
