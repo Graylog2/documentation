@@ -45,7 +45,7 @@ What you need in your development environment before starting is:
 
   * `git <https://git-scm.com>`_
   * `maven <https://maven.apache.org>`_
-  * `rpm <https://rpm.org/>`_
+  * `rpm <https://rpm.org>`_
 
 If you plan to write a web plugin, you'll also need:
 
