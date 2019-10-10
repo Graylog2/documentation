@@ -121,7 +121,7 @@ Retention
 
 A key question when planning your log management system is log retention. There are two ways event log data may be retained, online or archived. Online data is stored in Elasticsearch and is searchable through the Graylog GUI. Archived data is stored in a compressed format, either on the Graylog server or on a network file share. It is still searchable, via GREP for example, but must be reconstituted in Graylog in order to be searchable through the GUI again.
 
-Some regulatory frameworks require retention of event log data for a proscribed period. In the absence of a clear requirement, the question becomes one of balancing the cost of retention (storage) versus the utility of having historical data. There is no single answer, as each situation is different. 
+Some regulatory frameworks require retention of event log data for a prescribed period. In the absence of a clear requirement, the question becomes one of balancing the cost of retention (storage) versus the utility of having historical data. There is no single answer, as each situation is different. 
 
 Most Graylog customers retain 30-90 days online (searchable in Elasticsearch) and 6-13 months of archives.
 
