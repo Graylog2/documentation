@@ -45,18 +45,16 @@ What you need in your development environment before starting is:
 
   * `git <https://git-scm.com>`_
   * `maven <https://maven.apache.org>`_
+  * `rpm <https://rpm.org/>`_
+
+If you plan to write a web plugin, you'll also need:
+
+  * `node <https://nodejs.org>`_
+  * `yarn <https://yarnpkg.com>`_
 
 There are lots of different ways to get those on your local machine, unfortunately we cannot list all of them, so please refer to your operating system-specific documentation,
 
 Graylog uses a couple of conventions and techniques in its code, so be sure to read about the :ref:`general_concepts_api` for an overview.
-
-.. _sample_plugin:
-
-Sample Plugin
--------------
-
-To go along with this documentation, there is a `sample plugin on Github <https://github.com/Graylog2/graylog-plugin-sample/tree/2.2>`_. This documentation will link to specific parts for your reference.
-It is fully functional, even though it does not implement any useful functionality. Its purpose to provide a reference for helping to implement your own plugins.
 
 .. _creating_plugin_skeleton:
 
@@ -64,7 +62,7 @@ Creating a plugin skeleton
 --------------------------
 
 The easiest way to get started is to use our `Graylog meta project <https://github.com/Graylog2/graylog-project>`_,
-which will create a complete plugin project infrastructure will all required classes, build definitions, and configurations. Using the meta project allows you to have the `Graylog server project <https://github.com/graylog2/graylog2-server>`_ and your own plugins (or 3rd party plugins) in the same project, which means that you can run and debug everything in your favorite IDE or navigate seamlessly in the code base.
+which will create a complete plugin project infrastructure with all required classes, build definitions, and configurations. Using the meta project allows you to have the `Graylog server project <https://github.com/graylog2/graylog2-server>`_ and your own plugins (or 3rd party plugins) in the same project, which means that you can run and debug everything in your favorite IDE or navigate seamlessly in the code base.
 
 .. note:: We are working on a replacement tool for the ``graylog-project`` meta project, but for the time being it still works.
 
@@ -76,8 +74,9 @@ Use it like this::
 
 
 This will create a checkout of the meta project in your current work dir. Now change to the ``graylog-project`` directory and follow the ``Install CLI Tool`` and ``Bootstrap`` from its README.
+The initial build step will create the directory ``graylog-project-repos``. It contains all required repositories and will also be the home of your new plugin.
 
-Now you can bootstrap the plugin you want to write from here, by doing::
+Now you can bootstrap the plugin you want to write, by running the following command, inside the ``graylog-project-repos`` directory::
 
   $ mvn archetype:generate -DarchetypeGroupId=org.graylog -DarchetypeArtifactId=graylog-plugin-archetype
 
@@ -85,18 +84,27 @@ It will ask you a few questions about the plugin you are planning to build. Let'
 an alarm callback plugin that creates a JIRA ticket for each alarm that is triggered::
 
   groupId: com.acmecorp
+  artifactId: graylog-plugin-jira-alarmcallback
   version: 1.0.0
   package: com.acmecorp
+  githubRepo: exampleGithubRepo
   pluginClassName: JiraAlarmCallback
 
 Note that you do not have to tell the archetype wizard what kind of plugin you want to build because it is creating the generic plugin
 skeleton for you, and nothing that is related to the actual implementation. More on this in the example plugin chapters later.
+It is important that your ``artifactId`` has the prefix ``graylog-plugin-``.
+The ``githubRepo`` must be the desired plugins repo name, not the full github URL.
+The repository is not required for the development, but a common part of the plugins meta information.
 
 You now have a new folder called ``graylog-plugin-jira-alarmcallback``, which includes a complete plugin skeleton including Maven build files. To be able to make a complete build of the project, you need to add
 the newly created plugin to the graylog-project POM as a module. Open ``pom.xml`` (residing in your ``graylog-project`` directory) and find a couple of ``<module>`` statements in the file. Add the following line
 (after adapting it to your naming):
 
   <module>../graylog-project-repos/graylog-plugin-jira-alarmcallback</module>
+
+Make sure to update the ``graylog-plugin-web-parent`` version inside the plugins ``pom.xml``.
+You can find the current version inside the related ``relativePath`` property.
+The last necessary step, to get started with the development, is to execute ``mvn compile`` inside the ``graylog-project`` dir.
 
 
 You should be finished now, and every Java IDE out there can now import the project automatically without any required further configuration.
@@ -235,7 +243,7 @@ Common libraries are built into a separate ``vendor`` bundle using an own config
 Building plugins
 ----------------
 
-Building the plugin is easy because the meta project has created all necessary files and settings for you. Just run ``mvn package`` either from the meta project's directory (to build the server *and* the plugin) or from the plugin
+Building the plugin is easy because the meta project has created all necessary files and settings for you. Just run ``mvn package`` either from the meta project's directory ``graylog-project`` (to build the server *and* the plugin) or from the plugin
 directory (to build the plugin only)::
 
   $ mvn package
