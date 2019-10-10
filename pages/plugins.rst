@@ -62,7 +62,7 @@ Sample Plugin
 -------------
 
 In the following sections we will create a plugin skeleton based on a maven archetype. The skeleton is similar to the `sample plugin on Github <https://github.com/Graylog2/graylog-plugin-sample/tree/2.2>`_.
-This documentation will link to specific parts for your reference. It is fully functional, even though it does not implement any useful functionality. Its purpose to provide a reference for helping to implement your own plugins.
+This documentation will link to specific parts for your reference. It is fully functional, even though it does not implement any useful functionality. Its purpose is to provide a reference for helping to implement your own plugins.
 
 .. _creating_plugin_skeleton:
 
