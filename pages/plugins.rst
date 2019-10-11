@@ -82,7 +82,7 @@ Use it like this::
 
 
 This will create a checkout of the meta project in your current work dir. Now change to the ``graylog-project`` directory and follow the ``Install CLI Tool`` and ``Bootstrap`` from its README.
-The initial build step will create the directory ``graylog-project-repos``. It contains all required repositories and will also be the home of your new plugin.
+Bootstrapping the ``garylog-project`` will create the directory ``graylog-project-repos``. It contains all required repositories and will also be the home of your new plugin.
 
 Now you can bootstrap the plugin you want to write, by running the following command, inside the ``graylog-project-repos`` directory::
 
