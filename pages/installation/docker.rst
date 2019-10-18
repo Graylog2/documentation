@@ -191,13 +191,60 @@ This can be done by adding an entry to the `volumes <https://docs.docker.com/com
 
 .. warning:: Graylog is running as USER graylog with the ID ``1100`` in Docker. That ID need to be able to read the configuration files you place into the container. 
 
+
+Reading individual configuration settings from files
+----------------------------------------------------
+
+The Graylog Docker image supports reading individual configuration settings from a file. This can be used to secure configuration settings with `Docker secrets <https://docs.docker.com/engine/swarm/secrets/>`__ or similar mechanisms.
+
+This has the advantage, that configuration settings containing sensitive information don't have to be added to a custom configuration file or into an environment variable in plaintext.
+
+The Graylog Docker image checks for the existence of environment variables with the naming scheme ``GRAYLOG_<CONFIG_NAME>__FILE`` on startup and expects the environment variable to contain the absolute path to a readable file.
+
+For example, if the environment variable ``GRAYLOG_ROOT_PASSWORD_SHA2__FILE`` contained the value ``run/secrets/root_password_hash``, the Graylog Docker image would use the contents of ``/run/secrets/root_password_hash`` as value for the ``root_password_sha2`` configuration setting.
+
+Docker secrets
+^^^^^^^^^^^^^^
+
+.. note:: Docker secrets are only available in Docker Swarm services starting with Docker 1.13. Please refer to `Manage sensitive data with Docker secrets <https://docs.docker.com/engine/swarm/secrets/>`__  for more details.
+
+Example for using Docker secrets in a Docker Swarm service::
+
+    # Create SHA-256 hash of our password
+    $ echo -n 'password' | sha256sum | awk '{ print $1 }'
+    5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8
+    
+    # Create a Docker secret named "root_password_hash"
+    $ printf '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8' | \
+      docker secret create root_password_hash -
+    nlujwooo5uu6z0m91bmve79uo
+    
+    $ docker secret ls
+    ID                          NAME                 DRIVER              CREATED             UPDATED
+    nlujwooo5uu6z0m91bmve79uo   root_password_hash                       34 seconds ago      34 seconds ago
+    
+    # Create Docker Swarm service named "graylog" with access
+    # to the secret named "root_password_hash"
+    $ docker service create --name graylog \
+     --secret root_password_hash \ 
+     -e GRAYLOG_ROOT_PASSWORD_SHA2__FILE=/run/secrets/root_password_hash \
+     -p 9000:9000 graylog/graylog:3.1
+    mclk5gm39ingk51s869dc0htz
+    overall progress: 1 out of 1 tasks
+    1/1: running   [==================================================>]
+    verify: Service converged
+
+    $ docker service ls
+    ID                  NAME                MODE                REPLICAS            IMAGE               PORTS
+    mclk5gm39ing        graylog             replicated          1/1                 graylog:latest      *:9000->9000/tcp
+
+
 .. _persisting-data:
 
 Persisting data
 ===============
 
 In order to make the recorded data persistent, you can use external volumes to store all data.
-
 In case of a container restart, this will simply re-use the existing data from the former instances.
 
 Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``docker-compose.yml`` file looks as follows::
