@@ -158,7 +158,7 @@ If you are running multiple Graylog Server you might want to use HTTPS/SSL to co
 
     server
     {
-        listen      443 ssl spdy;
+        listen      443 ssl http2;
         server_name graylog.example.org;
         # <- your SSL Settings here!
 
