@@ -11,7 +11,7 @@ Upgrading to Graylog 3.1.x
 Views & Extended Search
 =======================
 
-The Views and Extended Search feature has been open-sourced in this vesion. (except the support for parameters) It was only accessible in Graylog Enterprise in Graylog 3.0.
+The Views and Extended Search feature has been open-sourced in this version. (except the support for parameters) It was only accessible in Graylog Enterprise in Graylog 3.0.
 
 
 HTTP API Changes
