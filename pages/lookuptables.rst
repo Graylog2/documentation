@@ -217,5 +217,5 @@ Geo IP - MaxMind Databases
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Provides the ability to extract geolocation information of IP addresses
-from MaxMind Country and City databases.
+from MaxMind ASN, Country and City databases.
 
