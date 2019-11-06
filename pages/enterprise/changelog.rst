@@ -2,6 +2,17 @@
 Changelog
 *********
 
+Graylog Enterprise 3.1.3
+========================
+
+Released: 2019-11-06
+
+
+**Fixed**
+
+- Fix problem with correlating events created by aggregation event definitions.
+- Remove incomplete archive directory when archive job fails or is stopped.
+
 Graylog Enterprise 3.1.2
 ========================
 
