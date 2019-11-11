@@ -74,7 +74,7 @@ Generate your own admin password with the following command and put the SHA-256 
 
 All these settings and command line parameters can be put in a ``docker-compose.yml`` file, so that they don't have to be executed one after the other.
 
-Example::
+Example Version 2::
 
   version: '2'
   services:
@@ -120,6 +120,62 @@ Example::
         - 12201:12201
         # GELF UDP
         - 12201:12201/udp
+
+Example Version 3::
+
+  version: '3'
+  services:
+    # MongoDB: https://hub.docker.com/_/mongo/
+    mongo:
+      image: mongo:3
+      networks:
+        - graylog
+    # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html
+    elasticsearch:
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2
+      environment:
+        - http.host=0.0.0.0
+        - transport.host=localhost
+        - network.host=0.0.0.0
+        - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      ulimits:
+        memlock:
+          soft: -1
+          hard: -1
+      deploy:
+        resources:
+          limits:
+            memory: 1g
+      networks:
+        - graylog
+    # Graylog: https://hub.docker.com/r/graylog/graylog/
+    graylog:
+      image: graylog/graylog:3.1
+      environment:
+        # CHANGE ME (must be at least 16 characters)!
+        - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
+        # Password: admin
+        - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
+        - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
+      networks:
+        - graylog
+      depends_on:
+        - mongo
+        - elasticsearch
+      ports:
+        # Graylog web interface and REST API
+        - 9000:9000
+        # Syslog TCP
+        - 1514:1514
+        # Syslog UDP
+        - 1514:1514/udp
+        # GELF TCP
+        - 12201:12201
+        # GELF UDP
+        - 12201:12201/udp
+  networks:
+    graylog:
+      driver: bridge
 
 After starting all three Docker containers by running ``docker-compose up``, you can open the URL ``http://127.0.0.1:9000`` in a web browser and log in with username ``admin`` and password ``admin`` (make sure to change the password later). Change ``GRAYLOG_HTTP_EXTERNAL_URI=`` to your server IP if you run Docker remotely. 
 

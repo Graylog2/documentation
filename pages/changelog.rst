@@ -12,42 +12,42 @@ Core
 
 **Added**
 
-- Add test button to allow testing of event notifications. `Graylog2/graylog2-server#6138 <https://github.com/Graylog2/graylog2-server/issues/6138>`_ `Graylog2/graylog2-server#6549 <https://github.com/Graylog2/graylog2-server/issues/6549>`_
-- Add support for MaxMind ASN database type in lookup tables. `Graylog2/graylog2-server#6631 <https://github.com/Graylog2/graylog2-server/issues/6631>`_
-- Add ``metric_counter_inc`` pipeline function. `Graylog2/graylog2-server#6644 <https://github.com/Graylog2/graylog2-server/issues/6644>`_
-- Add ``length`` pipeline function. `Graylog2/graylog2-server#6645 <https://github.com/Graylog2/graylog2-server/issues/6645>`_
-- Add ``traffic_accounting_size`` pipeline function. `Graylog2/graylog2-server#6646 <https://github.com/Graylog2/graylog2-server/issues/6646>`_
-- Implement pipeline rule timers to help debugging slow rules. `Graylog2/graylog2-server#5494 <https://github.com/Graylog2/graylog2-server/issues/5494>`_ `Graylog2/graylog2-server#6680 <https://github.com/Graylog2/graylog2-server/issues/6680>`_
+- Add test button to allow testing of event notifications. `Graylog2/graylog2-server#6138 <https://github.com/Graylog2/graylog2-server/issues/6138>`__ `Graylog2/graylog2-server#6549 <https://github.com/Graylog2/graylog2-server/issues/6549>`__
+- Add support for MaxMind ASN database type in lookup tables. `Graylog2/graylog2-server#6631 <https://github.com/Graylog2/graylog2-server/issues/6631>`__
+- Add ``metric_counter_inc`` pipeline function. `Graylog2/graylog2-server#6644 <https://github.com/Graylog2/graylog2-server/issues/6644>`__
+- Add ``length`` pipeline function. `Graylog2/graylog2-server#6645 <https://github.com/Graylog2/graylog2-server/issues/6645>`__
+- Add ``traffic_accounting_size`` pipeline function. `Graylog2/graylog2-server#6646 <https://github.com/Graylog2/graylog2-server/issues/6646>`__
+- Implement pipeline rule timers to help debugging slow rules. `Graylog2/graylog2-server#5494 <https://github.com/Graylog2/graylog2-server/issues/5494>`__ `Graylog2/graylog2-server#6680 <https://github.com/Graylog2/graylog2-server/issues/6680>`__
 
 
 **Changed**
 
-- Hide event streams from pipelines because events are currently not supported in pipeline rules. `Graylog2/graylog2-server#6454 <https://github.com/Graylog2/graylog2-server/issues/6454>`_ `Graylog2/graylog2-server#6545 <https://github.com/Graylog2/graylog2-server/issues/6545>`_
-- Increase default connection limits for Elasticsearch connections. `Graylog2/graylog2-server#4637 <https://github.com/Graylog2/graylog2-server/issues/4637>`_ `Graylog2/graylog2-server#6679 <https://github.com/Graylog2/graylog2-server/issues/6679>`_
+- Hide event streams from pipelines because events are currently not supported in pipeline rules. `Graylog2/graylog2-server#6454 <https://github.com/Graylog2/graylog2-server/issues/6454>`__ `Graylog2/graylog2-server#6545 <https://github.com/Graylog2/graylog2-server/issues/6545>`__
+- Increase default connection limits for Elasticsearch connections. `Graylog2/graylog2-server#4637 <https://github.com/Graylog2/graylog2-server/issues/4637>`__ `Graylog2/graylog2-server#6679 <https://github.com/Graylog2/graylog2-server/issues/6679>`__
 
 **Fixed**
 
-- Fix problem with message highlighting. `Graylog2/graylog2-server#6511 <https://github.com/Graylog2/graylog2-server/issues/6511>`_ `Graylog2/graylog2-server#6526 <https://github.com/Graylog2/graylog2-server/issues/6526>`_
-- Improve event and alert processing on nodes with low ingest rates. `Graylog2/graylog2-server#6453 <https://github.com/Graylog2/graylog2-server/issues/6453>`_ `Graylog2/graylog2-server#6548 <https://github.com/Graylog2/graylog2-server/issues/6548>`_
-- Remove event streams from global search to fix custom sorting issue. `Graylog2/graylog2-server#6384 <https://github.com/Graylog2/graylog2-server/issues/6384>`_ `Graylog2/graylog2-server#6544 <https://github.com/Graylog2/graylog2-server/issues/6544>`_
-- Fix event processing on nodes with a disabled journal. `Graylog2/graylog2-server#6449 <https://github.com/Graylog2/graylog2-server/issues/6449>`_ `Graylog2/graylog2-server#6547 <https://github.com/Graylog2/graylog2-server/issues/6547>`_
-- Fix UI problem with select components. `Graylog2/graylog2-server#6554 <https://github.com/Graylog2/graylog2-server/issues/6554>`_
-- Fix problem adding multiple percentile aggregations in views. `Graylog2/graylog2-server#6597 <https://github.com/Graylog2/graylog2-server/issues/6597>`_ `Graylog2/graylog2-server#6638 <https://github.com/Graylog2/graylog2-server/issues/6638>`_
-- Fix API browser links in setups with multiple nodes. `Graylog2/graylog2-server#2360 <https://github.com/Graylog2/graylog2-server/issues/2360>`_ `Graylog2/graylog2-server#5920 <https://github.com/Graylog2/graylog2-server/issues/5920>`_ `Graylog2/graylog2-server#6636 <https://github.com/Graylog2/graylog2-server/issues/6636>`_
-- Fix display of backlog size for legacy event notification plugins. `Graylog2/graylog2-server#6647 <https://github.com/Graylog2/graylog2-server/issues/6647>`_
-- Fix issue with MongoDB index creation. `Graylog2/graylog2-server#6383 <https://github.com/Graylog2/graylog2-server/issues/6383>`_ `Graylog2/graylog2-server#6643 <https://github.com/Graylog2/graylog2-server/issues/6643>`_
-- Fix stream permission checks for view searches. `Graylog2/graylog2-server#6651 <https://github.com/Graylog2/graylog2-server/issues/6651>`_
-- Fix stream sorting in streams filter option in views. `Graylog2/graylog2-server#6514 <https://github.com/Graylog2/graylog2-server/issues/6514>`_ `Graylog2/graylog2-server#6657 <https://github.com/Graylog2/graylog2-server/issues/6657>`_
-- Fix problem with event index set migration. `Graylog2/graylog2-server#6507 <https://github.com/Graylog2/graylog2-server/issues/6507>`_ `Graylog2/graylog2-server#6662 <https://github.com/Graylog2/graylog2-server/issues/6662>`_ `Graylog2/graylog2-server#6674 <https://github.com/Graylog2/graylog2-server/issues/6674>`_
-- Ensure Grok pattern reloading on bulk pattern import. `Graylog2/graylog2-server#6673 <https://github.com/Graylog2/graylog2-server/issues/6673>`_
-- Fix error handling in pipeline parser. `Graylog2/graylog2-server#6696 <https://github.com/Graylog2/graylog2-server/issues/6696>`_ `Graylog2/graylog2-server#6731 <https://github.com/Graylog2/graylog2-server/issues/6731>`_
+- Fix problem with message highlighting. `Graylog2/graylog2-server#6511 <https://github.com/Graylog2/graylog2-server/issues/6511>`__ `Graylog2/graylog2-server#6526 <https://github.com/Graylog2/graylog2-server/issues/6526>`__
+- Improve event and alert processing on nodes with low ingest rates. `Graylog2/graylog2-server#6453 <https://github.com/Graylog2/graylog2-server/issues/6453>`__ `Graylog2/graylog2-server#6548 <https://github.com/Graylog2/graylog2-server/issues/6548>`__
+- Remove event streams from global search to fix custom sorting issue. `Graylog2/graylog2-server#6384 <https://github.com/Graylog2/graylog2-server/issues/6384>`__ `Graylog2/graylog2-server#6544 <https://github.com/Graylog2/graylog2-server/issues/6544>`__
+- Fix event processing on nodes with a disabled journal. `Graylog2/graylog2-server#6449 <https://github.com/Graylog2/graylog2-server/issues/6449>`__ `Graylog2/graylog2-server#6547 <https://github.com/Graylog2/graylog2-server/issues/6547>`__
+- Fix UI problem with select components. `Graylog2/graylog2-server#6554 <https://github.com/Graylog2/graylog2-server/issues/6554>`__
+- Fix problem adding multiple percentile aggregations in views. `Graylog2/graylog2-server#6597 <https://github.com/Graylog2/graylog2-server/issues/6597>`__ `Graylog2/graylog2-server#6638 <https://github.com/Graylog2/graylog2-server/issues/6638>`__
+- Fix API browser links in setups with multiple nodes. `Graylog2/graylog2-server#2360 <https://github.com/Graylog2/graylog2-server/issues/2360>`__ `Graylog2/graylog2-server#5920 <https://github.com/Graylog2/graylog2-server/issues/5920>`__ `Graylog2/graylog2-server#6636 <https://github.com/Graylog2/graylog2-server/issues/6636>`__
+- Fix display of backlog size for legacy event notification plugins. `Graylog2/graylog2-server#6647 <https://github.com/Graylog2/graylog2-server/issues/6647>`__
+- Fix issue with MongoDB index creation. `Graylog2/graylog2-server#6383 <https://github.com/Graylog2/graylog2-server/issues/6383>`__ `Graylog2/graylog2-server#6643 <https://github.com/Graylog2/graylog2-server/issues/6643>`__
+- Fix stream permission checks for view searches. `Graylog2/graylog2-server#6651 <https://github.com/Graylog2/graylog2-server/issues/6651>`__
+- Fix stream sorting in streams filter option in views. `Graylog2/graylog2-server#6514 <https://github.com/Graylog2/graylog2-server/issues/6514>`__ `Graylog2/graylog2-server#6657 <https://github.com/Graylog2/graylog2-server/issues/6657>`__
+- Fix problem with event index set migration. `Graylog2/graylog2-server#6507 <https://github.com/Graylog2/graylog2-server/issues/6507>`__ `Graylog2/graylog2-server#6662 <https://github.com/Graylog2/graylog2-server/issues/6662>`__ `Graylog2/graylog2-server#6674 <https://github.com/Graylog2/graylog2-server/issues/6674>`__
+- Ensure Grok pattern reloading on bulk pattern import. `Graylog2/graylog2-server#6673 <https://github.com/Graylog2/graylog2-server/issues/6673>`__
+- Fix error handling in pipeline parser. `Graylog2/graylog2-server#6696 <https://github.com/Graylog2/graylog2-server/issues/6696>`__ `Graylog2/graylog2-server#6731 <https://github.com/Graylog2/graylog2-server/issues/6731>`__
 
 Integrations Plugin
 ^^^^^^^^^^^^^^^^^^^
 
 **Fixed**
 
-- Fix checkpointing AWS Kinesis streams. `Graylog2/graylog-plugin-integrations#286 <https://github.com/Graylog2/graylog-plugin-integrations/issues/286>`_ `Graylog2/graylog-plugin-integrations#294 <https://github.com/Graylog2/graylog-plugin-integrations/issues/294>`_
+- Fix checkpointing AWS Kinesis streams. `Graylog2/graylog-plugin-integrations#286 <https://github.com/Graylog2/graylog-plugin-integrations/issues/286>`__ `Graylog2/graylog-plugin-integrations#294 <https://github.com/Graylog2/graylog-plugin-integrations/issues/294>`__
 
 Graylog 3.1.2
 =============
@@ -59,10 +59,10 @@ Core
 
 **Fixed**
 
-- Cannot read property 'query' of undefined when replaying search `Graylog2/graylog2-server#6355 <https://github.com/Graylog2/graylog2-server/pull/6355>`_
-- Cannot focus input fields in modal form (Dashboard) `Graylog2/graylog2-server#6356 <https://github.com/Graylog2/graylog2-server/pull/6356>`_
-- Server start fails with `Index with name: compound_0 already exists with a different name` `Graylog2/graylog2-server#6383 <https://github.com/Graylog2/graylog2-server/pull/6383>`_
-- Alerting not working if cluster contains nodes with no active inputs `Graylog2/graylog2-server#6415 <https://github.com/Graylog2/graylog2-server/pull/6415>`_
+- Cannot read property 'query' of undefined when replaying search `Graylog2/graylog2-server#6355 <https://github.com/Graylog2/graylog2-server/pull/6355>`__
+- Cannot focus input fields in modal form (Dashboard) `Graylog2/graylog2-server#6356 <https://github.com/Graylog2/graylog2-server/pull/6356>`__
+- Server start fails with `Index with name: compound_0 already exists with a different name` `Graylog2/graylog2-server#6383 <https://github.com/Graylog2/graylog2-server/pull/6383>`__
+- Alerting not working if cluster contains nodes with no active inputs `Graylog2/graylog2-server#6415 <https://github.com/Graylog2/graylog2-server/pull/6415>`__
 
 Graylog 3.1.1
 =============
@@ -74,8 +74,8 @@ Core
 
 **Fixed**
 
-- Error when loading a view. `Graylog2/graylog2-server#6346 <https://github.com/Graylog2/graylog2-server/pull/6346>`_
-- Fix server startup issue resulting from long index name. `Graylog2/graylog2-server#6322 <https://github.com/Graylog2/graylog2-server/issues/6322>`_
+- Error when loading a view. `Graylog2/graylog2-server#6346 <https://github.com/Graylog2/graylog2-server/pull/6346>`__
+- Fix server startup issue resulting from long index name. `Graylog2/graylog2-server#6322 <https://github.com/Graylog2/graylog2-server/issues/6322>`__
 
 Integrations Plugin
 ^^^^^^^^^^^^^^^^^^^
@@ -103,11 +103,11 @@ Core
 
 **Added**
 
-- Add ``GracefulShutdownService`` Java API to allow plugins to participate in a graceful server shutdown. `Graylog2/graylog2-server#5738 <https://github.com/Graylog2/graylog2-server/issues/5738>`_
-- Add ``MessageOutput.Factory2`` Java API to allow writing output plugins that receive the output instance ID. `Graylog2/graylog2-server#5670 <https://github.com/Graylog2/graylog2-server/issues/5670>`_
-- Add metrics for Sidecar HTTP API resources. `Graylog2/graylog2-server#5632 <https://github.com/Graylog2/graylog2-server/issues/5632>`_
-- Add new pipeline rule function ``grok_exists`` to check for the existence of Grok patterns. `Graylog2/graylog2-server#5699 <https://github.com/Graylog2/graylog2-server/issues/5699>`_ `Graylog2/graylog2-server#5689 <https://github.com/Graylog2/graylog2-server/issues/5689>`_
-- Allow the ``group.id`` setting in a Kafka input to be configured by users. `Graylog2/graylog2-server#5867 <https://github.com/Graylog2/graylog2-server/issues/5867>`_ `Graylog2/graylog2-server#3976 <https://github.com/Graylog2/graylog2-server/issues/3976>`_ (Thank you `@pdepaepe <https://github.com/pdepaepe>`_)
+- Add ``GracefulShutdownService`` Java API to allow plugins to participate in a graceful server shutdown. `Graylog2/graylog2-server#5738 <https://github.com/Graylog2/graylog2-server/issues/5738>`__
+- Add ``MessageOutput.Factory2`` Java API to allow writing output plugins that receive the output instance ID. `Graylog2/graylog2-server#5670 <https://github.com/Graylog2/graylog2-server/issues/5670>`__
+- Add metrics for Sidecar HTTP API resources. `Graylog2/graylog2-server#5632 <https://github.com/Graylog2/graylog2-server/issues/5632>`__
+- Add new pipeline rule function ``grok_exists`` to check for the existence of Grok patterns. `Graylog2/graylog2-server#5699 <https://github.com/Graylog2/graylog2-server/issues/5699>`__ `Graylog2/graylog2-server#5689 <https://github.com/Graylog2/graylog2-server/issues/5689>`__
+- Allow the ``group.id`` setting in a Kafka input to be configured by users. `Graylog2/graylog2-server#5867 <https://github.com/Graylog2/graylog2-server/issues/5867>`__ `Graylog2/graylog2-server#3976 <https://github.com/Graylog2/graylog2-server/issues/3976>`__ (Thank you `@pdepaepe <https://github.com/pdepaepe>`__)
 - Add "show documents for value" field value action to views.
 - Add automatic refresh feature to views search.
 - Add support for extractor creation links to views.
@@ -118,28 +118,28 @@ Core
 - Add support for stacked bar charts in views.
 - Make colors in view charts configurable.
 - Add support for percentile metrics in views.
-- Add syntax highlighting for pipeline rule editor. `Graylog2/graylog2-server#5957 <https://github.com/Graylog2/graylog2-server/issues/5957>`_
+- Add syntax highlighting for pipeline rule editor. `Graylog2/graylog2-server#5957 <https://github.com/Graylog2/graylog2-server/issues/5957>`__
 - Add new alerts and events system.
-- Add default events and system events streams. `Graylog2/graylog2-server#6089 <https://github.com/Graylog2/graylog2-server/issues/6089>`_ `Graylog2/graylog2-server#6085 <https://github.com/Graylog2/graylog2-server/issues/6085>`_
-- Add default ``gl2_message_id`` field for each new message. `Graylog2/graylog2-server#6074 <https://github.com/Graylog2/graylog2-server/issues/6074>`_ `Graylog2/graylog2-server#5994 <https://github.com/Graylog2/graylog2-server/issues/5994>`_
-- Add *experimental* JDK 11 support. `Graylog2/graylog2-server#5909 <https://github.com/Graylog2/graylog2-server/issues/5909>`_ (please don't use in production, yet)
-- Add default filebeat collector config for Windows. `Graylog2/graylog2-server#6287 <https://github.com/Graylog2/graylog2-server/issues/6287>`_ `Graylog2/collector-sidecar#350 <https://github.com/Graylog2/collector-sidecar/issues/350>`_
+- Add default events and system events streams. `Graylog2/graylog2-server#6089 <https://github.com/Graylog2/graylog2-server/issues/6089>`__ `Graylog2/graylog2-server#6085 <https://github.com/Graylog2/graylog2-server/issues/6085>`__
+- Add default ``gl2_message_id`` field for each new message. `Graylog2/graylog2-server#6074 <https://github.com/Graylog2/graylog2-server/issues/6074>`__ `Graylog2/graylog2-server#5994 <https://github.com/Graylog2/graylog2-server/issues/5994>`__
+- Add *experimental* JDK 11 support. `Graylog2/graylog2-server#5909 <https://github.com/Graylog2/graylog2-server/issues/5909>`__ (please don't use in production, yet)
+- Add default filebeat collector config for Windows. `Graylog2/graylog2-server#6287 <https://github.com/Graylog2/graylog2-server/issues/6287>`__ `Graylog2/collector-sidecar#350 <https://github.com/Graylog2/collector-sidecar/issues/350>`__
 
 **Changed**
 
-- Add a high-resolution logo and favicon and optimize all image files. `Graylog2/graylog2-server#5748 <https://github.com/Graylog2/graylog2-server/issues/5748>`_
-- Improve autogenerated UI elements for boolean fields. `Graylog2/graylog2-server#5678 <https://github.com/Graylog2/graylog2-server/issues/5678>`_
-- Make modal dialogs only close with ESC key, Cancel and "X" buttons. They don't close anymore when users click outside of the modal content. `Graylog2/graylog2-server#5823 <https://github.com/Graylog2/graylog2-server/issues/5823>`_
-- Improve error messages when updating Grok patterns. `Graylog2/graylog2-server#5629 <https://github.com/Graylog2/graylog2-server/issues/5629>`_
-- Improve error messages for search errors. `Graylog2/graylog2-server#5681 <https://github.com/Graylog2/graylog2-server/issues/5681>`_
-- Improve navigation bar layout. `Graylog2/graylog2-server#6001 <https://github.com/Graylog2/graylog2-server/issues/6001>`_
+- Add a high-resolution logo and favicon and optimize all image files. `Graylog2/graylog2-server#5748 <https://github.com/Graylog2/graylog2-server/issues/5748>`__
+- Improve autogenerated UI elements for boolean fields. `Graylog2/graylog2-server#5678 <https://github.com/Graylog2/graylog2-server/issues/5678>`__
+- Make modal dialogs only close with ESC key, Cancel and "X" buttons. They don't close anymore when users click outside of the modal content. `Graylog2/graylog2-server#5823 <https://github.com/Graylog2/graylog2-server/issues/5823>`__
+- Improve error messages when updating Grok patterns. `Graylog2/graylog2-server#5629 <https://github.com/Graylog2/graylog2-server/issues/5629>`__
+- Improve error messages for search errors. `Graylog2/graylog2-server#5681 <https://github.com/Graylog2/graylog2-server/issues/5681>`__
+- Improve navigation bar layout. `Graylog2/graylog2-server#6001 <https://github.com/Graylog2/graylog2-server/issues/6001>`__
 - Improve views query autocompletion suggestions.
 - Move Save/Cancel buttons in views widget edit mode.
-- Use dynamic pager in views message lists. `Graylog2/graylog2-server#6090 <https://github.com/Graylog2/graylog2-server/issues/6090>`_
-- Set default value for email sender to empty value. `Graylog2/graylog2-server#5981 <https://github.com/Graylog2/graylog2-server/issues/5981>`_ (Thank you `@bjoernhaeuser <https://github.com/bjoernhaeuser>`_)
-- Improve stream router engine performance. `Graylog2/graylog2-server#6170 <https://github.com/Graylog2/graylog2-server/issues/6170>`_
-- Avoid logging excessive exceptions when other Graylog nodes are not reachable via HTTP. `Graylog2/graylog2-server#6229 <https://github.com/Graylog2/graylog2-server/issues/6229>`_
-- Darken disabled inputs on the inputs page, making it easier to see when an input is disabled. `Graylog2/graylog2-server#6257 <https://github.com/Graylog2/graylog2-server/issues/6257>`_
+- Use dynamic pager in views message lists. `Graylog2/graylog2-server#6090 <https://github.com/Graylog2/graylog2-server/issues/6090>`__
+- Set default value for email sender to empty value. `Graylog2/graylog2-server#5981 <https://github.com/Graylog2/graylog2-server/issues/5981>`__ (Thank you `@bjoernhaeuser <https://github.com/bjoernhaeuser>`__)
+- Improve stream router engine performance. `Graylog2/graylog2-server#6170 <https://github.com/Graylog2/graylog2-server/issues/6170>`__
+- Avoid logging excessive exceptions when other Graylog nodes are not reachable via HTTP. `Graylog2/graylog2-server#6229 <https://github.com/Graylog2/graylog2-server/issues/6229>`__
+- Darken disabled inputs on the inputs page, making it easier to see when an input is disabled. `Graylog2/graylog2-server#6257 <https://github.com/Graylog2/graylog2-server/issues/6257>`__
 
 **Removed**
 
@@ -148,29 +148,29 @@ Core
 
 **Fixed**
 
-- Fix slow loading HTTP API and UI after server startup. `Graylog2/graylog2-server#5669 <https://github.com/Graylog2/graylog2-server/issues/5669>`_
-- Fix API path prefixing to allow running Graylog with a sub-path again. `Graylog2/graylog2-server#5703 <https://github.com/Graylog2/graylog2-server/issues/5703>`_ `Graylog2/graylog2-server#5702 <https://github.com/Graylog2/graylog2-server/issues/5702>`_
-- Fix issue with dashboard data migration. `Graylog2/graylog2-server#5751 <https://github.com/Graylog2/graylog2-server/issues/5751>`_ `Graylog2/graylog2-server#5737 <https://github.com/Graylog2/graylog2-server/issues/5737>`_
-- Add wildcard support to search page query parser. `Graylog2/graylog2-server#5730 <https://github.com/Graylog2/graylog2-server/issues/5730>`_ `Graylog2/graylog2-server#5719 <https://github.com/Graylog2/graylog2-server/issues/5719>`_
-- Fix "Expect: 100-Continue" handling in HTTP inputs. `Graylog2/graylog2-server#5725 <https://github.com/Graylog2/graylog2-server/issues/5725>`_ `Graylog2/graylog2-server#5690 <https://github.com/Graylog2/graylog2-server/issues/5690>`_
-- Fix HTTP input keep-alive handling. `Graylog2/graylog2-server#5728 <https://github.com/Graylog2/graylog2-server/issues/5728>`_ `Graylog2/graylog2-server#5720 <https://github.com/Graylog2/graylog2-server/issues/5720>`_
-- Fix Grok pattern handling with ``OR`` patterns. `Graylog2/graylog2-server#5749 <https://github.com/Graylog2/graylog2-server/issues/5749>`_ `Graylog2/graylog2-server#4773 <https://github.com/Graylog2/graylog2-server/issues/4773>`_
-- Fix issues with Cisco ASA NetFlow handling. `Graylog2/graylog2-server#5729 <https://github.com/Graylog2/graylog2-server/issues/5729>`_ `Graylog2/graylog2-server#5715 <https://github.com/Graylog2/graylog2-server/issues/5715>`_
-- Fix support for underscores (``_``) in Grok pattern match group names. `Graylog2/graylog2-server#5800 <https://github.com/Graylog2/graylog2-server/issues/5800>`_ `Graylog2/graylog2-server#5704 <https://github.com/Graylog2/graylog2-server/issues/5704>`_ `Graylog2/graylog2-server#5563 <https://github.com/Graylog2/graylog2-server/issues/5563>`_
-- Fix auto-completion in several drop-down fields across the UI. `Graylog2/graylog2-server#5665 <https://github.com/Graylog2/graylog2-server/issues/5665>`_ `Graylog2/graylog2-server#5659 <https://github.com/Graylog2/graylog2-server/issues/5659>`_
-- Fix problem with loading the extractors page in the UI. `Graylog2/graylog2-server#5954 <https://github.com/Graylog2/graylog2-server/issues/5954>`_ `Graylog2/graylog2-server#5948 <https://github.com/Graylog2/graylog2-server/issues/5948>`_
-- Fix links on stream outputs page. `Graylog2/graylog2-server#5953 <https://github.com/Graylog2/graylog2-server/issues/5953>`_ `Graylog2/graylog2-server#5952 <https://github.com/Graylog2/graylog2-server/issues/5952>`_
+- Fix slow loading HTTP API and UI after server startup. `Graylog2/graylog2-server#5669 <https://github.com/Graylog2/graylog2-server/issues/5669>`__
+- Fix API path prefixing to allow running Graylog with a sub-path again. `Graylog2/graylog2-server#5703 <https://github.com/Graylog2/graylog2-server/issues/5703>`__ `Graylog2/graylog2-server#5702 <https://github.com/Graylog2/graylog2-server/issues/5702>`__
+- Fix issue with dashboard data migration. `Graylog2/graylog2-server#5751 <https://github.com/Graylog2/graylog2-server/issues/5751>`__ `Graylog2/graylog2-server#5737 <https://github.com/Graylog2/graylog2-server/issues/5737>`__
+- Add wildcard support to search page query parser. `Graylog2/graylog2-server#5730 <https://github.com/Graylog2/graylog2-server/issues/5730>`__ `Graylog2/graylog2-server#5719 <https://github.com/Graylog2/graylog2-server/issues/5719>`__
+- Fix "Expect: 100-Continue" handling in HTTP inputs. `Graylog2/graylog2-server#5725 <https://github.com/Graylog2/graylog2-server/issues/5725>`__ `Graylog2/graylog2-server#5690 <https://github.com/Graylog2/graylog2-server/issues/5690>`__
+- Fix HTTP input keep-alive handling. `Graylog2/graylog2-server#5728 <https://github.com/Graylog2/graylog2-server/issues/5728>`__ `Graylog2/graylog2-server#5720 <https://github.com/Graylog2/graylog2-server/issues/5720>`__
+- Fix Grok pattern handling with ``OR`` patterns. `Graylog2/graylog2-server#5749 <https://github.com/Graylog2/graylog2-server/issues/5749>`__ `Graylog2/graylog2-server#4773 <https://github.com/Graylog2/graylog2-server/issues/4773>`__
+- Fix issues with Cisco ASA NetFlow handling. `Graylog2/graylog2-server#5729 <https://github.com/Graylog2/graylog2-server/issues/5729>`__ `Graylog2/graylog2-server#5715 <https://github.com/Graylog2/graylog2-server/issues/5715>`__
+- Fix support for underscores (``__``) in Grok pattern match group names. `Graylog2/graylog2-server#5800 <https://github.com/Graylog2/graylog2-server/issues/5800>`__ `Graylog2/graylog2-server#5704 <https://github.com/Graylog2/graylog2-server/issues/5704>`__ `Graylog2/graylog2-server#5563 <https://github.com/Graylog2/graylog2-server/issues/5563>`__
+- Fix auto-completion in several drop-down fields across the UI. `Graylog2/graylog2-server#5665 <https://github.com/Graylog2/graylog2-server/issues/5665>`__ `Graylog2/graylog2-server#5659 <https://github.com/Graylog2/graylog2-server/issues/5659>`__
+- Fix problem with loading the extractors page in the UI. `Graylog2/graylog2-server#5954 <https://github.com/Graylog2/graylog2-server/issues/5954>`__ `Graylog2/graylog2-server#5948 <https://github.com/Graylog2/graylog2-server/issues/5948>`__
+- Fix links on stream outputs page. `Graylog2/graylog2-server#5953 <https://github.com/Graylog2/graylog2-server/issues/5953>`__ `Graylog2/graylog2-server#5952 <https://github.com/Graylog2/graylog2-server/issues/5952>`__
 - Fix edit mode of message widget in views.
 - Don't refresh view query when changing query tabs.
 - Copy widget filter when creating statistics widget for a field in views.
-- Support nested maps in lists for content packs. `Graylog2/graylog2-server#6003 <https://github.com/Graylog2/graylog2-server/issues/6003>`_ `Graylog2/graylog2-server#5742 <https://github.com/Graylog2/graylog2-server/issues/5742>`_
-- Reload changed Grok patterns in Grok extractor. `Graylog2/graylog2-server#5982 <https://github.com/Graylog2/graylog2-server/issues/5982>`_ `Graylog2/graylog2-server#5833 <https://github.com/Graylog2/graylog2-server/issues/5833>`_
-- Fix support for TLS trusted certificate directories in inputs. `Graylog2/graylog2-server#5958 <https://github.com/Graylog2/graylog2-server/issues/5958>`_ `Graylog2/graylog2-server#5939 <https://github.com/Graylog2/graylog2-server/issues/5939>`_
-- Fix plugin UI routes when running the web interface with a sub-path. `Graylog2/graylog2-server#6150 <https://github.com/Graylog2/graylog2-server/issues/6150>`_ `Graylog2/graylog2-server#6149 <https://github.com/Graylog2/graylog2-server/issues/6149>`_
-- Fix rendering of events in single message view. `Graylog2/graylog2-server#6156 <https://github.com/Graylog2/graylog2-server/issues/6156>`_ `Graylog2/graylog2-server#6142 <https://github.com/Graylog2/graylog2-server/issues/6142>`_
-- Fix rendering of LDAP page. `Graylog2/graylog2-server#6249 <https://github.com/Graylog2/graylog2-server/issues/6249>`_ `Graylog2/graylog2-server#6247 <https://github.com/Graylog2/graylog2-server/issues/6247>`_
-- Fix pagination issue with newer JDKs. `Graylog2/graylog2-server#6256 <https://github.com/Graylog2/graylog2-server/issues/6256>`_ `Graylog2/graylog2-server#6254 <https://github.com/Graylog2/graylog2-server/issues/6254>`_
-- Fix issue with UDP based inputs becoming unresponsive. `Graylog2/graylog2-server#6263 <https://github.com/Graylog2/graylog2-server/issues/6263>`_ `Graylog2/graylog2-server#5701 <https://github.com/Graylog2/graylog2-server/issues/5701>`_
+- Support nested maps in lists for content packs. `Graylog2/graylog2-server#6003 <https://github.com/Graylog2/graylog2-server/issues/6003>`__ `Graylog2/graylog2-server#5742 <https://github.com/Graylog2/graylog2-server/issues/5742>`__
+- Reload changed Grok patterns in Grok extractor. `Graylog2/graylog2-server#5982 <https://github.com/Graylog2/graylog2-server/issues/5982>`__ `Graylog2/graylog2-server#5833 <https://github.com/Graylog2/graylog2-server/issues/5833>`__
+- Fix support for TLS trusted certificate directories in inputs. `Graylog2/graylog2-server#5958 <https://github.com/Graylog2/graylog2-server/issues/5958>`__ `Graylog2/graylog2-server#5939 <https://github.com/Graylog2/graylog2-server/issues/5939>`__
+- Fix plugin UI routes when running the web interface with a sub-path. `Graylog2/graylog2-server#6150 <https://github.com/Graylog2/graylog2-server/issues/6150>`__ `Graylog2/graylog2-server#6149 <https://github.com/Graylog2/graylog2-server/issues/6149>`__
+- Fix rendering of events in single message view. `Graylog2/graylog2-server#6156 <https://github.com/Graylog2/graylog2-server/issues/6156>`__ `Graylog2/graylog2-server#6142 <https://github.com/Graylog2/graylog2-server/issues/6142>`__
+- Fix rendering of LDAP page. `Graylog2/graylog2-server#6249 <https://github.com/Graylog2/graylog2-server/issues/6249>`__ `Graylog2/graylog2-server#6247 <https://github.com/Graylog2/graylog2-server/issues/6247>`__
+- Fix pagination issue with newer JDKs. `Graylog2/graylog2-server#6256 <https://github.com/Graylog2/graylog2-server/issues/6256>`__ `Graylog2/graylog2-server#6254 <https://github.com/Graylog2/graylog2-server/issues/6254>`__
+- Fix issue with UDP based inputs becoming unresponsive. `Graylog2/graylog2-server#6263 <https://github.com/Graylog2/graylog2-server/issues/6263>`__ `Graylog2/graylog2-server#5701 <https://github.com/Graylog2/graylog2-server/issues/5701>`__
 
 Graylog 3.0.2
 =============
