@@ -74,7 +74,7 @@ Generate your own admin password with the following command and put the SHA-256 
 
 All these settings and command line parameters can be put in a ``docker-compose.yml`` file, so that they don't have to be executed one after the other.
 
-Example::
+Example Version 2::
 
   version: '2'
   services:
@@ -120,6 +120,62 @@ Example::
         - 12201:12201
         # GELF UDP
         - 12201:12201/udp
+
+Example Version 3::
+
+  version: '3'
+  services:
+    # MongoDB: https://hub.docker.com/_/mongo/
+    mongo:
+      image: mongo:3
+      networks:
+        - graylog
+    # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html
+    elasticsearch:
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2
+      environment:
+        - http.host=0.0.0.0
+        - transport.host=localhost
+        - network.host=0.0.0.0
+        - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      ulimits:
+        memlock:
+          soft: -1
+          hard: -1
+      deploy:
+        resources:
+          limits:
+            memory: 1g
+      networks:
+        - graylog
+    # Graylog: https://hub.docker.com/r/graylog/graylog/
+    graylog:
+      image: graylog/graylog:3.1
+      environment:
+        # CHANGE ME (must be at least 16 characters)!
+        - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
+        # Password: admin
+        - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
+        - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
+      networks:
+        - graylog
+      depends_on:
+        - mongo
+        - elasticsearch
+      ports:
+        # Graylog web interface and REST API
+        - 9000:9000
+        # Syslog TCP
+        - 1514:1514
+        # Syslog UDP
+        - 1514:1514/udp
+        # GELF TCP
+        - 12201:12201
+        # GELF UDP
+        - 12201:12201/udp
+  networks:
+    graylog:
+      driver: bridge
 
 After starting all three Docker containers by running ``docker-compose up``, you can open the URL ``http://127.0.0.1:9000`` in a web browser and log in with username ``admin`` and password ``admin`` (make sure to change the password later). Change ``GRAYLOG_HTTP_EXTERNAL_URI=`` to your server IP if you run Docker remotely. 
 
@@ -191,13 +247,60 @@ This can be done by adding an entry to the `volumes <https://docs.docker.com/com
 
 .. warning:: Graylog is running as USER graylog with the ID ``1100`` in Docker. That ID need to be able to read the configuration files you place into the container. 
 
+
+Reading individual configuration settings from files
+----------------------------------------------------
+
+The Graylog Docker image supports reading individual configuration settings from a file. This can be used to secure configuration settings with `Docker secrets <https://docs.docker.com/engine/swarm/secrets/>`__ or similar mechanisms.
+
+This has the advantage, that configuration settings containing sensitive information don't have to be added to a custom configuration file or into an environment variable in plaintext.
+
+The Graylog Docker image checks for the existence of environment variables with the naming scheme ``GRAYLOG_<CONFIG_NAME>__FILE`` on startup and expects the environment variable to contain the absolute path to a readable file.
+
+For example, if the environment variable ``GRAYLOG_ROOT_PASSWORD_SHA2__FILE`` contained the value ``run/secrets/root_password_hash``, the Graylog Docker image would use the contents of ``/run/secrets/root_password_hash`` as value for the ``root_password_sha2`` configuration setting.
+
+Docker secrets
+^^^^^^^^^^^^^^
+
+.. note:: Docker secrets are only available in Docker Swarm services starting with Docker 1.13. Please refer to `Manage sensitive data with Docker secrets <https://docs.docker.com/engine/swarm/secrets/>`__  for more details.
+
+Example for using Docker secrets in a Docker Swarm service::
+
+    # Create SHA-256 hash of our password
+    $ echo -n 'password' | sha256sum | awk '{ print $1 }'
+    5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8
+    
+    # Create a Docker secret named "root_password_hash"
+    $ printf '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8' | \
+      docker secret create root_password_hash -
+    nlujwooo5uu6z0m91bmve79uo
+    
+    $ docker secret ls
+    ID                          NAME                 DRIVER              CREATED             UPDATED
+    nlujwooo5uu6z0m91bmve79uo   root_password_hash                       34 seconds ago      34 seconds ago
+    
+    # Create Docker Swarm service named "graylog" with access
+    # to the secret named "root_password_hash"
+    $ docker service create --name graylog \
+     --secret root_password_hash \ 
+     -e GRAYLOG_ROOT_PASSWORD_SHA2__FILE=/run/secrets/root_password_hash \
+     -p 9000:9000 graylog/graylog:3.1
+    mclk5gm39ingk51s869dc0htz
+    overall progress: 1 out of 1 tasks
+    1/1: running   [==================================================>]
+    verify: Service converged
+
+    $ docker service ls
+    ID                  NAME                MODE                REPLICAS            IMAGE               PORTS
+    mclk5gm39ing        graylog             replicated          1/1                 graylog:latest      *:9000->9000/tcp
+
+
 .. _persisting-data:
 
 Persisting data
 ===============
 
 In order to make the recorded data persistent, you can use external volumes to store all data.
-
 In case of a container restart, this will simply re-use the existing data from the former instances.
 
 Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``docker-compose.yml`` file looks as follows::
