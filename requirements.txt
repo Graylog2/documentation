@@ -21,7 +21,7 @@ pytz==2019.2
 PyYAML==5.1.2
 requests==2.22.0
 singledispatch==3.4.0.3
-six==1.12.0
+six==1.13.0
 snowballstemmer==2.0.0
 Sphinx==2.2.0
 sphinx-autobuild==0.7.1
