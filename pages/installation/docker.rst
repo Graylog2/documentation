@@ -455,7 +455,7 @@ For a stateful set, the name of the first pod in a cluster always ends with ``-0
 Nomad automatic master selection
 ================================
 
-Running Graylog in Nomad Cluster opens the same challenge to set ``is_master=true`` only for one node in the cluster. If the container runs on Nomad can be identified with an environmetal check on ``NOMAD_ALLOC_INDEX``. Should the variable be set and is ``0`` the container will set the variable ``is_master=true``. If the variable is set but not 0 it will set ``is_master=false``.
+Running Graylog in Nomad Cluster opens the same challenge to set ``is_master=true`` only for one node in the cluster. That the container runs on Nomad can be identified with an environmetal check on ``NOMAD_ALLOC_INDEX``. Should the variable be set and is ``0`` the container will set the variable ``is_master=true``. If the variable is set but not ``0 `` it will set ``is_master=false``.
 
 That means, if you run Graylog in a Nomad Cluster it will take care automatically that only one node in the cluster has set ``is_master=true``.
 
