@@ -7,6 +7,7 @@ AWS Kinesis/CloudWatch Input
 .. note:: This input is available since Graylog version 3.1.1. Installation of an additional ``graylog-integrations-plugins`` package is required. See the :doc:`Integrations Setup <../setup>` page for more info.
 
 .. attention:: An understanding of how AWS `CloudWatch <https://docs.aws.amazon.com/cloudwatch/>`_ and `Kinesis <https://docs.aws.amazon.com/kinesis/>`_  is required.
+.. attention:: Versions of Graylog and ``graylog-integrations-plugins`` must be the same.
 
 This input allows Graylog to read log messages from CloudWatch via Kinesis. When reading logs from CloudWatch, Kinesis
 is required in order to stream messages to Graylog.
