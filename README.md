@@ -30,11 +30,26 @@ Now a review of the changes is needed and, finally, it will be merged by the rev
 - python (including pip)
   - virtualenv (`pip install virtualenv`)
 - make
-- browser (to preview) 
+- browser (to preview)
 
 #### Mac & Linux
 
 It is very likely that you already have all needed software available. If not we recommend [homebrew](https://brew.sh/) for Mac and the package manager of the Linux distribution you are using.
+
+##### python install mac
+
+Multiple options are given to deal with python and different versions on a Mac, the recomment and failsafe way is to use [pyenv](https://github.com/pyenv/pyenv) to manage python environments. 
+
+> "The basic premise of all Python development is to never use the system Python. You do not want the Mac OS X 'default Python' to be 'python3.' You want to never care about default Python." ([Moshe Zadka](https://opensource.com/users/moshez))
+
+    # brew install pyenv
+    # pyenv install 3.7.5
+    # pyenv global 3.7.3
+    # echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
+    # echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bash_profile
+
+The Version for python might need to be adjusted, at the time of writing this was the most recent version of python. In addition check for other aliases that might do something with python. 
+
 
 ##### first time preparation
 
