@@ -36,12 +36,12 @@ Make sure to install and configure the following software before installing and 
 DEB / APT
 ---------
 
-Download and install `graylog-3.1-repository_latest.deb <https://packages.graylog2.org/repo/packages/graylog-3.1-repository_latest.deb>`_
+Download and install `graylog-3.2-repository_latest.deb <https://packages.graylog2.org/repo/packages/graylog-3.2-repository_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
   $ sudo apt-get install apt-transport-https
-  $ wget https://packages.graylog2.org/repo/packages/graylog-3.1-repository_latest.deb
-  $ sudo dpkg -i graylog-3.1-repository_latest.deb
+  $ wget https://packages.graylog2.org/repo/packages/graylog-3.2-repository_latest.deb
+  $ sudo dpkg -i graylog-3.2-repository_latest.deb
   $ sudo apt-get update
   $ sudo apt-get install graylog-server
 
@@ -76,8 +76,8 @@ If you've been using the repository package to install Graylog before, it has to
 
 The update basically works like a fresh installation::
 
-  $ wget https://packages.graylog2.org/repo/packages/graylog-3.1-repository_latest.deb
-  $ sudo dpkg -i graylog-3.1-repository_latest.deb
+  $ wget https://packages.graylog2.org/repo/packages/graylog-3.2-repository_latest.deb
+  $ sudo dpkg -i graylog-3.2-repository_latest.deb
   $ sudo apt-get update
   $ sudo apt-get install graylog-server
 
@@ -95,17 +95,17 @@ First, add the `Graylog GPG keyring <https://packages.graylog2.org/repo/debian/k
 
 Now create a file ``/etc/apt/sources.list.d/graylog.list`` with the following content::
 
-  deb https://packages.graylog2.org/repo/debian/ stable 3.1
+  deb https://packages.graylog2.org/repo/debian/ stable 3.2
 
 .. _operating_package_rpm-yum-dnf:
 
 RPM / YUM / DNF
 ---------------
 
-Download and install `graylog-3.1-repository_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-3.1-repository_latest.rpm>`_
+Download and install `graylog-3.2-repository_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-3.2-repository_latest.rpm>`_
 via ``rpm(8)``::
 
-  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-3.1-repository_latest.rpm
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-3.2-repository_latest.rpm
   $ sudo yum install graylog-server
 
 .. hint:: If you want the :ref:`Integrations Plugins <integrations_plugins>` or the :ref:`Enterprise Plugins <enterprise_features>` installed, you need to install them now. The following install all official provided packages by Graylog at the same time: ``sudo yum install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins`` 
@@ -137,7 +137,7 @@ If you've been using the repository package to install Graylog before, it has to
 
 The update basically works like a fresh installation::
 
-  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-3.1-repository_latest.rpm
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-3.2-repository_latest.rpm
   $ sudo yum clean all
   $ sudo yum install graylog-server
 
@@ -159,7 +159,7 @@ Now create a file named ``/etc/yum.repos.d/graylog.repo`` with the following con
 
   [graylog]
   name=graylog
-  baseurl=https://packages.graylog2.org/repo/el/stable/3.1/$basearch/
+  baseurl=https://packages.graylog2.org/repo/el/stable/3.2/$basearch/
   gpgcheck=1
   repo_gpgcheck=0
   gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-graylog
