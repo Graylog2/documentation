@@ -39,6 +39,9 @@ The next step is to store the geolocation database on all servers running
 Graylog. Make sure you grant the right permissions to the file so the user
 running Graylog can read the database.
 
+Note: As-of December 30, 2019, you will need to create an account to obtain a license key to download the database(s).
+More information is available on `MaxMind's blog post <https://blog.maxmind.com/2019/12/18/significant-changes-to-accessing-and-using-geolite2-databases/>`_.
+
 
 Configure Lookup Table
 ----------------------
