@@ -27,16 +27,16 @@ Disabling the whitelist
 If the security implications mentioned above are of no concern, the whitelist can be disabled. When disabled, HTTP
 requests will not be restricted.
 
-Literal whitelist entries
+"Exact match" whitelist entries
+-------------------------------
+
+Whitelist entries of type ``Exact match`` contain a string which will be matched against a URL by direct comparison. If
+the URL is equal to this string, it is considered to be whitelisted.
+
+"Regex" whitelist entries
 -------------------------
 
-Whitelist entries of type ``literal`` contain a string which will be matched against a URL by direct comparison. If the URL is
-equal to this string, it is considered to be whitelisted.
-
-Regex whitelist entries
------------------------
-
-Whitelist entries or type ``regex`` contain a regular expression. If a URL matches the regular expression, the URL is
+Whitelist entries of type ``Regex`` contain a regular expression. If a URL matches the regular expression, the URL is
 considered to be whitelisted. Graylog uses the
 `Java Pattern class <http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html>`_ to evaluate regular
 expressions.
