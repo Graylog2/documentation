@@ -4,7 +4,7 @@
 The URL whitelist
 *******************************
 
-There are certain components in Graylog which will perform outgoing HTTP requests. Among those are event notifications
+There are certain components in Graylog which will perform outgoing HTTP requests. Among those, are event notifications
 and HTTP-based data adapters.
 
 Allowing Graylog to interact with resources using arbitrary URLs may pose a security risk. HTTP requests are executed
