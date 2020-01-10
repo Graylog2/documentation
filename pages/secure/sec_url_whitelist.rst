@@ -24,7 +24,7 @@ The whitelist configuration is located at ``System/Configurations``.
 Disabling the whitelist
 -----------------------
 
-If the security implications mentioned above are of no concern, the whitelist can be disabled. When disabled, HTTP
+If the security implications mentioned above are of no concern, the whitelist can be completely disabled. When disabled, HTTP
 requests will not be restricted.
 
 "Exact match" whitelist entries
