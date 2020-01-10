@@ -1,7 +1,7 @@
 .. _sec_url_whitelist:
 
 *******************************
-The URL whitelist
+The URL Whitelist
 *******************************
 
 There are certain components in Graylog which will perform outgoing HTTP requests. Among those, are event notifications
