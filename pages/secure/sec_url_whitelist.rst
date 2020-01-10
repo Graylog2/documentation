@@ -17,7 +17,7 @@ will be validated against the whitelist and are prohibited if there is no whitel
 Configuring the whitelist
 =========================
 
-The whitelist configuration is located at ``System/Configurations``.
+The whitelist configuration is located at ``System/Configurations``. The Whitelist is enabled by default.
 
 .. image:: /images/url_whitelist.png
 
