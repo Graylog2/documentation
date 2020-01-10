@@ -12,28 +12,28 @@ from Graylog servers and might therefore be able to reach more sensitive systems
 access to, including AWS EC2 metadata, which can contain keys and other secrets, Elasticsearch and others.
 
 It is therefore advisable to restrict access by explicitly whitelisting URLs which are considered safe. HTTP requests
-will be validated against the whitelist and are prohibited if there is no whitelist entry matching the URL.
+will be validated against the Whitelist and are prohibited if there is no Whitelist entry matching the URL.
 
-Configuring the whitelist
+Configuring the Whitelist
 =========================
 
-The whitelist configuration is located at ``System/Configurations``. The Whitelist is enabled by default.
+The Whitelist configuration is located at ``System/Configurations``. The Whitelist is enabled by default.
 
 .. image:: /images/url_whitelist.png
 
-Disabling the whitelist
+Disabling the Whitelist
 -----------------------
 
-If the security implications mentioned above are of no concern, the whitelist can be completely disabled. When disabled, HTTP
+If the security implications mentioned above are of no concern, the Whitelist can be completely disabled. When disabled, HTTP
 requests will not be restricted.
 
-"Exact match" whitelist entries
+"Exact match" Whitelist entries
 -------------------------------
 
 Whitelist entries of type ``Exact match`` contain a string which will be matched against a URL by direct comparison. If
 the URL is equal to this string, it is considered to be whitelisted.
 
-"Regex" whitelist entries
+"Regex" Whitelist entries
 -------------------------
 
 Whitelist entries of type ``Regex`` contain a regular expression. If a URL matches the regular expression, the URL is
