@@ -2,10 +2,47 @@
 Changelog
 *********
 
-Graylog 3.2
-===========
+Graylog 3.1.4
+=============
+
+Released: 2020-01-14
+
+Core
+^^^^
+
+**Added**
+
+- Add URL whitelist service to make sure that lookup data adapters and event notifications cannot use arbitrary URLs.
+  **Attention:** The URL whitelist is enabled by default! On the first server startup after the upgrade, the URL whitelist service will automatically generate
+  whitelist entries for existing lookup data adapters and event notifications. See :ref:`URL whitelist documentation <sec_url_whitelist>` for details.
+
+**Changed**
+
+- Reduce amount of log messages when job scheduler is disabled on a node. `Graylog2/graylog2-server#6451 <https://github.com/Graylog2/graylog2-server/issues/6451>`_ `Graylog2/graylog2-server#6816 <https://github.com/Graylog2/graylog2-server/issues/6816>`_
+
+**Fixed**
+
+- Fix global API browser link. `Graylog2/graylog2-server#6823 <https://github.com/Graylog2/graylog2-server/issues/6823>`_ `Graylog2/graylog2-server#6826 <https://github.com/Graylog2/graylog2-server/issues/6826>`_
+- Ensure that aggregation events always have a ``source_streams`` field for permission checks. `Graylog2/graylog2-server#6876 <https://github.com/Graylog2/graylog2-server/issues/6876>`_ `Graylog2/graylog2-server#6877 <https://github.com/Graylog2/graylog2-server/issues/6877>`_
+- Fix caching issue with ``route_to_stream`` pipeline function. `Graylog2/graylog2-server#4954 <https://github.com/Graylog2/graylog2-server/issues/4954>`_ `Graylog2/graylog2-server#6788 <https://github.com/Graylog2/graylog2-server/issues/6788>`_
+- Fix issue with calculating index ranges. `Graylog2/graylog2-server#6828 <https://github.com/Graylog2/graylog2-server/issues/6828>`_ `Graylog2/graylog2-server#6957 <https://github.com/Graylog2/graylog2-server/issues/6957>`_
+  **Attention:** If you are affected by `Graylog2/graylog2-server#6828 <https://github.com/Graylog2/graylog2-server/issues/6828>`_, you have to manually recalculated index ranges for all your index sets.
+- Improve API browser for event resources. `Graylog2/graylog2-server#6742 <https://github.com/Graylog2/graylog2-server/issues/6742>`_ `Graylog2/graylog2-server#6955 <https://github.com/Graylog2/graylog2-server/issues/6955>`_
+- Fix message indexing issue that could potentially stop message indexing completely. `Graylog2/graylog2-server#5091 <https://github.com/Graylog2/graylog2-server/issues/5091>`_ `Graylog2/graylog2-server#6965 <https://github.com/Graylog2/graylog2-server/issues/6965>`_ `Graylog2/graylog2-server#7071 <https://github.com/Graylog2/graylog2-server/issues/7071>`_
 
 
+Integrations Plugin
+^^^^^^^^^^^^^^^^^^^
+
+**Added**
+
+- Add support for automatic authentication scheme for the AWS Kinesis integration. (environment variables, Java properties, instance roles) `Graylog2/graylog-plugin-integrations#264 <https://github.com/Graylog2/graylog-plugin-integrations/issues/264>`_ `Graylog2/graylog-plugin-integrations#279 <https://github.com/Graylog2/graylog-plugin-integrations/issues/279>`_
+- Add "assume role" support for AWS Kinesis integration. `Graylog2/graylog-plugin-integrations#264 <https://github.com/Graylog2/graylog-plugin-integrations/issues/264>`_ `Graylog2/graylog-plugin-integrations#279 <https://github.com/Graylog2/graylog-plugin-integrations/issues/279>`_
+
+
+**Fixed**
+
+- Fix rate limit issue with AWS Kinesis streams. `Graylog2/graylog-plugin-integrations#341 <https://github.com/Graylog2/graylog-plugin-integrations/issues/341>`_ `Graylog2/graylog-plugin-integrations#342 <https://github.com/Graylog2/graylog-plugin-integrations/issues/342>`_
 
 Graylog 3.1.3
 =============
