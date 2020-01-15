@@ -445,3 +445,6 @@ Others
     * The default index prefix for graylog events.
 * ``default_system_events_index_prefix = gl-system-events``
     * The default index prefix for graylog system events.
+* ``enabled_tls_protocols``
+    * Configure system wide enabled TLS protocols. Only configure this if you need to support legacy systems. We will maintain a secure default. (Currently TLS 1.2 and TLS 1.3).
+      (Note: The web interface cannot support TLS 1.3 with JDK 8)

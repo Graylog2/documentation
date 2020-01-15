@@ -296,33 +296,3 @@ Most start and init scripts for Graylog provide a ``JAVA_OPTS`` variable which c
 
 .. warning:: Without adding the previously created Java keystore to the JVM parameters, Graylog won't be able to verify any self-signed certificates or custom CA certificates.
 
-.. _disable_ciphers_java:
-
-Disabling specific TLS ciphers and algorithms
-=============================================
-
-Since `Java 7u76 <http://www.oracle.com/technetwork/java/javase/7u76-relnotes-2389087.html>`_ it is possible to disable specific TLS algorithms and ciphers for secure connections.
-
-In order to disable specific TLS algorithms and ciphers, you need to provide a properties file with a list of disabled algorithms and ciphers. Take a look at the example `security.properties <https://github.com/Graylog2/graylog2-server/blob/3.0/misc/security.properties>`__ in the Graylog source repository.
-
-For example, if you want to disable all algorithms except for TLS 1.2, the properties file has to contain the following line::
-
-  jdk.tls.disabledAlgorithms=SSLv2Hello, SSLv3, TLSv1, TLSv1.1
-
-If additionally you want to disable DSA/RSA key sizes lower than 2048 bits and EC key sizes lower than 160 bits, the properties file has to contain the following line::
-
-  jdk.tls.disabledAlgorithms=SSLv2Hello, SSLv3, TLSv1, TLSv1.1, EC keySize < 160, RSA keySize < 2048, DSA keySize < 2048
-
-To load the properties file into a JVM, you have to pass it to Java using the ``java.security.properties`` system property::
-
-  java -Djava.security.properties=/path/to/security.properties -jar /path/to/graylog.jar server
-
-Most start and :ref:`init scripts for Graylog <default_file_location>` provide a ``JAVA_OPTS`` variable which can be used to pass the ``java.security.properties`` system property.
-
-Further reading
----------------
-
-* https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html#DisabledAlgorithms
-* http://www.oracle.com/technetwork/java/javase/7u76-relnotes-2389087.html
-* http://bugs.java.com/bugdatabase/view_bug.do?bug_id=7133344
-* https://tersesystems.com/2014/01/13/fixing-the-most-dangerous-code-in-the-world/
