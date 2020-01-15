@@ -2,6 +2,16 @@
 Changelog
 *********
 
+Graylog Enterprise 3.1.4
+========================
+
+Released: 2020-01-14
+
+**Fixed**
+
+- Only write archive metadata if the archiving process succeeded.
+- Improve resiliency of widgets in reports.
+
 Graylog Enterprise 3.1.3
 ========================
 
