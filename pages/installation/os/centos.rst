@@ -1,4 +1,5 @@
 .. _centosguide:
+
 *******************
 CentOS installation
 *******************

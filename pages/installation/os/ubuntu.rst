@@ -1,4 +1,5 @@
 .. _ubuntuguide:
+
 *******************
 Ubuntu installation
 *******************
