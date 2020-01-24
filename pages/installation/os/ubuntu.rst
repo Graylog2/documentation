@@ -53,6 +53,7 @@ Graylog can be used with Elasticsearch 6.x, please follow the below instructions
     $ sudo apt-key add myKey
     $ echo "deb https://artifacts.elastic.co/packages/oss-6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
     $ sudo apt-get update && sudo apt-get install elasticsearch-oss
+
 The above instructions are a derivative from the `Elasticsearch install page <https://www.elastic.co/guide/en/elasticsearch/reference/6.7/deb.html>`__
 
 Modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``)
