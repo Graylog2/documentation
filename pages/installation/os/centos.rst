@@ -38,12 +38,14 @@ Additionally, run these last steps to start MongoDB during the operating system'
   $ sudo systemctl daemon-reload
   $ sudo systemctl enable mongod.service
   $ sudo systemctl start mongod.service
+  $ sudo systemctl --type=service --state=active | grep mongod
+
 
 
 Elasticsearch
 -------------
 
-Graylog can be used with Elasticsearch 6.x, please follow the installation instructions from `the Elasticsearch installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/rpm.html>`_.
+Graylog can be used with Elasticsearch 6.x, please follow the below instructions to install the open source version of Elasticsearch. ::
 
 First install the Elastic GPG key with ``rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch`` then add the repository file ``/etc/yum.repos.d/elasticsearch.repo`` with the following contents::
 
@@ -58,7 +60,10 @@ First install the Elastic GPG key with ``rpm --import https://artifacts.elastic.
 
 followed by the installation of the latest release with ``sudo yum install elasticsearch-oss``.
 
-Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` additionally you need to uncomment (remove the # as first character) the line, and add ``action.auto_create_index: false`` to the configuration file::
+Modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``)
+and set the cluster name to ``graylog`` and uncomment ``action.auto_create_index: false`` to enable the action::
+
+    $ sudo vim /etc/elasticsearch/elasticsearch.yml
 
     cluster.name: graylog
     action.auto_create_index: false
@@ -68,6 +73,7 @@ After you have modified the configuration, you can start Elasticsearch::
     $ sudo systemctl daemon-reload
     $ sudo systemctl enable elasticsearch.service
     $ sudo systemctl restart elasticsearch.service
+    $ sudo systemctl --type=service --state=active | grep elasticsearch
 
 
 Graylog
@@ -76,13 +82,16 @@ Graylog
 Now install the Graylog repository configuration and Graylog itself with the following commands::
 
   $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-3.2-repository_latest.rpm
-  $ sudo yum install graylog-server
+  $ sudo apt-get update && sudo apt-get install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins
 
-.. hint:: If you want the :ref:`Integrations Plugins <integrations_plugins>` or the :ref:`Enterprise Plugins <enterprise_features>` installed, you need to install them now. The following install all official provided packages by Graylog at the same time: ``sudo yum install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins`` 
+.. hint:: If you do not want the :ref:`Integrations Plugins <integrations_plugins>` or the :ref:`Enterprise Plugins <enterprise_features>` installed, then simply run ``sudo apt-get install graylog-server``
 
-Follow the instructions in your ``/etc/graylog/server/server.conf`` and add ``password_secret`` and ``root_password_sha2``. These settings are mandatory and without them, Graylog will not start!
+Edit the Configuration File
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You need to use the following command to create your ``root_password_sha2``::
+Read the instructions *within* the configurations file and edit as needed, located at ``/etc/graylog/server/server.conf``.  Additionally add ``password_secret`` and ``root_password_sha2`` as these are *mandatory* and **Graylog will not start without them**.
+
+To create your ``root_password_sha2`` run the following command::
 
   echo -n "Enter Password: " && head -1 </dev/stdin | tr -d '\n' | sha256sum | cut -d" " -f1
 
@@ -95,6 +104,8 @@ The last step is to enable Graylog during the operating system's startup::
   $ sudo systemctl daemon-reload
   $ sudo systemctl enable graylog-server.service
   $ sudo systemctl start graylog-server.service
+  $ sudo systemctl --type=service --state=active | grep graylog
+
 
 The next step is to :ref:`ingest messages <ingest_data>` into your Graylog and extract the messages with :ref:`extractors <extractors>` or use :ref:`the Pipelines <pipelinestoc>` to work with the messages.
 
