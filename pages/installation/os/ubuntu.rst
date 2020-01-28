@@ -6,7 +6,7 @@ Ubuntu installation
 
 This guide describes the fastest way to install Graylog on Ubuntu 18.04 LTS. All links and packages are present at the time of writing but might need to be updated later on.
 
-.. warning:: This setup should not be done on publicly exposed servers. This guide **does not cover** security settings!
+.. warning:: This guide **does not cover** security settings! The server administrator must make sure the graylog server is not publicly exposed, and is following security best practices.
 
 
 Prerequisites
@@ -47,7 +47,7 @@ The last step is to enable MongoDB during the operating system's startup and ver
 Elasticsearch
 -------------
 
-Graylog can be used with Elasticsearch 6.x, please follow the below instructions on install the open source version of Elasticsearch. ::
+Graylog can be used with Elasticsearch 6.x, please follow the below instructions to install the open source version of Elasticsearch. ::
 
     $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch -o myKey
     $ sudo apt-key add myKey
