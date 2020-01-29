@@ -9,7 +9,7 @@ Upgrading to Graylog 3.2.x
    :backlinks: top
 
 
-.. note:: Graylog 3.2.0 comes with a number of migrations that change parts of your existing data fundamentally. Please make sure to have a recent backup of your MongoDB that you can rollback to, before attempting to upgrade from an earlier version.
+.. warning:: Graylog 3.2.0 comes with a number of migrations that change parts of your existing data fundamentally. Please make sure to have a recent backup of your MongoDB that you can rollback to, before attempting to upgrade from an earlier version.
 
 Migrating Dashboards
 ====================
