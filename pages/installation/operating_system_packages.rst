@@ -9,7 +9,12 @@ software on Linux servers was to use operating system packages. Debian has ``DEB
 based on those or come with their own package formats. Online repositories of software packages and corresponding package managers make installing
 and configuring new software a matter of a single command and a few minutes of time.
 
-Graylog offers official ``DEB`` and ``RPM`` package repositories for the operating systems listed below in the **Step by Step Guides** section.
+Graylog offers official ``DEB`` and ``RPM`` package repositories. The packages have been tested on the following operating systems:
+
+* Ubuntu 16.04, 18.04
+* Debian 8, 9
+* RHEL/CentOS 6, 7
+
 
 The repositories can be set up by installing a single package. Once that's done, the Graylog packages can be installed via ``apt-get`` or
 ``yum``. The packages can also be downloaded with a web browser at https://packages.graylog2.org/ if needed.
@@ -28,10 +33,10 @@ Make sure to install and configure the following software before installing and 
 
 Step by Step Guides
 -------------------
-* :ref:`Ubuntu 16.04, 18.04 <ubuntuguide>`
-* :ref:`Debian 8, 9 <debianguide>`
-* :ref:`RHEL/CentOS 6, 7 <centosguide>`
-* :ref:`SLES 12 SP3 <sleguide>`
+* :ref:`Ubuntu <ubuntuguide>`
+* :ref:`Debian <debianguide>`
+* :ref:`RHEL/CentOS <centosguide>`
+* :ref:`SLES <sleguide>`
 
 
 .. _operating_package_DEB-APT:
