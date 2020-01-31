@@ -26,7 +26,8 @@ GELF via UDP
 Chunking
 --------
 
-UDP datagrams are usually limited to a size of 8192 bytes. A lot of compressed information fits in there but you sometimes might just have
+UDP datagrams are limited to a size of 65536 bytes. Some Graylog components are limited to processing
+up to 8192 bytes. A lot of compressed information fits in there but you sometimes might just have
 more information to send. This is why Graylog supports chunked GELF.
 
 You can define chunks of messages by prepending a byte header to a GELF message including a message ID and sequence number to reassemble the message later.
