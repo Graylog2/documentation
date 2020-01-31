@@ -115,3 +115,10 @@ Build the documentation and automatically build them on any change:
     # make livehtml
     # open http://127.0.0.1:8000/
 
+### fix broken virtualenv
+
+You might update your python version and the virtualenv did not work anymore for some reasons. The linked gist can guide you out of that situation:
+
+https://gist.github.com/jalogisch/96ebccd9a050a2d1c489a2c6149e549d
+
+Do not run it blindly - check if the used paths are matching your local system!
