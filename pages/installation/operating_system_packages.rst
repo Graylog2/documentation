@@ -15,6 +15,7 @@ Graylog offers official ``DEB`` and ``RPM`` package repositories. The packages h
 * Debian 8, 9
 * RHEL/CentOS 6, 7
 
+
 The repositories can be set up by installing a single package. Once that's done, the Graylog packages can be installed via ``apt-get`` or
 ``yum``. The packages can also be downloaded with a web browser at https://packages.graylog2.org/ if needed.
 
@@ -26,9 +27,16 @@ Make sure to install and configure the following software before installing and 
 * Java ( >= 8 )
 * Elasticsearch (5.x or 6.x)
 * MongoDB (3.6 or 4.0)
-  
+
 .. caution:: Graylog 3 **does not** work with Elasticsearch 7.x!
 .. caution:: Graylog 3 **does not** work with MongoDB 4.2!
+
+Step by Step Guides
+-------------------
+* :ref:`Ubuntu <ubuntuguide>`
+* :ref:`Debian <debianguide>`
+* :ref:`RHEL/CentOS <centosguide>`
+* :ref:`SLES <sleguide>`
 
 
 .. _operating_package_DEB-APT:

@@ -1,10 +1,12 @@
+.. _debianguide:
+
 *******************
 Debian installation
 *******************
 
 This guide describes the fastest way to install Graylog on Debian Linux 9 (Stretch). All links and packages are present at the time of writing but might need to be updated later on.
 
-.. warning:: This setup should not be done on publicly exposed servers. This guide **does not cover** security settings!
+.. warning:: This guide **does not cover** security settings! The server administrator must make sure the graylog server is not publicly exposed, and is following security best practices.
 
 
 Prerequisites
@@ -34,29 +36,36 @@ The last step is to enable MongoDB during the operating system's startup::
     $ sudo systemctl daemon-reload
     $ sudo systemctl enable mongod.service
     $ sudo systemctl restart mongod.service
+    $ sudo systemctl --type=service --state=active | grep mongod
   
 
 Elasticsearch
 -------------
 
-Graylog can be used with Elasticsearch 6.x, please follow the installation instructions from `the Elasticsearch installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/deb.html>`__::
+Graylog can be used with Elasticsearch 6.x, please follow the below instructions to install the open source version of Elasticsearch. ::
 
-
-    $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+    $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch -o myKey
+    $ sudo apt-key add myKey
     $ echo "deb https://artifacts.elastic.co/packages/oss-6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
     $ sudo apt update && sudo apt install elasticsearch-oss
 
+The above instructions are a derivative from the `Elasticsearch install page <https://www.elastic.co/guide/en/elasticsearch/reference/6.7/deb.html>`__
 
-Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` additionally you need to uncomment (remove the # as first character) the line, and add ``action.auto_create_index: false`` to the configuration file::
+
+Modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``)
+and set the cluster name to ``graylog`` and uncomment ``action.auto_create_index: false`` to enable the action::
+
+    $ sudo vim /etc/elasticsearch/elasticsearch.yml
 
     cluster.name: graylog
     action.auto_create_index: false
 
-After you have modified the configuration, you can start Elasticsearch::
+After you have modified the configuration, you can start Elasticsearch and verify it is running. ::
 
     $ sudo systemctl daemon-reload
     $ sudo systemctl enable elasticsearch.service
     $ sudo systemctl restart elasticsearch.service
+    $ sudo systemctl --type=service --state=active | grep elasticsearch
 
 
 Graylog
@@ -66,13 +75,17 @@ Now install the Graylog repository configuration and Graylog itself with the fol
 
   $ wget https://packages.graylog2.org/repo/packages/graylog-3.2-repository_latest.deb
   $ sudo dpkg -i graylog-3.2-repository_latest.deb
-  $ sudo apt update && sudo apt install graylog-server
+  $ sudo apt-get update && sudo apt-get install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins
 
-.. hint:: If you want the :ref:`Integrations Plugins <integrations_plugins>` or the :ref:`Enterprise Plugins <enterprise_features>` installed, you need to install them now. The following install all official provided packages by Graylog at the same time: ``sudo apt-get install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins`` 
+.. hint:: If you do not want the :ref:`Integrations Plugins <integrations_plugins>` or the :ref:`Enterprise Plugins <enterprise_features>` installed, then simply run ``sudo apt-get install graylog-server``
 
-Follow the instructions in your ``/etc/graylog/server/server.conf`` and add ``password_secret`` and ``root_password_sha2``. These settings are mandatory and without them, Graylog will not start!
 
-You need to use the following command to create your ``root_password_sha2``::
+Edit the Configuration File
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Read the instructions *within* the configurations file and edit as needed, located at ``/etc/graylog/server/server.conf``.  Additionally add ``password_secret`` and ``root_password_sha2`` as these are *mandatory* and **Graylog will not start without them**.
+
+To create your ``root_password_sha2`` run the following command::
 
   echo -n "Enter Password: " && head -1 </dev/stdin | tr -d '\n' | sha256sum | cut -d" " -f1
 
@@ -80,11 +93,13 @@ To be able to connect to Graylog you should set ``http_bind_address`` to the pub
 
 .. note:: If you're operating a single-node setup and would like to use HTTPS for the Graylog web interface and the Graylog REST API, it's possible to use :ref:`NGINX or Apache as a reverse proxy <configuring_webif_nginx>`.
 
-The last step is to enable Graylog during the operating system's startup::
+The last step is to enable Graylog during the operating system's startup and verify it is running. ::
 
   $ sudo systemctl daemon-reload
   $ sudo systemctl enable graylog-server.service
   $ sudo systemctl start graylog-server.service
+  $ sudo systemctl --type=service --state=active | grep graylog
+
 
 The next step is to :ref:`ingest messages <ingest_data>` into your Graylog and extract the messages with :ref:`extractors <extractors>` or use :ref:`the Pipelines <pipelinestoc>` to work with the messages.
 

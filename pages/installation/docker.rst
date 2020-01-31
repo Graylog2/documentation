@@ -257,7 +257,7 @@ This has the advantage, that configuration settings containing sensitive informa
 
 The Graylog Docker image checks for the existence of environment variables with the naming scheme ``GRAYLOG_<CONFIG_NAME>__FILE`` on startup and expects the environment variable to contain the absolute path to a readable file.
 
-For example, if the environment variable ``GRAYLOG_ROOT_PASSWORD_SHA2__FILE`` contained the value ``run/secrets/root_password_hash``, the Graylog Docker image would use the contents of ``/run/secrets/root_password_hash`` as value for the ``root_password_sha2`` configuration setting.
+For example, if the environment variable ``GRAYLOG_ROOT_PASSWORD_SHA2__FILE`` contained the value ``/run/secrets/root_password_hash``, the Graylog Docker image would use the contents of ``/run/secrets/root_password_hash`` as value for the ``root_password_sha2`` configuration setting.
 
 Docker secrets
 ^^^^^^^^^^^^^^
