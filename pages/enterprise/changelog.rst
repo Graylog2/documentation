@@ -2,6 +2,22 @@
 Changelog
 *********
 
+Graylog Enterprise 3.2.0
+========================
+
+Released: 2020-01-14
+
+**Added**
+
+- Dynamic list support for events and alert definition queries.
+- Search parameter support for reports.
+- MongoDB lookup data adapter.
+
+**Fixed**
+
+- Remove incomplete archive directory when archiving process fails.
+- Fix race condition with archive catalog writing.
+
 Graylog Enterprise 3.1.4
 ========================
 
