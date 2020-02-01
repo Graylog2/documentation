@@ -66,7 +66,7 @@ Core
 - Fix issues with field highlighting. `Graylog2/graylog2-server#6511 <https://github.com/Graylog2/graylog2-server/issues/6511>`_ `Graylog2/graylog2-server#6512 <https://github.com/Graylog2/graylog2-server/issues/6512>`_
 - Fix race condition in index management. `Graylog2/graylog2-server#6383 <https://github.com/Graylog2/graylog2-server/issues/6383>`_ `Graylog2/graylog2-server#6634 <https://github.com/Graylog2/graylog2-server/issues/6634>`_
 - Fix issue with event notification backlog seeting display. `Graylog2/graylog2-server#6580 <https://github.com/Graylog2/graylog2-server/issues/6580>`_
-- Fix sorting in streams selection in search. `Graylog2/graylog2-server`Graylog2/graylog2-server#6514 <https://github.com/Graylog2/graylog2-server/issues/6514>`_ <https://github.com/Graylog2/graylog2-server/issues/6514>`_ `Graylog2/graylog2-server`Graylog2/graylog2-server#6514 <https://github.com/Graylog2/graylog2-server/issues/6514>`_ <https://github.com/Graylog2/graylog2-server/issues/6514>`_
+- Fix sorting in streams selection in search. `Graylog2/graylog2-server#6514 <https://github.com/Graylog2/graylog2-server/issues/6514>`_ `Graylog2/graylog2-server#6655 <https://github.com/Graylog2/graylog2-server/issues/6655>`_
 - Fix issue with managing event index set templates. `Graylog2/graylog2-server#6507 <https://github.com/Graylog2/graylog2-server/issues/6507>`_ `Graylog2/graylog2-server#6656 <https://github.com/Graylog2/graylog2-server/issues/6656>`_
 - Fix issue reloading changed GROK patterns in a cluster setup. `Graylog2/graylog2-server#6666 <https://github.com/Graylog2/graylog2-server/issues/6666>`_
 - Fix pipeline rule parsing error. `Graylog2/graylog2-server#6716 <https://github.com/Graylog2/graylog2-server/issues/6716>`_
