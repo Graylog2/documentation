@@ -1,5 +1,6 @@
 .. _alerts:
 
+******
 Alerts
 ******
 
@@ -11,7 +12,7 @@ Alerts are created using Event Definitions that consist of Conditions. When a gi
 Graylog ships with default *alert conditions* and *alert notifications*, and both can be extended with :ref:`Plugins <plugins>`.
 
 Alerts & Events
----------------
+===============
 As of Graylog 3.1.0, the Alerts page has changed to reflect a new method of generating Alerts. An Alert is triggered when a defined Event is detected.
 An Event is a condition that matches a log to a time period or aggregation. The Event may be used to group similar fields, change field content,
 or create new field content for use with Alerting and Correlation (an enterprise feature.)
@@ -21,19 +22,15 @@ If no Events have been defined, the Alerts & Events page will display the "Get S
 .. image:: /images/alerts_starting_page_no_events.png
 
 Defining an Event
------------------
-Event Details
-=============
+=================
 When you click on the "Get Started!" button you will be presented with a set of dialogues that allow you to set
 Title, Description, and Priority. You may click back on the selection bar to step backward in the definition
 process at any time.
 
 .. image:: /images/alerts_event_details.png
 
-Filter & Aggregation
-====================
 Filter
-^^^^^^
+======
 By combining a Filter and an Aggregation you can specifically describe the criteria of an Event.
 Define a Filter by using Search Query in the same syntax as the Search page. Select a Stream in
 which the message can found. Define the window of time that the Filter will search backward to match messages.
@@ -45,8 +42,17 @@ However, it may be useful to augment the filtered data with an aggregation
 If the defined Filter matches messages currently within the Graylog Server, they will be displayed
 in the Filter Preview panel on the right.
 
+Filter with dynamic lists (Enterprise feature)
+----------------------------------------------
+
+Dynamic lists allow you to define a Filter where some of the search arguments are parameterized.
+Everytime an event defintion is being checked, these parameters are replaced with the result of a configured Look up table.
+For example, you maintain a list of former employees in Active Directory or an HR system and want an alert if anyone on the list tries to log in.
+You can define a filter like ``Login from username:$former_employee$``, where the parameter ``$former_employee$`` is backed by a look up table, that returns
+a current list of your former employees.
+
 Aggregation
-^^^^^^^^^^^
+===========
 An Aggregation can run a mathematical operation on either a numeric field value or the raw count of
 messages generated that match the Filter. Also, Aggregation can now group matches by a selected field
 before making the comparison. For instance, if the field username is defined, then it is possible to
@@ -361,11 +367,3 @@ At this time, the user may select a previous point in the Workflow to change a p
 The user may also cancel out of the workflow, select done. The Event may be viewed under
 Alerts>Event Definitions.
 
-
-
-All events stream
------------------
-The All events stream can be used to view all previous Events that have been triggered.
-The Event is recorded with the fields defined in the Custom Fields portion of the Event.
-
-.. image:: /images/alerts_all_events_stream.png
