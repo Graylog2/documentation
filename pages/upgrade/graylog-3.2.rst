@@ -71,7 +71,7 @@ Known Bugs and Limitations
 Configuration File Changes
 --------------------------
 
-The following alerting related configuration file settings changed in this release:
+The following configuration file settings changed in this release:
 
 +----------------------------------------------------+---------+----------------------------------------------------+
 | Setting                                            | Status  | Description                                        |
