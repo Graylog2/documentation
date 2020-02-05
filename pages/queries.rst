@@ -4,6 +4,14 @@
 Searching
 *********
 
+Search page
+=====================
+The search page is the heart of the Graylog. You can execute a query and visualize the search result with a variety of widgets. Any search can be saved or exported as dashboard.
+Saved searches allow to easily reuse specific search configurations, while dashboards enable widget specific search queries and sharing with other users.
+With 3.2 we have rewritten the search interface and unified the layout for the main search, saved searches and dashboards.
+
+.. image:: /images/searching/search_page.png
+
 Search query language
 =====================
 
