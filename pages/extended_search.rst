@@ -24,7 +24,7 @@ on the chevron on the right side in the head of the widget.
 Next to the chevron is a filter symbol, where filters can be added to the
 top search query.
 
-.. image:: /images/views_widget.png
+.. image:: /images/searching/views_widget.png
 
 Aggregation
 ===========
@@ -42,7 +42,7 @@ be shown on the very top of the Extended Search page.
 A click on the chevron icon on the right side of the head will open the widget
 in a modal in the edit mode.
 
-.. image:: /images/views_create_aggregation.png
+.. image:: /images/searching/views_create_aggregation.png
 
 :METRICS:
    **METRICS** are a collection of functions to aggregate data points.
@@ -83,7 +83,7 @@ below the fields.
 Clicking on a message row opens the detailed view of a message with
 all its fields.
 
-.. image:: /images/views_messages.png
+.. image:: /images/searching/views_messages.png
 
 Value and Field Actions
 =======================
@@ -96,7 +96,7 @@ Field actions
 Based on the type of the field and where the menu is opened different
 Field actions are shown when a field name (and not its value) is clicked.
 
-.. image:: /images/views_field_actions.png
+.. image:: /images/searching/views_field_actions.png
 
 :Chart:
    This will generate a new Widget containing a line chart where the fields
@@ -127,7 +127,7 @@ Value actions
 The value actions produce different results depending on the type of the
 value and where the menu is opened. The following actions can be executed.
 
-.. image:: /images/views_value_actions.png
+.. image:: /images/searching/views_value_actions.png
 
 :Insert into view:
    This action will open up a modal where a view can be selected.
