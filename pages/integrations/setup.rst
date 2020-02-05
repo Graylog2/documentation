@@ -46,8 +46,11 @@ Tarballs
 
 If you have done a manual installation, you download the tarballs from the following links.
 
-* :enterprise-integrations-plugins-tar:`3.0.0`
-* :integrations-plugins-tar:`3.0.0`
+* :enterprise-integrations-plugins-tar:`3.2.0`
+* :integrations-plugins-tar:`3.2.0`
+
+.. note:: The integrations plugins need to be the same version as the Graylog server.
+
 
 Server Restart
 ==============
@@ -61,6 +64,6 @@ The following server log message will indicate that each plugin was installed pr
 
 ::
 
-    INFO: [CmdLineTool] Loaded plugin: Integrations Plugin 3.0.0 [org.graylog.integrations.IntegrationsPlugin]
-    INFO: [CmdLineTool] Loaded plugin: Enterprise Integrations Plugin 3.0.0 [org.graylog.integrations.EnterpriseIntegrationsPlugin]
+    INFO: [CmdLineTool] Loaded plugin: Integrations Plugin 3.2.0 [org.graylog.integrations.IntegrationsPlugin]
+    INFO: [CmdLineTool] Loaded plugin: Enterprise Integrations Plugin 3.2.0 [org.graylog.integrations.EnterpriseIntegrationsPlugin]
 

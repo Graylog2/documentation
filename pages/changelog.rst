@@ -2,6 +2,20 @@
 Changelog
 *********
 
+Graylog 3.2.1
+=============
+
+Released: 2020-02-04
+
+Core
+^^^^
+
+**Fixed**
+
+- Fix problem with message processing and invalid ``timestamp`` fields. `Graylog2/graylog2-server#7364 <https://github.com/Graylog2/graylog2-server/issues/7364>`_ `Graylog2/graylog2-server#7290 <https://github.com/Graylog2/graylog2-server/issues/7290>`_
+- Fix scrolling issue in data table widget for Safari browser. `Graylog2/graylog2-server#7344 <https://github.com/Graylog2/graylog2-server/issues/7344>`_ `Graylog2/graylog2-server#7353 <https://github.com/Graylog2/graylog2-server/issues/7353>`_
+- Fix two issues with saved search migration. `Graylog2/graylog2-server#7362 <https://github.com/Graylog2/graylog2-server/issues/7362>`_ `Graylog2/graylog2-server#7369 <https://github.com/Graylog2/graylog2-server/issues/7369>`_
+
 Graylog 3.2.0
 =============
 
