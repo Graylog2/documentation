@@ -154,7 +154,8 @@ The time frame selector defines in what time range to search in. It offers three
 is vital for search speed: If you know you are only interested in messages of the last hour, only search in that time frame.
 This will make Graylog search in :doc:`relevant indices <configuration/index_model>` only and greatly reduce system load and required resources.
 
-.. image:: /images/queries_time_range_selector.png
+.. image:: /images/searching/queries_time_range_selector.png
+   :align: center
 
 .. _relative-time-frame-selector:
 
@@ -173,7 +174,8 @@ Keyword time frame selector
 
 Graylog offers a keyword time frame selector that allows you to specify the time frame for the search in natural language like *last hour* or *last 90 days*. The web interface shows a preview of the two actual timestamps that will be used for the search.
 
-.. image:: /images/queries_keyword_time_selector.png
+.. image:: /images/searching/queries_keyword_time_selector.png
+   :align: center
 
 Here are a few examples for possible values.
 
