@@ -31,7 +31,7 @@ When you apply multiple decorators to the same search results, you can change th
 drag and drop in the decorator list inside the modal.
 
 List active decorators
-^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 The message table widget provides an overview of all active decorators. When opening the stream search page, by slecting a stream on the "Streams" page,
 the widget will be preconfigured and display the related search results. Editing the message table widget will open a modal with an overview of all active decorators.
@@ -72,7 +72,7 @@ your search results.
 
 Pipeline Decorator
 ^^^^^^^^^^^^^^^^^^
-The pipeline decorator provides a way to decorate messages by processing them with an existing :doc:`processing pipeline <pipelines>`.
+The pipeline decorator provides a way to decorate messages by processing them with an existing :doc:`processing pipeline </pages/pipelines>`.
 In contrast to using a processing pipeline, changes done to the message by the pipeline are not persisted. Instead, the pipeline is used at search time
 to modify the *presentation* of the message.
 

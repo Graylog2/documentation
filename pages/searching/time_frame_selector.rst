@@ -3,7 +3,7 @@ Time frame selector
 
 The time frame selector defines in what time range to search in. It offers three different ways of selecting a time range and
 is vital for search speed: If you know you are only interested in messages of the last hour, only search in that time frame.
-This will make Graylog search in :doc:`relevant indices <configuration/index_model>` only and greatly reduce system load and required resources.
+This will make Graylog search in :doc:`relevant indices </pages/configuration/index_model>` only and greatly reduce system load and required resources.
 
 .. image:: /images/searching/queries_time_range_selector.png
    :align: center
