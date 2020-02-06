@@ -15,13 +15,31 @@ and benefit from the advantages decorators add.
 
 Graylog includes some message decorators out of the box, but you can add new ones from pipelines or by writing your own as plugins.
 
-In order to apply decorators to your search results, click on the *Decorators* tab in your search sidebar, select the decorator you want
-to apply from the dropdown, and click on *Apply*. Once you save your changes, the search results will already contain the decorated values.
+Decorators can be configured in the system menu under "System/Configurations". Select a stream in the section "Decorators Configuration" to see
+an overview of all related decorators.
 
-.. image:: /images/searching/create_decorator.png
+.. image:: /images/searching/decorator_overview.png
+   :align: center
+
+To add new default decorators for a stream, click on the *Update* button. This will open a modal which provides two selects,
+one to specifiy the stream and one choose the type of the decorator. After creating a decorator you need to *Save* the changes to finish the configuration.
+
+.. image:: /images/searching/decorator_creation.png
+   :align: center
 
 When you apply multiple decorators to the same search results, you can change the order in which they are applied at any time by using
-drag and drop in the decorator list.
+drag and drop in the decorator list inside the modal.
+
+List active decorators
+^^^^^^^^^^^^^
+
+The message table widget provides an overview of all active decorators. When opening the stream search page, by slecting a stream on the "Streams" page,
+the widget will be preconfigured and display the related search results. Editing the message table widget will open a modal with an overview of all active decorators.
+You can also add decorators here, but they will not be saved or associated with the stream. If you want to save a decorator only for a specific message table,
+you can do this inside a dashboard or saved search.
+
+.. image:: /images/searching/decorator_message_table.png
+   :align: center
 
 .. _syslog_severity_mapper:
 
@@ -63,24 +81,13 @@ The prerequisite of using the pipeline decorator is that an existing pipeline is
 .. note:: Please take note, that the pipeline you use for decoration should not be connected to a stream. This would mean that it is run twice (during indexing *and* search time) for each message, effectively rendering the second run useless.
 
 When you are done creating a pipeline, you can now add a decorator using it on any number of streams. In order to create one, you proceed just like for
-any other decorator type, by clicking on the *Decorator* sidebar, selecting the type ("Pipeline Processor Decorator" in this case) and clicking the *Apply* button next to one.
+any other decorator type, by navigating to "System/Configurations" and clicking on the *Update* in the section "Decorators Configuration"
+and selecting the type ("Pipeline Processor Decorator" in this case) and clicking the *Apply* button next to one.
 
-.. image:: /images/searching/pipeline_decorator_select_type.png
-
-Upon clicking *Apply*, the pipeline to be used for decorating can be selected.
-
-.. image:: /images/searching/pipeline_decorator_select_pipeline.png
+.. image:: /images/searching/decorator_pipeline_select.png
+   :align: center
 
 After selecting a pipeline and clicking *Save*, you are already set creating a new pipeline decorator.
-
-Debugging decorators
-^^^^^^^^^^^^^^^^^^^^
-
-When a message is not decorated as expected, or you need to know how it looked like originally, you can see all changes that were done during decoration by clicking "Show changes" in the message details.
-
-.. image:: /images/searching/pipeline_decorator_show_changes.png
-
-In this view, deleted content is shown in red, while added content is shown in green. This means that added fields will have a single green entry, removed fields a single red entry and modified fields will have two entries, a red and a green one.
 
 Further functionality
 ^^^^^^^^^^^^^^^^^^^^^
