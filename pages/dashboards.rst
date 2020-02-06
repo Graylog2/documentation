@@ -121,43 +121,6 @@ back the same amount of time. For example, to calculate the trend in a search re
 search of *5 minutes ago*, Graylog will count the messages in the last 5 minutes, and compare that with the
 count of the previous 5 minutes.
 
-Search result histogram charts
-------------------------------
-The search result histogram displays a chart using the time frame of your search, graphing the number of search
-result counts over time. It may help you to visualize how the number of request to your site change over time,
-or to see how many downloads a file has over time.
-
-Changing the graph resolution, you can decide how much time each bar of the graph represents.
-
-Statistical values
-------------------
-You can add to your dashboard any statistical value calculated for a field. This may help you to see the mean
-time response for your application, or how many unique servers are handling requests to your application, by
-using the cardinality value of that field. Please refer to :ref:`field_statistics` for more information on
-the available statistical functions and how to display them in your searches.
-
-As with search result counts, you can also add trend information to statistical value widgets created with
-a relative time frame.
-
-Field value charts
-------------------
-To draw an statistical value over time, you can use a field value chart. They could help you to see the evolution
-of the number of unique users visiting your site in the last week. In the :ref:`field_graphs` section we
-explain how to create these charts and ways you can customize them.
-
-Stacked charts
---------------
-Stacked charts group several field value charts under the same axes. They let you compare different values in
-a compact way, like the number of visits to two different websites. As explained in :ref:`field_graphs`, stacked
-charts are basically field value charts represented in the same axes.
-
-Quick values results
---------------------
-In order to show a list of values a certain field contains and their distribution, you can use a quick value
-widget. This may help you to see the percentage of failed requests in your application, or which parts of your
-application experience more problems. Please refer to :ref:`quick_values` to see how to request this information
-in your search result page.
-
 The quick values information can be represented as a pie chart and/or as a table, so you can choose what is the
 best fit for your needs.
 
