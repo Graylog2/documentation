@@ -9,7 +9,7 @@ Content packs are a convenient way to share configuration. A content pack is a
 JSON file which contains a set of configurations of Graylog components.
 This JSON file can be uploaded to Graylog instances and then installed.
 A user who took the time to create a input, pipelines and dashboard for a
-certain type of log format, can so easily share his efforts with the community.
+certain type of log format, can so easily share their efforts with the community.
 
 Content packs can be found on the `Graylog Marketplace <https://marketplace.graylog.org/>`__.
 
@@ -23,7 +23,7 @@ Parameter
 
 Content packs can have parameters. Those parameters help to adjust the
 configuration to the needs of the user. A good example usage is the port of
-an input. The creator of the content pack may have his input running on port
+an input. The creator of the content pack may have their input running on port
 55055, but the user of the content pack may already have an input running on
 that specific port.
 The creator can specify a parameter and assign it to the port.
