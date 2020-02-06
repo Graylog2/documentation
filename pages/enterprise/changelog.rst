@@ -2,6 +2,15 @@
 Changelog
 *********
 
+Graylog Enterprise 3.2.1
+========================
+
+Released: 2020-02-04
+
+**Fixed**
+
+- Gracefully handle missing dashboards and widgets when collecting parameters for reports. `Graylog2/graylog2-server#7347 <https://github.com/Graylog2/graylog2-server/issues/7347>`_
+
 Graylog Enterprise 3.2.0
 ========================
 
