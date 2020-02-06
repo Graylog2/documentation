@@ -5,7 +5,7 @@ It is also possible to export the results of your search as a CSV document. To d
 .. image:: /images/searching/csv_export.png
    :align: center
 
-This will opan a modal where you can choose the fields the CSV document should contain. You can also optionally specify a stream to filter the messages.
+This will open a modal where you can choose the fields the CSV document should contain. You can also optionally specify a stream to filter the messages.
 Clicking on *Downlaod* will create the file based on the specified options and start the download.
 
 .. image:: /images/searching/csv_export_dialog.png
