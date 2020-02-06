@@ -19,7 +19,6 @@ With 3.2 we have rewritten the search interface and unified the layout for the m
    searching/saved_searches.rst
    searching/widgets.rst
    searching/decorators.rst
-   searching/value_and_field_actions.rst
    searching/csv_export.rst   
    searching/result_highlighting.rst
    searching/configuration.rst
