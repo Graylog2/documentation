@@ -3,7 +3,7 @@ Export results as CSV
 It is also possible to export the results of your search as a CSV document. To do so, select all fields you want to export in the search
 sidebar, click on the *More actions* button, and select *Export as CSV*.
 
-.. image:: /images/export_as_csv.png
+.. image:: /images/searching/export_as_csv.png
 
 **Hint**: Some Graylog inputs keep the original message in the ``full_message`` field. If you need to export the original message, you
 can do so by clicking on the *List all fields* link at the bottom of the sidebar, and then selecting the ``full_message`` field.

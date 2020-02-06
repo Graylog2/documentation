@@ -3,7 +3,7 @@ Search result highlighting
 
 Graylog supports search result highlighting since v0.20.2:
 
-.. image:: /images/search_result_highlighting.png
+.. image:: /images/searching/search_result_highlighting.png
 
 Enabling/Disabling search result highlighting
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

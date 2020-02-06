@@ -3,7 +3,7 @@ Search configuration
 
 Graylog allows customizing the options allowed to search queries, like limiting the time range users can select or configuring the list of displayed relative time ranges.
 
-.. image:: /images/queries_search_configuration.png
+.. image:: /images/searching/queries_search_configuration.png
 
 All search configuration settings can be customized using the web interface on the *System* -> *Configurations* page in the *Search configuration* section.
 
@@ -15,7 +15,7 @@ Sometimes the amount of data stored in Graylog is quite big and spans a wide tim
 
 Using this feature, the time range of a search query exceeding the configured query time range limit will automatically be adapted to the given limit.
 
-.. image:: /images/queries_query_time_range_limit.png
+.. image:: /images/searching/queries_query_time_range_limit.png
 
 .. _iso_8601_duration:
 
@@ -53,4 +53,4 @@ Relative time ranges
 
 The list of time ranges displayed in the :ref:`relative-time-frame-selector` can be configured, too. It consists of a list of :ref:`ISO 8601 <iso_8601_duration>` durations which the users can select on the search page.
 
-.. image:: /images/queries_relative_timerange_options.png
+.. image:: /images/searching/queries_relative_timerange_options.png

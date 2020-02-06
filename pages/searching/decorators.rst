@@ -18,7 +18,7 @@ Graylog includes some message decorators out of the box, but you can add new one
 In order to apply decorators to your search results, click on the *Decorators* tab in your search sidebar, select the decorator you want
 to apply from the dropdown, and click on *Apply*. Once you save your changes, the search results will already contain the decorated values.
 
-.. image:: /images/create_decorator.png
+.. image:: /images/searching/create_decorator.png
 
 When you apply multiple decorators to the same search results, you can change the order in which they are applied at any time by using
 drag and drop in the decorator list.
@@ -65,11 +65,11 @@ The prerequisite of using the pipeline decorator is that an existing pipeline is
 When you are done creating a pipeline, you can now add a decorator using it on any number of streams. In order to create one, you proceed just like for
 any other decorator type, by clicking on the *Decorator* sidebar, selecting the type ("Pipeline Processor Decorator" in this case) and clicking the *Apply* button next to one.
 
-.. image:: /images/pipeline_decorator_select_type.png
+.. image:: /images/searching/pipeline_decorator_select_type.png
 
 Upon clicking *Apply*, the pipeline to be used for decorating can be selected.
 
-.. image:: /images/pipeline_decorator_select_pipeline.png
+.. image:: /images/searching/pipeline_decorator_select_pipeline.png
 
 After selecting a pipeline and clicking *Save*, you are already set creating a new pipeline decorator.
 
@@ -78,7 +78,7 @@ Debugging decorators
 
 When a message is not decorated as expected, or you need to know how it looked like originally, you can see all changes that were done during decoration by clicking "Show changes" in the message details.
 
-.. image:: /images/pipeline_decorator_show_changes.png
+.. image:: /images/searching/pipeline_decorator_show_changes.png
 
 In this view, deleted content is shown in red, while added content is shown in green. This means that added fields will have a single green entry, removed fields a single red entry and modified fields will have two entries, a red and a green one.
 
