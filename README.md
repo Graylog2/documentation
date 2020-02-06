@@ -61,7 +61,7 @@ Clone the repository to your workbench:
 Create and enter the python virtual environment:
 
     # cd documentation
-    # virtualenv .
+    # virtualenv -p python3 .
     # source ./bin/activate
 
 Install [Sphinx](http://sphinx-doc.org), [the theme we are using](https://github.com/snide/sphinx_rtd_theme), and [sphinx-autobuild](https://github.com/GaretJax/sphinx-autobuild):

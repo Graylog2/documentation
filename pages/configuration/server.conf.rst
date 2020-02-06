@@ -127,12 +127,12 @@ Elasticsearch
 * ``elasticsearch_idle_timeout = -1s``
     * Maximum idle time for an Elasticsearch connection. If this is exceeded, this connection will be tore down.
     * Default: infinity
-* ``elasticsearch_max_total_connections = 20``
+* ``elasticsearch_max_total_connections = 200``
     * Maximum number of total connections to Elasticsearch.
-    * Default: 20
-* ``elasticsearch_max_total_connections_per_route = 2``
+    * Default: 200
+* ``elasticsearch_max_total_connections_per_route = 20``
     * Maximum number of total connections per Elasticsearch route (normally this means per elasticsearch server).
-    * Default: 2
+    * Default: 20
 * ``elasticsearch_max_retries = 2``
     * Maximum number of times Graylog will retry failed requests to Elasticsearch.
     * Default: 2
@@ -151,9 +151,15 @@ Elasticsearch
 * ``elasticsearch_discovery_frequency = 30s``
     * Frequency of the Elasticsearch node discovery.
     * Default: 30 seconds
+* ``elasticsearch_discovery_default_scheme = http``
+    * Set the default scheme when connecting to Elasticsearch discovered nodes. (available options: http, https)
+    * Default: http
 * ``elasticsearch_compression_enabled = false``
     * Enable payload compression for Elasticsearch requests.
     * Default: false
+* ``elasticsearch_use_expect_continue = true``
+    * Enable use of "Expect: 100-continue" Header for Elasticsearch index requests. If this is disabled, Graylog cannot properly handle HTTP 413 Request Entity Too Large errors.
+    * Default: true
 
 Rotation
 ^^^^^^^^
@@ -445,6 +451,13 @@ Others
     * The default index prefix for graylog events.
 * ``default_system_events_index_prefix = gl-system-events``
     * The default index prefix for graylog system events.
-* ``enabled_tls_protocols``
+* ``enabled_tls_protocols = TLSv1.2,TLSv1.3``
     * Configure system wide enabled TLS protocols. Only configure this if you need to support legacy systems. We will maintain a secure default. (Currently TLS 1.2 and TLS 1.3).
       (Note: The web interface cannot support TLS 1.3 with JDK 8)
+* ``content_packs_loader_enabled = false``
+    * Automatically load content packs in "content_packs_dir" on the first start of Graylog.
+* ``content_packs_dir = data/contentpacks``
+    * The directory which contains content packs which should be loaded on the first start of Graylog.
+* ``content_packs_auto_install``
+    * A comma-separated list of content packs (files in "content_packs_dir") which should be applied on the first start of Graylog.
+    * Default: none

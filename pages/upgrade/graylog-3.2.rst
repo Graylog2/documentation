@@ -65,13 +65,14 @@ Known Bugs and Limitations
  * Retrieving the list of terms a message field value was indexed with.
  * The list of indices the current search used to generate results.
  * The count of all received messages displayed next to the search. We will add the count again, once the calculation works as expected. As a workaround a message count widget can be added to the search.
+ * The message list widget currently does not allow sorting by field.
 
 * The "Show surrounding messages" action is not part of 3.2.0, but will be reimplemented in a next version.
 
 Configuration File Changes
 --------------------------
 
-The following alerting related configuration file settings changed in this release:
+The following configuration file settings changed in this release:
 
 +----------------------------------------------------+---------+----------------------------------------------------+
 | Setting                                            | Status  | Description                                        |
