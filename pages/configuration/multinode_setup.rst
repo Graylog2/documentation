@@ -60,12 +60,14 @@ Graylog Multi-node
 After the installation of Graylog, you should take care that only one Graylog node is configured to be master with the
 configuration setting ``is_master = true``.
 
-The HTTP settings configured in ``http_bind_address`` (or ``http_publish_uri``) must be accessable for all Graylog nodes
-of the cluster.
+The ``http_bind_address`` configured address needs to be reachable by all Graylog nodes in the cluster.
+Same for the ``http_publish_uri`` which is mostly the the ``http_bind_address`` prefixed with the protocol and a closing
+``/``.
 
-This means, if ``http_bind_address`` is set to `0.0.0.0` you **must** set ``http_publish_uri``. ``http_publish_uri`` is
-meant as an access point within the cluster for cluster intern communication. With ``http_bind_address = 0.0.0.0`` the
-node cannot communicate its own IP to the other graylog nodes.
+If the http_bind_address is configured with ``0.0.0.0`` you **must** configure ``http_publish_uri``.
+Otherwise Graylog will use the first non loopback IP, what might not fit into your desired design.
+All Graylog nodes need to reach all other Graylog nodes via their configured ``http_publish_uri`` for inter-node
+communication. If you use TLS in your Graylog configuration, this includes https as protocol.
 
 
 Graylog to MongoDB connection
