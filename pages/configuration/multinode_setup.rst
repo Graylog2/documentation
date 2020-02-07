@@ -57,9 +57,15 @@ When you secure your Elasticsearch with `User Authentication <https://www.elasti
 Graylog Multi-node
 ==================
 
-After the installation of Graylog, you should take care that only one Graylog node is configured to be master with the configuration setting ``is_master = true``.
+After the installation of Graylog, you should take care that only one Graylog node is configured to be master with the
+configuration setting ``is_master = true``.
 
-The HTTP settings configured in ``http_bind_address`` (or ``http_publish_uri``) must be accessable for all Graylog nodes of the cluster.
+The HTTP settings configured in ``http_bind_address`` (or ``http_publish_uri``) must be accessable for all Graylog nodes
+of the cluster.
+
+This means, if ``http_bind_address`` is set to `0.0.0.0` you **must** set ``http_publish_uri``. ``http_publish_uri`` is
+meant as an access point within the cluster for cluster intern communication. With ``http_bind_address = 0.0.0.0`` the
+node cannot communicate its own IP to the other graylog nodes.
 
 
 Graylog to MongoDB connection
