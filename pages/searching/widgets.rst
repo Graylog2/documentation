@@ -1,8 +1,12 @@
 Widgets
 ---------------------
 
-A widget is either a Message Table or an Aggregation. It can be freely
-placed inside a query. A widget can be edited or duplicated by clicking
+Graylog supports a wide variety of widgets that allow you to quickly visualize data from your logs.
+A widget is either a Message Table or an Aggregation.
+This section intends to give you some information to better understand each widget type, and how they can
+help you to see relevant details from the many logs you receive.
+
+A widget can be freely placed inside a query. A widget can be edited or duplicated by clicking
 on the chevron on the right side in the head of the widget.
 Next to the chevron is a filter symbol, where filters can be added to the
 top search query.
@@ -141,3 +145,19 @@ value and where the menu is opened. The following actions can be executed.
 :Highlight this value:
    This action will highlight this value for this field in all
    Message Tables and Data Tables.
+
+Repositioning widgets
+^^^^^^^^^^^^^^^^^^^^^
+
+Just grab a widget with your mouse in unlocked dashboard mode and move it around. Other widgets should
+adopt and re-position intelligently to make place for the widget you are moving. The positions are
+automatically saved when dropping a widget.
+
+Resizing widgets
+^^^^^^^^^^^^^^^^
+
+When hovering over a widget, you will see that a gray arrow appears in its bottom-right corner. You can use that
+icon to resize widgets. Their contents will adapt to the new size automatically!
+
+.. image:: /images/dashboard/widget_resize.png
+   :align: center

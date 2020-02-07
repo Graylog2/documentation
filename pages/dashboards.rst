@@ -7,19 +7,23 @@ Dashboards
 Why dashboards matter
 =====================
 
-Using dashboards allows you to build pre-defined views on your data to always have everything important
-just one click away.
+Using dashboards allows you to build pre-defined searches on your data to always have everything important
+just one click away. 
 
 Sometimes it takes domain knowledge to be able to figure out the search queries
 to get the correct results for your specific applications. People with the required domain knowledge
-can define the search query once and then display the results on a dashboard to share them with co-workers,
-managers, or even sales and marketing departments.
+can define the search queries once to share them with co-workers, managers, or even sales and marketing departments.
+
+In comparision with saved searches, dashboards have a range of additional features included.
+The main difference is the possibility to define different search criteria like the query or the time range for every widget.
+Dashboards also support creating multiple tabs for different use cases, displaying the result in a full screen mode and as described sharing with other people.
 
 This guide will take you through the process of creating dashboards and storing information on them.
 At the end you will have a dashboard with automatically updating information that you can share with
 anybody or just a subset of people based on permissions.
 
 .. image:: /images/dashboard/dashboard_example.png
+   :align: center
 
 How to use dashboards
 =====================
@@ -31,15 +35,24 @@ Navigate to the *Dashboards* section using the link in the top menu bar of your 
 The page is listing all dashboards that you are allowed to view. (More on permissions later.) Hit the
 *Create dashboard* button to create a new empty dashboard.
 
-The only required information is a *title* and a *description* of the new dashboard. Use a specific
+.. image:: /images/dashboard/dashboard_create.png
+   :align: center
+
+You should now see your new dashboard. Hit the *Save as* button on the right side of the search bar to save the dashboard. 
+
+.. image:: /images/dashboard/dashboard_save.png
+   :align: center
+
+This will open a modal where you can define a title, summary and description.
+
+.. image:: /images/dashboard/dashboard_save_dialog.png
+   :align: center
+
+The only required information is the *title* of the new dashboard. Use a specific
 but not too long title so people can easily see what to expect on the dashboard. The description can be
 a bit longer and could contain more detailed information about the displayed data or how it is collected.
 
-Hit the *Create* button to create the dashboard. You should now see your new dashboard on the dashboards
-overview page. Click on the title of your new dashboard to see it. Next, we will be adding widgets to the
-dashboard we have just created.
-
-.. image:: /images/dashboard/dashboard_create.png
+Next, we will be adding widgets to the dashboard we have just created.
 
 Adding widgets
 --------------
@@ -48,20 +61,22 @@ You should have your empty dashboard in front of you. Let's add some widgets! Yo
 information to dashboards with a couple of clicks. The following search result types can be added to
 dashboards:
 
-  * Search result counts
-  * Search result histogram charts
-  * Statistical values
-  * Field value charts
-  * Stacked charts
-  * Quick values results
+  * Message counts
+  * Message table
+  * Area chart
+  * Bar chart
+  * Data table
+  * Heatmap
+  * Line chart
+  * Pie chart
+  * Scatter possibility
+  * Single number
+  * World map
 
 You can learn more about the different widget types in :ref:`widget_types`.
 
 Once you can see the results of your search, you will see buttons with the "Add to dashboard" text, that
 will allow you to select the dashboard where the widget will be displayed, and configure the widget.
-
-.. image:: /images/dashboard/widget_creation_1.png
-.. image:: /images/dashboard/widget_creation_2.png
 
 Examples
 ========
@@ -86,13 +101,6 @@ will make the following examples more obvious for you.
     * Expand a field representing the response time of requests in the sidebar and hit *Generate chart*
     * Add chart to dashboard
 
-Widgets from streams
-====================
-
-You can of course also add widgets from stream search results. Every widget added this way will always
-be bound to streams. If you have a stream that contains every SSH login you can just search for everything
-(``*``) in that stream and store the result count as *SSH logins* on a dashboard.
-
 Result
 ======
 
@@ -100,70 +108,17 @@ You should now see widgets on your dashboard. You will learn how to modify the d
 in the next chapter.
 
 .. image:: /images/dashboard/dashboard_example.png
+   :align: center
 
 .. _widget_types:
 
-Widget types explained
-======================
-Graylog supports a wide variety of widgets that allow you to quickly visualize data from your logs.
-This section intends to give you some information to better understand each widget type, and how they can
-help you to see relevant details from the many logs you receive.
-
-Search result counts
---------------------
-This kind of widget includes a count of the number of search results for a given search. It can help you to
-quickly visualize things like the number of exceptions an application logs, or the number of requests
-your site receives.
-
-All search result counts created with a relative time frame can additionally display trend information. The
-trend is calculated by comparing the count for the given time frame, with the one resulting from going further
-back the same amount of time. For example, to calculate the trend in a search result count with a relative
-search of *5 minutes ago*, Graylog will count the messages in the last 5 minutes, and compare that with the
-count of the previous 5 minutes.
-
-The quick values information can be represented as a pie chart and/or as a table, so you can choose what is the
-best fit for your needs.
-
-Modifying dashboards
-====================
-
-You need to *unlock* dashboards to make any changes to them. Hit the "Unlock/Edit" button in the top right
-corner of a dashboard to unlock it. You should now see different icons at the bottom of each widget, that
-allow you to perform more actions.
-
-Unlocked dashboard widgets explained
-------------------------------------
-
-Unlocked dashboard widgets have two buttons that should be pretty self-explanatory.
-
-  * Delete widget
-  * Edit widget configuration
-  * Change widget size (when you hover over the widget)
-
-.. image:: /images/dashboard/dashboard_modify.png
-
 Widget cache times
-------------------
+==================
 
 Widget values are cached in ``graylog-server`` by default. **This means that the cost of value computation
 does not grow with every new device or even browser tab displaying a dashboard.** Some widgets might need
 to show real-time information (set cache time to 1 second) and some widgets might be updated way less often
 (like *Top SSH users this month*, cache time 10 minutes) to save expensive computation resources.
-
-Repositioning widgets
----------------------
-
-Just grab a widget with your mouse in unlocked dashboard mode and move it around. Other widgets should
-adopt and re-position intelligently to make place for the widget you are moving. The positions are
-automatically saved when dropping a widget.
-
-Resizing widgets
-----------------
-
-When hovering over a widget, you will see that a gray arrow appears in its bottom-right corner. You can use that
-icon to resize widgets. Their contents will adapt to the new size automatically!
-
-.. image:: /images/dashboard/widget_resize.png
 
 Dashboard permissions
 =====================
