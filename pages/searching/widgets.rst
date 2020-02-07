@@ -141,8 +141,3 @@ value and where the menu is opened. The following actions can be executed.
 :Highlight this value:
    This action will highlight this value for this field in all
    Message Tables and Data Tables.
-
-
-
-
-

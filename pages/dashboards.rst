@@ -19,7 +19,7 @@ This guide will take you through the process of creating dashboards and storing 
 At the end you will have a dashboard with automatically updating information that you can share with
 anybody or just a subset of people based on permissions.
 
-.. image:: /images/dashboards_1.png
+.. image:: /images/dashboard/dashboard_example.png
 
 How to use dashboards
 =====================
@@ -39,7 +39,7 @@ Hit the *Create* button to create the dashboard. You should now see your new das
 overview page. Click on the title of your new dashboard to see it. Next, we will be adding widgets to the
 dashboard we have just created.
 
-.. image:: /images/dashboards_2.png
+.. image:: /images/dashboard/dashboard_create.png
 
 Adding widgets
 --------------
@@ -60,8 +60,8 @@ You can learn more about the different widget types in :ref:`widget_types`.
 Once you can see the results of your search, you will see buttons with the "Add to dashboard" text, that
 will allow you to select the dashboard where the widget will be displayed, and configure the widget.
 
-.. image:: /images/dashboards_3.png
-.. image:: /images/dashboards_4.png
+.. image:: /images/dashboard/widget_creation_1.png
+.. image:: /images/dashboard/widget_creation_2.png
 
 Examples
 ========
@@ -99,7 +99,7 @@ Result
 You should now see widgets on your dashboard. You will learn how to modify the dashboard, and edit widgets
 in the next chapter.
 
-.. image:: /images/dashboards_1.png
+.. image:: /images/dashboard/dashboards_example.png
 
 .. _widget_types:
 
@@ -140,7 +140,7 @@ Unlocked dashboard widgets have two buttons that should be pretty self-explanato
   * Edit widget configuration
   * Change widget size (when you hover over the widget)
 
-.. image:: /images/dashboards_5.png
+.. image:: /images/dashboard/dashboard_modify.png
 
 Widget cache times
 ------------------
@@ -163,7 +163,7 @@ Resizing widgets
 When hovering over a widget, you will see that a gray arrow appears in its bottom-right corner. You can use that
 icon to resize widgets. Their contents will adapt to the new size automatically!
 
-.. image:: /images/dashboards_7.png
+.. image:: /images/dashboard/widget_resize.png
 
 Dashboard permissions
 =====================
@@ -171,7 +171,7 @@ Dashboard permissions
 Graylog users in the *Admin* role are always allowed to view and edit all dashboards. Users in the *Reader* role
 are by default not allowed to view or edit **any** dashboard.
 
-.. image:: /images/dashboards_6.png
+.. image:: /images/dashboard/dashboard_permissions.png
 
 Navigate to *System* -> *Roles* and create a new role that grant the permissions you wish. You can then assign
 that new role to any users you wish to give dashboard permissions in the *System* -> *Users* page.
