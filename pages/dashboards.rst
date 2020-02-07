@@ -19,7 +19,7 @@ This guide will take you through the process of creating dashboards and storing 
 At the end you will have a dashboard with automatically updating information that you can share with
 anybody or just a subset of people based on permissions.
 
-.. image:: /images/dashboards_1.png
+.. image:: /images/dashboard/dashboard_example.png
 
 How to use dashboards
 =====================
@@ -39,7 +39,7 @@ Hit the *Create* button to create the dashboard. You should now see your new das
 overview page. Click on the title of your new dashboard to see it. Next, we will be adding widgets to the
 dashboard we have just created.
 
-.. image:: /images/dashboards_2.png
+.. image:: /images/dashboard/dashboard_create.png
 
 Adding widgets
 --------------
@@ -60,8 +60,8 @@ You can learn more about the different widget types in :ref:`widget_types`.
 Once you can see the results of your search, you will see buttons with the "Add to dashboard" text, that
 will allow you to select the dashboard where the widget will be displayed, and configure the widget.
 
-.. image:: /images/dashboards_3.png
-.. image:: /images/dashboards_4.png
+.. image:: /images/dashboard/widget_creation_1.png
+.. image:: /images/dashboard/widget_creation_2.png
 
 Examples
 ========
@@ -99,7 +99,7 @@ Result
 You should now see widgets on your dashboard. You will learn how to modify the dashboard, and edit widgets
 in the next chapter.
 
-.. image:: /images/dashboards_1.png
+.. image:: /images/dashboard/dashboard_example.png
 
 .. _widget_types:
 
@@ -121,43 +121,6 @@ back the same amount of time. For example, to calculate the trend in a search re
 search of *5 minutes ago*, Graylog will count the messages in the last 5 minutes, and compare that with the
 count of the previous 5 minutes.
 
-Search result histogram charts
-------------------------------
-The search result histogram displays a chart using the time frame of your search, graphing the number of search
-result counts over time. It may help you to visualize how the number of request to your site change over time,
-or to see how many downloads a file has over time.
-
-Changing the graph resolution, you can decide how much time each bar of the graph represents.
-
-Statistical values
-------------------
-You can add to your dashboard any statistical value calculated for a field. This may help you to see the mean
-time response for your application, or how many unique servers are handling requests to your application, by
-using the cardinality value of that field. Please refer to :ref:`field_statistics` for more information on
-the available statistical functions and how to display them in your searches.
-
-As with search result counts, you can also add trend information to statistical value widgets created with
-a relative time frame.
-
-Field value charts
-------------------
-To draw an statistical value over time, you can use a field value chart. They could help you to see the evolution
-of the number of unique users visiting your site in the last week. In the :ref:`field_graphs` section we
-explain how to create these charts and ways you can customize them.
-
-Stacked charts
---------------
-Stacked charts group several field value charts under the same axes. They let you compare different values in
-a compact way, like the number of visits to two different websites. As explained in :ref:`field_graphs`, stacked
-charts are basically field value charts represented in the same axes.
-
-Quick values results
---------------------
-In order to show a list of values a certain field contains and their distribution, you can use a quick value
-widget. This may help you to see the percentage of failed requests in your application, or which parts of your
-application experience more problems. Please refer to :ref:`quick_values` to see how to request this information
-in your search result page.
-
 The quick values information can be represented as a pie chart and/or as a table, so you can choose what is the
 best fit for your needs.
 
@@ -177,7 +140,7 @@ Unlocked dashboard widgets have two buttons that should be pretty self-explanato
   * Edit widget configuration
   * Change widget size (when you hover over the widget)
 
-.. image:: /images/dashboards_5.png
+.. image:: /images/dashboard/dashboard_modify.png
 
 Widget cache times
 ------------------
@@ -200,7 +163,7 @@ Resizing widgets
 When hovering over a widget, you will see that a gray arrow appears in its bottom-right corner. You can use that
 icon to resize widgets. Their contents will adapt to the new size automatically!
 
-.. image:: /images/dashboards_7.png
+.. image:: /images/dashboard/widget_resize.png
 
 Dashboard permissions
 =====================
@@ -208,7 +171,7 @@ Dashboard permissions
 Graylog users in the *Admin* role are always allowed to view and edit all dashboards. Users in the *Reader* role
 are by default not allowed to view or edit **any** dashboard.
 
-.. image:: /images/dashboards_6.png
+.. image:: /images/dashboard/dashboard_permissions.png
 
 Navigate to *System* -> *Roles* and create a new role that grant the permissions you wish. You can then assign
 that new role to any users you wish to give dashboard permissions in the *System* -> *Users* page.
