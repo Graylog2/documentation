@@ -99,7 +99,7 @@ Result
 You should now see widgets on your dashboard. You will learn how to modify the dashboard, and edit widgets
 in the next chapter.
 
-.. image:: /images/dashboard/dashboards_example.png
+.. image:: /images/dashboard/dashboard_example.png
 
 .. _widget_types:
 
