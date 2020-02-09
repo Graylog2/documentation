@@ -1,3 +1,5 @@
+.. _widgets:
+
 Widgets
 ---------------------
 
@@ -14,6 +16,24 @@ top search query.
 .. image:: /images/searching/views_widget.png
    :align: center
 
+Creating a widget
+^^^^^^^^^^^^^^^
+To add a widget for your search or dashboard, open the sidebar and the "Create" section. You can also open the section directly by
+clicking on the plus sign.
+
+.. image:: /images/searching/views_widget_create.png
+   :align: center
+
+You can create an empty ":ref:`widgets-aggregation`". or a predefined widget by selecting the ":ref:`widgets-message-table`" or "Message Count" .
+
+
+Empty aggregation widget:
+
+.. image:: /images/searching/views_widget_aggregation_create.png
+   :align: center
+
+.. _widgets-aggregation:
+
 Aggregation
 ^^^^^^^^^^^
 The goal of an aggregation is to reduce the number of data points
@@ -23,12 +43,10 @@ long a page needed to be rendered).
 Or string values which can be used for grouping the aggregation
 (e.g an action field which contains the name of the controller action).
 
-Creating an aggregation
+Configuring an aggregation
 """""""""""""""""""""""
-By clicking on `+ Create` -> `Custom Aggreatation` a new empty widget will
-be shown on the very top of the Extended Search page.
-A click on the chevron icon on the right side of the head will open the widget
-in a modal in the edit mode.
+As describe in the previous section a click on `+ Create` -> `Aggreatation` will create an empty widget on the very top of the search page.
+A click on the `chevron icon -> Edit` on the right side of the head will open the widget in a modal in the edit mode.
 
 .. image:: /images/searching/views_create_aggregation.png
    :align: center
@@ -52,8 +70,8 @@ in a modal in the edit mode.
 
 :VISUALIZATION:
    To display the result of an aggregation it is often easier to
-   compare lots of result values graphically. ``Bar Chart``,
-   ``Data Table``, ``Line Chart``, ``Pie Chart``, ``Scatter Plot``,
+   compare lots of result values graphically. ``Area Chart``, ``Bar Chart``,
+   ``Heatmap``, ``Data Table``, ``Line Chart``, ``Pie Chart``, ``Scatter Plot``,
    ``Single Number`` or ``World Map`` can be used as **VISUALIZATION**.
    The ``World Map`` needs geographical points in the form of ``latitude,longitude``.
 
@@ -62,6 +80,7 @@ in a modal in the edit mode.
    by which field the sorting should happen and **DIRECTION** configures
    if it will be ``ascending`` or ``descending``.
 
+.. _widgets-message-table:
 
 Message Table
 ^^^^^^^^^^^^^

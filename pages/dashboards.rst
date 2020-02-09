@@ -15,7 +15,7 @@ to get the correct results for your specific applications. People with the requi
 can define the search queries once to share them with co-workers, managers, or even sales and marketing departments.
 
 In comparision with saved searches, dashboards have a range of additional features included.
-The main difference is the possibility to define different search criteria like the query or the time range for every widget.
+The main difference is the possibility to define :ref:`dashboards-widget-specific-criteria` like the query or the time range for every widget.
 Dashboards also support creating multiple tabs for different use cases, displaying the result in a full screen mode and as described sharing with other people.
 
 This guide will take you through the process of creating dashboards and storing information on them.
@@ -33,7 +33,7 @@ Creating an empty dashboard
 
 Navigate to the *Dashboards* section using the link in the top menu bar of your Graylog web interface.
 The page is listing all dashboards that you are allowed to view. (More on permissions later.) Hit the
-*Create dashboard* button to create a new empty dashboard.
+*Create new dashboard* button to create a new empty dashboard.
 
 .. image:: /images/dashboard/dashboard_create.png
    :align: center
@@ -54,63 +54,76 @@ a bit longer and could contain more detailed information about the displayed dat
 
 Next, we will be adding widgets to the dashboard we have just created.
 
-Adding widgets
---------------
+Adding and configuring widgets
+------------------------------
 
 You should have your empty dashboard in front of you. Let's add some widgets! You can add search result
-information to dashboards with a couple of clicks. The following search result types can be added to
-dashboards:
+information to dashboards with a couple of clicks. Adding widgets to a dashboard works the same way like for the main search page.
+Have a look at the :ref:`widgets` page for a more detailed description of different widget types and how to create them.
 
-  * Message counts
-  * Message table
-  * Area chart
-  * Bar chart
-  * Data table
-  * Heatmap
-  * Line chart
-  * Pie chart
-  * Scatter possibility
-  * Single number
-  * World map
+.. _dashboards-widget-specific-criteria:
 
-You can learn more about the different widget types in :ref:`widget_types`.
+Widget specific search criteria
+================================
+As described in the introduction the main difference between dashboards and saved searches is the possibility to define widget specific search crtieria.
+This includes the time range, search query and stream selection.
 
-Once you can see the results of your search, you will see buttons with the "Add to dashboard" text, that
-will allow you to select the dashboard where the widget will be displayed, and configure the widget.
+These options can be defined using the searchbar inside the widget edit modal.
+
+.. image:: /images/dashboard/widget_edit_modal.png
+   :align: center
+
+While the main search bar still exists, it only allows to overwrite the widget spedcific search. While the widget specific search persists,
+search options configured with the main search bar will be saved with the dashboard.
 
 Examples
 ========
 
 It is strongly recommended to read the getting started guide on basic searches and analysis first. This
-will make the following examples more obvious for you.
+will make the following examples more obvious for you. For all examples you need to create an empty :ref:`widgets-aggregation` and open the edit modal.
 
   * **Top log sources today**
 
     * Example search: ``*``, timeframe: Last 24 hours
-    * Expand the ``source`` field in the sidebar and hit *Quick values*
-    * Add quick values to dashboard
+    * Select visualization ``Data Table``
+    * Add row pivot ``source``
+    * Add metric pivot ``count(source)``
+    * And select sorting ``count(source)``
+    * Save the widget
 
   * **Number of exceptions in a given app today**
 
     * Example search: ``source:myapp AND Exception``, timeframe: Last 24 hours
-    * Add search result count to dashboard
+    * Select visualization ``Single Number``
+    * Select the metric ``count()``
+    * Save the widget
 
   * **Response time chart of a given app**
 
     * Example search: ``source:myapp2``, any timeframe you want
-    * Expand a field representing the response time of requests in the sidebar and hit *Generate chart*
-    * Add chart to dashboard
+    * Select visualization ``Single Number``
+    * Add the mertic ``avg(repsonse_time)``
+    * Save the widget
 
 Result
 ======
 
-You should now see widgets on your dashboard. You will learn how to modify the dashboard, and edit widgets
-in the next chapter.
+You should now see widgets on your dashboard.
 
 .. image:: /images/dashboard/dashboard_example.png
    :align: center
 
-.. _widget_types:
+
+Export a search to a dashboard
+==============================
+
+the last sections decriped how to create a dashboard from scratch, but you can also transform an existing search to a dashboard.
+All you need to do is to click on the three dots on the right side of the search bar and select the option *Export as dashboard*.
+The newly created dashboard is just a draft and you will need to click on the *Save as* button to create the dashboard permanently.
+When you 
+
+.. image:: /images/dashboard/dashboard_export.png
+   :align: center
 
 Widget cache times
 ==================
