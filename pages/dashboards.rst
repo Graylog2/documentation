@@ -54,6 +54,7 @@ a bit longer and could contain more detailed information about the displayed dat
 
 Next, we will be adding widgets to the dashboard we have just created.
 
+
 Adding and configuring widgets
 ------------------------------
 
@@ -112,7 +113,6 @@ You should now see widgets on your dashboard.
 
 .. image:: /images/dashboard/dashboard_example.png
    :align: center
-
 
 Export a search to a dashboard
 ==============================

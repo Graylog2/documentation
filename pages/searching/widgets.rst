@@ -182,4 +182,3 @@ To expand a widget to the full grid width, click on the arrow in its top-right c
 
 .. image:: /images/searching/widget_repositioning_and_resizing.png
    :align: center
-
