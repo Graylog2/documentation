@@ -28,7 +28,7 @@ For additional detail, please see :ref:`queries`.
 Dashboards
 ^^^^^^^^^^
 
-Graylog Dashboards are visualizations or summaries of information contained in log events. Each dashboard is populated by one or more widget, Widgets visualize or summarize event log data with data derived from field values such as counts, averages, or totals. Trend indicators, charts, graphs, and maps are easily created to visualize the data. 
+Graylog Dashboards are visualizations or summaries of information contained in log events. Each dashboard is populated by one or more widgets. Widgets visualize or summarize event log data with data derived from field values such as counts, averages, or totals. Trend indicators, charts, graphs, and maps are easily created to visualize the data. 
 
 Dashboard widgets and dashboard layouts are configurable. Dashboard access is controlled via Graylog’s role based access control. Dashboards may be imported and exported via content packs. 
 
