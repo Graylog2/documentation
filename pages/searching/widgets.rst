@@ -17,7 +17,7 @@ top search query.
    :align: center
 
 Creating a widget
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
 To add a widget for your search or dashboard, open the sidebar and the "Create" section. You can also open the section directly by
 clicking on the plus sign.
 
@@ -44,7 +44,7 @@ Or string values which can be used for grouping the aggregation
 (e.g an action field which contains the name of the controller action).
 
 Configuring an aggregation
-"""""""""""""""""""""""
+""""""""""""""""""""""""""
 As describe in the previous section a click on `+ Create` -> `Aggreatation` will create an empty widget on the very top of the search page.
 A click on the `chevron icon -> Edit` on the right side of the head will open the widget in a modal in the edit mode.
 
@@ -146,7 +146,7 @@ Value actions
 The value actions produce different results depending on the type of the
 value and where the menu is opened. The following actions can be executed.
 
-.. image:: /images/searching/widget_aggregation_edit.png
+.. image:: /images/searching/views_value_actions.png
    :align: center
 
 :Insert into view:
@@ -176,8 +176,8 @@ value and where the menu is opened. The following actions can be executed.
 Repositioning and Resizing
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Widgets can be freely placed inside the search result grid. You can drag and drop it with the three lines
-left to the widget name or you resize it by using the gray arrow in its bottom-right corner.
+Widgets can be freely placed inside the search result grid. You can drag and drop them with the three lines
+left to the widget name or you resize them by using the gray arrow in their bottom-right corner.
 To expand a widget to the full grid width, click on the arrow in its top-right corner.
 
 .. image:: /images/searching/widget_repositioning_and_resizing.png
