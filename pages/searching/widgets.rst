@@ -3,15 +3,13 @@
 Widgets
 ---------------------
 
-Graylog supports a wide variety of widgets that allow you to quickly visualize data from your logs.
+Graylog supports a wide variety of widgets which allow you to quickly visualize data from your logs.
 A widget is either a :ref:`widgets-message-table` or an :ref:`widgets-aggregation`.
 This section intends to give you some information to better understand each widget type, and how they can
 help you to see relevant details from the many logs you receive.
 
 A widget can be freely placed inside a query. A widget can be edited or duplicated by clicking
 on the chevron on the right side in the head of the widget.
-Next to the chevron is a filter symbol, where filters can be added to the
-top search query.
 
 .. image:: /images/searching/views_widget.png
    :align: center
@@ -25,7 +23,6 @@ clicking on the plus sign.
    :align: center
 
 You can create an empty ":ref:`widgets-aggregation`". or a predefined widget by selecting the ":ref:`widgets-message-table`" or "Message Count" .
-
 
 Empty aggregation widget:
 
@@ -46,7 +43,7 @@ Or string values which can be used for grouping the aggregation
 Configuring an aggregation
 """"""""""""""""""""""""""
 As describe in the previous section a click on `+ Create` -> `Aggreatation` will create an empty widget on the very top of the search page.
-A click on the `chevron icon -> Edit` on the right side of the head will open the widget in a modal in the edit mode.
+A click on the `chevron icon -> Edit` on the right side of the head will open the widget edit modal.
 
 .. image:: /images/searching/widget_aggregation_edit.png
    :align: center

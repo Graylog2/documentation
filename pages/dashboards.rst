@@ -8,14 +8,14 @@ Why dashboards matter
 =====================
 
 Using dashboards allows you to build pre-defined searches on your data to always have everything important
-just one click away. 
+just one click away.
 
 Sometimes it takes domain knowledge to be able to figure out the search queries
 to get the correct results for your specific applications. People with the required domain knowledge
 can define the search queries once to share them with co-workers, managers, or even sales and marketing departments.
 
-In comparision with saved searches, dashboards have a range of additional features included.
-The main difference is the possibility to define :ref:`dashboards-widget-specific-criteria` like the query or the time range for every widget.
+In comparison with saved searches, dashboards include a range of additional features.
+The main difference is the possibility to define :ref:`dashboards-widget-specific-criteria` like the query or the time range.
 Dashboards also support creating multiple tabs for different use cases, displaying the result in a full screen mode and as described sharing with other people.
 
 This guide will take you through the process of creating dashboards and storing information on them.
@@ -69,13 +69,13 @@ Widget specific search criteria
 As described in the introduction the main difference between dashboards and saved searches is the possibility to define widget specific search crtieria.
 This includes the time range, search query and stream selection.
 
-These options can be defined using the searchbar inside the widget edit modal.
+These options can be defined using the search bar inside the widget edit modal.
 
 .. image:: /images/dashboard/widget_edit_modal.png
    :align: center
 
-While the main search bar still exists, it only allows to overwrite the widget spedcific search. While the widget specific search persists,
-search options configured with the main search bar will be saved with the dashboard.
+While the main search bar still exists, it only allows to overwrite the widget specific search. While the widget specific search persists,
+search options configured with the main search bar will not be saved with the dashboard.
 
 Examples
 ========
@@ -88,22 +88,22 @@ will make the following examples more obvious for you. For all examples you need
     * Example search: ``*``, timeframe: Last 24 hours
     * Select visualization ``Data Table``
     * Add row pivot ``source``
-    * Add metric pivot ``count(source)``
-    * And select sorting ``count(source)``
+    * Add metric ``count(source)``
+    * Select sorting ``count(source)``
     * Save the widget
 
   * **Number of exceptions in a given app today**
 
     * Example search: ``source:myapp AND Exception``, timeframe: Last 24 hours
     * Select visualization ``Single Number``
-    * Select the metric ``count()``
+    * Add metric ``count()``
     * Save the widget
 
   * **Response time chart of a given app**
 
     * Example search: ``source:myapp2``, any timeframe you want
     * Select visualization ``Single Number``
-    * Add the mertic ``avg(repsonse_time)``
+    * Add mertic ``avg(repsonse_time)``
     * Save the widget
 
 Result
@@ -111,16 +111,15 @@ Result
 
 You should now see widgets on your dashboard.
 
-.. image:: /images/dashboard/dashboard_example.png
+.. image:: /images/dashboard/dashboard_example_v2.png
    :align: center
 
-Export a search to a dashboard
+Export a search as a dashboard
 ==============================
 
 the last sections decriped how to create a dashboard from scratch, but you can also transform an existing search to a dashboard.
 All you need to do is to click on the three dots on the right side of the search bar and select the option *Export as dashboard*.
 The newly created dashboard is just a draft and you will need to click on the *Save as* button to create the dashboard permanently.
-When you 
 
 .. image:: /images/dashboard/dashboard_export.png
    :align: center

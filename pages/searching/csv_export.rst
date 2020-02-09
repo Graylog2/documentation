@@ -1,6 +1,6 @@
 Export results as CSV
 ^^^^^^^^^^^^^^^^^^^^^
-It is also possible to export the results of your search as a CSV document. To do so, click on the three dots on the right side of the searchbar and select the *Export as CSV* option.
+It is also possible to export the results of your search as a CSV document. To do so, click on the three dots on the right side of the search bar and select the *Export as CSV* option.
 
 .. image:: /images/searching/csv_export.png
    :align: center
