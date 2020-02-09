@@ -48,7 +48,7 @@ Configuring an aggregation
 As describe in the previous section a click on `+ Create` -> `Aggreatation` will create an empty widget on the very top of the search page.
 A click on the `chevron icon -> Edit` on the right side of the head will open the widget in a modal in the edit mode.
 
-.. image:: /images/searching/views_create_aggregation.png
+.. image:: /images/searching/widget_aggregation_edit.png
    :align: center
 
 :METRICS:
@@ -79,6 +79,14 @@ A click on the `chevron icon -> Edit` on the right side of the head will open th
    The order of the result values can be configured here. **SORTING** defines
    by which field the sorting should happen and **DIRECTION** configures
    if it will be ``ascending`` or ``descending``.
+
+:INTERPOLATION:
+   Visualizations like the ``Area Chart`` and ``Line Chart`` support different interpolation types.
+   The available interpolation types are ``Linear``, ``Step-after`` and ``Spline``.
+
+:EVENT ANNOTATIONS:
+   All viualizations which can display a timeline (``Area Chart``, ``Bar chart``, ``Line Chart``,  ``Scatter Plot``) support event annotations.
+   Each event will be displayed as an entry on the time axis.
 
 .. _widgets-message-table:
 
@@ -138,7 +146,7 @@ Value actions
 The value actions produce different results depending on the type of the
 value and where the menu is opened. The following actions can be executed.
 
-.. image:: /images/searching/views_value_actions.png
+.. image:: /images/searching/widget_aggregation_edit.png
    :align: center
 
 :Insert into view:
