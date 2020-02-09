@@ -4,7 +4,7 @@
 Searching
 *********
 
-The search page is the heart of the Graylog. You can execute a query and visualize the search result with a variety of widgets. Any search can be saved or exported as a dashboard.
+The search page is the heart of Graylog. You can execute a query and visualize the search result with a variety of widgets. Any search can be saved or exported as a dashboard.
 Saved searches allow to easily reuse specific search configurations. Dashboards enable widget specific search queries and can be shared, so other people can use them in their processes.
 For a better work flow Parameters can be added in the search query. Parameters are part of the Graylog Enterprise plugin.
 With 3.2 we have rewritten the search interface and unified the layout for the main search, saved searches and dashboards.

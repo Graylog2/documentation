@@ -1,8 +1,9 @@
-Saved searches
+.. _saved-searches:
+
+Saved Searches
 ---------------------
 
-Sometimes you may want to search a specific search configuration to be used later. Graylog provides a saved search functionality
-to accomplish exactly that.
+Sometimes you may want a specific search configuration to be used later. Graylog provides a saved search functionality to accomplish exactly that.
 
 Once you submitted your search, click on the *Save* button on the right side of the search bar.
 

@@ -4,7 +4,7 @@ Widgets
 ---------------------
 
 Graylog supports a wide variety of widgets that allow you to quickly visualize data from your logs.
-A widget is either a Message Table or an Aggregation.
+A widget is either a :ref:`widgets-message-table` or an :ref:`widgets-aggregation`.
 This section intends to give you some information to better understand each widget type, and how they can
 help you to see relevant details from the many logs you receive.
 

@@ -21,8 +21,8 @@ an overview of all related decorators.
 .. image:: /images/searching/decorator_overview.png
    :align: center
 
-To add new default decorators for a stream, click on the *Update* button. This will open a modal which provides two selects,
-one to specifiy the stream and one choose the type of the decorator. After creating a decorator you need to *Save* the changes to finish the configuration.
+To add new default decorators to a stream, click on the *Update* button. This will open a modal which provides two selects,
+one to specifiy the stream and one to define the type of the decorator. After creating a decorator you need to *Save* the changes to finish the configuration.
 
 .. image:: /images/searching/decorator_creation.png
    :align: center
@@ -33,10 +33,10 @@ drag and drop in the decorator list inside the modal.
 List active decorators
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The message table widget provides an overview of all active decorators. When opening the stream search page, by slecting a stream on the "Streams" page,
+The message table widget provides an overview of all active decorators. When opening the stream search page, by selecting a stream on the "Streams" page,
 the widget will be preconfigured and display the related search results. Editing the message table widget will open a modal with an overview of all active decorators.
 You can also add decorators here, but they will not be saved or associated with the stream. If you want to save a decorator only for a specific message table,
-you can do this inside a dashboard or saved search.
+you can do this inside a :ref:`dashboards` or :ref:`saved-searches`.
 
 .. image:: /images/searching/decorator_message_table.png
    :align: center
