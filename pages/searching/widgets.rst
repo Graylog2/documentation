@@ -165,18 +165,13 @@ value and where the menu is opened. The following actions can be executed.
    This action will highlight this value for this field in all
    Message Tables and Data Tables.
 
-Repositioning widgets
-^^^^^^^^^^^^^^^^^^^^^
+Repositioning and Resizing
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Just grab a widget with your mouse in unlocked dashboard mode and move it around. Other widgets should
-adopt and re-position intelligently to make place for the widget you are moving. The positions are
-automatically saved when dropping a widget.
+Widgets can be freely placed inside the search result grid. You can drag and drop it with the three lines
+left to the widget name or you resize it by using the gray arrow in its bottom-right corner.
+To expand a widget to the full grid width, click on the arrow in its top-right corner.
 
-Resizing widgets
-^^^^^^^^^^^^^^^^
-
-When hovering over a widget, you will see that a gray arrow appears in its bottom-right corner. You can use that
-icon to resize widgets. Their contents will adapt to the new size automatically!
-
-.. image:: /images/dashboard/widget_resize.png
+.. image:: /images/searching/widget_repositioning_and_resizing.png
    :align: center
+
