@@ -22,7 +22,7 @@ This guide will take you through the process of creating dashboards and storing 
 At the end you will have a dashboard with automatically updating information that you can share with
 anybody or just a subset of people based on permissions.
 
-.. image:: /images/dashboard/dashboard_example.png
+.. image:: /images/dashboard/dashboard_example_v2.png
    :align: center
 
 How to use dashboards
@@ -35,7 +35,7 @@ Navigate to the *Dashboards* section using the link in the top menu bar of your 
 The page is listing all dashboards that you are allowed to view. (More on permissions later.) Hit the
 *Create new dashboard* button to create a new empty dashboard.
 
-.. image:: /images/dashboard/dashboard_create.png
+.. image:: /images/dashboard/dashboard_create_v2.png
    :align: center
 
 You should now see your new dashboard. Hit the *Save as* button on the right side of the search bar to save the dashboard. 
