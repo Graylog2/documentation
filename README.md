@@ -115,6 +115,14 @@ Build the documentation and automatically build them on any change:
     # make livehtml
     # open http://127.0.0.1:8000/
 
+Once you've run `make html` or `make livehtml` reStructuredText syntax errors will not be displayed.
+It's recommended to run `make clean && make html` to check for any errors before creating a PR.
+
+### updating images
+
+When updating an image you will need to change its name, otherwise the CDN cache will not immediately deliver the new image.
+If you don't want to change the name, just add a suffix like `_v2`.
+
 ### fix broken virtualenv
 
 You might update your python version and the virtualenv did not work anymore for some reasons. The linked gist can guide you out of that situation:
