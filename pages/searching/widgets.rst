@@ -1,14 +1,35 @@
+.. _widgets:
+
 Widgets
 ---------------------
 
-A widget is either a Message Table or an Aggregation. It can be freely
-placed inside a query. A widget can be edited or duplicated by clicking
+Graylog supports a wide variety of widgets which allow you to quickly visualize data from your logs.
+A widget is either a :ref:`widgets-message-table` or an :ref:`widgets-aggregation`.
+This section intends to give you some information to better understand each widget type, and how they can
+help you to see relevant details from the many logs you receive.
+
+A widget can be freely placed inside a query. A widget can be edited or duplicated by clicking
 on the chevron on the right side in the head of the widget.
-Next to the chevron is a filter symbol, where filters can be added to the
-top search query.
 
 .. image:: /images/searching/views_widget.png
    :align: center
+
+Creating a widget
+^^^^^^^^^^^^^^^^^
+To add a widget for your search or dashboard, open the sidebar and the "Create" section. You can also open the section directly by
+clicking on the plus sign.
+
+.. image:: /images/searching/views_widget_create.png
+   :align: center
+
+You can create an empty ":ref:`widgets-aggregation`". or a predefined widget by selecting the ":ref:`widgets-message-table`" or "Message Count" .
+
+Empty aggregation widget:
+
+.. image:: /images/searching/views_widget_aggregation_create.png
+   :align: center
+
+.. _widgets-aggregation:
 
 Aggregation
 ^^^^^^^^^^^
@@ -19,14 +40,12 @@ long a page needed to be rendered).
 Or string values which can be used for grouping the aggregation
 (e.g an action field which contains the name of the controller action).
 
-Creating an aggregation
-"""""""""""""""""""""""
-By clicking on `+ Create` -> `Custom Aggreatation` a new empty widget will
-be shown on the very top of the Extended Search page.
-A click on the chevron icon on the right side of the head will open the widget
-in a modal in the edit mode.
+Configuring an aggregation
+""""""""""""""""""""""""""
+As describe in the previous section a click on `+ Create` -> `Aggreatation` will create an empty widget on the very top of the search page.
+A click on the `chevron icon -> Edit` on the right side of the head will open the widget edit modal.
 
-.. image:: /images/searching/views_create_aggregation.png
+.. image:: /images/searching/widget_aggregation_edit.png
    :align: center
 
 :METRICS:
@@ -48,8 +67,8 @@ in a modal in the edit mode.
 
 :VISUALIZATION:
    To display the result of an aggregation it is often easier to
-   compare lots of result values graphically. ``Bar Chart``,
-   ``Data Table``, ``Line Chart``, ``Pie Chart``, ``Scatter Plot``,
+   compare lots of result values graphically. ``Area Chart``, ``Bar Chart``,
+   ``Heatmap``, ``Data Table``, ``Line Chart``, ``Pie Chart``, ``Scatter Plot``,
    ``Single Number`` or ``World Map`` can be used as **VISUALIZATION**.
    The ``World Map`` needs geographical points in the form of ``latitude,longitude``.
 
@@ -58,6 +77,15 @@ in a modal in the edit mode.
    by which field the sorting should happen and **DIRECTION** configures
    if it will be ``ascending`` or ``descending``.
 
+:INTERPOLATION:
+   Visualizations like the ``Area Chart`` and ``Line Chart`` support different interpolation types.
+   The available interpolation types are ``Linear``, ``Step-after`` and ``Spline``.
+
+:EVENT ANNOTATIONS:
+   All viualizations which can display a timeline (``Area Chart``, ``Bar chart``, ``Line Chart``,  ``Scatter Plot``) support event annotations.
+   Each event will be displayed as an entry on the time axis.
+
+.. _widgets-message-table:
 
 Message Table
 ^^^^^^^^^^^^^
@@ -141,3 +169,13 @@ value and where the menu is opened. The following actions can be executed.
 :Highlight this value:
    This action will highlight this value for this field in all
    Message Tables and Data Tables.
+
+Repositioning and Resizing
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Widgets can be freely placed inside the search result grid. You can drag and drop them with the three lines
+left to the widget name or you resize them by using the gray arrow in their bottom-right corner.
+To expand a widget to the full grid width, click on the arrow in its top-right corner.
+
+.. image:: /images/searching/widget_repositioning_and_resizing.png
+   :align: center

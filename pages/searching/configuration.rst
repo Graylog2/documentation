@@ -11,7 +11,7 @@ All search configuration settings can be customized using the web interface on t
 Query time range limit
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Sometimes the amount of data stored in Graylog is quite big and spans a wide time range (e. g. multiple years). In order to prevent normal users from accidentally running search queries which could use up lots of resources, it is possible to limit the time range that users are allowed to search in.
+Sometimes the amount of data stored in Graylog is quite big and spans a wide time range (e. g. multiple years). In order to prevent daily users from accidentally running search queries which could use up lots of resources, it is possible to limit the time range that users are allowed to search in.
 
 Using this feature, the time range of a search query exceeding the configured query time range limit will automatically be adapted to the given limit.
 
@@ -45,7 +45,7 @@ ISO 8601 duration Description
 ``P1DT12H``       1 day and 12 hours
 ================= ===========
 
-More details about the format of ISO 8601 durations can be found `on Wikipedia <https://en.wikipedia.org/wiki/ISO_8601#Durations>`_.
+More details about the format of ISO 8601 durations can be found `here <https://www.iso.org/obp/ui#iso:std:iso:8601:-1:ed-1:v1:en>`_.
 
 
 Relative time ranges
