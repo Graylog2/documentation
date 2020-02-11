@@ -38,6 +38,8 @@ Accounted Message Size Field
 
 Every message now includes the ``gl2_accounted_message_size`` field. To make sure this field will be created with the correct data type in all active write indices, the mapping of these indices needs to be updated. New indices created by index rotation will automatically have the correct mapping because the index template got updated automatically.
 
+.. note:: The index mapping for the field ``gl2_accounted_message_size`` needs only be done if you want to use that instand. The next regular index rotation will create this for all new indices.  
+
 .. warning:: The following steps need to be executed **before** starting the server with the 3.2.0 version!
 
 All of the following commands need to be executed against one of the Elasticsearch servers in the cluster.

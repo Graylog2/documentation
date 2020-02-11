@@ -49,7 +49,7 @@ Elasticsearch
 
 Graylog can be used with Elasticsearch 6.x, please follow the below instructions to install the open source version of Elasticsearch. ::
 
-    $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch -o myKey
+    $ wget -q https://artifacts.elastic.co/GPG-KEY-elasticsearch -O myKey
     $ sudo apt-key add myKey
     $ echo "deb https://artifacts.elastic.co/packages/oss-6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
     $ sudo apt-get update && sudo apt-get install elasticsearch-oss
