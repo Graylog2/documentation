@@ -40,7 +40,6 @@ The filepath of the json file with the additional field being collected need to 
   }
 
 `IPFIX Data Types <https://www.iana.org/assignments/ipfix/ipfix.xhtml#ipfix-information-element-data-types>`_
-^^^^^^^^^^^^^^^^^
 
 .. image:: /images/ipfix_data_types.png
     :width: 500
