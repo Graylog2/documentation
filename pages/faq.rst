@@ -174,7 +174,7 @@ It’s also easy and fun to :doc:`write your own <plugins>`, which you can then 
 I don’t want to use Elasticsearch as my backend storage system – can I use another database, like MySQL, Oracle, etc?
 ---------------------------------------------------------------------------------------------------------------------
 
-You can, but we don’t suggest you do. You will not be able to use our query functionality or our analytic engine on the dataset outside the system. We only recommend another database if you want it for secondary storage.
+Currently you can't. We only recommend another database if you want it for secondary storage.
 
 How can I create a restricted user to check internal Graylog metrics in my monitoring system?
 ---------------------------------------------------------------------------------------------
