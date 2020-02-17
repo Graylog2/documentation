@@ -24,7 +24,7 @@ There is always exactly one index to which new messages are written until the co
 
 A background task continuously checks if the rotation criterion of an index set has been met and a new index is created and prepared when that happens.
 Once the index is ready, the index alias is atomically switched to it.
-That means that all Graylog nodes can write messages to the into alias without even knowing what the currently write-active index of the index set is.
+That means that all Graylog nodes can write messages into the alias without even knowing what the currently write-active index of the index set is.
 
 .. image:: /images/index_sets/index_model_write.png
 
