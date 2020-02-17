@@ -22,7 +22,7 @@ Then there are devices out there that at least do not claim to send syslog when 
 separate log format that needs to be parsed specifically.
 
 We decided not to write custom message inputs and parsers for all those thousands of devices, formats, firmwares and
-configuration parameters out there but came up with the concept of *Extractors* introduced the *v0.20.0* series of Graylog.
+configuration parameters out there but came up with the concept of *Extractors* introduced in the *v0.20.0* series of Graylog.
 
 Graylog extractors explained
 ****************************
