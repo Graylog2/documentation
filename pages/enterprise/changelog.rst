@@ -2,6 +2,16 @@
 Changelog
 *********
 
+Graylog Enterprise 3.2.2
+========================
+
+Released: 2020-02-20
+
+**Fixed**
+
+- Fix missing rows in message table widget in reports. `Graylog2/graylog2-server#7349 <https://github.com/Graylog2/graylog2-server/issues/7349>`_ `Graylog2/graylog2-server#7492 <https://github.com/Graylog2/graylog2-server/issues/7492>`_
+- Don't try to archive indices which have already been archived.
+
 Graylog Enterprise 3.2.1
 ========================
 
