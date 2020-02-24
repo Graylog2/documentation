@@ -177,9 +177,7 @@ Navigate :
 ----------
 System/Inputs -> Inputs -> Select `Launch JSON path from HTTP API`, click `Launch Input`, and fill in details as below::
 
-   set source = github ,jsonpath = $.[*].download_count, interval time unit = Minutes
-
-
+   set source = github ,jsonpath = $.download_count, interval time unit = Minutes
 
 Example
 -------
