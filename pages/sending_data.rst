@@ -175,9 +175,9 @@ The JSON path from HTTP API input is reading any JSON response of a REST resourc
 
 Navigate :
 ----------
-System/Inputs -> Inputs -> Select `Launch JSON path from HTTP API`, click `Launch Input`, and fill in details as below::
+System/Inputs -> Inputs -> Select `Launch JSON path from HTTP API`, click `Launch Input`, set significant field values and `save` Input ::
 
-   set source = github ,jsonpath = $.download_count, interval time unit = Minutes
+    source = github ,jsonpath = $.download_count, interval time unit = Minutes
 
 Example
 -------
