@@ -135,7 +135,7 @@ Field actions are shown when a field name (and not its value) is clicked.
    Add the field to the displayed fields of all tables.
 :Remove from table:
    Remove the field from the list displayed fields from this table.
-:Remove from table:
+:Remove from all tables:
    Remove the field from the list displayed fields from all tables.
 
 Value actions
