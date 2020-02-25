@@ -173,6 +173,12 @@ JSON path from HTTP API input
 
 The JSON path from HTTP API input is reading any JSON response of a REST resource and stores a field value of it as a Graylog message.
 
+Navigate :
+----------
+System/Inputs -> Inputs -> Select `Launch JSON path from HTTP API`, click `Launch Input`, set significant field values and `save` Input ::
+
+    source = github ,jsonpath = $.download_count, interval time unit = Minutes
+
 Example
 -------
 
