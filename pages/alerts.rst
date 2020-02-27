@@ -29,6 +29,12 @@ process at any time.
 
 .. image:: /images/alerts_event_details.png
 
+Priority
+--------
+The Priority of an Event is a classification for user purpose. The priority of an event
+will be displayed as a thermometer icon in the over view and will be written into the notification.
+
+
 Filter
 ======
 By combining a Filter and an Aggregation you can specifically describe the criteria of an Event.
