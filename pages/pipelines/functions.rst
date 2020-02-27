@@ -1203,7 +1203,7 @@ lookup_table_set_string_list
 Set a string list in the named lookup table. Returns the new value on success, null on failure.
 
 lookup_set_value
----------------
+----------------
 ``lookup_set_value(lookup_table, key, value)``
 
 Set a single value in the named lookup table. Returns the new value on success, null on failure.
