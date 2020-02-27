@@ -221,7 +221,7 @@ from MaxMind ASN, Country and City databases.
 
 
 Enterprise Data Adapters
-========================
+------------------------
 
 Graylog Enterprise brings another Lookup Table Data Adapter.
 
