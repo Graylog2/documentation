@@ -237,6 +237,14 @@ For a detail look on how to interact with the MongoDB Data Adapter please have a
 at the :ref:`API browser<configuring_api>` at ``api/api-browser/#!/Plugins/MongoDBDataAdapter``.
 There you can see that you can add, update, list and delete key value pairs of the data adapter.
 
+Here an example on how to add a key to an mongodb adapter with an api token::
+
+    curl -u d2tirtpunshmgdsbq5k3j0g4ku230ggruhsqpa0iu7mj1lia55i:token \
+      -H 'X-Requested-By: cli' -H 'Accept: application/json' \
+      -X POST 'http://127.0.0.1:9000/api/plugins/org.graylog.plugins.lookup/lookup/adapters/mongodb/mongodb-data-name' \
+      -H 'Content-Type: application/json' \
+      --data-binary $'{\n"key": "myIP",\n"values": ["12.34.42.99"],\n"data_adapter_id":"5e578606cdda4779dd9f2611"\n}'
+
 Alter from Pipeline Function
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 A reference of the pipeline functions handling the lookup table values can be found in
