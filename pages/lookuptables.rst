@@ -219,3 +219,33 @@ Geo IP - MaxMind Databases
 Provides the ability to extract geolocation information of IP addresses
 from MaxMind ASN, Country and City databases.
 
+
+Enterprise Data Adapters
+========================
+Graylog Enterprise brings another Lookup Table Data Adapter.
+
+MongoDB
+-------
+This data adapter stores its keys and values in the Graylog configuration database.
+The entries of the database can be altered via pipeline functions and HTTP Rest API calls.
+That way you can alter the result of the lookup table call based on incoming logs or
+from an external source.
+
+Alter from HTTP Rest API
+^^^^^^^^^^^^^^^^^^^^^^^^
+For a detail look on how to interact with the MongoDB Data Adapter please have a look
+at the :ref:`API browser<configuring_api>` at ``api/api-browser/#!/Plugins/MongoDBDataAdapter``.
+There you can see that you can add, update, list and delete key value pairs of the data adapter.
+
+Alter from Pipeline Function
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A reference of the pipeline functions handling the lookup table values can be found in
+the :ref:`pipeline rules functions<pipeline_functions>` section of the documentation.
+
+Alter from GUI
+^^^^^^^^^^^^^^
+The values of the mongodb adapter can also be altered directly via the GUI.
+
+.. image:: /images/alter-mongodb-data-adapter.png
+
+.. attention:: To add multiple values for one key, you need to separate the values by new lines.

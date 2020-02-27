@@ -1,3 +1,4 @@
+.. _pipeline_functions:
 *********
 Functions
 *********
@@ -1174,6 +1175,43 @@ Example::
           set_field("dst_ip_geo_country_name", geo["country"].names.en);
           set_field("dst_ip_geo_city_name", geo["city"].names.en);
         end
+
+lookup_add_string_list
+----------------------
+``lookup_add_string_list(lookup_table, key, value, [keep_duplicates])``
+
+Add a string list in the named lookup table. Returns the updated list on success, null on failure.
+
+lookup_clear_key
+----------------
+``lookup_clear_key(lookup_table, key)``
+
+Clear (remove) a key in the named lookup table.
+
+lookup_remove_string_list
+-------------------------
+``lookup_remove_string_list(lookup_table, key, value)``
+
+Remove the entries of the given string list from the named lookup table. Returns the updated
+list on success, null on failure.
+
+lookup_table_set_string_list
+----------------------------
+``lookup_set_string_list(lookup_table, key, value)``
+
+Set a string list in the named lookup table. Returns the new value on success, null on failure.
+
+lookup_set_value
+---------------
+``lookup_set_value(lookup_table, key, value)``
+
+Set a single value in the named lookup table. Returns the new value on success, null on failure.
+
+lookup_string_list
+------------------
+``lookup_string_list(lookup_table, key, [default])``
+
+Looks up a string list value in the named lookup table.
 
 lookup_value
 ------------
