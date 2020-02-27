@@ -222,10 +222,12 @@ from MaxMind ASN, Country and City databases.
 
 Enterprise Data Adapters
 ========================
+
 Graylog Enterprise brings another Lookup Table Data Adapter.
 
 MongoDB
 -------
+
 This data adapter stores its keys and values in the Graylog configuration database.
 The entries of the database can be altered via pipeline functions and HTTP Rest API calls.
 That way you can alter the result of the lookup table call based on incoming logs or
