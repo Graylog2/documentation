@@ -42,6 +42,8 @@ However, it may be useful to augment the filtered data with an aggregation
 If the defined Filter matches messages currently within the Graylog Server, they will be displayed
 in the Filter Preview panel on the right.
 
+.. _event_filter_dynamic:
+
 Filter with dynamic lists (Enterprise feature)
 ----------------------------------------------
 
