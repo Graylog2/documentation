@@ -90,177 +90,178 @@ The following list describes the built-in functions that ship with Graylog. Addi
 plugins in the marketplace.
 
 
-.. hlist::
-    :columns: 2
-    
-    - `debug`_
-      - Print the passed value as string in the Graylog log.
-    - `to_bool`_
-      - Converts the single parameter to a boolean value using its string value.
-    - `to_double`_
-      - Converts the first parameter to a double floating point value.
-    - `to_long`_
-      - Converts the first parameter to a long integer value.
-    - `to_string`_
-      - Converts the first parameter to its string representation.
-    - `to_url`_
-      - Converts a value to a valid URL using its string representation.
-    - `to_map`_
-      - Converts a value to a map.
-    - `is_null`_
-      - Checks whether a value is ``null``.
-    - `is_not_null`_
-      - Checks whether a value is not ``null``.
-    - `is_boolean`_
-      - Checks whether a value is a boolean value (``true`` or ``false``).
-    - `is_number`_
-      - Checks whether a value is a numeric value (of type ``long`` or ``double``).
-    - `is_double`_
-      - Checks whether a value is a floating point value (of type ``double``).
-    - `is_long`_
-      - Checks whether a value is an integer value (of type ``long``).
-    - `is_string`_
-      - Checks whether a value is a string.
-    - `is_collection`_
-      - Checks whether a value is an iterable collection.
-    - `is_list`_
-      - Checks whether a value is an iterable list.
-    - `is_map`_
-      - Checks whether a value is a map.
-    - `is_date`_
-      - Checks whether a value is a date (of type ``DateTime``).
-    - `is_period`_
-      - Checks whether a value is a time period (of type ``Period``).
-    - `is_ip`_
-      - Checks whether a value is an IP address (IPv4 or IPv6).
-    - `is_json`_
-      - Checks whether a value is a parsed JSON tree.
-    - `is_url`_
-      - Checks whether a value is a parsed URL.
-    - `abbreviate`_
-      - Abbreviates a String using ellipses.
-    - `capitalize`_
-      - Capitalizes a String changing the first letter to title case.
-    - `uncapitalize`_
-      - Uncapitalizes a String changing the first letter to lower case.
-    - `uppercase`_
-      - Converts a String to upper case.
-    - `lowercase`_
-      - Converts a String to lower case.
-    - `swapcase`_
-      - Swaps the case of a String.
-    - `contains`_
-      - Checks if a string contains another string.
-    - `replace`_
-      - Replaces the first "max" or all occurrences of a string within another string
-    - `starts_with`_
-      - Checks if a string starts with a given prefix.
-    - `ends_with`_
-      - Checks if a string ends with a given suffix.
-    - `substring`_
-      - Returns a substring of ``value`` with the given start and end offsets.
-    - `concat`_
-      - Concatenates two strings.
-    - `split`_
-      - Split a string around matches of this pattern (Java syntax).
-    - `regex`_
-      - Match a regular expression against a string, with matcher groups.
-    - `regex_replace`_
-      - Match a regular expression against a string and replace with string.
-    - `grok`_
-      - Applies a Grok pattern to a string.
-    - `key_value`_
-      - Extracts key/value pairs from a string.
-    - `crc32`_
-      - Returns the hex encoded CRC32 digest of the given string.
-    - `crc32c`_
-      - Returns the hex encoded CRC32C (RFC 3720, Section 12.1) digest of the given string.
-    - `md5`_
-      - Returns the hex encoded MD5 digest of the given string.
-    - `murmur3_32`_
-      - Returns the hex encoded MurmurHash3 (32-bit) digest of the given string.
-    - `murmur3_128`_
-      - Returns the hex encoded MurmurHash3 (128-bit) digest of the given string.
-    - `sha1`_
-      - Returns the hex encoded SHA1 digest of the given string.
-    - `sha256`_
-      - Returns the hex encoded SHA256 digest of the given string.
-    - `sha512`_
-      - Returns the hex encoded SHA512 digest of the given string.
-    - `parse_json`_
-      - Parse a string into a JSON tree.
-    - `select_jsonpath`_
-      - Selects one or more named JSON Path expressions from a JSON tree.
-    - `to_ip`_
-      - Converts the given string to an IP object.
-    - `cidr_match`_
-      - Checks whether the given IP matches a CIDR pattern.
-    - `from_input`_
-      - Checks whether the current message was received by the given input.
-    - `route_to_stream`_
-      - Assigns the current message to the specified stream.
-    - `remove_from_stream`_
-      - Removes the current message from the specified stream.
-    - `create_message`_
-      - **Currently incomplete** Creates a new message which will be evaluated by the entire processing pipeline.
-    - `clone_message`_
-      - Clones a message.
-    - `drop_message`_
-      - This currently processed message will be removed from the processing pipeline after the rule finishes.
-    - `has_field`_
-      - Checks whether the currently processed message contains the named field.
-    - `remove_field`_
-      - Removes the named field from the currently processed message.
-    - `set_field`_
-      - Sets the name field to the given value in the currently processed message.
-    - `set_fields`_
-      - Sets multiple fields to the given values in the currently processed message.
-    - `rename_field`_
-      - Rename a message field.
-    - `syslog_facility`_
-      - Converts a syslog facility number to its string representation.
-    - `syslog_level`_
-      - Converts a syslog level number to its string representation.
-    - `expand_syslog_priority`_
-      - Converts a syslog priority number to its level and facility.
-    - `expand_syslog_priority_as_string`_
-      - Converts a syslog priority number to its level and facility string representations.
-    - `now`_
-      - Returns the current date and time.
-    - `parse_date`_
-      - Parses a date and time from the given string, according to a strict pattern.
-    - `flex_parse_date`_
-      - Attempts to parse a date and time using the Natty date parser.
-    - `parse_unix_milliseconds`_
-      - Attempts to parse a UNIX millisecond timestamp (milliseconds since 1970-01-01T00:00:00.000Z).
-    - `format_date`_
-      - Formats a date and time according to a given formatter pattern.
-    - `to_date`_
-      - Converts a type to a date.
-    - `years`_
-      - Create a period with a specified number of years.
-    - `months`_
-      - Create a period with a specified number of months.
-    - `weeks`_
-      - Create a period with a specified number of weeks.
-    - `days`_
-      - Create a period with a specified number of days.
-    - `hours`_
-      - Create a period with a specified number of hours.
-    - `minutes`_
-      - Create a period with a specified number of minutes.
-    - `seconds`_
-      - Create a period with a specified number of seconds.
-    - `millis`_
-      - Create a period with a specified number of millis.
-    - `period`_
-      - Parses an ISO 8601 period from the specified string.
-    - `lookup`_
-      - Looks up a multi value in the named lookup table.
-    - `lookup_value`_
-      - Looks up a single value in the named lookup table.
+.. list-table:: Built-in Functions
+    :header-rows: 1
+    :widths: 7 20
 
--------
+    * - Name
+      - Description
+    * - `debug`_
+      - Print the passed value as string in the Graylog log.
+    * - `to_bool`_
+      - Converts the single parameter to a boolean value using its string value.
+    * - `to_double`_
+      - Converts the first parameter to a double floating point value.
+    * - `to_long`_
+      - Converts the first parameter to a long integer value.
+    * - `to_string`_
+      - Converts the first parameter to its string representation.
+    * - `to_url`_
+      - Converts a value to a valid URL using its string representation.
+    * - `to_map`_
+      - Converts a value to a map.
+    * - `is_null`_
+      - Checks whether a value is ``null``.
+    * - `is_not_null`_
+      - Checks whether a value is not ``null``.
+    * - `is_boolean`_
+      - Checks whether a value is a boolean value (``true`` or ``false``).
+    * - `is_number`_
+      - Checks whether a value is a numeric value (of type ``long`` or ``double``).
+    * - `is_double`_
+      - Checks whether a value is a floating point value (of type ``double``).
+    * - `is_long`_
+      - Checks whether a value is an integer value (of type ``long``).
+    * - `is_string`_
+      - Checks whether a value is a string.
+    * - `is_collection`_
+      - Checks whether a value is an iterable collection.
+    * - `is_list`_
+      - Checks whether a value is an iterable list.
+    * - `is_map`_
+      - Checks whether a value is a map.
+    * - `is_date`_
+      - Checks whether a value is a date (of type ``DateTime``).
+    * - `is_period`_
+      - Checks whether a value is a time period (of type ``Period``).
+    * - `is_ip`_
+      - Checks whether a value is an IP address (IPv4 or IPv6).
+    * - `is_json`_
+      - Checks whether a value is a parsed JSON tree.
+    * - `is_url`_
+      - Checks whether a value is a parsed URL.
+    * - `abbreviate`_
+      - Abbreviates a String using ellipses.
+    * - `capitalize`_
+      - Capitalizes a String changing the first letter to title case.
+    * - `uncapitalize`_
+      - Uncapitalizes a String changing the first letter to lower case.
+    * - `uppercase`_
+      - Converts a String to upper case.
+    * - `lowercase`_
+      - Converts a String to lower case.
+    * - `swapcase`_
+      - Swaps the case of a String.
+    * - `contains`_
+      - Checks if a string contains another string.
+    * - `replace`_
+      - Replaces the first "max" or all occurrences of a string within another string
+    * - `starts_with`_
+      - Checks if a string starts with a given prefix.
+    * - `ends_with`_
+      - Checks if a string ends with a given suffix.
+    * - `substring`_
+      - Returns a substring of ``value`` with the given start and end offsets.
+    * - `concat`_
+      - Concatenates two strings.
+    * - `split`_
+      - Split a string around matches of this pattern (Java syntax).
+    * - `regex`_
+      - Match a regular expression against a string, with matcher groups.
+    * - `regex_replace`_
+      - Match a regular expression against a string and replace with string.
+    * - `grok`_
+      - Applies a Grok pattern to a string.
+    * - `key_value`_
+      - Extracts key/value pairs from a string.
+    * - `crc32`_
+      - Returns the hex encoded CRC32 digest of the given string.
+    * - `crc32c`_
+      - Returns the hex encoded CRC32C (RFC 3720, Section 12.1) digest of the given string.
+    * - `md5`_
+      - Returns the hex encoded MD5 digest of the given string.
+    * - `murmur3_32`_
+      - Returns the hex encoded MurmurHash3 (32-bit) digest of the given string.
+    * - `murmur3_128`_
+      - Returns the hex encoded MurmurHash3 (128-bit) digest of the given string.
+    * - `sha1`_
+      - Returns the hex encoded SHA1 digest of the given string.
+    * - `sha256`_
+      - Returns the hex encoded SHA256 digest of the given string.
+    * - `sha512`_
+      - Returns the hex encoded SHA512 digest of the given string.
+    * - `parse_json`_
+      - Parse a string into a JSON tree.
+    * - `select_jsonpath`_
+      - Selects one or more named JSON Path expressions from a JSON tree.
+    * - `to_ip`_
+      - Converts the given string to an IP object.
+    * - `cidr_match`_
+      - Checks whether the given IP matches a CIDR pattern.
+    * - `from_input`_
+      - Checks whether the current message was received by the given input.
+    * - `route_to_stream`_
+      - Assigns the current message to the specified stream.
+    * - `remove_from_stream`_
+      - Removes the current message from the specified stream.
+    * - `create_message`_
+      - **Currently incomplete** Creates a new message which will be evaluated by the entire processing pipeline.
+    * - `clone_message`_
+      - Clones a message.
+    * - `drop_message`_
+      - This currently processed message will be removed from the processing pipeline after the rule finishes.
+    * - `has_field`_
+      - Checks whether the currently processed message contains the named field.
+    * - `remove_field`_
+      - Removes the named field from the currently processed message.
+    * - `set_field`_
+      - Sets the name field to the given value in the currently processed message.
+    * - `set_fields`_
+      - Sets multiple fields to the given values in the currently processed message.
+    * - `rename_field`_
+      - Rename a message field.
+    * - `syslog_facility`_
+      - Converts a syslog facility number to its string representation.
+    * - `syslog_level`_
+      - Converts a syslog level number to its string representation.
+    * - `expand_syslog_priority`_
+      - Converts a syslog priority number to its level and facility.
+    * - `expand_syslog_priority_as_string`_
+      - Converts a syslog priority number to its level and facility string representations.
+    * - `now`_
+      - Returns the current date and time.
+    * - `parse_date`_
+      - Parses a date and time from the given string, according to a strict pattern.
+    * - `flex_parse_date`_
+      - Attempts to parse a date and time using the Natty date parser.
+    * - `parse_unix_milliseconds`_
+      - Attempts to parse a UNIX millisecond timestamp (milliseconds since 1970-01-01T00:00:00.000Z).
+    * - `format_date`_
+      - Formats a date and time according to a given formatter pattern.
+    * - `to_date`_
+      - Converts a type to a date.
+    * - `years`_
+      - Create a period with a specified number of years.
+    * - `months`_
+      - Create a period with a specified number of months.
+    * - `weeks`_
+      - Create a period with a specified number of weeks.
+    * - `days`_
+      - Create a period with a specified number of days.
+    * - `hours`_
+      - Create a period with a specified number of hours.
+    * - `minutes`_
+      - Create a period with a specified number of minutes.
+    * - `seconds`_
+      - Create a period with a specified number of seconds.
+    * - `millis`_
+      - Create a period with a specified number of millis.
+    * - `period`_
+      - Parses an ISO 8601 period from the specified string.
+    * - `lookup`_
+      - Looks up a multi value in the named lookup table.
+    * - `lookup_value`_
+      - Looks up a single value in the named lookup table.
 
 debug
 -----
