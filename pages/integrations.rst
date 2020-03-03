@@ -31,6 +31,7 @@ Open Source
    integrations/inputs/palo_alto_networks_input
    integrations/inputs/ipfix_input
 
+.. _integrations_enterprise:
 
 Enterprise
 ^^^^^^^^^^
