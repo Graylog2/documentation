@@ -220,10 +220,14 @@ Provides the ability to extract geolocation information of IP addresses
 from MaxMind ASN, Country and City databases.
 
 
+.. _lookuptable_enterprise:
+
 Enterprise Data Adapters
 ------------------------
 
 Graylog Enterprise brings another Lookup Table Data Adapter.
+
+.. _lookuptable_mongodb:
 
 MongoDB
 -------
