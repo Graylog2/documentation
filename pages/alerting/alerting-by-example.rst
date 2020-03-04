@@ -133,7 +133,7 @@ the attackers are using.
 
 .. image:: /images/event-notification.png
 
-Since we use a aggregation event here, the message backlog might not be really helpful
+Since we use an aggregation event here, the message backlog might not be really helpful
 so I leave it off.
 The backlog will show all messages within the time range of ``Search within the last`` and
 use the ``Query`` we entered. If you have a good enough query this can still be helpful.
