@@ -83,7 +83,7 @@ To summarize what we have done here:
    1. We add a stream to minimize the messages we have to filter on.
    2. Insert a query to filter the logs down to our failed logins.
    3. Grouped our logs so the aggregation will be only applied per user.
-   4. And add a rule which states that we only raise an alert if the count more than
+   4. Add a rule which states that we only raise an alert if the count more than
       or equals 10.
 
 .. image:: /images/event-filter.png
