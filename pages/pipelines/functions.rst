@@ -262,6 +262,18 @@ plugins in the marketplace.
       - Looks up a multi value in the named lookup table.
     * - `lookup_value`_
       - Looks up a single value in the named lookup table.
+    * - `lookup_add_string_list`_
+      - Lookup table manipulation.
+    * - `lookup_clear_key`_
+      - Lookup table manipulation.
+    * - `lookup_remove_string_list`_
+      - Lookup table manipulation.
+    * - `lookup_table_set_string_list`_
+      - Lookup table manipulation.
+    * - `lookup_set_value`_
+      - Lookup table manipulation.
+    * - `lookup_string_list`_
+      - Lookup table manipulation.
 
 debug
 -----
@@ -1183,11 +1195,15 @@ lookup_add_string_list
 
 Add a string list in the named lookup table. Returns the updated list on success, null on failure.
 
+.. warning:: This function does only work with the :ref:`MongoDB Lookup Table<lookuptable_mongodb>` at the time of writing.
+
 lookup_clear_key
 ----------------
 ``lookup_clear_key(lookup_table, key)``
 
 Clear (remove) a key in the named lookup table.
+
+.. warning:: This function does only work with the :ref:`MongoDB Lookup Table<lookuptable_mongodb>` at the time of writing.
 
 lookup_remove_string_list
 -------------------------
@@ -1196,11 +1212,15 @@ lookup_remove_string_list
 Remove the entries of the given string list from the named lookup table. Returns the updated
 list on success, null on failure.
 
+.. warning:: This function does only work with the :ref:`MongoDB Lookup Table<lookuptable_mongodb>` at the time of writing.
+
 lookup_table_set_string_list
 ----------------------------
 ``lookup_set_string_list(lookup_table, key, value)``
 
 Set a string list in the named lookup table. Returns the new value on success, null on failure.
+
+.. warning:: This function does only work with the :ref:`MongoDB Lookup Table<lookuptable_mongodb>` at the time of writing.
 
 lookup_set_value
 ----------------
@@ -1208,11 +1228,15 @@ lookup_set_value
 
 Set a single value in the named lookup table. Returns the new value on success, null on failure.
 
+.. warning:: This function does only work with the :ref:`MongoDB Lookup Table<lookuptable_mongodb>` at the time of writing.
+
 lookup_string_list
 ------------------
 ``lookup_string_list(lookup_table, key, [default])``
 
 Looks up a string list value in the named lookup table.
+
+.. warning:: This function does only work with the :ref:`MongoDB Lookup Table<lookuptable_mongodb>` at the time of writing.
 
 lookup_value
 ------------
