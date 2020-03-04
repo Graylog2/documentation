@@ -59,6 +59,7 @@ for a time range of 10 seconds.
 
 
 .. warning:: If  ``Search within the last`` is greater than  ``Execute search every``
+  (which would be called a hopping window)
   the event engine generate multiple events for the same log line. For example if you set
   ``Search within the last`` to one minute and  ``Execute search every`` to 10 seconds
   the engine will find the same log entry 6 times. Since the log entry is visible for one
