@@ -97,7 +97,7 @@ things.
 
 First of all it will be a field which is part of the event. So it will be displayed
 as a field on the search page. That also means you can again run aggregations on that field.
-It can be also part of an notification and can be used for the enterprise feature `correlation`.
+Fields can also be accessed within a notification and can be used for the enterprise feature `correlation`.
 
 Since we have aggregation event definition our field we want to be a key **must** be configured
 in the ``Group by Field(s)``. When aggregating multiple messages to one event we lose all fields
