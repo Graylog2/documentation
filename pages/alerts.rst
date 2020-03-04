@@ -10,7 +10,10 @@ Alerts are created using Event Definitions that consist of Conditions. When a gi
 
 Graylog ships with default *alert conditions* and *alert notifications*, and both can be extended with :ref:`Plugins <plugins>`.
 
-Look :ref:`here <alert_by_example>` for a description of creating an alert by example.
+.. toctree::
+   :titlesonly:
+
+   alerting/alerting-by-example.rst
 
 Alerts & Events
 ===============
