@@ -78,6 +78,8 @@ the Event.
 
 .. image:: /images/alerts_customField_display.png
 
+.. _alert_notification:
+
 Notifications
 =============
 After defining the Events that are needed to trigger an Alert it is possible to attach a Notifcation.
