@@ -38,7 +38,7 @@ Filter
 ^^^^^^
 First of all we choose the ``Stream`` in which our log files are routed. If no stream for
 the web application was created, we highly recommend :ref:`to do that <how_to_create_a_stream>`.
-That way the query result we be limited to the logs of the web application and no other logs
+That way the query result will be limited to the logs of the web application and no other logs
 can influence the filter process.
 
 Now we need to filter the incoming messages so we can later count the messages
@@ -47,7 +47,7 @@ failed authentication look like this:
 
 ``Login failed for user admin from ip 240.210.133.39``
 
-So we add ``Login failed for user`` to our query field. On the right side should
+So we add ``"Login failed for user"`` to our query field. On the right side should
 now a preview table appear which shows the messages matching the query.
 The preview uses ``Search within the last`` as time range. If you provoke
 a log entry now, you should see at least this message after updating the
@@ -92,7 +92,7 @@ By hitting next we come to the Fields page of the wizard.
 
 Fields
 ^^^^^^
-Here we can now add a custom field to our event. This field can be used for several
+Here we can now add a custom field to our event. This fields can be used for several
 things.
 
 First of all it will be a field which is part of the event. So it will be displayed
