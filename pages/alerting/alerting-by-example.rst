@@ -1,3 +1,5 @@
+.. _alert_by_example:
+
 Alerting by Example
 -------------------
 
@@ -108,14 +110,14 @@ At first we add a `Name` for our key. This is also the reference for future use,
 of the event message, later to aggregate on. Then we set `Use Field as Event Key` to true. This means
 the notifications will be grouped by this key. This is important in the next step for the group key is
 considered in the grace period. The number is reflecting the order in the grouping. If we would add another
-key (like the ip address from which the user connects), then we would first group by user and then group
-by ip, entering 2 for the ip address here.
+key (like the IP address from which the user connects), then we would first group by user and then group
+by IP, entering 2 for the IP address here.
 
 For `Set Value From` we choose the template. This will extract the field from the resulting aggregation
 or filtered log message. Here we enter `${source.user}`. The resulting aggregation will be the `source`
 containing a field `user` since we entered it in the ``Group by Field(s)``.
 
-If we would like to events which could not set the key - this is more important for filtered log messages -
+If we only want events which do set the key - this is more important for filtered log messages -
 then we could set the flag ``Require all template values to be set``. But since we have aggregation,
 this field is not needed and we go to the next page.
 
@@ -123,7 +125,7 @@ Notifications
 ^^^^^^^^^^^^^
 We want to receive an email when the event got raised. This will mark the event as an alert.
 How to setup an email notification is explained :ref:`here <alert_notification>`.
-We will there for select our already defined email notification and set our ``Grace Period``
+We will therefore select our already defined email notification and set our ``Grace Period``
 to 5 Minutes. If we are target of a brute force attack then we do not want to get an email every
 10 seconds reminding us that we are being attacked. This ``Grace Period`` will only be respected
 per ``Event Key`` we selected in our custom fields. So we will get an email for every new user name

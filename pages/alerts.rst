@@ -8,8 +8,9 @@ Alerts
 
 Alerts are created using Event Definitions that consist of Conditions. When a given condition is met it will be stored as an Event and can be used to trigger a notification. If your system has an enterprise license, then Events may be combined to create Correlations.
 
-
 Graylog ships with default *alert conditions* and *alert notifications*, and both can be extended with :ref:`Plugins <plugins>`.
+
+Look :ref:`here <alert_by_example>` for a description of creating an alert by example.
 
 Alerts & Events
 ===============
