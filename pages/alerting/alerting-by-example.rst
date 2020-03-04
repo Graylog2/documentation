@@ -99,7 +99,7 @@ First of all it will be a field which is part of the event. So it will be displa
 as a field on the search page. That also means you can again run aggregations on that field.
 Fields can also be accessed within a notification and can be used for the enterprise feature `correlation`.
 
-Since we have aggregation event definition our field we want to be a key **must** be configured
+Since we are using an aggregation event definition, the only accessible fields are the ones we configured
 in the ``Group by Field(s)``. When aggregating multiple messages to one event we lose all fields
 we do not make a group by on. We want to add the `user` key to our notification, which we
 put in our ``Group by Field(s)``.
