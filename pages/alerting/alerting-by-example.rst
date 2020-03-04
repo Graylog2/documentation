@@ -57,6 +57,9 @@ Now we set ``Search within the last`` to 10 seconds and ``Execute search every``
 to 10 seconds. Now the Event engine will execute the query every 10 seconds
 for a time range of 10 seconds.
 
+If the ``Search within the last`` is the same as the ``Execute search every period``,
+you create a so called Tumbling window which is recommended for most situations.
+
 .. warning:: If  ``Search within the last`` is greater than  ``Execute search every``
   the event engine generate multiple events for the same log line. For example if you set
   ``Search within the last`` to one minute and  ``Execute search every`` to 10 seconds
