@@ -92,7 +92,7 @@ By hitting next we come to the Fields page of the wizard.
 
 Fields
 ^^^^^^
-Here we can now add a custom field to our event. This fields can be used for several
+Here we can add a custom field to our event. These fields can be used for several
 things.
 
 First of all it will be a field which is part of the event. So it will be displayed
