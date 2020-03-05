@@ -8,7 +8,6 @@ Alerts
 
 Alerts are created using Event Definitions that consist of Conditions. When a given condition is met it will be stored as an Event and can be used to trigger a notification. If your system has an enterprise license, then Events may be combined to create Correlations.
 
-
 Graylog ships with default *alert conditions* and *alert notifications*, and both can be extended with :ref:`Plugins <plugins>`.
 
 Alerts & Events
@@ -16,6 +15,13 @@ Alerts & Events
 As of Graylog 3.1.0, the Alerts page has changed to reflect a new method of generating Alerts. An Alert is triggered when a defined Event is detected.
 An Event is a condition that matches a log to a time period or aggregation. The Event may be used to group similar fields, change field content,
 or create new field content for use with Alerting and Correlation (an enterprise feature.)
+
+.. toctree::
+   :titlesonly:
+   :hidden:
+
+   alerting/alerting-by-example.rst
+
 
 If no Events have been defined, the Alerts & Events page will display the "Get Started!" button as shown below.
 
@@ -28,6 +34,12 @@ Title, Description, and Priority. You may click back on the selection bar to ste
 process at any time.
 
 .. image:: /images/alerts_event_details.png
+
+Priority
+--------
+The Priority of an Event is a classification for user purpose. The priority of an event
+will be displayed as a thermometer icon in the over view and will be written into the notification.
+
 
 Filter
 ======
@@ -71,6 +83,8 @@ and will contain the Custom Field, as well as the result of the Aggregation that
 the Event.
 
 .. image:: /images/alerts_customField_display.png
+
+.. _alert_notification:
 
 Notifications
 =============
