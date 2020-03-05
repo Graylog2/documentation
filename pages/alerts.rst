@@ -10,16 +10,18 @@ Alerts are created using Event Definitions that consist of Conditions. When a gi
 
 Graylog ships with default *alert conditions* and *alert notifications*, and both can be extended with :ref:`Plugins <plugins>`.
 
-.. toctree::
-   :titlesonly:
-
-   alerting/alerting-by-example.rst
-
 Alerts & Events
 ===============
 As of Graylog 3.1.0, the Alerts page has changed to reflect a new method of generating Alerts. An Alert is triggered when a defined Event is detected.
 An Event is a condition that matches a log to a time period or aggregation. The Event may be used to group similar fields, change field content,
 or create new field content for use with Alerting and Correlation (an enterprise feature.)
+
+.. toctree::
+   :titlesonly:
+   :hidden:
+
+   alerting/alerting-by-example.rst
+
 
 If no Events have been defined, the Alerts & Events page will display the "Get Started!" button as shown below.
 
