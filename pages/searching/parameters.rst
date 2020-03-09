@@ -9,6 +9,8 @@ Parameters are very helpful in this scenario. They allow the usage of a placehol
 .. image:: /images/searching/parameter_example.png
    :align: center
 
+.. important:: Parameters are an Enterprise Integrations plugin feature and thus requires an :ref:`Enterprise license <enterprise_features>`.
+
 Declaring a parameter
 ^^^^^^^^^^^^^^^^^^^^^
 Parameters can be added wherever you want to perform a search, no matter if saved searches, dashboards or the main search page.
@@ -34,7 +36,7 @@ Default values
 When using parameters you always need to define a value for every parameter. Otherwise the query is not appropriate and the search can not be executed.
 With default paramter values, the search will always be executable, unless you remove a value manually.
 
-When opening dashboard or a saved search you will see the following dialog first, if a configured parameter has no default value. 
+When opening a dashboard or saved search you will see the following dialog first, if a configured parameter has no default value.
 
 .. image:: /images/searching/parameter_dashboard_dialog.png
    :align: center
