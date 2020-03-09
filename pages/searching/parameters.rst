@@ -30,7 +30,7 @@ After clicking on `Submit` you will be able to implement the parameter inside yo
 Default values
 ^^^^^^^^^^^^^^
 When using parameters you always need to define a value for every parameter. Otherwise the query is not appropriate and the search can not be executed.
-With default paramter values, the search will allways be executable, unless you remove a value manually.
+With default paramter values, the search will always be executable, unless you remove a value manually.
 
 When opening dashboard or a saved search you will see the following dialog first, if a configured parameter has no default value. 
 
