@@ -36,8 +36,3 @@ When opening dashboard or a saved search you will see the following dialog first
 
 .. image:: /images/searching/parameter_dashboard_dialog.png
    :align: center
-
-
-
-
-
