@@ -2,6 +2,15 @@
 Changelog
 *********
 
+Graylog Enterprise 3.2.3
+========================
+
+Released: 2020-03-11
+
+**Fixed**
+
+- Fix issue with custom fields and correlation event definitions.
+
 Graylog Enterprise 3.2.2
 ========================
 
