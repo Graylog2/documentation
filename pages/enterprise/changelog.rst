@@ -2,6 +2,34 @@
 Changelog
 *********
 
+Graylog Enterprise 3.2.3
+========================
+
+Released: 2020-03-11
+
+**Fixed**
+
+- Fix issue with custom fields and correlation event definitions.
+
+Graylog Enterprise 3.2.2
+========================
+
+Released: 2020-02-20
+
+**Fixed**
+
+- Fix missing rows in message table widget in reports. `Graylog2/graylog2-server#7349 <https://github.com/Graylog2/graylog2-server/issues/7349>`_ `Graylog2/graylog2-server#7492 <https://github.com/Graylog2/graylog2-server/issues/7492>`_
+- Don't try to archive indices which have already been archived.
+
+Graylog Enterprise 3.2.1
+========================
+
+Released: 2020-02-04
+
+**Fixed**
+
+- Gracefully handle missing dashboards and widgets when collecting parameters for reports. `Graylog2/graylog2-server#7347 <https://github.com/Graylog2/graylog2-server/issues/7347>`_
+
 Graylog Enterprise 3.2.0
 ========================
 

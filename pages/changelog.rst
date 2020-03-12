@@ -2,6 +2,87 @@
 Changelog
 *********
 
+Graylog 3.2.3
+=============
+
+Released: 2020-03-11
+
+Core
+^^^^
+
+**Added**
+
+- Add back auto-completion for ``_exists_`` queries. `Graylog2/graylog2-server#7441 <https://github.com/Graylog2/graylog2-server/issues/7441>`_ `Graylog2/graylog2-server#7604 <https://github.com/Graylog2/graylog2-server/issues/7604>`_
+- Add back surrounding search feature for searches and dashboards. `Graylog2/graylog2-server#7616 <https://github.com/Graylog2/graylog2-server/issues/7616>`_ `Graylog2/graylog2-server#7621 <https://github.com/Graylog2/graylog2-server/issues/7621>`_
+- Add support for newer Kafka versions and allowing more customization options. `Graylog2/graylog2-server#7504 <https://github.com/Graylog2/graylog2-server/issues/7504>`_ (Thanks `@muralibasani <https://github.com/muralibasani>`_)
+- Add back field sorting for the message table widget. `Graylog2/graylog2-server#7645 <https://github.com/Graylog2/graylog2-server/issues/7645>`_
+- Add back "replay search" button for dashboard widgets. `Graylog2/graylog2-server#7372 <https://github.com/Graylog2/graylog2-server/issues/7372>`_ `Graylog2/graylog2-server#7648 <https://github.com/Graylog2/graylog2-server/issues/7648>`_
+- Add option to share a saved search with other users. `Graylog2/graylog2-server#7668 <https://github.com/Graylog2/graylog2-server/issues/7668>`_
+
+**Changed**
+
+- Improve chart rendering for zero values. `Graylog2/graylog2-server#7605 <https://github.com/Graylog2/graylog2-server/issues/7605>`_
+- Rename "Aggregate" field option to "Show top values" to make it more clear. (this was previously called quick values) `Graylog2/graylog2-server#7663 <https://github.com/Graylog2/graylog2-server/issues/7663>`_
+
+**Fixed**
+
+- Fix widget error "n.find is not a function". `Graylog2/graylog2-server#7365 <https://github.com/Graylog2/graylog2-server/issues/7365>`_ `Graylog2/graylog2-server#7538 <https://github.com/Graylog2/graylog2-server/issues/7538>`_
+- Fix problem with rendering table widgets. `Graylog2/graylog2-server#7565 <https://github.com/Graylog2/graylog2-server/issues/7565>`_ `Graylog2/graylog2-server#7611 <https://github.com/Graylog2/graylog2-server/issues/7611>`_
+- Fix aggregation event definitions when no streams are selected. `Graylog2/graylog2-server#7619 <https://github.com/Graylog2/graylog2-server/issues/7619>`_ `Graylog2/graylog2-server#7625 <https://github.com/Graylog2/graylog2-server/issues/7625>`_
+- Fix problem with showing message journal statistics on the node details page. `Graylog2/graylog2-server#7521 <https://github.com/Graylog2/graylog2-server/issues/7521>`_ `Graylog2/graylog2-server#7633 <https://github.com/Graylog2/graylog2-server/issues/7633>`_
+- Fix sorting problem when sorting over different streams. `Graylog2/graylog2-server#6490 <https://github.com/Graylog2/graylog2-server/issues/6490>`_ `Graylog2/graylog2-server#7569 <https://github.com/Graylog2/graylog2-server/issues/7569>`_
+- Fix search and dashboard issues with Internet Explorer 11. `Graylog2/graylog2-server#7660 <https://github.com/Graylog2/graylog2-server/issues/7660>`_
+- Fix search page refresh handling. `Graylog2/graylog2-server#7661 <https://github.com/Graylog2/graylog2-server/issues/7661>`_
+
+Graylog 3.2.2
+=============
+
+Released: 2020-02-20
+
+Core
+^^^^
+
+**Changed**
+
+- Use Graylog data dir for storing netty tcnative libraries. `Graylog2/graylog2-server#5762 <https://github.com/Graylog2/graylog2-server/issues/5762>`_ `Graylog2/graylog2-server#7359 <https://github.com/Graylog2/graylog2-server/issues/7359>`_
+- Add colon (``:``) when selecting a field from auto-completion. `Graylog2/graylog2-server#7408 <https://github.com/Graylog2/graylog2-server/issues/7408>`_ `Graylog2/graylog2-server#7493 <https://github.com/Graylog2/graylog2-server/issues/7493>`_
+
+**Fixed**
+
+- Suppress system notification for whitelist errors from test alerts. `Graylog2/graylog2-server#7350 <https://github.com/Graylog2/graylog2-server/issues/7350>`_ `Graylog2/graylog2-server#7390 <https://github.com/Graylog2/graylog2-server/issues/7390>`_
+- Fix issue with duplicating dashboard tabs. `Graylog2/graylog2-server#7397 <https://github.com/Graylog2/graylog2-server/issues/7397>`_
+- Improve search URL synchronization by avoiding unnecessary entries in browser history. `Graylog2/graylog2-server#7415 <https://github.com/Graylog2/graylog2-server/issues/7415>`_
+- Fix error on system overview page. `Graylog2/graylog2-server#7329 <https://github.com/Graylog2/graylog2-server/issues/7329>`_ `Graylog2/graylog2-server#7351 <https://github.com/Graylog2/graylog2-server/issues/7351>`_
+- Fix issue with content pack creation. `Graylog2/graylog2-server#6690 <https://github.com/Graylog2/graylog2-server/issues/6690>`_ `Graylog2/graylog2-server#7449 <https://github.com/Graylog2/graylog2-server/issues/7449>`_
+- Fix problem with dashboard migration and hidden filters. `Graylog2/graylog2-server#7366 <https://github.com/Graylog2/graylog2-server/issues/7366>`_ `Graylog2/graylog2-server#7420 <https://github.com/Graylog2/graylog2-server/issues/7420>`_
+- Fix dashboard migration issue with field name extraction. `Graylog2/graylog2-server#7452 <https://github.com/Graylog2/graylog2-server/issues/7452>`_
+- Fix widget error "n.find is not a function". `Graylog2/graylog2-server#7365 <https://github.com/Graylog2/graylog2-server/issues/7365>`_ `Graylog2/graylog2-server#7450 <https://github.com/Graylog2/graylog2-server/issues/7450>`_
+- Fix dashboard widget migration error related to value sorting. `Graylog2/graylog2-server#7476 <https://github.com/Graylog2/graylog2-server/issues/7476>`_ `Graylog2/graylog2-server#7481 <https://github.com/Graylog2/graylog2-server/issues/7481>`_
+- Fix issue with Active Directory authentication support. `Graylog2/graylog2-server#7431 <https://github.com/Graylog2/graylog2-server/issues/7431>`_ `Graylog2/graylog2-server#7498 <https://github.com/Graylog2/graylog2-server/issues/7498>`_
+- Fix issue with field ordering in message table widgets. `Graylog2/graylog2-server#6808 <https://github.com/Graylog2/graylog2-server/issues/6808>`_ `Graylog2/graylog2-server#7501 <https://github.com/Graylog2/graylog2-server/issues/7501>`_
+- Fix problem with running Graylog under a subpath. `Graylog2/graylog2-server#7447 <https://github.com/Graylog2/graylog2-server/issues/7447>`_ `Graylog2/graylog2-server#7500 <https://github.com/Graylog2/graylog2-server/issues/7500>`_
+
+Integrations Plugin
+^^^^^^^^^^^^^^^^^^^
+
+**Fixed**
+
+- Fix issue with AWS Kinesis token refresh. `Graylog2/graylog-plugin-integrations#386 <https://github.com/Graylog2/graylog-plugin-integrations/issues/386>`_ `Graylog2/graylog-plugin-integrations#389 <https://github.com/Graylog2/graylog-plugin-integrations/issues/389>`_
+
+Graylog 3.2.1
+=============
+
+Released: 2020-02-04
+
+Core
+^^^^
+
+**Fixed**
+
+- Fix problem with message processing and invalid ``timestamp`` fields. `Graylog2/graylog2-server#7364 <https://github.com/Graylog2/graylog2-server/issues/7364>`_ `Graylog2/graylog2-server#7290 <https://github.com/Graylog2/graylog2-server/issues/7290>`_
+- Fix scrolling issue in data table widget for Safari browser. `Graylog2/graylog2-server#7344 <https://github.com/Graylog2/graylog2-server/issues/7344>`_ `Graylog2/graylog2-server#7353 <https://github.com/Graylog2/graylog2-server/issues/7353>`_
+- Fix two issues with saved search migration. `Graylog2/graylog2-server#7362 <https://github.com/Graylog2/graylog2-server/issues/7362>`_ `Graylog2/graylog2-server#7369 <https://github.com/Graylog2/graylog2-server/issues/7369>`_
+
 Graylog 3.2.0
 =============
 
