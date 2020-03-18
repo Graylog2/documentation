@@ -28,50 +28,8 @@ The following list shows the minimum required Graylog versions for the Graylog E
       - 2.1.3
     * - 2.2.0
       - 2.2.0
-    * - 2.2.1
-      - 2.2.1
-    * - 2.3.0
-      - 2.3.0
-    * - 2.3.1
-      - 2.3.1
-    * - 2.3.2
-      - 2.3.2
-    * - 2.4.0
-      - 2.4.0
-    * - 2.4.1
-      - 2.4.1
-    * - 2.4.2
-      - 2.4.2
-    * - 2.4.3
-      - 2.4.3
-    * - 2.4.4
-      - 2.4.4
-    * - 2.4.5
-      - 2.4.5
-    * - 2.4.6
-      - 2.4.6
-    * - 2.5.0
-      - 2.5.0
-    * - 2.5.1
-      - 2.5.1
-    * - 3.0.0
-      - 3.0.0
-    * - 3.0.1
-      - 3.0.1
-    * - 3.0.2
-      - 3.0.2
-    * - 3.1.0
-      - 3.1.0
-    * - 3.1.1
-      - 3.1.1
-    * - 3.1.2
-      - 3.1.2
-    * - 3.1.3
-      - 3.1.3
-    * - 3.2.0
-      - 3.2.0
-    * - 3.2.1
-      - 3.2.1
+    * - Graylog & Enterprise
+      - same version since 2.2.0
 
 
 Installation
@@ -123,17 +81,13 @@ Tarball
 
 If you have done a manual installation you can get the tarball from the download locations listed in the following table.
 
+.. This list keeps only the current supported versions. What is current stable and the previous version
+
 .. list-table:: Enterprise Plugins download
     :header-rows: 1
 
     * - Enterprise Version
       - Download URL
-    * - 3.0.0
-      - :enterprise-plugins-tar:`3.0.0`
-    * - 3.0.1
-      - :enterprise-plugins-tar:`3.0.1`
-    * - 3.0.2
-      - :enterprise-plugins-tar:`3.0.2`
     * - 3.1.0
       - :enterprise-plugins-tar:`3.1.0`
     * - 3.1.1
@@ -145,6 +99,10 @@ If you have done a manual installation you can get the tarball from the download
     * - 3.2.0
       - :enterprise-plugins-tar:`3.2.0`
     * - 3.2.1
+      - :enterprise-plugins-tar:`3.2.1`
+    * - 3.2.2
+      - :enterprise-plugins-tar:`3.2.1`
+    * - 3.2.3
       - :enterprise-plugins-tar:`3.2.1`
 
 The tarball includes the enterprise plugin JAR file and required binaries that need to be installed.
