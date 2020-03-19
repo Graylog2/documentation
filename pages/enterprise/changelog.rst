@@ -2,6 +2,16 @@
 Changelog
 *********
 
+Graylog Enterprise 3.2.4
+========================
+
+Released: 2020-03-19
+
+**Fixed**
+
+- Fix issue with search parameter input fields.
+- Fix error exporting a correlation event definition in content packs.
+
 Graylog Enterprise 3.2.3
 ========================
 

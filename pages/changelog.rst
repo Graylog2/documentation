@@ -2,6 +2,26 @@
 Changelog
 *********
 
+Graylog 3.2.4
+=============
+
+Released: 2020-03-19
+
+Core
+^^^^
+
+**Changed**
+
+- Display old LDAP group mappings so they can be deleted by the user. `Graylog2/graylog2-server#7502 <https://github.com/Graylog2/graylog2-server/issues/7502>`_ `Graylog2/graylog2-server#7697 <https://github.com/Graylog2/graylog2-server/issues/7697>`_
+- Don't allow aggregations on analyzed fields. `Graylog2/graylog2-server#7508 <https://github.com/Graylog2/graylog2-server/issues/7508>`_ `Graylog2/graylog2-server#7685 <https://github.com/Graylog2/graylog2-server/issues/7685>`_
+
+**Fixed**
+
+- Fix problem with message list pagination. `Graylog2/graylog2-server#7680 <https://github.com/Graylog2/graylog2-server/issues/7680>`_ `Graylog2/graylog2-server#7665 <https://github.com/Graylog2/graylog2-server/issues/7665>`_ `Graylog2/graylog2-server#7693 <https://github.com/Graylog2/graylog2-server/issues/7693>`_
+- Fix issue removing custom fields from event definitions. `Graylog2/graylog2-server#7544 <https://github.com/Graylog2/graylog2-server/issues/7544>`_ `Graylog2/graylog2-server#7692 <https://github.com/Graylog2/graylog2-server/issues/7692>`_
+- Fix drop-down overlay placements on search page. `Graylog2/graylog2-server#7723 <https://github.com/Graylog2/graylog2-server/issues/7723>`_
+- Remove streams parameter from URL when the last stream got removed from a search query. `Graylog2/graylog2-server#7717 <https://github.com/Graylog2/graylog2-server/issues/7717>`_ `Graylog2/graylog2-server#7719 <https://github.com/Graylog2/graylog2-server/issues/7719>`_
+
 Graylog 3.2.3
 =============
 
