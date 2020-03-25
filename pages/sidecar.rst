@@ -24,10 +24,7 @@ On its first run, or when a configuration change has been detected, Sidecar will
 
 Installation
 ============
-
-Currently we provide pre-compiled packages on the Github releases page of the project. Once the Sidecar project is settled and matured
-we will add the packages to the DEB and YUM online repositories.
-To get the Sidecar working `Download a package <https://github.com/Graylog2/collector-sidecar/releases>`_ and install it on the target system.
+You can get .deb and .rpm packages for Graylog Sidecar in our package repository. For Windows, you can download the installer from `here <https://github.com/Graylog2/collector-sidecar/releases>`_.
 
 Please follow the version matrix to pick the right package:
 
@@ -48,9 +45,12 @@ Install the Sidecar
 
 Ubuntu
 ~~~~~~
-::
 
-    $ sudo dpkg -i graylog-sidecar_1.0.0-1_amd64.deb
+Install the Graylog Sidecar repository configuration and Graylog Sidecar itself with the following commands::
+
+    $ wget https://packages.graylog2.org/repo/packages/graylog-sidecar-repository_1-2_all.deb
+    $ sudo dpkg -i graylog-sidecar-repository_1-2_all.deb
+    $ sudo apt-get update && sudo apt-get install graylog-sidecar
 
 Edit the configuration (see :ref:`Configuration <sidecar-configuration>`) and
 activate the Sidecar as a system service::
@@ -67,9 +67,11 @@ activate the Sidecar as a system service::
 
 CentOS
 ~~~~~~
-Install the RPM package on RedHat based systems ::
+Install the Graylog Sidecar repository configuration and Graylog Sidecar itself with the following commands::
 
-    $ sudo rpm -i graylog-sidecar-1.0.0-1.x86_64.rpm
+    $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-sidecar-repository-1-2.noarch.rpm
+    $ sudo yum update && sudo yum install graylog-sidecar
+
 
 Edit the configuration (see :ref:`Configuration <sidecar-configuration>`) and
 activate the Sidecar as a system service::
