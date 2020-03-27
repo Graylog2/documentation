@@ -12,7 +12,7 @@ and configuring new software a matter of a single command and a few minutes of t
 Graylog offers official ``DEB`` and ``RPM`` package repositories. The packages have been tested on the following operating systems:
 
 * Ubuntu 16.04, 18.04
-* Debian 8, 9
+* Debian 8, 9, 10
 * RHEL/CentOS 6, 7
 
 
@@ -29,7 +29,7 @@ Make sure to install and configure the following software before installing and 
 * MongoDB (3.6 or 4.0)
 
 .. caution:: Graylog 3 **does not** work with Elasticsearch 7.x!
-.. caution:: Graylog 3 **does not** work with MongoDB 4.2!
+.. caution:: Graylog 3 does work with MongoDB 4.2 only in `4.0 compatibility mode <https://docs.mongodb.com/manual/reference/command/setFeatureCompatibilityVersion/#dbcmd.setFeatureCompatibilityVersion>`_ !
 
 Step by Step Guides
 -------------------
