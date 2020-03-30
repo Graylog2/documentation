@@ -26,8 +26,8 @@ snowballstemmer==2.0.0
 Sphinx==2.4.4
 sphinx-autobuild==0.7.1
 sphinx-rtd-theme==0.4.3
-sphinxcontrib-websupport==1.1.2
 tornado==6.0.4
+sphinxcontrib-websupport==1.2.1
 typing==3.7.4
 urllib3==1.25.8
 watchdog==0.10.2
