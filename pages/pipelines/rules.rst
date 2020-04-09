@@ -120,3 +120,10 @@ Variables need to be defined before they can be used.  Their fields (if any) can
 where a value of the field's type is required.
 
 The list of actions can be empty, in which case the rule is essentially a pluggable condition to help manage a pipeline's processing flow.
+
+an Action can comport literal expression (numerical, logical, and string concatenation).
+
+For example::
+    let a = 1*1;
+    let a = "hello" + "world"
+    let c = true OR false
