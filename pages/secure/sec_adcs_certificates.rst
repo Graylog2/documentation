@@ -168,7 +168,7 @@ The .INF input file for the *certreq* command would look similar to the followin
       signature="$Windows NT$"
       [NewRequest]
       Subject="CN=hostname5.mydomain.local"
-      HashAlgorithms=SHA256
+      HashAlgorithm=SHA256
       Keyalgorithm=RSA
       KeyLength=2048
       Exportable=True
