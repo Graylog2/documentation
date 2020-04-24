@@ -4,7 +4,7 @@
 Debian installation
 *******************
 
-This guide describes the fastest way to install Graylog on Debian Linux 9 (Stretch). All links and packages are present at the time of writing but might need to be updated later on.
+This guide describes the fastest way to install Graylog on Debian Linux 10 (Buster). All links and packages are present at the time of writing but might need to be updated later on.
 
 .. warning:: This guide **does not cover** security settings! The server administrator must make sure the graylog server is not publicly exposed, and is following security best practices.
 
@@ -15,28 +15,31 @@ Prerequisites
 If you're starting from a minimal server setup, you will need to install these additional packages::
 
   $ sudo apt update && sudo apt upgrade
-  $ sudo apt install apt-transport-https openjdk-8-jre-headless uuid-runtime pwgen dirmngr
+  $ sudo apt install apt-transport-https openjdk-11-jre-headless uuid-runtime pwgen dirmngr gnupg wget 
 
 
 MongoDB
 -------
 
-The official MongoDB repository provides the most up-to-date version and is the recommended way of installing MongoDB [#]_::
+The official MongoDB repository provides the most up-to-date version and is the recommended way of installing MongoDB::
 
-  $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
-  $ echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/4.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
+  $ wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
+  $ echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
   $ sudo apt-get update 
   $ sudo apt-get install -y mongodb-org
 
-.. [#] For e.g. corporate proxies and other non-free environments you can use a keyserver approach via wget.
-    ``wget -qO- 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x9DA31620334BD75D9DCB49F368818C72E52529D4' | sudo apt-key add -``
-
-The last step is to enable MongoDB during the operating system's startup::
+The next step is to enable MongoDB during the operating system's startup::
 
     $ sudo systemctl daemon-reload
     $ sudo systemctl enable mongod.service
     $ sudo systemctl restart mongod.service
     $ sudo systemctl --type=service --state=active | grep mongod
+
+The final last step is to make MongoDB run in `4.0` compatibility mode. This is needed at the time of writing.::
+
+    $ mongo --eval " db.adminCommand( { setFeatureCompatibilityVersion: \"4.0\" } ) "
+
+.. warning:: The above is important, otherwise Graylog will not work with this MongoDB Version!
   
 
 Elasticsearch
@@ -44,12 +47,11 @@ Elasticsearch
 
 Graylog can be used with Elasticsearch 6.x, please follow the below instructions to install the open source version of Elasticsearch. ::
 
-    $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch -o myKey
-    $ sudo apt-key add myKey
+    $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
     $ echo "deb https://artifacts.elastic.co/packages/oss-6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
     $ sudo apt update && sudo apt install elasticsearch-oss
 
-The above instructions are a derivative from the `Elasticsearch install page <https://www.elastic.co/guide/en/elasticsearch/reference/6.7/deb.html>`__
+The above instructions are a derivative from the `Elasticsearch install page <https://www.elastic.co/guide/en/elasticsearch/reference/6.8/deb.html>`__
 
 
 Modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``)
@@ -65,7 +67,7 @@ After you have modified the configuration, you can start Elasticsearch and verif
     $ sudo systemctl daemon-reload
     $ sudo systemctl enable elasticsearch.service
     $ sudo systemctl restart elasticsearch.service
-    $ sudo systemctl --type=service --state=active | grep elasticsearch
+    $ sudo systemctl restart elasticsearch.service
 
 
 Graylog
