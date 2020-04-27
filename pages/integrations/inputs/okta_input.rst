@@ -4,7 +4,7 @@
 Okta Log Events Input
 *********************
 
-.. attention:: This is an Enterprise Integrations feature and is only available since Graylog version 3.3 and thus requires an Enterprise license. See the :doc:`Integrations Setup <setup>` page for more info.
+.. attention:: This is an Enterprise Integrations feature and is only available since Graylog version 3.3 and thus requires an Enterprise license.
 
 
 This input allows Graylog to pull Okta Log Events from your okta domain.
