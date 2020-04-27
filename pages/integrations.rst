@@ -40,8 +40,10 @@ For a comprehensive list of available features included, see our  :ref:`Enterpri
 
 * :doc:`Forwarder <integrations/forwarder>`
 * :ref:`Script Alert Notification<alerts_script_alert>`
+* :ref:`Okta Log Events Input<okta_input>`
 
 .. toctree::
    :hidden:
 
    integrations/forwarder
+   integrations/inputs/okta_input
