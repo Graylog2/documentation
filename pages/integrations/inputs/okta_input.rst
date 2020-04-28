@@ -25,7 +25,8 @@ For this input plugin to function as expected, the following items must be suppl
     If not provided, 1 polling interval of historical data will be pulled.  Must be a timestamp in ISO-8601 format."
 
 4) Keyword filter (optional)
-    The keywords field is optional and is used to filter the log events results by one to ten exact space separated keywords.
+    The keyword filter is optional and is used to filter the log events results.
+    If it is provided, then it cannot have more than 10 keywords (space-separated) and keywords cannot be more than 40 characters long.
 
 5) Polling interval
     Determines how often Graylog will poll for new data stored in Okta. Cannot be smaller than 5 seconds.
