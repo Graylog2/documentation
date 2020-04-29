@@ -7,7 +7,7 @@ Okta Log Events Input
 .. attention:: This is a Graylog Enterprise feature and is only available since Graylog version 3.3. A valid Graylog Enterprise license is required.
 
 
-This input allows Graylog to pull event logs from your Okta domain.
+This input allows Graylog to pull event logs from your Okta domain. For an example of an Okta Log Event object see: https://developer.okta.com/docs/reference/api/system-log/#logevent-object
 
 For this input plugin to function as expected, the following items must be supplied in the input configuration:
 
@@ -24,12 +24,15 @@ For this input plugin to function as expected, the following items must be suppl
     The lower time bound of the Okta log events and determines how much historical data Graylog will pull from Okta when the Input starts.
     If not provided, 1 polling interval of historical data will be pulled.  Must be a timestamp in ISO-8601 format."
 
-4) Keyword filter (optional)
+4) Polling interval
+    Determines how often Graylog will poll for new data stored in Okta. Cannot be smaller than 5 seconds.
+
+5) Keyword filter (optional)
     The keyword filter is optional and is used to filter the log events results.
     If it is provided, then it cannot have more than 10 keywords (space-separated) and keywords cannot be more than 40 characters long.
 
-5) Polling interval
-    Determines how often Graylog will poll for new data stored in Okta. Cannot be smaller than 5 seconds.
+.. Note:: It is recommended that this input only be run on one designated node. Selecting Global will not ensure that the input is running on master, as well as may result in duplicate data.
+
 
 .. image:: /images/okta_input.png
     :width: 600
