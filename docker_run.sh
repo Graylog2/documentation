@@ -73,4 +73,4 @@ if [[ $? == 0 ]] ; then
     exit 0
 fi
 
-exit_error "we should never reache this point!"
+exit_error "we should never reach this point!"
