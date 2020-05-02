@@ -250,9 +250,9 @@ Each of the counters follows these rules:
 - for non-string content in the field, the byte length of that content is counted
     - byte = 1 byte
     - char/short = 2 bytes
-    - bool/int/floar = 4 bytes
+    - bool/int/float = 4 bytes
     - long/double = 8 bytes
     - dates = 8 bytes
-- all internal fields are not countent (those meta information that are created by Graylog)
+- all internal fields are not counted (those meta information that are created by Graylog)
 
 
