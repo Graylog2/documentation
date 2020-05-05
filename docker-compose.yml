@@ -1,0 +1,11 @@
+version: '3'
+services:
+  graylog-documentation:
+    build: .
+    image: graylog/documentation
+    container_name: graylog-documentation
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/web
+
