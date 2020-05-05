@@ -121,7 +121,7 @@ To easy up the contribution to the documentation you can also use Docker to crea
 
 ##### docker_run.sh (helper)
 
-If unsure how to run what command with docker, the simple script `docker_run.sh` was created. This runs on Mac and Linux (maybe Windows when bash is available). The simplification is done in a way that you just need ro run the command. If necessary it will build the image, and start the docker container. If the container is up and running it will ask if the container should be stopped. In addition it will be ask if the image should be removed too. 
+If unsure how to run what command with docker, the simple script `docker_run.sh` was created. This runs on Mac and Linux (maybe Windows when bash is available). The simplification is done in a way that you just need to run the command. If necessary it will build the image, and start the docker container. If the container is up and running it will ask if the container should be stopped. In addition it will be ask if the image should be removed too. 
 
 If unsure how to operate the docker image - use this script.
 
