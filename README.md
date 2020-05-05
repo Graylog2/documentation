@@ -113,7 +113,7 @@ Once the above is done you are prepared to contribute to the documentation and p
 
 #### Docker
 
-To easy up the contribution to the documentation you can also use Docker to create a local environment for the documentation. The image is build locally and use the current base dir of this repository for creating and serving the documentation. This way their is not need to handle virtual environments. Just build the image and run. 
+To ease up contributions to the documentation, you can also use Docker to create a local environment for the documentation. The image is built locally and uses the current base dir of this repository for creating and serving the documentation. This way, there's no need to handle virtual environments. Just build the image and run. 
 
 
     docker build -t graylog/documentation -f Dockerfile  .
