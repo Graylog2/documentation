@@ -26,7 +26,7 @@ Additionally, you can select *Export to CSV* in a message table’s action menu,
 Exporting search results on a dashboard
 =======================================
 
-The export on a dashboard is slightly different compared to the search page or saved searches. As described in this section, widgets on a dashboard have their own search criteria and the search parameter configured in a dashboard’s search bar only function as a filter. Just keep in mind you will always export the search result currently displayed by a message table. If you want to export only the search results the message table’s search criteria is referring to, make sure the dashboard’s filter is not defined.
+The export on a dashboard is slightly different compared to the search page or saved searches. As described in the section :ref:`dashboards-widget-specific-criteria`, widgets on a dashboard have their own search criteria and the search parameters configured in a dashboard’s search bar only function as a filter. Just keep in mind you will always export the search result currently displayed by a message table. If you want to export only the search results the message table’s search criteria is referring to, make sure the dashboard’s filter is not defined.
 
 Because the a dashboard filter does not contain all required search parameters, you will always have to select a message table when clicking on *Export to CSV* in a dashboard’s search bar.
 
