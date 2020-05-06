@@ -1,6 +1,6 @@
 Export results as CSV
 ^^^^^^^^^^^^^^^^^^^^^
-It is also possible to export the results of your search as a CSV document. To do so, click on the three dots on the right side of the search bar and select the *Export to CSV* option.
+It is possible to export the results of your search as a CSV document. To do so, click on the three dots on the right side of the search bar and select the *Export to CSV* option.
 
 .. image:: /images/searching/csv_export.png
    :align: center
@@ -28,7 +28,7 @@ Exporting search results on a dashboard
 
 The export on a dashboard is slightly different compared to the search page or saved searches. As described in the section :ref:`dashboards-widget-specific-criteria`, widgets on a dashboard have their own search criteria and the search parameters configured in a dashboard’s search bar only function as a filter. Just keep in mind you will always export the search result currently displayed by the message table. If you want to export only the search results the message table’s search criteria is referring to, make sure the dashboard’s filter is not defined.
 
-Because the a dashboard filter does not contain all required search parameters, you will always have to select a message table when clicking on *Export to CSV* in a dashboard’s search bar action menu.
+Because a dashboard filter does not contain all required search parameters, you will always have to select a message table when clicking on *Export to CSV* in a dashboard’s search bar action menu.
 
 Decorator support
 =================
