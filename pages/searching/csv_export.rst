@@ -47,4 +47,9 @@ Exporting the full message
 
 If you want to export the original message, keep in mind some Graylog inputs store the original message in the ``full_message`` field.
 
+Troubleshooting
+===============
+
+Depending on the number of messages the export may take a while. If the download never starts or the document does not contain the expected result, have a look at the ``server.log``.
+
 .. Warning:: Exporting results to a CSV will **not** preserve sorting because Graylog is using the virtual ``_doc`` field to "sort" documents for performance reasons. If you need to have the exported data ordered you will need to either make a `scroll query to ElasticSearch <https://www.elastic.co/guide/en/elasticsearch/reference/2.4/search-request-scroll.html>`__ and process it after, or to download the file and post process it via other means.
