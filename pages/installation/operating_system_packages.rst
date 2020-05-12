@@ -26,10 +26,9 @@ Make sure to install and configure the following software before installing and 
 
 * Java ( >= 8 )
 * Elasticsearch (5.x or 6.x)
-* MongoDB (3.6 or 4.0)
+* MongoDB (3.6, 4.0 or 4.2)
 
 .. caution:: Graylog 3 **does not** work with Elasticsearch 7.x!
-.. caution:: Graylog 3 does work with MongoDB 4.2 only in `4.0 compatibility mode <https://docs.mongodb.com/manual/reference/command/setFeatureCompatibilityVersion/#dbcmd.setFeatureCompatibilityVersion>`_ !
 
 Step by Step Guides
 -------------------
