@@ -6,8 +6,8 @@ It is possible to export the results of your search as a CSV document. To do so,
    :align: center
 
 This will open a modal where you can choose the fields the CSV document should contain. The initial fields are based on the message table configured for the search page.
-It is also possible to define a limit. Because messages are loaded in chunks, all chunks up to the one where the limit is reached will be retrieved.
-Which means the total number of delivered messages can be higher than the defined limit.
+It is also possible to define a limit. However, please note that because messages are loaded in chunks of fixed size, and because the final chunk will rarely end exactly at that fixed size,
+it is likely that the total number of messages exported will slightly exceed the number defined by the user.
 
 Clicking on *Start Download* will create the file based on the specified options and start the download.
 
@@ -33,19 +33,19 @@ Because dashboards do not have a single result set, you always need to select a 
 You can find more information on this topic in the section :ref:`dashboards-widget-specific-criteria`.
 
 Even though a message table on dashboard has its own search criteria and the dashboard’s search bar only functions as a filter, you will always export the result set currently displayed by the message table.
-If you want to export only the search results the message table’s search criteria is referring to, make sure the dashboard’s filter is not defined.
+If you want to export only the search results the message table’s search criteria is referring to, make sure the dashboard’s filter is left blank.
 
 Decorator Support
 =================
 
-While the CSV export supports fields created by decorators, they are currently not being listed in the fields select options list.
+While the CSV export supports fields created by decorators, they are currently not being listed in the fields select options list and must be created manually.
 When you want to export a decorated field, enter its name in the field select and click on the option *Create field_name*.
 To ensure a decorated field is available in the context of the current search, open a message table's edit modal, by clicking on *Edit* in its context menu and find the decorators in the left sidebar.
 
 Exporting the full message
 ==========================
 
-If you want to export the original message, keep in mind some Graylog inputs store the original message in the ``full_message`` field.
+If you want to export the full original message, keep in mind that it must be present in the stored message. Some Graylog inputs and file shippers can be configured to store the original message in the ``full_message`` field. Often, the message field may be used to export the entire, unparsed message.
 
 Troubleshooting
 ===============
