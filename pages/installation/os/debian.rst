@@ -15,7 +15,7 @@ Prerequisites
 If you're starting from a minimal server setup, you will need to install these additional packages::
 
   $ sudo apt update && sudo apt upgrade
-  $ sudo apt install apt-transport-https openjdk-11-jre-headless uuid-runtime pwgen dirmngr gnupg wget 
+  $ sudo apt install apt-transport-https openjdk-11-jre-headless uuid-runtime pwgen dirmngr gnupg wget
 
 
 MongoDB
@@ -25,7 +25,7 @@ The official MongoDB repository provides the most up-to-date version and is the 
 
   $ wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
   $ echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
-  $ sudo apt-get update 
+  $ sudo apt-get update
   $ sudo apt-get install -y mongodb-org
 
 The next step is to enable MongoDB during the operating system's startup::
@@ -34,13 +34,6 @@ The next step is to enable MongoDB during the operating system's startup::
     $ sudo systemctl enable mongod.service
     $ sudo systemctl restart mongod.service
     $ sudo systemctl --type=service --state=active | grep mongod
-
-The final last step is to make MongoDB run in `4.0` compatibility mode. This is needed at the time of writing.::
-
-    $ mongo --eval " db.adminCommand( { setFeatureCompatibilityVersion: \"4.0\" } ) "
-
-.. warning:: The above is important, otherwise Graylog will not work with this MongoDB Version!
-  
 
 Elasticsearch
 -------------
