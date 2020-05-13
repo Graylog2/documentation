@@ -117,7 +117,7 @@ To ease up contributions to the documentation, you can also use Docker to create
 
 
     docker build -t graylog/documentation -f Dockerfile  .
-    docker run -it -d --rm -v .:/web -u $(id -u):$(id -g) -p 8000:8000 --name graylog/documentation graylog-documentation
+    docker run -it -d --rm -v `pwd`:/web -u $(id -u):$(id -g) -p 8000:8000 --name graylog-documentation graylog/documentation
 
 ##### docker_run.sh (helper)
 
