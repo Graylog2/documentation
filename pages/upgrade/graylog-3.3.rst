@@ -43,6 +43,11 @@ We are planning to remove the older export endpoints in the next major upgrade o
 - `/search/universal/keyword/export`
 - `/search/universal/relative/export`
 
+Enterprise Audit Log
+====================
+
+The audit log messages now include detailed information for every search, dashboard and CSV export requests. This will increase the storage usage for the audit log collection in MongoDB.
+
 Notes for plugin authors
 ========================
 
