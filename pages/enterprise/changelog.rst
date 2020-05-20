@@ -2,6 +2,33 @@
 Changelog
 *********
 
+Graylog Enterprise 3.3.0
+========================
+
+Released: 2020-05-20
+
+**Added**
+
+- Create detailed audit log messages for search jobs.
+- Create detailed audit log messages for message exports.
+- Automatically install trial licenses requested from the UI.
+- Add 1 day mute option to trial license reminders.
+
+**Changed**
+
+- Implement message list limit in reports.
+
+**Fixed**
+
+- Fix archive catalog response with different backends having the same archive.
+- Improve keyboard input for search/dashboard parameter fields.
+- Improve error messages with missing parameters in reports.
+- Fix problem with non-ascii characters in correlation field names.
+- Fix unintended selection of multiple widgets in report widget selection.
+- Fix detection of value-less parameters in reports.
+- Hide license warning on search/dashboard page if no license is installed.
+- Use user defined chart colors in reports.
+
 Graylog Enterprise 3.2.5
 ========================
 

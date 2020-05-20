@@ -2,6 +2,74 @@
 Changelog
 *********
 
+Graylog 3.3.0
+=============
+
+Released: 2020-05-20
+
+Core
+^^^^
+
+**Added**
+
+- Make it possible to create new URL whitelist entries inside forms. `Graylog2/graylog2-server#7275 <https://github.com/Graylog2/graylog2-server/issues/7275>`_ `Graylog2/graylog2-server#7169 <https://github.com/Graylog2/graylog2-server/issues/7169>`_ `Graylog2/graylog2-server#7401 <https://github.com/Graylog2/graylog2-server/issues/7401>`_
+- Store API tokens encrypted in MongoDB. `Graylog2/graylog2-server#7556 <https://github.com/Graylog2/graylog2-server/issues/7556>`_
+- Add new CSV export that supports exporting multiple streams. `Graylog2/graylog2-server#7709 <https://github.com/Graylog2/graylog2-server/issues/7709>`_
+- Add string concatenation to pipeline rule language. `Graylog2/graylog2-server#7855 <https://github.com/Graylog2/graylog2-server/issues/7855>`_ `Graylog2/graylog2-server#7863 <https://github.com/Graylog2/graylog2-server/issues/7863>`_ (Thanks `@rmanibus <https://github.com/rmanibus>`_)
+- Add ``first_non_null`` pipeline rule function. `Graylog2/graylog2-server#7895 <https://github.com/Graylog2/graylog2-server/issues/7895>`_ `Graylog2/graylog2-server#7916 <https://github.com/Graylog2/graylog2-server/issues/7916>`_ (Thanks `@radykal-com <https://github.com/radykal-com>`_)
+- Allow users to request a Graylog Enterprise trial license from inside the product. `Graylog2/graylog2-server#7992 <https://github.com/Graylog2/graylog2-server/issues/7992>`_
+- Add option to enable/disable event definitions and alerts. `Graylog2/graylog2-server#7497 <https://github.com/Graylog2/graylog2-server/issues/7497>`_ `Graylog2/graylog2-server#7902 <https://github.com/Graylog2/graylog2-server/issues/7902>`_
+
+**Changed**
+
+- Lots of UI styling related changes to make them more consistent.
+- Start index retention from the oldest index, not the newest. `Graylog2/graylog2-server#7310 <https://github.com/Graylog2/graylog2-server/issues/7310>`_
+- Update MongoDB driver to the latest version to support MongoDB 4.2. `Graylog2/graylog2-server#7142 <https://github.com/Graylog2/graylog2-server/issues/7142>`_ `Graylog2/graylog2-server#7240 <https://github.com/Graylog2/graylog2-server/issues/7240>`_ (Thanks `@radykal-com <https://github.com/radykal-com>`_)
+- Improve unit tests. `Graylog2/graylog2-server#7473 <https://github.com/Graylog2/graylog2-server/issues/7473>`_ `Graylog2/graylog2-server#7595 <https://github.com/Graylog2/graylog2-server/issues/7595>`_ (Thanks `@cpugputpu <https://github.com/cpugputpu>`_)
+- Improve progress bar implementation. `Graylog2/graylog2-server#7443 <https://github.com/Graylog2/graylog2-server/issues/7443>`_
+- Don't directly expose "KafkaJournalConfiguration" values in journal API endpoint. `Graylog2/graylog2-server#7521 <https://github.com/Graylog2/graylog2-server/issues/7521>`_ `Graylog2/graylog2-server#7526 <https://github.com/Graylog2/graylog2-server/issues/7526>`_
+- Optimize JavaScript code bundle sizes. `Graylog2/graylog2-server#7598 <https://github.com/Graylog2/graylog2-server/issues/7598>`_
+- Improve dashboard widget legend positioning. `Graylog2/graylog2-server#7743 <https://github.com/Graylog2/graylog2-server/issues/7743>`_
+- Change default title for dashboard tabs to ``Page#<num>``. `Graylog2/graylog2-server#7748 <https://github.com/Graylog2/graylog2-server/issues/7748>`_
+- Improve triggering search executions from search bar. `Graylog2/graylog2-server#7829 <https://github.com/Graylog2/graylog2-server/issues/7829>`_ `Graylog2/graylog2-server#7572 <https://github.com/Graylog2/graylog2-server/issues/7572>`_ `Graylog2/graylog2-server#7596 <https://github.com/Graylog2/graylog2-server/issues/7596>`_ `Graylog2/graylog2-server#7724 <https://github.com/Graylog2/graylog2-server/issues/7724>`_
+- Don't truncate messages in process-buffer dump. `Graylog2/graylog2-server#7937 <https://github.com/Graylog2/graylog2-server/issues/7937>`_ `Graylog2/graylog2-server#7938 <https://github.com/Graylog2/graylog2-server/issues/7938>`_
+
+**Removed**
+
+- Remove unused frontend code from the legacy search. `Graylog2/graylog2-server#7338 <https://github.com/Graylog2/graylog2-server/issues/7338>`_
+- Remove the unused system HTTP client provider. `Graylog2/graylog2-server#6376 <https://github.com/Graylog2/graylog2-server/issues/6376>`_
+- Remove legacy saved searches API endpoints. `Graylog2/graylog2-server#7804 <https://github.com/Graylog2/graylog2-server/issues/7804>`_ `Graylog2/graylog2-server#7805 <https://github.com/Graylog2/graylog2-server/issues/7805>`_
+
+**Fixed**
+
+- Fix race condition when creating admin role. `Graylog2/graylog2-server#7378 <https://github.com/Graylog2/graylog2-server/issues/7378>`_
+- Display getting started guide with full height. `Graylog2/graylog2-server#7529 <https://github.com/Graylog2/graylog2-server/issues/7529>`_
+- Handle absence of field types in search components. `Graylog2/graylog2-server#7538 <https://github.com/Graylog2/graylog2-server/issues/7538>`_
+- Improve compatibility with IE 11. `Graylog2/graylog2-server#7660 <https://github.com/Graylog2/graylog2-server/issues/7660>`_ `Graylog2/graylog2-server#7670 <https://github.com/Graylog2/graylog2-server/issues/7670>`_ `Graylog2/graylog2-server#7951 <https://github.com/Graylog2/graylog2-server/issues/7951>`_
+- Prevent logging ReadTimeoutException as an error if KeepAlive is configured by the user. `Graylog2/graylog2-server#7819 <https://github.com/Graylog2/graylog2-server/issues/7819>`_ (Thanks `@jesseczko <https://github.com/jesseczko>`_)
+- Allow dashboard deletion for users with edit rights. `Graylog2/graylog2-server#7729 <https://github.com/Graylog2/graylog2-server/issues/7729>`_ `Graylog2/graylog2-server#7817 <https://github.com/Graylog2/graylog2-server/issues/7817>`_
+- Only show dashboard delete button for users with correct permissions. `Graylog2/graylog2-server#7793 <https://github.com/Graylog2/graylog2-server/issues/7793>`_ `Graylog2/graylog2-server#7846 <https://github.com/Graylog2/graylog2-server/issues/7846>`_
+- Improve field name completion performance by caching field names. `Graylog2/graylog2-server#7827 <https://github.com/Graylog2/graylog2-server/issues/7827>`_
+- Speed up event processing when it's lagging behind. `Graylog2/graylog2-server#6740 <https://github.com/Graylog2/graylog2-server/issues/6740>`_
+- Improve performance loading streams from the database. `Graylog2/graylog2-server#7867 <https://github.com/Graylog2/graylog2-server/issues/7867>`_
+- Improve autocompletion performance in select fields. `Graylog2/graylog2-server#7753 <https://github.com/Graylog2/graylog2-server/issues/7753>`_ `Graylog2/graylog2-server#7818 <https://github.com/Graylog2/graylog2-server/issues/7818>`_
+- Improve performance for field type retrieval endpoint. `Graylog2/graylog2-server#7865 <https://github.com/Graylog2/graylog2-server/issues/7865>`_
+- Reset pagination on page size change. `Graylog2/graylog2-server#7825 <https://github.com/Graylog2/graylog2-server/issues/7825>`_ `Graylog2/graylog2-server#7826 <https://github.com/Graylog2/graylog2-server/issues/7826>`_
+- Ensure that dashboards have empty root query strings. `Graylog2/graylog2-server#7750 <https://github.com/Graylog2/graylog2-server/issues/7750>`_ `Graylog2/graylog2-server#7858 <https://github.com/Graylog2/graylog2-server/issues/7858>`_
+- Fix metric naming options in aggregation builder. `Graylog2/graylog2-server#7771 <https://github.com/Graylog2/graylog2-server/issues/7771>`_ `Graylog2/graylog2-server#7892 <https://github.com/Graylog2/graylog2-server/issues/7892>`_
+- Improve tarball packaging. `Graylog2/graylog2-server#7920 <https://github.com/Graylog2/graylog2-server/issues/7920>`_ (Thanks `@mayrstefan <https://github.com/mayrstefan>`_)
+- Improve error messages when filtering on empty dashboards. `Graylog2/graylog2-server#7807 <https://github.com/Graylog2/graylog2-server/issues/7807>`_ `Graylog2/graylog2-server#7888 <https://github.com/Graylog2/graylog2-server/issues/7888>`_
+- Improve error messages when users don't have required stream permissions. `Graylog2/graylog2-server#7505 <https://github.com/Graylog2/graylog2-server/issues/7505>`_ `Graylog2/graylog2-server#7782 <https://github.com/Graylog2/graylog2-server/issues/7782>`_
+- Fix LDAP errors for local user accounts. `Graylog2/graylog2-server#2267 <https://github.com/Graylog2/graylog2-server/issues/2267>`_ `Graylog2/graylog2-server#7917 <https://github.com/Graylog2/graylog2-server/issues/7917>`_ (Thanks `@mayrstefan <https://github.com/mayrstefan>`_)
+- Fix warning in pipeline rule parser. `Graylog2/graylog2-server#7918 <https://github.com/Graylog2/graylog2-server/issues/7918>`_ `Graylog2/graylog2-server#7919 <https://github.com/Graylog2/graylog2-server/issues/7919>`_ (Thanks `@mayrstefan <https://github.com/mayrstefan>`_)
+- Fix sidebar highlighting layout for field values with a long name. `Graylog2/graylog2-server#7738 <https://github.com/Graylog2/graylog2-server/issues/7738>`_ `Graylog2/graylog2-server#8018 <https://github.com/Graylog2/graylog2-server/issues/8018>`_
+- Improve compatibility with Safari browsers. `Graylog2/graylog2-server#8003 <https://github.com/Graylog2/graylog2-server/issues/8003>`_ `Graylog2/graylog2-server#8030 <https://github.com/Graylog2/graylog2-server/issues/8030>`_
+- Reset job trigger on event definition updates. `Graylog2/graylog2-server#7841 <https://github.com/Graylog2/graylog2-server/issues/7841>`_ `Graylog2/graylog2-server#8060 <https://github.com/Graylog2/graylog2-server/issues/8060>`_
+- Fix problem with event notification grace period. `Graylog2/graylog2-server#8065 <https://github.com/Graylog2/graylog2-server/issues/8065>`_ `Graylog2/graylog2-server#8067 <https://github.com/Graylog2/graylog2-server/issues/8067>`_
+- Improve rendering performance of select fields in event definitions. `Graylog2/graylog2-server#8083 <https://github.com/Graylog2/graylog2-server/issues/8083>`_
+- Improve default email notification template. `Graylog2/graylog2-server#8112 <https://github.com/Graylog2/graylog2-server/issues/8112>`_
+- Fix timezone rendering of event annotations in graphs. `Graylog2/graylog2-server#8125 <https://github.com/Graylog2/graylog2-server/issues/8125>`_
+
 Graylog 3.2.5
 =============
 
