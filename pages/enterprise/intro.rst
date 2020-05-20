@@ -29,7 +29,7 @@ When the Graylog enterprise plugins and Graylog enterprise integrations plugin i
 
 		* Cluster-wide scheduler - Open Source runs alerts on a single node only, Enterprise runs them on all Graylog nodes, increasing capacity.
 
-		* :ref:`Script Notification<alerts_script_alert>` - ability to run a custom native program in response to a generated alert, useful for the integration of third-party systems.
+		* :ref:`Script Notification<alert_notification_script>` - ability to run a custom native program in response to a generated alert, useful for the integration of third-party systems.
 
     - :ref:`MongoDB Lookup Table<lookuptable_mongodb>`
         * This allows settings values from pipelines, e.g. to maintain a list of suspicious IP addresses to be used in Dynamic Lists
