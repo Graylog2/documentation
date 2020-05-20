@@ -95,21 +95,15 @@ By attaching a Notification to an Event or group of Events we can determine how 
 will flow out from Graylog. Notifications can be created by selecting the Notifications button under
 the Alerts tab, or by defining them in the Event workflow.
 
-Alert notifications types explained
-===================================
 In this section we explain what the default alert notifications included in Graylog do, and how to configure them. Alert notifications are meant to be extensible through :ref:`plugins`, you can find more types in the `Graylog Marketplace <http://marketplace.graylog.org>`__ or even create your own.
 
-Email alert notification
-------------------------
+.. _alert_notification_data:
 
-The email alert notification can be used to send an email to the configured alert receivers when the conditions are triggered.
+Data available to notifications
+-------------------------------
+Graylog makes the following data available when it runs a notification.
 
-Make sure to check the :ref:`email-related configuration settings<email_config>` in the Graylog configuration file.
-
-Three configuration options are available for the alert notification to customize the email that will be sent.
-The *email body* and *email subject* are `JMTE <https://github.com/DJCordhose/jmte>`__ templates. JMTE is a minimal template engine that supports variables, loops and conditions. See the `JMTE documentation <https://cdn.rawgit.com/DJCordhose/jmte/master/doc/index.html>`__ for a language reference.
-
-We expose the following objects to the templates.
+Different notification types will expose the data differently, the details are listed with the description of the specific notifications below.
 
 Event Definition Metadata
     Information about the event definition that created the alert.
@@ -152,8 +146,19 @@ Backlog
         - ``fields`` (Map<String, Object>) - The remaining fields of the message, can be iterated over.
 
 
-Graylog supports referencing information from both the subject as well as the body.
-By default the email subject uses the ``event_definition_title`` data.
+.. _alert_notification_email:
+
+Email alert notification
+------------------------
+
+The email alert notification can be used to send an email to the configured alert receivers when the conditions are triggered.
+
+Make sure to check the :ref:`email-related configuration settings<email_config>` in the Graylog configuration file.
+
+Three configuration options are available for the alert notification to customize the email that will be sent.
+The *email body* and *email subject* are `JMTE <https://github.com/DJCordhose/jmte>`__ templates. JMTE is a minimal template engine that supports variables, loops and conditions. See the `JMTE documentation <https://cdn.rawgit.com/DJCordhose/jmte/master/doc/index.html>`__ for a language reference.
+
+All of the data described above is available in the JMTE templates.
 
 The default body template shows some advanced examples of accessing the information listed above::
 
@@ -185,17 +190,57 @@ The default body template shows some advanced examples of accessing the informat
 .. image:: /images/alerts_email_notification.png
 
 
+.. _alert_notification_http:
+
 HTTP alert notification
 -----------------------
 
 The HTTP alert notification lets you configure an endpoint that will be called when the alert is triggered.
 
-Graylog will send a POST request to the notification URL including information about the alert. Here is an example of the payload included in a notification:
+Graylog will send a POST request to the notification URL including information about the alert. The body of the request is the JSON encoded data described above.
+
+Here is an example of the payload included in a notification::
+
+    {
+      "event_definition_id": "this-is-a-test-notification",
+      "event_definition_type": "test-dummy-v1",
+      "event_definition_title": "Event Definition Test Title",
+      "event_definition_description": "Event Definition Test Description",
+      "job_definition_id": "<unknown>",
+      "job_trigger_id": "<unknown>",
+      "event": {
+        "id": "NotificationTestId",
+        "event_definition_type": "notification-test-v1",
+        "event_definition_id": "EventDefinitionTestId",
+        "origin_context": "urn:graylog:message:es:testIndex_42:b5e53442-12bb-4374-90ed-0deadbeefbaz",
+        "timestamp": "2020-05-20T11:35:11.117Z",
+        "timestamp_processing": "2020-05-20T11:35:11.117Z",
+        "timerange_start": null,
+        "timerange_end": null,
+        "streams": [
+          "000000000000000000000002"
+        ],
+        "source_streams": [],
+        "message": "Notification test message triggered from user <admin>",
+        "source": "000000000000000000000001",
+        "key_tuple": [
+          "testkey"
+        ],
+        "key": "testkey",
+        "priority": 2,
+        "alert": true,
+        "fields": {
+          "field1": "value1",
+          "field2": "value2"
+        }
+      },
+      "backlog": []
+    }
+
+.. image:: /images/alerts_http_notification.png
 
 
-.. important:: TODO: Update documentation for new notification system
-
-.. _alerts_script_alert:
+.. _alert_notification_script:
 
 Legacy Script alert notification
 --------------------------------
@@ -242,9 +287,6 @@ Script Arguments
       * ``condition_repeat_notification`` repeat notification of the script
 Send Alert Data Through STDIN
     Sends JSON alert data through standard in. You can use a JSON parser in your script. :
-
-
-.. important:: TODO: Update documentation for new notification system
 
 
 Script Alert Notification success is determined by its exit value; success equals zero.
