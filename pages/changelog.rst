@@ -2,6 +2,42 @@
 Changelog
 *********
 
+Graylog 3.2.5
+=============
+
+Released: 2020-05-19
+
+Core
+^^^^
+
+**Added**
+
+- Add minimal support for Beats 7.x to the beats input. `Graylog2/graylog2-server#6501 <https://github.com/Graylog2/graylog2-server/issues/6501>`_ `Graylog2/graylog2-server#7894 <https://github.com/Graylog2/graylog2-server/issues/7894>`_
+- Show system notification when disk in Elasticsearch fills up. `Graylog2/graylog2-server#7899 <https://github.com/Graylog2/graylog2-server/issues/7899>`_ (Thanks `@radykal-com <https://github.com/radykal-com>`_)
+
+**Changed**
+
+- Enforce unix newlines in the sidecar collector configuration file editor. `Graylog2/graylog2-server#7889 <https://github.com/Graylog2/graylog2-server/issues/7889>`_ `Graylog2/collector-sidecar#389 <https://github.com/Graylog2/collector-sidecar/issues/389>`_ `Graylog2/graylog2-server#7975 <https://github.com/Graylog2/graylog2-server/issues/7975>`_
+- Mask passwords in input configuration returned from the ``/system/inputstates`` endpoint. `Graylog2/graylog2-server#8037 <https://github.com/Graylog2/graylog2-server/issues/8037>`_
+- Sanitize URLs in content packs. `Graylog2/graylog2-server#8072 <https://github.com/Graylog2/graylog2-server/issues/8072>`_ `Graylog2/graylog2-server#8104 <https://github.com/Graylog2/graylog2-server/issues/8104>`_
+- Sanitize URls in "Hyperlink String" decorator. `Graylog2/graylog2-server#8150 <https://github.com/Graylog2/graylog2-server/issues/8150>`_
+
+**Fixed**
+
+- Fix UI issues in sidecar configuration. `Graylog2/graylog2-server#7406 <https://github.com/Graylog2/graylog2-server/issues/7406>`_ `Graylog2/graylog2-server#7754 <https://github.com/Graylog2/graylog2-server/issues/7754>`_
+- Fix dashboard migration issues. `Graylog2/graylog2-server#7732 <https://github.com/Graylog2/graylog2-server/issues/7732>`_ `Graylog2/graylog2-server#7749 <https://github.com/Graylog2/graylog2-server/issues/7749>`_ `Graylog2/graylog2-server#7840 <https://github.com/Graylog2/graylog2-server/issues/7840>`_
+- Fix message list sorting option. `Graylog2/graylog2-server#7758 <https://github.com/Graylog2/graylog2-server/issues/7758>`_ `Graylog2/graylog2-server#7763 <https://github.com/Graylog2/graylog2-server/issues/7763>`_
+- Fix compatibility issue with Safari and the aggregation configuration. `Graylog2/graylog2-server#7806 <https://github.com/Graylog2/graylog2-server/issues/7806>`_ `Graylog2/graylog2-server#7815 <https://github.com/Graylog2/graylog2-server/issues/7815>`_
+- Fix pipeline stage parsing endpoint. `Graylog2/graylog2-server#7322 <https://github.com/Graylog2/graylog2-server/issues/7322>`_ `Graylog2/graylog2-server#7830 <https://github.com/Graylog2/graylog2-server/issues/7830>`_
+-
+
+AWS Plugin (legacy)
+^^^^^^^^^^^^^^^^^^^
+
+**Changed**
+
+- Encrypt default AWS secret key with system secret. `Graylog2/graylog-plugin-aws#361 <https://github.com/Graylog2/graylog-plugin-aws/issues/361>`_
+
 Graylog 3.2.4
 =============
 
