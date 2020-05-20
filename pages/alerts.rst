@@ -95,9 +95,58 @@ By attaching a Notification to an Event or group of Events we can determine how 
 will flow out from Graylog. Notifications can be created by selecting the Notifications button under
 the Alerts tab, or by defining them in the Event workflow.
 
-Alert notifications types explained
-===================================
 In this section we explain what the default alert notifications included in Graylog do, and how to configure them. Alert notifications are meant to be extensible through :ref:`plugins`, you can find more types in the `Graylog Marketplace <http://marketplace.graylog.org>`__ or even create your own.
+
+.. _alert_notification_data:
+
+Data available to notifications
+-------------------------------
+Graylog makes the following data available when it runs a notification.
+
+Different notification types will expose the data differently, the details are listed with the description of the specific notifications below.
+
+Event Definition Metadata
+    Information about the event definition that created the alert.
+
+    * ``event_definition_id`` (String) - The database ID of the event definition
+    * ``event_definition_type`` (String) - The internal name of the event definition type (``aggregation-v1`` or ``correlation-v1``)
+    * ``event_definition_title`` (String) - The title set in the UI
+    * ``event_definition_description`` (String) - The description set in the UI
+    * ``job_definition_id`` (String) - The internal job definition ID associated with a scheduled event definition
+    * ``job_trigger_id`` (String) - The internal ID associated with the current execution of the job
+
+Event Data
+    * ``event`` The event as it is stored in Graylog
+        - ``id`` (String) - The message ID of the stored event.
+        - ``event_definition_id`` (String) - Same as ``event_definition_id`` in the metadata section.
+        - ``event_definition_type`` (String) - Same as ``event_definition_type`` in the metadata section.
+        - ``origin_context`` (String) - URN of the message or event creating this event (either ``event`` or ``message``). Can be empty.
+        - ``timestamp`` (DateTime) - The timestamp this event is describing, can be set to the underlying event or message (see ``origin_context``).
+        - ``timestamp_processing`` (DateTime) - The timestamp this event has been created by Graylog.
+        - ``timerange_start`` (DateTime) - The start of the window of data Graylog used to create this event. Can be empty.
+        - ``timerange_end`` (DateTime) - The end of the window of data Graylog used to create this event. Can be empty.
+        - ``streams`` - (Strings) - The list of stream IDs the event is stored in.
+        - ``source_streams`` (Strings) - The list of stream IDs the event pulled data from.
+        - ``alert`` (bool) - Whether this event is considered to be an alert. Always ``true`` for event definitions that have notifications.
+        - ``message`` (String) - A human-friendly message describing this event.
+        - ``source`` (String) - The host name of the Graylog server that created this event.
+        - ``key_tuple`` (Strings) - The list of values making up the event's key.
+        - ``key`` (String) - The event's key as a single string.
+        - ``priority`` (long) - The event's priority value.
+        - ``fields`` (Map<String, String>) - The custom fields attached to the event.
+
+Backlog
+    * ``backlog`` (List of Message summaries) - The list of messages or events which lead to this alert being generated
+        - ``id`` (String) - The message ID.
+        - ``index`` (String) - The name of the index the message is stored in. Use together with ``id`` to uniquely identify a message in Graylog.
+        - ``source`` (String) - The ``source`` field of the message.
+        - ``message`` (String) - The ``message`` field of the message.
+        - ``timestamp`` (DateTime) - The ``timestamp`` field of the message.
+        - ``stream_ids`` (Strings) - The stream IDs of the message.
+        - ``fields`` (Map<String, Object>) - The remaining fields of the message, can be iterated over.
+
+
+.. _alert_notification_email:
 
 Email alert notification
 ------------------------
@@ -109,26 +158,89 @@ Make sure to check the :ref:`email-related configuration settings<email_config>`
 Three configuration options are available for the alert notification to customize the email that will be sent.
 The *email body* and *email subject* are `JMTE <https://github.com/DJCordhose/jmte>`__ templates. JMTE is a minimal template engine that supports variables, loops and conditions. See the `JMTE documentation <https://cdn.rawgit.com/DJCordhose/jmte/master/doc/index.html>`__ for a language reference.
 
-We expose the following objects to the templates.
+All of the data described above is available in the JMTE templates.
 
-.. important:: TODO: Update documentation for new notification system
+The default body template shows some advanced examples of accessing the information listed above::
+
+    --- [Event Definition] ---------------------------
+    Title:       ${event_definition_title}
+    Description: ${event_definition_description}
+    Type:        ${event_definition_type}
+    --- [Event] --------------------------------------
+    Timestamp:            ${event.timestamp}
+    Message:              ${event.message}
+    Source:               ${event.source}
+    Key:                  ${event.key}
+    Priority:             ${event.priority}
+    Alert:                ${event.alert}
+    Timestamp Processing: ${event.timestamp}
+    Timerange Start:      ${event.timerange_start}
+    Timerange End:        ${event.timerange_end}
+    Fields:
+    ${foreach event.fields field}  ${field.key}: ${field.value}
+    ${end}
+    ${if backlog}
+    --- [Backlog] ------------------------------------
+    Last messages accounting for this alert:
+    ${foreach backlog message}
+    ${message}
+    ${end}
+    ${end}
+
+.. image:: /images/alerts_email_notification.png
 
 
-..
-  .. image:: /images/alerts_email_notification.png
-..
+.. _alert_notification_http:
 
 HTTP alert notification
 -----------------------
 
 The HTTP alert notification lets you configure an endpoint that will be called when the alert is triggered.
 
-Graylog will send a POST request to the notification URL including information about the alert. Here is an example of the payload included in a notification:
+Graylog will send a POST request to the notification URL including information about the alert. The body of the request is the JSON encoded data described above.
+
+Here is an example of the payload included in a notification::
+
+    {
+      "event_definition_id": "this-is-a-test-notification",
+      "event_definition_type": "test-dummy-v1",
+      "event_definition_title": "Event Definition Test Title",
+      "event_definition_description": "Event Definition Test Description",
+      "job_definition_id": "<unknown>",
+      "job_trigger_id": "<unknown>",
+      "event": {
+        "id": "NotificationTestId",
+        "event_definition_type": "notification-test-v1",
+        "event_definition_id": "EventDefinitionTestId",
+        "origin_context": "urn:graylog:message:es:testIndex_42:b5e53442-12bb-4374-90ed-0deadbeefbaz",
+        "timestamp": "2020-05-20T11:35:11.117Z",
+        "timestamp_processing": "2020-05-20T11:35:11.117Z",
+        "timerange_start": null,
+        "timerange_end": null,
+        "streams": [
+          "000000000000000000000002"
+        ],
+        "source_streams": [],
+        "message": "Notification test message triggered from user <admin>",
+        "source": "000000000000000000000001",
+        "key_tuple": [
+          "testkey"
+        ],
+        "key": "testkey",
+        "priority": 2,
+        "alert": true,
+        "fields": {
+          "field1": "value1",
+          "field2": "value2"
+        }
+      },
+      "backlog": []
+    }
+
+.. image:: /images/alerts_http_notification.png
 
 
-.. important:: TODO: Update documentation for new notification system
-
-.. _alerts_script_alert:
+.. _alert_notification_script:
 
 Legacy Script alert notification
 --------------------------------
@@ -175,9 +287,6 @@ Script Arguments
       * ``condition_repeat_notification`` repeat notification of the script
 Send Alert Data Through STDIN
     Sends JSON alert data through standard in. You can use a JSON parser in your script. :
-
-
-.. important:: TODO: Update documentation for new notification system
 
 
 Script Alert Notification success is determined by its exit value; success equals zero.
