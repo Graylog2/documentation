@@ -111,12 +111,79 @@ The *email body* and *email subject* are `JMTE <https://github.com/DJCordhose/jm
 
 We expose the following objects to the templates.
 
-.. important:: TODO: Update documentation for new notification system
+Event Definition Metadata
+    Information about the event definition that created the alert.
+
+    * ``event_definition_id`` (String) - The database ID of the event definition
+    * ``event_definition_type`` (String) - The internal name of the event definition type (``aggregation-v1`` or ``correlation-v1``)
+    * ``event_definition_title`` (String) - The title set in the UI
+    * ``event_definition_description`` (String) - The description set in the UI
+    * ``job_definition_id`` (String) - The internal job definition ID associated with a scheduled event definition
+    * ``job_trigger_id`` (String) - The internal ID associated with the current execution of the job
+
+Event Data
+    * ``event`` The event as it is stored in Graylog
+        - ``id`` (String) - The message ID of the stored event.
+        - ``event_definition_id`` (String) - Same as ``event_definition_id`` in the metadata section.
+        - ``event_definition_type`` (String) - Same as ``event_definition_type`` in the metadata section.
+        - ``origin_context`` (String) - URN of the message or event creating this event (either ``event`` or ``message``). Can be empty.
+        - ``timestamp`` (DateTime) - The timestamp this event is describing, can be set to the underlying event or message (see ``origin_context``).
+        - ``timestamp_processing`` (DateTime) - The timestamp this event has been created by Graylog.
+        - ``timerange_start`` (DateTime) - The start of the window of data Graylog used to create this event. Can be empty.
+        - ``timerange_end`` (DateTime) - The end of the window of data Graylog used to create this event. Can be empty.
+        - ``streams`` - (Strings) - The list of stream IDs the event is stored in.
+        - ``source_streams`` (Strings) - The list of stream IDs the event pulled data from.
+        - ``alert`` (bool) - Whether this event is considered to be an alert. Always ``true`` for event definitions that have notifications.
+        - ``message`` (String) - A human-friendly message describing this event.
+        - ``source`` (String) - The host name of the Graylog server that created this event.
+        - ``key_tuple`` (Strings) - The list of values making up the event's key.
+        - ``key`` (String) - The event's key as a single string.
+        - ``priority`` (long) - The event's priority value.
+        - ``fields`` (Map<String, String>) - The custom fields attached to the event.
+
+Backlog
+    * ``backlog`` (List of Message summaries) - The list of messages or events which lead to this alert being generated
+        - ``id`` (String) - The message ID.
+        - ``index`` (String) - The name of the index the message is stored in. Use together with ``id`` to uniquely identify a message in Graylog.
+        - ``source`` (String) - The ``source`` field of the message.
+        - ``message`` (String) - The ``message`` field of the message.
+        - ``timestamp`` (DateTime) - The ``timestamp`` field of the message.
+        - ``stream_ids`` (Strings) - The stream IDs of the message.
+        - ``fields`` (Map<String, Object>) - The remaining fields of the message, can be iterated over.
 
 
-..
-  .. image:: /images/alerts_email_notification.png
-..
+Graylog supports referencing information from both the subject as well as the body.
+By default the email subject uses the ``event_definition_title`` data.
+
+The default body template shows some advanced examples of accessing the information listed above::
+
+    --- [Event Definition] ---------------------------
+    Title:       ${event_definition_title}
+    Description: ${event_definition_description}
+    Type:        ${event_definition_type}
+    --- [Event] --------------------------------------
+    Timestamp:            ${event.timestamp}
+    Message:              ${event.message}
+    Source:               ${event.source}
+    Key:                  ${event.key}
+    Priority:             ${event.priority}
+    Alert:                ${event.alert}
+    Timestamp Processing: ${event.timestamp}
+    Timerange Start:      ${event.timerange_start}
+    Timerange End:        ${event.timerange_end}
+    Fields:
+    ${foreach event.fields field}  ${field.key}: ${field.value}
+    ${end}
+    ${if backlog}
+    --- [Backlog] ------------------------------------
+    Last messages accounting for this alert:
+    ${foreach backlog message}
+    ${message}
+    ${end}
+    ${end}
+
+.. image:: /images/alerts_email_notification.png
+
 
 HTTP alert notification
 -----------------------
