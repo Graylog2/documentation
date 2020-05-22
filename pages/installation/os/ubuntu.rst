@@ -78,8 +78,8 @@ Graylog
 
 Now install the Graylog repository configuration and Graylog itself with the following commands::
 
-    $ wget https://packages.graylog2.org/repo/packages/graylog-3.2-repository_latest.deb
-    $ sudo dpkg -i graylog-3.2-repository_latest.deb
+    $ wget https://packages.graylog2.org/repo/packages/graylog-3.3-repository_latest.deb
+    $ sudo dpkg -i graylog-3.3-repository_latest.deb
     $ sudo apt-get update && sudo apt-get install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins
 
 .. hint:: If you do not want the :ref:`Integrations Plugins <integrations_plugins>` or the :ref:`Enterprise Plugins <enterprise_features>` installed, then simply run ``sudo apt-get install graylog-server``
