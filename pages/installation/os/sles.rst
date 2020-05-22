@@ -75,7 +75,7 @@ First install the Graylog GPG Key with ``rpm --import https://packages.graylog2.
 
     [graylog]
     name=graylog
-    baseurl=https://packages.graylog2.org/repo/el/stable/3.2/$basearch/
+    baseurl=https://packages.graylog2.org/repo/el/stable/3.3/$basearch/
     gpgcheck=1
     gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-graylog
 
