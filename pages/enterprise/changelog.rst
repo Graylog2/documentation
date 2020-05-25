@@ -9,6 +9,7 @@ Released: 2020-05-20
 
 **Added**
 
+- Input for Okta log events.
 - Create detailed audit log messages for search jobs.
 - Create detailed audit log messages for message exports.
 - Automatically install trial licenses requested from the UI.
