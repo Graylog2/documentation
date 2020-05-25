@@ -103,7 +103,6 @@ Core
 - Fix message list sorting option. `Graylog2/graylog2-server#7758 <https://github.com/Graylog2/graylog2-server/issues/7758>`_ `Graylog2/graylog2-server#7763 <https://github.com/Graylog2/graylog2-server/issues/7763>`_
 - Fix compatibility issue with Safari and the aggregation configuration. `Graylog2/graylog2-server#7806 <https://github.com/Graylog2/graylog2-server/issues/7806>`_ `Graylog2/graylog2-server#7815 <https://github.com/Graylog2/graylog2-server/issues/7815>`_
 - Fix pipeline stage parsing endpoint. `Graylog2/graylog2-server#7322 <https://github.com/Graylog2/graylog2-server/issues/7322>`_ `Graylog2/graylog2-server#7830 <https://github.com/Graylog2/graylog2-server/issues/7830>`_
--
 
 AWS Plugin (legacy)
 ^^^^^^^^^^^^^^^^^^^
