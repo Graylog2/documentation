@@ -70,6 +70,12 @@ Core
 - Improve default email notification template. `Graylog2/graylog2-server#8112 <https://github.com/Graylog2/graylog2-server/issues/8112>`_
 - Fix timezone rendering of event annotations in graphs. `Graylog2/graylog2-server#8125 <https://github.com/Graylog2/graylog2-server/issues/8125>`_
 
+**Security**
+
+- Two XSS issues were discovered in the content packs module and the hyperlink string decorator by Juha Laaksonen, Cyber Security Specialist at Solita. A big thanks to Juha for alerting us about these issues. `Graylog2/graylog2-server#8072 <https://github.com/Graylog2/graylog2-server/issues/8072>`_ `Graylog2/graylog2-server#8104 <https://github.com/Graylog2/graylog2-server/issues/8104>`_ `Graylog2/graylog2-server#8150 <https://github.com/Graylog2/graylog2-server/issues/8150>`_
+- Mika Kulmala, Cyber Security Specialist at Solita, reported a leak of the AWS secret key in certain (authenticated) Graylog REST API calls. Graylog is no longer revealing the AWS secret key in REST API responses. A big thanks to Mika for alerting us about this issue. `Graylog2/graylog-plugin-aws#361 <https://github.com/Graylog2/graylog-plugin-aws/issues/361>`_
+
+
 Graylog 3.2.5
 =============
 
@@ -97,7 +103,6 @@ Core
 - Fix message list sorting option. `Graylog2/graylog2-server#7758 <https://github.com/Graylog2/graylog2-server/issues/7758>`_ `Graylog2/graylog2-server#7763 <https://github.com/Graylog2/graylog2-server/issues/7763>`_
 - Fix compatibility issue with Safari and the aggregation configuration. `Graylog2/graylog2-server#7806 <https://github.com/Graylog2/graylog2-server/issues/7806>`_ `Graylog2/graylog2-server#7815 <https://github.com/Graylog2/graylog2-server/issues/7815>`_
 - Fix pipeline stage parsing endpoint. `Graylog2/graylog2-server#7322 <https://github.com/Graylog2/graylog2-server/issues/7322>`_ `Graylog2/graylog2-server#7830 <https://github.com/Graylog2/graylog2-server/issues/7830>`_
--
 
 AWS Plugin (legacy)
 ^^^^^^^^^^^^^^^^^^^
