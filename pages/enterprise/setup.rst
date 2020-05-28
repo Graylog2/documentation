@@ -106,18 +106,22 @@ If you have done a manual installation you can get the tarball from the download
       - :enterprise-plugins-tar:`3.2.3`
     * - 3.2.4
       - :enterprise-plugins-tar:`3.2.4`
+    * - 3.2.5
+      - :enterprise-plugins-tar:`3.2.5`
+    * - 3.3.0
+      - :enterprise-plugins-tar:`3.3.0`
     
 
 The tarball includes the enterprise plugin JAR file and required binaries that need to be installed.
 
 ::
 
-  $ tar -tzf graylog-enterprise-plugins-3.2.1.tgz
-    graylog-enterprise-plugins-3.2.1/LICENSE
-    graylog-enterprise-plugins-3.2.1/plugin/graylog-plugin-enterprise-3.2.1.jar
-    graylog-enterprise-plugins-3.2.1/bin/headless_shell
-    graylog-enterprise-plugins-3.2.1/bin/chromedriver
-    graylog-enterprise-plugins-3.2.1/bin/chromedriver_start.sh
+  $ tar -tzf graylog-enterprise-plugins-3.3.0.tgz
+    graylog-enterprise-plugins-3.3.0/LICENSE
+    graylog-enterprise-plugins-3.3.0/plugin/graylog-plugin-enterprise-3.3.0.jar
+    graylog-enterprise-plugins-3.3.0/bin/headless_shell
+    graylog-enterprise-plugins-3.3.0/bin/chromedriver
+    graylog-enterprise-plugins-3.3.0/bin/chromedriver_start.sh
 
 
 **JAR file**
@@ -134,10 +138,10 @@ Your plugin directory should look similar to this after installing the enterpris
 ::
 
   plugin/
-  ├── graylog-plugin-aws-3.2.1.jar
-  ├── graylog-plugin-collector-3.2.1.jar
-  ├── graylog-plugin-enterprise-3.2.1.jar
-  └── graylog-plugin-threatintel-3.2.1.jar
+  ├── graylog-plugin-aws-3.3.0.jar
+  ├── graylog-plugin-collector-3.3.0.jar
+  ├── graylog-plugin-enterprise-3.3.0.jar
+  └── graylog-plugin-threatintel-3.3.0.jar
 
 **Binary files**
 
@@ -168,11 +172,11 @@ You should see something like the following in your Graylog server logs. It indi
 
 ::
 
-  2017-12-18T17:39:10.797+01:00 INFO  [CmdLineTool] Loaded plugin: AWS plugins 3.2.1 [org.graylog.aws.plugin.AWSPlugin]
-  2017-12-18T17:39:10.809+01:00 INFO  [CmdLineTool] Loaded plugin: Collector 3.2.1 [org.graylog.plugins.collector.CollectorPlugin]
-  2017-12-18T17:39:10.811+01:00 INFO  [CmdLineTool] Loaded plugin: Enterprise Integration Plugin 3.2.1 [org.graylog.plugins.enterprise_integration.EnterpriseIntegrationPlugin]
-  2017-12-18T17:39:10.805+01:00 INFO  [CmdLineTool] Loaded plugin: Graylog Enterprise 3.2.1 [org.graylog.plugins.enterprise.EnterprisePlugin]
-  2017-12-18T17:39:10.827+01:00 INFO  [CmdLineTool] Loaded plugin: Threat Intelligence Plugin 3.2.1 [org.graylog.plugins.threatintel.ThreatIntelPlugin]
+  2017-12-18T17:39:10.797+01:00 INFO  [CmdLineTool] Loaded plugin: AWS plugins 3.3.0 [org.graylog.aws.plugin.AWSPlugin]
+  2017-12-18T17:39:10.809+01:00 INFO  [CmdLineTool] Loaded plugin: Collector 3.3.0 [org.graylog.plugins.collector.CollectorPlugin]
+  2017-12-18T17:39:10.811+01:00 INFO  [CmdLineTool] Loaded plugin: Enterprise Integration Plugin 3.3.0 [org.graylog.plugins.enterprise_integration.EnterpriseIntegrationPlugin]
+  2017-12-18T17:39:10.805+01:00 INFO  [CmdLineTool] Loaded plugin: Graylog Enterprise 3.3.0 [org.graylog.plugins.enterprise.EnterprisePlugin]
+  2017-12-18T17:39:10.827+01:00 INFO  [CmdLineTool] Loaded plugin: Threat Intelligence Plugin 3.3.0 [org.graylog.plugins.threatintel.ThreatIntelPlugin]
 
 Cluster Setup
 =============
