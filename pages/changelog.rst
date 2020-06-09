@@ -93,6 +93,19 @@ Core
 - Mika Kulmala, Cyber Security Specialist at Solita, reported a leak of the AWS secret key in certain (authenticated) Graylog REST API calls. Graylog is no longer revealing the AWS secret key in REST API responses. A big thanks to Mika for alerting us about this issue. `Graylog2/graylog-plugin-aws#361 <https://github.com/Graylog2/graylog-plugin-aws/issues/361>`_
 
 
+Graylog 3.2.6
+=============
+
+Released: 2020-06-10
+
+Core
+^^^^
+
+**Fixed**
+
+- Retry message indexing when indices are read-only due to disk space problems in Elasticsearch. `Graylog2/graylog2-server#8211 <https://github.com/Graylog2/graylog2-server/issues/8211>`_ `Graylog2/graylog2-server#8269 <https://github.com/Graylog2/graylog2-server/issues/8269>`_
+- Fix issue with using float numbers in event definitions. `Graylog2/graylog2-server#8290 <https://github.com/Graylog2/graylog2-server/issues/8290>`_
+
 Graylog 3.2.5
 =============
 

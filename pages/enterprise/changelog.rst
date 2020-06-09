@@ -40,6 +40,13 @@ Released: 2020-05-20
 - Hide license warning on search/dashboard page if no license is installed.
 - Use user defined chart colors in reports.
 
+Graylog Enterprise 3.2.6
+========================
+
+Released: 2020-06-10
+
+No changes since 3.2.5.
+
 Graylog Enterprise 3.2.5
 ========================
 
