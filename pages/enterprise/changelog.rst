@@ -2,6 +2,16 @@
 Changelog
 *********
 
+Graylog Enterprise 3.3.1
+========================
+
+Released: 2020-06-10
+
+**Fixed**
+
+- Fix issue with reports database migration when widgets are missing.
+- Add a cluster resource for the archiving HTTP API and use it in the UI. All endpoints in the cluster resource are routed to the regular endpoints on the master node to avoid the need for custom proxy configuration.
+
 Graylog Enterprise 3.3.0
 ========================
 
@@ -29,6 +39,13 @@ Released: 2020-05-20
 - Fix detection of value-less parameters in reports.
 - Hide license warning on search/dashboard page if no license is installed.
 - Use user defined chart colors in reports.
+
+Graylog Enterprise 3.2.6
+========================
+
+Released: 2020-06-10
+
+No changes since 3.2.5.
 
 Graylog Enterprise 3.2.5
 ========================
