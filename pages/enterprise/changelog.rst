@@ -2,6 +2,13 @@
 Changelog
 *********
 
+Graylog Enterprise 3.2.6
+========================
+
+Released: 2020-06-10
+
+No changes since 3.2.5.
+
 Graylog Enterprise 3.2.5
 ========================
 
