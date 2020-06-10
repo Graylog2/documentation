@@ -12,11 +12,11 @@ Core
 
 **Fixed**
 
-- Fix problem with thoughput counter in the UI `Graylog2/graylog2-server#8172 <https://github.com/Graylog2/graylog2-server/issues/8172>`_ `Graylog2/graylog2-server#8185 <https://github.com/Graylog2/graylog2-server/issues/8185>`_
+- Fix problem with throughput counter in the UI `Graylog2/graylog2-server#8172 <https://github.com/Graylog2/graylog2-server/issues/8172>`_ `Graylog2/graylog2-server#8185 <https://github.com/Graylog2/graylog2-server/issues/8185>`_
 - Fix issue when adding a new header to the HTTPJSONPath lookup data adapter. `Graylog2/graylog2-server#8186 <https://github.com/Graylog2/graylog2-server/issues/8186>`_ `Graylog2/graylog2-server#8266 <https://github.com/Graylog2/graylog2-server/issues/8266>`_
 - Retry message indexing when indices are read-only due to disk space problems in Elasticsearch. `Graylog2/graylog2-server#8211 <https://github.com/Graylog2/graylog2-server/issues/8211>`_ `Graylog2/graylog2-server#8269 <https://github.com/Graylog2/graylog2-server/issues/8269>`_
 - Fix issue with using float numbers in event definitions. `Graylog2/graylog2-server#8290 <https://github.com/Graylog2/graylog2-server/issues/8290>`_
-- Only check data notes for Elasticsearch disk usage stats. `Graylog2/graylog2-server#8239 <https://github.com/Graylog2/graylog2-server/issues/8239>`_ `Graylog2/graylog2-server#8282 <https://github.com/Graylog2/graylog2-server/issues/8282>`_ (Thanks `@radykal-com <https://github.com/radykal-com>`_!)
+- Only check data nodes for Elasticsearch disk usage stats. `Graylog2/graylog2-server#8239 <https://github.com/Graylog2/graylog2-server/issues/8239>`_ `Graylog2/graylog2-server#8282 <https://github.com/Graylog2/graylog2-server/issues/8282>`_ (Thanks `@radykal-com <https://github.com/radykal-com>`_!)
 
 
 Graylog 3.3.0
