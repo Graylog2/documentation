@@ -239,6 +239,13 @@ Here is an example of the payload included in a notification::
 
 .. image:: /images/alerts_http_notification.png
 
+HTTP alert notification - Supported platforms
+---------------------------------------------
+
+Squadcast
+    `Squadcast <https://www.squadcast.com>` is an IT Alerting and on-call incident management system, which ingests the alerts from Graylog using the HTTP alert notification method and sends Phone, SMS, Push and Email notifications to the relevant team memners and let them take actions.
+
+    For more information about setting the Graylog - Squadcast integration, please refer the `Squadcast documentaion <https://support.squadcast.com/docs/graylog>`.
 
 .. _alert_notification_script:
 
