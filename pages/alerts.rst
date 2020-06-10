@@ -243,9 +243,9 @@ HTTP alert notification - Supported platforms
 ---------------------------------------------
 
 Squadcast
-    `Squadcast <https://www.squadcast.com>` is an IT Alerting and on-call incident management system, which ingests the alerts from Graylog using the HTTP alert notification method and sends Phone, SMS, Push and Email notifications to the relevant team memners and let them take actions.
+    `Squadcast <https://www.squadcast.com>`__ is an IT Alerting and on-call incident management system, which ingests the alerts from Graylog using the HTTP alert notification method and sends Phone, SMS, Push and Email notifications to the relevant team memners and let them take actions.
 
-    For more information about setting the Graylog - Squadcast integration, please refer the `Squadcast documentaion <https://support.squadcast.com/docs/graylog>`.
+    For more information about setting the Graylog - Squadcast integration, please refer the `Squadcast documentaion <https://support.squadcast.com/docs/graylog>`__.
 
 .. _alert_notification_script:
 
