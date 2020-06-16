@@ -97,7 +97,7 @@ log files to grow without bounds using the `RollingFileAppender <https://logging
 One such example ``log4j2.xml`` configuration is shown below::
 
   <?xml version="1.0" encoding="UTF-8"?>
-    <Configuration packages="org.graylog2.log4j" shutdownHook="disable">
+   <Configuration packages="org.graylog2.log4j" shutdownHook="disable">
     <Appenders>
         <RollingFile name="rolling-file" fileName="/var/log/graylog-server/server.log" filePattern="/var/log/graylog-server/server.log.%i.gz">
             <PatternLayout pattern="%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %-5p [%c{1}] %m%n"/>
@@ -132,7 +132,7 @@ One such example ``log4j2.xml`` configuration is shown below::
             <AppenderRef ref="graylog-internal-logs"/>
         </Root>
     </Loggers>
-    </Configuration>
+  </Configuration>
 
 Command line (CLI) parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
