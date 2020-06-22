@@ -97,42 +97,38 @@ log files to grow without bounds using the `RollingFileAppender <https://logging
 One such example ``log4j2.xml`` configuration is shown below::
 
   <?xml version="1.0" encoding="UTF-8"?>
-  <Configuration packages="org.graylog2.log4j" shutdownHook="disable">
+   <Configuration packages="org.graylog2.log4j" shutdownHook="disable">
     <Appenders>
-        <RollingFile name="RollingFile" fileName="/tmp/logs/graylog.log"
-                     filePattern="/tmp/logs/graylog-%d{yyyy-MM-dd}.log.gz">
-          <PatternLayout>
-            <Pattern>%d %-5p: %c - %m%n</Pattern>
-          </PatternLayout>
-          <!-- Rotate logs every day or when the size exceeds 10 MB (whichever comes first) -->
-          <Policies>
-            <TimeBasedTriggeringPolicy modulate="true"/>
-            <SizeBasedTriggeringPolicy size="10 MB"/>
-          </Policies>
-          <!-- Keep a maximum of 10 log files -->
-          <DefaultRolloverStrategy max="10"/>
+        <RollingFile name="rolling-file" fileName="/var/log/graylog-server/server.log" filePattern="/var/log/graylog-server/server.log.%i.gz">
+            <PatternLayout pattern="%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %-5p [%c{1}] %m%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="50MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10" fileIndex="min"/>
         </RollingFile>
-
-        <Console name="STDOUT" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d %-5p: %c - %m%n"/>
-        </Console>
 
         <!-- Internal Graylog log appender. Please do not disable. This makes internal log messages available via REST calls. -->
         <Memory name="graylog-internal-logs" bufferSize="500"/>
     </Appenders>
     <Loggers>
+        <!-- Application Loggers -->
         <Logger name="org.graylog2" level="info"/>
         <Logger name="com.github.joschi.jadconfig" level="warn"/>
+        <!-- This emits a harmless warning for ActiveDirectory every time which we can't work around :( -->
         <Logger name="org.apache.directory.api.ldap.model.message.BindRequestImpl" level="error"/>
+        <!-- Prevent DEBUG message about Lucene Expressions not found. -->
         <Logger name="org.elasticsearch.script" level="warn"/>
+        <!-- Disable messages from the version check -->
         <Logger name="org.graylog2.periodical.VersionCheckThread" level="off"/>
+        <!-- Silence chatty natty -->
         <Logger name="com.joestelmach.natty.Parser" level="warn"/>
+        <!-- Silence Kafka log chatter -->
         <Logger name="kafka.log.Log" level="warn"/>
         <Logger name="kafka.log.OffsetIndex" level="warn"/>
+        <!-- Silence useless session validation messages -->
         <Logger name="org.apache.shiro.session.mgt.AbstractValidatingSessionManager" level="warn"/>
         <Root level="warn">
-            <AppenderRef ref="STDOUT"/>
-            <AppenderRef ref="RollingFile"/>
+            <AppenderRef ref="rolling-file"/>
             <AppenderRef ref="graylog-internal-logs"/>
         </Root>
     </Loggers>
