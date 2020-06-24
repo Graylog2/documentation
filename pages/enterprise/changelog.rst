@@ -2,6 +2,15 @@
 Changelog
 *********
 
+Graylog Enterprise 3.3.2
+========================
+
+Released: 2020-06-24
+
+**Fixed**
+
+- Fix message table headers in reports.
+
 Graylog Enterprise 3.3.1
 ========================
 
