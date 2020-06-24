@@ -2,6 +2,33 @@
 Changelog
 *********
 
+Graylog 3.3.2
+=============
+
+Released: 2020-06-24
+
+Core
+^^^^
+
+**Changed**
+
+- Mark legacy aggregation API as deprecated in favor of the new views API. (to be removed in 4.0) `Graylog2/graylog2-server#8323 <https://github.com/Graylog2/graylog2-server/issues/8323>`_
+- Update Graylog field schema. `Graylog2/graylog2-server#8331 <https://github.com/Graylog2/graylog2-server/issues/8331>`_
+- Improve search page rendering performance. `Graylog2/graylog2-server#8343 <https://github.com/Graylog2/graylog2-server/issues/8343>`_
+
+**Fixed**
+
+- Fix issue with flickering in the single number widget. `Graylog2/graylog2-server#7563 <https://github.com/Graylog2/graylog2-server/issues/7563>`_ `Graylog2/graylog2-server#8341 <https://github.com/Graylog2/graylog2-server/issues/8341>`_
+- Fix issue with extending alert notification grace period. `Graylog2/graylog2-server#8365 <https://github.com/Graylog2/graylog2-server/issues/8365>`_ `Graylog2/graylog2-server#8402 <https://github.com/Graylog2/graylog2-server/issues/8402>`_
+- Fix rendering of message table header. `Graylog2/graylog2-server#8415 <https://github.com/Graylog2/graylog2-server/issues/8415>`_
+
+Integrations Plugin
+^^^^^^^^^^^^^^^^^^^
+
+**Added**
+
+- Add new Palo Alto input to support PAN-OS v9.x devices. `Graylog2/graylog-plugin-integrations#496 <https://github.com/Graylog2/graylog-plugin-integrations/issues/496>`_
+
 Graylog 3.3.1
 =============
 
