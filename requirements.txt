@@ -30,4 +30,4 @@ tornado==6.0.4
 sphinxcontrib-websupport==1.2.3
 typing==3.7.4.3
 urllib3==1.25.9
-watchdog==0.10.2
+watchdog==0.10.3
