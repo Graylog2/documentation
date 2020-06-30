@@ -103,7 +103,7 @@ will make the following examples more obvious for you. For all examples you need
 
     * Example search: ``source:myapp2``, any timeframe you want
     * Select visualization ``Single Number``
-    * Add mertic ``avg(repsonse_time)``
+    * Add metric ``avg(response_time)``
     * Save the widget
 
 Result
