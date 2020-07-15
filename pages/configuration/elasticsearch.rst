@@ -303,7 +303,7 @@ Graylog itself is using a default mapping which includes settings for the ``time
     },
     "aliases" : { }
   }
-}
+
 
 In order to extend the default mapping of Elasticsearch and Graylog, you can create one or more custom index mappings and add them as index templates to Elasticsearch.
 
