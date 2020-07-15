@@ -223,64 +223,87 @@ Graylog itself is using a default mapping which includes settings for the ``time
 
   $ curl -X GET 'http://localhost:9200/_template/graylog-internal?pretty'
   {
-    "graylog-internal" : {
-      "order" : -2147483648,
-      "template" : "graylog_*",
-      "settings" : { },
-      "mappings" : {
-        "message" : {
-          "_ttl" : {
-            "enabled" : true
-          },
-          "_source" : {
-            "enabled" : true
-          },
-          "dynamic_templates" : [ {
-            "internal_fields" : {
-              "mapping" : {
-                "index" : "not_analyzed",
-                "type" : "string"
-              },
-              "match" : "gl2_*"
-            }
-          }, {
-            "store_generic" : {
-              "mapping" : {
-                "index" : "not_analyzed"
-              },
-              "match" : "*"
-            }
-          } ],
-          "properties" : {
-            "full_message" : {
-              "analyzer" : "standard",
-              "index" : "analyzed",
-              "type" : "string"
-            },
-            "streams" : {
-              "index" : "not_analyzed",
-              "type" : "string"
-            },
-            "source" : {
-              "analyzer" : "analyzer_keyword",
-              "index" : "analyzed",
-              "type" : "string"
-            },
-            "message" : {
-              "analyzer" : "standard",
-              "index" : "analyzed",
-              "type" : "string"
-            },
-            "timestamp" : {
-              "format" : "yyyy-MM-dd HH:mm:ss.SSS",
-              "type" : "date"
+  "graylog-internal" : {
+    "order" : -1,
+    "index_patterns" : [
+      "graylog_*"
+    ],
+    "settings" : {
+      "index" : {
+        "analysis" : {
+          "analyzer" : {
+            "analyzer_keyword" : {
+              "filter" : "lowercase",
+              "tokenizer" : "keyword"
             }
           }
         }
-      },
-      "aliases" : { }
-    }
+      }
+    },
+    "mappings" : {
+      "message" : {
+        "_source" : {
+          "enabled" : true
+        },
+        "dynamic_templates" : [
+          {
+            "internal_fields" : {
+              "mapping" : {
+                "type" : "keyword"
+              },
+              "match_mapping_type" : "string",
+              "match" : "gl2_*"
+            }
+          },
+          {
+            "store_generic" : {
+              "mapping" : {
+                "type" : "keyword"
+              },
+              "match_mapping_type" : "string"
+            }
+          }
+        ],
+        "properties" : {
+          "gl2_processing_timestamp" : {
+            "format" : "yyyy-MM-dd HH:mm:ss.SSS",
+            "type" : "date"
+          },
+          "gl2_accounted_message_size" : {
+            "type" : "long"
+          },
+          "gl2_receive_timestamp" : {
+            "format" : "yyyy-MM-dd HH:mm:ss.SSS",
+            "type" : "date"
+          },
+          "full_message" : {
+            "fielddata" : false,
+            "analyzer" : "standard",
+            "type" : "text"
+          },
+          "streams" : {
+            "type" : "keyword"
+          },
+          "source" : {
+            "fielddata" : true,
+            "analyzer" : "analyzer_keyword",
+            "type" : "text"
+          },
+          "message" : {
+            "fielddata" : false,
+            "analyzer" : "standard",
+            "type" : "text"
+          },
+          "timestamp" : {
+            "format" : "yyyy-MM-dd HH:mm:ss.SSS",
+            "type" : "date"
+          }
+        }
+      }
+    },
+    "aliases" : { }
   }
+}
 
 In order to extend the default mapping of Elasticsearch and Graylog, you can create one or more custom index mappings and add them as index templates to Elasticsearch.
 
@@ -289,7 +312,7 @@ Let's say we have a schema for our data like the following:
 ======================  ==========  ========================
 Field Name              Field Type  Example
 ======================  ==========  ========================
-``http_method``         string      GET
+``http_method``         keyword     GET
 ``http_response_code``  long        200
 ``ingest_time``         date        2016-06-13T15:00:51.927Z
 ``took_ms``             long        56
@@ -301,8 +324,7 @@ This would translate to the following additional index mapping in Elasticsearch:
     "message" : {
       "properties" : {
         "http_method" : {
-          "type" : "string",
-          "index" : "not_analyzed"
+          "type" : "keyword"
         },
         "http_response_code" : {
           "type" : "long"
@@ -335,8 +357,7 @@ Save the following index template for the custom index mapping into a file named
       "message" : {
         "properties" : {
           "http_method" : {
-            "type" : "string",
-            "index" : "not_analyzed"
+            "type" : "keyword"
           },
           "http_response_code" : {
             "type" : "long"
@@ -366,36 +387,36 @@ Every Elasticsearch index created from that time on, will have an index mapping 
 
   $ curl -X GET 'http://localhost:9200/graylog_deflector/_mapping?pretty'
   {
-    "graylog_2" : {
+    "graylog_3" : {
       "mappings" : {
         "message" : {
-          "_ttl" : {
-            "enabled" : true
-          },
-          "dynamic_templates" : [ {
-            "internal_fields" : {
-              "mapping" : {
-                "index" : "not_analyzed",
-                "type" : "string"
-              },
-              "match" : "gl2_*"
+          "dynamic_templates" : [ 
+            {
+              "internal_fields" : {
+                "match" : "gl2_*",
+                "match_mapping_type" : "string",
+                "mapping" : {
+                  "type" : "keyword"
+                }
+              }
+            }, 
+            {
+              "store_generic" : {
+                "match_mapping_type" : "string",
+                "mapping" : {
+                  "type" : "keyword"
+                }
+              }
             }
-          }, {
-            "store_generic" : {
-              "mapping" : {
-                "index" : "not_analyzed"
-              },
-              "match" : "*"
-            }
-          } ],
+          ],
+
           "properties" : {
             "full_message" : {
-              "type" : "string",
+              "type" : "text",
               "analyzer" : "standard"
             },
             "http_method" : {
-              "type" : "string",
-              "index" : "not_analyzed"
+              "type" : "keyword"
             },
             "http_response_code" : {
               "type" : "long"
@@ -405,16 +426,16 @@ Every Elasticsearch index created from that time on, will have an index mapping 
               "format" : "strict_date_time"
             },
             "message" : {
-              "type" : "string",
+              "type" : "text",
               "analyzer" : "standard"
             },
             "source" : {
-              "type" : "string",
-              "analyzer" : "analyzer_keyword"
+              "type" : "text",
+              "analyzer" : "analyzer_keyword",
+              "fielddata" : true
             },
             "streams" : {
-              "type" : "string",
-              "index" : "not_analyzed"
+              "type" : "keyword"
             },
             "timestamp" : {
               "type" : "date",
@@ -450,41 +471,42 @@ After you've removed the index template, new indices will only have the original
     "graylog_3" : {
       "mappings" : {
         "message" : {
-          "_ttl" : {
-            "enabled" : true
-          },
-          "dynamic_templates" : [ {
-            "internal_fields" : {
-              "mapping" : {
-                "index" : "not_analyzed",
-                "type" : "string"
-              },
-              "match" : "gl2_*"
+          "dynamic_templates" : [ 
+            {
+              "internal_fields" : {
+                "match" : "gl2_*",
+                "match_mapping_type" : "string",
+                "mapping" : {
+                  "type" : "keyword"
+                }
+              }
+            }, 
+            {
+              "store_generic" : {
+                "match_mapping_type" : "string",
+                "mapping" : {
+                  "type" : "keyword"
+                }
+              }
             }
-          }, {
-            "store_generic" : {
-              "mapping" : {
-                "index" : "not_analyzed"
-              },
-              "match" : "*"
-            }
-          } ],
+          ],
+
           "properties" : {
             "full_message" : {
-              "type" : "string",
+              "type" : "text",
               "analyzer" : "standard"
             },
             "message" : {
-              "type" : "string",
+              "type" : "text",
               "analyzer" : "standard"
             },
             "source" : {
-              "type" : "string",
-              "analyzer" : "analyzer_keyword"
+              "type" : "text",
+              "analyzer" : "analyzer_keyword",
+              "fielddata" : true
             },
             "streams" : {
-              "type" : "string",
-              "index" : "not_analyzed"
+              "type" : "keyword"
             },
             "timestamp" : {
               "type" : "date",
