@@ -35,6 +35,8 @@ Now a review of the changes is needed and, finally, it will be merged by the rev
 
 ## Building locally
 
+We really recommend to use the [docker-compose](#docker-compose) environment for writing documentation. Please only use all other provided options when you know how to handle errors on your own!
+
 ### required software
 
 - git
