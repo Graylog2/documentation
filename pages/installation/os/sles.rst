@@ -57,10 +57,13 @@ First install the Elastic GPG key with ``rpm --import https://artifacts.elastic.
 
 followed by the installation of the latest release with ``sudo zypper install elasticsearch-oss``.
 
-Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` additionally you need to uncomment (remove the # as first character) the line, and add ``action.auto_create_index: false`` to the configuration file::
+Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` and uncomment ``action.auto_create_index: false`` to enable the action::
 
+    $ sudo tee -a /etc/elasticsearch/elasticsearch.yml > /dev/null <<EOT
     cluster.name: graylog
     action.auto_create_index: false
+    EOT
+
 
 In order to automatically start Elasticsearch on system boot, you have to activate the Elasticsearch service by running the following commands::
 
@@ -79,9 +82,9 @@ First install the Graylog GPG Key with ``rpm --import https://packages.graylog2.
     gpgcheck=1
     gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-graylog
 
-After that, install the latest release with ``sudo zypper install graylog-server``.
+After that, install the latest release with ``sudo zypper install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins``.
 
-.. hint:: If you want the :ref:`Integrations Plugins <integrations_plugins>` or the :ref:`Enterprise Plugins <enterprise_features>` installed, you need to install them now. The following install all official provided packages by Graylog at the same time: ``sudo zypper install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins`` 
+.. hint:: If you do not want the :ref:`Integrations Plugins <integrations_plugins>` or the :ref:`Enterprise Plugins <enterprise_features>` installed, then simply run ``sudo zypper install graylog-server``
 
 Make sure to follow the instructions in your ``/etc/graylog/server/server.conf`` and add ``password_secret`` and ``root_password_sha2``. These settings are mandatory and without them, Graylog will not start!
 
