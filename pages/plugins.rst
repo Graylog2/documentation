@@ -80,7 +80,7 @@ First you should install the latest version of the `graylog-project-cli <https:/
 
   $ graylog-project bootstrap github://Graylog2/graylog-project.git
 
-This will create a checkout of the meta project in your current directory. Now have the ``graylog-project`` and ``graylog-project-repos``. Those two directories contain the meta data and all repositories that are required. The directory ``graylog-project-repos`` will also be the home of your new plugin.
+This will create a checkout of the meta project in your current directory. You'll see both ``graylog-project`` and ``graylog-project-repos``. Those two directories contain the meta data and all repositories that are required. The directory ``graylog-project-repos`` will also be the home of your new plugin.
 
 Now you can bootstrap the plugin you want to write, by running the following command, inside the ``graylog-project-repos`` directory::
 
