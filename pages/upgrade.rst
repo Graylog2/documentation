@@ -32,7 +32,6 @@ If the current installation was installed using a package manager (ex. yum, apt)
 For .rpm based systems :ref:`this update guide <operating_package_upgrade_rpm-yum-dnf>` and for .deb based systems :ref:`this update guide <operating_package_upgrade_DEB-APT>` should help.
 
 
-
 Upgrading Elasticsearch
 -----------------------
 
