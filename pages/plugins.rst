@@ -143,7 +143,7 @@ At the very minimum you need to implement two interfaces:
 
 The ``bootstrap-plugin`` script generates these implementations for you, and you simply need to fill out the details.
 
-Graylog uses Java's `ServiceLoader <https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html>`_ mechanism to find your plugin's main class, so if you rename your ``Plugin`` implementation, you need to also adjust the `service file <https://github.com/Graylog2/graylog-plugin-sample/blob/master/src/main/resources/META-INF/services/org.graylog2.plugin.Pluginn>`_.
+Graylog uses Java's `ServiceLoader <https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html>`_ mechanism to find your plugin's main class, so if you rename your ``Plugin`` implementation, you need to also adjust the `service file <https://github.com/Graylog2/graylog-plugin-sample/blob/master/src/main/resources/META-INF/services/org.graylog2.plugin.Plugin>`_.
 Please also see Google Guava's `AutoService <https://github.com/google/auto/tree/master/service>`_ which Graylog uses in conjunction with the plain ServiceLoader.
 
 In addition to the service, Graylog needs an additional resource file called ``graylog-plugin.properties`` in a special location. This file contains information about the plugin, specifically which classloader the plugin needs to be in, so it needs to be read before the plugin is actually loaded.
