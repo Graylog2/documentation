@@ -4,7 +4,7 @@
 CentOS installation
 *******************
 
-This guide describes the fastest way to install Graylog on CentOS 7. All links and packages are present at the time of writing but might need to be updated later on.
+This guide describes the fastest way to install Graylog on CentOS 8. All links and packages are present at the time of writing but might need to be updated later on.
 
 .. warning:: This guide **does not cover** security settings! The server administrator must make sure the graylog server is not publicly exposed, and is following security best practices.
 
@@ -24,12 +24,12 @@ MongoDB
 
 Installing MongoDB on CentOS should follow `the tutorial for RHEL and CentOS <https://docs.mongodb.com/master/tutorial/install-mongodb-on-red-hat>`_ from the MongoDB documentation. First add the repository file ``/etc/yum.repos.d/mongodb-org.repo`` with the following contents::
 
-  [mongodb-org-4.0]
+  [mongodb-org-4.2]
   name=MongoDB Repository
-  baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.0/x86_64/
+  baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/
   gpgcheck=1
   enabled=1
-  gpgkey=https://www.mongodb.org/static/pgp/server-4.0.asc
+  gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc
 
 After that, install the latest release of MongoDB with ``sudo yum install mongodb-org``.
 

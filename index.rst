@@ -11,7 +11,7 @@ NOTE: There are multiple options for reading this documentation. See link to the
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Graylog
 
    pages/architecture
@@ -43,7 +43,7 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/changelog
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Graylog Enterprise
 
    pages/enterprise/intro
