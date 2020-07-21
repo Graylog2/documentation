@@ -59,10 +59,10 @@ The above instructions are a derivative from the `Elasticsearch install page <ht
 Modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``)
 and set the cluster name to ``graylog`` and uncomment ``action.auto_create_index: false`` to enable the action::
 
-    $ sudo vim /etc/elasticsearch/elasticsearch.yml
-
+    $ sudo tee -a /etc/elasticsearch/elasticsearch.yml > /dev/null <<EOT
     cluster.name: graylog
     action.auto_create_index: false
+    EOT
 
 
 After you have modified the configuration, you can start Elasticsearch and verify it is running. ::
