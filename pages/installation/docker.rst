@@ -331,7 +331,7 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
     graylog:
       image: graylog/graylog:3.3
       volumes:
-        - graylog_journal:/usr/share/graylog/data/journal
+        - graylog_data:/usr/share/graylog/data
       environment:
         # CHANGE ME (must be at least 16 characters)!
         - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
