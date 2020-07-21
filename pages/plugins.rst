@@ -61,7 +61,7 @@ Graylog uses a couple of conventions and techniques in its code, so be sure to r
 Sample Plugin
 -------------
 
-In the following sections we will create a plugin skeleton based on a maven archetype. The skeleton is similar to the `sample plugin on Github <https://github.com/Graylog2/graylog-plugin-sample/tree/2.2>`_.
+In the following sections we will create a plugin skeleton based on a maven archetype. The skeleton is similar to the `sample plugin on Github <https://github.com/Graylog2/graylog-plugin-sample/tree/master>`_.
 This documentation will link to specific parts for your reference. It is fully functional, even though it does not implement any useful functionality. Its purpose is to provide a reference for helping to implement your own plugins.
 
 .. _creating_plugin_skeleton:
@@ -76,13 +76,11 @@ which will create a complete plugin project infrastructure with all required cla
 
 Maven is a widely used build tool for Java, that comes pre-installed on many operating systems or can be installed using most package managers. Make sure that you have at least version 3 before you go on.
 
-Use it like this::
+First you should install the latest version of the `graylog-project-cli <https://github.com/graylog2/graylog-project-cli/releases>`_ on your workstation. Use this to bootstrap the meta project in your working directory with the following command::
 
-  $ git clone git@github.com:Graylog2/graylog-project.git
+  $ graylog-project bootstrap github://Graylog2/graylog-project.git
 
-
-This will create a checkout of the meta project in your current work dir. Now change to the ``graylog-project`` directory and follow the ``Install CLI Tool`` and ``Bootstrap`` from its README.
-Bootstrapping the ``garylog-project`` will create the directory ``graylog-project-repos``. It contains all required repositories and will also be the home of your new plugin.
+This will create a checkout of the meta project in your current directory. Now have the ``graylog-project`` and ``graylog-project-repos``. Those two directories contain the meta data and all repositories that are required. The directory ``graylog-project-repos`` will also be the home of your new plugin.
 
 Now you can bootstrap the plugin you want to write, by running the following command, inside the ``graylog-project-repos`` directory::
 
@@ -140,16 +138,16 @@ Required classes
 
 At the very minimum you need to implement two interfaces:
 
-  * ``org.graylog2.plugin.Plugin`` - which is the entry to your `plugin <https://github.com/Graylog2/graylog-plugin-sample/blob/2.2/src/main/java/org/graylog/plugins/sample/SamplePlugin.java>`_ code
-  * ``org.graylog2.plugin.PluginMetaData`` - which `describes your plugin <https://github.com/Graylog2/graylog-plugin-sample/blob/2.2/src/main/java/org/graylog/plugins/sample/SampleMetaData.java>`_
+  * ``org.graylog2.plugin.Plugin`` - which is the entry to your `plugin <https://github.com/Graylog2/graylog-plugin-sample/blob/master/src/main/java/org/graylog/plugins/sample/SamplePlugin.java>`_ code
+  * ``org.graylog2.plugin.PluginMetaData`` - which `describes your plugin <https://github.com/Graylog2/graylog-plugin-sample/blob/master/src/main/java/org/graylog/plugins/sample/SampleMetaData.java>`_
 
 The ``bootstrap-plugin`` script generates these implementations for you, and you simply need to fill out the details.
 
-Graylog uses Java's `ServiceLoader <https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html>`_ mechanism to find your plugin's main class, so if you rename your ``Plugin`` implementation, you need to also adjust the `service file <https://github.com/Graylog2/graylog-plugin-sample/blob/2.2/src/main/resources/META-INF/services/org.graylog2.plugin.Plugin>`_.
+Graylog uses Java's `ServiceLoader <https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html>`_ mechanism to find your plugin's main class, so if you rename your ``Plugin`` implementation, you need to also adjust the `service file <https://github.com/Graylog2/graylog-plugin-sample/blob/master/src/main/resources/META-INF/services/org.graylog2.plugin.Pluginn>`_.
 Please also see Google Guava's `AutoService <https://github.com/google/auto/tree/master/service>`_ which Graylog uses in conjunction with the plain ServiceLoader.
 
 In addition to the service, Graylog needs an additional resource file called ``graylog-plugin.properties`` in a special location. This file contains information about the plugin, specifically which classloader the plugin needs to be in, so it needs to be read before the plugin is actually loaded.
-Typically you can simply take the default that has been `generated for you <https://github.com/Graylog2/graylog-plugin-sample/blob/2.2/src/main/resources/org.graylog.plugins.graylog-plugin-sample/graylog-plugin.properties>`_.
+Typically you can simply take the default that has been `generated for you <https://github.com/Graylog2/graylog-plugin-sample/blob/master/src/main/resources/org.graylog.plugins.graylog-plugin-sample/graylog-plugin.properties>`_.
 
 Registering your extension
 ..........................
