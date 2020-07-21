@@ -361,7 +361,7 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
       driver: local
     es_data:
       driver: local
-    graylog_journal:
+    graylog_data:
       driver: local
 
 Start all services with exposed data directories::
