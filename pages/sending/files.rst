@@ -1,5 +1,5 @@
 ******************
-Reading from files
+Ingest from files
 ******************
 
 Log files come in a lot of different flavors and formats, much more than any single program could handle.

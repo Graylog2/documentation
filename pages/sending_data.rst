@@ -4,16 +4,14 @@
 Sending in log data
 *******************
 
-A Graylog setup is pretty worthless without any data in it. This page explains the basic principles of getting your data
-into the system and also explains common fallacies.
+A Graylog setup is pretty worthless without any data in it. This page explains the basic principles of getting your data into the system and also explains common fallacies.
 
 What are Graylog message inputs?
 ================================
 
-Message inputs are the Graylog parts responsible for accepting log messages. They are launched from the web interface
-(or the REST API) in the *System -> Inputs* section and are launched and configured without the need to restart any
-part of the system.
+Message inputs are the Graylog parts responsible for accepting log messages. They are launched from the web interface (or the REST API) in the *System -> Inputs* section and are launched and configured without the need to restart any part of the system.
 
+The section about the different log sources describe how you ingest different kind of logs in addition some logs are that special that we have special inputs for them. Some of them are listed below in the special inputs section.
 
 Log sources
 ===========
@@ -24,13 +22,24 @@ Log sources
    sending/syslog
    sending/journald
    sending/windows
-   sending/files
+   sending/cef
    sending/raw
    sending/gelf
-   sending/queue
+   sending/files
    sending/json
    sending/application
-   
+   sending/queue
+
+Special Inputs
+==============
+
+.. toctree::
+   :titlesonly:
+
+   integrations/inputs/aws_kinesis_cloudwatch_input
+   integrations/inputs/ipfix_input
+   integrations/inputs/okta_input
+   integrations/inputs/palo_alto_networks_input
 
 
 

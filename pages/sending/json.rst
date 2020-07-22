@@ -1,6 +1,6 @@
-*****************************
-JSON path from HTTP API input
-*****************************
+******************************
+Ingest JSON path from HTTP API
+******************************
 
 The JSON path from HTTP API input is reading any JSON response of a REST resource and stores a field value of it as a Graylog message.
 
