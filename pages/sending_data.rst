@@ -9,9 +9,13 @@ A Graylog setup is pretty worthless without any data in it. This page explains t
 What are Graylog message inputs?
 ================================
 
-Message inputs are the Graylog parts responsible for accepting log messages. They are launched from the web interface (or the REST API) in the *System -> Inputs* section and are launched and configured without the need to restart any part of the system.
+Message inputs are the Graylog parts responsible for accepting log messages. Some default messages types are available by default in Graylog. But it might be needed to install additional plugins to enable Graylog to receive particular messages.  
 
-The section about the different log sources describes how you ingest those types of logs; besides, some logs have individual inputs. Some of them are listed below in the individual inputs section. In addition to that, `the Graylog Marketplace <http://marketplace.graylog.org>`__ contains some inputs created by the community.  
+After choosing the input type in the Graylog web interface at ``System / Inputs``,  the input is launched without a restart of Graylog. Most environments will use the defaults for the inputs, but most inputs have a granular configuration available. Some can use TLS or authentication via certificates, and others can make use of a queuing system. 
+
+Most environments will have one input of each type and ingest all messages of that type to the one input. But it might be needed to have multiple inputs of the same kind to allow some extractors to work only on specific messages. But the processing pipeline would allow us to work on ingested messages from different sources on the same input in different ways. But as every environment is different, Graylog is flexible and will enable you to adjust everything to your need and not let you change your setting to fit Graylog.
+
+The section about the different log sources describes how you ingest those types of logs; besides, some logs have individual inputs. Some of them are listed below in the individual inputs section. In addition to that, `the Graylog Marketplace <http://marketplace.graylog.org>`__ contains some inputs created by the community.   
 
 Log sources
 ===========
