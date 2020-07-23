@@ -24,5 +24,5 @@ Pay attention to the `metrics` to see if the data is flowing in .
 
 Office 365 Integrations Landing Page
 
-.. image:: /images/okta_input.png
+.. image:: /images/integrations/o365_landing_page.png
     :width: 600
