@@ -47,7 +47,7 @@ Add the GELF gem to your Gemfile::
 Heroku
 ------
 
-You need to apply a workaround if you want custom logging on Heroku. The reason for this is that Heroku injects an own logger (``rails_log_stdout``),
+You need to apply a workaround if you want custom logging on Heroku. The reason for this is that Heroku injects its own logger (``rails_log_stdout``),
 that overwrites your custom one. The workaround is to add a file that makes Heroku think that the logger is already in your application::
 
     $ touch vendor/plugins/rails_log_stdout/heroku_fix
