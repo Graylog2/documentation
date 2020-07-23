@@ -103,7 +103,7 @@ Now restart ``syslogd``::
   $ sudo launchctl unload /System/Library/LaunchDaemons/com.apple.syslogd.plist
   $ sudo launchctl load /System/Library/LaunchDaemons/com.apple.syslogd.plist
 
-**Important:** If ``syslogd`` was running as another user you might end up with multiple ``syslogd`` instances and strange
+**Important:** If ``syslogd`` was running as another user, you might end up with multiple ``syslogd`` instances and strange
 behavior of the whole system. Please check that only one ``syslogd`` process is running::
 
   $ ps aux | grep syslog
