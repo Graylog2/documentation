@@ -37,6 +37,7 @@ Individual Inputs
 .. toctree::
    :titlesonly:
 
+   sending/input/beats
    integrations/inputs/aws_kinesis_cloudwatch_input
    integrations/inputs/ipfix_input
    integrations/inputs/okta_input

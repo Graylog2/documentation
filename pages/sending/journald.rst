@@ -6,7 +6,7 @@ Many Linux environments have journald configured to write the traditional log fi
 
 The better solution would be to write directly from journald to Graylog. As this is not supported by journald at the time of writing, we need to use the collector  `journalbeat <https://www.elastic.co/guide/en/beats/journalbeat/current/journalbeat-overview.html>`__ that allows to read the journal from systemd and use the beats framework to transport the messages.
 
-In Graylog, create a beats input and configure the journalbeat with the logstash output pointing to the beats input in Graylog. The following configuration can be seen as example journalbeat configuration::
+In Graylog, create a :ref:`beats input<beats_input>` and configure the journalbeat with the logstash output pointing to the beats input in Graylog. The following configuration can be seen as example journalbeat configuration::
 
 			journalbeat.inputs:
 			  # Paths that should be crawled and fetched. Possible values files and directories.
