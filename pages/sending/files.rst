@@ -30,7 +30,7 @@ A basic filebeat configuration for filebeat on Linux can look like the following
 			  logs: /var/lib/graylog-sidecar/collectors/filebeat/log
 
 
-For Windows the basic filebeat configuration can be like::
+For Windows, the basic filebeat configuration can be like::
 
 			fields_under_root: true
 			fields.collector_node_id: ${sidecar.nodeName}
