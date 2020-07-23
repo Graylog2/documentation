@@ -1,3 +1,5 @@
+.. _content_packs:
+
 *************
 Content Packs
 *************
