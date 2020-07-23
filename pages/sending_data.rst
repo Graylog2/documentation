@@ -34,6 +34,8 @@ We can't cover all possible options and device configurations in this section. T
 Individual Inputs
 =================
 
+These listed inputs are not all available in Graylog. Most are dedicated to an individual product or framework. The default inputs like Syslog, CEF, GELF, or the RAW/Plaintext are not listed individually.  
+
 .. toctree::
    :titlesonly:
 
