@@ -9,7 +9,7 @@ in most architectures.
 
 **Many devices, especially routers and firewalls, do not send RFC compliant syslog messages.** This might result
 in wrong or completely failing parsing. In that case you might have to go with a combination of *raw/plaintext* message inputs that
-do not attempt to do any parsing and :doc:`extractors`.
+do not attempt to do any parsing and :ref:`extractors`.
 
 Rule of thumb is that messages forwarded by `rsyslog <https://www.rsyslog.com>`__ or `syslog-ng <https://github.com/syslog-ng/syslog-ng>`__ are usually parsed flawlessly.
 
