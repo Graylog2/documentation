@@ -1,4 +1,4 @@
-.. _okta_input:
+.. _o365_input:
 
 *********************
 Office 365 Integrations
