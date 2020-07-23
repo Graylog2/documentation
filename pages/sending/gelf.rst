@@ -5,7 +5,7 @@ Ingest GELF
 The Graylog Extended Log Format (GELF) is a log format that avoids the shortcomings of classic plain Syslog and is perfect
 for logging from your application layer. It comes with optional compression, chunking, and, most importantly, a clearly defined
 structure. 
-The Input of GELF messages can be UDP, TCP, or HTTP. Additional a queue is possible. 
+The Input of GELF messages can be UDP, TCP, or HTTP. Additionally, a queue is possible. 
 
 Some applications like `Docker can send GELF messages <https://docs.docker.com/config/containers/logging/gelf/>`__ native. Also, `fluentd speaks GELF <https://docs.fluentbit.io/manual/pipeline/outputs/gelf>`__. 
 
