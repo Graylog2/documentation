@@ -2,7 +2,7 @@
 Ingest Application Data 
 ***********************
 
-We could not cover all languages or examples for many applications in the documentation. But to give a brief overview, this page is created.
+We could not cover all languages or examples for many applications in the documentation. But to give a brief overview, we created this page.
 
 
 Ruby on Rails
