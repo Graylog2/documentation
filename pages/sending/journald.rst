@@ -8,6 +8,10 @@ The better solution would be to write directly from journald to Graylog. As this
 
 In Graylog, create a :ref:`beats input<beats_input>` and configure the journalbeat with the logstash output pointing to the beats input in Graylog. The following configuration can be seen as example journalbeat configuration::
 
+			fields_under_root: true
+			fields.collector_node_id: ${sidecar.nodeName}
+			fields.gl2_source_collector: ${sidecar,nodeId}
+			
 			journalbeat.inputs:
 			  # Paths that should be crawled and fetched. Possible values files and directories.
 			  # When setting a directory, all journals under it are merged.
