@@ -2,8 +2,10 @@
 Ingest Raw/Plaintext
 ********************
 
-The built-in *raw/plaintext* inputs allow you to parse any text that you can send via TCP or UDP. No parsing is applied at
-all by default until you build your own parser using custom :doc:`extractors`. This is a good way to support any text-based
-logging format.
+The build-in ``RAW/Plaintext`` input is a netcat like application in Graylog. It will receive any data the is ingest to the running input. 
 
-You can also write :doc:`plugins` if you need extreme flexibility.
+The advantage is that this data is parsable with the extractors or the processing pipeline. But as no structure is known, Graylog will not automatically extract the time or any other information from the log. 
+
+This way of working is useful for debugging. To check what kind of log does a specific appliance or application sent. 
+
+Sometimes the ``RAW/Plaintext`` is the best option to ingest logs from applications or scripts into Graylog. 
