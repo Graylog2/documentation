@@ -2,7 +2,7 @@
 Ingest Raw/Plaintext
 ********************
 
-The build-in ``RAW/Plaintext`` input is a netcat like application in Graylog. It will receive any data the is ingest to the running input. 
+The built-in ``RAW/Plaintext`` input is a netcat like application in Graylog. It will receive any data that is ingested into the running input. 
 
 The advantage is that this data is parsable with the extractors or the processing pipeline. But as no structure is known, Graylog will not automatically extract the time or any other information from the log. 
 
