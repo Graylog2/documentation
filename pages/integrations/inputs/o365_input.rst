@@ -53,5 +53,16 @@ Can you give me an example of a microsoft account login ?
 ---------------------------------------------------------
 cat@water.onmicrosoft.com
 
+How do I know if the plugin is running ?
+
+
+where do I see the metrics for this plugin ?
+
+
+what happens if the plugin stops ?
+
+
+Are there any failures that I will encounter while running this plugin ?
+
 
 
