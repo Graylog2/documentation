@@ -32,37 +32,42 @@ Office 365 Integrations Landing Page
 .. image:: /images/integrations/o365_landing_page.png
     :width: 600
 
-Frequently asked questions
-==========================
-How do I know if I have turn on Unified logging and it is working?
-------------------------------------------------------------------
+what are the essentials for running graylog-o365-plugin ?
+---------------------------------------------------------
+
+you have subscribed to https://www.office.com/?auth=2 and https://portal.azure.com/#home
 
 Go to https://protection.office.com/unifiedauditlog and perform a search. you will see some results.
 
-What are the essentials for running this plugin ?
--------------------------------------------------
-
-you have subscribed to https://www.office.com/?auth=2
-
-once you login into Azure portal https://portal.azure.com/#home ,you can obtain the essentials for running this plugin.Please refer screenshot below, to get the required fields for running this plugin.
+once you login into Azure portal,you can obtain the essentials for running this plugin.Please refer screenshot below, to get the required fields for running this plugin.
 
 .. image:: /images/integrations/o365_graylog_credentials.png
     :width: 600
 
-Can you give me an example of a microsoft account login ?
+can you give me an example of a microsoft account login ?
 ---------------------------------------------------------
 cat@water.onmicrosoft.com
 
-How do I know if the plugin is running ?
+what is the name of the Input plugin ?
+--------------------------------------
+
+Office 365 Log Events
+
+.. image:: /images/integrations/o365_input_plugin.png
+    :width: 300
+
+how do I know if the graylog-o365-plugin is running ?
 
 
-where do I see the metrics for this plugin ?
+where do I see the metrics for graylog-o365-plugin ?
 
 
-what happens if the plugin stops ?
+what happens if graylog-o365-plugin stops ?
 
 
-Are there any failures that I will encounter while running this plugin ?
+Are there any failures that I will encounter while running graylog-o365-plugin plugin ?
+
+
 
 
 
