@@ -26,7 +26,7 @@ you should be able to login into the following websites with your exempli@gratia
 
 once you login into Azure portal,you can obtain the essentials for running this plugin.Please collect items 1-3 from the azure portal.
 Leave the defaults for the rest of the fields while navigating the **graylog-o365-input-plugin** wizard.You must be up and running with this input **Office 365 Log Events**
-plugin in a few minutes.If the plugin stops due to any failures, re-starting the input will start collecting data from the last **CHECKPOINT_TIME** of failure.
+plugin in a few minutes.If the plugin stops **RUNNING** completely, due to any failures, click **Start input** to collect data from the last **CHECKPOINT_TIME** of failure.
 
 
 1) ``Directory (tenant) ID``
@@ -35,7 +35,8 @@ plugin in a few minutes.If the plugin stops due to any failures, re-starting the
 4) ``Enterprise and GCC Government plans`` is the most common subscription type.
 
 This `input <http://localhost:8080/system/inputs>`_ plugin polls data internally using, https://docs.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference.
-Watch the plugin `metrics <http://localhost:8080/system/metrics/node/node-id?filter=filterid>`_ to validate, if the `data <http://localhost:8080/search?q=gl2_source_input%3A5f1b38dc2fb55336f12afc1a&rangetype=relative&relative=0>`_ is flowing in .
+Click `Show metrics <http://localhost:8080/system/metrics/node/node-id?filter=filterid>`_, `Show Received Messages <http://localhost:8080/search?q=gl2_source_input%3A5f1b38dc2fb55336f12afc1a&rangetype=relative&relative=0>`_
+to validate if the data is flowing in .
 
 Screen shot of Office 365 Integrations Landing Page
 
