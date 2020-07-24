@@ -8,20 +8,21 @@ Office 365 Integrations
                It is meant for the hosted "online" office and do not use this to collect logs from a windows server, in your data center.
 
 Why does this plugin exist ?
+============================
 Office 365 Integrations plugin, collects data from Windows Logs, Email, File Sharing and Data Loss Prevention Logs in one input.
 Developing a client side SDK for Microsoft Management API is hard and adopting Graylog product as a whole, will fill the technological
 gap,and pain points you experience due to lack of resources , knowledge/skills , and decision making skills.
 
 How do I get this plugin running ?
-This input is very easy to set up. Once you have the top three information handy, you must be up and running with this plugin in a few minutes.
-Please give yourself , 2-3 days to collect the details below and once you have turned on unified logging, the logs will start flowing in.
+==================================
+This input is very easy to set up. For beginners,have the top three information handy,and leave the defaults for the rest of the fields.
+You must be up and running with this plugin in a few minutes.Please give yourself , 2-3 days to collect the details below and once you have
+turned on unified logging, the logs will start flowing in.
 
-1) Directory (tenant) ID,
-2) Application (client) ID,
-3) Client Secret,
+1) Directory (tenant) ID
+2) Application (client) ID
+3) Client Secret
 4) Enterprise and GCC Government plans is the most common subscription type.
-5) Leave the defaults for the rest of the fields .
-
 
 This input plugin polls data internally using Management Activity Rest API. https://docs.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference.
 Pay attention to this plugin `metrics` to see if the data is flowing in .
