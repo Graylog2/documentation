@@ -10,7 +10,7 @@ Office 365 Integrations
 Why does this plugin exist ?
 ============================
 Office 365 Integrations plugin, collects data from Windows Logs, Email, File Sharing and Data Loss Prevention Logs in one input.
-Developing a client side SDK for Microsoft Management API is hard. Adopting Graylog product with its unique team mates, will
+Developing a client side SDK for Microsoft Management API is hard. Adopting Graylog open source product, will
 fill the technological gap you experience due to lack of resources.
 
 How do I get this plugin running ?
@@ -31,3 +31,27 @@ Office 365 Integrations Landing Page
 
 .. image:: /images/integrations/o365_landing_page.png
     :width: 600
+
+Frequently asked questions
+==========================
+How do I know if I have turn on Unified logging and it is working?
+------------------------------------------------------------------
+
+Go to https://protection.office.com/unifiedauditlog and perform a search. you will see some results.
+
+What are the essentials for running this plugin ?
+-------------------------------------------------
+
+you have subscribed to https://www.office.com/?auth=2
+
+once you login into Azure portal https://portal.azure.com/#home ,you can obtain the essentials for running this plugin.Please refer screenshot below, to get the required fields for running this plugin.
+
+.. image:: /images/integrations/o365_graylog_credentials.png
+    :width: 600
+
+Can you give me an example of a microsoft account login ?
+---------------------------------------------------------
+cat@water.onmicrosoft.com
+
+
+
