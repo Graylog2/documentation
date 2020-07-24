@@ -1,15 +1,15 @@
 .. _o365_input:
 
-*********************
+***********************
 Office 365 Integrations
-*********************
+***********************
 
 .. attention:: This is a Graylog Enterprise feature and is only available since Graylog version 3.3. A valid Graylog Enterprise license is required.
 
 
 Office 365 Integrations plugin, collects data from Windows Logs, Email, File Sharing and Data Loss Prevention Logs in one input.
 
-This input is very easy to set up. Once you have the top  three information handy , you must be up and running with this plugin in a few minutes.
+This input is very easy to set up. Once you have the top  three information handy, you must be up and running with this plugin in a few minutes.
 Please give yourself , 2-3 days to collect the details below and once you have turned on unified logging, the logs will start flowing in.
 
 1) Directory (tenant) ID,
