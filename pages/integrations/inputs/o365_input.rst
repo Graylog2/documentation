@@ -11,7 +11,7 @@ Why does this plugin exist ?
 ============================
 Office 365 Integrations plugin, collects data from Windows Logs, Email, File Sharing and Data Loss Prevention Logs in one input.
 Developing a client side SDK for Microsoft Management API is hard and adopting Graylog product as a whole, will fill the technological
-gap,and pain points you experience due to lack of resources , knowledge/skills , and decision making skills.
+gap you experience due to lack of resources with knowledge and decision making skills.
 
 How do I get this plugin running ?
 ==================================
