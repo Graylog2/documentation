@@ -23,8 +23,8 @@ Graylog cluster.  Messages stay in the on-disk journal until the Output is able 
 successfully send the data to the external receiver.
 
 Once the messages have been written to the journal, they are optionally run through a 
-processing pipeline so unwanted messages can be filtered out and the remaining messages can 
-be modified or enriched with additional data.
+processing pipeline to modify or enrich logs with additional data, transform the message
+contents, or filter out any some logs before sending.
 
 Following the processing pipeline, the output payload is converted to the desired format 
 and then sent using the selected transport method.
@@ -39,6 +39,10 @@ messages received from the Graylog Output system to disk before attempting to se
 the external receiver. This allows the Output Framework to keep receiving and reliably 
 queuing messages, even if the external receiver is temporarily unavailable due to
 network issues. The journal has many configuration options which will be described below.
+
+By default, journal data for Framework Outputs will be stored in the same directory used
+for the Input journal.  This directory is controlled by the ``message_journal_dir`` value
+in your Graylog configuration file.
 
 **Pipeline Integration**
 
