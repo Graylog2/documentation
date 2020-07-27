@@ -34,9 +34,8 @@ plugin in a few minutes.If the plugin stops **RUNNING** completely, due to any f
 3) ``Client Secret``
 4) ``Enterprise and GCC Government plans`` is the most common subscription type.
 
-This `input <http://localhost:8080/system/inputs>`_ plugin polls data internally using, https://docs.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference.
-Click `Show metrics <http://localhost:8080/system/metrics/node/node-id?filter=filterid>`_, `Show Received Messages <http://localhost:8080/search?q=gl2_source_input%3A5f1b38dc2fb55336f12afc1a&rangetype=relative&relative=0>`_
-to validate if the data is flowing in .
+This input plugin polls data internally using, https://docs.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference.
+Click `Show metrics`, `Show Received Messages` in the UI, to validate if the data is flowing in .
 
 Screen shot of Office 365 Integrations Landing Page
 
