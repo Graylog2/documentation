@@ -73,8 +73,8 @@ formatting options include:
   The Syslog message will be sent to the configured TCP endpoint (IP address and port).
 
 
-Output Framework Options
-------------------------
+Output Configuration
+--------------------
 
 The Enterprise Output Framework is capable of processing messages at very high throughput 
 rates. Many hardware factors will affect throughput (such as CPU clock speed, number of 
@@ -82,65 +82,63 @@ CPU cores, available memory, and network bandwidth). Several Output Framework co
 options are available to help you tune performance for your throughput requirements and 
 environment.
 
-Common Options
-^^^^^^^^^^^^^^^
+General Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: /images/integrations/output-framework-config-01.png
-.. image:: /images/integrations/output-framework-config-02.png
+- ``Title``
+   - The name of the Output
+- ``Send Buffer Size``
+   - The number of messages the Output can hold in its buffer waiting to be written to the Journal
+- ``Concurrent message processing pipelines``
+   - The number of pipeline instances that will be allowed to run at any given time.  
+   - If this is set to 0, pipeline execution will be skipped even if a pipeline is selected from the Pipeline dropdown.
+- ``Concurrent output payload formatters``
+   - The number of formatter instances that will be allowed to run at any given time.  
+   - If this is set to 0, the Output will fail.
+- ``Concurrent message senders``
+   - The number of sender instances that will be allowed to run at any given time.  
+   - If this is set to 0, the Output will fail.
+- ``Journal Segment Size``
+   - The soft maximum for the size of a journal segment file
+- ``Journal Segment Age``
+   - The maximum amount of time journal segments will be retained if there is storage to do so
+- ``Maximum Journal Size``
+   - The maximum size of the journal
+- ``Maximum Journal Message Age``
+   - The maximum time that a message will be stored in the disk journal
+- ``Journal Buffer Size``
+   - The size of the memory buffer for messages waiting to be written  to the journal. 
+   - This value must be a power of two.
+- ``Journal Buffer Encoders``
+   - The number of concurrent encoders for messages being written to the journal.
+- ``Output Processing Pipeline``
+   - The pipeline which will process all messages sent to the Output
+- ``Outbound Payload Format``
+   - The format that will be used for outgoing message payloads
 
-- **Title**: The name of the Output
-- **Send Buffer Size**: The size of the sender ring buffer
-- **Concurrent message processing pipelines**: The number of pipeline instances that will 
-  be allowed to run at any given time.  If this is set to 0, pipeline execution will be
-  skipped even if a pipeline is selected from the Pipeline dropdown.
-- **Concurrent output payload formatters**: The number of formatter instances that will be
-  allowed to run at any given time.  If this is set to 0, the Output will fail.
-- **Concurrent message senders**: The number of sender instances that will be allowed to
-  run at any given time.  If this is set to 0, the Output will fail.
-- **Journal Segment Size**: The soft maximum for the size of a journal segment file
-- **Journal Segment Age**: The maximum amount of time journal segments will be retained if
-  there is storage to do so
-- **Maximum Journal Size**: The maximum size of the journal
-- **Maximum Journal Message Age**: The maximum time that a message will be stored in the
-  disk journal
-- **Journal Buffer Size**: The size of the memory buffer for messages waiting to be written 
-  to the journal. This must be a power of two.
-- **Journal Buffer Encoders**: The number of concurrent encoders for messages being written
-  to the journal.
-- **Output Processing Pipeline**: The pipeline which will process all messages sent to the
-  Output
-- **Outbound Payload Format**: The format that will be used for outgoing message payloads
 
 
+TCP Configuration
+^^^^^^^^^^^^^^^^^
 
-TCP Raw/Plaintext Options
-^^^^^^^^^^^^^^^^^^^^^^^^^
+- ``Destination IP Address``
+   - The IP address of the system which will receive the messages.
+- ``Destination Port``
+   - The port on which the destination system will listen for messages.
+- ``Frame Delimiting Method``
+   - The method which will be used to separate individual messages  in the stream.
+   - Frame delimiting methods are defined in Sections 3.4.1 and 3.4.2 of `IETF RFC 6587 <https://tools.ietf.org/html/rfc6587>`_.
+      - ``Newline Character`` A newline character will be appended to each message to mark the end of the message. Any newline characters within the message will be escaped prior to sending.
+      - ``Null Character`` A null character will be appended to each message to mark the end of  the message. Any null characters within the message will be escaped prior to sending.
+      - ``Octet Counting`` The length of the message (in bytes) and a space character for separation will be prepended to the message.  The contents of the message will not be altered.
 
-.. image:: /images/integrations/output-tcp-options.png
+TCP Syslog Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-- **Destination IP Address**: The IP address of the system which will receive the messages.
-- **Destination Port**: The port on which the destination system will listen for messages.
-- **Frame Delimiting Method**: The method which will be used to separate individual messages 
-  in the stream.
-
-**Frame Delimiting Method Options**
-
-The frame delimiting methods are defined in Sections 3.4.1 and 3.4.2 of `IETF RFC 6587 <https://tools.ietf.org/html/rfc6587>`_.
-
-- **Newline Character**: A newline character will be appended to each message to mark the 
-  end of the message. Any newline characters within the message will be escaped prior to sending.
-- **Null Character**: A null character will be appended to each message to mark the end of 
-  the message. Any null characters within the message will be escaped prior to sending.
-- **Octet Counting**: The length of the message (in bytes) and a space character for 
-  separation will be prepended to the message.  The contents of the message will not be altered.
-
-TCP Syslog Options
-^^^^^^^^^^^^^^^^^^
-
-.. image:: /images/integrations/output-tcp-options-syslog.png
-
-The Facility and Severity fields are defined in `Section 6.2.1 <https://tools.ietf.org/html/rfc5424#section-6.2.1>`_ of the Syslog specification.
-
-- **Syslog Facility**: A numeric value in the range of 0 - 23 (inclusive)
-- **Syslog Severity**: A numeric value in the range of 0 - 7 (inclusive)
+- ``Syslog Facility``
+   - A numeric value in the range of 0 - 23 (inclusive)
+   - Defined in `Section 6.2.1 <https://tools.ietf.org/html/rfc5424#section-6.2.1>`_ of the Syslog specification.
+- ``Syslog Severity``
+   - A numeric value in the range of 0 - 7 (inclusive)
+   - Defined in `Section 6.2.1 <https://tools.ietf.org/html/rfc5424#section-6.2.1>`_ of the Syslog specification.
 
