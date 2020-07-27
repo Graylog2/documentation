@@ -14,7 +14,7 @@ You have an application in Azure AD, a subscription to Office 365 and a subscrip
 Why does this plugin exist?
 ============================
 Office 365 Integrations plugin, collects data from AzureAD Authentication Logs, Email, File Sharing and Data Loss Prevention Logs in one input.
-This plugin retrieves data for each tenant, using continuous polling and stores the data(user activity) in `elastic <https://en.wikipedia.org/wiki/Elasticsearch>`_ to detect threats.
+This plugin retrieves data for each tenant, using continuous polling and stores data in Graylog for further analysis and aggregation.
 
 How do I get this plugin running?
 ==================================
