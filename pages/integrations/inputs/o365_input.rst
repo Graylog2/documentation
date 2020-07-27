@@ -11,12 +11,12 @@ Prerequisites
 =============
 You have an application in Azure AD, a subscription to Office 365 and a subscription to Azure.
 
-Why does this plugin exist ?
+Why does this plugin exist?
 ============================
 Office 365 Integrations plugin, collects data from Windows Logs, Email, File Sharing and Data Loss Prevention Logs in one input.
 This plugin retrieves data for each tenant, using continuous polling and stores the data(user activity) in `elastic <https://en.wikipedia.org/wiki/Elasticsearch>`_ to detect threats.
 
-How do I get this plugin running ?
+How do I get this plugin running?
 ==================================
 you should be able to login into the following websites with your exempli@gratia.onmicrosoft.com account.
 
