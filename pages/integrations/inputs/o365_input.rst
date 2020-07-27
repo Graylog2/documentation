@@ -1,48 +1,105 @@
 .. _o365_input:
 
-***********************
-Office 365 Integrations
-***********************
+**************************
+Microsoft Office 365 Input
+**************************
 
-.. attention:: This is a Graylog Enterprise feature and is only available since Graylog version 3.3. A valid Graylog Enterprise license is required.
-               It is meant for the hosted "online" office and do not use this to collect logs from a windows server, in your data center.
+Microsoft Office 365 is a widely used cloud-based suite of productivity tools.  This plugin
+allows you to pull your organization's Office 365 logs into Graylog for processing, 
+monitoring, and alarming.
+
+.. note:: This is a Graylog Enterprise Integrations feature and is only available since 
+  Graylog version 3.3.3. A valid Graylog Enterprise license is required.
+
+Required Office 365 Setup
+-------------------------
 
 Prerequisites
-=============
-You have an application in Azure AD, a subscription to Office 365 and a subscription to Azure.
+^^^^^^^^^^^^^
 
-Why does this plugin exist?
-============================
-Office 365 Integrations plugin, collects data from AzureAD Authentication Logs, Email, File Sharing and Data Loss Prevention Logs in one input.
-This plugin retrieves data for each tenant, using continuous polling and stores data in Graylog for further analysis and aggregation.
+In order to use the Office 365 plugin, you will need to create and authorize a Client 
+Application through your organization's Microsoft Azure portal.
 
-How do I get this plugin running?
-==================================
-you should be able to login into the following websites with your exempli@gratia.onmicrosoft.com account.
+It is assumed that you already have a working Office 365 subscription and access to the
+Microsoft Azure portal for your organization.
 
- - `Office 365 <https://www.office.com/?auth=2>`_
- - `Azure Portal <https://portal.azure.com/#home>`_
- - `Turn on <https://docs.microsoft.com/en-us/microsoft-365/compliance/turn-audit-log-search-on-or-off?view=o365-worldwide#turn-on-audit-log-search>`_ unified logging to see results.
+Azure Configuration
+^^^^^^^^^^^^^^^^^^^
 
-once you login into Azure portal,you can obtain the essentials for running this plugin.Please collect items 1-3 from the Azure portal.
-Leave the defaults for the rest of the fields while navigating the **graylog-o365-input-plugin** wizard.You must be up and running with this input **Office 365 Log Events**
-plugin in a few minutes.If the plugin stops **RUNNING** completely, due to any failures, click **Start input** to collect data from the last **CHECKPOINT_TIME** of failure.
+1) Log in to `Microsoft Azure <https://portal.azure.com/#home>`_
+2) Navigate to ``Azure Active Directory`` in the left-hand menu
+3) Select ``App Registrations`` under the **Manage** heading in the left-hand menu
+4) Select ``New Registration`` in the top of the right-hand pane
+5) Register a new application
 
+   a) Provide a name for the application (i.e. "Graylog Log Access")
+   b) Select the appropriate account type.  This should be either ``Single Tenant`` or 
+      ``Multitenant`` depending on whether your organization has a single Active Directory instance or multiple
+   c) Do not add a ``Redirect URI``
+   d) Click the ``Register`` button
+6) Once the application has been created, take note of the following fields, which will be 
+   needed to set up the O365 plugin:
 
-1) ``Directory (tenant) ID``
-2) ``Application (client) ID``
-3) ``Client Secret``
-4) ``Enterprise and GCC Government plans`` is the most common subscription type.
+   a) ``Application (client) ID``
+   b) ``Directory (tenant) ID``
+7) For the newly-created Application, navigate to ``Certificates & Secrets``
+8) Click on ``New Client Secret``
+9) Add a description for the new secret, select an expiration time, and then click ``Add``
+10) Make a note of the generated value, you will need this to set up the O365 Plugin
 
-This input plugin polls data internally using, https://docs.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference.
-Click `Show metrics`, `Show Received Messages` in the UI, to validate if the data is flowing in .
+Client Application Permissions in O365
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Screen shot of Office 365 Integrations Landing Page
+1) For the newly-created Application, navigate to ``API permissions``
+2) Click on ``Add a permission``
+3) Select ``Office 365 Management APIs``
+4) Select ``Application Permissions``
+5) Select all available permissions on the list and click ``Add permissions``
+6) Click on ``Grant admin consent for...`` and confirm by clicking ``Yes`` in the popup dialog
 
-.. image:: /images/integrations/o365_landing_page.png
-    :width: 600
+Enable Unified Audit Logging
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Navigate to the `Audit Log Search page <https://protection.office.com/unifiedauditlog>`_
+in Microsoft Office 365 and enable ``Unified Audit Logging``.
 
+Plugin Configuration
+--------------------
+
+.. note:: You will need the ``Client ID``, ``Tenant ID``, and ``Client Secret`` from the 
+   previous sections in order to proceed.
+
+O365 Connection Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- ``Input Name``
+   - Provide a unique name for your new O365 Input
+- ``Directory (tenant) ID``
+   - This is the ID of the Active Directory instance for which Graylog will collect log data
+   - You should have made note of this value while setting up your Client Application above
+- ``Application (client) ID``
+   - This is the ID of the Client Application created above
+- ``Client Secret``
+   - This is the client secret generated above
+- ``Subscription Type``
+	- This indicates what type of Office 365 subscription you have
+	- ``Enterprise and GCC government plans`` is the most common value
+	
+O365 Content Subscription
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- ``Log Types To Collect``
+   - This determines which of the five available log types the Input will pull from Office 365
+- ``Polling Interval``
+   - This determines how often (in minutes) the Input will check for new log data
+   - This value cannot be less than 1 (checking every minute)
+- ``Enable Throttling``
+   - If selected, this will enable Graylog to stop reading new data for this Input if the
+      system gets behind on message processing and needs to catch up
+- ``Store Full Message``
+   - If selected, this will cause Graylog to store the raw log data in the ``full_message``
+      field for each log message
+   - Selecting this option can result in a significant increase in the amount of data stored
 
 
 
