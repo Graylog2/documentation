@@ -24,7 +24,7 @@ you should be able to login into the following websites with your exempli@gratia
  - `Azure Portal <https://portal.azure.com/#home>`_
  - `Turn on <https://docs.microsoft.com/en-us/microsoft-365/compliance/turn-audit-log-search-on-or-off?view=o365-worldwide#turn-on-audit-log-search>`_ unified logging to see results.
 
-once you login into Azure portal,you can obtain the essentials for running this plugin.Please collect items 1-3 from the azure portal.
+once you login into Azure portal,you can obtain the essentials for running this plugin.Please collect items 1-3 from the Azure portal.
 Leave the defaults for the rest of the fields while navigating the **graylog-o365-input-plugin** wizard.You must be up and running with this input **Office 365 Log Events**
 plugin in a few minutes.If the plugin stops **RUNNING** completely, due to any failures, click **Start input** to collect data from the last **CHECKPOINT_TIME** of failure.
 
