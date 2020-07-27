@@ -13,16 +13,16 @@ You have an application in Azure AD, a subscription to Office 365 and a subscrip
 
 Why does this plugin exist?
 ============================
-Office 365 Integrations plugin, collects data from Windows Logs, Email, File Sharing and Data Loss Prevention Logs in one input.
+Office 365 Integrations plugin, collects data from AzureAD Authentication Logs, Email, File Sharing and Data Loss Prevention Logs in one input.
 This plugin retrieves data for each tenant, using continuous polling and stores the data(user activity) in `elastic <https://en.wikipedia.org/wiki/Elasticsearch>`_ to detect threats.
 
 How do I get this plugin running?
 ==================================
 you should be able to login into the following websites with your exempli@gratia.onmicrosoft.com account.
 
- - `office 365 <https://www.office.com/?auth=2>`_
- - `azure Portal <https://portal.azure.com/#home>`_
- - `turn on <https://docs.microsoft.com/en-us/microsoft-365/compliance/turn-audit-log-search-on-or-off?view=o365-worldwide#turn-on-audit-log-search>`_ unified logging to see results.
+ - `Office 365 <https://www.office.com/?auth=2>`_
+ - `Azure Portal <https://portal.azure.com/#home>`_
+ - `Turn on <https://docs.microsoft.com/en-us/microsoft-365/compliance/turn-audit-log-search-on-or-off?view=o365-worldwide#turn-on-audit-log-search>`_ unified logging to see results.
 
 once you login into Azure portal,you can obtain the essentials for running this plugin.Please collect items 1-3 from the azure portal.
 Leave the defaults for the rest of the fields while navigating the **graylog-o365-input-plugin** wizard.You must be up and running with this input **Office 365 Log Events**
