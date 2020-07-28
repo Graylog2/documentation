@@ -23,6 +23,8 @@ Application through your organization's Microsoft Azure portal.
 It is assumed that you already have a working Office 365 subscription and access to the
 Microsoft Azure portal for your organization.
 
+The following steps are mandatory.
+
 Azure Configuration
 ^^^^^^^^^^^^^^^^^^^
 
@@ -37,8 +39,7 @@ Azure Configuration
       ``Multitenant`` depending on whether your organization has a single Active Directory instance or multiple
    c) Do not add a ``Redirect URI``
    d) Click the ``Register`` button
-6) Once the application has been created, take note of the following fields, which will be 
-   needed to set up the O365 plugin:
+6) Once the application has been created, take note of the following fields, which will be needed to set up the O365 plugin:
 
    a) ``Application (client) ID``
    b) ``Directory (tenant) ID``
@@ -76,7 +77,6 @@ O365 Connection Configuration
    - Provide a unique name for your new O365 Input
 - ``Directory (tenant) ID``
    - This is the ID of the Active Directory instance for which Graylog will collect log data
-   - You should have made note of this value while setting up your Client Application above
 - ``Application (client) ID``
    - This is the ID of the Client Application created above
 - ``Client Secret``
@@ -94,11 +94,9 @@ O365 Content Subscription
    - This determines how often (in minutes) the Input will check for new log data
    - This value cannot be less than 1 (checking every minute)
 - ``Enable Throttling``
-   - If selected, this will enable Graylog to stop reading new data for this Input if the
-      system gets behind on message processing and needs to catch up
+   - If selected, this will enable Graylog to stop reading new data for this Input if the system gets behind on message processing and needs to catch up
 - ``Store Full Message``
-   - If selected, this will cause Graylog to store the raw log data in the ``full_message``
-      field for each log message
+   - If selected, this will cause Graylog to store the raw log data in the ``full_message`` field for each log message
    - Selecting this option can result in a significant increase in the amount of data stored
 
 
