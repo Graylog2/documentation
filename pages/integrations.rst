@@ -10,7 +10,7 @@ Integrations
    integrations/setup
 
 
-Integrations are tools that help Graylog work with external systems. Integrations will typically be content packs, inputs, or lookup tables and can either be open source or Enterprise.
+Integrations are tools that help Graylog work with external systems. Integrations will typically be content packs, inputs, or lookup tables and can be either Open Source or Enterprise.
 
 Reference the :doc:`Integrations Setup <integrations/setup>` document for installation instructions.
 
@@ -35,10 +35,11 @@ Open Source
 
 Enterprise
 ^^^^^^^^^^
-Enterprise Integrations plugin feature require an `Graylog Enterprise license <https://www.graylog.org/enterprise>`_ .
+Enterprise Integrations features require a `Graylog Enterprise license <https://www.graylog.org/enterprise>`_ .
 For a comprehensive list of available features included, see our  :ref:`Enterprise List page<enterprise_features>`
 
 * :doc:`Forwarder <integrations/forwarder>`
+* :doc:`Enterprise Output Framework <integrations/output_framework>`
 * :ref:`Script Alert Notification<alert_notification_script>`
 * :ref:`Okta Log Events Input<okta_input>`
 * :ref:`Office 365 Log Events Input<o365_input>`
@@ -48,4 +49,5 @@ For a comprehensive list of available features included, see our  :ref:`Enterpri
 
    integrations/forwarder
    integrations/inputs/okta_input
+   integrations/output_framework
    integrations/inputs/o365_input
