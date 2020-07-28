@@ -41,9 +41,11 @@ For a comprehensive list of available features included, see our  :ref:`Enterpri
 * :doc:`Forwarder <integrations/forwarder>`
 * :ref:`Script Alert Notification<alert_notification_script>`
 * :ref:`Okta Log Events Input<okta_input>`
+* :ref:`Office 365 Log Events Input<o365_input>`
 
 .. toctree::
    :hidden:
 
    integrations/forwarder
    integrations/inputs/okta_input
+   integrations/inputs/o365_input
