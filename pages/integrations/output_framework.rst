@@ -81,7 +81,7 @@ Output Transport is the configuration of how the message is sent over the wire:
 - ``Enterprise TCP Syslog``
     - Formatted messages will be sent as the ``MSG`` portion of a 
   standard Syslog message per section 6.4 of the `Syslog specification <https://tools.ietf.org/html/rfc5424>`_.  The Syslog message will be sent to the configured TCP endpoint (IP address and port).
-
+  
 
 Output Configuration
 --------------------
