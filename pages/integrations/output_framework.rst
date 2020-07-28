@@ -22,6 +22,9 @@ transport types. All of these Outputs first write messages to an on-disk journal
 Graylog cluster.  Messages stay in the on-disk journal until the Output is able to 
 successfully send the data to the external receiver.
 
+.. image:: /images/integrations/output_framework.png
+
+
 Once the messages have been written to the journal, they are optionally run through a 
 processing pipeline to modify or enrich logs with additional data, transform the message
 contents, or filter out any some logs before sending.
@@ -32,7 +35,8 @@ and then sent using the selected transport method.
 Messages are only passed to the Output Framework once they are done being processed in the 
 Graylog source cluster, at the same time the data is written to Elasticsearch.
 
-**On-Disk Journal**
+On-Disk Journal
+^^^^^^^^^^^^^^^
 
 The Output Framework is equipped with a disk journal. This journal immediately persists 
 messages received from the Graylog Output system to disk before attempting to send them to
@@ -44,7 +48,8 @@ By default, journal data for Framework Outputs will be stored in the same direct
 for the Input journal.  This directory is controlled by the ``message_journal_dir`` value
 in your Graylog configuration file.
 
-**Pipeline Integration**
+Pipeline Integration
+^^^^^^^^^^^^^^^^^^^^
 
 When creating or editing a Framework-based Output, you will have the option to select 
 a processing pipeline which will be executed on each message coming from the source 
@@ -52,25 +57,30 @@ a processing pipeline which will be executed on each message coming from the sou
 not wish to forward.  It can also be used to add data to modify the contents of the outgoing
 message or to enrich it with additional data.
 
-**Outbound Payload Formatting**
+Outbound Payload Formatting
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Prior to sending data out over the wire, Graylog must format the outgoing payload. Payload
 formatting options include:
 
-- **JSON**: The Output Framework will convert the message's key-value pairs into a JSON object.
-- **Pipeline-Generated**: The Output Framework will expect your pipeline to generate the 
-  outgoing payload and store it in the ``pipeline_output`` field of the message.  This can 
-  be accomplished in the pipeline by using the ``set_field`` :doc:`built-in function<../pipelines/functions>`.
+- ``JSON``
+    - The Output Framework will convert the message's key-value pairs into a JSON object.
+- ``Pipeline-Generated``
+    -  The Output Framework will expect your pipeline to generate the outgoing payload and store it in the ``pipeline_output`` field of the message.  This can be accomplished in the pipeline by using the ``set_field`` :doc:`built-in function<../pipelines/functions>`.
 
-**Output Transports**
 
-- **Enterprise STDOUT**: Formatted messages will be displayed on the system's console. 
-  This is included primarily as a debugging tool for pipeline changes.
-- **Enterprise TCP Raw/Plaintext**: Formatted messages will be sent as UTF-8 encoded plain 
-  text to the configured TCP endpoint (IP address and port).
-- **Enterprise TCP Syslog**: Formatted messages will be sent as the ``MSG`` portion of a 
-  standard Syslog message per section 6.4 of the `Syslog specification <https://tools.ietf.org/html/rfc5424>`_.  
-  The Syslog message will be sent to the configured TCP endpoint (IP address and port).
+Output Transports
+^^^^^^^^^^^^^^^^^
+
+Output Transport is the configuration of how the message is sent over the wire:
+
+- ``Enterprise STDOUT``
+    - Formatted messages will be displayed on the system's console.  This is included primarily as a debugging tool for pipeline changes.
+- ``Enterprise TCP Raw/Plaintext``
+    - Formatted messages will be sent as UTF-8 encoded plain text to the configured TCP endpoint (IP address and port).
+- ``Enterprise TCP Syslog``
+    - Formatted messages will be sent as the ``MSG`` portion of a 
+  standard Syslog message per section 6.4 of the `Syslog specification <https://tools.ietf.org/html/rfc5424>`_.  The Syslog message will be sent to the configured TCP endpoint (IP address and port).
 
 
 Output Configuration
