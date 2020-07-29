@@ -2,6 +2,16 @@
 Changelog
 *********
 
+Graylog Enterprise 3.3.3
+========================
+
+Released: 2020-07-29
+
+**Added**
+
+- Add office365 input plugin.
+- Add reliable output framework and TCP and TCP Syslog outputs.
+
 Graylog Enterprise 3.3.2
 ========================
 
