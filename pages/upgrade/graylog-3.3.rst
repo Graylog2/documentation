@@ -8,6 +8,31 @@ Upgrading to Graylog 3.3.x
    :depth: 3
    :backlinks: top
 
+[BREAKING] Fixing certificate validation for LDAP servers used for authentication
+=================================================================================
+
+Prior to v3.3.3, the certificates of LDAP servers which are connected to using a secure connection (SSL or TLS) were not validated, even if the "Allow self-signed certificates" option was unchecked. Starting with v3.3.3, certificates are validated against the local default keystore. This might introduce a breaking change, depending on your local LDAP settings and the validity of the certificates used (if any). Please ensure that all certificates used are valid, their common name matches the host part of your configured LDAP server and your local keystore contains all CA/intermediate certs required for validation.
+
+A `CVE <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-15813>`_ is tracked for this issue.
+
+Deprecating legacy Aggregation API endpoints
+============================================
+
+This release is marking several endpoints of the legacy (pre 3.2) aggregation API as being deprecated. They will be removed in 4.0. These include:
+
+- `/search/universal/(absolute|relative|keyword)/`
+    - `terms-histogram`
+    - `histogram`
+    - `fieldhistogram`
+    - `stats`
+    - `termsstats`
+    - `terms`
+- `/sources`
+
+These endpoints are not being used by the frontend anymore. In general, we try to replace very specific endpoints with more general, flexible ones.
+Deprecating and removing these endpoints frees development time for new things, which would otherwise need to be invested in maintaining legacy code.
+All of the functionality offered by these endpoints can be implemented by the `Views` API in a better way, please consult your local Swagger instance for details.
+
 API Access Token Encryption
 ===========================
 

@@ -2,6 +2,43 @@
 Changelog
 *********
 
+Graylog 3.3.3
+=============
+
+Released: 2020-07-29
+
+Core
+^^^^
+
+**Added**
+
+- Add new vendor fields to Graylog schema. `Graylog2/graylog2-server#8471 <https://github.com/Graylog2/graylog2-server/issues/8471>`_ `Graylog2/graylog2-server#8642 <https://github.com/Graylog2/graylog2-server/issues/8642>`_
+
+**Security**
+
+- **[BREAKING]:** Enable hostname validation for SSL/TLS-backed LDAP connections. `Graylog2/graylog2-server#8625 <https://github.com/Graylog2/graylog2-server/issues/8625>`_
+  Prior to v3.3.3, the certificates of LDAP servers which are connected to using a
+  secure connection (SSL or TLS) were not validated, even if the "Allow self-signed certificates"
+  option was unchecked. Starting with v3.3.3, certificates are validated against
+  the local default keystore. This might introduce a breaking change, depending on
+  your local LDAP settings and the validity of the certificates used (if any).
+  Please ensure that all certificates used are valid, their common name matches
+  the host part of your configured LDAP server and your local keystore contains
+  all CA/intermediate certs required for validation.
+
+  See also: `CVE-2020-15813 <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-15813>`_
+
+**Changed**
+
+- Find a better default for ``enabled_tls_protocols`` setting. `Graylog2/graylog2-server#7726 <https://github.com/Graylog2/graylog2-server/issues/7726>`_ `Graylog2/graylog2-server#8637 <https://github.com/Graylog2/graylog2-server/issues/8637>`_
+  This change builds the default TLS protocols based on what is supported by
+  the currently running JRE.
+
+**Fixed**
+
+- Fix message table issue in fullscreen/TV mode. `Graylog2/graylog2-server#8483 <https://github.com/Graylog2/graylog2-server/issues/8483>`_ `Graylog2/graylog2-server#8575 <https://github.com/Graylog2/graylog2-server/issues/8575>`_
+
+
 Graylog 3.3.2
 =============
 
