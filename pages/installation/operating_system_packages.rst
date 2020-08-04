@@ -11,9 +11,9 @@ and configuring new software a matter of a single command and a few minutes of t
 
 Graylog offers official ``DEB`` and ``RPM`` package repositories. The packages have been tested on the following operating systems:
 
-* Ubuntu 16.04, 18.04
+* Ubuntu 16.04, 18.04, 20.04
 * Debian 8, 9, 10
-* RHEL/CentOS 6, 7
+* RHEL/CentOS 6, 7, 8
 
 
 The repositories can be set up by installing a single package. Once that's done, the Graylog packages can be installed via ``apt-get`` or
