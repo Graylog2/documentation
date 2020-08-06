@@ -3,7 +3,7 @@ Changelog
 *********
 
 Graylog Enterprise 3.3.4
-=============
+========================
 
 Released: 2020-08-06
 
