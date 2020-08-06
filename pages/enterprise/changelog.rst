@@ -13,7 +13,7 @@ Released: 2020-08-06
 
 **Fixed**
 
-- Fix errors due to missing theme.
+- Fixed a bug which occurred during the setup of the O365 Input.
 - Fix error when starting the Forwarder with the Enterprise Integrations plugin.
 
 
