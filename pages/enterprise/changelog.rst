@@ -9,7 +9,7 @@ Released: 2020-08-06
 
 **Changed**
 
-- Fix pipeline selection on output creation to make the pipeline optional optional rather than required.
+- Fix pipeline selection on output creation to make the pipeline optional rather than required.
 
 **Fixed**
 
