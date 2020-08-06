@@ -2,6 +2,14 @@
 Changelog
 *********
 
+Graylog 3.3.4
+=============
+
+Released: 2020-08-06
+
+No changes since 3.3.3.
+
+
 Graylog 3.3.3
 =============
 

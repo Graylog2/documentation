@@ -2,6 +2,21 @@
 Changelog
 *********
 
+Graylog Enterprise 3.3.4
+=============
+
+Released: 2020-08-06
+
+**Changed**
+
+- Fix pipeline selection on output creation to make the pipeline optional optional rather than required.
+
+**Fixed**
+
+- Fix errors due to missing theme.
+- Fix error when starting the Forwarder with the Enterprise Integrations plugin.
+
+
 Graylog Enterprise 3.3.3
 ========================
 
