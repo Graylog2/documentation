@@ -2,6 +2,17 @@
 Changelog
 *********
 
+Graylog Enterprise 3.3.5
+========================
+
+Released: 2020-08-17
+
+**Fixed**
+
+- Fix NullPointerException when deleting an output, which caused the on-disk journal to not get cleaned up.
+
+
+
 Graylog Enterprise 3.3.4
 ========================
 
