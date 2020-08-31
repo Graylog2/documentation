@@ -1,8 +1,8 @@
 .. _output_google_bigquery:
 
-***************************************
-Enterprise Google Cloud BigQuery Output
-***************************************
+****************************
+Google Cloud BigQuery Output
+****************************
 
 This Output allows you to send data to your Google Cloud BigQuery tables.  Each message 
 in the stream will be inserted as a new row in the configured BigQuery table.
@@ -84,7 +84,7 @@ BigQuery Configuration
 - ``Table``
    - Output BigQuery Table
 - ``Excluded Fields``
-   - A comma-separated list of fields that will be used as filter which fields are sent to BigQuery
+   - A comma-separated list of fields that will be filtered out when data is sent to BigQuery
 - ``Credentials File Location``
    - Path to the Service Account credentials file
 

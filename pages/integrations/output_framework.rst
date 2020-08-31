@@ -4,6 +4,7 @@
 Enterprise Output Framework
 ***************************
 
+
 The Enterprise Output Framework provides the ability to forward data from your Graylog 
 cluster to external systems using a variety of network transport methods and payload 
 formats. In addition, you can configure Framework-based Outputs to use 
@@ -14,8 +15,16 @@ outbound messages.
           version 3.3.3, thus an Enterprise license is required. See the 
           :doc:`Integrations Setup <setup>` page for more info.
 
-Enterprise Framework Outputs
-----------------------------
+.. toctree::
+   :titlesonly:
+   :hidden:
+
+   output_framework/output_tcp_raw
+   output_framework/output_tcp_syslog
+   output_framework/output_google_bigquery
+
+About the Framework
+-------------------
 
 The Enterprise Output Framework provides a number of new Outputs for various network 
 transport types. All of these Outputs first write messages to an on-disk journal in the 
@@ -98,8 +107,8 @@ CPU cores, available memory, and network bandwidth). Several Output Framework co
 options are available to help you tune performance for your throughput requirements and 
 environment.
 
-General Configuration
-^^^^^^^^^^^^^^^^^^^^^
+Common Configuration
+^^^^^^^^^^^^^^^^^^^^
 
 - ``Title``
    - The name of the Output
@@ -131,11 +140,3 @@ General Configuration
    - The pipeline which will process all messages sent to the Output
 - ``Outbound Payload Format``
    - The format that will be used for outgoing message payloads
-
-.. toctree::
-   :hidden:
-
-   output_framework/output_google_bigquery
-   output_framework/output_tcp_raw
-   output_framework/output_tcp_syslog
-

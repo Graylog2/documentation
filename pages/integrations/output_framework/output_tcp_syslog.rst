@@ -1,8 +1,8 @@
 .. _output_tcp_syslog:
 
-****************************
-Enterprise TCP Syslog Output
-****************************
+*****************
+TCP Syslog Output
+*****************
 
 This Output allows you to send data as UTF-8 encoded text to an arbitrary TCP Syslog 
 receiver.  The formatted payload will be sent as as the ``MSG`` portion of a standard 

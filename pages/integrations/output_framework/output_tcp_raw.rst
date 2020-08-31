@@ -1,8 +1,8 @@
 .. _output_tcp_raw:
 
-***********************************
-Enterprise Raw/Plaintext TCP Output
-***********************************
+************************
+Raw/Plaintext TCP Output
+************************
 
 This Output allows you to send data as UTF-8 encoded text to an arbitrary TCP endpoint 
 (server and port).
