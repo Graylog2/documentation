@@ -120,6 +120,18 @@ It is possible make a **range query** on the date field. It is important that th
 
   timestamp:["2019-07-23 09:53:08.175" TO "2019-07-23 09:53:08.575"]
 
+Graylog has a custom index mapping for the field timestamp to save the date in the format like `YYYY-MM-DD HH:MM:SS.sss`. If one additional field where elasticsearch has determined that this is a date and used the default date format, which is `YYYY-MM-DDTHH:MM:SS.sss`. Means that a search in that period would be like::
+
+  otherDate:["2019-07-23T09:53:08.175" TO "2019-07-23T09:53:08.575"]
+
+At least with elasticsearch 6.x, you can include timezone information in that time range. A query would look like::
+
+  otherDate:["2020-07-29T12:00:00.000-05:00" TO "2020-07-30T15:13:00.000-05:00"]
+
+This date query can also be dynamic, that you always look back at a specified time::
+
+  otherDate:[now-5d TO now-4d]
+
 Escaping
 ^^^^^^^^
 
