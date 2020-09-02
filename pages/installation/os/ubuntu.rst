@@ -4,7 +4,7 @@
 Ubuntu installation
 *******************
 
-This guide describes the fastest way to install Graylog on Ubuntu 20.04 LTS. All links and packages are present at the time of writing but might need to be updated later on.
+This guide describes the fastest way to install Graylog on Ubuntu 18.04 and 20.04 LTS. All links and packages are present at the time of writing but might need to be updated later on.
 
 .. warning:: This guide **does not cover** security settings! The server administrator must make sure the graylog server is not publicly exposed, and is following security best practices.
 
