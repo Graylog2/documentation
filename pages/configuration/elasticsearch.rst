@@ -28,6 +28,7 @@ Graylog version  Elasticsearch version
 2.3.x-2.4.x      2.4.x, 5.6.x
 2.5.x            2.4.x, 5.6.x, 6.8.x
 3.0-3.3          5.6.x, 6.8.x
+*4.0*            *6.8.x+, 7.x*
 ===============  =====================
 
 .. caution:: Graylog 3.x **does not** work with Elasticsearch 7.x!
@@ -80,6 +81,11 @@ The following configuration options are now being used to configure connectivity
 | ``elasticsearch_discovery_frequency``              | Duration  | Frequency of the Elasticsearch node discovery                | ``30s`` (30 Seconds)        |
 +----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
 | ``elasticsearch_compression_enabled``              | boolean   | Enable GZIP compression of Elasticseach request payloads     | ``false``                   |
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
+| ``elasticsearch_version``                          | String    | Major version of the Elasticsearch version used. If not      | ``<not set>`` (auto-sense)  |
+|                                                    |           | specified, the version will be auto-sensed from the          |                             |
+|                                                    |           | configured nodes. Can be specified to override auto-sensing  | Values: ``6`` / ``7``       |
+|                                                    |           | result.                                                      |                             |
 +----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
 
 .. _automatic_node_discovery:
