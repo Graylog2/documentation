@@ -131,6 +131,8 @@ uncompressed over a plain socket (without newlines).
     "_some_env_var": "bar"
   }
 
+.. note:: Currently the server implementation of GELF in Graylog does not support boolean values. Those will be dropped on ingest (`for reference <https://github.com/Graylog2/graylog2-server/issues/5504>`_). 
+
 
 Sending GELF messages via UDP using netcat
 ------------------------------------------
