@@ -71,15 +71,15 @@ Outbound Transports
 
 Outbound Transport is the configuration of how the message is sent over the wire:
 
-- ``Enterprise STDOUT``
+- ``Enterprise STDOUT Output``
     - Formatted messages will be displayed on the system's console.  This is included primarily as a debugging tool for pipeline changes.
-- ``Enterprise TCP Raw/Plaintext``
+- ``Enterprise TCP Raw/Plaintext Output``
     - Formatted messages will be sent as UTF-8 encoded plain text to the configured TCP endpoint (IP address and port). 
     - :doc:`Output details<output_framework/output_tcp_raw>`
-- ``Enterprise TCP Syslog``
+- ``Enterprise TCP Syslog Output``
     - Formatted messages will be sent as the ``MSG`` portion of a standard Syslog message per section 6.4 of the `Syslog specification <https://tools.ietf.org/html/rfc5424>`_.  The Syslog message will be sent to the configured TCP endpoint (IP address and port). 
     - :doc:`Output details<output_framework/output_tcp_syslog>`
-- ``Enterprise Google Cloud BigQuery``
+- ``Enterprise Google Cloud BigQuery Output``
     - The Output Framework will convert the message's key-value pairs into a new row for insertion into the specified Google BigQuery table. 
     - :doc:`Output details<output_framework/output_google_bigquery>`
 
