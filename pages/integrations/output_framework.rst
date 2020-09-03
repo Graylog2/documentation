@@ -4,7 +4,6 @@
 Enterprise Output Framework
 ***************************
 
-
 The Enterprise Output Framework provides the ability to forward data from your Graylog 
 cluster to external systems using a variety of network transport methods and payload 
 formats. In addition, you can configure Framework-based Outputs to use 
@@ -15,13 +14,6 @@ outbound messages.
           version 3.3.3, thus an Enterprise license is required. See the 
           :doc:`Integrations Setup <setup>` page for more info.
 
-.. toctree::
-   :titlesonly:
-   :hidden:
-
-   output_framework/output_tcp_raw
-   output_framework/output_tcp_syslog
-   output_framework/output_google_bigquery
 
 About the Framework
 -------------------
@@ -66,24 +58,6 @@ a processing pipeline which will be executed on each message coming from the sou
 not wish to forward.  It can also be used to add data to modify the contents of the outgoing
 message or to enrich it with additional data.
 
-Outbound Transports
-^^^^^^^^^^^^^^^^^^^
-
-Outbound Transport is the configuration of how the message is sent over the wire:
-
-- ``Enterprise STDOUT Output``
-    - Formatted messages will be displayed on the system's console.  This is included primarily as a debugging tool for pipeline changes.
-- ``Enterprise TCP Raw/Plaintext Output``
-    - Formatted messages will be sent as UTF-8 encoded plain text to the configured TCP endpoint (IP address and port). 
-    - :doc:`Output details<output_framework/output_tcp_raw>`
-- ``Enterprise TCP Syslog Output``
-    - Formatted messages will be sent as the ``MSG`` portion of a standard Syslog message per section 6.4 of the `Syslog specification <https://tools.ietf.org/html/rfc5424>`_.  The Syslog message will be sent to the configured TCP endpoint (IP address and port). 
-    - :doc:`Output details<output_framework/output_tcp_syslog>`
-- ``Enterprise Google Cloud BigQuery Output``
-    - The Output Framework will convert the message's key-value pairs into a new row for insertion into the specified Google BigQuery table. 
-    - :doc:`Output details<output_framework/output_google_bigquery>`
-
-
 Outbound Payload Formatting
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -96,6 +70,27 @@ formatting options include:
     -  The Output Framework will expect your pipeline to generate the outgoing payload and store it in the ``pipeline_output`` field of the message.  This can be accomplished in the pipeline by using the ``set_field`` :doc:`built-in function<../pipelines/functions>`.
 - ``No-op Formatter``
     - No payload will be generated from the message.  This formatter is currently only intended for use with the ``Google Cloud BigQuery`` output.  If used with any other Output, the Output payloads will be empty.
+
+
+Framework Outputs
+-----------------
+- :doc:`Enterprise TCP Raw/Plaintext Output<output_framework/output_tcp_raw>`
+    - Formatted messages will be sent as UTF-8 encoded plain text to the configured TCP endpoint (IP address and port). 
+- :doc:`Enterprise TCP Syslog Output<output_framework/output_tcp_syslog>`
+    - Formatted messages will be sent as the ``MSG`` portion of a standard Syslog message per section 6.4 of the `Syslog specification <https://tools.ietf.org/html/rfc5424>`_.  The Syslog message will be sent to the configured TCP endpoint (IP address and port). 
+- :doc:`Enterprise Google Cloud BigQuery Output<output_framework/output_google_bigquery>`
+    - The Output Framework will convert the message's key-value pairs into a new row for insertion into the specified Google BigQuery table. 
+- Enterprise STDOUT Output
+    - Formatted messages will be displayed on the system's console.  This is included primarily as a debugging tool for pipeline changes.
+
+.. toctree::
+   :titlesonly:
+   :hidden:
+   
+   output_framework/output_tcp_raw
+   output_framework/output_tcp_syslog
+   output_framework/output_google_bigquery
+
 
 
 Output Configuration

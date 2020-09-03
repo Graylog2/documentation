@@ -48,6 +48,7 @@ NOTE: There are multiple options for reading this documentation. See link to the
 
    pages/enterprise/intro
    pages/enterprise/setup
+   pages/integrations/output_framework
    pages/archiving
    pages/auditlog
    pages/reporting

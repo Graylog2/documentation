@@ -1,11 +1,11 @@
 .. _output_tcp_raw:
 
-************************
-Raw/Plaintext TCP Output
-************************
+***********************************
+Enterprise TCP Raw/Plaintext Output
+***********************************
 
 This Output allows you to send data as UTF-8 encoded text to an arbitrary TCP endpoint 
-(server and port).
+(server and port).  The data will be sent with no additional formatting or encapsulation.
 
 .. note:: This is an Enterprise Integrations feature and is only available since Graylog 
           version 3.3.3, thus an Enterprise license is required. See the 

@@ -1,8 +1,8 @@
 .. _output_google_bigquery:
 
-****************************
-Google Cloud BigQuery Output
-****************************
+***************************************
+Enterprise Google Cloud BigQuery Output
+***************************************
 
 This Output allows you to send data to your Google Cloud BigQuery tables.  Each message 
 in the stream will be inserted as a new row in the configured BigQuery table.
@@ -62,7 +62,8 @@ Generate and Download Service Account Credentials
 3) Select ``JSON`` as the key type
 4) Click on the ``CREATE`` button
 5) Save the generated JSON file
-6) Copy the downloaded JSON credentials file to your Graylog host(s).  We strongly 
+6) Copy the downloaded JSON credentials file to your Graylog host(s).  The credentials 
+   file should be stored in the same location on each host.  We strongly 
    recommend that you take appropriate steps to protect the credentials file (e.g.
    assigning ownership of the file to the account which runs your Graylog server and 
    setting file permissions to 400).
@@ -86,5 +87,5 @@ BigQuery Configuration
 - ``Excluded Fields``
    - A comma-separated list of fields that will be filtered out when data is sent to BigQuery
 - ``Credentials File Location``
-   - Path to the Service Account credentials file
+   - Path to the Service Account credentials file located on your Graylog Node(s)
 
