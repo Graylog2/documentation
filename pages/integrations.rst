@@ -1,8 +1,8 @@
 .. _integrations_plugins:
 
-************
-Integrations
-************
+********************
+Graylog Integrations
+********************
 
 .. toctree::
    :hidden:

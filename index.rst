@@ -32,7 +32,6 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/geolocation
    pages/indexer_failures
    pages/users_and_roles
-   pages/integrations
    pages/plugins
    pages/content_packs
    pages/external_dashboards
@@ -48,8 +47,13 @@ NOTE: There are multiple options for reading this documentation. See link to the
 
    pages/enterprise/intro
    pages/enterprise/setup
-   pages/integrations/output_framework
    pages/archiving
    pages/auditlog
    pages/reporting
    pages/enterprise/changelog
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Integrations
+   
+   pages/integrations
