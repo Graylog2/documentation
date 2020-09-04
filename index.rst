@@ -54,6 +54,6 @@ NOTE: There are multiple options for reading this documentation. See link to the
 
 .. toctree::
    :maxdepth: 3
-   :caption: Integrations
+   :caption: Graylog Content
    
    pages/integrations
