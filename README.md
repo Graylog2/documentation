@@ -6,7 +6,7 @@ Table of Contents
 
   * [Architecture](#architecture)
   * [Build](#building-locally)
-        * [Mac & Linus](#or-using-pathogen)
+        * [Mac & Linux](#or-using-pathogen)
         * [Windows](#or-using-vundle)
         * [Docker](#docker)
             * [docker-compose](#docker-compose)
