@@ -84,8 +84,7 @@ The following configuration options are now being used to configure connectivity
 +----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
 | ``elasticsearch_version``                          | String    | Major version of the Elasticsearch version used. If not      | ``<not set>`` (auto-sense)  |
 |                                                    |           | specified, the version will be auto-sensed from the          |                             |
-|                                                    |           | configured nodes. Can be specified to override auto-sensing  | Values: ``6`` / ``7``       |
-|                                                    |           | result.                                                      |                             |
+|                                                    |           | configured nodes. Will disable auto-sensing if specified.    | Values: ``6`` / ``7``       |
 +----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
 
 .. _automatic_node_discovery:
