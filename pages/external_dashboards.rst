@@ -1,9 +1,15 @@
+:orphan:
+
 *******************
 External dashboards
 *******************
 
 There are other frontends that are connecting to the Graylog REST API and display data or information in a
 special way.
+
+.. warning:: As of time of writing this, we have now known external dashbard that is working. This is the reason this page is removed from the documentation.
+
+
 
 CLI stream dashboard
 ====================
