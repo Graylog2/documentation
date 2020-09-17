@@ -34,10 +34,8 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/users_and_roles
    pages/plugins
    pages/content_packs
-   pages/external_dashboards
    pages/marketplace
    pages/faq
-   pages/gelf
    pages/ideas_explained
    pages/changelog
 
@@ -57,3 +55,4 @@ NOTE: There are multiple options for reading this documentation. See link to the
    :caption: Graylog Content
    
    pages/integrations
+   pages/gelf
