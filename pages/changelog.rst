@@ -2,6 +2,20 @@
 Changelog
 *********
 
+Graylog 3.3.6
+=============
+
+Released: TBC
+
+**Security**
+
+- Fixing a path traversal issue in the API Browser `Graylog2/graylog2-server#8986 <https://github.com/Graylog2/graylog2-server/issues/8986>`_ `Graylog2/graylog2-server#8988 <https://github.com/Graylog2/graylog2-server/issues/8988>`_
+  Prior to 3.3.6, the API browser contained a REST resource used to serve static assets. Due
+  to a check happening before pathname normalization, a directory traversal was possible.
+  If the Graylog server was started with non-standard JRE options (using an additional classpath
+  setting), it can be used to access files from this additional classpath directory without
+  authentication.
+
 Graylog 3.3.5
 =============
 
