@@ -29,13 +29,21 @@ When the Graylog enterprise plugins and Graylog enterprise integrations plugin i
 
 		* Cluster-wide scheduler - Open Source runs alerts on a single node only, Enterprise runs them on all Graylog nodes, increasing capacity.
 
-		* :ref:`Script Notification<alert_notification_script>` - ability to run a custom native program in response to a generated alert, useful for the integration of third-party systems.
+		* :ref:`Script Notification<alert_notification_script>` (Integrations) - ability to run a custom native program in response to a generated alert, useful for the integration of third-party systems.
 
     - :ref:`MongoDB Lookup Table<lookuptable_mongodb>`
         * This allows settings values from pipelines, e.g. to maintain a list of suspicious IP addresses to be used in Dynamic Lists
 
-    - :ref:`Forwarding<forwarder>`
+    - :ref:`Forwarding<forwarder>` (Integrations)
         * Cluster-to-cluster forwarder output - requires two fully functioning Graylog clusters. The forwarder adds the ability to forward specific data streams to remote locations with journaling support incase of outages.
+
+    - :ref:`Output Framework<output_framework>` (Integrations)
+        * plugable solution to forward events from Graylog to any other system. Including  advanced options to manipulate the events before hand over, formatted as syslog message, json or any way. 
+
+    - Inputs (Integrations)
+        * :ref:`Okta Events Input <okta_input>` - get Okta events into Graylog
+        
+        * :ref:`O365 Events Input <o365_input>` - get O365 events into Graylog 
 
 
 
