@@ -56,3 +56,4 @@ NOTE: There are multiple options for reading this documentation. See link to the
    
    pages/integrations
    pages/gelf
+   Graylog Schema <https://schema.graylog.org/>
