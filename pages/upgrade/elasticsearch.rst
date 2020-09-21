@@ -4,6 +4,10 @@
 Elasticsearch Reindexing Notes
 ******************************
 
+.. contents:: Overview
+   :depth: 3
+   :backlinks: top
+
 This page contains a list of commands which can be used to assist you in reindexing indices on new versions of Elasticsearch.
 
 .. _es_reindexing_procedure:
