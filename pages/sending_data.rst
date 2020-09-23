@@ -76,6 +76,7 @@ Graylog Inputs that support throttling
 --------------------------------------
 
  * AWS Flow Logs
+ * AWS Cloudtrail
  * AWS Logs
  * CEF AMQP Input
  * CEF Kafka Input
