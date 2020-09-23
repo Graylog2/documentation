@@ -39,13 +39,17 @@ Since Graylog 2.3 Elasticsearch 5.x is supported. This Graylog version supports 
 
 When upgrading from Elasticsearch 2.x to Elasticsearch 5.x, make sure to read `the upgrade guide <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/setup-upgrade.html>`_ provided by Elastic. The Graylog :ref:`Elasticsearch configuration documentation <configuring_es>` contains information about the compatible Elasticsearch version. After the upgrade you must :ref:`rotate the indices once manually <rotate_es_indices>`.
 
-Graylog 2.5 is the first Graylog version that supports Elasticsearch 6, the upgrade is recommended as soon as possible but might need more attention and include the need to reindex your data. Make sure to check :ref:`our Elasticsearch 6 upgrade notes <es6_reindex>` for this and other requirements.
+Graylog 2.5 is the first Graylog version that supports Elasticsearch 6. The upgrade might need more attention and include the need to reindex your data if you are upgrading from versions before 5.x. Make sure to check :ref:`our Elasticsearch 6 upgrade notes <es6_reindex>` for this and other requirements.
 
-When upgrading from Elasticsearch 5.x to Elasticsearch 6.x, make sure to read the `upgrade guide <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/setup-upgrade.html>`_ provided by Elastic. The Graylog :ref:`Elasticsearch configuration documentation <configuring_es>` contains information about the compatible Elasticsearch version. After the upgrade you must :ref:`rotate the indices once manually <rotate_es_indices>`. 
+When upgrading from Elasticsearch 5.x to Elasticsearch 6.x, make sure to read the `upgrade guide <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/setup-upgrade.html>`_ provided by Elastic. 
+
+Graylog 4.0 is the first release that supports Elasticsearch 7, the upgrade is recommended as soon as possible but might need more attention and include the need to reindex your data. Make sure to check :ref:`our Elasticsearch 7 upgrade notes <es7_reindex>` for this and other requirements.
+
+When upgrading from Elasticsearch 6.x to Elasticsearch 7.x, make sure to read the `upgrade guide <https://www.elastic.co/guide/en/elasticsearch/reference/7.x/setup-upgrade.html>`__ provided by Elastic. The Graylog :ref:`Elasticsearch configuration documentation <configuring_es>` contains information about the compatible Elasticsearch version. After the upgrade you must :ref:`rotate the indices once manually <rotate_es_indices>`.
 
 .. toctree::
    :titlesonly:
    :glob:
 
-   upgrade/elasticsearch-*
+   upgrade/elasticsearch*
 
