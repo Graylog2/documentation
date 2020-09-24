@@ -76,6 +76,14 @@ The following configuration options are now being used to configure connectivity
 +----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
 | ``elasticsearch_discovery_enabled``                | boolean   | Enable automatic Elasticsearch node discovery                | ``false``                   |
 +----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
+| ``elasticsearch_discovery_default_user``           | String    | The default username used for authentication for all         | empty (no authentication    |
+|                                                    |           | newly discovered nodes.                                      | used for discovered nodes)  |
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
+| ``elasticsearch_discovery_default_password``       | String    | The default password used for authentication for all         | empty (no authentication    |
+|                                                    |           | newly discovered nodes.                                      | used for discovered nodes)  |
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
+| ``elasticsearch_discovery_default_scheme``         | String    | The default scheme used for all newly discovered nodes.      | ``http``                    |
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
 | ``elasticsearch_discovery_filter``                 | String    | Filter by node attributes for the discovered nodes           | empty (use all nodes)       |
 +----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
 | ``elasticsearch_discovery_frequency``              | Duration  | Frequency of the Elasticsearch node discovery                | ``30s`` (30 Seconds)        |
@@ -92,11 +100,9 @@ The following configuration options are now being used to configure connectivity
 Automatic node discovery
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. caution:: Authentication with the Elasticsearch cluster will not work if the automatic node discovery is being used.
-
 .. caution:: Automatic node discovery does not work when using the `Amazon Elasticsearch Service <https://aws.amazon.com/elasticsearch-service/>`_ because Amazon blocks certain Elasticsearch API endpoints.
 
-Graylog uses automatic node discovery to gather a list of all available Elasticsearch nodes in the cluster at runtime and distribute requests among them to potentially increase performance and availability. To enable this feature, you need to set the ``elasticsearch_discovery_enabled`` to ``true``. Optionally, you can define the a filter allowing to selectively include/exclude discovered nodes (details how to specify node filters are found in the `Elasticsearch cluster documentation <https://www.elastic.co/guide/en/elasticsearch/reference/6.7/cluster.html#cluster-nodes>`_) using the ``elasticsearch_discovery_filter`` setting, or tuning the frequency of the node discovery using the ``elasticsearch_discovery_frequency`` configuration option.
+Graylog uses automatic node discovery to gather a list of all available Elasticsearch nodes in the cluster at runtime and distribute requests among them to potentially increase performance and availability. To enable this feature, you need to set the ``elasticsearch_discovery_enabled`` to ``true``. Optionally, you can define the a filter allowing to selectively include/exclude discovered nodes (details how to specify node filters are found in the `Elasticsearch cluster documentation <https://www.elastic.co/guide/en/elasticsearch/reference/6.7/cluster.html#cluster-nodes>`_) using the ``elasticsearch_discovery_filter`` setting, or tuning the frequency of the node discovery using the ``elasticsearch_discovery_frequency`` configuration option. If your Elasticsearch clustes uses authentication, you need to specify the ``elasticsearch_discovery_default_user`` and ``elasticsearch_discovery_default_password`` settings. The username/password specified in these settings will be used for *all* nodes discovered in the cluster. If your cluster uses HTTPS, you also need to set the ``elasticsearch_discovery_default_scheme`` setting. It specified the scheme used for discovered nodes and must be consistent across all nodes in the cluster.
 
 Configuration of Elasticsearch nodes
 ------------------------------------
