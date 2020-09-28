@@ -2,6 +2,32 @@
 Changelog
 *********
 
+Graylog Enterprise 3.3.6
+========================
+
+Released: 2020-09-28
+
+Enterprise
+----------
+
+**Fixed**
+
+- Improve error logging during report generation.
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Added**
+
+- Add Google BigQuery output to the enterprise output framework.
+
+**Fixed**
+
+- Fix ``NullPointerException`` and thread-safety issues in the enterprise output framework.
+- Fix retry logic and overall robustness of the office365 input.
+- Improve error detection and error handling in the enterprise output framework.
+
+
 Graylog Enterprise 3.3.5
 ========================
 
@@ -10,7 +36,6 @@ Released: 2020-08-17
 **Fixed**
 
 - Fix NullPointerException when deleting an output, which caused the on-disk journal to not get cleaned up.
-
 
 
 Graylog Enterprise 3.3.4
