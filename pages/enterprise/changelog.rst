@@ -8,14 +8,14 @@ Graylog Enterprise 3.3.6
 Released: 2020-09-28
 
 Enterprise
-^^^^^^^^^^
+----------
 
 **Fixed**
 
 - Improve error logging during report generation.
 
 Enterprise Integrations Plugin
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------
 
 **Added**
 
