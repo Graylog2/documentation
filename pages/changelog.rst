@@ -5,16 +5,51 @@ Changelog
 Graylog 3.3.6
 =============
 
-Released: TBC
+Released: 2020-09-28
+
+Core
+^^^^
 
 **Security**
 
-- Fixing a path traversal issue in the API Browser `Graylog2/graylog2-server#8986 <https://github.com/Graylog2/graylog2-server/issues/8986>`_ `Graylog2/graylog2-server#8988 <https://github.com/Graylog2/graylog2-server/issues/8988>`_
-  Prior to 3.3.6, the API browser contained a REST resource used to serve static assets. Due
-  to a check happening before pathname normalization, a directory traversal was possible.
-  If the Graylog server was started with non-standard JRE options (using an additional classpath
-  setting), it can be used to access files from this additional classpath directory without
-  authentication.
+- Fixing a path traversal issue in the API Browser for **non-standard installations**. `Graylog2/graylog2-server#8986 <https://github.com/Graylog2/graylog2-server/issues/8986>`_ `Graylog2/graylog2-server#8988 <https://github.com/Graylog2/graylog2-server/issues/8988>`_
+  Due to a check happening before pathname normalization, a directory traversal
+  was possible in the REST resource that serves the API browser UI.
+  If the Graylog server was started with non-standard JRE options (using an
+  additional classpath setting), it could have been used to access files from this
+  additional classpath directory without authentication.
+  Many thanks to Florian Hauser and Christian Fünfhaus of Code White for disclosing this vulnerability.
+
+**Changed**
+
+- Always show the search page link in the navigation to allow users to access the search without
+  having to go to the streams page first. `Graylog2/graylog2-server#8917 <https://github.com/Graylog2/graylog2-server/issues/8917>`_ `Graylog2/graylog2-server#8745 <https://github.com/Graylog2/graylog2-server/issues/8745>`_ `Graylog2/graylog2-server#8779 <https://github.com/Graylog2/graylog2-server/issues/8779>`_ `Graylog2/graylog2-server#8921 <https://github.com/Graylog2/graylog2-server/issues/8921>`_
+
+**Fixed**
+
+- Fix (un)schedule endpoints for event definitions to make them work without explicit content-type header. `Graylog2/graylog2-server#8981 <https://github.com/Graylog2/graylog2-server/issues/8981>`_
+- Fix missing title attribute in pipeline UI. `Graylog2/graylog2-server#9017 <https://github.com/Graylog2/graylog2-server/issues/9017>`_
+- Show better error message on the search page when users have no stream permissions. `Graylog2/graylog2-server#8955 <https://github.com/Graylog2/graylog2-server/issues/8955>`_ `Graylog2/graylog2-server#9011 <https://github.com/Graylog2/graylog2-server/issues/9011>`_
+- Fix problem with updating search controls (query, streams, timerange) in widgets. `Graylog2/graylog2-server#7922 <https://github.com/Graylog2/graylog2-server/issues/7922>`_ `Graylog2/graylog2-server#9043 <https://github.com/Graylog2/graylog2-server/issues/9043>`_
+
+Legacy AWS Plugin
+^^^^^^^^^^^^^^^^^
+
+**Added**
+
+- Include ``additional_event_data`` as part of the graylog message. `Graylog2/graylog-plugin-aws#419 <https://github.com/Graylog2/graylog-plugin-aws/issues/419>`_ (Thanks `@rongutierrez <https://github.com/rongutierrez>`_)
+
+Integrations Plugin
+^^^^^^^^^^^^^^^^^^^
+
+**Added**
+
+- Add "9.1.3 GlobalProtect logs" support to the PaloAlto 9.x input. `Graylog2/graylog-plugin-integrations#540 <https://github.com/Graylog2/graylog-plugin-integrations/issues/540>`_ `Graylog2/graylog-plugin-integrations#541 <https://github.com/Graylog2/graylog-plugin-integrations/issues/541>`_ `Graylog2/graylog-plugin-integrations#554 <https://github.com/Graylog2/graylog-plugin-integrations/issues/554>`_
+
+**Fixed**
+
+- Fix "Key & Secret" authentication in CloudWatch input. `Graylog2/graylog-plugin-integrations#577 <https://github.com/Graylog2/graylog-plugin-integrations/issues/577>`_
+
 
 Graylog 3.3.5
 =============
