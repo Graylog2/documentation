@@ -25,5 +25,7 @@ When upgrading Elasticsearch from one major version to another, please read the 
   - `To 6.8.0 <https://www.elastic.co/guide/en/elasticsearch/reference/6.8/setup-upgrade.html>`_
   - `To 7.9.0 <https://www.elastic.co/guide/en/elasticsearch/reference/7.9/setup-upgrade.html>`_
 
+as well as our :ref:`Elasticsearch Upgrade Notes <upgrading-elasticsearch>`.
+
 Please do notice that Graylog does not support rolling upgrades between major versions, while Elasticsearch does. If you are upgrading from one major version of Elasticsearch to another, you need to restart Graylog in order to reinitialize the storage module.
 
