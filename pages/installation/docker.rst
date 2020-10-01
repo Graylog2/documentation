@@ -74,6 +74,8 @@ Generate your own admin password with the following command and put the SHA-256 
 
 All these settings and command line parameters can be put in a ``docker-compose.yml`` file, so that they don't have to be executed one after the other.
 
+.. warning:: The following example does not persist any data and configurations. You should read the section :ref:`persisting-data` to add persistance to your docker-compose file.
+
 Example Version 2::
 
   version: '2'
