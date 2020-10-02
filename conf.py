@@ -361,6 +361,6 @@ epub_exclude_files = ['search.html']
 
 extlinks = {
     'enterprise-plugins-tar': ( 'https://downloads.graylog.org/releases/graylog-enterprise/graylog-enterprise-plugins-%s.tgz', None),
-    'enterprise-integrations-plugins-tar': ( 'https://downloads.graylog.org/releases/graylog-integrations/graylog-integrations-plugins-%s.tgz', None),
-    'integrations-plugins-tar': ( 'https://downloads.graylog.org/releases/graylog-enterprise-integrations/graylog-enterprise-integrations-plugins-%s.tgz', None)
+    'integrations-plugins-tar': ( 'https://downloads.graylog.org/releases/graylog-integrations/graylog-integrations-plugins-%s.tgz', None),
+    'enterprise-integrations-plugins-tar': ( 'https://downloads.graylog.org/releases/graylog-enterprise-integrations/graylog-enterprise-integrations-plugins-%s.tgz', None)
 }
