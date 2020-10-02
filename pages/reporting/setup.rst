@@ -11,15 +11,15 @@ Installation
 Reporting is part of the Graylog Enterprise plugin, please check the :doc:`Graylog Enterprise setup page </pages/enterprise/setup>`
 for details on how to install it.
 
-The PDF generation needs the ``fontconfig`` package installed on the server it is running on.
+The PDF generation needs the ``fontconfig`` and the ``dejavu font`` package installed on the server it is running on.
 
 On a Debian based system use ``apt`` to install it, e.g.::
 
-  $ sudo apt-get install fontconfig
+  $ sudo apt-get install fontconfig fonts-dejavu
 
 Respectively on a RedHat based systems use::
 
-  $ sudo yum install fontconfig
+  $ sudo yum install fontconfig dejavu-sans-fonts dejavu-serif-fonts
 
 
 Configuration
