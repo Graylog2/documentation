@@ -2,6 +2,57 @@
 Changelog
 *********
 
+Graylog Enterprise 3.3.6
+========================
+
+Released: 2020-09-28
+
+Enterprise
+----------
+
+**Fixed**
+
+- Improve error logging during report generation.
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Added**
+
+- Add Google BigQuery output to the enterprise output framework.
+
+**Fixed**
+
+- Fix ``NullPointerException`` and thread-safety issues in the enterprise output framework.
+- Fix retry logic and overall robustness of the office365 input.
+- Improve error detection and error handling in the enterprise output framework.
+
+
+Graylog Enterprise 3.3.5
+========================
+
+Released: 2020-08-17
+
+**Fixed**
+
+- Fix NullPointerException when deleting an output, which caused the on-disk journal to not get cleaned up.
+
+
+Graylog Enterprise 3.3.4
+========================
+
+Released: 2020-08-06
+
+**Changed**
+
+- Fix pipeline selection on output creation to make the pipeline optional rather than required.
+
+**Fixed**
+
+- Fixed a bug which occurred during the setup of the O365 Input.
+- Fix error when starting the Forwarder with the Enterprise Integrations plugin.
+
+
 Graylog Enterprise 3.3.3
 ========================
 
