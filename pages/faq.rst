@@ -94,7 +94,7 @@ We support many log sources – and more are coming everyday.  For a complete li
 Can I install the Graylog Server on Windows?
 --------------------------------------------
 
-Even though our engineers say it is “technically possible”, don’t do it.  The Graylog server is built using Java, so technically it can run anywhere. But we currently have it optimized to run better on other operating systems. If you don’t feel comfortable running your own Linux system, we recommend you use our Linux virtual appliance which will run under VMWare.
+Graylog is not supported running on Windows.
 
 Can I run Graylog on Azure?
 ---------------------------
