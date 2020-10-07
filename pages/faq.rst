@@ -94,7 +94,7 @@ We support many log sources – and more are coming everyday.  For a complete li
 Can I install the Graylog Server on Windows?
 --------------------------------------------
 
-Graylog is not supported running on Windows.
+Running Graylog on Windows is not supported.
 
 Can I run Graylog on Azure?
 ---------------------------
