@@ -39,15 +39,26 @@ Graylog source cluster, at the same time the data is written to Elasticsearch.
 On-Disk Journal
 ^^^^^^^^^^^^^^^
 
-The Output Framework is equipped with a disk journal. This journal immediately persists 
+The Output Framework is equipped with an on-disk journal. This journal immediately persists 
 messages received from the Graylog Output system to disk before attempting to send them to
 the external receiver. This allows the Output Framework to keep receiving and reliably 
 queuing messages, even if the external receiver is temporarily unavailable due to
 network issues. The journal has many configuration options which will be described below.
 
-By default, journal data for Framework Outputs will be stored in the same directory used
-for the Input journal.  This directory is controlled by the ``message_journal_dir`` value
-in your Graylog configuration file.
+The directory in which journal data will be stored is controlled by the ``data_dir`` 
+value in your Graylog configuration file.  Journal data for Framework Outputs will be stored 
+in ``<data_dir>/stream_output/<OutputID>``.  As with the `"Output base path" directory 
+<../archiving/setup.html?highlight=partition#file-system>`__
+or  the `Input Journal <../faq.html?highlight=partition#dedicated-partition-for-the-journal>`__,
+it is recommended to use a separate partition for Output Framework journals to ensure 
+journal growth does not impact overall system performance.
+
+.. note:: While ``Maximum Journal Size`` can be configured for Enterprise Outputs, this is
+          a soft limit and the on-disk journal can grow larger.  If you want to guarantee 
+          journal data is cleaned up in a timely fashion, you should adjust the 
+          ``Maximum Journal Message Age`` and ``Journal Segment Age`` configuration values.
+          Be aware that even unsent messages in the journal will be purged once they are 
+          older than ``Maximum Journal Message Age``.
 
 Pipeline Integration
 ^^^^^^^^^^^^^^^^^^^^
