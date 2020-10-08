@@ -12,7 +12,7 @@ Enterprise Integrations Plugin
 
 **Fixed**
 
-- Ensure cleanup of on-disk journal when Enterprise Ouput is deleted.
+- Ensure cleanup of on-disk journal when Enterprise Output is deleted.
 
 
 Graylog Enterprise 3.3.6
