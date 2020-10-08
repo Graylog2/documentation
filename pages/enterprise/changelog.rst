@@ -2,6 +2,19 @@
 Changelog
 *********
 
+Graylog Enterprise 3.3.7
+========================
+
+Released: 2020-10-08
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Fixed**
+
+- Ensure cleanup of on-disk journal when Enterprise Ouput is deleted.
+
+
 Graylog Enterprise 3.3.6
 ========================
 
