@@ -23,7 +23,6 @@ This chapter is explaining the many ways to install Graylog and aims to help cho
    installation/config_management_tools
    installation/docker
    installation/aws
-   installation/windows
    installation/manual_setup
 
 
