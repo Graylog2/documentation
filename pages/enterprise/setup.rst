@@ -122,6 +122,8 @@ If you have done a manual installation you can get the tarball from the download
       - :enterprise-plugins-tar:`3.3.4`
     * - 3.3.5
       - :enterprise-plugins-tar:`3.3.5`
+    * - 3.3.6
+      - :enterprise-plugins-tar:`3.3.6`
     
 
 The tarball includes the enterprise plugin JAR file and required binaries that need to be installed.
