@@ -66,6 +66,8 @@ If you have done a manual installation, you download the tarballs from the follo
       - :integrations-plugins-tar:`3.3.5`
     * - 3.3.6
       - :integrations-plugins-tar:`3.3.6`
+    * - 3.3.7
+      - :integrations-plugins-tar:`3.3.7`
 
 
 .. list-table:: Enterprise Integrations Plugins download
@@ -87,6 +89,8 @@ If you have done a manual installation, you download the tarballs from the follo
       - :enterprise-integrations-plugins-tar:`3.3.5`
     * - 3.3.6
       - :enterprise-integrations-plugins-tar:`3.3.6`
+    * - 3.3.7
+      - :enterprise-integrations-plugins-tar:`3.3.7`
 
 
 .. note:: The integrations plugins need to be the same version as the Graylog server.
