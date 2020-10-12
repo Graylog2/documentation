@@ -2,6 +2,19 @@
 Changelog
 *********
 
+Graylog Enterprise 3.3.8
+========================
+
+Released: 2020-10-12
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Fixed**
+
+- Fixed an issue with the O365 codec where it was not handling the event timestamp correctly.
+
+
 Graylog Enterprise 3.3.7
 ========================
 

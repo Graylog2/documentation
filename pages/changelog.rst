@@ -2,6 +2,14 @@
 Changelog
 *********
 
+Graylog 3.3.8
+=============
+
+Released: 2020-10-12
+
+No changes since 3.3.7 (see `Graylog Enterprise <https://docs.graylog.org/en/3.3/pages/enterprise/changelog.html>`_ for changes there).
+
+
 Graylog 3.3.7
 =============
 
