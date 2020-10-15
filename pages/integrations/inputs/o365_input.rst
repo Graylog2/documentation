@@ -21,7 +21,7 @@ In order to use the Office 365 plugin, you will need to create and authorize a C
 Application through your organization's Microsoft Azure portal.
 
 It is assumed that you already have a working Office 365 subscription and access to the
-Microsoft Azure portal for your organization.
+Microsoft Azure portal for your organization.  It is also assumed you have the correct account type which allows access to the audit logs.  Generally this is an E5/A5 account.
 
 The following steps are mandatory.
 
@@ -62,7 +62,7 @@ Enable Unified Audit Logging
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Navigate to the `Audit Log Search page <https://protection.office.com/unifiedauditlog>`_
-in Microsoft Office 365 and enable ``Unified Audit Logging``.
+in Microsoft Office 365 and enable ``Unified Audit Logging``. If this is the first time enabling Unified Audit Log, it can take up to 24 hours before logs start coming into Graylog.
 
 Plugin Configuration
 --------------------
@@ -89,7 +89,7 @@ O365 Content Subscription
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - ``Log Types To Collect``
-   - This determines which of the five available log types the Input will pull from Office 365
+   - This determines which of the five available log types the Input will pull from Office 365 (Options are: AZURE_ACTIVE_DIRECTORY, SHAREPOINT, EXCHANGE, GENERAL, DLP_ALL)
 - ``Polling Interval``
    - This determines how often (in minutes) the Input will check for new log data
    - This value cannot be less than 1 (checking every minute)
