@@ -2,6 +2,33 @@
 Changelog
 *********
 
+Graylog 3.3.8
+=============
+
+Released: 2020-10-12
+
+No changes since 3.3.7 (see `Graylog Enterprise <https://docs.graylog.org/en/3.3/pages/enterprise/changelog.html>`_ for changes there).
+
+
+Graylog 3.3.7
+=============
+
+Released: 2020-10-08
+
+Core
+^^^^
+
+**Security**
+
+- Update JavaScript dependencies with security issues. `Graylog2/graylog2-server#9098 <https://github.com/Graylog2/graylog2-server/issues/9098>`_
+
+**Fixed**
+
+- Fix issues with changing number of results for a pivot configuration. `Graylog2/graylog2-server#9087 <https://github.com/Graylog2/graylog2-server/issues/9087>`_ `Graylog2/graylog2-server#9085 <https://github.com/Graylog2/graylog2-server/issues/9085>`_
+- Fix permission issue with search and dashboards by respecting ownership. `Graylog2/graylog2-server#9068 <https://github.com/Graylog2/graylog2-server/issues/9068>`_ `Graylog2/graylog2-server#9067 <https://github.com/Graylog2/graylog2-server/issues/9067>`_
+- Fix unintended search bar form submit in widget edit modal. `Graylog2/graylog2-server#9096 <https://github.com/Graylog2/graylog2-server/issues/9096>`_
+
+
 Graylog 3.3.6
 =============
 
