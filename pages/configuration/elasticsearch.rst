@@ -95,6 +95,15 @@ The following configuration options are now being used to configure connectivity
 |                                                    |           | configured nodes. Will disable auto-sensing if specified.    | Values: ``6`` / ``7``       |
 +----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
 
+.. _version_auto_sensing:
+
+Automatic version sensing
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Starting with Graylog 4.0, we do support multiple major versions of Elasticsearch, which are partially incompatible with each other (ES6 & ES7). Therefore, we need to know which Elasticsearch version is running in the cluster. This is why we do a single request to the first reachable Elasticsearch node and parse the version of the response it sent back. There are some things which can go wrong at this point, or you might want to run an unsupported version. If you are absolutely sure what you are doing, you can set the ``elasticsearch_version`` configuration variable. It will disable auto-sensing, force Graylog to pretend that this Elasticsearch major version is running in the cluster, and load the corresponding support module.
+
+.. note:: Elasticsearch 8.0 (which is not released at the time of this writing) is not supported by Graylog 4.0. There is a good chance that it works with our ES7 support, so you can try to set ``elasticsearch_version = 7`` to make it run.
+
 .. _automatic_node_discovery:
 
 Automatic node discovery
