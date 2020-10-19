@@ -53,13 +53,17 @@ Similarly, the same can be done for UDP by appending ``-p 5555:5555/udp``.
 After ensuring that your Graylog Docker container is listening on ``:5555``, create a Raw/Plaintext Input by navigating to `http://localhost:9000/system/inputs <http://localhost:9000/system/inputs>`_ :
 
 .. image:: /images/docker-01.png 
+
 | 
+
 .. image:: /images/docker-02.png
 
 Once on the Inputs page, search for ```Raw/Plaintext TCP`` and click ``Launch new input``
 
 .. image:: /images/docker-03.png
+
 | 
+
 .. image:: /images/docker-04.png
 
 After launching the input, you'll see a dialog box pop up with several options. You can leave most these options as their defaults, but note that you'll need to provide a name for the input, as well as select the node, or "Global" for the location for the input. 
