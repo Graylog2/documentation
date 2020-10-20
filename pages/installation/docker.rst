@@ -38,9 +38,9 @@ If you want to checkout Graylog on your local desktop without any further custom
 How to get log data in
 ----------------------
 
-You can create different kinds of inputs under *System / Inputs*, however you can only use ports that have been properly mapped to your docker container, otherwise data will not go through.
+You can create different kinds of inputs under *System / Inputs*, however you can only use ports that have been properly mapped to your Docker container, otherwise data will not show up in the Graylog UI.
 
-For example, to start a Raw/Plaintext TCP input on port 5555, stop your container and recreate it, while appending ``-p 5555:5555`` to your `docker run <https://docs.docker.com/engine/reference/run/>`_ command::
+For example, to start a Graylog Docker container listening on port 5555, stop your container and recreate it, while appending ``-p 5555:5555`` to your `docker run <https://docs.docker.com/engine/reference/run/>`_ command::
 
   $ docker run --link mongo --link elasticsearch \
       -p 9000:9000 -p 12201:12201 -p 1514:1514 -p 5555:5555 \
@@ -50,10 +50,33 @@ For example, to start a Raw/Plaintext TCP input on port 5555, stop your containe
 
 Similarly, the same can be done for UDP by appending ``-p 5555:5555/udp``.
 
+After ensuring that your Graylog Docker container is listening on ``:5555``, create a Raw/Plaintext Input by navigating to `http://localhost:9000/system/inputs <http://localhost:9000/system/inputs>`_ :
+
+.. image:: /images/docker-01.png 
+
+| 
+
+.. image:: /images/docker-02.png
+
+Once on the Inputs page, search for ```Raw/Plaintext TCP`` and click ``Launch new input``
+
+.. image:: /images/docker-03.png
+
+| 
+
+.. image:: /images/docker-04.png
+
+After launching the input, you'll see a dialog box pop up with several options. You can leave most these options as their defaults, but note that you'll need to provide a name for the input, as well as select the node, or "Global" for the location for the input. 
+
+.. image:: /images/docker-05.png
+
 After that you can send a plaintext message to the Graylog Raw/Plaintext TCP input running on port 5555 using the following command::
 
   $ echo 'First log message' | nc localhost 5555
 
+Which you can then view in the Graylog UI:
+
+.. image:: /images/docker-06.png
 
 Settings
 --------
