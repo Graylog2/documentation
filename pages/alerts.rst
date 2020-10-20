@@ -242,15 +242,87 @@ Here is an example of the payload included in a notification::
 
 .. _alert_notification_script:
 
-Legacy Script alert notification
---------------------------------
+Script alert notification
+-------------------------
 
 The Script Alert Notification lets you configure a script that will be executed when the alert is triggered.
 
 .. important:: Script Alert Notification is an Enterprise Integrations plugin feature and thus requires an :ref:`Enterprise license <enterprise_features>`.
 
-
 .. image:: /images/alerts_script_notification.png
+
+These are the supported configuration options.
+
+Script Path
+    The path to where the script is located. Must me within the :ref:`permitted script path<config_script_alert>` (which is customizable).
+
+Script Timeout
+    The maximum time (in milliseconds) the script will be allowed to execute before being forcefully terminated.
+
+Script Arguments
+    Space-delimited string of parameters. Any of the data described above can be used.
+
+Send Alert Data Through STDIN
+    Sends the JSON encoded data described above through standard in. You can use a JSON parser in your script.
+
+Script Alert Notification success is determined by its exit value; success equals zero.
+Any non-zero exit value will cause it to fail.
+Returning any error text through STDERR will also cause the alarm callback to fail.
+
+Here is a sample Python script that shows all of the supported Script Alert Notification
+functionality (argument parsing, STDIN JSON parsing, STDOUT, exit values, and returning an exit value).::
+
+        #!/usr/bin/env python3
+        import json
+        import sys
+        
+        # Function that prints text to standard error
+        def print_stderr(*args, **kwargs):
+            print(*args, file=sys.stderr, **kwargs)
+        
+        # Main function
+        if __name__ == "__main__":
+        
+            # Print out all input arguments.
+            sys.stdout.write("All Arguments Passed In: " + ' '.join(sys.argv[1:]) + "\n")
+        
+            # Turn stdin.readlines() array into a string
+            std_in_string = ''.join(sys.stdin.readlines())
+        
+            # Load JSON
+            event_data = json.loads(std_in_string)
+        
+            # Extract some values from the JSON.
+            sys.stdout.write("Values from JSON: \n")
+            sys.stdout.write("Event Definition ID: " + event_data["event_definition_id"] + "\n")
+            sys.stdout.write("Event Definition Title: " + event_data["event_definition_title"] + "\n")
+            sys.stdout.write("Event Timestamp: " + event_data["event"]["timestamp"] + "\n")
+        
+            # Extract Message Backlog field from JSON.
+            sys.stdout.write("\nBacklog:\n")
+            for message in event_data["backlog"]:
+                for field in message.keys():
+                    sys.stdout.write("Field: " + field + "\t")
+                    sys.stdout.write("Value: " + str(message[field]) + "\n")
+        
+            # Write to stderr if desired
+            # print_stderr("Test return through standard error")
+        
+            # Return an exit value. Zero is success, non-zero indicates failure.
+            exit(0)
+            
+.. _legacy_alert_callback_script:
+
+Legacy Script alert callback
+----------------------------
+
+The Legacy Script Alert Callback lets you configure a script that will be executed when the alert is triggered.
+
+.. warning:: Legacy alarm callbacks are being deprecated.  If you are currently using the Legacy Script Alert Callback, you should migrate to Script Alert Notification as soon as possible.
+
+.. important:: Legacy Script Alert Callback is an Enterprise Integrations plugin feature and thus requires an :ref:`Enterprise license <enterprise_features>`.
+
+.. image:: /images/alerts_legacy_script_callback.png
 
 These are the supported configuration options.
 
@@ -289,57 +361,9 @@ Send Alert Data Through STDIN
     Sends JSON alert data through standard in. You can use a JSON parser in your script. :
 
 
-Script Alert Notification success is determined by its exit value; success equals zero.
+Legacy Script Alert Callback success is determined by its exit value; success equals zero.
 Any non-zero exit value will cause it to fail.
 Returning any error text through STDERR will also cause the alarm callback to fail.
-
-Here is a sample Python script that shows all of the supported Script Alert Notification
-functionality (argument parsing, STDIN JSON parsing, STDOUT, exit values, and returning an exit value).::
-
-        #!/usr/bin/env python3
-        import json
-        import sys
-        import time
-
-
-        # Function that prints text to standard error
-        def print_stderr(*args, **kwargs):
-            print(*args, file=sys.stderr, **kwargs)
-
-        # Main function
-        if __name__ == "__main__":
-
-            # Print out all input arguments.
-            sys.stdout.write("All Arguments Passed In: " + ' '.join(sys.argv[1:]) + "\n")
-            sys.stdout.write("Stream Name: " + sys.argv[2] + "\n")
-            sys.stdout.write("Stream Description: " + sys.argv[3] + "\n")
-            sys.stdout.write("Alert Triggered At: " + sys.argv[6] + "\n")
-
-            # Turn stdin.readlines() array into a string
-            std_in_string = ''.join(sys.stdin.readlines())
-
-            # Load JSON
-            alert_object = json.loads(std_in_string)
-
-            # Extract some values from the JSON.
-            sys.stdout.write("Values from JSON: \n")
-            sys.stdout.write("Stream ID: " + alert_object["stream_id"] + "\n")
-            sys.stdout.write("Stream Name: " + alert_object["stream_name"] + "\n")
-            sys.stdout.write("Alert Triggered At: " + alert_object["alert_triggered_at"] + "\n")
-
-            # Extract Message Backlog field from JSON.
-            sys.stdout.write("\n\nFields:\n")
-            for message in alert_object["message_backlog"]:
-                for field in message.keys():
-                    print("Field: " + field)
-                    print("Value: " + str(message[field]))
-
-            # Write to stderr if desired
-            # print_stderr("Test return through standard error")
-
-            # Return an exit value. Zero is success, non-zero indicates failure.
-            exit(0)
-
 
 
 Event Summary
