@@ -11,9 +11,9 @@ and configuring new software a matter of a single command and a few minutes of t
 
 Graylog offers official ``DEB`` and ``RPM`` package repositories. The packages have been tested on the following operating systems:
 
-* Ubuntu 16.04, 18.04
+* Ubuntu 16.04, 18.04, 20.04
 * Debian 8, 9, 10
-* RHEL/CentOS 6, 7
+* RHEL/CentOS 6, 7, 8
 
 
 The repositories can be set up by installing a single package. Once that's done, the Graylog packages can be installed via ``apt-get`` or
@@ -25,10 +25,8 @@ Prerequisites
 Make sure to install and configure the following software before installing and starting any Graylog services:
 
 * Java ( >= 8 )
-* Elasticsearch (5.x or 6.x)
-* MongoDB (3.6, 4.0 or 4.2)
-
-.. caution:: Graylog 3 **does not** work with Elasticsearch 7.x!
+* Elasticsearch (6.x or 7.x)
+* MongoDB (4.0 or 4.2)
 
 Step by Step Guides
 -------------------
@@ -43,12 +41,12 @@ Step by Step Guides
 DEB / APT
 ---------
 
-Download and install `graylog-3.3-repository_latest.deb <https://packages.graylog2.org/repo/packages/graylog-3.3-repository_latest.deb>`_
+Download and install `graylog-4.0-repository_latest.deb <https://packages.graylog2.org/repo/packages/graylog-4.0-repository_latest.deb>`_
 via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is installed::
 
   $ sudo apt-get install apt-transport-https
-  $ wget https://packages.graylog2.org/repo/packages/graylog-3.3-repository_latest.deb
-  $ sudo dpkg -i graylog-3.3-repository_latest.deb
+  $ wget https://packages.graylog2.org/repo/packages/graylog-4.0-repository_latest.deb
+  $ sudo dpkg -i graylog-4.0-repository_latest.deb
   $ sudo apt-get update
   $ sudo apt-get install graylog-server
 
@@ -57,22 +55,22 @@ via ``dpkg(1)`` and also make sure that the ``apt-transport-https`` package is i
 After the installation completed successfully, Graylog can be started with the following commands. Make sure to use the correct command for your operating system.
 
 
-================================= =========== =======================================
-OS                                Init System Command
-================================= =========== =======================================
-Debian 7                          SysV        ``sudo service graylog-server start``
-Debian 8 & 9, Ubuntu 16.04, 18.04 systemd     ``sudo systemctl start graylog-server``
-================================= =========== =======================================
+======================================== =========== =======================================
+OS                                       Init System Command
+======================================== =========== =======================================
+Debian 7                                 SysV        ``sudo service graylog-server start``
+Debian 8 & 9, Ubuntu 16.04, 18.04, 20.04 systemd     ``sudo systemctl start graylog-server``
+======================================== =========== =======================================
 
 
 The packages are configured to **not** start any Graylog services during boot. You can use the following commands to start Graylog when the operating system is booting.
 
-================================= =========== ==================================================
-OS                                Init System Command
-================================= =========== ==================================================
-Debian 7                          SysV        ``sudo update-rc.d graylog-server defaults 95 10``
-Debian 8 & 9, Ubuntu 16.06, 18.04 systemd     ``sudo systemctl enable graylog-server``
-================================= =========== ==================================================
+======================================== =========== ==================================================
+OS                                       Init System Command
+======================================== =========== ==================================================
+Debian 7                                 SysV        ``sudo update-rc.d graylog-server defaults 95 10``
+Debian 8 & 9, Ubuntu 16.06, 18.04, 20.04 systemd     ``sudo systemctl enable graylog-server``
+======================================== =========== ==================================================
 
 .. _operating_package_upgrade_DEB-APT:
 
@@ -83,8 +81,8 @@ If you've been using the repository package to install Graylog before, it has to
 
 The update basically works like a fresh installation::
 
-  $ wget https://packages.graylog2.org/repo/packages/graylog-3.3-repository_latest.deb
-  $ sudo dpkg -i graylog-3.3-repository_latest.deb
+  $ wget https://packages.graylog2.org/repo/packages/graylog-4.0-repository_latest.deb
+  $ sudo dpkg -i graylog-4.0-repository_latest.deb
   $ sudo apt-get update
   $ sudo apt-get install graylog-server
 
@@ -102,17 +100,17 @@ First, add the `Graylog GPG keyring <https://packages.graylog2.org/repo/debian/k
 
 Now create a file ``/etc/apt/sources.list.d/graylog.list`` with the following content::
 
-  deb https://packages.graylog2.org/repo/debian/ stable 3.3
+  deb https://packages.graylog2.org/repo/debian/ stable 4.0
 
 .. _operating_package_rpm-yum-dnf:
 
 RPM / YUM / DNF
 ---------------
 
-Download and install `graylog-3.3-repository_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-3.3-repository_latest.rpm>`_
+Download and install `graylog-4.0-repository_latest.rpm <https://packages.graylog2.org/repo/packages/graylog-4.0-repository_latest.rpm>`_
 via ``rpm(8)``::
 
-  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-3.3-repository_latest.rpm
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-4.0-repository_latest.rpm
   $ sudo yum install graylog-server
 
 .. hint:: If you want the :ref:`Integrations Plugins <integrations_plugins>` or the :ref:`Enterprise Plugins <enterprise_features>` installed, you need to install them now. The following install all official provided packages by Graylog at the same time: ``sudo yum install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins`` 
@@ -123,7 +121,7 @@ After the installation completed successfully, Graylog can be started with the f
 OS                  Init System Command
 =================== =========== =======================================
 CentOS 6            SysV        ``sudo service graylog-server start``
-CentOS 7            systemd     ``sudo systemctl start graylog-server``
+CentOS 7, 8         systemd     ``sudo systemctl start graylog-server``
 =================== =========== =======================================
 
 The packages are configured to **not** start any Graylog services during boot. You can use the following commands to start Graylog when the operating system is booting.
@@ -132,7 +130,7 @@ The packages are configured to **not** start any Graylog services during boot. Y
 OS                  Init System Command
 =================== =========== ==================================================
 CentOS 6            SysV        ``sudo update-rc.d graylog-server defaults 95 10``
-CentOS 7            systemd     ``sudo systemctl enable graylog-server``
+CentOS 7, 8         systemd     ``sudo systemctl enable graylog-server``
 =================== =========== ==================================================
 
 .. _operating_package_upgrade_rpm-yum-dnf:
@@ -144,7 +142,7 @@ If you've been using the repository package to install Graylog before, it has to
 
 The update basically works like a fresh installation::
 
-  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-3.3-repository_latest.rpm
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-4.0-repository_latest.rpm
   $ sudo yum clean all
   $ sudo yum install graylog-server
 
@@ -166,7 +164,7 @@ Now create a file named ``/etc/yum.repos.d/graylog.repo`` with the following con
 
   [graylog]
   name=graylog
-  baseurl=https://packages.graylog2.org/repo/el/stable/3.3/$basearch/
+  baseurl=https://packages.graylog2.org/repo/el/stable/4.0/$basearch/
   gpgcheck=1
   repo_gpgcheck=0
   gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-graylog
