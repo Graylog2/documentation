@@ -49,6 +49,10 @@ Graylog 4.0 is the first release that supports Elasticsearch 7, the upgrade is r
 
 When upgrading from Elasticsearch 6.x to Elasticsearch 7.x, make sure to read the `upgrade guide <https://www.elastic.co/guide/en/elasticsearch/reference/7.x/setup-upgrade.html>`__ provided by Elastic. The Graylog :ref:`Elasticsearch configuration documentation <configuring_es>` contains information about the compatible Elasticsearch version. After the upgrade you must :ref:`rotate the indices once manually <rotate_es_indices>`.
 
+.. note::
+   A note about rolling upgrades for Elasticsearch:
+   Elasticsearch supports rolling upgrades to avoid downtimes during upgrades. Graylog supports rolling upgrades with no restart of any Graylog node for Elasticsearch as long as they are performed *between minor versions*. For more information please see :ref:`Rolling Upgrade Notes <es_rolling_upgrade>`.
+
 .. toctree::
    :titlesonly:
    :glob:
