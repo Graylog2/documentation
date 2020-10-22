@@ -31,9 +31,8 @@ Graylog version  Elasticsearch version
 *4.0*            *6.8.x+, 7.x*
 ===============  =====================
 
-.. caution:: Graylog 3.x **does not** work with Elasticsearch 7.x!
-.. note:: Graylog works fine with the `Amazon Elasticsearch Service <https://aws.amazon.com/elasticsearch-service/>`_ using Elasticsearch 5 or 6.
-.. note:: Graylog works fine with the `Elastic Cloud <https://cloud.elastic.co>`_ using Elasticsearch 5 or 6.
+.. note:: Graylog works fine with the `Amazon Elasticsearch Service <https://aws.amazon.com/elasticsearch-service/>`_ using Elasticsearch 6 or 7.
+.. note:: Graylog works fine with the `Elastic Cloud <https://cloud.elastic.co>`_ using Elasticsearch 6 or 7.
 
 
 Configuration
