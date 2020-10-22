@@ -42,13 +42,13 @@ In order to automatically start MongoDB on system boot, you have to activate the
 Elasticsearch
 -------------
 
-Graylog can be used with Elasticsearch 6.x, please follow the installation instructions from `the Elasticsearch installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/rpm.html>`_.
+Graylog can be used with Elasticsearch 7.x, please follow the installation instructions from `the Elasticsearch installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/7.x/rpm.html>`_.
 
 First install the Elastic GPG key with ``rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch`` then add the repository file ``/etc/zypp/repos.d/elasticsearch.repo`` with the following contents::
 
-    [elasticsearch-6.x]
-    name=Elasticsearch repository for 6.x packages
-    baseurl=https://artifacts.elastic.co/packages/oss-6.x/yum
+    [elasticsearch-7.x]
+    name=Elasticsearch repository for 7.x packages
+    baseurl=https://artifacts.elastic.co/packages/oss-7.x/yum
     gpgcheck=1
     gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
     enabled=1
@@ -57,7 +57,7 @@ First install the Elastic GPG key with ``rpm --import https://artifacts.elastic.
 
 followed by the installation of the latest release with ``sudo zypper install elasticsearch-oss``.
 
-Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` and uncomment ``action.auto_create_index: false`` to enable the action::
+Make sure to modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/7.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``) and set the cluster name to ``graylog`` and uncomment ``action.auto_create_index: false`` to enable the action::
 
     $ sudo tee -a /etc/elasticsearch/elasticsearch.yml > /dev/null <<EOT
     cluster.name: graylog
@@ -78,7 +78,7 @@ First install the Graylog GPG Key with ``rpm --import https://packages.graylog2.
 
     [graylog]
     name=graylog
-    baseurl=https://packages.graylog2.org/repo/el/stable/3.3/$basearch/
+    baseurl=https://packages.graylog2.org/repo/el/stable/4.0/$basearch/
     gpgcheck=1
     gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-graylog
 

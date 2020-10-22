@@ -38,16 +38,16 @@ The next step is to enable MongoDB during the operating system's startup::
 Elasticsearch
 -------------
 
-Graylog can be used with Elasticsearch 6.x, please follow the below instructions to install the open source version of Elasticsearch. ::
+Graylog can be used with Elasticsearch 7.x, please follow the below instructions to install the open source version of Elasticsearch. ::
 
     $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-    $ echo "deb https://artifacts.elastic.co/packages/oss-6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
+    $ echo "deb https://artifacts.elastic.co/packages/oss-7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
     $ sudo apt update && sudo apt install elasticsearch-oss
 
-The above instructions are a derivative from the `Elasticsearch install page <https://www.elastic.co/guide/en/elasticsearch/reference/6.8/deb.html>`__
+The above instructions are a derivative from the `Elasticsearch install page <https://www.elastic.co/guide/en/elasticsearch/reference/7.9/deb.html>`__
 
 
-Modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``)
+Modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/7.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``)
 and set the cluster name to ``graylog`` and uncomment ``action.auto_create_index: false`` to enable the action::
 
     $ sudo tee -a /etc/elasticsearch/elasticsearch.yml > /dev/null <<EOT
@@ -68,8 +68,8 @@ Graylog
 
 Now install the Graylog repository configuration and Graylog itself with the following commands::
 
-  $ wget https://packages.graylog2.org/repo/packages/graylog-3.3-repository_latest.deb
-  $ sudo dpkg -i graylog-3.3-repository_latest.deb
+  $ wget https://packages.graylog2.org/repo/packages/graylog-4.0-repository_latest.deb
+  $ sudo dpkg -i graylog-4.0-repository_latest.deb
   $ sudo apt-get update && sudo apt-get install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins
 
 .. hint:: If you do not want the :ref:`Integrations Plugins <integrations_plugins>` or the :ref:`Enterprise Plugins <enterprise_features>` installed, then simply run ``sudo apt-get install graylog-server``

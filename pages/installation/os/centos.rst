@@ -45,13 +45,13 @@ Additionally, run these last steps to start MongoDB during the operating system'
 Elasticsearch
 -------------
 
-Graylog can be used with Elasticsearch 6.x, please follow the below instructions to install the open source version of Elasticsearch.
+Graylog can be used with Elasticsearch 7.x, please follow the below instructions to install the open source version of Elasticsearch.
 
 First install the Elastic GPG key with ``rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch`` then add the repository file ``/etc/yum.repos.d/elasticsearch.repo`` with the following contents::
 
-    [elasticsearch-6.x]
-    name=Elasticsearch repository for 6.x packages
-    baseurl=https://artifacts.elastic.co/packages/oss-6.x/yum
+    [elasticsearch-7.x]
+    name=Elasticsearch repository for 7.x packages
+    baseurl=https://artifacts.elastic.co/packages/oss-7.x/yum
     gpgcheck=1
     gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
     enabled=1
@@ -60,7 +60,7 @@ First install the Elastic GPG key with ``rpm --import https://artifacts.elastic.
 
 followed by the installation of the latest release with ``sudo yum install elasticsearch-oss``.
 
-Modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``)
+Modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/7.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``)
 and set the cluster name to ``graylog`` and uncomment ``action.auto_create_index: false`` to enable the action::
 
     $ sudo tee -a /etc/elasticsearch/elasticsearch.yml > /dev/null <<EOT
@@ -81,7 +81,7 @@ Graylog
 
 Now install the Graylog repository configuration and Graylog itself with the following commands::
 
-  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-3.3-repository_latest.rpm
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-4.0-repository_latest.rpm
   $ sudo yum update && sudo yum install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins
 
 .. hint:: If you do not want the :ref:`Integrations Plugins <integrations_plugins>` or the :ref:`Enterprise Plugins <enterprise_features>` installed, then simply run ``sudo yum install graylog-server``
