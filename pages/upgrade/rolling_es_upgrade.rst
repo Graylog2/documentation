@@ -16,12 +16,12 @@ To avoid message loss in case of a rolling Elasticsearch upgrade which requires 
 2. Mentally split up the Elasticsearch cluster in two groups by designating each Elasticsearch node to group A or B.
 3. Mentally split up the Graylog cluster in two groups by designating each Graylog node to group A or B.
 4. Temporarily configure each Graylog node from group A to use only Elasticsearch nodes from group A and vice versa for group B.
-5. :ref:`Pause message processing <pause_message_processing>` on each Graylog node from group B _or_ shut down Graylog nodes from group B.
+5. :ref:`Pause message processing <pause_message_processing>` on each Graylog node from group B *or* shut down Graylog nodes from group B.
 6. Upgrade all Elasticsearch nodes from group B.
-7. Restart each Graylog node from Group B for which you have paused message processing in step 5 _or_ start all Graylog nodes from group B which you have shut down in step 5.
-8. :ref:`Pause message processing <pause_message_processing>` on each Graylog node from group A _or_ shut down Graylog nodes from group A.
+7. Restart each Graylog node from Group B for which you have paused message processing in step 5 *or* start all Graylog nodes from group B which you have shut down in step 5.
+8. :ref:`Pause message processing <pause_message_processing>` on each Graylog node from group A *or* shut down Graylog nodes from group A.
 9. Upgrade all Elasticsearch nodes from group A.
-10. Restart each Graylog node from Group A for which you have paused message processing in stept 8 _or_ start all Graylog nodes from group A which you have shut down in step 8.
+10. Restart each Graylog node from Group A for which you have paused message processing in stept 8 *or* start all Graylog nodes from group A which you have shut down in step 8.
 11. Revert all changes performed in steps 1 and 4.
 
 Before performing this procedure, please make sure that:
