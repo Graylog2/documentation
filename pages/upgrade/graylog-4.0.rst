@@ -27,5 +27,6 @@ When upgrading Elasticsearch from one major version to another, please read the 
 
 as well as our :ref:`Elasticsearch Upgrade Notes <upgrading-elasticsearch>`.
 
-Please do notice that Graylog does not support rolling upgrades between major versions, while Elasticsearch does. If you are upgrading from one major version of Elasticsearch to another, you need to restart Graylog in order to reinitialize the storage module.
+Please do notice that Graylog does not support rolling upgrades between major versions, while Elasticsearch does. If you are upgrading from one major version of Elasticsearch to another, you need to restart Graylog in order to reinitialize the storage module. A procedure which allows a rolling upgrade of Elasticsearch between two major versions of a multi-node Graylog cluster is outlined :ref:`here <es_rolling_upgrade>`.
+
 
