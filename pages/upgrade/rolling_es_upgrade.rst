@@ -12,7 +12,7 @@ Graylog supports rolling upgrades without restarting any Graylog node for Elasti
 
 To avoid message loss in case of a rolling Elasticsearch upgrade which requires the restart of Graylog nodes, please follow this procedure:
 
-1. Temporarily disable ES automatic node discovery if it is used.
+1. Temporarily disable ES :ref:`automatic node discovery <automatic_node_discovery>`_ if it is used.
 2. Mentally split up the Elasticsearch cluster in two groups by designating each Elasticsearch node to group A or B.
 3. Mentally split up the Graylog cluster in two groups by designating each Graylog node to group A or B.
 4. Temporarily configure each Graylog node from group A to use only Elasticsearch nodes from group A and vice versa for group B.
