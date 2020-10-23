@@ -58,4 +58,5 @@ When upgrading from Elasticsearch 6.x to Elasticsearch 7.x, make sure to read th
    :glob:
 
    upgrade/elasticsearch*
+   upgrade/rolling_es_upgrade
 
