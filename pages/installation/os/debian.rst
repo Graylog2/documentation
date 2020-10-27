@@ -44,7 +44,7 @@ Graylog can be used with Elasticsearch 6.x, please follow the below instructions
     $ echo "deb https://artifacts.elastic.co/packages/oss-6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
     $ sudo apt update && sudo apt install elasticsearch-oss
 
-The above instructions are a derivative from the `Elasticsearch install page <https://www.elastic.co/guide/en/elasticsearch/reference/6.8/deb.html>`__
+The above instructions are derived from the `Elasticsearch install page <https://www.elastic.co/guide/en/elasticsearch/reference/6.8/deb.html>`__
 
 
 Modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``)
@@ -59,7 +59,6 @@ After you have modified the configuration, you can start Elasticsearch and verif
 
     $ sudo systemctl daemon-reload
     $ sudo systemctl enable elasticsearch.service
-    $ sudo systemctl restart elasticsearch.service
     $ sudo systemctl restart elasticsearch.service
 
 
