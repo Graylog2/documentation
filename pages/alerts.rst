@@ -240,6 +240,50 @@ Here is an example of the payload included in a notification::
 .. image:: /images/alerts_http_notification.png
 
 
+.. _alert_notification_pagerduty:
+
+PagerDuty alert notification
+----------------------------
+
+The PagerDuty alert notification allows you create new incidents in PagerDuty in response
+to Events in your Graylog server.
+
+.. note:: PagerDuty alert notifications are intended as a replacement for the PagerDuty
+   integration previously available from 
+   `Graylog Labs <https://github.com/graylog-labs/graylog-plugin-pagerduty>`__.  If you 
+   are using the Graylog Labs PagerDuty integration, you should migrate to the officially
+   supported PagerDuty alert notifications at your earliest convenience.
+
+.. important:: In order to use PagerDuty alert notifications, you must create a new 
+   integration in PagerDuty to obtain an integration routing key:     
+   `PagerDuty Documentation <https://developer.pagerduty.com/docs/events-api-v2/overview/#getting-started>`__ 
+
+These are the supported configuration options:
+
+Routing Key
+    Your PagerDuty integration routing key.
+
+Use Custom Incident Key
+    If enabled, an incident key will be generated using the provided 
+    ``Incident Key Prefix``.  This will prevent PagerDuty from creating multiple 
+    incidents for a single Event.  If not checked, no incident key will 
+    be generated and each event notification will create a new incident in PagerDuty.
+
+Incident Key Prefix
+    If ``Custom Incident Key`` is enabled, this will be used as the prefix for the 
+    incident key.
+
+Client Name
+    The name of the Graylog system that triggered the PagerDuty incident.
+
+Client URL
+    The URL for your Graylog web interface.  If provided, this will be used to construct 
+    links which will be embedded in your PagerDuty incident.
+
+.. image:: /images/alerts_pagerduty_notification.png
+
+
+
 .. _alert_notification_script:
 
 Script alert notification
