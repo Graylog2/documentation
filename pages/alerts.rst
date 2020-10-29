@@ -254,8 +254,9 @@ to Events in your Graylog server.
    are using the Graylog Labs PagerDuty integration, you should migrate to the officially
    supported PagerDuty alert notifications at your earliest convenience.
 
-.. important:: In order to use PagerDuty alert notifications, you must create a new 
-   integration in PagerDuty to obtain an integration routing key:     
+.. important:: In order to use PagerDuty alert notifications, you will need an integration
+   routing key.  If you do not already have one, you will need to create a new integration
+   in PagerDuty:
    `PagerDuty Documentation <https://developer.pagerduty.com/docs/events-api-v2/overview/#getting-started>`__ 
 
 These are the supported configuration options:
