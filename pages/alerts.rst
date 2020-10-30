@@ -291,6 +291,14 @@ Slack alert notification
 The Slack alert notification allows you to send notifications using your `Webhook URL <https://api.slack.com/messaging/webhooks>`__ to your slack workspace
 in response to the configured event definitions in your Graylog server.
 
+These are 11 supported configuration options:
+
+
+
+
+
+.. image:: /images/alerts_slack_notification.png
+
 
 
 .. _alert_notification_script:
