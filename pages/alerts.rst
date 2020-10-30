@@ -284,11 +284,19 @@ Client URL
 .. image:: /images/alerts_pagerduty_notification.png
 
 
+.. _alert_notification_Slack Notification:
+
+Slack alert notification
+------------------------
+The Slack alert notification allows you to send notifications using your `Webhook URL <https://api.slack.com/messaging/webhooks>`__ to your slack workspace
+in response to the configured event definitions in your Graylog server.
+
+
 
 .. _alert_notification_script:
 
-Script alert notification
--------------------------
+Script alert notification [Enterprise]
+--------------------------------------
 
 The Script Alert Notification lets you configure a script that will be executed when the alert is triggered.
 
