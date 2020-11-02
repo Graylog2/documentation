@@ -288,27 +288,20 @@ Client URL
 
 Slack alert notification
 ------------------------
-The Slack alert notification allows you to send notifications using your `Webhook URL <https://api.slack.com/messaging/webhooks>`__ to your slack workspace
-in response to the configured event definitions in your Graylog server.
+The Slack alert notification allows you to send notifications to your slack workspace in response to events in your Graylog server.
 
 .. image:: /images/alerts_slack_notification.png
 
 These are the supported configuration options:
 
 Webhook URL
-    An unique URL to which you send a JSON payload with the message text and some options.
+    The unique `URL <https://api.slack.com/messaging/webhooks>`__ used to send messages to your Slack instance.
 
 Channel
     A `channel <https://api.slack.com/methods/chat.postMessage#channels>`__ to send message to.
 
 Configuration Color
     Highlight the custom message with this `color <https://api.slack.com/reference/surfaces/formatting#quotes>`__ .
-
-Title
-    A title for this notification.
-
-Description
-    A long description for this slack notification.
 
 Custom Message
     A custom message to be appended below the alert title.
@@ -320,7 +313,7 @@ Icon URL
     Image to use as the icon for this message.
 
 Icon Emoji
-    `:turtle:`
+    Emoji to use as the icon for this message (overrides Icon URL).
 
 
 
