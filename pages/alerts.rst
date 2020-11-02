@@ -304,13 +304,10 @@ Configuration Color
     Highlight the custom message with this `color <https://api.slack.com/reference/surfaces/formatting#quotes>`__ .
 
 Custom Message
-    A custom message to be appended below the alert title.
+    This is a message template and the data described above will be appended below the alert title, when the notification is sent.
 
 User Name (optional)
-    Addressing a specific `user  <https://api.slack.com/reference/surfaces/formatting#mentioning-users>`__ in the slack workspace.
-
-Icon URL
-    Image to use as the icon for this message.
+    User name of the sender in Slack.
 
 Icon Emoji
     Emoji to use as the icon for this message (overrides Icon URL).
