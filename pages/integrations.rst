@@ -31,6 +31,7 @@ Open Source
    integrations/inputs/palo_alto_networks_input
    integrations/inputs/ipfix_input
 
+.. _integrations_enterprise:
 
 Enterprise
 ^^^^^^^^^^
@@ -38,7 +39,7 @@ Enterprise Integrations plugin feature require an `Graylog Enterprise license <h
 For a comprehensive list of available features included, see our  :ref:`Enterprise List page<enterprise_features>`
 
 * :doc:`Forwarder <integrations/forwarder>`
-* :ref:`Script Alert Notification<alerts_script_alert>`
+* :ref:`Script Alert Notification<alert_notification_script>`
 
 .. toctree::
    :hidden:

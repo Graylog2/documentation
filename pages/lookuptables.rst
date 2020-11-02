@@ -219,3 +219,47 @@ Geo IP - MaxMind Databases
 Provides the ability to extract geolocation information of IP addresses
 from MaxMind ASN, Country and City databases.
 
+
+.. _lookuptable_enterprise:
+
+Enterprise Data Adapters
+------------------------
+
+Graylog Enterprise brings another Lookup Table Data Adapter.
+
+.. _lookuptable_mongodb:
+
+MongoDB
+-------
+
+This data adapter stores its keys and values in the Graylog configuration database.
+The entries of the database can be altered via pipeline functions and HTTP Rest API calls.
+That way you can alter the result of the lookup table call based on incoming logs or
+from an external source.
+
+Alter from HTTP Rest API
+^^^^^^^^^^^^^^^^^^^^^^^^
+For a detail look on how to interact with the MongoDB Data Adapter please have a look
+at the :ref:`API browser<configuring_api>` at ``api/api-browser/#!/Plugins/MongoDBDataAdapter``.
+There you can see that you can add, update, list and delete key value pairs of the data adapter.
+
+Here an example on how to add a key to an mongodb adapter with an api token::
+
+    curl -u d2tirtpunshmgdsbq5k3j0g4ku230ggruhsqpa0iu7mj1lia55i:token \
+      -H 'X-Requested-By: cli' -H 'Accept: application/json' \
+      -X POST 'http://127.0.0.1:9000/api/plugins/org.graylog.plugins.lookup/lookup/adapters/mongodb/mongodb-data-name' \
+      -H 'Content-Type: application/json' \
+      --data-binary $'{\n"key": "myIP",\n"values": ["12.34.42.99"],\n"data_adapter_id":"5e578606cdda4779dd9f2611"\n}'
+
+Alter from Pipeline Function
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A reference of the pipeline functions handling the lookup table values can be found in
+the :ref:`pipeline rules functions<pipeline_functions>` section of the documentation.
+
+Alter from GUI
+^^^^^^^^^^^^^^
+The values of the mongodb adapter can also be altered directly via the GUI.
+
+.. image:: /images/alter-mongodb-data-adapter.png
+
+.. attention:: To add multiple values for one key, you need to separate the values by new lines.

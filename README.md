@@ -1,5 +1,16 @@
 # The Graylog documentation
-[![Build Status](https://travis-ci.org/Graylog2/documentation.svg?branch=2.2)](https://travis-ci.org/Graylog2/documentation)
+[![Build Status](https://travis-ci.org/Graylog2/documentation.svg?branch=3.2)](https://travis-ci.org/Graylog2/documentation)
+
+Table of Contents
+=================
+
+  * [Architecture](#architecture)
+  * [Build](#building-locally)
+        * [Mac & Linus](#or-using-pathogen)
+        * [Windows](#or-using-vundle)
+        * [Docker](#docker)
+            * [docker-compose](#docker-compose)
+  * [Daily usage](#daily-usage)
 
 ## Architecture
 
@@ -99,6 +110,31 @@ Use the python package manager `pip` to install `virtulenv`. Create the virtual 
 	# pip install -r requirements.txt
 	
 Once the above is done you are prepared to contribute to the documentation and preview the work live in your local browser. See the daily usage chapter.
+
+#### Docker
+
+To ease up contributions to the documentation, you can also use Docker to create a local environment for the documentation. The image is built locally and uses the current base dir of this repository for creating and serving the documentation. This way, there's no need to handle virtual environments. Just build the image and run. 
+
+
+    docker build -t graylog/documentation -f Dockerfile  .
+    docker run -it -d --rm -v `pwd`:/web -u $(id -u):$(id -g) -p 8000:8000 --name graylog-documentation graylog/documentation
+
+##### docker_run.sh (helper)
+
+If unsure how to run what command with docker, the simple script `docker_run.sh` was created. This runs on Mac and Linux (maybe Windows when bash is available). The simplification is done in a way that you just need to run the command. If necessary it will build the image, and start the docker container. If the container is up and running it will ask if the container should be stopped. In addition it will be ask if the image should be removed too. 
+
+If unsure how to operate the docker image - use this script.
+
+##### docker-compose
+
+When docker-compose is installed, you could use this too - the provided `docker-compose.yml` includes all settings and information that are needed to build and run the docker container. All well known `docker-compose` commands can be used. 
+
+    docker-compose up 
+
+To rebuild the image, for example to include the new pip requirements the `build` command is needed.
+    
+    docker-compose build
+
 	
 ### daily usage
 

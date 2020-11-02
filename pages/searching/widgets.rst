@@ -111,7 +111,7 @@ Field actions
 Based on the type of the field and where the menu is opened different
 Field actions are shown when a field name (and not its value) is clicked.
 
-.. image:: /images/searching/views_field_actions.png
+.. image:: /images/searching/views_field_actions_v2.png
    :align: center
 
 :Chart:
@@ -119,7 +119,7 @@ Field actions are shown when a field name (and not its value) is clicked.
    average value is displayed over time. This chart can be taken as an
    starting point for a more defined aggregation. This is only possible
    on fields from a numerical type.
-:Aggregate:
+:Show top values:
    This action will generate a new Widget containing a data table
    where the fields value are listed in the rows and the count
    of occurrence will be displayed next to it.

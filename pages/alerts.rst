@@ -8,7 +8,6 @@ Alerts
 
 Alerts are created using Event Definitions that consist of Conditions. When a given condition is met it will be stored as an Event and can be used to trigger a notification. If your system has an enterprise license, then Events may be combined to create Correlations.
 
-
 Graylog ships with default *alert conditions* and *alert notifications*, and both can be extended with :ref:`Plugins <plugins>`.
 
 Alerts & Events
@@ -16,6 +15,13 @@ Alerts & Events
 As of Graylog 3.1.0, the Alerts page has changed to reflect a new method of generating Alerts. An Alert is triggered when a defined Event is detected.
 An Event is a condition that matches a log to a time period or aggregation. The Event may be used to group similar fields, change field content,
 or create new field content for use with Alerting and Correlation (an enterprise feature.)
+
+.. toctree::
+   :titlesonly:
+   :hidden:
+
+   alerting/alerting-by-example.rst
+
 
 If no Events have been defined, the Alerts & Events page will display the "Get Started!" button as shown below.
 
@@ -29,6 +35,12 @@ process at any time.
 
 .. image:: /images/alerts_event_details.png
 
+Priority
+--------
+The Priority of an Event is a classification for user purpose. The priority of an event
+will be displayed as a thermometer icon in the over view and will be written into the notification.
+
+
 Filter
 ======
 By combining a Filter and an Aggregation you can specifically describe the criteria of an Event.
@@ -41,6 +53,8 @@ However, it may be useful to augment the filtered data with an aggregation
 
 If the defined Filter matches messages currently within the Graylog Server, they will be displayed
 in the Filter Preview panel on the right.
+
+.. _event_filter_dynamic:
 
 Filter with dynamic lists (Enterprise feature)
 ----------------------------------------------
@@ -72,6 +86,8 @@ the Event.
 
 .. image:: /images/alerts_customField_display.png
 
+.. _alert_notification:
+
 Notifications
 =============
 After defining the Events that are needed to trigger an Alert it is possible to attach a Notifcation.
@@ -79,11 +95,58 @@ By attaching a Notification to an Event or group of Events we can determine how 
 will flow out from Graylog. Notifications can be created by selecting the Notifications button under
 the Alerts tab, or by defining them in the Event workflow.
 
-Alert notifications types explained
-===================================
 In this section we explain what the default alert notifications included in Graylog do, and how to configure them. Alert notifications are meant to be extensible through :ref:`plugins`, you can find more types in the `Graylog Marketplace <http://marketplace.graylog.org>`__ or even create your own.
 
-.. important:: In previous versions of Graylog (before 2.2.0), the email alarm notification was used, when alert conditions existed for a stream, but no alarm notification had been created before. This has been changed, so that if there is no alarm notification existing for a stream, alerts will be shown in the interface but no other action is performed. To help users coming from earlier version, there is a migration job which is being run once, creating the email alarm notification explicitly for qualifying streams, so the old behavior is preserved.
+.. _alert_notification_data:
+
+Data available to notifications
+-------------------------------
+Graylog makes the following data available when it runs a notification.
+
+Different notification types will expose the data differently, the details are listed with the description of the specific notifications below.
+
+Event Definition Metadata
+    Information about the event definition that created the alert.
+
+    * ``event_definition_id`` (String) - The database ID of the event definition
+    * ``event_definition_type`` (String) - The internal name of the event definition type (``aggregation-v1`` or ``correlation-v1``)
+    * ``event_definition_title`` (String) - The title set in the UI
+    * ``event_definition_description`` (String) - The description set in the UI
+    * ``job_definition_id`` (String) - The internal job definition ID associated with a scheduled event definition
+    * ``job_trigger_id`` (String) - The internal ID associated with the current execution of the job
+
+Event Data
+    * ``event`` The event as it is stored in Graylog
+        - ``id`` (String) - The message ID of the stored event.
+        - ``event_definition_id`` (String) - Same as ``event_definition_id`` in the metadata section.
+        - ``event_definition_type`` (String) - Same as ``event_definition_type`` in the metadata section.
+        - ``origin_context`` (String) - URN of the message or event creating this event (either ``event`` or ``message``). Can be empty.
+        - ``timestamp`` (DateTime) - The timestamp this event is describing, can be set to the underlying event or message (see ``origin_context``).
+        - ``timestamp_processing`` (DateTime) - The timestamp this event has been created by Graylog.
+        - ``timerange_start`` (DateTime) - The start of the window of data Graylog used to create this event. Can be empty.
+        - ``timerange_end`` (DateTime) - The end of the window of data Graylog used to create this event. Can be empty.
+        - ``streams`` - (Strings) - The list of stream IDs the event is stored in.
+        - ``source_streams`` (Strings) - The list of stream IDs the event pulled data from.
+        - ``alert`` (bool) - Whether this event is considered to be an alert. Always ``true`` for event definitions that have notifications.
+        - ``message`` (String) - A human-friendly message describing this event.
+        - ``source`` (String) - The host name of the Graylog server that created this event.
+        - ``key_tuple`` (Strings) - The list of values making up the event's key.
+        - ``key`` (String) - The event's key as a single string.
+        - ``priority`` (long) - The event's priority value.
+        - ``fields`` (Map<String, String>) - The custom fields attached to the event.
+
+Backlog
+    * ``backlog`` (List of Message summaries) - The list of messages or events which lead to this alert being generated
+        - ``id`` (String) - The message ID.
+        - ``index`` (String) - The name of the index the message is stored in. Use together with ``id`` to uniquely identify a message in Graylog.
+        - ``source`` (String) - The ``source`` field of the message.
+        - ``message`` (String) - The ``message`` field of the message.
+        - ``timestamp`` (DateTime) - The ``timestamp`` field of the message.
+        - ``stream_ids`` (Strings) - The stream IDs of the message.
+        - ``fields`` (Map<String, Object>) - The remaining fields of the message, can be iterated over.
+
+
+.. _alert_notification_email:
 
 Email alert notification
 ------------------------
@@ -95,115 +158,89 @@ Make sure to check the :ref:`email-related configuration settings<email_config>`
 Three configuration options are available for the alert notification to customize the email that will be sent.
 The *email body* and *email subject* are `JMTE <https://github.com/DJCordhose/jmte>`__ templates. JMTE is a minimal template engine that supports variables, loops and conditions. See the `JMTE documentation <https://cdn.rawgit.com/DJCordhose/jmte/master/doc/index.html>`__ for a language reference.
 
-We expose the following objects to the templates.
+All of the data described above is available in the JMTE templates.
 
+The default body template shows some advanced examples of accessing the information listed above::
 
-``stream``
-  The stream this alert belongs to.
-
-  * ``stream.id`` ID of the stream
-  * ``stream.title`` title of the stream
-  * ``stream.description`` stream description
-``stream_url``
-  A string that contains the HTTP URL to the stream.
-``check_result``
-  The check result object for this stream.
-
-  * ``check_result.triggeredCondition`` string representation of the triggered alert condition
-  * ``check_result.triggeredAt`` date when this condition was triggered
-  * ``check_result.resultDescription`` text that describes the check result
-``backlog``
-  A list of ``message`` objects. Can be used to iterate over the messages via ``foreach``.
-
-``message`` (only available via iteration over the ``backlog`` object)
-  The message object has several fields with details about the message. When using the ``message`` object without accessing any fields, the ``toString()`` method of the underlying Java object is used to display it.
-
-  * ``message.id`` autogenerated message id
-  * ``message.message`` the actual message text
-  * ``message.source`` the source of the message
-  * ``message.timestamp`` the message timestamp
-  * ``message.fields`` map of key value pairs for all the fields defined in the message
-
-  The ``message.fields`` fields can be useful to get access to arbitrary fields that are defined in the message. For example ``message.fields.full_message`` would return the ``full_message`` of a GELF message.
+    --- [Event Definition] ---------------------------
+    Title:       ${event_definition_title}
+    Description: ${event_definition_description}
+    Type:        ${event_definition_type}
+    --- [Event] --------------------------------------
+    Timestamp:            ${event.timestamp}
+    Message:              ${event.message}
+    Source:               ${event.source}
+    Key:                  ${event.key}
+    Priority:             ${event.priority}
+    Alert:                ${event.alert}
+    Timestamp Processing: ${event.timestamp}
+    Timerange Start:      ${event.timerange_start}
+    Timerange End:        ${event.timerange_end}
+    Fields:
+    ${foreach event.fields field}  ${field.key}: ${field.value}
+    ${end}
+    ${if backlog}
+    --- [Backlog] ------------------------------------
+    Last messages accounting for this alert:
+    ${foreach backlog message}
+    ${message}
+    ${end}
+    ${end}
 
 .. image:: /images/alerts_email_notification.png
+
+
+.. _alert_notification_http:
 
 HTTP alert notification
 -----------------------
 
 The HTTP alert notification lets you configure an endpoint that will be called when the alert is triggered.
 
-Graylog will send a POST request to the notification URL including information about the alert. Here is an example of the payload included in a notification::
+Graylog will send a POST request to the notification URL including information about the alert. The body of the request is the JSON encoded data described above.
 
-  {
-      'event_definition_id': '5d5ae2a165ea93218fcd7382',
-      'event_definition_type': 'aggregation-v1',
-      'event_definition_title': 'example',
-      'event_definition_description': 'Message count alert condition',
-      'job_definition_id': '5d5ae769683c3dba791b74bd',
-      'job_trigger_id': '5d8cd93365ea937cbc6be163',
-      'event': {
-          'id': '01DNQ30W0Y20SZAMJZQS7HV4BN',
-          'event_definition_type': 'aggregation-v1',
-          'event_definition_id': '5d5ae2a165ea93218fcd7382',
-          'origin_context': None,
-          'timestamp': '2019-09-26T15:27:49.644Z',
-          'timestamp_processing': '2019-09-26T15:28:51.230Z',
-          'timerange_start': '2019-09-26T15:27:45.679Z',
-          'timerange_end': '2019-09-26T15:28:45.678Z',
-          'streams': [],
-          'source_streams': ['5a5e3147683c3d7cd137d667'],
-          'message': 'event: count()=2.0',
-          'source': 'graylog.example.com',
-          'key_tuple': [],
-          'key': '',
-          'priority': 2,
-          'alert': True,
-          'fields': {}
+Here is an example of the payload included in a notification::
+
+    {
+      "event_definition_id": "this-is-a-test-notification",
+      "event_definition_type": "test-dummy-v1",
+      "event_definition_title": "Event Definition Test Title",
+      "event_definition_description": "Event Definition Test Description",
+      "job_definition_id": "<unknown>",
+      "job_trigger_id": "<unknown>",
+      "event": {
+        "id": "NotificationTestId",
+        "event_definition_type": "notification-test-v1",
+        "event_definition_id": "EventDefinitionTestId",
+        "origin_context": "urn:graylog:message:es:testIndex_42:b5e53442-12bb-4374-90ed-0deadbeefbaz",
+        "timestamp": "2020-05-20T11:35:11.117Z",
+        "timestamp_processing": "2020-05-20T11:35:11.117Z",
+        "timerange_start": null,
+        "timerange_end": null,
+        "streams": [
+          "000000000000000000000002"
+        ],
+        "source_streams": [],
+        "message": "Notification test message triggered from user <admin>",
+        "source": "000000000000000000000001",
+        "key_tuple": [
+          "testkey"
+        ],
+        "key": "testkey",
+        "priority": 2,
+        "alert": true,
+        "fields": {
+          "field1": "value1",
+          "field2": "value2"
+        }
       },
-      'backlog': [{
-              'index': 'graylog_1097',
-              'message': 'ERROR: This is an example error message',
-              'timestamp': '2019-09-26T15:27:46.408Z',
-              'source': '127.0.0.1',
-              'stream_ids': ['579a14fee96e9f287aa9fd79', '5a5e3147683c3d7cd137d667'],
-              'fields': {
-                  'via_input': 'input_name',
-                  'level': 6,
-                  'alert': 'example',
-                  'gl2_remote_ip': '127.0.0.1',
-                  'gl2_remote_port': 514,
-                  'gl2_message_id': '01DNQ2YWQFHSJZE9T6JEBSYSVY',
-                  'gl2_source_node': '7a05ad73-6141-43fa-a324-2ec2598e3645',
-                  'gl2_source_input': '5799f612e96e9f287aa9dcb0',
-                  'extreme_timestamp': 'Sep 26 10:27:46',
-                  'facility': 'local6'
-              },
-              'id': '30f9c681-e072-11e9-8e57-0050568a570f'
-          }, {
-              'index': 'graylog_1097',
-              'message': 'ERROR: This is an example error message',
-              'timestamp': '2019-09-26T15:27:49.644Z',
-              'source': '127.0.0.1',
-              'stream_ids': ['579a14fee96e9f287aa9fd79', '5a5e3147683c3d7cd137d667'],
-              'fields': {
-                  'via_input': 'input_name',
-                  'level': 6,
-                  'alert': 'example',
-                  'gl2_remote_ip': '127.0.0.1',
-                  'gl2_remote_port': 514,
-                  'gl2_message_id': '01DNQ2YZWK5J8B6BXNGQVJX57D',
-                  'gl2_source_node': '113a4960-7cf2-43fc-b827-d81592dd1aea',
-                  'gl2_source_input': '5799f612e96e9f287aa9dcb0',
-                  'extreme_timestamp': 'Sep 26 10:27:49',
-                  'facility': 'local6'
-              },
-              'id': '32e78cc0-e072-11e9-8358-0050568a6438'
-          }
-      ]
-  }
+      "backlog": []
+    }
 
-.. _alerts_script_alert:
+.. image:: /images/alerts_http_notification.png
+
+
+.. _alert_notification_script:
 
 Legacy Script alert notification
 --------------------------------
@@ -249,71 +286,15 @@ Script Arguments
       * ``condition_grace`` grace period for the condition
       * ``condition_repeat_notification`` repeat notification of the script
 Send Alert Data Through STDIN
-    Sends JSON alert data through standard in. You can use a JSON parser in your script. ::
+    Sends JSON alert data through standard in. You can use a JSON parser in your script. :
 
 
-     {
-       "stream_id": "000000000000000000000001",
-       "stream_name": "All messages",
-       "stream_description": "Stream containing all messages",
-       "stream_url": "http://localhost:8080///streams/000000000000000000000001/messages?rangetype=absolute&from=2019-01-25T20:57:50.793Z&to=2019-01-25T21:02:50.793Z&q=*",
-       "alert_description": "Stream received messages matching <has_field:\"true\"> (Current grace time: 0 minutes)",
-       "alert_triggered_at": "2019-01-25T21:02:50.793Z",
-       "condition_id": "ea9fcdff-2037-44f9-801e-099bf4bb3dbd",
-       "condition_description": "field: has_field, value: true, grace: 0, repeat notifications: false",
-       "condition_title": "has_field",
-       "condition_type": "field_content_value",
-       "condition_grace": 0,
-       "condition_parameters": {
-         "backlog": 10,
-         "repeat_notifications": false,
-         "field": "has_field",
-         "query": "*",
-         "grace": 0,
-         "value": "true"
-       },
-       "condition_repeat_notifications": false,
-       "message_backlog": [
-         {
-           "has_field": "true",
-           "gl2_remote_ip": "127.0.0.1",
-           "gl2_remote_port": 56246,
-           "streams": [
-             "000000000000000000000001"
-           ],
-           "gl2_source_node": "e065896b-8a9a-4f45-83f2-e740525ed035",
-           "_id": "92839500-20e4-11e9-8175-0637e3f7ecfc",
-           "source": "example.org",
-           "message": "Hello there",
-           "gl2_source_input": "5c2e99687a90e30a3512f766",
-           "facility": "test",
-           "timestamp": "2019-01-25T21:02:49.423Z"
-         },
-         {
-           "has_field": "true",
-           "gl2_remote_ip": "127.0.0.1",
-           "gl2_remote_port": 56245,
-           "streams": [
-             "000000000000000000000001"
-           ],
-           "gl2_source_node": "e065896b-8a9a-4f45-83f2-e740525ed035",
-           "_id": "928087c0-20e4-11e9-8175-0637e3f7ecfc",
-           "source": "example.org",
-           "message": "Hello there",
-           "gl2_source_input": "5c2e99687a90e30a3512f766",
-           "facility": "test",
-           "timestamp": "2019-01-25T21:02:49.403Z"
-         }
-       ],
-       "message_backlog_size": 5
-     }
+Script Alert Notification success is determined by its exit value; success equals zero.
+Any non-zero exit value will cause it to fail.
+Returning any error text through STDERR will also cause the alarm callback to fail.
 
-    Script Alert Notification success is determined by its exit value; success equals zero.
-    Any non-zero exit value will cause it to fail.
-    Returning any error text through STDERR will also cause the alarm callback to fail.
-
-    Here is a sample Python script that shows all of the supported Script Alert Notification
-    functionality (argument parsing, STDIN JSON parsing, STDOUT, exit values, and returning an exit value).::
+Here is a sample Python script that shows all of the supported Script Alert Notification
+functionality (argument parsing, STDIN JSON parsing, STDOUT, exit values, and returning an exit value).::
 
         #!/usr/bin/env python3
         import json

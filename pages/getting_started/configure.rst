@@ -2,7 +2,7 @@
 Initial Configuration
 *********************
 
-Once the application is installed, there are a few items that must be configured before Graylog may be started for the first time. Both the Graylog ``server.conf`` and Elasticsearch ``elasticsearch.yml`` files are configuration files that contain key details needed for intial configuration. 
+Once the application is installed, there are a few items that must be configured before Graylog may be started for the first time. Both the Graylog ``server.conf`` and Elasticsearch ``elasticsearch.yml`` files are configuration files that contain key details needed for initial configuration. 
 
 This guide will provide you with the essential settings to get Graylog up and running. There are many other important settings in these files and we encourage you to review them once you are up and running. For more details, please see :ref:`server/.conf`.
 

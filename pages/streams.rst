@@ -57,9 +57,10 @@ rules you have configured::
 Building a query with all rules would cause significantly higher load on the message storage.
 
 
+.. _how_to_create_a_stream:
+
 How do I create a stream?
 =========================
-
 #. Navigate to the streams section from the top navigation bar.
 #. Click "Create stream".
 #. Save the stream after entering a name and a description. For example *All error messages* and
