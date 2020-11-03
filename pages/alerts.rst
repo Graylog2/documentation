@@ -304,7 +304,7 @@ Configuration Color
     Highlight the custom message with this `color <https://api.slack.com/reference/surfaces/formatting#quotes>`__ .
 
 Custom Message
-    This is a message template and the data described above will be appended below the alert title, when the notification is sent.
+    The message that will be sent to Slack.  The data described above can be used in this template.
 
 User Name (optional)
     User name of the sender in Slack.
@@ -453,4 +453,3 @@ When all of the components have been defined the Event Summary will be displayed
 At this time, the user may select a previous point in the Workflow to change a parameter.
 The user may also cancel out of the workflow, select done. The Event may be viewed under
 Alerts>Event Definitions.
-
