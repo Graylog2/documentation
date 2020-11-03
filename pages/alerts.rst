@@ -290,7 +290,13 @@ Slack alert notification
 ------------------------
 The Slack alert notification allows you to send notifications to your slack workspace in response to events in your Graylog server.
 
-.. image:: /images/alerts_slack_notification.png
+.. note:: Slack alert notifications are intended as a replacement for the Slack
+   integration previously available from
+   `Graylog Labs <https://github.com/graylog-labs/graylog-plugin-slack>`__.  If you
+   are using the Graylog Labs Slack plugin, you should migrate to the officially
+   supported Slack alert notifications at your earliest convenience.
+
+.. image:: /images/alerts_slack_plugin_notification_1.png
 
 These are the supported configuration options:
 
@@ -308,6 +314,9 @@ Custom Message
 
 User Name (optional)
     User name of the sender in Slack.
+
+Icon URL
+    Image to use as the icon for this message.
 
 Icon Emoji
     Emoji to use as the icon for this message (overrides Icon URL).
