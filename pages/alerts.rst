@@ -290,7 +290,13 @@ Slack alert notification
 ------------------------
 The Slack alert notification allows you to send notifications to your slack workspace in response to events in your Graylog server.
 
-.. image:: /images/alerts_slack_notification.png
+.. note:: Slack alert notifications are intended as a replacement for the Slack
+   integration previously available from
+   `Graylog Labs <https://github.com/graylog-labs/graylog-plugin-slack>`__.  If you
+   are using the Graylog Labs Slack plugin, you should migrate to the officially
+   supported Slack alert notifications at your earliest convenience.
+
+.. image:: /images/alerts_slack_plugin_notification_1.png
 
 These are the supported configuration options:
 
@@ -304,10 +310,10 @@ Configuration Color
     Highlight the custom message with this `color <https://api.slack.com/reference/surfaces/formatting#quotes>`__ .
 
 Custom Message
-    A custom message to be appended below the alert title.
+    The message that will be sent to Slack.  The data described above can be used in this template.
 
 User Name (optional)
-    Addressing a specific `user  <https://api.slack.com/reference/surfaces/formatting#mentioning-users>`__ in the slack workspace.
+    User name of the sender in Slack.
 
 Icon URL
     Image to use as the icon for this message.
@@ -456,4 +462,3 @@ When all of the components have been defined the Event Summary will be displayed
 At this time, the user may select a previous point in the Workflow to change a parameter.
 The user may also cancel out of the workflow, select done. The Event may be viewed under
 Alerts>Event Definitions.
-
