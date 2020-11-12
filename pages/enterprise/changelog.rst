@@ -2,6 +2,42 @@
 Changelog
 *********
 
+Graylog Enterprise 4.0.0
+========================
+
+Released: tbd
+
+Enterprise
+----------
+
+**Added**
+
+- Add support for grouping users in teams.
+
+  - See: :ref:`Permission Management <permissions>`
+- Add support for managing access to streams, searches and dashboards through teams.
+
+  - See: :ref:`Permission Management <permissions>`
+- Add support for syncing groups from LDAP and Active Directory into Graylog teams.
+
+  - See: :ref:`Permission Management <permissions>`
+- Add configurable header badge.
+- Create notification for failed Enterprise outputs.
+- Add cluster resources for archiving to allow archiving to be managed from all server nodes.
+
+**Fixed**
+
+- Don't fail reports migration if a widget is missing.
+- Improve error logging for report generation.
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Added**
+
+- Script event notification plugin to replace the legacy script alarm callback plugin.
+
+
 Graylog Enterprise 3.3.8
 ========================
 
