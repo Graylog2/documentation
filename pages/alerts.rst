@@ -134,8 +134,10 @@ Event Data
         - ``key`` (String) - The event's key as a single string.
         - ``priority`` (long) - The event's priority value.
         - ``fields`` (Map<String, String>) - The custom fields attached to the event.
+.. _Backlog:
 
 Backlog
+-------
     * ``backlog`` (List of Message summaries) - The list of messages or events which lead to this alert being generated
         - ``id`` (String) - The message ID.
         - ``index`` (String) - The name of the index the message is stored in. Use together with ``id`` to uniquely identify a message in Graylog.
@@ -311,6 +313,13 @@ Configuration Color
 
 Custom Message
     The message that will be sent to Slack.  The data described above can be used in this template.
+
+Backlog Message Items (optional)
+    The custom message has a data point named `backlog <http://localhost:8000/pages/alerts.html?highlight=alerts#backlog>`__, which gives
+    the preview of the messages that led to a slack notification.
+    Backlog Message Items will be used to override the Event definition Notification settings field `Message Backlog`
+    to limit the number of backlog messages sent as part of the slack message.
+    A Slack notification cannot have more than 50 backlog messages.
 
 User Name (optional)
     User name of the sender in Slack.
