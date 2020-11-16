@@ -10,7 +10,7 @@ Do I need to buy a license to use Graylog?
 
 We believe software should be open and accessible to all.  You should not have to pay to analyze your own data, no matter how much you have.
 
-Graylog is licensed under the `GNU General Public License <http://www.gnu.org/licenses/gpl-3.0.en.html>`__.  We do not require license fees for production or non-production use.
+Graylog is licensed under the `Server Side Public License <https://www.mongodb.com/licensing/server-side-public-license>`__.  We do not require license fees for production or non-production use.
 
 How long do you support older versions of the Graylog product?
 --------------------------------------------------------------
