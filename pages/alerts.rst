@@ -298,7 +298,7 @@ The Slack alert notification allows you to send notifications to your slack work
    are using the Graylog Labs Slack plugin, you should migrate to the officially
    supported Slack alert notifications at your earliest convenience.
 
-.. image:: /images/alerts_slack_plugin_notification_2.png
+.. image:: /images/alerts_slack_plugin_notification.png
 
 These are the supported configuration options:
 
