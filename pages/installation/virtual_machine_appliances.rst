@@ -95,4 +95,4 @@ Update OVA to latest Version
 Production readiness
 ====================
 
-The Graylog appliance is not created to provide a production ready solution. It is build to offer a fast and easy way to try the software itself and not wasting time to install Graylog and it components to any kind of server.
+The Graylog appliance is not created to provide a production ready solution. The appliance is built to offer a fast and easy way to try the software itself. Thus, not waste time installing Graylog and all it's components onto any kind of server.
