@@ -317,7 +317,6 @@ Custom Message
 Message Backlog Limit (optional)
     Limit the number of backlog messages sent as part of the Slack notification.
 
-
 User Name (optional)
     User name of the sender in Slack.
 
