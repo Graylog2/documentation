@@ -15,7 +15,7 @@ The file ``server.conf`` is the Graylog configuration file. The default location
 
 .. note:: All default file locations are listed :ref:`here<default_file_location>`.
 
-* Entries are generally expected to be a single line of the form, one of the following:
+* Entries are generally a single line:
     * ``propertyName=propertyValue``
     * ``propertyName:propertyValue``
 * White space that appears between the property name and property value is ignored, so the following are equivalent:
@@ -94,7 +94,7 @@ elasticsearch.yml
 
 ``Elasticsearch.yml`` is  the Elasticsearch configuration file. The default location for elasticsearch.yml is: ``/etc/elasticsearch/elasticsearch.yml``.
 
-Several values must be properly configured in order for elasticsearch to work properly.
+Several values must be properly configured for elasticsearch to work properly.
 
 * ``cluster.name: graylog``
 	* This value may be set to anything the customer wishes, though we recommend using "graylog".
@@ -102,7 +102,7 @@ Several values must be properly configured in order for elasticsearch to work pr
 
 * ``network.host: 172.30.4.105``
 	* By default, Elasticsearch binds to loopback addresses only (e.g. 127.0.0.1). This is sufficient to run a single development node on a server. 
-	* In order to communicate and to form a cluster with nodes on other servers, your node will need to bind to a non-loopback address.
+	* To communicate and to form a cluster with nodes on other servers, your node will need to bind to a non-loopback address.
 
 * ``http.port: 9200``
 	* Port Elasticsearch will listen on. We recommend using the default value.
