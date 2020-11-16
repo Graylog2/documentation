@@ -315,10 +315,7 @@ Custom Message
     The message that will be sent to Slack.  The data described above can be used in this template.
 
 Message Backlog Limit (optional)
-    The custom message has a data point named `backlog <http://localhost:8000/pages/alerts.html?highlight=alerts#backlog>`__, which gives
-    the preview of the messages that led to a slack notification.
-    Backlog Message Items will be used to override the Event definition Notification settings field `Message Backlog`
-    to limit the number of backlog messages sent as part of the slack message.
+    Limit the number of backlog messages sent as part of the Slack notification.
 
 
 User Name (optional)
