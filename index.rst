@@ -31,7 +31,7 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/lookuptables
    pages/geolocation
    pages/indexer_failures
-   pages/users_and_roles
+   pages/permission_management
    pages/plugins
    pages/content_packs
    pages/marketplace
