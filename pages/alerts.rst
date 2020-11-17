@@ -134,6 +134,7 @@ Event Data
         - ``key`` (String) - The event's key as a single string.
         - ``priority`` (long) - The event's priority value.
         - ``fields`` (Map<String, String>) - The custom fields attached to the event.
+
 .. _Backlog:
 
 Backlog
