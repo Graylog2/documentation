@@ -11,7 +11,7 @@ State in v3.3
 
 All user, role, and authentication provider configuration (like ActiveDirectory, LDAP, and other 3rd party plugins) was managed in a single page under the System/Authentication menu.
 
-.. image:: /images/permissions_01.png
+.. image:: /images/permissions/permissions_01.png
 
 Prior to Graylog 4.0, there were three mechanisms to grant access to entities in Graylog:
 
@@ -19,7 +19,7 @@ Prior to Graylog 4.0, there were three mechanisms to grant access to entities in
 
 For example, if a role could read and edit “Marketplace Requests”, Administrators would head to a user profile, in this case Rita’s profile, and update the permissions on individual entities. This would grant Rita permissions to view and edit. However, this has been deprecated for some time.
 
-.. image:: /images/permissions_02.png
+.. image:: /images/permissions/permissions_02.png
 
 2) Creating and updating Roles (only Administrator users could do this)
 Initially, two roles existed: Administrator and Reader. Administrators could create custom roles. Additionally Administrators needed to assign Roles to Profiles individually because the only access new users obtained was to the Graylog platform with no entities assigned to them. 
@@ -34,12 +34,12 @@ Since only Administrators could edit roles, this process gave Administrators com
 
 Graylog 4.0 removes this functionality and problem. 
 
-.. image:: /images/permissions_03.png
+.. image:: /images/permissions/permissions_03.png
 
 3) “View sharing” that only applied to saved searches and dashboards (users with existing access to that entity could re-share it)
 “View” is the internal name for the underlying system for Search and Dashboards. “Stream search” is a term that appears in several places, but that is simply a search that is restricted to a certain dataset. Streams are the fundamental unit for data access control in Graylog.
 
-.. image:: /images/permissions_04.png
+.. image:: /images/permissions/permissions_04.png
 
 Except for the “view sharing” dialog, administrators had to grant permissions from a central location (the roles). This meant that administrators had extensive access within Graylog making it difficult to limit access according to the principle of least privilege. 
 
@@ -52,7 +52,7 @@ Changes in v4.0
 
 Graylog 4.0 splits up the various sections of the permission and authentication system:
 
-.. image:: /images/permissions_05.png
+.. image:: /images/permissions/permissions_05.png
 
 There are five different parts to it:
 
@@ -86,7 +86,7 @@ Both LDAP and Active Directory now support the synchronization of teams. Because
 In Enterprise Graylog will synchronize chosen LDAP/AD groups to teams when an authentication service is activated.
 Graylog will then keep the team members up to date as they log into the system.
 
-.. image:: /images/permissions_06.png
+.. image:: /images/permissions/permissions_06.png
 
 Teams created in this way cannot be manually managed in Graylog, they have to be managed in the original identity provider. This means you cannot add or remove members from the team, but you can (and should) configure the roles the team brings with it.
 
@@ -95,11 +95,11 @@ Users
 
 The User section is slightly rearranged, but overall contains the same information and capability.
 
-.. image:: /images/permissions_07.png
+.. image:: /images/permissions/permissions_07.png
 
 There is a new user view screen, that was not present in earlier versions. It shows basic profile information, the assigned roles, team membership for this user, and the “entities” that the user has been granted access to. Entities are things like Streams, Saved Searches, Dashboards, Alert Definitions, and Notifications.
 
-.. image:: /images/permissions_08.png
+.. image:: /images/permissions/permissions_08.png
 
 The corresponding “Edit User” screen contains the same information but allows changes to profile information according to the permissions the user has (e.g. they cannot add themselves to arbitrary groups etc). This is basically identical to the behavior in 3.3, just with a rearranged UI.
 
@@ -147,7 +147,7 @@ With Graylog 4.0, Roles no longer define what entities a user can see, but the t
 
 For organizations upgrading from Open Source to Enterprise, Graylog will look at each user’s capabilities and access levels then migrate that going forward into 4.0. 
 
-.. image:: /images/permissions_09.png
+.. image:: /images/permissions/permissions_09.png
 
 The information which specific entity a user or team has access to is managed through “sharing” on the entity itself, not through a role.
 
@@ -167,15 +167,15 @@ Before users can create their own Dashboards, you need to provide them the appro
 
 Under the “System” dropdown menu located in the top menu, click on the “Users and Teams” option. Choose the User record that you want to update. 
 
-.. image:: /images/permissions_10.png
+.. image:: /images/permissions/permissions_10.png
 
 In the “Assign Roles” menu, you can change the individual user’s permissions to better align with their job function. In this case, the user, Alice, needs to be able to create Dashboards. Click on “Dashboard Creator,” then click “Assign Role.” Graylog automatically updates the user’s account, granting the necessary access immediately. 
 
-.. image:: /images/permissions_11.png
+.. image:: /images/permissions/permissions_11.png
 
 After providing “Dashboard Creator” access to users, they will be able to see the “Create a Dashboard” button on the upper right-hand side of their Dashboards view.
 
-.. image:: /images/permissions_12.png
+.. image:: /images/permissions/permissions_12.png
 
 **Example:** Manually Granting Access Permissions
 
@@ -183,14 +183,14 @@ After providing “Dashboard Creator” access to users, they will be able to se
 
 Alice’s User View before providing her access looks like this:
 
-.. image:: /images/permissions_13.png
+.. image:: /images/permissions/permissions_13.png
 
 As a member of the Security Team, Alice needs access to email logs. As an Admin, you can go into Graylog, select the Security Team, and then select the appropriate level of access.
 
 Teams
 -----
 
-.. image:: /images/permissions_14.png
+.. image:: /images/permissions/permissions_14.png
 
 Teams join users and roles together.
 Users can be in any number of teams, from zero to multiple teams. Each team can be assigned any number of roles, from zero to multiple many roles, which are added to the team’s members when checking for permissions.
@@ -201,7 +201,7 @@ The primary benefit Teams brings is the ability to segregate data visibility acc
 
 Creating a team requires minimal information about it and allows assigning roles and members directly:
 
-.. image:: /images/permissions_15.png
+.. image:: /images/permissions/permissions_15.png
 
 For example, if an organization has 10 Teams with 5 people on each Team, the Administrator can change Roles in bulk rather than having to manage all 55 users individually. Additionally, Administrators spend less time focusing on Role and Permissions within Graylog as they can apply unique sets of Roles to each Team without worrying that one User will have too much or too little access to engage in their job function. 
 
@@ -215,7 +215,7 @@ Providing Team Access Manually
 
 Before being assigned to a Team, users will see no streams and have no dashboards available. To create a permissions level for a Team, you select the Teams Overview button in the upper righthand corner of the screen. Teams Overview will show you the different Teams you have created in your Graylog environment, including the natural language name and Team description.
 
-.. image:: /images/permissions_16.png
+.. image:: /images/permissions/permissions_16.png
 
 Graylog uses familiar search mechanisms for sharing views and dashboards so that Admins can more efficiently provide access to resources. 
 
@@ -232,7 +232,7 @@ Sharing
 As mentioned above, configuring who has access to something has moved away from the role configuration to the entities themselves. This functionality is available both in the Open Source and Enterprise level versions of Graylog. Any entity shared will be seen by all Users who have similar access levels to those entities. For example, the IT support team may choose to make dashboards which get shared across the organization. For small organizations, this increases noise but can be easily managed. For Enterprise level use, the proliferation of reports increases the noise and reduces Graylog’s usability. 
 Each entity that is implemented in the new system, which for 4.0 are Searches, Dashboards, Streams, Event Definitions, and Notifications, has a “Share” button associated with them.
 
-.. image:: /images/permissions_17.png
+.. image:: /images/permissions/permissions_17.png
 
 That dialog looks the same for every entity and allows managing the level of access granted to the selected user or team. (Team assignment is only possible in Graylog Enterprise).
 Just as with Teams, sharing offers three different levels of access:
@@ -261,7 +261,7 @@ Sharing within Teams
 
 Before being assigned to a Team, users will see no streams and have no dashboards available. To create a permissions level for a Team, you select the Teams Overview button in the upper righthand corner of the screen. Teams Overview will show you the different Teams you have created in your Graylog environment, including the natural language name and Team description.
 
-.. image:: /images/permissions_18.png
+.. image:: /images/permissions/permissions_18.png
 
 Graylog uses familiar search mechanisms for sharing views and dashboards so that Admins can more efficiently provide access to resources. 
 
@@ -273,17 +273,17 @@ When you provide Stream access to a Team, you can also change the permissions fo
 
 As soon as the Admin sets the access for a Team, users in that Team will have the necessary access. 
 
-.. image:: /images/permissions_19.png
+.. image:: /images/permissions/permissions_19.png
 
 You can choose to add users individually or by their Team. Choosing Security Team provides everyone the same level of access to the Stream all at once rather than adding each user individually:
 
-.. image:: /images/permissions_20.png
+.. image:: /images/permissions/permissions_20.png
 
-.. image:: /images/permissions_21.png
+.. image:: /images/permissions/permissions_21.png
 
 Once you save changes, users on the Team automatically gain access to the Stream without needing to log out of Graylog. 
 
-.. image:: /images/permissions_22.png
+.. image:: /images/permissions/permissions_22.png
 
 Sharing Dashboards within Teams
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -294,26 +294,26 @@ Graylog restricts Dashboards to Owners by default, meaning that all newly create
 
 Alice creates a Dashboard in her account. 
 
-.. image:: /images/permissions_23.png
+.. image:: /images/permissions/permissions_23.png
 
 Bob, another member of her Team, cannot see the Dashboard in his account because the default Dashboard setting is private.
 
-.. image:: /images/permissions_24.png
+.. image:: /images/permissions/permissions_24.png
 
 However, Bob can request that Alice share the Dashboard with him so that they can collaborate. When he requests this access, Alice can choose to share only with Bob or with the whole Team. 
 
 Alice then goes to her Dashboard view, chooses the Dashboard she wants to share:
 
-.. image:: /images/permissions_25.png
+.. image:: /images/permissions/permissions_25.png
 
 Once she chooses the Dashboard, she clicks on the dash in the upper right-hand corner and chooses “Share” from the drop-down menu:
 
-.. image:: /images/permissions_26.png
+.. image:: /images/permissions/permissions_26.png
 
 Alice can choose to share with a single user or her whole Team. She can also set access permissions as Viewer, Manager, or Owner. 
 
-.. image:: /images/permissions_27.png
+.. image:: /images/permissions/permissions_27.png
 
 Once she makes the access decision, she clicks on “Add Collaborator,” which saves the decisions, granting the selected level of access to all collaborators chosen. 
 
-.. image:: /images/permissions_28.png
+.. image:: /images/permissions/permissions_28.png
