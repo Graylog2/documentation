@@ -5,7 +5,7 @@ Changelog
 Graylog Enterprise 4.0.0
 ========================
 
-Released: tbd
+Released: 2020-11-18
 
 Enterprise
 ----------
