@@ -1,5 +1,7 @@
 :orphan:
 
+.. _usersandrolestoc:
+
 ***************
 Users and Roles
 ***************
