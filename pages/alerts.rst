@@ -296,7 +296,7 @@ The Slack alert notification allows you to send notifications to your slack work
    are using the Graylog Labs Slack plugin, you should migrate to the officially
    supported Slack alert notifications at your earliest convenience.
 
-.. image:: /images/alerts_slack_plugin_notification_1.png
+.. image:: /images/alerts_slack_plugin_notification.png
 
 These are the supported configuration options:
 
@@ -311,6 +311,9 @@ Configuration Color
 
 Custom Message
     The message that will be sent to Slack.  The data described above can be used in this template.
+
+Message Backlog Limit (optional)
+    Limit the number of backlog messages sent as part of the Slack notification. If set to 0, no limit will be enforced.
 
 User Name (optional)
     User name of the sender in Slack.
