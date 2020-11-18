@@ -105,7 +105,7 @@ For organizations upgrading from Open Source to Enterprise, Graylog will look at
 
 The information which specific entity a user or team has access to is managed through “sharing” on the entity itself, not through a role.
 
-As an example, in 3.3 and earlier, to give access to a stream containing windows logs and the corresponding dashboard visualizing them, an administrator had to create a role:
+As an example, in earlier versions of Graylog, to give access to a stream containing windows logs and the corresponding dashboard visualizing them, an administrator had to create a role:
 “Windows Logs”, having “Stream Windows Logs” as “Allow Reading”, and “Dashboard Windows Logs” as “Allow Reading”. This role was then assigned to a user, either manually or via a group mapping.
 
 In 4.0, there is no special role necessary for this access. Instead, the Administrator grants access to the stream, and either the Administrator or another owner of the dashboard shares access to the entities with a specific user or team. For most of the process, the user sharing the access does not have to have administrator-level access.
