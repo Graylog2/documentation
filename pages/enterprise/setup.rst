@@ -49,7 +49,7 @@ For installation on rpm-based systems (such as CentOS or Redhat), run the follow
 Edit the Configuration File
 ----------------------------
 
-Read the instructions *within* the configurations file and edit as needed, located at ``/etc/graylog/server/server.conf``.  Additionally add ``password_secret`` and ``root_password_sha2`` as these are *mandatory* and **Graylog will not start without them**.
+Read the instructions *within* the configuration file and edit as needed. It is located at: ``/etc/graylog/server/server.conf``.  Additionally add ``password_secret`` and ``root_password_sha2`` as these are *mandatory* and **Graylog will not start without them**.
 
 To create your ``root_password_sha2`` run the following command::
 
@@ -62,7 +62,7 @@ To be able to connect to Graylog you should set ``http_bind_address`` to the pub
 
 Starting Graylog
 ----------------
-Graylog can then be started with the following commands. Make sure to use the correct command for your operating system.
+Graylog can be started with the following commands. Make sure to use the correct command for your operating system.
 
 ======================================== =========== =======================================
 OS                                       Init System Command
@@ -225,7 +225,7 @@ The installation on distributions like CentOS or RedHat can be done with *yum* a
 Tarball
 -------
 
-If you have done a manual installation you can get the tarball from the download locations listed in the following table.
+If you have done a manual installation, you can get the tarball from the download locations listed in the following table.
 
 .. This list keeps only the current supported versions. What is current stable and the previous version
 
@@ -324,7 +324,7 @@ Depending on the Graylog setup method you have used, you have to copy the binari
 Make sure to check the ``bin_dir`` configuration option set in your Graylog server configuration file, as the default may have changed.
 
 Server Restart
-==============
+--------------
 
 After you installed the Graylog Enterprise plugins you have to restart each of your Graylog servers
 to load the plugins.
@@ -342,6 +342,6 @@ You should see something like the following in your Graylog server logs. It indi
   2017-12-18T17:39:10.827+01:00 INFO  [CmdLineTool] Loaded plugin: Threat Intelligence Plugin 3.3.2 [org.graylog.plugins.threatintel.ThreatIntelPlugin]
 
 Cluster Setup
-=============
+-------------
 
 If you run a Graylog cluster you need to add the enterprise plugins to every Graylog node. Additionally your load-balancer must route ``/api/plugins/org.graylog.plugins.archive/`` only to the Graylog master node. Future versions of Graylog will forward these requests automatically to the correct node.
