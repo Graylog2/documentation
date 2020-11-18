@@ -29,7 +29,7 @@ You can choose to have lists of users, groups, or a combination of both. The glo
 Authentication
 --------------
 
-Graylog had pluggable authentication providers for a long time, but we have updated them for 4.0. In 4.0 only one external authentication provider can be active. We have the UI around changing the order these providers run, as there was practically no usage of this feature and it made reasoning about what happened in the background very difficult for the user.
+Graylog had pluggable authentication providers for a long time, but we have updated them for 4.0. In 4.0 only one external authentication provider can be active. We have removed the UI around changing the order these providers run, as there was practically no usage of this feature and it made reasoning about what happened in the background very difficult for the user.
 
 Both LDAP and Active Directory continue to be available out of the box for Graylog Open Source and we have no plans on changing this. We believe that user access control is an essential feature of a logging solution.
 We have also added the “trusted HTTP header” authentication method to Graylog. This feature, in conjunction with a proxy server, is sometimes used to enable authentication providers that Graylog does not have support for, such as keycard systems, Kerberos, and others.
