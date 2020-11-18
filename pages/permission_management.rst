@@ -144,8 +144,6 @@ As a member of the Security Team, Alice needs access to email logs. As an Admin,
 Teams
 -----
 
-.. image:: /images/permissions/permissions_14.png
-
 Teams join users and roles together.
 Users can be in any number of teams, from zero to multiple teams. Each team can be assigned any number of roles, from zero to multiple many roles, which are added to the team’s members when checking for permissions.
 
@@ -169,7 +167,7 @@ Providing Team Access Manually
 
 Before being assigned to a Team, users will see no streams and have no dashboards available. To create a permissions level for a Team, you select the Teams Overview button in the upper righthand corner of the screen. Teams Overview will show you the different Teams you have created in your Graylog environment, including the natural language name and Team description.
 
-.. image:: /images/permissions/permissions_16.png
+.. image:: /images/permissions/permissions_14.png
 
 Graylog uses familiar search mechanisms for sharing views and dashboards so that Admins can more efficiently provide access to resources.
 
@@ -215,7 +213,7 @@ Sharing within Teams
 
 Before being assigned to a Team, users will see no streams and have no dashboards available. To create a permissions level for a Team, you select the Teams Overview button in the upper righthand corner of the screen. Teams Overview will show you the different Teams you have created in your Graylog environment, including the natural language name and Team description.
 
-.. image:: /images/permissions/permissions_18.png
+.. image:: /images/permissions/permissions_14.png
 
 Graylog uses familiar search mechanisms for sharing views and dashboards so that Admins can more efficiently provide access to resources.
 
