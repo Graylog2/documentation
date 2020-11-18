@@ -23,7 +23,7 @@ requests==2.24.0
 singledispatch==3.4.0.3
 six==1.15.0
 snowballstemmer==2.0.0
-Sphinx==3.3.0
+Sphinx==3.3.1
 sphinx-autobuild==0.7.1
 sphinx-rtd-theme==0.5.0
 tornado==6.0.4
