@@ -194,7 +194,7 @@ Once you've installed the Graylog Enterprise plugin, you need to obtain a licens
 .. important:: The Graylog Enterprise plugin need to be installed on all your Graylog nodes!
 
 DEB / RPM Package
-^^^^^^^^^^^^^^^^^
+-----------------
 
 The default installation should be done with the system package tools. It includes the repository installation that is described in the :doc:`/pages/installation/operating_system_packages` installation guides.
 
