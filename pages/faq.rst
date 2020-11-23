@@ -110,10 +110,10 @@ Can Graylog automatically clean old data?
 
 Absolutely we have :doc:`data retention features <configuration/index_model>`.
 
-Does Graylog support LDAP / AD and its groups?
-----------------------------------------------
+Does Graylog support LDAP / Active Directory and its groups?
+------------------------------------------------------------
 
-Yup, we’re all over this too with read/write roles and group permissions.  To start, see :doc:`this <users_and_roles/external_auth>`.  If you want to get very granular, you can go through the Graylog REST API.
+Yes, Graylog supports user authentication using LDAP and Active Directory. Graylog Enterprise additionally supports sychronization of LDAP and Active Directory groups into Graylog teams. See the :ref:`authentication documentation <permissions>` for details.
 
 Do we have a user audit log for compliance?
 -------------------------------------------
