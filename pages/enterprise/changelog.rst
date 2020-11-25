@@ -2,6 +2,32 @@
 Changelog
 *********
 
+Graylog Enterprise 3.3.9
+========================
+
+Released: 2020-11-25
+
+Enterprise
+----------
+
+**Fixed**
+
+- Fix audit formatting for file resource.
+- Fix permission issue with reports.
+- Fix logo images in reports.
+- Fix issue with rendering help buttons.
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Fixed**
+
+- Do not shut down Office 365 input on errors.
+- Do not shut down Okta input on errors.
+- Fix issue with Office 365 logon data parsing.
+- Let Office 365 plugin use configured proxy settings.
+
+
 Graylog Enterprise 3.3.8
 ========================
 

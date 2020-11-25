@@ -2,6 +2,20 @@
 Changelog
 *********
 
+Graylog 3.3.9
+=============
+
+Released: 2020-11-25
+
+Core
+^^^^
+
+**Fixed**
+
+- Improve user feedback when the UI cannot fetch data from the metrics API. `Graylog2/graylog2-server#9315 <https://github.com/Graylog2/graylog2-server/issues/9315>`_ `Graylog2/graylog2-server#9316 <https://github.com/Graylog2/graylog2-server/issues/9316>`_
+- Updates to Graylog Schema. `Graylog2/graylog2-server#9567 <https://github.com/Graylog2/graylog2-server/issues/9567>`_
+
+
 Graylog 3.3.8
 =============
 
