@@ -2,6 +2,42 @@
 Changelog
 *********
 
+Graylog 4.0.1
+=============
+
+Released: 2020-11-25
+
+Core
+^^^^
+
+**Fixed**
+
+- Fix incorrect support link in the UI. `Graylog2/graylog2-server#9527 <https://github.com/Graylog2/graylog2-server/issues/9527>`_
+- Updates to Graylog Schema. `Graylog2/graylog2-server#9556 <https://github.com/Graylog2/graylog2-server/issues/9556>`_
+- Fix an issue when running Graylog on Amazon Elasticsearch Service. `Graylog2/graylog2-server#9599 <https://github.com/Graylog2/graylog2-server/issues/9599>`_
+- Fix problem with sharing dashboards and searches. `Graylog2/graylog2-server#9525 <https://github.com/Graylog2/graylog2-server/issues/9525>`_ `Graylog2/graylog2-server#9594 <https://github.com/Graylog2/graylog2-server/issues/9594>`_
+- Fix share button for event definitions. `Graylog2/graylog2-server#9603 <https://github.com/Graylog2/graylog2-server/issues/9603>`_
+- Fix pagination of synced user accounts in authentication overview. `Graylog2/graylog2-server#9606 <https://github.com/Graylog2/graylog2-server/issues/9606>`_
+- Fix link to the sidecar user's API token management on the sidecars page. `Graylog2/graylog2-server#9613 <https://github.com/Graylog2/graylog2-server/issues/9613>`_
+- Fix scratchpad text area colors in dark mode. `Graylog2/graylog2-server#9607 <https://github.com/Graylog2/graylog2-server/issues/9607>`_ `Graylog2/graylog2-server#9614 <https://github.com/Graylog2/graylog2-server/issues/9614>`_
+
+Integrations Plugin
+^^^^^^^^^^^^^^^^^^^
+
+**Fixed**
+
+- Add message backlog limit to Slack plugin. `Graylog2/graylog-plugin-integrations#659 <https://github.com/Graylog2/graylog-plugin-integrations/issues/659>`_
+- Add Discord support to Slack plugin. `Graylog2/graylog-plugin-integrations#665 <https://github.com/Graylog2/graylog-plugin-integrations/issues/665>`_
+- Update Palo Alto input to support PANOS v10 schemas  `Graylog2/graylog-plugin-integrations#658 <https://github.com/Graylog2/graylog-plugin-integrations/issues/658>`_
+
+Threatintel Plugin
+^^^^^^^^^^^^^^^^^^
+
+**Fixed**
+
+- Improve WHOIS data adapter parsing. `Graylog2/graylog-plugin-threatintel#181 <https://github.com/Graylog2/graylog-plugin-threatintel/issues/181>`_
+
+
 Graylog 4.0.0
 =============
 
@@ -97,6 +133,20 @@ Integrations Plugin
 
 - Add Slack event notification plugin. `Graylog2/graylog-plugin-integrations#569 <https://github.com/Graylog2/graylog-plugin-integrations/pull/569>`_
 - Add PagerDuty event notification plugin. `Graylog2/graylog-plugin-integrations#606 <https://github.com/Graylog2/graylog-plugin-integrations/pull/606>`_
+
+
+Graylog 3.3.9
+=============
+
+Released: 2020-11-25
+
+Core
+^^^^
+
+**Fixed**
+
+- Improve user feedback when the UI cannot fetch data from the metrics API. `Graylog2/graylog2-server#9315 <https://github.com/Graylog2/graylog2-server/issues/9315>`_ `Graylog2/graylog2-server#9316 <https://github.com/Graylog2/graylog2-server/issues/9316>`_
+- Updates to Graylog Schema. `Graylog2/graylog2-server#9567 <https://github.com/Graylog2/graylog2-server/issues/9567>`_
 
 
 Graylog 3.3.8
