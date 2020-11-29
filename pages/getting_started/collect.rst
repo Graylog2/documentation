@@ -27,7 +27,7 @@ You can load and even create your own content packs from the ``System / Content 
 Create an Input
 ===============
 
-To create an Input, open the ``System / Inputs`` page in the top menu, click the arrow in the drop down field, select your input type and click green button labled *Launch new input*.
+To create an Input, open the ``System / Inputs`` page in the top menu, click the arrow in the drop down field, select your input type and click the green button labeled *Launch new input*.
 
 Usually, the default settings are correct, but you may change any that you wish. Some input types may require authentication or other information specific to that source. 
 
@@ -35,7 +35,7 @@ Usually, the default settings are correct, but you may change any that you wish.
 
 Save the input. It will start automatically. 
 
-If your event source is already configured to send events to the port you selected, in the case of *push* event sources like Syslog or CEF, you should start to recieve messages within a few seconds.
+If your event source is already configured to send events to the port you selected, in the case of *push* event sources like Syslog or CEF, you should start to receive messages within a few seconds.
 
 Check out :ref:`ingest_data` if you'd like to learn more about the supported options for ingesting messages into Graylog.
 
@@ -50,7 +50,7 @@ Click on the *Show received messages* button next to the input you just created.
 
 .. image:: /images/gs_10-messages.png
 
-If you click on *Sources* in the top menu, you will see a nice overview of all devices, servers or applications that are sending data into Graylog and how many messages has received from each source. Initially, you may not see much on this page. However, once you start sending data from more systems, their hostnames or IP addresses will also be listed on this page.
+If you click on *Sources* in the top menu, you will see a nice overview of all devices, servers, or applications  sending data into Graylog and how many messages have been recieved from each source. Initially, you may not see much on this page. However, once you start sending data from more systems, their hostnames or IP addresses will also be listed on this page.
 
 .. image:: /images/gs/sources_page.png
 
