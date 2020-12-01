@@ -30,7 +30,7 @@ If you want to checkout Graylog on your local desktop without any further custom
   $ docker run --name graylog --link mongo --link elasticsearch \
       -p 9000:9000 -p 12201:12201 -p 1514:1514 \
       -e GRAYLOG_HTTP_EXTERNAL_URI="http://127.0.0.1:9000/" \
-      -d graylog/graylog:4.0.1
+      -d graylog/graylog:4.0
 
 
 .. warning:: All configuration examples are created to run on the local computer. Should those be used on external servers, adjust ``GRAYLOG_HTTP_EXTERNAL_URI`` and add ``GRAYLOG_HTTP_PUBLISH_URI`` and ``GRAYLOG_HTTP_EXTERNAL_URI`` according to the :ref:`server.conf documentation <web_rest_api_options>`.
