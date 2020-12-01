@@ -1,4 +1,4 @@
-elasticsearch-oss:7.10.0.. _here:
+.. _here:
 
 ******
 Docker
