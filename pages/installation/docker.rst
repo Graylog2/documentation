@@ -21,15 +21,16 @@ Quick start
 
 If you want to checkout Graylog on your local desktop without any further customization, you can run the following three commands to create the necessary environment::
 
-  $ docker run --name mongo -d mongo:3
+  $ docker run --name mongo -d mongo:4.2
   $ docker run --name elasticsearch \
       -e "http.host=0.0.0.0" \
+      -e "discovery.type=single-node" \
       -e "ES_JAVA_OPTS=-Xms512m -Xmx512m" \
-      -d docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.10
+      -d docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
   $ docker run --name graylog --link mongo --link elasticsearch \
       -p 9000:9000 -p 12201:12201 -p 1514:1514 \
       -e GRAYLOG_HTTP_EXTERNAL_URI="http://127.0.0.1:9000/" \
-      -d graylog/graylog:3.3
+      -d graylog/graylog:4.0
 
 
 .. warning:: All configuration examples are created to run on the local computer. Should those be used on external servers, adjust ``GRAYLOG_HTTP_EXTERNAL_URI`` and add ``GRAYLOG_HTTP_PUBLISH_URI`` and ``GRAYLOG_HTTP_EXTERNAL_URI`` according to the :ref:`server.conf documentation <web_rest_api_options>`.
@@ -45,16 +46,16 @@ For example, to start a Graylog Docker container listening on port 5555, stop yo
   $ docker run --link mongo --link elasticsearch \
       -p 9000:9000 -p 12201:12201 -p 1514:1514 -p 5555:5555 \
       -e GRAYLOG_HTTP_EXTERNAL_URI="http://127.0.0.1:9000/" \
-      -d graylog/graylog:3.3
+      -d graylog/graylog:4.0
 
 
 Similarly, the same can be done for UDP by appending ``-p 5555:5555/udp``.
 
 After ensuring that your Graylog Docker container is listening on ``:5555``, create a Raw/Plaintext Input by navigating to `http://localhost:9000/system/inputs <http://localhost:9000/system/inputs>`_ :
 
-.. image:: /images/docker-01.png 
+.. image:: /images/docker-01.png
 
-| 
+|
 
 .. image:: /images/docker-02.png
 
@@ -62,11 +63,11 @@ Once on the Inputs page, search for ```Raw/Plaintext TCP`` and click ``Launch ne
 
 .. image:: /images/docker-03.png
 
-| 
+|
 
 .. image:: /images/docker-04.png
 
-After launching the input, you'll see a dialog box pop up with several options. You can leave most these options as their defaults, but note that you'll need to provide a name for the input, as well as select the node, or "Global" for the location for the input. 
+After launching the input, you'll see a dialog box pop up with several options. You can leave most these options as their defaults, but note that you'll need to provide a name for the input, as well as select the node, or "Global" for the location for the input.
 
 .. image:: /images/docker-05.png
 
@@ -105,10 +106,10 @@ Example Version 2::
   services:
     # MongoDB: https://hub.docker.com/_/mongo/
     mongodb:
-      image: mongo:3
+      image: mongo:4.2
     # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.10
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
       environment:
         - http.host=0.0.0.0
         - transport.host=localhost
@@ -121,7 +122,7 @@ Example Version 2::
       mem_limit: 1g
     # Graylog: https://hub.docker.com/r/graylog/graylog/
     graylog:
-      image: graylog/graylog:3.3
+      image: graylog/graylog:4.0
       environment:
         # CHANGE ME (must be at least 16 characters)!
         - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
@@ -131,6 +132,7 @@ Example Version 2::
       links:
         - mongodb:mongo
         - elasticsearch
+      restart: always
       depends_on:
         - mongodb
         - elasticsearch
@@ -152,12 +154,12 @@ Example Version 3::
   services:
     # MongoDB: https://hub.docker.com/_/mongo/
     mongo:
-      image: mongo:3
+      image: mongo:4.2
       networks:
         - graylog
     # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.10
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
       environment:
         - http.host=0.0.0.0
         - transport.host=localhost
@@ -175,7 +177,7 @@ Example Version 3::
         - graylog
     # Graylog: https://hub.docker.com/r/graylog/graylog/
     graylog:
-      image: graylog/graylog:3.3
+      image: graylog/graylog:4.0
       environment:
         # CHANGE ME (must be at least 16 characters)!
         - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
@@ -184,6 +186,7 @@ Example Version 3::
         - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
       networks:
         - graylog
+      restart: always
       depends_on:
         - mongo
         - elasticsearch
@@ -202,7 +205,7 @@ Example Version 3::
     graylog:
       driver: bridge
 
-After starting all three Docker containers by running ``docker-compose up``, you can open the URL ``http://127.0.0.1:9000`` in a web browser and log in with username ``admin`` and password ``admin`` (make sure to change the password later). Change ``GRAYLOG_HTTP_EXTERNAL_URI=`` to your server IP if you run Docker remotely. 
+After starting all three Docker containers by running ``docker-compose up``, you can open the URL ``http://127.0.0.1:9000`` in a web browser and log in with username ``admin`` and password ``admin`` (make sure to change the password later). Change ``GRAYLOG_HTTP_EXTERNAL_URI=`` to your server IP if you run Docker remotely.
 
 
 .. _configuration:
@@ -218,13 +221,13 @@ For example, setting up the SMTP configuration for sending Graylog alert notific
   version: '2'
   services:
     mongo:
-      image: "mongo:3"
+      image: "mongo:4.2"
       # Other settings [...]
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.10
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
       # Other settings [...]
     graylog:
-      image: graylog/graylog:3.3
+      image: graylog/graylog:4.0
       # Other settings [...]
       environment:
         GRAYLOG_TRANSPORT_EMAIL_ENABLED: "true"
@@ -248,8 +251,8 @@ Create the new configuration directory next to the ``docker-compose.yml`` file a
 
   $ mkdir -p ./graylog/config
   $ cd ./graylog/config
-  $ wget https://raw.githubusercontent.com/Graylog2/graylog-docker/3.3/config/graylog.conf
-  $ wget https://raw.githubusercontent.com/Graylog2/graylog-docker/3.3/config/log4j2.xml
+  $ wget https://raw.githubusercontent.com/Graylog2/graylog-docker/4.0/config/graylog.conf
+  $ wget https://raw.githubusercontent.com/Graylog2/graylog-docker/4.0/config/log4j2.xml
 
 The newly created directory ``./graylog/config/`` with the custom configuration files now has to be mounted into the Graylog Docker container.
 
@@ -258,19 +261,19 @@ This can be done by adding an entry to the `volumes <https://docs.docker.com/com
   version: '2'
   services:
     mongodb:
-      image: mongo:3
+      image: mongo:4.2
       # Other settings [...]
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.10
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
       # Other settings [...]
     graylog:
-      image: graylog/graylog:3.3
+      image: graylog/graylog:4.0
       # Other settings [...]
       volumes:
         # Mount local configuration directory into Docker container
         - ./graylog/config:/usr/share/graylog/data/config
 
-.. warning:: Graylog is running as USER graylog with the ID ``1100`` in Docker. That ID need to be able to read the configuration files you place into the container. 
+.. warning:: Graylog is running as USER graylog with the ID ``1100`` in Docker. That ID need to be able to read the configuration files you place into the container.
 
 
 Reading individual configuration settings from files
@@ -294,22 +297,22 @@ Example for using Docker secrets in a Docker Swarm service::
     # Create SHA-256 hash of our password
     $ echo -n 'password' | sha256sum | awk '{ print $1 }'
     5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8
-    
+
     # Create a Docker secret named "root_password_hash"
     $ printf '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8' | \
       docker secret create root_password_hash -
     nlujwooo5uu6z0m91bmve79uo
-    
+
     $ docker secret ls
     ID                          NAME                 DRIVER              CREATED             UPDATED
     nlujwooo5uu6z0m91bmve79uo   root_password_hash                       34 seconds ago      34 seconds ago
-    
+
     # Create Docker Swarm service named "graylog" with access
     # to the secret named "root_password_hash"
     $ docker service create --name graylog \
-     --secret root_password_hash \ 
+     --secret root_password_hash \
      -e GRAYLOG_ROOT_PASSWORD_SHA2__FILE=/run/secrets/root_password_hash \
-     -p 9000:9000 graylog/graylog:3.3
+     -p 9000:9000 graylog/graylog:4.0
     mclk5gm39ingk51s869dc0htz
     overall progress: 1 out of 1 tasks
     1/1: running   [==================================================>]
@@ -317,7 +320,7 @@ Example for using Docker secrets in a Docker Swarm service::
 
     $ docker service ls
     ID                  NAME                MODE                REPLICAS            IMAGE               PORTS
-    mclk5gm39ing        graylog             replicated          1/1                 graylog:3.3      *:9000->9000/tcp
+    mclk5gm39ing        graylog             replicated          1/1                 graylog:4.0      *:9000->9000/tcp
 
 
 .. _persisting-data:
@@ -334,12 +337,12 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
   services:
     # MongoDB: https://hub.docker.com/_/mongo/
     mongodb:
-      image: mongo:3
+      image: mongo:4.2
       volumes:
         - mongo_data:/data/db
     # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.10
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
       volumes:
         - es_data:/usr/share/elasticsearch/data
       environment:
@@ -354,7 +357,7 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
       mem_limit: 1g
     # Graylog: https://hub.docker.com/r/graylog/graylog/
     graylog:
-      image: graylog/graylog:3.3
+      image: graylog/graylog:4.0
       volumes:
         - graylog_data:/usr/share/graylog/data
       environment:
@@ -366,6 +369,7 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
       links:
         - mongodb:mongo
         - elasticsearch
+      restart: always
       depends_on:
         - mongodb
         - elasticsearch
@@ -403,7 +407,7 @@ New Docker image
 
 Simply create a new `Dockerfile <https://docs.docker.com/engine/reference/builder/>`_ in an empty directory with the following contents::
 
-  FROM graylog/graylog:3.3
+  FROM graylog/graylog:4.0
   RUN wget -O /usr/share/graylog/plugin/graylog-plugin-auth-sso-3.3.0.jar https://github.com/Graylog2/graylog-plugin-auth-sso/releases/download/3.3.0/graylog-plugin-auth-sso-3.3.0.jar
 
 Build a new image from the new ``Dockerfile`` (also see `docker build <https://docs.docker.com/engine/reference/commandline/build/>`_)::
@@ -417,10 +421,10 @@ The ``docker-compose.yml`` file has to reference the new Docker image::
   version: '2'
   services:
     mongo:
-      image: "mongo:3"
+      image: "mongo:4.2"
       # Other settings [...]
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.10
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
       # Other settings [...]
     graylog:
       image: graylog-with-sso-plugin
@@ -444,18 +448,18 @@ The ``docker-compose.yml`` file has to reference the new Docker image::
       image: "mongo:3"
       # Other settings [...]
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.10
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
       # Other settings [...]
     graylog:
-      image: graylog/graylog:3.3
+      image: graylog/graylog:4.0
       # Other settings [...]
       volumes:
         # Mount local plugin file into Docker container
         - ./graylog/plugin/graylog-plugin-auth-sso-3.3.0.jar:/usr/share/graylog/plugin/graylog-plugin-auth-sso-3.3.0.jar
-        
+
 You can add as many of these links as you wish in your ``docker-compose.yml`` file. Simply restart the container and docker will recreate the graylog container with the new volumes included::
 
-  $ docker-compose restart 
+  $ docker-compose restart
 
 
 Kubernetes automatic master selection
@@ -510,4 +514,4 @@ See the `available tags for the Graylog image on Docker Hub <https://hub.docker.
 
   $ docker run --link mongo --link elasticsearch -p 9000:9000 -p 12201:12201 -p 1514:1514 \
       -e GRAYLOG_HTTP_BIND_ADDRESS="127.0.0.1:9000" \
-      -d graylog/graylog:3.3.2-beta.1-1
+      -d graylog/graylog:4.0.0-rc.1-2
