@@ -48,6 +48,8 @@ The old LDAP and Active Directory group mapping has been replaced by teams suppo
 
 Existing custom roles will be migrated to the new entity sharing system on the first server startup.
 
+See :ref:`Permission Management page <permissions>` for more details.
+
 Fixing certificate validation for LDAP servers used for authentication
 ----------------------------------------------------------------------
 

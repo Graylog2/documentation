@@ -2,6 +2,85 @@
 Changelog
 *********
 
+Graylog Enterprise 4.0.1
+========================
+
+Released: 2020-11-25
+
+Enterprise
+----------
+
+No changes since 4.0.0.
+
+Enterprise Integrations Plugin
+------------------------------
+
+- Do not shut down Okta input on errors.
+- Let Office 365 plugin use configured proxy settings.
+
+
+Graylog Enterprise 4.0.0
+========================
+
+Released: 2020-11-18
+
+Enterprise
+----------
+
+**Added**
+
+- Add support for grouping users in teams.
+
+  - See: :ref:`Permission Management <permissions>`
+- Add support for managing access to streams, searches and dashboards through teams.
+
+  - See: :ref:`Permission Management <permissions>`
+- Add support for syncing groups from LDAP and Active Directory into Graylog teams.
+
+  - See: :ref:`Permission Management <permissions>`
+- Add configurable header badge.
+- Create notification for failed Enterprise outputs.
+- Add cluster resources for archiving to allow archiving to be managed from all server nodes.
+
+**Fixed**
+
+- Don't fail reports migration if a widget is missing.
+- Improve error logging for report generation.
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Added**
+
+- Script event notification plugin to replace the legacy script alarm callback plugin.
+
+
+Graylog Enterprise 3.3.9
+========================
+
+Released: 2020-11-25
+
+Enterprise
+----------
+
+**Fixed**
+
+- Fix audit formatting for file resource.
+- Fix permission issue with reports.
+- Fix logo images in reports.
+- Fix issue with rendering help buttons.
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Fixed**
+
+- Do not shut down Office 365 input on errors.
+- Do not shut down Okta input on errors.
+- Fix issue with Office 365 logon data parsing.
+- Let Office 365 plugin use configured proxy settings.
+
+
 Graylog Enterprise 3.3.8
 ========================
 

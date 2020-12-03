@@ -1,7 +1,7 @@
 :orphan:
 
-************
-System users
-************
+***************
+Users and Roles
+***************
 
-.. note:: This page was renamed and moved to :ref:`permissions`.
+.. note:: Since Graylog 4.0 this is moved to :ref:`Permission Management <permissions>`.

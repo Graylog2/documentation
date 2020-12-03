@@ -69,7 +69,7 @@ The packages are configured to **not** start any Graylog services during boot. Y
 OS                                       Init System Command
 ======================================== =========== ==================================================
 Debian 7                                 SysV        ``sudo update-rc.d graylog-server defaults 95 10``
-Debian 8 & 9, Ubuntu 16.06, 18.04, 20.04 systemd     ``sudo systemctl enable graylog-server``
+Debian 8 & 9, Ubuntu 16.04, 18.04, 20.04 systemd     ``sudo systemctl enable graylog-server``
 ======================================== =========== ==================================================
 
 .. _operating_package_upgrade_DEB-APT:
