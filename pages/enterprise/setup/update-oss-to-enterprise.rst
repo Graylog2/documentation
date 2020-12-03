@@ -1,4 +1,4 @@
-.. _enterprise-setup:
+.. _enterprise-setup-updateoss:
 
 *****
 Update Graylog Instance to Graylog Enterprise
