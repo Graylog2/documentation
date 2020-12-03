@@ -91,6 +91,6 @@ Debian 8 & 9, Ubuntu 16.06, 18.04, 20.04 systemd     ``sudo systemctl enable gra
 .. toctree::
    :titlesonly:
 
-  setup/updating.rst
-  setup/license.rst
-  setup/update-oss-to-enterprise.rst
+   setup/updating.rst
+   setup/license.rst
+   setup/update-oss-to-enterprise.rst

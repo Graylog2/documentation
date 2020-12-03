@@ -1,8 +1,8 @@
 .. _enterprise-setup-updating:
 
-*****
+**************************
 Updating to latest version
-*****
+**************************
 
 If you've been using the repository package to install Graylog before, it has to be updated first. The new package will replace the repository URL, without which you will only be able to get bugfix releases of your previously installed version of Graylog.
 

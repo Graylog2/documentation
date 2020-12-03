@@ -1,8 +1,8 @@
 .. _enterprise-setup-license:
 
-*****
+*******
 License
-*****
+*******
 
 License Installation
 ====================

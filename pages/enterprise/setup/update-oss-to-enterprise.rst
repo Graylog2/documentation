@@ -1,8 +1,8 @@
 .. _enterprise-setup-updateoss:
 
-*****
+*********************************************
 Update Graylog Instance to Graylog Enterprise
-*****
+*********************************************
 
 If you have an existing Graylog open source instance, you can convert it to an Enterprise instance by installing the Graylog Enterprise plugin.
 
