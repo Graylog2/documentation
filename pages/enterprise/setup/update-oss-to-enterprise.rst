@@ -1,8 +1,8 @@
 .. _enterprise-setup-updateoss:
 
-*********************************************
-Update Graylog Instance to Graylog Enterprise
-*********************************************
+*********************************
+Graylog OSS to Graylog Enterprise
+*********************************
 
 If you have an existing Graylog open source instance, you can convert it to an Enterprise instance by installing the Graylog Enterprise plugin.
 
@@ -91,6 +91,8 @@ If you have done a manual installation, you can get the tarball from the downloa
       - :enterprise-plugins-tar:`3.3.7`
     * - 3.3.8
       - :enterprise-plugins-tar:`3.3.8`
+    * - 3.3.9
+      - :enterprise-plugins-tar:`3.3.9`
 
 The tarball includes the enterprise plugin JAR file and required binaries that need to be installed.
 
@@ -98,7 +100,7 @@ The tarball includes the enterprise plugin JAR file and required binaries that n
 
   $ tar -tzf graylog-enterprise-plugins-3.3.8.tgz
     graylog-enterprise-plugins-3.3.8/LICENSE
-    graylog-enterprise-plugins-3.3.8/plugin/graylog-plugin-enterprise-3.3.2.jar
+    graylog-enterprise-plugins-3.3.8/plugin/graylog-plugin-enterprise-3.3.8.jar
     graylog-enterprise-plugins-3.3.8/bin/headless_shell
     graylog-enterprise-plugins-3.3.8/bin/chromedriver
     graylog-enterprise-plugins-3.3.8/bin/chromedriver_start.sh
@@ -158,7 +160,3 @@ You should see something like the following in your Graylog server logs. It indi
   2017-12-18T17:39:10.805+01:00 INFO  [CmdLineTool] Loaded plugin: Graylog Enterprise 3.3.2 [org.graylog.plugins.enterprise.EnterprisePlugin]
   2017-12-18T17:39:10.827+01:00 INFO  [CmdLineTool] Loaded plugin: Threat Intelligence Plugin 3.3.2 [org.graylog.plugins.threatintel.ThreatIntelPlugin]
 
-Cluster Setup
-=============
-
-If you run a Graylog cluster you need to add the enterprise plugins to every Graylog node. Additionally your load-balancer must route ``/api/plugins/org.graylog.plugins.archive/`` only to the Graylog master node. Future versions of Graylog will forward these requests automatically to the correct node.

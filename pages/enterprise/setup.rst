@@ -10,7 +10,7 @@ Graylog Enterprise comes as a single package that includes Graylog Server and th
 - Integrations plugin
 - Enterprise Integrations plugin
 
-If you're already running an open source instance, you can `install these plugins separately <setup/update-oss-to-enterprise.html>`_ to convert it to an Enterprise instance.
+If you're already running an open source instance, you can :ref:`install these plugins separately<enterprise-setup-updateoss>` to convert it to an Enterprise instance.
 
 
 Requirements
@@ -87,10 +87,17 @@ Debian 7                                 SysV        ``sudo update-rc.d graylog-
 Debian 8 & 9, Ubuntu 16.06, 18.04, 20.04 systemd     ``sudo systemctl enable graylog-server``
 ======================================== =========== ==================================================
 
+Cluster Setup
+=============
+
+If you run a Graylog cluster you need to add the enterprise plugins to every Graylog node. Additionally your load-balancer must route ``/api/plugins/org.graylog.plugins.archive/`` only to the Graylog master node. Future versions of Graylog will forward these requests automatically to the correct node.
+
+
+Update Graylog Enterprise
+=========================
 
 .. toctree::
    :titlesonly:
 
    setup/updating.rst
-   setup/license.rst
    setup/update-oss-to-enterprise.rst
