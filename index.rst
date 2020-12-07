@@ -48,6 +48,7 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/archiving
    pages/auditlog
    pages/reporting
+   pages/enterprise/setup/license.rst
    pages/enterprise/changelog
 
 .. toctree::
