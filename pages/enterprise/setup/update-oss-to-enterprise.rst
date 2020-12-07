@@ -26,7 +26,7 @@ The installation on distributions like Debian or Ubuntu can be done with *apt-ge
 
 ::
 
-  $ sudo apt-get install graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins
+  $ sudo apt-get install graylog-enterprise
 
 
 RPM
@@ -36,7 +36,7 @@ The installation on distributions like CentOS or RedHat can be done with *yum* a
 
 ::
 
-  $ sudo yum install graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins
+  $ sudo yum install graylog-enterprise
 
 
 Tarball
@@ -51,59 +51,21 @@ If you have done a manual installation, you can get the tarball from the downloa
 
     * - Enterprise Version
       - Download URL
-    * - 3.1.0
-      - :enterprise-plugins-tar:`3.1.0`
-    * - 3.1.1
-      - :enterprise-plugins-tar:`3.1.1`
-    * - 3.1.2
-      - :enterprise-plugins-tar:`3.1.2`
-    * - 3.1.3
-      - :enterprise-plugins-tar:`3.1.3`
-    * - 3.2.0
-      - :enterprise-plugins-tar:`3.2.0`
-    * - 3.2.1
-      - :enterprise-plugins-tar:`3.2.1`
-    * - 3.2.2
-      - :enterprise-plugins-tar:`3.2.2`
-    * - 3.2.3
-      - :enterprise-plugins-tar:`3.2.3`
-    * - 3.2.4
-      - :enterprise-plugins-tar:`3.2.4`
-    * - 3.2.5
-      - :enterprise-plugins-tar:`3.2.5`
-    * - 3.2.6
-      - :enterprise-plugins-tar:`3.2.6`
-    * - 3.3.0
-      - :enterprise-plugins-tar:`3.3.0`
-    * - 3.3.1
-      - :enterprise-plugins-tar:`3.3.1`
-    * - 3.3.2
-      - :enterprise-plugins-tar:`3.3.2`
-    * - 3.3.3
-      - :enterprise-plugins-tar:`3.3.3`
-    * - 3.3.4
-      - :enterprise-plugins-tar:`3.3.4`
-    * - 3.3.5
-      - :enterprise-plugins-tar:`3.3.5`
-    * - 3.3.6
-      - :enterprise-plugins-tar:`3.3.6`
-    * - 3.3.7
-      - :enterprise-plugins-tar:`3.3.7`
-    * - 3.3.8
-      - :enterprise-plugins-tar:`3.3.8`
-    * - 3.3.9
-      - :enterprise-plugins-tar:`3.3.9`
+    * - 4.0.0
+      - :enterprise-plugins-tar:`4.0.0`
+    * - 4.0.1
+      - :enterprise-plugins-tar:`4.0.1`
 
 The tarball includes the enterprise plugin JAR file and required binaries that need to be installed.
 
 ::
 
-  $ tar -tzf graylog-enterprise-plugins-3.3.8.tgz
-    graylog-enterprise-plugins-3.3.8/LICENSE
-    graylog-enterprise-plugins-3.3.8/plugin/graylog-plugin-enterprise-3.3.8.jar
-    graylog-enterprise-plugins-3.3.8/bin/headless_shell
-    graylog-enterprise-plugins-3.3.8/bin/chromedriver
-    graylog-enterprise-plugins-3.3.8/bin/chromedriver_start.sh
+  $ tar -tzf graylog-enterprise-plugins-4.0.1.tgz
+    graylog-enterprise-plugins-4.0.1/LICENSE
+    graylog-enterprise-plugins-4.0.1/plugin/graylog-plugin-enterprise-3.3.8.jar
+    graylog-enterprise-plugins-4.0.1/bin/headless_shell
+    graylog-enterprise-plugins-4.0.1/bin/chromedriver
+    graylog-enterprise-plugins-4.0.1/bin/chromedriver_start.sh
 
 
 **JAR file**
@@ -120,10 +82,10 @@ Your plugin directory should look similar to this after installing the enterpris
 ::
 
   plugin/
-  ├── graylog-plugin-aws-3.3.8.jar
-  ├── graylog-plugin-collector-3.3.8.jar
-  ├── graylog-plugin-enterprise-3.3.8.jar
-  └── graylog-plugin-threatintel-3.3.8.jar
+  ├── graylog-plugin-aws-4.0.1.jar
+  ├── graylog-plugin-collector-4.0.1.jar
+  ├── graylog-plugin-enterprise-4.0.1.jar
+  └── graylog-plugin-threatintel-4.0.1.jar
 
 **Binary files**
 
@@ -159,4 +121,3 @@ You should see something like the following in your Graylog server logs. It indi
   2017-12-18T17:39:10.811+01:00 INFO  [CmdLineTool] Loaded plugin: Enterprise Integration Plugin 3.3.2 [org.graylog.plugins.enterprise_integration.EnterpriseIntegrationPlugin]
   2017-12-18T17:39:10.805+01:00 INFO  [CmdLineTool] Loaded plugin: Graylog Enterprise 3.3.2 [org.graylog.plugins.enterprise.EnterprisePlugin]
   2017-12-18T17:39:10.827+01:00 INFO  [CmdLineTool] Loaded plugin: Threat Intelligence Plugin 3.3.2 [org.graylog.plugins.threatintel.ThreatIntelPlugin]
-
