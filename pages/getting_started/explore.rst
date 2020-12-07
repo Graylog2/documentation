@@ -8,7 +8,7 @@ Streams
 
 Streams are a core feature of Graylog and may be thought of as a form of tagging for incoming messages. Streams are a mechanism used to route messages into categories in real-time. Stream rules instruct Graylog which message to route into which streams. 
 
-Streams have many uses. First, they are used to route data for storage into an index. They are also used to control access to data, route messages for parsing, enrichment or other modification and determine which messages will be archived. 
+Streams have many uses. First, they are used to route data for storage into an index. They are also used to control access to data, route messages for parsing, enrichment, or other modification. Then streams will determine which messages will be archived. 
 
 Streams may be used in conjunction with Alerts to notify users or otherwise respond when a message meets a set of conditions. 
 
