@@ -393,7 +393,9 @@ Save the following index template for the custom index mapping into a file named
     }
   }
 
-.. note:: The above template is only compatible with Elasticsearch 6.X. If using Graylog 4.0 with Elasticsearch 7.x, use the template below, saving it as ``graylog-custom-mapping.json``.
+.. note:: The above template is only compatible with Elasticsearch 6.X. If using Graylog 4.0 with Elasticsearch 7.x, use the template below, saving it as ``graylog-custom-mapping-7x.json``.
+
+::
 
   {
     "template": "graylog_*",
@@ -415,6 +417,7 @@ Save the following index template for the custom index mapping into a file named
       }
     }
   }
+
 
 Finally, load the index mapping into Elasticsearch with the following command::
 
