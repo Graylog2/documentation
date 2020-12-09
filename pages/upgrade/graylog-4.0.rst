@@ -10,6 +10,10 @@ Upgrading to Graylog 4.0.x
 
 .. warning:: Please make sure to create a MongoDB database backup before starting the upgrade to Graylog 4.0!
 
+.. warning:: If you are upgrading MongoDB from 3.X to 4.2, you must first `upgrade MongoDB to 4.0 <https://docs.mongodb.com/manual/release-notes/4.2-upgrade-standalone/>`_
+
+
+
 Breaking Changes
 ================
 
