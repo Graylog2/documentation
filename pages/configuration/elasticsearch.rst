@@ -393,6 +393,31 @@ Save the following index template for the custom index mapping into a file named
     }
   }
 
+.. note:: The above template is only compatible with Elasticsearch 6.X. If using Graylog 4.0 with Elasticsearch 7.x, use the template below, saving it as ``graylog-custom-mapping-7x.json``.
+
+::
+
+  {
+    "template": "graylog_*",
+    "mappings": {
+      "properties": {
+        "http_method": {
+          "type": "keyword"
+        },
+        "http_response_code": {
+          "type": "long"
+        },
+        "ingest_time": {
+          "type": "date",
+          "format": "strict_date_time"
+        },
+        "took_ms": {
+          "type": "long"
+        }
+      }
+    }
+  }
+
 
 Finally, load the index mapping into Elasticsearch with the following command::
 
