@@ -49,6 +49,7 @@ LDAP and Active Directory group mapping removed
 -----------------------------------------------
 
 The old LDAP and Active Directory group mapping has been replaced by teams support in Graylog Enterprise.
+For Open Source Users of graylog the LDAP and Active Directory group mapping have been removed.
 
 Existing custom roles will be migrated to the new entity sharing system on the first server startup.
 
