@@ -77,8 +77,8 @@ Collection method
  
 After a list of event sources has been determined, the next step is to decide the method of collection for each source.  Although many hardware and software products support common methods such as sending log data via syslog, many do not. 
 Understanding the answer to these questions is critical: 
-*What method does each event source use?
-*What resources are required? 
+* What method does each event source use?
+* What resources are required? 
 For example, if a log shipper will be required to read logs from a local file on all servers, a log shipper must be selected and tested prior to deployment. In other cases, proprietary API’s or software tools must be employed and integrated.
 
 In some cases, changes to the event sources themselves (security devices, network hardware or applications) may be required. Additional planning is often required to deploy and maintain these collection methods over time.
@@ -138,5 +138,4 @@ Many variables affect storage requirements, such as how much of each message is 
 A simple rule of thumb for planning storage is to take your average daily ingestion rate, multiply it by the number of days you need to retain the data online, and then multiply that number by 1.3 to account for metadata overhead. (GB/day x Ret. Days x 1.3 = storage req.). 
 
 Elasticsearch makes extensive use of slack storage space in the course of it's operations. Users are strongly encouraged to exceed the minimum storage required for their calculated ingestion rate. When at maximum retention, Elasticsearch storage should not exceed 75% of total space.
-
 
