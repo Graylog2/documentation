@@ -1,0 +1,13 @@
+name: Graylog Docs
+
+on: [push, pull_request]
+
+jobs:
+  check:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v1
+    - uses: ammaraskar/sphinx-action@35082eb35b69713fe335801c4d5846a4cc3c91ff
+      with:
+        docs-folder: "."
+        build-command: "sphinx-build -nW -b html -d _build/doctrees . _build/html"
