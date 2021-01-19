@@ -4,7 +4,7 @@ Babel==2.9.0
 backports-abc==0.5
 backports.ssl-match-hostname==3.7.0.1
 certifi==2020.12.5
-chardet==3.0.4
+chardet==4.0.0
 docutils==0.16
 futures==3.1.1
 idna==2.10
