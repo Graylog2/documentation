@@ -2,6 +2,26 @@
 Changelog
 *********
 
+Graylog 3.3.10
+==============
+
+Released: 2021-01-27
+
+Core
+^^^^
+
+**Added**
+
+- Show field sort icons in message table. `Graylog2/graylog2-server#9775 <https://github.com/Graylog2/graylog2-server/issues/9775>`_
+
+**Fixed**
+
+- Fix search query parsing with ``$`` characters. `Graylog2/graylog2-server#9497 <https://github.com/Graylog2/graylog2-server/issues/9497>`_ `Graylog2/graylog2-server#9877 <https://github.com/Graylog2/graylog2-server/issues/9877>`_
+- Fix CSV export for shared dashboards. `Graylog2/graylog2-server#9906 <https://github.com/Graylog2/graylog2-server/issues/9906>`_
+- Retry Elasticsearch requests on socket timeouts. `Graylog2/graylog2-server#9922 <https://github.com/Graylog2/graylog2-server/issues/9922>`_
+- Retry bulk indexing if index alias has invalid target(s) instead of dropping the messages. `Graylog2/graylog2-server#9955 <https://github.com/Graylog2/graylog2-server/issues/9955>`_ `Graylog2/graylog2-server#9962 <https://github.com/Graylog2/graylog2-server/issues/9962>`_ `Graylog2/graylog2-server#9978 <https://github.com/Graylog2/graylog2-server/issues/9978>`_
+
+
 Graylog 3.3.9
 =============
 

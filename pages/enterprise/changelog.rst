@@ -2,6 +2,19 @@
 Changelog
 *********
 
+Graylog Enterprise 3.3.10
+=========================
+
+Released: 2021-01-27
+
+Enterprise
+----------
+
+**Added**
+
+- Allow modification of timezone in report scheduling settings.
+
+
 Graylog Enterprise 3.3.9
 ========================
 
