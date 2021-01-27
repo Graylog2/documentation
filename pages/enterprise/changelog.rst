@@ -2,6 +2,32 @@
 Changelog
 *********
 
+Graylog Enterprise 4.0.2
+========================
+
+Released: 2021-01-27
+
+Enterprise
+----------
+
+**Added**
+
+- Allow modification of timezone in report scheduling settings.
+
+**Fixed**
+
+- Fix report preview styling when dark mode is active.
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Fixed**
+
+- Reduce noise of legacy script alarm callback notification.
+- Fix timing issue with old checkpoints in Office365 plugin.
+- Properly shut down TCP connections when stopping Enterprise outputs.
+
+
 Graylog Enterprise 4.0.1
 ========================
 
@@ -53,6 +79,19 @@ Enterprise Integrations Plugin
 **Added**
 
 - Script event notification plugin to replace the legacy script alarm callback plugin.
+
+
+Graylog Enterprise 3.3.10
+=========================
+
+Released: 2021-01-27
+
+Enterprise
+----------
+
+**Added**
+
+- Allow modification of timezone in report scheduling settings.
 
 
 Graylog Enterprise 3.3.9
