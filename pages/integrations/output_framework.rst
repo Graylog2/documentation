@@ -79,6 +79,8 @@ formatting options include:
     - The Output Framework will convert the message's key-value pairs into a JSON object.
 - ``Pipeline-Generated``
     -  The Output Framework will expect your pipeline to generate the outgoing payload and store it in the ``pipeline_output`` field of the message.  This can be accomplished in the pipeline by using the ``set_field`` :doc:`built-in function<../pipelines/functions>`.
+- ``Full Message``
+    -  Some inputs support storing the full received message in the ``full_message`` field.  When this output formatter is selected, the contents ``full_message`` will be used as the payload of the outgoing message. Messages without a ``full_message`` field or messages where the field is empty will be ignored. The Full Message formatter is available in Graylog version 4.0.3 and above.
 - ``No-op Formatter``
     - No payload will be generated from the message.  This formatter is currently only intended for use with the ``Google Cloud BigQuery`` output.  If used with any other Output, the Output payloads will be empty.
 
