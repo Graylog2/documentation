@@ -412,7 +412,7 @@ Simply create a ``plugin`` folder, download the plugin(s) you want to install in
     $ docker run --name graylog --link mongo --link elasticsearch \
         -p 9000:9000 -p 12201:12201 -p 1514:1514 \
         -e GRAYLOG_HTTP_EXTERNAL_URI="http://127.0.0.1:9000/" \
-        -v <PATH_TO_LOCAL_PLUGIN_DIR>:/usr/share/graylog/plugin \
+        -v ./plugin:/usr/share/graylog/plugin \
         -d graylog/graylog:4.0
 
 
