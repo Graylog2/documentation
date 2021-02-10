@@ -129,6 +129,7 @@ Example Version 2::
         # Password: admin
         - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
         - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
+      entrypoint: /usr/bin/tini -- wait-for-it elasticsearch:9200 --  /docker-entrypoint.sh
       links:
         - mongodb:mongo
         - elasticsearch
@@ -184,6 +185,7 @@ Example Version 3::
         # Password: admin
         - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
         - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
+      entrypoint: /usr/bin/tini -- wait-for-it elasticsearch:9200 --  /docker-entrypoint.sh
       networks:
         - graylog
       restart: always
@@ -366,6 +368,7 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
         # Password: admin
         - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
         - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
+      entrypoint: /usr/bin/tini -- wait-for-it elasticsearch:9200 --  /docker-entrypoint.sh
       links:
         - mongodb:mongo
         - elasticsearch
@@ -399,67 +402,40 @@ Start all services with exposed data directories::
 
 Plugins
 =======
+If you want to add plugins, you can put them into a local directory and mount that directory as a volume. This way, you don’t have to create a new docker image every time you want to add a new plugin (or remove an old one).
 
-In order to add plugins you can build a new image based on the existing `graylog/graylog`_ Docker image with the needed plugin included or you add a volume that points to the locally downloaded plugin file.
+Simply create a ``plugin`` folder, download the plugin(s) you want to install into it and mount the directory as a volume into the docker container::
 
-New Docker image
-----------------
+    $ mkdir plugin
+    $ wget https://downloads.graylog.org/releases/graylog-integrations/graylog-integrations-plugins-4.0.2.tgz
+    $ tar -xvzf graylog-integrations-plugins-4.0.2.tgz graylog-integrations-plugins-4.0.2/plugin/graylog-plugin-integrations-4.0.2.jar --directory plugin
+    $ docker run --name graylog --link mongo --link elasticsearch \
+        -p 9000:9000 -p 12201:12201 -p 1514:1514 \
+        -e GRAYLOG_HTTP_EXTERNAL_URI="http://127.0.0.1:9000/" \
+        -v ./plugin:/usr/share/graylog/plugin \
+        -d graylog/graylog:4.0
 
-Simply create a new `Dockerfile <https://docs.docker.com/engine/reference/builder/>`_ in an empty directory with the following contents::
 
-  FROM graylog/graylog:4.0
-  RUN wget -O /usr/share/graylog/plugin/graylog-plugin-auth-sso-3.3.0.jar https://github.com/Graylog2/graylog-plugin-auth-sso/releases/download/3.3.0/graylog-plugin-auth-sso-3.3.0.jar
+The ``docker-compose.yml`` would look like this::
 
-Build a new image from the new ``Dockerfile`` (also see `docker build <https://docs.docker.com/engine/reference/commandline/build/>`_)::
+    version: '3'
+    services:
+      mongo:
+        image: mongo:4.2
+        # Other settings [...]
+      elasticsearch:
+        image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
+        # Other settings [...]
+      graylog:
+        image: graylog/graylog:4.0
+        # Other settings [...]
+        volumes:
+           - <PATH_TO_LOCAL_PLUGIN_DIR>:/usr/share/graylog/plugin
 
-  $ docker build -t graylog-with-sso-plugin .
 
-In this example, we created a new image with the `SSO plugin <https://github.com/Graylog2/graylog-plugin-auth-sso>`_ installed. From now on reference to the newly built image instead of `graylog/graylog`_.
+Restart the container and docker will recreate the graylog container with the new volume included::
 
-The ``docker-compose.yml`` file has to reference the new Docker image::
-
-  version: '2'
-  services:
-    mongo:
-      image: "mongo:4.2"
-      # Other settings [...]
-    elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
-      # Other settings [...]
-    graylog:
-      image: graylog-with-sso-plugin
-      # Other settings [...]
-
-Volume-mounted plugin
----------------------
-
-Instead of building a new docker image, you can also add additional plugins by mounting them directly and individually into the ``plugin`` folder of the original Docker image. This way, you don't have to create a new docker image every time you want to add a new plugin (or remove an old one).
-
-Simply create a ``plugin`` folder, download the plugin(s) you want to install into it and mount each file as an additional volume into the docker container::
-
-  $ mkdir -p ./graylog/plugin
-  $ wget -O ./graylog/plugin/graylog-plugin-auth-sso-3.3.0.jar https://github.com/Graylog2/graylog-plugin-auth-sso/releases/download/3.3.0/graylog-plugin-auth-sso-3.3.0.jar
-
-The ``docker-compose.yml`` file has to reference the new Docker image::
-
-  version: '2'
-  services:
-    mongo:
-      image: "mongo:3"
-      # Other settings [...]
-    elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
-      # Other settings [...]
-    graylog:
-      image: graylog/graylog:4.0
-      # Other settings [...]
-      volumes:
-        # Mount local plugin file into Docker container
-        - ./graylog/plugin/graylog-plugin-auth-sso-3.3.0.jar:/usr/share/graylog/plugin/graylog-plugin-auth-sso-3.3.0.jar
-
-You can add as many of these links as you wish in your ``docker-compose.yml`` file. Simply restart the container and docker will recreate the graylog container with the new volumes included::
-
-  $ docker-compose restart
+  $ docker-compose restart graylog
 
 
 Kubernetes automatic master selection
