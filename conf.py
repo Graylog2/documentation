@@ -14,6 +14,7 @@
 
 import sys
 import os
+import datetime
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
@@ -57,7 +58,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Graylog'
-copyright = u'2015-2020 Graylog, Inc.'
+copyright = (u'2015-%d Graylog, Inc.' % datetime.date.today().year)
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -299,7 +300,7 @@ texinfo_documents = [
 epub_title = u'Graylog'
 epub_author = u'Graylog, Inc.'
 epub_publisher = u'Graylog, Inc.'
-epub_copyright = u'2015-2020 Graylog, Inc.'
+epub_copyright = (u'2015-%d Graylog, Inc.' % datetime.date.today().year)
 
 # The basename for the epub file. It defaults to the project name.
 #epub_basename = u'Graylog'
