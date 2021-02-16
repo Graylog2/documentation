@@ -3,6 +3,11 @@
 	max-width: 1000px !important;
 }
 
+/* override sidebar header background */
+.wy-side-nav-search {
+	background-color: #1F1F1F;
+}
+
 /* override logo height */
 .wy-side-nav-search > a img.logo {
 	height: 40px;

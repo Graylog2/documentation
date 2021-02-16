@@ -121,7 +121,6 @@ pygments_style = 'sphinx'
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-  'style_nav_header_background': '#1F1F1F',
   'logo_only': True,
 }
 
