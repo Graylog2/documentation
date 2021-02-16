@@ -2,3 +2,8 @@
 .wy-nav-content {
 	max-width: 1000px !important;
 }
+
+/* override logo height */
+.wy-side-nav-search > a img.logo {
+	height: 40px;
+}
