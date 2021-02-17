@@ -2,6 +2,28 @@
 Changelog
 *********
 
+Graylog 4.0.3
+=============
+
+Released: 2021-02-16
+
+Core
+^^^^
+
+**Fixed**
+
+- Fix search export to dashboard when running with a proxy and a path prefix. `Graylog2/graylog2-server#9991 <https://github.com/Graylog2/graylog2-server/issues/9991>`_ `Graylog2/graylog2-server#9989 <https://github.com/Graylog2/graylog2-server/issues/9989>`_
+- Fix moving widgets to a different tab when they have been copied from a dashboard. `Graylog2/graylog2-server#9778 <https://github.com/Graylog2/graylog2-server/issues/9778>`_ `Graylog2/graylog2-server#10007 <https://github.com/Graylog2/graylog2-server/issues/10007>`_
+- Fix potential MongoDB performance issue. `Graylog2/graylog2-server#10043 <https://github.com/Graylog2/graylog2-server/issues/10043>`_ `Graylog2/graylog2-server#10046 <https://github.com/Graylog2/graylog2-server/issues/10046>`_
+
+Integrations Plugin
+^^^^^^^^^^^^^^^^^^^
+
+**Added**
+
+- Initial support for parsing USERID log type in PaloAlto 9.x inputs. `Graylog2/graylog2-server#729 <https://github.com/Graylog2/graylog2-server/issues/729>`_
+
+
 Graylog 4.0.2
 =============
 
@@ -178,6 +200,19 @@ Integrations Plugin
 
 - Add Slack event notification plugin. `Graylog2/graylog-plugin-integrations#569 <https://github.com/Graylog2/graylog-plugin-integrations/pull/569>`_
 - Add PagerDuty event notification plugin. `Graylog2/graylog-plugin-integrations#606 <https://github.com/Graylog2/graylog-plugin-integrations/pull/606>`_
+
+Graylog 3.3.11
+==============
+
+Released: 2021-02-16
+
+Core
+^^^^
+
+**Fixed**
+
+- Fix search export to dashboard when running with a proxy and a path prefix. `Graylog2/graylog2-server#9992 <https://github.com/Graylog2/graylog2-server/issues/9992>`_ `Graylog2/graylog2-server#9989 <https://github.com/Graylog2/graylog2-server/issues/9989>`_
+- Fix Elasticsearch watermark notifications when running multiple Graylog nodes. `Graylog2/graylog2-server#10066 <https://github.com/Graylog2/graylog2-server/issues/10066>`_
 
 
 Graylog 3.3.10
