@@ -2,6 +2,20 @@
 Changelog
 *********
 
+Graylog 3.3.11
+==============
+
+Released: 2021-02-16
+
+Core
+^^^^
+
+**Fixed**
+
+- Fix search export to dashboard when running with a proxy and a path prefix. `Graylog2/graylog2-server#9992 <https://github.com/Graylog2/graylog2-server/issues/9992>`_ `Graylog2/graylog2-server#9989 <https://github.com/Graylog2/graylog2-server/issues/9989>`_
+- Fix Elasticsearch watermark notifications when running multiple Graylog nodes. `Graylog2/graylog2-server#10066 <https://github.com/Graylog2/graylog2-server/issues/10066>`_
+
+
 Graylog 3.3.10
 ==============
 
