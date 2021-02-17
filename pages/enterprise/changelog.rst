@@ -2,6 +2,24 @@
 Changelog
 *********
 
+Graylog Enterprise 4.0.3
+========================
+
+Released: 2021-02-16
+
+Enterprise
+----------
+
+No changes since 4.0.2.
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Added**
+
+- Add full-message transformer to Enterprise Output Framework.
+
+
 Graylog Enterprise 4.0.2
 ========================
 
@@ -79,6 +97,14 @@ Enterprise Integrations Plugin
 **Added**
 
 - Script event notification plugin to replace the legacy script alarm callback plugin.
+
+
+Graylog Enterprise 3.3.11
+=========================
+
+Released: 2021-02-16
+
+No changes since 3.3.10.
 
 
 Graylog Enterprise 3.3.10
