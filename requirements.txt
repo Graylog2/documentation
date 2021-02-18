@@ -17,9 +17,7 @@ pathtools==0.1.2
 port-for==0.3.1
 Pygments==2.8.0
 pyparsing==2.4.7
-pytz==2021.1
-PyYAML==5.3.1
-requests==2.25.1
+PyYAML==5.4.1
 singledispatch==3.4.0.3
 six==1.15.0
 snowballstemmer==2.0.0
