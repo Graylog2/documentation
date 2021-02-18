@@ -82,7 +82,7 @@ Graylog
 Now install the Graylog repository configuration and Graylog itself with the following commands::
 
   $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-4.0-repository_latest.rpm
-  $ sudo yum update && sudo yum install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins
+  $ sudo yum install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins
 
 .. hint:: If you do not want the :ref:`Integrations Plugins <integrations_plugins>` or the :ref:`Enterprise Plugins <enterprise_features>` installed, then simply run ``sudo yum install graylog-server``
 
@@ -124,7 +124,7 @@ If you're using SELinux on your system, you need to take care of the following s
     - Elasticsearch (only if the HTTP API is being used): ``sudo semanage port -a -t http_port_t -p tcp 9200``
 - Allow using MongoDB's default port (27017/tcp): ``sudo semanage port -a -t mongod_port_t -p tcp 27017``
 
-If you run a single server environment with :ref:`NGINX or Apache proxy <configuring_webif_nginx>`, enabling the Graylog REST API is enough. All other rules are only required in a multi-node setup. 
+If you run a single server environment with :ref:`NGINX or Apache proxy <configuring_webif_nginx>`, enabling the Graylog REST API is enough. All other rules are only required in a multi-node setup.
 Having SELinux disabled during installation and enabling it later, requires you to manually check the policies for MongoDB, Elasticsearch and Graylog.
 
 .. hint:: Depending on your actual setup and configuration, you might need to add more SELinux rules to get to a running setup.
@@ -145,4 +145,3 @@ Multiple Server Setup
 ---------------------
 
 If you plan to have multiple server taking care of different roles in your cluster :ref:`like we have in this big production setup <big_production_setup>` you need to modify only a few settings. This is covered in our :ref:`Multi-node Setup guide<configure_multinode>`. The :ref:`default file location guide <default_file_location>` will give you the file you need to modify in your setup.
-

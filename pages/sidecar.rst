@@ -70,7 +70,7 @@ CentOS
 Install the Graylog Sidecar repository configuration and Graylog Sidecar itself with the following commands::
 
     $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-sidecar-repository-1-2.noarch.rpm
-    $ sudo yum update && sudo yum install graylog-sidecar
+    $ sudo yum install graylog-sidecar
 
 
 Edit the configuration (see :ref:`Configuration <sidecar-configuration>`) and
