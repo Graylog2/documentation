@@ -28,7 +28,7 @@ Graylog version  Elasticsearch version
 2.3.x-2.4.x      2.4.x, 5.6.x
 2.5.x            2.4.x, 5.6.x, 6.8.x
 3.0-3.3          5.6.x, 6.8.x
-4.0            	 6.8.x, 7.7.x - 7.10.x
+4.0.x          	 6.8.x, 7.7.x-7.10.x
 ===============  =====================
 
 .. note:: Graylog works fine with the `Amazon Elasticsearch Service <https://aws.amazon.com/elasticsearch-service/>`_ using Elasticsearch 6 or 7.
