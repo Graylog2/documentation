@@ -23,7 +23,7 @@ Changes to the Elasticsearch Support
 Starting with Graylog v4.0, bigger changes to the Elasticsearch versions supported are happening:
 
   - Support for Elasticsearch versions prior to v6.8.0 is dropped.
-  - Support for Elasticsearch v7.x is now included.
+  - Support for Elasticsearch v7.6 up to 7.10 is now included.
 
 This means that you can upgrade to Graylog v4.0 without an Elasticsearch update only if you have been on at least Elasticsearch v6.8.0 before.
 Additionally, due to the fact that Elasticsearch supports only indices created by the last two major versions (i.e. ES6.8.0+ reads indices created by ES5 & ES6, while ES7 reads indices created by ES6 & ES7), you can change to Graylog v4.0 with an Elasticsearch update without reindexing only if you have been on at least Elasticsearch v6.0.0 before.
