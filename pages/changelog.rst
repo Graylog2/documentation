@@ -5,6 +5,27 @@ Changelog
 Graylog 4.0.3
 =============
 
+Released: 2021-02-22
+
+Core
+^^^^
+
+**Fixed**
+
+- Provide a timeout for request when optimizing index in ES7 `Graylog2/graylog2-server#10098 <https://github.com/Graylog2/graylog2-server/pull/10098>`_
+
+Integrations Plugin
+^^^^^^^^^^^^^^^^^^^
+
+**Fixed**
+
+- Refactor PaloAltoTypeParser to improve performance `Graylog2/graylog-plugin-integrations#737 <https://github.com/Graylog2/graylog-plugin-integrations/pull/737>`_
+
+
+
+Graylog 4.0.3
+=============
+
 Released: 2021-02-16
 
 Core
