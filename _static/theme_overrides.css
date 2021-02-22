@@ -3,8 +3,8 @@
 	max-width: 1000px !important;
 }
 
-/* override sidebar header background */
-.wy-side-nav-search {
+/* override sidebar header and mobile nav background */
+.wy-side-nav-search, .wy-nav-top {
 	background-color: #1F1F1F;
 }
 
