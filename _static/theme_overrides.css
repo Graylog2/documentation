@@ -12,3 +12,9 @@
 .wy-side-nav-search > a img.logo {
 	height: 40px;
 }
+
+/* hide header text, html_theme_options logo_only has no effect on the production system */
+.wy-side-nav-search > .icon-home {
+	font-size: 0;
+	margin-bottom: 10px;
+}
