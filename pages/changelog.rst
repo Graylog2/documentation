@@ -12,7 +12,10 @@ Core
 
 **Fixed**
 
+- Fixing counting of messages in index for ES7 `Graylog2/graylog2-server#10094 <https://github.com/Graylog2/graylog2-server/pull/10094>`_
 - Provide a timeout for request when optimizing index in ES7 `Graylog2/graylog2-server#10098 <https://github.com/Graylog2/graylog2-server/pull/10098>`_
+- Add missing GRN type for outputs `Graylog2/graylog2-server#10108 <https://github.com/Graylog2/graylog2-server/pull/10108>`_
+
 
 Integrations Plugin
 ^^^^^^^^^^^^^^^^^^^
