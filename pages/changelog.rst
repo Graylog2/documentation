@@ -2,7 +2,7 @@
 Changelog
 *********
 
-Graylog 4.0.3
+Graylog 4.0.4
 =============
 
 Released: 2021-02-22
