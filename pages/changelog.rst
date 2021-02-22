@@ -2,6 +2,20 @@
 Changelog
 *********
 
+Graylog 4.0.5
+=============
+
+Released: 2021-02-22
+
+Core
+^^^^
+
+**Fixed**
+
+- Prevent NullPointerException in index optimization job `Graylog2/graylog2-server#10119 <https://github.com/Graylog2/graylog2-server/pull/10119>`_
+
+
+
 Graylog 4.0.4
 =============
 
