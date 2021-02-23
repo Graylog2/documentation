@@ -26,7 +26,7 @@ If you want to checkout Graylog on your local desktop without any further custom
       -e "http.host=0.0.0.0" \
       -e "discovery.type=single-node" \
       -e "ES_JAVA_OPTS=-Xms512m -Xmx512m" \
-      -d docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
+      -d docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
   $ docker run --name graylog --link mongo --link elasticsearch \
       -p 9000:9000 -p 12201:12201 -p 1514:1514 \
       -e GRAYLOG_HTTP_EXTERNAL_URI="http://127.0.0.1:9000/" \
@@ -107,9 +107,9 @@ Example Version 2::
     # MongoDB: https://hub.docker.com/_/mongo/
     mongodb:
       image: mongo:4.2
-    # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html
+    # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/7.10/docker.html
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
       environment:
         - http.host=0.0.0.0
         - transport.host=localhost
@@ -158,9 +158,9 @@ Example Version 3::
       image: mongo:4.2
       networks:
         - graylog
-    # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html
+    # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/7.10/docker.html
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
       environment:
         - http.host=0.0.0.0
         - transport.host=localhost
@@ -215,7 +215,7 @@ After starting all three Docker containers by running ``docker-compose up``, you
 Configuration
 =============
 
-Every configuration option can be set via `environment variables <https://github.com/Graylog2/graylog2-server/blob/3.3/misc/graylog.conf>`__.
+Every configuration option can be set via `environment variables <https://github.com/Graylog2/graylog2-server/blob/4.0/misc/graylog.conf>`__.
 Simply prefix the parameter name with ``GRAYLOG_`` and put it all in upper case.
 
 For example, setting up the SMTP configuration for sending Graylog alert notifications via email, the ``docker-compose.yml`` would look like this::
@@ -226,7 +226,7 @@ For example, setting up the SMTP configuration for sending Graylog alert notific
       image: "mongo:4.2"
       # Other settings [...]
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
       # Other settings [...]
     graylog:
       image: graylog/graylog:4.0
@@ -342,9 +342,9 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
       image: mongo:4.2
       volumes:
         - mongo_data:/data/db
-    # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html
+    # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/7.10/docker.html
     elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
       volumes:
         - es_data:/usr/share/elasticsearch/data
       environment:
@@ -407,8 +407,8 @@ If you want to add plugins, you can put them into a local directory and mount th
 Simply create a ``plugin`` folder, download the plugin(s) you want to install into it and mount the directory as a volume into the docker container::
 
     $ mkdir plugin
-    $ wget https://downloads.graylog.org/releases/graylog-integrations/graylog-integrations-plugins-4.0.2.tgz
-    $ tar -xvzf graylog-integrations-plugins-4.0.2.tgz graylog-integrations-plugins-4.0.2/plugin/graylog-plugin-integrations-4.0.2.jar --directory plugin
+    $ wget https://downloads.graylog.org/releases/graylog-integrations/graylog-integrations-plugins-4.0.3.tgz
+    $ tar -xvzf graylog-integrations-plugins-4.0.3.tgz graylog-integrations-plugins-4.0.3/plugin/graylog-plugin-integrations-4.0.3.jar --directory plugin
     $ docker run --name graylog --link mongo --link elasticsearch \
         -p 9000:9000 -p 12201:12201 -p 1514:1514 \
         -e GRAYLOG_HTTP_EXTERNAL_URI="http://127.0.0.1:9000/" \
@@ -424,7 +424,7 @@ The ``docker-compose.yml`` would look like this::
         image: mongo:4.2
         # Other settings [...]
       elasticsearch:
-        image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
+        image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
         # Other settings [...]
       graylog:
         image: graylog/graylog:4.0
