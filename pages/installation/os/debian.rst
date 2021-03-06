@@ -60,7 +60,7 @@ After you have modified the configuration, you can start Elasticsearch and verif
     $ sudo systemctl daemon-reload
     $ sudo systemctl enable elasticsearch.service
     $ sudo systemctl restart elasticsearch.service
-    $ sudo systemctl restart elasticsearch.service
+    $ sudo systemctl --type=service --state=active | grep elasticsearch
 
 
 Graylog
