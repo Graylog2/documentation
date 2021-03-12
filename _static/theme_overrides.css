@@ -3,7 +3,18 @@
 	max-width: 1000px !important;
 }
 
+/* override sidebar header and mobile nav background */
+.wy-side-nav-search, .wy-nav-top {
+	background-color: #1F1F1F;
+}
+
 /* override logo height */
 .wy-side-nav-search > a img.logo {
 	height: 40px;
+}
+
+/* hide header text, html_theme_options logo_only has no effect on the production system */
+.wy-side-nav-search > .icon-home {
+	font-size: 0;
+	margin-bottom: 10px;
 }
