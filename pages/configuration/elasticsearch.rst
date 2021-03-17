@@ -96,7 +96,7 @@ The following configuration options are now being used to configure connectivity
 | ``elasticsearch_mute_deprecation_warnings``        | boolean   | Enable muting of deprecation warnings for deprecated         | ``false``                   |
 |                                                    |           | configuration settings in Elasticsearch. These warnings are  |                             |
 |                                                    |           | attached as "Warnings" in HTTP-Response headers and might    |                             |
-|                                                    |           | clutter up the logs.                                         |                             |
+|                                                    |           | clutter up the logs. Works only with ES7                     |                             |
 +----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
 
 .. _version_auto_sensing:
