@@ -93,6 +93,11 @@ The following configuration options are now being used to configure connectivity
 |                                                    |           | specified, the version will be auto-sensed from the          |                             |
 |                                                    |           | configured nodes. Will disable auto-sensing if specified.    | Values: ``6`` / ``7``       |
 +----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
+| ``elasticsearch_mute_deprecation_warnings``        | boolean   | Enable muting of deprecation warnings for deprecated         | ``false``                   |
+|                                                    |           | configuration settings in Elasticsearch. These warnings are  |                             |
+|                                                    |           | attached as "Warnings" in HTTP-Response headers and might    |                             |
+|                                                    |           | clutter up the logs.                                         |                             |
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
 
 .. _version_auto_sensing:
 
