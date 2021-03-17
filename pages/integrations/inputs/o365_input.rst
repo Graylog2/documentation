@@ -93,6 +93,8 @@ O365 Content Subscription
 - ``Polling Interval``
    - This determines how often (in minutes) the Input will check for new log data
    - This value cannot be less than 1 (checking every minute)
+- ``Drop DLP logs containing sensitive data``
+   - For each DLP event, O365 produces a summary log with no sensitive data and a detailed log with sensitive data.  When set, this option will cause the detailed logs to be dropped to prevent sensitive data from being stored in Graylog.  This option is only available since Graylog version 4.0.6.
 - ``Enable Throttling``
    - If selected, this will enable Graylog to stop reading new data for this Input if the system gets behind on message processing and needs to catch up
 - ``Store Full Message``
