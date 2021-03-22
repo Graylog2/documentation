@@ -22,6 +22,8 @@ The repositories can be set up by installing a single package. Once that's done,
 Prerequisites
 -------------
 
+.. warning:: We caution you not to upgrade Elasticsearch to 7.11! You are absolutely forbidden to upgrade to this version. If you do so, it will break your instance.
+
 Make sure to install and configure the following software before installing and starting any Graylog services:
 
 * Java ( >= 8 )
