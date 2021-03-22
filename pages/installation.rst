@@ -33,6 +33,8 @@ This chapter is explaining the many ways to install Graylog and aims to help cho
 System requirements
 ===================
 
+.. warning:: We recommend that you avoid Elasticsearch 7.11; it will cause your instance to break. 
+
 The Graylog server application has the following prerequisites:
 
 * Some modern Linux distribution (Debian Linux, Ubuntu Linux, or CentOS recommended)
