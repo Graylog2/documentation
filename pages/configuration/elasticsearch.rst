@@ -14,7 +14,7 @@ Elasticsearch versions
 
 Starting with version 2.3, Graylog uses the HTTP protocol to connect to your Elasticsearch cluster, so it does not have a hard requirement for the Elasticsearch version anymore. We can safely assume that any version starting from 2.x is working.
 
-.. warning:: We caution you not to upgrade Elasticsearch to 7.11! Do not do it in any case. If you do so, it will break your instance.
+.. warning:: We caution you not to upgrade Elasticsearch to 7.11! You are absolutely forbidden to upgrade to this version. If you do so, it will break your instance.
 
 ===============  =====================
 Graylog version  Elasticsearch version
