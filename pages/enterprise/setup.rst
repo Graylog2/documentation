@@ -16,6 +16,8 @@ If you're already running an open source instance, you can :ref:`install these p
 Requirements
 ============
 
+.. warning:: We caution you not to upgrade Elasticsearch to 7.11! Do not do it in any case. If you do so, it will break your instance!
+
 Graylog Enterprise has the following prerequisites:
 
 * Some modern Linux distribution (Debian Linux, Ubuntu Linux, or CentOS recommended)
