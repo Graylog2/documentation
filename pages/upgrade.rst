@@ -37,7 +37,7 @@ For .rpm based systems :ref:`this update guide <operating_package_upgrade_rpm-yu
 Upgrading Elasticsearch
 -----------------------
 
-.. warning:: We caution you not to upgrade Elasticsearch to 7.11! You are absolutely forbidden to upgrade to this version. If you do so, it will break your instance.ß
+.. warning:: We caution you not to upgrade Elasticsearch to 7.11! You are absolutely forbidden to upgrade to this version. If you do so, it will break your instance!
 
 Since Graylog 2.3 Elasticsearch 5.x is supported. This Graylog version supports Elasticsearch 2.x and 5.x. It is recommended to update Elasticsearch 2.x to the latest stable 5.x version, after you have Graylog 2.3 or later running. This Elasticsearch upgrade does not need to be made during the Graylog update. 
 
