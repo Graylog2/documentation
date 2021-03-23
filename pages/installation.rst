@@ -33,7 +33,7 @@ This chapter is explaining the many ways to install Graylog and aims to help cho
 System requirements
 ===================
 
-.. warning:: We forbid you to upgrade Elasticsearch to 7.11! If you do so, it will break your instance!
+.. warning:: We caution you not to install or upgrade Elasticsearch to 7.11 and later! It is not supported. If you do so, it will break your instance!
 
 The Graylog server application has the following prerequisites:
 
