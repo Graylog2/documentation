@@ -213,7 +213,7 @@ sidecar.yml Reference
 +-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
 | log_rotate_keep_files               | The maximum number of old log files to retain.                                                                      |
 +-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
-| collector_binaries_whitelist        | A list of binaries which are allowed to be executed by the Sidecar. |br|                                            |
+| collector_binaries_accesslist       | A list of binaries which are allowed to be executed by the Sidecar. |br|                                            |
 |                                     | An empty list disables the white list feature. |br| Default:                                                        |
 |                                     | ``/usr/bin/filebeat, /usr/bin/packetbeat, /usr/bin/metricbeat, /usr/bin/heartbeat,`` |br|                           |
 |                                     | ``/usr/bin/auditbeat, /usr/bin/journalbeat, /usr/share/filebeat/bin/filebeat,`` |br|                                |
@@ -360,7 +360,7 @@ Let's assume you want your sidecar to run `rsyslogd(8)` for you.
   for it and assign it to a Sidecar. Please follow the :ref:`sidecar_step-by-step` accordingly.
 
 - **Note**: Your Sidecar might refuse to start your collector, because it needs
-  to be added to the ``collector_binaries_whitelist`` first. Please edit your
+  to be added to the ``collector_binaries_accesslist`` first. Please edit your
   :ref:`Configuration <sidecar-configuration>` and restart your Sidecar.
 
 Using Configuration Variables
