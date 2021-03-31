@@ -224,4 +224,4 @@ You'll also need to mount the certificate file as a volume. Here is an example c
 
     .. code-block:: bash
 
-    $ docker run -e GRAYLOG_FORWARDER_SERVER_HOSTNAME=ingest.<SERVER NAME> -e GRAYLOG_FORWARDER_GRPC_API_TOKEN=<INSERT_API_TOKEN_HERE> -v /path/to/cert/cert.pem:/etc/graylog/forwarder/cert.pem graylog/graylog-forwarder:<release-version>
+        $ docker run -e GRAYLOG_FORWARDER_SERVER_HOSTNAME=ingest.<SERVER NAME> -e GRAYLOG_FORWARDER_GRPC_API_TOKEN=<INSERT_API_TOKEN_HERE> -v /path/to/cert/cert.pem:/etc/graylog/forwarder/cert.pem graylog/graylog-forwarder:<release-version>
