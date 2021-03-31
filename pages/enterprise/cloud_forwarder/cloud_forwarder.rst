@@ -153,6 +153,7 @@ Install via DEB
 ===============
 
 #. Download the DEB package:
+
 .. code-block:: bash
 
 $ sudo apt-get install apt-transport-https
