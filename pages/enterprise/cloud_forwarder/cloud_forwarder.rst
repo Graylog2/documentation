@@ -164,16 +164,19 @@ Install via DEB
 #. Install the package:
     
     .. code-block:: bash
+        
         $ sudo apt-get install graylog-forwarder
 
 #. Create the certificate and update the config file:
     
     .. code-block:: bash
+        
         $ sudo vi /etc/graylog/forwarder/forwarder.conf
         
 #. Start the service:
     
     .. code-block:: bash
+        
         $ sudo systemctl start graylog-forwarder.service
 
 RPM Install Instructions
