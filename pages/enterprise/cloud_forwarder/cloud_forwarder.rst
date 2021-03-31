@@ -154,6 +154,7 @@ Install via DEB
 
 #. Download the DEB package:
 .. code-block:: bash
+
 $ sudo apt-get install apt-transport-https
 $ wget https://packages.graylog2.org/repo/packages/graylog-4.0-repository_latest.deb
 $ sudo dpkg -i graylog-4.0-repository_latest.deb
