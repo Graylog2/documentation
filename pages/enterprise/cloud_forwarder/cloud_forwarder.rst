@@ -160,13 +160,18 @@ Install via DEB
         $ wget https://packages.graylog2.org/repo/packages/graylog-4.0-repository_latest.deb
         $ sudo dpkg -i graylog-4.0-repository_latest.deb
         $ sudo apt-get update
+        
 #. Install the package:
-.. code-block:: bash
-$ sudo apt-get install graylog-forwarder
-Create the certificate and update the config file:
-sudo vi /etc/graylog/forwarder/forwarder.conf
-Start the service:
-sudo systemctl start graylog-forwarder.service
+    .. code-block:: bash
+        $ sudo apt-get install graylog-forwarder
+
+#. Create the certificate and update the config file:
+    .. code-block:: bash
+        $ sudo vi /etc/graylog/forwarder/forwarder.conf
+        
+#. Start the service:
+    .. code-block:: bash
+        $ sudo systemctl start graylog-forwarder.service
 
 RPM Install Instructions
 ========================
