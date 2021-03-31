@@ -354,14 +354,50 @@ To start this process:
               -v /tmp/prometheus.yml:/etc/prometheus/prometheus.yml \
               prom/prometheus
         
-
+*****************
 Resiliency Models
-        When you think about scaling your deployment -- that is, add more Forwarders -- you must incorporate tools, procedures, and policies that let you continue operating in the case of a major outage – widespread, long-lasting, destructive, or all three. If all the above pose a threat to your Forwarder consider both message recovery and load balancing. 
-        Message Recovery
-        The Cloud Forwarder’s disk journal is capable of caching data in case of a network outage. From there, they are read and sent to Graylog Cloud. 
+*****************
         
-        As mentioned in the Output Framework chapter, if the internet is unavailable, the Forwarder is still capable of receiving messages. So, once the internet is back the workflow will resume. Messages from the journal are sent to Graylog Cloud.
-        Load Balancing Options
-        A larger deployment means more throughput i.e., requests passing through your systems. So, in a more mature, multi-Forwarder scenario we recommend you configure a load balancer to evenly distribute data transfer. This helps your deployment manage bulk requests and potential latency issues while ensuring resiliency.
+When you think about scaling your deployment -- that is, add more Forwarders -- you must incorporate tools, procedures, 
+and policies that let you continue operating in the case of a major outage – widespread, long-lasting, destructive, or 
+all three. If all the above pose a threat to your Forwarder consider both message recovery and load balancing. 
         
-        More to the point, the load balancer distributes requests among healthy nodes in your local and/or external data centers. In our help docs, you can test and configure tools such as Apache HTTP server, Nginx, or HAProxy to handle requests among multiple Cloud Forwarders.
+Message Recovery
+================
+        
+The Cloud Forwarder’s disk journal is capable of caching data in case of a network outage. From there, they are read 
+and sent to Graylog Cloud. 
+        
+As mentioned in the `Output Framework chapter <https://docs.graylog.org/en/4.0/pages/integrations/output_framework.html?highlight=Journal#on-disk-journal>`__, if the internet is unavailable, 
+the Forwarder is still capable of receiving messages. So, once the internet is back the workflow will resume. 
+Messages from the journal are sent to Graylog Cloud.
+        
+Load Balancing Options
+======================
+
+A larger deployment means more throughput i.e., requests passing through your systems. So, in a more mature, 
+multi-Forwarder scenario we recommend you configure a load balancer to evenly distribute data transfer. This helps 
+your deployment manage bulk requests and potential latency issues while ensuring resiliency.
+        
+More to the point, the load balancer distributes requests among healthy nodes in your local and/or external data 
+centers. In our help docs, you can test and configure tools such as Apache HTTP server, Nginx, or HAProxy to handle 
+requests among multiple Cloud Forwarders.
+
+*************************
+Distinguishing Forwarders
+*************************
+
++-----------------------------+----------------------------------------+-------------------------------------------------+
+| Type                        | Purpose                                | Details                                         |
++=============================+========================================+=================================================+
+|                             | The Data Forwarder allows you          | This Forwarder has an open-source instance      |
+| Enterprise Data Forwarder   | to configure an Output to forward      | However, it is only available within            |
+|                             | messages from a source to a            | the Enterprise Integrations plugin.             |
+|                             | destination cluster.                   |                                                 |
+|                             |                                        |                                                 |
++-----------------------------+----------------------------------------+-------------------------------------------------| 
+|                             | The Cloud Forwarder allows you         | Your input profile can host multiple Forwarders.|
+|                             | cloud instance, via input profiles     |                                                 |
+|                             |                                        |                                                 |
+|                             |                                        |                                                 |
++-----------------------------+----------------------------------------+-------------------------------------------------+
