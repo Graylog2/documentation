@@ -264,7 +264,7 @@ Health Status Endpoint
 
 To check the health of your Forwarder, query the endpoint ``GET /api/health``:
 
-    ..code-block:: json
+    .. code-block:: json
 
         {
             "healthy": true,
