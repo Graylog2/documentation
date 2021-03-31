@@ -225,3 +225,140 @@ You'll also need to mount the certificate file as a volume. Here is an example c
     .. code-block:: bash
 
         $ docker run -e GRAYLOG_FORWARDER_SERVER_HOSTNAME=ingest.<SERVER NAME> -e GRAYLOG_FORWARDER_GRPC_API_TOKEN=<INSERT_API_TOKEN_HERE> -v /path/to/cert/cert.pem:/etc/graylog/forwarder/cert.pem graylog/graylog-forwarder:<release-version>
+
+****************************************
+Monitoring Forwarder Activity and Health
+****************************************
+
+After you connect your Forwarder to Graylog Cloud, get to know methods to access metrics and other information 
+on your Forwarder(s) and corresponding input(s). Here are a few methods to analyze and extract details on Forwarder 
+activity:
+
+* review active Forwarder(s) in the UI
+* call REST endpoints to consume information on health and list of inputs
+* export Forwarder metrics from Prometheus, a third-party monitoring tool
+        
+Forwarder Overview
+==================
+        
+One place to review Cloud Forwarder connectivity is the *Forwarders* screen, under the *Systems* menu. 
+This page provides a summary of all Forwarders. Identify the green Connected badge on the Status column. 
+This tells you that a Forwarder is actively sending messages to your cloud instance. Another key indicator 
+is found on the Metrics column. The cells that show active message rates, again, prove your Cloud Forwarders works. 
+
+REST API
+========
+
+The Forwarder supports a local REST API for checking health status, inputs, and exporting Prometheus metrics. 
+To enable the Forwarder API:
+
+* Open your ``forwarder.conf`` file
+* Add the ``forwarder_api_enabled = true`` configuration option. 
+
+When enabled, the API will listen on a Unix Domain Socket using the file indicated with ``forwarder_api_socket_path``
+unless you provide a value for ``forwarder_api_tcp_bind_address``. For example, you can run a curl command to access
+the endpoint. If you need a refresher on how to use Unix sockets, `review this guide <https://superuser.com/a/925610>`__.
+        
+Health Status Endpoint
+----------------------
+
+To check the health of your Forwarder, query the endpoint ``GET /api/health``.
+```
+{
+    "healthy": true,
+    "inputs": {
+        "healthy": true,
+        "running": 2,
+        "failed": 0,
+        "not running": 0
+          },
+    "upstream": {
+        "healthy": true
+    }
+}
+```        
+
+Input Endpoint
+--------------
+
+To obtain a list of Inputs running on the Forwarder, query the GET /api/inputs endpoint.
+```
+{
+    "inputs": [
+        {
+        "id": "5fc91564d44bfd2000249e8c",
+        "title": "Random"
+        },
+        {
+        "id": "5fc91550d44bfd2000249e74",
+        "title": "Beats"
+        }
+    ]
+}
+```     
+
+Drill down to the input profile and view the Forwarder sub-menu to ensure it receives messages. If data still doesn’t 
+come through, create a new input. Click the name of your input which takes you to its main profile with the details 
+you added at initial configuration.
+        
+        
+If an input is in a failed state, the input endpoint returns no information on ``id`` nor ``title``. 
+        
+Additionally, you can get deeper insights into Forwarder messaging and node health. Click the Details button on your 
+node, to get information about your message cache (buffers). One metric to pay attention to is the number of messages 
+in the journal. The journal is the on-disk persistent storage location that stores Forwarder messages. So, if the rest 
+of Graylog malfunctions, we can still keep all the messages we still have a place to put them.
+        
+Prometheus Metrics Exports
+--------------------------
+
+The Forwarder, alone, has no interface for insight into the internal operations. To that end, you must configure a 
+local Prometheus container; this becomes the interface for Forwarder metrics. These are similar to the traditional 
+Graylog Server metrics but instead are exported to Prometheus. The response format is the standard Prometheus HTTP 
+export format.
+        
+To start this process:
+
+#. Download and start `Prometheus <https://prometheus.io/docs/prometheus/latest/getting_started/#downloading-and-running-prometheus>`__.
+#. Install `Docker <https://docs.docker.com/get-docker/>`__ on your machine.
+#. Create a Prometheus Dockerfile, e.g. ``touch /tmp/prometheus.yml``:
+    
+    .. code-block:: yaml
+        
+        $ global:
+          scrape_interval: 15s
+          scrape_timeout: 10s
+          evaluation_interval: 15s
+        alerting:
+          alertmanagers:
+          - static_configs:
+            - targets: []
+            scheme: http
+            timeout: 10s
+            api_version: v1
+        scrape_configs:
+        - job_name: prometheus
+          honor_timestamps: true
+          scrape_interval: 15s
+          scrape_timeout: 10s
+          metrics_path: /api/metrics/prometheus
+          scheme: http
+          static_configs:
+          - targets:
+            - host.docker.internal:9001
+        Run this Docker command to start the container:
+            docker run \
+              -p 9090:9090 \
+              -v /tmp/prometheus.yml:/etc/prometheus/prometheus.yml \
+              prom/prometheus
+        
+        Resiliency Models
+        When you think about scaling your deployment -- that is, add more Forwarders -- you must incorporate tools, procedures, and policies that let you continue operating in the case of a major outage – widespread, long-lasting, destructive, or all three. If all the above pose a threat to your Forwarder consider both message recovery and load balancing. 
+        Message Recovery
+        The Cloud Forwarder’s disk journal is capable of caching data in case of a network outage. From there, they are read and sent to Graylog Cloud. 
+        
+        As mentioned in the Output Framework chapter, if the internet is unavailable, the Forwarder is still capable of receiving messages. So, once the internet is back the workflow will resume. Messages from the journal are sent to Graylog Cloud.
+        Load Balancing Options
+        A larger deployment means more throughput i.e., requests passing through your systems. So, in a more mature, multi-Forwarder scenario we recommend you configure a load balancer to evenly distribute data transfer. This helps your deployment manage bulk requests and potential latency issues while ensuring resiliency.
+        
+        More to the point, the load balancer distributes requests among healthy nodes in your local and/or external data centers. In our help docs, you can test and configure tools such as Apache HTTP server, Nginx, or HAProxy to handle requests among multiple Cloud Forwarders.
