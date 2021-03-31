@@ -9,6 +9,8 @@ The Graylog Cloud Forwarder is the solution to get your data into Graylog Cloud.
 a connection so one or more Forwarders can send messages. Since it’s hosted in the cloud you can run the Forwarder 
 anywhere. In addition, your data has improved uptime and reliability.
 
+.. image:: /images/forwarder_diagram.png
+
 The Cloud Forwarder is not a one-and-done migration tool. In fact, it’s an integral part of your cloud architecture. 
 Your Forwarder must run 24-7 in your environment in order to get data in the cloud.
 
@@ -397,7 +399,7 @@ Distinguishing Forwarders
 |                             |                                        |                                                 |
 +-----------------------------+----------------------------------------+-------------------------------------------------| 
 |                             | The Cloud Forwarder allows you         | Your input profile can host multiple Forwarders.|
-| Enterprise Cloud Forwarder  | cloud instance, via input profiles     |                                                 |
+| Enterprise Cloud Forwarder  | cloud instance, via input profiles.    |                                                 |
 |                             |                                        |                                                 |
 |                             |                                        |                                                 |
 +-----------------------------+----------------------------------------+-------------------------------------------------+
