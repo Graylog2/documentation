@@ -263,6 +263,7 @@ Health Status Endpoint
 ----------------------
 
 To check the health of your Forwarder, query the endpoint ``GET /api/health``.
+
 ```
 {
     "healthy": true,
@@ -282,6 +283,7 @@ Input Endpoint
 --------------
 
 To obtain a list of Inputs running on the Forwarder, query the GET /api/inputs endpoint.
+
 ```
 {
     "inputs": [
@@ -352,7 +354,8 @@ To start this process:
               -v /tmp/prometheus.yml:/etc/prometheus/prometheus.yml \
               prom/prometheus
         
-        Resiliency Models
+
+Resiliency Models
         When you think about scaling your deployment -- that is, add more Forwarders -- you must incorporate tools, procedures, and policies that let you continue operating in the case of a major outage – widespread, long-lasting, destructive, or all three. If all the above pose a threat to your Forwarder consider both message recovery and load balancing. 
         Message Recovery
         The Cloud Forwarder’s disk journal is capable of caching data in case of a network outage. From there, they are read and sent to Graylog Cloud. 
