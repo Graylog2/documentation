@@ -47,8 +47,7 @@ File
 On the client-side of your Forwarder, modify the configuration file to address your Graylog host and authentication. 
 The default values for ``forwarder.conf`` are:
 
-* ``forwarder_server_hostname``: (required) The Graylog Cloud Forwarder ingest hostname (eg. ``ingest-<your-account>.graylog.cloud``).
-It’s found on the Forwarder Setup Wizard in Graylog Cloud.
+* ``forwarder_server_hostname``: (required) The Graylog Cloud Forwarder ingest hostname (eg. ``ingest-<your-account>.graylog.cloud``). It’s found on the Forwarder Setup Wizard in Graylog Cloud.
 * ``forwarder_grpc_api_token``: (required) The API Token for authenticating the Forwarder.
 
 Here’s an example of the configuration file, with the following values:
