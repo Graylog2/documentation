@@ -286,18 +286,18 @@ To obtain a list of Inputs running on the Forwarder, query the GET /api/inputs e
 
     .. code-block:: json
 
-    {
-    "inputs": [
         {
-        "id": "5fc91564d44bfd2000249e8c",
-        "title": "Random"
-        },
-        {
-        "id": "5fc91550d44bfd2000249e74",
-        "title": "Beats"
-        }
-    ]
-}   
+            "inputs": [
+                {
+                    "id": "5fc91564d44bfd2000249e8c",
+                    "title": "Random"
+                },
+                {
+                    "id": "5fc91550d44bfd2000249e74",
+                    "title": "Beats"
+                }
+            ]
+        }   
 
 Drill down to the input profile and view the Forwarder sub-menu to ensure it receives messages. If data still doesn’t 
 come through, create a new input. Click the name of your input which takes you to its main profile with the details 
