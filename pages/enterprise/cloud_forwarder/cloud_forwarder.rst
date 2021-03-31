@@ -64,6 +64,8 @@ Wizard
 
 When you login to the Cloud instance, you’ll walk through a guided process to configure your Forwarder.
 
+.. image:: /images/forwarder_intro_wizard.png
+
 Complete the wizard by following the sections below:
 
 #. Go to the Graylog user interface to select *Forwarders*, found in the *System* menu.
@@ -82,11 +84,15 @@ Create API Token
 We recommend using a single API token for each Forwarder, ensuring that you can revoke tokens for 
 individual Forwarders no longer used.
 
+.. image:: /images/forwarder_api_token.png
+
 #. Enter your *Token Name* in the available field.
 #. Create the new name by clicking the *Create Token* button.
 
 Configure Forwarder (Accordion/Wizard Menu)
 -------------------------------------------
+
+.. image:: /images/forwarder_config.png
 
 #. Open your text editor of choice to access your ``forwarder.conf`` file
 #. Click *Copy as configuration snippet* to copy the configuration details displayed to your ``forwarder.conf``
@@ -107,6 +113,8 @@ Select Forwarder
 ----------------
 
 Once the Forwarder makes a connection to Graylog Cloud, see it listed among your routers. 
+
+.. image:: /images/forwarder_select.png
 
 #. Click the radio button to select the new Forwarder you just created. 
 #. Click *Configure selected Forwarder* to navigate to the next menu: *Configure Forwarder*.
@@ -242,6 +250,8 @@ activity:
         
 Forwarder Overview
 ==================
+
+.. image:: /images/forwarders_list.png
         
 One place to review Cloud Forwarder connectivity is the *Forwarders* screen, under the *Systems* menu. 
 This page provides a summary of all Forwarders. Identify the green Connected badge on the Status column. 
