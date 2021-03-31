@@ -262,10 +262,11 @@ the endpoint. If you need a refresher on how to use Unix sockets, `review this g
 Health Status Endpoint
 ----------------------
 
-To check the health of your Forwarder, query the endpoint ``GET /api/health``.
+To check the health of your Forwarder, query the endpoint ``GET /api/health``:
 
-```
-{
+    ..code-block:: json
+
+    {
     "healthy": true,
     "inputs": {
         "healthy": true,
@@ -277,15 +278,15 @@ To check the health of your Forwarder, query the endpoint ``GET /api/health``.
         "healthy": true
     }
 }
-```        
 
 Input Endpoint
 --------------
 
 To obtain a list of Inputs running on the Forwarder, query the GET /api/inputs endpoint.
 
-```
-{
+    .. code-block:: json
+
+    {
     "inputs": [
         {
         "id": "5fc91564d44bfd2000249e8c",
@@ -296,8 +297,7 @@ To obtain a list of Inputs running on the Forwarder, query the GET /api/inputs e
         "title": "Beats"
         }
     ]
-}
-```     
+}   
 
 Drill down to the input profile and view the Forwarder sub-menu to ensure it receives messages. If data still doesn’t 
 come through, create a new input. Click the name of your input which takes you to its main profile with the details 
