@@ -266,18 +266,18 @@ To check the health of your Forwarder, query the endpoint ``GET /api/health``:
 
     ..code-block:: json
 
-    {
-    "healthy": true,
-    "inputs": {
-        "healthy": true,
-        "running": 2,
-        "failed": 0,
-        "not running": 0
-          },
-    "upstream": {
-        "healthy": true
-    }
-}
+        {
+            "healthy": true,
+            "inputs": {
+                "healthy": true,
+                "running": 2,
+                "failed": 0,
+                "not running": 0
+                },
+            "upstream": {
+            "healthy": true
+            }
+        }
 
 Input Endpoint
 --------------
