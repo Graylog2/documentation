@@ -397,7 +397,7 @@ Distinguishing Forwarders
 |                             |                                        |                                                 |
 +-----------------------------+----------------------------------------+-------------------------------------------------| 
 |                             | The Cloud Forwarder allows you         | Your input profile can host multiple Forwarders.|
-|                             | cloud instance, via input profiles     |                                                 |
+| Enterprise Cloud Forwarder  | cloud instance, via input profiles     |                                                 |
 |                             |                                        |                                                 |
 |                             |                                        |                                                 |
 +-----------------------------+----------------------------------------+-------------------------------------------------+
