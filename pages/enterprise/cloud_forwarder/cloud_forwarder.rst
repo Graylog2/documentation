@@ -198,7 +198,7 @@ RPM Install Instructions
 
         $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-4.0-repository_latest.rpm
 
-#.  Install the ``graylog-forwarder`` package:
+#. Install the ``graylog-forwarder`` package:
 
     .. code-block:: bash
     
