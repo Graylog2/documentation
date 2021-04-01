@@ -7,12 +7,12 @@ Introduction
 ************
 The Graylog Cloud Forwarder is the solution to get your data into Graylog Cloud. Graylog Cloud allows you to set up
 a connection so one or more Forwarders can send messages. Since it’s hosted in the cloud you can run the Forwarder 
-anywhere. In addition, your data has improved uptime and reliability.
+anywhere.
 
 .. image:: /images/forwarder_diagram.png
 
-The Cloud Forwarder is not a one-and-done migration tool. In fact, it’s an integral part of your cloud architecture. 
-Your Forwarder must run 24-7 in your environment in order to get data in the cloud.
+The Cloud Forwarder is not a one-and-done migration tool; therefore, it’s an integral part of your cloud architecture. 
+Your Forwarder must run 24-7 in your environment in order to send data to Graylog Cloud.
 
 ********
 Security
@@ -245,8 +245,8 @@ After you connect your Forwarder to Graylog Cloud, get to know methods to access
 on your Forwarder(s) and corresponding input(s). Here are a few methods to analyze and extract details on Forwarder 
 activity:
 
-* Review active Forwarder(s) in the UI
-* Call REST endpoints to consume information on health and list of inputs
+* Review active Forwarder(s) on your Graylog Cloud instance
+* Call Forwarder REST endpoints to consume information on health and list of inputs
 * Export Forwarder metrics from Prometheus, a third-party monitoring tool
         
 Forwarder Overview
