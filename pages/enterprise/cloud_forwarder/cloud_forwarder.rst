@@ -192,7 +192,7 @@ Install via DEB
 RPM Install Instructions
 ========================
 
-#. Install the Graylog repository configuration.
+#. Install the Graylog repository configuration:
 
     .. code-block:: bash
 
@@ -201,7 +201,7 @@ RPM Install Instructions
 #.  Install the ``graylog-forwarder`` package:
 
     .. code-block:: bash
-
+    
         $ sudo yum install graylog-forwarder
 
 #. Create the certificate and update the configuration file:
