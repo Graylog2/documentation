@@ -243,9 +243,9 @@ After you connect your Forwarder to Graylog Cloud, get to know methods to access
 on your Forwarder(s) and corresponding input(s). Here are a few methods to analyze and extract details on Forwarder 
 activity:
 
-* review active Forwarder(s) in the UI
-* call REST endpoints to consume information on health and list of inputs
-* export Forwarder metrics from Prometheus, a third-party monitoring tool
+* Review active Forwarder(s) in the UI
+* Call REST endpoints to consume information on health and list of inputs
+* Export Forwarder metrics from Prometheus, a third-party monitoring tool
         
 Forwarder Overview
 ==================
@@ -359,7 +359,11 @@ To start this process:
           static_configs:
           - targets:
             - host.docker.internal:9001
-        Run this Docker command to start the container:
+      
+#. Run this Docker command to start the container:
+
+    .. code-block:: bash
+
             docker run \
               -p 9090:9090 \
               -v /tmp/prometheus.yml:/etc/prometheus/prometheus.yml \
