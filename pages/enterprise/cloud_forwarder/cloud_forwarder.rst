@@ -132,6 +132,7 @@ Add Inputs
 
 In this section, select an Input Profile. When you design this type of profile, it contains a collection 
 of inputs that multiple Forwarders can use. In this case, create one:
+
 #. Click *Create Input Profile*.
 #. Add a name in the *Title* field.
 #. Enter a description that corresponds to the *Title*.
