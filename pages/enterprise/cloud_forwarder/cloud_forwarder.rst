@@ -95,8 +95,7 @@ Configure Forwarder (Accordion/Wizard Menu)
 .. image:: /images/forwarder_config.png
 
 #. Open your text editor of choice to access your ``forwarder.conf`` file
-#. Click *Copy as configuration snippet* to copy the configuration details displayed to your ``forwarder.conf``
-file, i.e. ``forwarder_server_hostname`` and ``forwarder_grpc_api_token`` with corresponding values.
+#. Click *Copy as configuration snippet* to copy the configuration details displayed to your ``forwarder.conf`` file, i.e. ``forwarder_server_hostname`` and ``forwarder_grpc_api_token`` with corresponding values.
 #. Paste all values in the configuration file, and save the new changes.
 
 Start the Forwarder
