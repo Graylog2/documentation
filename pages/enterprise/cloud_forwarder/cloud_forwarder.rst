@@ -406,7 +406,7 @@ Distinguishing Forwarders
 |                             | messages from a source to a            | the Enterprise Integrations plugin.             |
 |                             | destination cluster.                   |                                                 |
 |                             |                                        |                                                 |
-+-----------------------------+----------------------------------------+-------------------------------------------------| 
++-----------------------------+----------------------------------------+-------------------------------------------------+ 
 |                             | The Cloud Forwarder allows you         | Your input profile can host multiple Forwarders.|
 | Enterprise Cloud Forwarder  | cloud instance, via input profiles.    |                                                 |
 |                             |                                        |                                                 |
