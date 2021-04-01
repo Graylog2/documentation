@@ -294,7 +294,7 @@ To check the health of your Forwarder, query the endpoint ``GET /api/health``:
 Input Endpoint
 --------------
 
-To obtain a list of Inputs running on the Forwarder, query the GET /api/inputs endpoint.
+To obtain a list of Inputs running on the Forwarder, query the endpoint ``GET /api/inputs``.
 
     .. code-block:: json
 
