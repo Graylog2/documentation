@@ -2,6 +2,23 @@
 Changelog
 *********
 
+Graylog 4.0.6
+=============
+
+Released: 2021-04-07
+
+Core
+^^^^
+
+**Fixed**
+
+- Fix rendering of trend color in report generation `Graylog2/graylog2-server#10154 <https://github.com/Graylog2/graylog2-server/pull/10154>`_
+- Update Kafka client to 2.7.0 `Graylog2/graylog2-server#10146 <https://github.com/Graylog2/graylog2-server/pull/10146>`_ `Graylog2/graylog2-server#10184 <https://github.com/Graylog2/graylog2-server/pull/10184>`_
+- Fix content-pack auto installation `Graylog2/graylog2-server#10237 <https://github.com/Graylog2/graylog2-server/pull/10237>`_
+- Initialize ES7 client and sniffer lazily `Graylog2/graylog2-server#10292 <https://github.com/Graylog2/graylog2-server/pull/10292>`_
+- Fix permission check for notifcations in event definitions `Graylog2/graylog2-server#10381 <https://github.com/Graylog2/graylog2-server/pull/10381>`_
+
+
 Graylog 4.0.5
 =============
 
