@@ -256,6 +256,23 @@ Integrations Plugin
 - Add Slack event notification plugin. `Graylog2/graylog-plugin-integrations#569 <https://github.com/Graylog2/graylog-plugin-integrations/pull/569>`_
 - Add PagerDuty event notification plugin. `Graylog2/graylog-plugin-integrations#606 <https://github.com/Graylog2/graylog-plugin-integrations/pull/606>`_
 
+
+Graylog 3.3.12
+==============
+
+Released: 2021-04-14
+
+Core
+^^^^
+
+**Fixed**
+
+- Fix rendering of trend colors in report generation. `Graylog2/graylog2-server#10157 <https://github.com/Graylog2/graylog2-server/issues/10157>`_
+- Don't show "Enterprise" navigation for non-admin users. `Graylog2/graylog2-server#8936 <https://github.com/Graylog2/graylog2-server/issues/8936>`_ `Graylog2/graylog2-server#10188 <https://github.com/Graylog2/graylog2-server/issues/10188>`_ `Graylog2/graylog2-server#10233 <https://github.com/Graylog2/graylog2-server/issues/10233>`_
+- Fix ``NullPointerException`` when MongoDB doesn't run with the MMAPv1 storage engine. `Graylog2/graylog2-server#8273 <https://github.com/Graylog2/graylog2-server/issues/8273>`_ `Graylog2/graylog2-server#10300 <https://github.com/Graylog2/graylog2-server/issues/10300>`_
+- Log failed messages and full stack trace on processing errors when DEBUG is enabled. `Graylog2/graylog2-server#10319 <https://github.com/Graylog2/graylog2-server/issues/10319>`_ `Graylog2/graylog2-server#10432 <https://github.com/Graylog2/graylog2-server/issues/10432>`_
+
+
 Graylog 3.3.11
 ==============
 
