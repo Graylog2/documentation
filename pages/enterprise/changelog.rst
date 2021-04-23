@@ -2,6 +2,25 @@
 Changelog
 *********
 
+Graylog Enterprise 4.0.6
+========================
+
+Released: 2021-04-07
+
+Enterprise
+----------
+
+**Fixed**
+
+- Change LDAPGroupResolver to use case-insensitive matching
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Added**
+
+- Add "drop sensitive data" option to Microsoft365 input
+
 Graylog Enterprise 4.0.5
 ========================
 
@@ -119,6 +138,14 @@ Enterprise Integrations Plugin
 **Added**
 
 - Script event notification plugin to replace the legacy script alarm callback plugin.
+
+
+Graylog Enterprise 3.3.12
+=========================
+
+Released: 2021-04-14
+
+No changes since 3.3.11.
 
 
 Graylog Enterprise 3.3.11
