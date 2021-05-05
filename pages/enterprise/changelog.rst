@@ -2,6 +2,19 @@
 Changelog
 *********
 
+Graylog Enterprise 3.3.13
+=========================
+
+Released: 2021-05-05
+
+Enterprise
+----------
+
+**Fixed**
+
+- Fix rendering of the world map visualization in reports.
+
+
 Graylog Enterprise 3.3.12
 =========================
 
