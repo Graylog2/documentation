@@ -2,6 +2,27 @@
 Changelog
 *********
 
+Graylog 4.0.7
+=============
+
+Released: 2021-05-05
+
+Core
+^^^^
+
+**Changed**
+
+- Log failed messages and full stack trace on processing errors when DEBUG is enabled. `Graylog2/graylog2-server#10319 <https://github.com/Graylog2/graylog2-server/issues/10319>`_ `Graylog2/graylog2-server#10421 <https://github.com/Graylog2/graylog2-server/issues/10421>`_
+
+**Fixed**
+
+- Correctly display ES cluster status in the user interface. `Graylog2/graylog2-server#10407 <https://github.com/Graylog2/graylog2-server/issues/10407>`_ `Graylog2/graylog2-server#10428 <https://github.com/Graylog2/graylog2-server/issues/10428>`_
+- Fix sharing of streams that have outputs attached. `Graylog2/graylog2-server#10443 <https://github.com/Graylog2/graylog2-server/issues/10443>`_
+- Allow using the same LDAP/AD attributes for different config settings. `Graylog2/graylog2-server#10069 <https://github.com/Graylog2/graylog2-server/issues/10069>`_ `Graylog2/graylog2-server#10437 <https://github.com/Graylog2/graylog2-server/issues/10437>`_
+- Support ``+`` character in index prefixes for index sets. `Graylog2/graylog2-server#10392 <https://github.com/Graylog2/graylog2-server/issues/10392>`_
+- Encode usernames that are used in URLs. `Graylog2/graylog2-server#10530 <https://github.com/Graylog2/graylog2-server/issues/10530>`_ `Graylog2/graylog2-server#10566 <https://github.com/Graylog2/graylog2-server/issues/10566>`_
+
+
 Graylog 4.0.6
 =============
 
@@ -255,6 +276,14 @@ Integrations Plugin
 
 - Add Slack event notification plugin. `Graylog2/graylog-plugin-integrations#569 <https://github.com/Graylog2/graylog-plugin-integrations/pull/569>`_
 - Add PagerDuty event notification plugin. `Graylog2/graylog-plugin-integrations#606 <https://github.com/Graylog2/graylog-plugin-integrations/pull/606>`_
+
+
+Graylog 3.3.13
+==============
+
+Released: 2021-05-05
+
+No changes since 3.3.12.
 
 
 Graylog 3.3.12
