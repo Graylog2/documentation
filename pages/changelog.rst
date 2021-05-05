@@ -2,6 +2,14 @@
 Changelog
 *********
 
+Graylog 3.3.13
+==============
+
+Released: 2021-05-05
+
+No changes since 3.3.12.
+
+
 Graylog 3.3.12
 ==============
 
