@@ -2,6 +2,27 @@
 Changelog
 *********
 
+Graylog 4.0.8
+=============
+
+Released: 2021-06-02
+
+Core
+^^^^
+
+**Fixed**
+
+- Don't run index jobs for missing indices. `Graylog2/graylog2-server#10444 <https://github.com/Graylog2/graylog2-server/issues/10444>`_
+- Fix user sessions not timing out. `Graylog2/graylog2-server#10578 <https://github.com/Graylog2/graylog2-server/issues/10578>`_ `Graylog2/graylog2-server#10577 <https://github.com/Graylog2/graylog2-server/issues/10577>`_
+
+Integrations Plugin
+^^^^^^^^^^^^^^^^^^^
+
+**Fixed**
+
+- Fix problem with PaloAlto timestamp handling. `Graylog2/graylog-plugin-integrations#816 <https://github.com/Graylog2/graylog-plugin-integrations/issues/816>`_
+
+
 Graylog 4.0.7
 =============
 

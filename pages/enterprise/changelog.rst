@@ -2,6 +2,19 @@
 Changelog
 *********
 
+Graylog Enterprise 4.0.8
+========================
+
+Released: 2021-06-02
+
+Enterprise
+----------
+
+**Fixed**
+
+- Lower log level for irregular traffic record check.
+
+
 Graylog Enterprise 4.0.7
 ========================
 
