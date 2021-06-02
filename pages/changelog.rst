@@ -20,7 +20,7 @@ Integrations Plugin
 
 **Fixed**
 
-- Fix problem with PaloAto timestamp handling. `Graylog2/graylog-plugin-integrations#816 <https://github.com/Graylog2/graylog-plugin-integrations/issues/816>`_
+- Fix problem with PaloAlto timestamp handling. `Graylog2/graylog-plugin-integrations#816 <https://github.com/Graylog2/graylog-plugin-integrations/issues/816>`_
 
 
 Graylog 4.0.7
