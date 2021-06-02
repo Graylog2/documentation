@@ -1,0 +1,18 @@
+**************************
+Upgrading to Graylog 4.1.x
+**************************
+
+.. _upgrade-from-40-to-41:
+
+.. contents:: Overview
+   :depth: 3
+   :backlinks: top
+
+
+Breaking Changes
+================
+
+Changes to the Elasticsearch Support
+------------------------------------
+
+When you have version-probing for the used Elasticsearch version enabled, and Graylog starts up but can not connect to ES, the startup stopped immediately with v4.0 and prior. Starting from 4.1 the default behaviour is, that Graylog retries connecting with a delay until it can connect to Elasticsearch. See the Elasticsearch configuration page for details.
