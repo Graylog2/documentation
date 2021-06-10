@@ -2,7 +2,7 @@
 Upgrading Graylog
 *****************
 
-When upgrading from a previous version of Graylog you follow the previous used installation method (ex. from image or package) using the new version numbers. 
+When upgrading from a previous version of Graylog you follow the previous used installation method (e.g. operating system package) using the new version numbers. 
 
 The following Upgrade notes should be read carefully before you start the upgrade process. Breaking changes and dependency upgrades are documented in those upgrade notes.
 
@@ -13,17 +13,6 @@ You should always follow minor versions when updating across multiple versions t
    :glob:
 
    upgrade/graylog-*
-
-Upgrading Graylog Originally Installed from Image
--------------------------------------------------
-
-2.x
-   It is not possible to upgrade previous OVAs to Graylog 3.0.0.
-
-3.x
-   Starting with Graylog 3.0.0, OVAs use the Operating System packages, so
-   you can upgrade your appliance by following
-   :ref:`this update guide <operating_package_upgrade_DEB-APT>`.
 
 Upgrading Graylog Originally Installed from Package
 ---------------------------------------------------

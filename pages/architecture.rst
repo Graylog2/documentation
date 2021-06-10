@@ -21,8 +21,6 @@ None of the components are redundant, and they are easy and quick to setup.
 
 .. image:: /images/architec_small_setup.png
 
-Our :ref:`Virtual Machine Appliances <virtual-machine-appliances>` are using this design by default, deploying nginx as :ref:`frontend proxy <configuring_webif_nginx>`.
-
 
 .. _big_production_setup:
 
