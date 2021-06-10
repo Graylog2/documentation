@@ -30,7 +30,7 @@ If you want to checkout Graylog on your local desktop without any further custom
   $ docker run --name graylog --link mongo --link elasticsearch \
       -p 9000:9000 -p 12201:12201 -p 1514:1514 \
       -e GRAYLOG_HTTP_EXTERNAL_URI="http://127.0.0.1:9000/" \
-      -d graylog/graylog:4.0
+      -d graylog/graylog:{{SERVER_VERSION}}
 
 
 .. warning:: All configuration examples are created to run on the local computer. Should those be used on external servers, adjust ``GRAYLOG_HTTP_EXTERNAL_URI`` and add ``GRAYLOG_HTTP_PUBLISH_URI`` and ``GRAYLOG_HTTP_EXTERNAL_URI`` according to the :ref:`server.conf documentation <web_rest_api_options>`.
@@ -46,7 +46,7 @@ For example, to start a Graylog Docker container listening on port 5555, stop yo
   $ docker run --link mongo --link elasticsearch \
       -p 9000:9000 -p 12201:12201 -p 1514:1514 -p 5555:5555 \
       -e GRAYLOG_HTTP_EXTERNAL_URI="http://127.0.0.1:9000/" \
-      -d graylog/graylog:4.0
+      -d graylog/graylog:{{SERVER_VERSION}}
 
 
 Similarly, the same can be done for UDP by appending ``-p 5555:5555/udp``.
@@ -122,7 +122,7 @@ Example Version 2::
       mem_limit: 1g
     # Graylog: https://hub.docker.com/r/graylog/graylog/
     graylog:
-      image: graylog/graylog:4.0
+      image: graylog/graylog:{{SERVER_VERSION}}
       environment:
         # CHANGE ME (must be at least 16 characters)!
         - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
@@ -178,7 +178,7 @@ Example Version 3::
         - graylog
     # Graylog: https://hub.docker.com/r/graylog/graylog/
     graylog:
-      image: graylog/graylog:4.0
+      image: graylog/graylog:{{SERVER_VERSION}}
       environment:
         # CHANGE ME (must be at least 16 characters)!
         - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
@@ -215,7 +215,7 @@ After starting all three Docker containers by running ``docker-compose up``, you
 Configuration
 =============
 
-Every configuration option can be set via `environment variables <https://github.com/Graylog2/graylog2-server/blob/4.0/misc/graylog.conf>`__.
+Every configuration option can be set via `environment variables <https://github.com/Graylog2/graylog2-server/blob/{{SERVER_VERSION}}/misc/graylog.conf>`__.
 Simply prefix the parameter name with ``GRAYLOG_`` and put it all in upper case.
 
 For example, setting up the SMTP configuration for sending Graylog alert notifications via email, the ``docker-compose.yml`` would look like this::
@@ -229,7 +229,7 @@ For example, setting up the SMTP configuration for sending Graylog alert notific
       image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
       # Other settings [...]
     graylog:
-      image: graylog/graylog:4.0
+      image: graylog/graylog:{{SERVER_VERSION}}
       # Other settings [...]
       environment:
         GRAYLOG_TRANSPORT_EMAIL_ENABLED: "true"
@@ -253,8 +253,8 @@ Create the new configuration directory next to the ``docker-compose.yml`` file a
 
   $ mkdir -p ./graylog/config
   $ cd ./graylog/config
-  $ wget https://raw.githubusercontent.com/Graylog2/graylog-docker/4.0/config/graylog.conf
-  $ wget https://raw.githubusercontent.com/Graylog2/graylog-docker/4.0/config/log4j2.xml
+  $ wget https://raw.githubusercontent.com/Graylog2/graylog-docker/{{SERVER_VERSION}}/config/graylog.conf
+  $ wget https://raw.githubusercontent.com/Graylog2/graylog-docker/{{SERVER_VERSION}}/config/log4j2.xml
 
 The newly created directory ``./graylog/config/`` with the custom configuration files now has to be mounted into the Graylog Docker container.
 
@@ -269,7 +269,7 @@ This can be done by adding an entry to the `volumes <https://docs.docker.com/com
       image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
       # Other settings [...]
     graylog:
-      image: graylog/graylog:4.0
+      image: graylog/graylog:{{SERVER_VERSION}}
       # Other settings [...]
       volumes:
         # Mount local configuration directory into Docker container
@@ -314,7 +314,7 @@ Example for using Docker secrets in a Docker Swarm service::
     $ docker service create --name graylog \
      --secret root_password_hash \
      -e GRAYLOG_ROOT_PASSWORD_SHA2__FILE=/run/secrets/root_password_hash \
-     -p 9000:9000 graylog/graylog:4.0
+     -p 9000:9000 graylog/graylog:{{SERVER_VERSION}}
     mclk5gm39ingk51s869dc0htz
     overall progress: 1 out of 1 tasks
     1/1: running   [==================================================>]
@@ -322,7 +322,7 @@ Example for using Docker secrets in a Docker Swarm service::
 
     $ docker service ls
     ID                  NAME                MODE                REPLICAS            IMAGE               PORTS
-    mclk5gm39ing        graylog             replicated          1/1                 graylog:4.0      *:9000->9000/tcp
+    mclk5gm39ing        graylog             replicated          1/1                 graylog:{{SERVER_VERSION}}      *:9000->9000/tcp
 
 
 .. _persisting-data:
@@ -359,7 +359,7 @@ Using Docker volumes for the data of MongoDB, Elasticsearch, and Graylog, the ``
       mem_limit: 1g
     # Graylog: https://hub.docker.com/r/graylog/graylog/
     graylog:
-      image: graylog/graylog:4.0
+      image: graylog/graylog:{{SERVER_VERSION}}
       volumes:
         - graylog_data:/usr/share/graylog/data
       environment:
@@ -407,13 +407,13 @@ If you want to add plugins, you can put them into a local directory and mount th
 Simply create a ``plugin`` folder, download the plugin(s) you want to install into it and mount the directory as a volume into the docker container::
 
     $ mkdir plugin
-    $ wget https://downloads.graylog.org/releases/graylog-integrations/graylog-integrations-plugins-4.0.3.tgz
-    $ tar -xvzf graylog-integrations-plugins-4.0.3.tgz graylog-integrations-plugins-4.0.3/plugin/graylog-plugin-integrations-4.0.3.jar --directory plugin
+    $ wget https://downloads.graylog.org/releases/graylog-integrations/graylog-integrations-plugins-{{SERVER_RELEASE}}.tgz
+    $ tar -xvzf graylog-integrations-plugins-{{SERVER_RELEASE}}.tgz graylog-integrations-plugins-{{SERVER_RELEASE}}/plugin/graylog-plugin-integrations-{{SERVER_RELEASE}}.jar --directory plugin
     $ docker run --name graylog --link mongo --link elasticsearch \
         -p 9000:9000 -p 12201:12201 -p 1514:1514 \
         -e GRAYLOG_HTTP_EXTERNAL_URI="http://127.0.0.1:9000/" \
         -v ./plugin:/usr/share/graylog/plugin \
-        -d graylog/graylog:4.0
+        -d graylog/graylog:{{SERVER_VERSION}}
 
 
 The ``docker-compose.yml`` would look like this::
@@ -427,7 +427,7 @@ The ``docker-compose.yml`` would look like this::
         image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
         # Other settings [...]
       graylog:
-        image: graylog/graylog:4.0
+        image: graylog/graylog:{{SERVER_VERSION}}
         # Other settings [...]
         volumes:
            - <PATH_TO_LOCAL_PLUGIN_DIR>:/usr/share/graylog/plugin
@@ -490,4 +490,4 @@ See the `available tags for the Graylog image on Docker Hub <https://hub.docker.
 
   $ docker run --link mongo --link elasticsearch -p 9000:9000 -p 12201:12201 -p 1514:1514 \
       -e GRAYLOG_HTTP_BIND_ADDRESS="127.0.0.1:9000" \
-      -d graylog/graylog:4.0.0-rc.1-2
+      -d graylog/graylog:{{SERVER_RELEASE}}-rc.1-2
