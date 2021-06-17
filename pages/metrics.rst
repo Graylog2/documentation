@@ -75,7 +75,7 @@ Customized Metric Mappings
 We understand that metric mapping requirements can be very specific the each per-customer use case, so we provide
 the ability to override the default core mappings. We also support the ability to specify any additional needed mappings.
 
-Graylog metrics exports heavily utilize `Prometheus labels <https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels>`_to help you effectively visualize and analyze your metrics
+Graylog metrics exports heavily utilize `Prometheus labels <https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels>`_ to help you effectively visualize and analyze your metrics
 data.
 
 To completely replace the default core Prometheus mappings, provide the path to a core replacement mapping file ``YML`` file
@@ -96,7 +96,7 @@ changes at runtime.
     prometheus_exporter_mapping_file_path_custom = prometheus-exporter-mapping-custom.yml
 
 Custom Mappings Format Example 1
--------------------------
+--------------------------------
 
 This example mapping produces the ``gl_stream_incoming_messages`` metric in Prometheus, which shows the number of
 messages received by for each stream in Graylog.
