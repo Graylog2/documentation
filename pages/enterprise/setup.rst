@@ -16,11 +16,13 @@ If you're already running an open source instance, you can :ref:`install these p
 Requirements
 ============
 
+.. warning:: We caution you not to install or upgrade Elasticsearch to 7.11 and later! It is not supported. If you do so, it will break your instance!
+
 Graylog Enterprise has the following prerequisites:
 
 * Some modern Linux distribution (Debian Linux, Ubuntu Linux, or CentOS recommended)
-* `Elasticsearch 6.8+ or 7 <https://www.elastic.co/downloads/elasticsearch>`_
-* `MongoDB 3.6, 4.0 or 4.2 <https://docs.mongodb.org/manual/administration/install-on-linux/>`_
+* `Elasticsearch 6.8, 7.7 up to 7.10 <https://www.elastic.co/downloads/elasticsearch>`_
+* `MongoDB 3.6, 4.0, 4.2 or 4.4 <https://docs.mongodb.org/manual/administration/install-on-linux/>`_
 * Oracle Java SE 8 (OpenJDK 8 also works; latest stable update is recommended)
 
 Installation
@@ -33,8 +35,8 @@ DEB / APT
 For installation on apt-based systems (such as Debian or Ubuntu), run the following commands::
 
   $ sudo apt-get install apt-transport-https
-  $ wget https://packages.graylog2.org/repo/packages/graylog-4.0-repository_latest.deb
-  $ sudo dpkg -i graylog-4.0-repository_latest.deb
+  $ wget https://packages.graylog2.org/repo/packages/graylog-{{SERVER_VERSION}}-repository_latest.deb
+  $ sudo dpkg -i graylog-{{SERVER_VERSION}}-repository_latest.deb
   $ sudo apt-get update
   $ sudo apt-get install graylog-enterprise
 
@@ -44,7 +46,7 @@ RPM / YUM / DNF
 
 For installation on rpm-based systems (such as CentOS or Redhat), run the following commands::
 
-  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-4.0-repository_latest.rpm
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-{{SERVER_VERSION}}-repository_latest.rpm
   $ sudo yum install graylog-enterprise
 
 

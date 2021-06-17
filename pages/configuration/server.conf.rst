@@ -431,7 +431,7 @@ Script alert notification
     * Default: none
 * ``integrations_scripts_dir = /usr/share/graylog-server/scripts``
     * An absolute or relative path where scripts are permitted to be executed from.
-    * If specified, this overrides the default location (see the :ref:`File Locations <scripts_dir>` document.
+    * If specified, this overrides the default location (see the :ref:`File Locations <scripts_dir>` document).
 
 Others
 ^^^^^^

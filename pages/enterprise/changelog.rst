@@ -2,6 +2,117 @@
 Changelog
 *********
 
+Graylog Enterprise 4.0.8
+========================
+
+Released: 2021-06-02
+
+Enterprise
+----------
+
+**Fixed**
+
+- Lower log level for irregular traffic record check.
+
+
+Graylog Enterprise 4.0.7
+========================
+
+Released: 2021-05-05
+
+Enterprise
+----------
+
+**Fixed**
+
+- Fix rendering of the world map visualization in reports.
+
+
+Graylog Enterprise 4.0.6
+========================
+
+Released: 2021-04-07
+
+Enterprise
+----------
+
+**Fixed**
+
+- Change LDAPGroupResolver to use case-insensitive matching
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Added**
+
+- Add "drop sensitive data" option to Microsoft365 input
+
+Graylog Enterprise 4.0.5
+========================
+
+Released: 2021-02-22
+
+Enterprise
+----------
+
+No changes since 4.0.4.
+
+
+Graylog Enterprise 4.0.4
+========================
+
+Released: 2021-02-22
+
+Enterprise
+----------
+
+No changes since 4.0.3.
+
+
+Graylog Enterprise 4.0.3
+========================
+
+Released: 2021-02-16
+
+Enterprise
+----------
+
+No changes since 4.0.2.
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Added**
+
+- Add full-message transformer to Enterprise Output Framework.
+
+
+Graylog Enterprise 4.0.2
+========================
+
+Released: 2021-01-27
+
+Enterprise
+----------
+
+**Added**
+
+- Allow modification of timezone in report scheduling settings.
+
+**Fixed**
+
+- Fix report preview styling when dark mode is active.
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Fixed**
+
+- Reduce noise of legacy script alarm callback notification.
+- Fix timing issue with old checkpoints in Office365 plugin.
+- Properly shut down TCP connections when stopping Enterprise outputs.
+
+
 Graylog Enterprise 4.0.1
 ========================
 
@@ -53,6 +164,48 @@ Enterprise Integrations Plugin
 **Added**
 
 - Script event notification plugin to replace the legacy script alarm callback plugin.
+
+
+Graylog Enterprise 3.3.13
+=========================
+
+Released: 2021-05-05
+
+Enterprise
+----------
+
+**Fixed**
+
+- Fix rendering of the world map visualization in reports.
+
+
+Graylog Enterprise 3.3.12
+=========================
+
+Released: 2021-04-14
+
+No changes since 3.3.11.
+
+
+Graylog Enterprise 3.3.11
+=========================
+
+Released: 2021-02-16
+
+No changes since 3.3.10.
+
+
+Graylog Enterprise 3.3.10
+=========================
+
+Released: 2021-01-27
+
+Enterprise
+----------
+
+**Added**
+
+- Allow modification of timezone in report scheduling settings.
 
 
 Graylog Enterprise 3.3.9

@@ -14,6 +14,7 @@ Elasticsearch versions
 
 Starting with version 2.3, Graylog uses the HTTP protocol to connect to your Elasticsearch cluster, so it does not have a hard requirement for the Elasticsearch version anymore. We can safely assume that any version starting from 2.x is working.
 
+.. warning:: We caution you not to install or upgrade Elasticsearch to 7.11 and later! It is not supported. If you do so, it will break your instance!
 
 ===============  =====================
 Graylog version  Elasticsearch version
@@ -28,7 +29,7 @@ Graylog version  Elasticsearch version
 2.3.x-2.4.x      2.4.x, 5.6.x
 2.5.x            2.4.x, 5.6.x, 6.8.x
 3.0-3.3          5.6.x, 6.8.x
-*4.0*            *6.8.x+, 7.x*
+4.0.x          	 6.8.x, 7.7.x-7.10.x
 ===============  =====================
 
 .. note:: Graylog works fine with the `Amazon Elasticsearch Service <https://aws.amazon.com/elasticsearch-service/>`_ using Elasticsearch 6 or 7.
@@ -93,6 +94,11 @@ The following configuration options are now being used to configure connectivity
 |                                                    |           | specified, the version will be auto-sensed from the          |                             |
 |                                                    |           | configured nodes. Will disable auto-sensing if specified.    | Values: ``6`` / ``7``       |
 +----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
+| ``elasticsearch_mute_deprecation_warnings``        | boolean   | Enable muting of deprecation warnings for deprecated         | ``false``                   |
+|                                                    |           | configuration settings in Elasticsearch. These warnings are  |                             |
+|                                                    |           | attached as "Warnings" in HTTP-Response headers and might    |                             |
+|                                                    |           | clutter up the logs. Works only with ES7                     |                             |
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
 
 .. _version_auto_sensing:
 
@@ -110,7 +116,7 @@ Automatic node discovery
 
 .. caution:: Automatic node discovery does not work when using the `Amazon Elasticsearch Service <https://aws.amazon.com/elasticsearch-service/>`_ because Amazon blocks certain Elasticsearch API endpoints.
 
-Graylog uses automatic node discovery to gather a list of all available Elasticsearch nodes in the cluster at runtime and distribute requests among them to potentially increase performance and availability. To enable this feature, you need to set the ``elasticsearch_discovery_enabled`` to ``true``. Optionally, you can define the a filter allowing to selectively include/exclude discovered nodes (details how to specify node filters are found in the `Elasticsearch cluster documentation <https://www.elastic.co/guide/en/elasticsearch/reference/6.7/cluster.html#cluster-nodes>`_) using the ``elasticsearch_discovery_filter`` setting, or tuning the frequency of the node discovery using the ``elasticsearch_discovery_frequency`` configuration option. If your Elasticsearch clustes uses authentication, you need to specify the ``elasticsearch_discovery_default_user`` and ``elasticsearch_discovery_default_password`` settings. The username/password specified in these settings will be used for *all* nodes discovered in the cluster. If your cluster uses HTTPS, you also need to set the ``elasticsearch_discovery_default_scheme`` setting. It specified the scheme used for discovered nodes and must be consistent across all nodes in the cluster.
+Graylog uses automatic node discovery to gather a list of all available Elasticsearch nodes in the cluster at runtime and distribute requests among them to potentially increase performance and availability. To enable this feature, you need to set the ``elasticsearch_discovery_enabled`` to ``true``. Optionally, you can define the a filter allowing to selectively include/exclude discovered nodes (details how to specify node filters are found in the `Elasticsearch cluster documentation <https://www.elastic.co/guide/en/elasticsearch/reference/6.8/cluster.html#cluster-nodes>`_) using the ``elasticsearch_discovery_filter`` setting, or tuning the frequency of the node discovery using the ``elasticsearch_discovery_frequency`` configuration option. If your Elasticsearch cluster uses authentication, you need to specify the ``elasticsearch_discovery_default_user`` and ``elasticsearch_discovery_default_password`` settings. The username/password specified in these settings will be used for *all* nodes discovered in the cluster. If your cluster uses HTTPS, you also need to set the ``elasticsearch_discovery_default_scheme`` setting. It specified the scheme used for discovered nodes and must be consistent across all nodes in the cluster.
 
 Configuration of Elasticsearch nodes
 ------------------------------------
@@ -161,7 +167,7 @@ Tuning Elasticsearch
 
 Graylog is already setting specific configuration for every index it is managing. This is enough tuning for a lot of use cases and setups.
 
-More detailed information about the configuration of Elasticsearch can be found in the `official documentation <https://www.elastic.co/guide/en/elasticsearch/reference/6.7/system-config.html>`__.
+More detailed information about the configuration of Elasticsearch can be found in the `official documentation <https://www.elastic.co/guide/en/elasticsearch/reference/6.8/system-config.html>`__.
 
 
 Avoiding split-brain and shard shuffling
@@ -359,9 +365,9 @@ This would translate to the following additional index mapping in Elasticsearch:
     }
   }
 
-The format of the ``ingest_time`` field is described in the Elasticsearch documentation about the `format mapping parameter <https://www.elastic.co/guide/en/elasticsearch/reference/6.7/mapping-date-format.html>`_. Also make sure to check the Elasticsearch documentation about `Field datatypes <https://www.elastic.co/guide/en/elasticsearch/reference/6.7/mapping-types.html>`_.
+The format of the ``ingest_time`` field is described in the Elasticsearch documentation about the `format mapping parameter <https://www.elastic.co/guide/en/elasticsearch/reference/6.8/mapping-date-format.html>`_. Also make sure to check the Elasticsearch documentation about `Field datatypes <https://www.elastic.co/guide/en/elasticsearch/reference/6.8/mapping-types.html>`_.
 
-In order to apply the additional index mapping when Graylog creates a new index in Elasticsearch, it has to be added to an `index template <https://www.elastic.co/guide/en/elasticsearch/reference/6.7/indices-templates.html>`_. The Graylog default template (``graylog-internal``) has the lowest priority and will be merged with the custom index template by Elasticsearch.
+In order to apply the additional index mapping when Graylog creates a new index in Elasticsearch, it has to be added to an `index template <https://www.elastic.co/guide/en/elasticsearch/reference/6.8/indices-templates.html>`_. The Graylog default template (``graylog-internal``) has the lowest priority and will be merged with the custom index template by Elasticsearch.
 
 .. warning:: If the default index mapping and the custom index mapping cannot be merged (e. g. because of conflicting field datatypes), Elasticsearch will throw an exception and won't create the index. So be extremely cautious and conservative about the custom index mappings!
 
@@ -562,7 +568,7 @@ After you've removed the index template, new indices will only have the original
     }
   }
 
-Additional information on Elasticsearch Index Templates can be found in the official `Elasticsearch Template Documentation <https://www.elastic.co/guide/en/elasticsearch/reference/6.7/indices-templates.html>`_
+Additional information on Elasticsearch Index Templates can be found in the official `Elasticsearch Template Documentation <https://www.elastic.co/guide/en/elasticsearch/reference/6.8/indices-templates.html>`_
 
 
 .. _rotate_es_indices:
@@ -584,7 +590,7 @@ Select the desired index set on the ``System / Indices`` page in the Graylog web
 Cluster Status explained
 ========================
 
-Elasticsearch provides a classification for the `cluster health <https://www.elastic.co/guide/en/elasticsearch/reference/6.7/cluster-health.html>`_.
+Elasticsearch provides a classification for the `cluster health <https://www.elastic.co/guide/en/elasticsearch/reference/6.8/cluster-health.html>`_.
 
 The cluster status applies to different levels:
 
