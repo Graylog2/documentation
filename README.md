@@ -84,7 +84,7 @@ Install [Sphinx](http://sphinx-doc.org), [the theme we are using](https://github
 
 #### Windows
 
-For Windows we recommend [chocolatey](https://chocolatey.org/) to install the requirements. If that is not possible to use, download and install the software from the project webpages.   
+For Windows, we recommend [chocolatey](https://chocolatey.org/) to install the requirements. If that is not possible to use, download and install the software from the project webpages.   
 
 ##### Windows Installation in detail
 
