@@ -61,8 +61,8 @@ After the installation of Graylog, you should take care that only one Graylog no
 configuration setting ``is_master = true``.
 
 The ``http_bind_address`` configured address needs to be reachable by all Graylog nodes in the cluster.
-Same for the ``http_publish_uri`` which is mostly the the ``http_bind_address`` prefixed with the protocol and a closing
-``/``.
+The ``http_publish_uri`` is normally auto-generated from the ``http_bind_address``.
+This URI is used for the inter-node communication.
 
 If the http_bind_address is configured with ``0.0.0.0`` you **must** configure ``http_publish_uri``.
 Otherwise Graylog will use the first non loopback IP, what might not fit into your desired design.
