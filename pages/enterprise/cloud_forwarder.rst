@@ -340,7 +340,7 @@ To start this process:
     
     .. code-block:: yaml
         
-        $ global:
+        global:
           scrape_interval: 15s
           scrape_timeout: 10s
           evaluation_interval: 15s
