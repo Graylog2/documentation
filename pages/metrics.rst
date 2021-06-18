@@ -43,9 +43,8 @@ We suggest leaving the default export port `9833`, since it is already `register
 
     prometheus_exporter_bind_address = 10.0.0.1:9090
 
-Depending on the current Prometheus `scrape_config setting <https://eus.io/docs/prometheus/latest/configuration/configuration/#scrape_config>`_,
-the Graylog Prometheus exporter may be discovered automatically, or an explicit scrape target might need to be
-specified in your Prometheus target hosts file.
+Depending on the Prometheus `scrape_config setting <https://eus.io/docs/prometheus/latest/configuration/configuration/#scrape_config>`_,
+an explicit scrape target might need to be specified in your Prometheus target hosts configuration.
 
 Default Core Metric Mappings
 ----------------------------
