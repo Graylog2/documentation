@@ -65,7 +65,7 @@ General
 * ``bin_dir = bin``
     * This directory contains binaries that are used by the Graylog server. (relative or absolute)
 * ``data_dir = data``
-    * This directory is used to store Graylog server state. (relative or absolute)  
+    * This directory is used to store Graylog server state. (relative or absolute)
 * ``plugin_dir = plugin``
     * Set plugin directory here (relative or absolute)
 
@@ -398,7 +398,7 @@ HTTP
 * ``http_non_proxy_hosts =``
     * A list of hosts that should be reached directly, bypassing the configured proxy server.
     * This is a list of patterns separated by ",". The patterns may start or end with a "*" for wildcards.
-    * Any host matching one of these patterns will be reached through a direct connection instead of through a proxy.    
+    * Any host matching one of these patterns will be reached through a direct connection instead of through a proxy.
 
 .. _processing_status:
 
@@ -440,8 +440,8 @@ Others
       * The threshold of the garbage collection runs. If GC runs take longer than this threshold, a system notification will be generated to warn the administrator about possible problems with the system. Default is 1 second.
 * ``ldap_connection_timeout = 2000``
     * Connection timeout for a configured LDAP server (e. g. ActiveDirectory) in milliseconds.
-* ``disable_sigar = false``
-    * Disable the use of SIGAR for collecting system stats.
+* ``disable_native_system_stats_collector = false``
+    * Disable the use of OSHI for collecting system stats.
 * ``dashboard_widget_default_cache_time = 10s``
     * The default cache time for dashboard widgets. (Default: 10 seconds, minimum: 1 second)
 * ``proxied_requests_thread_pool_size = 32``
