@@ -2,6 +2,32 @@
 Changelog
 *********
 
+Graylog Enterprise 4.0.8
+========================
+
+Released: 2021-06-02
+
+Enterprise
+----------
+
+**Fixed**
+
+- Lower log level for irregular traffic record check.
+
+
+Graylog Enterprise 4.0.7
+========================
+
+Released: 2021-05-05
+
+Enterprise
+----------
+
+**Fixed**
+
+- Fix rendering of the world map visualization in reports.
+
+
 Graylog Enterprise 4.0.6
 ========================
 
@@ -138,6 +164,19 @@ Enterprise Integrations Plugin
 **Added**
 
 - Script event notification plugin to replace the legacy script alarm callback plugin.
+
+
+Graylog Enterprise 3.3.13
+=========================
+
+Released: 2021-05-05
+
+Enterprise
+----------
+
+**Fixed**
+
+- Fix rendering of the world map visualization in reports.
 
 
 Graylog Enterprise 3.3.12
