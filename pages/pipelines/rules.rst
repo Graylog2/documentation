@@ -80,6 +80,8 @@ being used.
 
 By convention, functions that convert types start with the prefix ``to_``.  Please refer to the :doc:`functions` index for a list.
 
+.. note:: Before using the value of a message field, always convert it to the intended type with one of the ``to_`` :doc:`functions`.
+
 Conditions
 ==========
 
