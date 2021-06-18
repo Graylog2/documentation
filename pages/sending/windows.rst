@@ -15,7 +15,7 @@ One example winlogbeat configuration that reduce the noise. But still give enoug
 
 			fields_under_root: true
 			fields.collector_node_id: ${sidecar.nodeName}
-			fields.gl2_source_collector: ${sidecar,nodeId}
+			fields.gl2_source_collector: ${sidecar.nodeId}
 			
 			output.logstash:
 			  hosts: ["graylog:5044"]
