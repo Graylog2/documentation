@@ -139,7 +139,7 @@ the attackers are using.
 Since we use an aggregation event here, the message backlog might not be really helpful
 so it is left off.
 The backlog will show all messages within the time range of ``Search within the last`` and
-useing the ``Query`` entered. If you have a good enough query this can still be helpful.
+use the ``Query`` entered. If you have a good enough query this can still be helpful.
 The number input will limit the amount of messages in the backlog.
 
 Summary
