@@ -45,7 +45,7 @@ ISO 8601 duration Description
 ``P1DT12H``       1 day and 12 hours
 ================= ===========
 
-More details about the format of ISO 8601 durations can be found `here <https://www.iso.org/obp/ui#iso:std:iso:8601:-1:ed-1:v1:en>`_.
+More details about the format of `ISO 8601 durations <https://www.iso.org/obp/ui#iso:std:iso:8601:-1:ed-1:v1:en>`_.
 
 
 Relative time ranges

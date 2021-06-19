@@ -4,4 +4,4 @@
 Users and Roles
 ***************
 
-This page has moved :ref:`here <usersandrolestoc>`.
+This content is now availabe in :ref:`Users and Roles <usersandrolestoc>`.

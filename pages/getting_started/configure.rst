@@ -13,7 +13,7 @@ server.conf
 
 The file ``server.conf`` is the Graylog configuration file. The default location for ``server.conf`` is: ``/etc/graylog/server/server.conf``. 
 
-.. note:: All default file locations are listed :ref:`here<default_file_location>`.
+.. note:: Review the list of :ref:`default file locations <default_file_location>`.
 
 * Entries are generally a single line:
     * ``propertyName=propertyValue``

@@ -22,12 +22,12 @@ Most customers use package tools like DEB or RPM to install the Graylog software
 
 Configuration Management
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Customers who prefer to deploy graylog via configuration management tools may do so. Graylog currently supports :ref:`confmgt`.
+Customers who prefer to deploy Graylog via configuration management tools may do so. Graylog currently supports :ref:`confmgt`.
 
 
 Containers
 ^^^^^^^^^^
-Graylog supports Docker for deployment of Graylog, MongoDB and Elasticsearch. Installation and configuration instructions may be found on the :ref:`here` installation page.
+Graylog supports :ref:`Docker <docker>` for deployment of Graylog, MongoDB, and Elasticsearch.
 
 
 Virtual Appliances

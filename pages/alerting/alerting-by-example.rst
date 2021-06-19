@@ -127,8 +127,7 @@ this field is not needed and we go to the next page.
 
 Notifications
 ^^^^^^^^^^^^^
-We want to receive an email when the event got raised. Configuring a notification, will elevate the event to an alert.
-How to setup an email notification is explained :ref:`here <alert_notification>`.
+We want to receive an email when the event is raised. Configuring a :ref:`notification <alert_notification>` will elevate the event to an alert.
 We will therefore select our already defined email notification and set our ``Grace Period``
 to 5 Minutes. If we are target of a brute force attack then we do not want to get an email every
 10 seconds reminding us that we are being attacked. This ``Grace Period`` will only be respected
@@ -138,9 +137,9 @@ the attackers are using.
 .. image:: /images/event-notification.png
 
 Since we use an aggregation event here, the message backlog might not be really helpful
-so I leave it off.
+so it is left off.
 The backlog will show all messages within the time range of ``Search within the last`` and
-use the ``Query`` we entered. If you have a good enough query this can still be helpful.
+useing the ``Query`` entered. If you have a good enough query this can still be helpful.
 The number input will limit the amount of messages in the backlog.
 
 Summary
