@@ -48,22 +48,28 @@ A click on the `chevron icon -> Edit` on the right side of the head will open th
 .. image:: /images/searching/widget_aggregation_edit.png
    :align: center
 
+:GROUP BY:
+   This option allows you to “group” your chart by rows and columns. 
+   When you create a new group with Group By, the values you select 
+   get rolled up into the result. This result can be presented in a 
+   variety of ways. You may present the data as a table, chart, 
+   or visualization with color.  
+   
+   At a glance, if ``timestamp`` is a field attributed to a row it will 
+   divide the data points into intervals. Otherwise the aggregation will take
+   by default up to 15 elements of the selected field and apply the
+   selected **METRICS** function to the data points.
+   
+   *Example* The ``timestamp`` field is aggregated with ``avg()`` on
+   ``took_ms``. The column ``action`` will give the average loading
+   time for a page per action for every 5 minutes.
+
 :METRICS:
    **METRICS** are a collection of functions to aggregate data points.
    The result of the aggregation depends on the grouping of **ROWS** and/or
    **COLUMNS**. The data points of a field will be aggregated to the grouping.
    *Example* The ``avg()`` function will find the average of the
    numeric data points ``took_ms`` around the configured grouping. 
-
-:ROWS/COLUMNS:
-   Allows selecting fields whose values will be used to group results into
-   new rows/columns. If the field is a ``timestamp`` for a row it will
-   divide the data points into intervals. Otherwise the aggregation will take
-   by default up to 15 elements of the selected field and apply the
-   selected **METRICS** function to the data points.
-   *Example* The ``timestamp`` field is aggregated with ``avg()`` on
-   ``took_ms``. The column ``action`` will give the average loading
-   time for a page per action for every 5 minutes.
 
 :VISUALIZATION:
    To display the result of an aggregation it is often easier to
