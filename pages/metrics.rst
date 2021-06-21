@@ -16,8 +16,8 @@ Standard metrics can also be queried through the :ref:`Graylog REST API Browser 
 Prometheus Metric Exporting
 ===========================
 
-Starting in Graylog 4.1, metrics can be exported to other systems VIA the Prometheus Metrics Exporting feature.
-This feature can be optionally enabled. When enabled, Graylog will export metrics VIA a standard
+Starting in Graylog 4.1, metrics can be exported to other systems via the Prometheus Metrics Exporting feature.
+This feature can be optionally enabled. When enabled, Graylog will export metrics via a standard
 `Prometheus HTTP exporter <https://prometheus.io/docs/instrumenting/writing_exporters>`_ on port ``9833``. Prometheus
 can then scrape and ingest the metrics.
 
@@ -110,7 +110,7 @@ For example::
 
 The mapping definition that follows provides a ``match_pattern`` with a wildcard ``*`` for the ``stream-id``, which
 provides one label for each stream id automatically. This allows for the visualization of messages received for all
-streams together, but broken-out by stream-id VIA the labels functionality. The ``wildcard_extract_labels`` is an ordered
+streams together, but broken-out by stream-id via the labels functionality. The ``wildcard_extract_labels`` is an ordered
 array, which provides the label names for any specified wildcards in the ``match_pattern``.
 
 Mapping Definition::
