@@ -29,7 +29,6 @@ the :ref:`Forwarder Wizard <forwarder_wizard>` will guide you through the proces
 Any tokens used by the Forwarder must belong to the user Forwarder System User (built-in). You can find
 information about creating an `API token in the documentation <https://docs.graylog.org/en/4.0/pages/configuration/rest_api.html?highlight=token#creating-and-using-access-token>`__.
 
-
 ************
 Installation
 ************
@@ -378,3 +377,11 @@ your deployment manage bulk requests and potential latency issues while ensuring
 More to the point, the load balancer distributes requests among healthy nodes in your local and/or external data 
 centers. In our help docs, you can test and configure tools such as Apache HTTP server, Nginx, or HAProxy to handle 
 requests among multiple Forwarders.
+
+**********
+Versioning
+**********
+
+The Forwarder uses a simple ``MAJOR.MINOR`` versioning scheme (eg. ``v4.1``). The Forwarder version will typically follow
+that of the Graylog server. For example, when Graylog ``v5.0.0`` is released, the Forwarder version ``5.0`` will also
+be released.
