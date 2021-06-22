@@ -21,6 +21,7 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/configuration
    pages/secure/securing
    pages/sending_data
+   pages/metrics
    pages/sidecar
    pages/queries
    pages/streams
