@@ -43,7 +43,7 @@ Setup
 *****
 
 The same Forwarder agent can be used for both Graylog Cloud and on-premise Graylog installations, but the required
-configuration is different for each environment.
+setup is different for each environment.
 
 Create Forwarder Input (on-premise only)
 ========================================
@@ -157,7 +157,7 @@ Once the Forwarder starts successfully, the console should display the following
 Select Forwarder
 ----------------
 
-Once the Forwarder makes a connection to Graylog it will register automatically. Then, you will see it listed on the
+Once the Forwarder makes a connection to Graylog, it will register automatically. Then, you will see it listed on the
 next step. Both the hostname of the machine where the Forwarder is started, and the node id are are shown for each
 Forwarder.
 
@@ -232,7 +232,7 @@ Forwarder Overview
 
 .. image:: /images/forwarders_list.png
         
-One place to review Cloud Forwarder connectivity is the *Forwarders* screen, under the *Systems* menu. 
+One place to review Forwarder agent connectivity is the *Forwarders* screen, under the *Systems* menu.
 This page provides a summary of all Forwarders. Identify the green Connected badge on the Status column. 
 This tells you that a Forwarder is actively sending messages to your cloud instance. Another key indicator 
 is found on the Metrics column. The cells that show active message rates, again, prove your Forwarders works.
