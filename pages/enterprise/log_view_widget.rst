@@ -32,7 +32,10 @@ To get familiar with Log View, perform the following actions.
 #. Focus on the widget with an expanded view
 #. Export report details into a format such as NDJSON 
 
+Create Log View Widget
+----------------------
 
+The Log View Widget dg 
 
 In addition, the Log View aggregation allows you to select a sample of a line, then copy it. 
 You can paste the selection to your text editor or a file, with formatting identical to the Log View layout.
