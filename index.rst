@@ -48,7 +48,7 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/enterprise/setup
    pages/archiving
    pages/auditlog
-   pages/enterprise/forwarder/index.rst
+   pages/enterprise/forwarder
    pages/reporting
    pages/enterprise/setup/license.rst
    pages/enterprise/changelog

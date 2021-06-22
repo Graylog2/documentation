@@ -5,8 +5,8 @@ Forwarder
 .. toctree::
    :hidden:
 
-   installation
-   configuration_options
+   forwarder/installation
+   forwarder/configuration_options
 
 ************
 Introduction
@@ -15,6 +15,19 @@ The Graylog Forwarder is a standalone agent for sending send log data to Graylog
 Server clusters. The Forwarder is typically run as a service to continuously stream data to the destination Graylog
 cluster.
 
+.. image:: /images/forwarder_diagram.png
+
+********
+Security
+********
+
+The Forwarder connects to Graylog Cloud over TLS. TLS is also highly recommended for on-premise installations.
+This ensures data moves securely and reliably. The Forwarder also uses API Token authentication, to ensure only
+authorized Forwarders can connect to your environment. Forwarders must be assigned and configured with a token to
+authenticate with the destination Graylog cluster or Cloud environment. When setting up a new Forwarder,
+the :ref:`Forwarder Wizard <forwarder_wizard>` will guide you through the process of creating the API token.
+Any tokens used by the Forwarder must belong to the user Forwarder System User (built-in). You can find
+information about creating an `API token in the documentation <https://docs.graylog.org/en/4.0/pages/configuration/rest_api.html?highlight=token#creating-and-using-access-token>`__.
 
 
 ************
@@ -49,6 +62,8 @@ You must provide your own TLS certificate and key.
 
 Once the input has been created, verify that it is at the ``RUNNING`` state. Please see the Graylog server log if any
 troubleshooting is needed.
+
+.. _forwarder_wizard:
 
 Wizard
 ======
@@ -186,17 +201,6 @@ and appear on the Forwarders page in Graylog. Each Forwarder will have a *Config
 the configuration process for it. In case the Forwarder is not displayed yet, clicking on New Forwarder
 will give you information on how to configure and start it.
 
-********
-Security
-********
-
-The Forwarder connects to Graylog Cloud over TLS. This ensures data moves securely and reliably. 
-
-Another layer of security required for the Forwarder is an API token. To ensure only Forwarders you trust can connect
-to your Graylog Cloud instance, Forwarders must be assigned and configured with a token to authenticate with Graylog 
-Cloud. Any tokens used by the Forwarder must belong to the user Forwarder System User (built-in). You can find 
-information about creating an `API token in the documentation <https://docs.graylog.org/en/4.0/pages/configuration/rest_api.html?highlight=token#creating-and-using-access-token>`__.
-
 *************
 Input Profile
 *************
@@ -231,7 +235,7 @@ Forwarder Overview
 One place to review Cloud Forwarder connectivity is the *Forwarders* screen, under the *Systems* menu. 
 This page provides a summary of all Forwarders. Identify the green Connected badge on the Status column. 
 This tells you that a Forwarder is actively sending messages to your cloud instance. Another key indicator 
-is found on the Metrics column. The cells that show active message rates, again, prove your Cloud Forwarders works. 
+is found on the Metrics column. The cells that show active message rates, again, prove your Forwarders works.
 
 REST API
 ========
@@ -356,8 +360,8 @@ all three. If all the above pose a threat to your Forwarder consider both messag
 Message Recovery
 ================
         
-The Cloud Forwarder’s disk journal is capable of caching data in case of a network outage. From there, they are read 
-and sent to Graylog Cloud. 
+The Forwarder’s disk journal is capable of caching data in case of a network outage. From there, they are read
+and sent to Graylog.
         
 As mentioned in the `Output Framework chapter <https://docs.graylog.org/en/4.0/pages/integrations/output_framework.html?highlight=Journal#on-disk-journal>`__, if the internet is unavailable, 
 the Forwarder is still capable of receiving messages. So, once the internet is back the workflow will resume. 
@@ -372,23 +376,23 @@ your deployment manage bulk requests and potential latency issues while ensuring
         
 More to the point, the load balancer distributes requests among healthy nodes in your local and/or external data 
 centers. In our help docs, you can test and configure tools such as Apache HTTP server, Nginx, or HAProxy to handle 
-requests among multiple Cloud Forwarders.
+requests among multiple Forwarders.
 
 *************************
 Distinguishing Forwarders
 *************************
 
-+-----------------------------+----------------------------------------+-------------------------------------------------+
-| Type                        | Purpose                                | Details                                         |
-+=============================+========================================+=================================================+
-|                             | The Data Forwarder allows you          | This Forwarder has an open-source instance      |
-| Enterprise Data Forwarder   | to configure an Output to forward      | However, it is only available within            |
-|                             | messages from a source to a            | the Enterprise Integrations plugin.             |
-|                             | destination cluster.                   |                                                 |
-|                             |                                        |                                                 |
-+-----------------------------+----------------------------------------+-------------------------------------------------+ 
-|                             | The Cloud Forwarder allows you         | Your input profile can host multiple Forwarders.|
-| Enterprise Cloud Forwarder  | cloud instance, via input profiles.    |                                                 |
-|                             |                                        |                                                 |
-|                             |                                        |                                                 |
-+-----------------------------+----------------------------------------+-------------------------------------------------+
++--------------------------------+----------------------------------------+-------------------------------------------------+
+| Type                           | Purpose                                | Details                                         |
++================================+========================================+=================================================+
+|                                | This Forwarder allows you              | This Forwarder has an open-source instance      |
+| Cluster-to-cluster Forwarder   | to configure an Output to forward      | However, it is only available within            |
+|                                | messages from a source to a            | the Enterprise Integrations plugin.             |
+|                                | destination cluster.                   |                                                 |
+|                                |                                        |                                                 |
++--------------------------------+----------------------------------------+-------------------------------------------------+
+|                                | Forward log messages to Graylog Cloud  | Your input profile can host multiple Forwarders.|
+|  Forwarder                     | or on-premise.                         |                                                 |
+|                                |                                        |                                                 |
+|                                |                                        |                                                 |
++--------------------------------+----------------------------------------+-------------------------------------------------+
