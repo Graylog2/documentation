@@ -56,7 +56,8 @@ all Graylog nodes within the cluster.
 
 The default values are appropriate for most environments. It is highly recommended to enable TLS, especially if the
 Forwarder traffic will route over the internet. The process is similar  :ref:`to enabling TLS in Graylog Server<tls_setup>`.
-You must provide your own TLS certificate and key for the input, and also later when configuring the Forwarder agent.
+You must provide your own TLS certificate and key for the input, and also provide the certificate later when
+configuring the Forwarder agent.
 
 .. image:: /images/forwarder_input.png
 
