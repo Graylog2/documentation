@@ -19,7 +19,7 @@ Creating a widget
 To add a widget for your search or dashboard, open the sidebar and the "Create" section. You can also open the section directly by
 clicking on the plus sign.
 
-.. image:: /images/searching/views_widget_create.png
+.. image:: /images/searching/log_view_window.png
    :align: center
 
 You can create an empty ":ref:`widgets-aggregation`". or a predefined widget by selecting the ":ref:`widgets-message-table`" or "Message Count" .
