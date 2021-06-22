@@ -162,7 +162,7 @@ Once the Forwarder makes a connection to Graylog, it will register automatically
 next step. Both the hostname of the machine where the Forwarder is started, and the node id are are shown for each
 Forwarder.
 
-.. image:: /images/forwarder_select.png
+.. image:: /images/forwarder_select_1.png
 
 #. Click the radio button to select the new Forwarder you just created.
 #. Click *Configure selected Forwarder* to navigate to the next menu: *Configure Forwarder*.
@@ -378,22 +378,3 @@ your deployment manage bulk requests and potential latency issues while ensuring
 More to the point, the load balancer distributes requests among healthy nodes in your local and/or external data 
 centers. In our help docs, you can test and configure tools such as Apache HTTP server, Nginx, or HAProxy to handle 
 requests among multiple Forwarders.
-
-*************************
-Distinguishing Forwarders
-*************************
-
-+--------------------------------+----------------------------------------+-------------------------------------------------+
-| Type                           | Purpose                                | Details                                         |
-+================================+========================================+=================================================+
-|                                | This Forwarder allows you              | This Forwarder has an open-source instance      |
-| Cluster-to-cluster Forwarder   | to configure an Output to forward      | However, it is only available within            |
-|                                | messages from a source to a            | the Enterprise Integrations plugin.             |
-|                                | destination cluster.                   |                                                 |
-|                                |                                        |                                                 |
-+--------------------------------+----------------------------------------+-------------------------------------------------+
-|                                | Forward log messages to Graylog Cloud  | Your input profile can host multiple Forwarders.|
-|  Forwarder                     | or on-premise.                         |                                                 |
-|                                |                                        |                                                 |
-|                                |                                        |                                                 |
-+--------------------------------+----------------------------------------+-------------------------------------------------+
