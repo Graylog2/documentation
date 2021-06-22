@@ -32,6 +32,7 @@ Open Source
    integrations/inputs/aws_kinesis_cloudwatch_input
    integrations/inputs/palo_alto_networks_input
    integrations/inputs/ipfix_input
+   integrations/greynoise_dataadapter
 
 .. _integrations_enterprise:
 
@@ -54,3 +55,4 @@ For a comprehensive list of available features included, see our  :ref:`Enterpri
    integrations/inputs/okta_input
    integrations/output_framework
    integrations/inputs/o365_input
+   integrations/greynoise_dataadapter
