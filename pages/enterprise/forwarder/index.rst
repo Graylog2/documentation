@@ -31,6 +31,24 @@ Configuration
 The same Forwarder agent can be used for both Graylog Cloud and on-premise Graylog installations, but the required
 configuration is different for each environment.
 
+Add Forwarder Input (on-premise only)
+=====================================
+
+If you are setting up a Forwarder for Graylog on-premise, you will need to create a Forwarder input on the
+*System > Inputs* page. Skip this step if you are using Graylog Cloud.
+This special Forwarder input allows your Graylog nodes to accept connections from Forwarders.
+This input should only be created once with the Global option checked. This will ensure that the input runs on
+all Graylog nodes within the cluster.
+
+The default options are appropriate for most environments. It is highly recommended to enable TLS, especially if the
+Forwarder traffic will route over the internet. The process is similar  :ref:`to enabling TLS in Graylog Server<tls_setup>`.
+You must provide your own TLS certificate and key.
+
+.. image:: /images/forwarder_input.png
+
+Once the input has been created, verify that it is at the ``RUNNING`` state. Please see the Graylog server log if any
+troubleshooting is needed.
+
 Wizard
 ======
 
@@ -64,6 +82,8 @@ that are no longer used.
 #. Enter your *Token Name* in the available field.
 #. Create the new name by clicking the *Create Token* button.
 
+Tokens created in this step are stored under the Forwarder
+
 .. image:: /images/forwarder_api_token_1.png
 
 Configure Forwarder
@@ -73,14 +93,18 @@ The wizard now displays the required configuration to input in the ``forwarder.c
 the environment-specific configuration needed for the Forwarder to connect successfully.
 
 The required configuration is different for Graylog Cloud and on-premise. The wizard will automatically provide the
-needed configuration for your particular setup on screen. You can then copy and paste it into your `forwarder.conf`
+needed configuration for your particular setup on screen. You can then copy and paste it into your ``forwarder.conf``
 file.
 
-.. image:: /images/forwarder_config.png
+.. image:: /images/forwarder_config_1.png
 
-#. Open your text editor of choice to access your ``forwarder.conf`` file
-#. Click *Copy as configuration snippet* to copy the configuration details displayed to your ``forwarder.conf`` file, i.e. ``forwarder_server_hostname`` and ``forwarder_grpc_api_token`` with corresponding values.
-#. Paste all values in the configuration file, and save the new changes.
+Only the ``forwarder_server_hostname`` and ``forwarder_grpc_api_token`` are required for Graylog Cloud. These are
+provided by the wizard automatically.
+
+The configuration properties for Graylog on-premise will be automatically determined from the Forwarder input added
+earlier in the configuration process. A typical configuration includes ``forwarder_server_hostname``, ``forwarder_grpc_api_token``,
+``forwarder_configuration_port``, ``forwarder_message_transmission_port``, ``forwarder_grpc_enable_tls``,
+and ``forwarder_grpc_tls_trust_chain_cert_file``
 
 Start Forwarder
 ---------------
@@ -106,29 +130,13 @@ Select Forwarder
 ----------------
 
 Once the Forwarder makes a connection to Graylog it will register automatically. Then, you will see it listed on the
-next step.
+next step. Both the hostname of the machine where the Forwarder is started, and the node id are are shown for each
+Forwarder.
 
 .. image:: /images/forwarder_select.png
 
 #. Click the radio button to select the new Forwarder you just created.
 #. Click *Configure selected Forwarder* to navigate to the next menu: *Configure Forwarder*.
-
-Add Forwarder Input (on-premise only)
--------------------------------------
-If you are setting up a Forwarder for Graylog on-premise, you will need to create a Forwarder input on the
-System > Inputs page. This special Forwarder input allows your Graylog nodes to accept connections from Forwarders.
-This input should only be created once with the Global option checked. This will ensure that the input runs on
-all Graylog nodes within the cluster.
-
-The default options are appropriate for most environments. It is highly recommended to enable TLS, especially if the
-Forwarder traffic will route over the internet. The process is similar  :ref:`to enabling TLS in Graylog Server<tls_setup>`.
-You must provide your own TLS certificate and key. If you are using the Forwarder for Graylog Cloud, TLS is
-automatically enabled and configured.
-
-.. image:: /images/forwarder_input.png
-
-Once the input has been created, verify that it is at the ``RUNNING`` state. Please see the Graylog server log if any
-troubleshooting is needed.
 
 Configure Forwarder
 -------------------
