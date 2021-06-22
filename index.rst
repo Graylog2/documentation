@@ -46,7 +46,7 @@ NOTE: There are multiple options for reading this documentation. See link to the
 
    pages/enterprise/intro
    pages/enterprise/setup
-   pages/enterprise/cloud_forwarder
+   pages/enterprise/forwarder/index.rst
    pages/archiving
    pages/auditlog
    pages/reporting

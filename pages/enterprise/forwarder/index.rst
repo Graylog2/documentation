@@ -1,18 +1,29 @@
-###############
-Cloud Forwarder
-###############
+#########
+Forwarder
+#########
+
+.. toctree::
+   :hidden:
+
+   installation
 
 ************
 Introduction
 ************
-The Graylog Cloud Forwarder is the solution to get your data into Graylog Cloud. Graylog Cloud allows you to set up
-a connection so one or more Forwarders can send messages. Since it’s hosted in the cloud you can run the Forwarder 
-anywhere.
+The Graylog Forwarder is a standalone tool that can be used to send log data to Graylog Cloud or an on-premise Graylog
+cluster over the internet and private networks.
 
-.. image:: /images/forwarder_diagram.png
+TODO: Add General image.
 
-The Cloud Forwarder is not a one-and-done migration tool; therefore, it’s an integral part of your cloud architecture. 
-Your Forwarder must run 24-7 in your environment in order to send data to Graylog Cloud.
+The Forwarder can be run as a service to continuously stream data to the destination Graylog cluster.
+
+************
+Installation
+************
+
+The Forwarder is distributed in similar packaging and installation methods as the Graylog server.
+You can choose between operating system packages, docker, and tar installation methods. Reference the
+:ref:`Forwarder Installation <forwarder_installation>` page for more information.
 
 ********
 Security
