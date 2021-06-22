@@ -38,7 +38,7 @@ Enterprise
 Enterprise Integrations features require a `Graylog Enterprise license <https://www.graylog.org/enterprise>`_ .
 For a comprehensive list of available features included, see our  :ref:`Enterprise List page<enterprise_features>`
 
-* :doc:`Forwarder <integrations/forwarder>`
+* :doc:`Cluster-to-Cluster Forwarder <integrations/forwarder>`
 * :doc:`Enterprise Output Framework <integrations/output_framework>`
 * :ref:`Script Alert Notification<alert_notification_script>`
 * :ref:`Okta Log Events Input<okta_input>`
