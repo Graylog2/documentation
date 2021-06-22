@@ -25,6 +25,8 @@ choosing the TGZ option.
 Operating System Package Installation
 *************************************
 
+.. _forwarder_os_packages:
+
 The most common installation method is to use the Linux operating system packages. You can choose
 from DEB and RPM. If either of those tools is your method, be sure Java is available on your operating system.
 In addition, be sure to have access to a TLS certificate and an API token generated from Graylog.
