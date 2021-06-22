@@ -29,7 +29,7 @@ The Greynoise open source version does an IP Quick Context lookup. For additiona
 .. _greynoise__ent_dataadapter:
 
 GreyNoise Lookup [Enterprise]
----------------------
+-----------------------------
 
 .. attention:: This is a Graylog Enterprise feature and is only available since Graylog version 4.1. A valid Graylog Enterprise license is required.
 

@@ -55,4 +55,3 @@ For a comprehensive list of available features included, see our  :ref:`Enterpri
    integrations/inputs/okta_input
    integrations/output_framework
    integrations/inputs/o365_input
-   integrations/greynoise_dataadapter
