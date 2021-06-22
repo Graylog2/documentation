@@ -12,7 +12,7 @@ Forwarder
 Introduction
 ************
 The Graylog Forwarder is a standalone agent for sending send log data to Graylog Cloud or an on-premise Graylog
-Server clusters. The Forwarder is typically run as a service to continuously stream data to the destination Graylog
+Server cluster. The Forwarder is typically run as a service to continuously stream data to the destination Graylog
 cluster.
 
 .. image:: /images/forwarder_diagram.png
@@ -21,8 +21,8 @@ cluster.
 Security
 ********
 
-The Forwarder connects to Graylog Cloud over TLS. TLS is also highly recommended for on-premise installations.
-This ensures data moves securely and reliably. The Forwarder also uses API Token authentication, to ensure only
+The Forwarder connects to Graylog Cloud over TLS. Using TLS is also highly recommended for on-premise installations.
+This ensures data moves securely. The Forwarder also uses API Token authentication, to ensure only
 authorized Forwarders can connect to your environment. Forwarders must be assigned and configured with a token to
 authenticate with the destination Graylog cluster or Cloud environment. When setting up a new Forwarder,
 the :ref:`Forwarder Wizard <forwarder_wizard>` will guide you through the process of creating the API token.
@@ -35,7 +35,7 @@ Installation
 ************
 
 The Forwarder is distributed in similar packaging and installation methods as the Graylog server.
-You can choose between operating system packages, docker, and tar installation methods. Reference the
+You can choose between operating system packages, Docker, and binary installation methods. See the
 :ref:`Forwarder Installation <forwarder_installation>` page for more information.
 
 *****
@@ -54,21 +54,21 @@ This special Forwarder input allows your Graylog nodes to accept connections fro
 This input should only be created once with the Global option checked. This will ensure that the input runs on
 all Graylog nodes within the cluster.
 
-The default options are appropriate for most environments. It is highly recommended to enable TLS, especially if the
+The default values are appropriate for most environments. It is highly recommended to enable TLS, especially if the
 Forwarder traffic will route over the internet. The process is similar  :ref:`to enabling TLS in Graylog Server<tls_setup>`.
-You must provide your own TLS certificate and key.
+You must provide your own TLS certificate and key for the input, and also later when configuring the Forwarder agent.
 
 .. image:: /images/forwarder_input.png
 
-Once the input has been created, verify that it is at the ``RUNNING`` state. Please see the Graylog server log if any
+Once the input has been created, verify that it is ``RUNNING``. Please see the Graylog server log if any
 troubleshooting is needed.
 
 .. _forwarder_wizard:
 
-Wizard
-======
+Setup Wizard
+============
 
-Graylog provides a Forwarder Setup Wizard that provides guidance for setting up Forwarders in both the Cloud and
+Graylog ships with a Forwarder Setup Wizard that provides guidance for setting up Forwarders in both the Cloud and
 on-premise environments.
 
 The Forwarder Setup Wizard can be found in the following locations:
@@ -77,7 +77,7 @@ The Forwarder Setup Wizard can be found in the following locations:
 * Graylog Cloud: System > Forwarders
 
 From the main Forwarders page, launch the wizard by clicking the *New Forwarder* or *Get Started* buttons.
-Once launched wizard will guide you through the appropriate configuration steps for your environment.
+Once launched, the wizard will guide you through the appropriate configuration steps for your environment.
 
 .. image:: /images/forwarder_wizard_intro.png
 
@@ -98,12 +98,10 @@ that are no longer used.
 #. Enter your *Token Name* in the available field.
 #. Create the new name by clicking the *Create Token* button.
 
-Tokens created in this step are stored under the Forwarder
-
 .. image:: /images/forwarder_api_token_1.png
 
-Configure Forwarder agent
--------------------------
+Configure local Forwarder agent
+-------------------------------
 
 The wizard now displays the required configuration to input in the ``forwarder.conf`` file. This file provides all of
 the environment-specific configuration needed for the Forwarder to connect successfully.
@@ -140,7 +138,8 @@ Start Forwarder
 
 Once configured, the Forwarder must be started, so the setup wizard can find it on the next step.
 
-If you are using the Forwarder OS packages, or docker, following the instructions on the :ref:`Installation page<forwarder_os_packages>`.
+If you are using the Forwarder OS packages, or docker, following the instructions on the
+:ref:`Installation page<forwarder_os_packages>`.
 
 If you are using the Forwarder binaries, you can use these instructions to start the Forwarder:
 
@@ -206,12 +205,13 @@ Input Profile
 *************
 
 Input Profiles are a set of Inputs that can be configured to run on one or more Forwarders of your choice. 
-This aspect is critical to your Forwarder because it provides a gateway to move data to Graylog Cloud.
+This aspect is critical to your Forwarder because it provides a gateway to move data to Graylog.
 
 Input Profiles helps you to avoid re-doing the same configuration for all Forwarders since you can start new Forwarders 
-and assign them a set of Inputs you already defined and tested beforehand. This is especially helpful if you want to collect the same kind of logs in different parts of your Infrastructure or to have a more redundant set-up.
+and assign them a set of Inputs you already defined and tested beforehand. This is especially helpful if you want to
+collect the same kind of logs in different parts of your Infrastructure or to have a more redundant set-up.
 
-As you create your Cloud Forwarder, you must create an Input Profile from the wizard, explained in Add Inputs. 
+As you create your Forwarder, you must create an Input Profile from the wizard, explained in Add Inputs.
 Provide a descriptive name for the Input Profile, a short description of its intention, and then create all the input 
 necessary for the Forwarder.
 
@@ -219,7 +219,7 @@ necessary for the Forwarder.
 Monitoring Forwarder Activity and Health
 ****************************************
 
-After you connect your Forwarder to Graylog Cloud, get to know methods to access metrics and other information 
+After you connect your Forwarder to Graylog, get to know methods to access metrics and other information
 on your Forwarder(s) and corresponding input(s). Here are a few methods to analyze and extract details on Forwarder 
 activity:
 
@@ -237,10 +237,10 @@ This page provides a summary of all Forwarders. Identify the green Connected bad
 This tells you that a Forwarder is actively sending messages to your cloud instance. Another key indicator 
 is found on the Metrics column. The cells that show active message rates, again, prove your Forwarders works.
 
-REST API
-========
+Forwarder agent REST API
+========================
 
-The Forwarder supports a local REST API for checking health status, inputs, and exporting Prometheus metrics. 
+The Forwarder agent supports a local REST API for checking health status, inputs, and exporting Prometheus metrics.
 To enable the Forwarder API:
 
 * Open your ``forwarder.conf`` file
