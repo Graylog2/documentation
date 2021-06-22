@@ -18,8 +18,9 @@ reports that you need.
 To get familiar with Log View this in this guide, perform the following actions.
 
 #. Create a new Log View widget
-#. Add new columns and corresponding values to the new widget
-#. Focus on the widget with an expanded view 
+#. Expand your report with columns and corresponding values to the new widget
+#. Focus on the widget with an expanded view
+#. Export report details into a format such as NDJSON 
 
 Consider that you may need to gather smaller relationships for such actions as:
 
