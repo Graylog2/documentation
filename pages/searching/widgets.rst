@@ -42,7 +42,7 @@ Or string values which can be used for grouping the aggregation
 
 Configuring an aggregation
 """"""""""""""""""""""""""
-As describe in the previous section a click on `+ Create` -> `Aggreatation` will create an empty widget on the very top of the search page.
+As describe in the previous section a click on `+ Create` -> `Aggregation` will create an empty widget on the very top of the search page.
 A click on the `chevron icon -> Edit` on the right side of the head will open the widget edit modal.
 
 .. image:: /images/searching/widget_aggregation_edit.png
