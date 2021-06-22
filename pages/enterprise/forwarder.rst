@@ -38,15 +38,15 @@ The Forwarder is distributed in similar packaging and installation methods as th
 You can choose between operating system packages, docker, and tar installation methods. Reference the
 :ref:`Forwarder Installation <forwarder_installation>` page for more information.
 
-*************
-Configuration
-*************
+*****
+Setup
+*****
 
 The same Forwarder agent can be used for both Graylog Cloud and on-premise Graylog installations, but the required
 configuration is different for each environment.
 
-Add Forwarder Input (on-premise only)
-=====================================
+Create Forwarder Input (on-premise only)
+========================================
 
 If you are setting up a Forwarder for Graylog on-premise, you will need to create a Forwarder input on the
 *System > Inputs* page. Skip this step if you are using Graylog Cloud.
