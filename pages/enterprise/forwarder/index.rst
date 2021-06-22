@@ -6,7 +6,7 @@ Forwarder
    :hidden:
 
    installation
-   forwarder_config_options
+   configuration_options
 
 ************
 Introduction
@@ -15,7 +15,7 @@ The Graylog Forwarder is a standalone agent for sending send log data to Graylog
 Server clusters. The Forwarder is typically run as a service to continuously stream data to the destination Graylog
 cluster.
 
-TODO: Add General image.
+
 
 ************
 Installation
