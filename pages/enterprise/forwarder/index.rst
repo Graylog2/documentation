@@ -6,6 +6,7 @@ Forwarder
    :hidden:
 
    installation
+   forwarder_config_options
 
 ************
 Introduction
@@ -86,8 +87,8 @@ Tokens created in this step are stored under the Forwarder
 
 .. image:: /images/forwarder_api_token_1.png
 
-Configure Forwarder
--------------------
+Configure Forwarder agent
+-------------------------
 
 The wizard now displays the required configuration to input in the ``forwarder.conf`` file. This file provides all of
 the environment-specific configuration needed for the Forwarder to connect successfully.
@@ -98,13 +99,26 @@ file.
 
 .. image:: /images/forwarder_config_1.png
 
-Only the ``forwarder_server_hostname`` and ``forwarder_grpc_api_token`` are required for Graylog Cloud. These are
-provided by the wizard automatically.
+See the :ref:`Forwarder Configuration values <forwarder_config_options>` page for a list of all supported configuration
+options.
 
-The configuration properties for Graylog on-premise will be automatically determined from the Forwarder input added
-earlier in the configuration process. A typical configuration includes ``forwarder_server_hostname``, ``forwarder_grpc_api_token``,
-``forwarder_configuration_port``, ``forwarder_message_transmission_port``, ``forwarder_grpc_enable_tls``,
-and ``forwarder_grpc_tls_trust_chain_cert_file``
+Example Graylog Cloud configuration file:
+
+.. code-block::
+
+    forwarder_server_hostname = ingest-<your-account-url>.graylog.cloud
+    forwarder_grpc_api_token = <your-api-token>
+
+Example Graylog on-premise configuration file:
+
+.. code-block:: bash
+
+    forwarder_server_hostname = (required) The Graylog server hostname where the Forwarder should connect to.
+    forwarder_grpc_api_token = <your-api-token>
+    forwarder_configuration_port = 13302
+    forwarder_message_transmission_port = 13301
+    forwarder_grpc_enable_tls = true
+    forwarder_grpc_tls_trust_chain_cert_file = <path to cert.pem>
 
 Start Forwarder
 ---------------
@@ -167,26 +181,10 @@ Summary
 
 Review your summary, then select *Exit configuration*. You’ll see the new Forwarder on the *Forwarder* page.
 
-After installing, configuring, and starting a Forwarder instance, it will register with Graylog Cloud
-and appear on the Forwarders page in Graylog Cloud. Each Forwarder will have a *Configure* button to begin
+After installing, configuring, and starting a Forwarder instance, it will register with Graylog
+and appear on the Forwarders page in Graylog. Each Forwarder will have a *Configure* button to begin
 the configuration process for it. In case the Forwarder is not displayed yet, clicking on New Forwarder
 will give you information on how to configure and start it.
-
-File
-====
-
-On the client-side of your Forwarder, modify the configuration file to address your Graylog host and authentication.
-The default values for ``forwarder.conf`` are:
-
-* ``forwarder_server_hostname``: (required) The Graylog Cloud Forwarder ingest hostname (eg. ``ingest-<your-account>.graylog.cloud``). It’s found on the Forwarder Setup Wizard in Graylog Cloud.
-* ``forwarder_grpc_api_token``: (required) The API Token for authenticating the Forwarder.
-
-Here’s an example of the configuration file, with the following values:
-
-.. code-block:: bash
-
-    $ forwarder_server_hostname = ingest-<your-account-url>.graylog.cloud
-    $ forwarder_grpc_api_token = <your-api-token>
 
 ********
 Security
