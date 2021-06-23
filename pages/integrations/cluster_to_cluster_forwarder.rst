@@ -1,20 +1,20 @@
 .. _forwarder:
 
-*********
-Forwarder
-*********
+****************************
+Cluster-to-Cluster Forwarder
+****************************
 
-The Forwarder provides the ability to forward messages from one Graylog cluster to another over HTTP/2.
+The Cluster-to-Cluster Forwarder provides the ability to forward messages from one Graylog cluster to another over HTTP/2.
 This centralizes log messages from multiple distributed Graylog source clusters into one destination cluster,
 which allows centralized alerting, reporting, and oversight.
 
-Two Graylog clusters are required to use the Forwarder: A Graylog source cluster (Forwarder Output) and a Graylog
-destination cluster (Forwarder Input). The Graylog source cluster will forward messages, and the Graylog
+Two Graylog clusters are required to use the Cluster-to-Cluster Forwarder: A Graylog source cluster (Forwarder Output) and a Graylog
+destination cluster (Cluster-to-Cluster Forwarder Input). The Graylog source cluster will forward messages, and the Graylog
 destination cluster will receive messages being forwarded.
 
 .. note:: This is an Enterprise Integrations feature and is only available since Graylog version 3.0.1 and thus requires an Enterprise license. See the :doc:`Integrations Setup <setup>` page for more info.
 
-.. image:: /images/forwarder_diagram.png
+.. image:: /images/cluster_to_cluster_forwarder_diagram.png
 
 Forwarder Output
 ----------------
@@ -47,13 +47,13 @@ for your throughput requirements and environment.
 .. image:: /images/forwarder_output.png
 
 
-Forwarder Input
----------------
+Cluster-to-Cluster Forwarder Input
+----------------------------------
 
-The Forwarder Input (Graylog destination cluster) is responsible for receiving messages that have been
+The Input (Graylog destination cluster) is responsible for receiving messages that have been
 forwarded from the Graylog cluster source.
 
-When the Graylog destination cluster (Forwarder Input) receives the forwarded messages, the following relevant fields
+When the Graylog destination cluster (Cluster-to-Cluster Forwarder Input) receives the forwarded messages, the following relevant fields
 are added to help track which Graylog cluster and node the messages originated from.
 
 * ``gl2_source_cluster_id``
@@ -62,8 +62,8 @@ are added to help track which Graylog cluster and node the messages originated f
 * ``gl2_source_node_id``
     * The id of the source Graylog node.
 
-Forwarder Input Options
-^^^^^^^^^^^^^^^^^^^^^^^
+Cluster-to-Cluster Forwarder Input Options
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. image:: /images/forwarder_input.png
@@ -71,7 +71,7 @@ Forwarder Input Options
 SSL/TLS
 ^^^^^^^
 TLS encryption is supported to ensure secure transport of forwarded messages. You can enable it by checking the Enable
-TLS check box on both the Forwarder input and output. The Forwarder Input requires that both the certificate and key
+TLS check box on both the input and output. The Input requires that both the certificate and key
 locations must be specified. The Forwarder Output requires only the certification location be specified.
 
 .. note:: Only X.509 certificates and keys in PEM format are supported. TLS Authentication is not currently supported.

@@ -46,9 +46,9 @@ NOTE: There are multiple options for reading this documentation. See link to the
 
    pages/enterprise/intro
    pages/enterprise/setup
-   pages/enterprise/cloud_forwarder
    pages/archiving
    pages/auditlog
+   pages/enterprise/forwarder
    pages/reporting
    pages/enterprise/setup/license.rst
    pages/enterprise/changelog
