@@ -99,6 +99,14 @@ The following configuration options are now being used to configure connectivity
 |                                                    |           | attached as "Warnings" in HTTP-Response headers and might    |                             |
 |                                                    |           | clutter up the logs. Works only with ES7                     |                             |
 +----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
+| ``elasticsearch_version_probe_attempts``           | int       | Maximum number of retries to connect to Elasticsearch on     | ``0`` (defaults to try to   |
+|                                                    |           | boot for the version probe before finally giving up.         | connect until a connection  |
+|                                                    |           | Use 0 to try until a connection could be made                | could be made)              |
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
+| ``elasticsearch_version_probe_delay``              | Duration  | Waiting time in between connection attempts for              | ``5s`` (defaults to wait    |
+|                                                    |           | elasticsearch_version_probe_attempts                         | for 5 seconds between       |
+|                                                    |           |                                                              | retries)                    |
++----------------------------------------------------+-----------+--------------------------------------------------------------+-----------------------------+
 
 .. _version_auto_sensing:
 
