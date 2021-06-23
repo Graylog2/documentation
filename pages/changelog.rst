@@ -2,6 +2,91 @@
 Changelog
 *********
 
+Graylog 4.1.0
+=============
+
+Released: 2021-06-23
+
+Core
+^^^^
+
+**Added**
+
+- Allow users to focus widgets in a search and on dashboards. `Graylog2/graylog2-server#9711 <https://github.com/Graylog2/graylog2-server/issues/9711>`_
+- Add HTML body support to email notifications. `Graylog2/graylog2-server#4569 <https://github.com/Graylog2/graylog2-server/issues/4569>`_ `Graylog2/graylog2-server#9790 <https://github.com/Graylog2/graylog2-server/issues/9790>`_ (Thanks `@radykal-com <https://github.com/radykal-com>`_!)
+- Improved date/time picker for the search page and widgets. `Graylog2/graylog2-server#9569 <https://github.com/Graylog2/graylog2-server/issues/9569>`_
+- Support custom chart legends and value actions in widgets. `Graylog2/graylog2-server#6612 <https://github.com/Graylog2/graylog2-server/issues/6612>`_ `Graylog2/graylog2-server#7207 <https://github.com/Graylog2/graylog2-server/issues/7207>`_ `Graylog2/graylog2-server#9844 <https://github.com/Graylog2/graylog2-server/issues/9844>`_
+- Allow highlighting of dates and boolean values. `Graylog2/graylog2-server#9835 <https://github.com/Graylog2/graylog2-server/issues/9835>`_ `Graylog2/graylog2-server#10000 <https://github.com/Graylog2/graylog2-server/issues/10000>`_
+- Add static/gradient color options to value highlighting. `Graylog2/graylog2-server#10033 <https://github.com/Graylog2/graylog2-server/issues/10033>`_
+- Support for connecting to newer Kafka clusters. `Graylog2/graylog2-server#7101 <https://github.com/Graylog2/graylog2-server/issues/7101>`_ `Graylog2/graylog2-server#7783 <https://github.com/Graylog2/graylog2-server/issues/7783>`_ `Graylog2/graylog2-server#9927 <https://github.com/Graylog2/graylog2-server/issues/9927>`_ `Graylog2/graylog2-server#10146 <https://github.com/Graylog2/graylog2-server/issues/10146>`_
+- Support IPinfo databases in GeoIP lookup data adapter. `Graylog2/graylog2-server#10183 <https://github.com/Graylog2/graylog2-server/issues/10183>`_
+- Add ``elasticsearch_mute_deprecation_warnings`` config option to disable Elasticsearch related deprecation warnings. `Graylog2/graylog2-server#9822 <https://github.com/Graylog2/graylog2-server/issues/9822>`_ `Graylog2/graylog2-server#10163 <https://github.com/Graylog2/graylog2-server/issues/10163>`_ `Graylog2/graylog2-server#10239 <https://github.com/Graylog2/graylog2-server/issues/10239>`_
+- Vastly improved search aggregation builder. `Graylog2/graylog2-server#9742 <https://github.com/Graylog2/graylog2-server/issues/9742>`_ `Graylog2/graylog2-server#10212 <https://github.com/Graylog2/graylog2-server/issues/10212>`_ `Graylog2/graylog2-server#10281 <https://github.com/Graylog2/graylog2-server/issues/10281>`_ `Graylog2/graylog2-server#10293 <https://github.com/Graylog2/graylog2-server/issues/10293>`_ `Graylog2/graylog2-server#10301 <https://github.com/Graylog2/graylog2-server/issues/10301>`_
+- Add ``allowed_auxiliary_paths`` config option to optionally restrict file system access for the CSV File data dapter. `Graylog2/graylog2-server#10244 <https://github.com/Graylog2/graylog2-server/issues/10244>`_
+- Add timerange indicator to widgets. `Graylog2/graylog2-server#7358 <https://github.com/Graylog2/graylog2-server/issues/7358>`_ `Graylog2/graylog2-server#10508 <https://github.com/Graylog2/graylog2-server/issues/10508>`_
+- Allow filtering for entity ID in pagination. `Graylog2/graylog2-server#10537 <https://github.com/Graylog2/graylog2-server/issues/10537>`_
+- Add built-in Prometheus exporter. `Graylog2/graylog2-server#10767 <https://github.com/Graylog2/graylog2-server/issues/10767>`_
+
+**Changed**
+
+Also see: :ref:`4.1 upgrade notes <upgrade-from-40-to-41>`
+
+- Only show API tokens once after their creation. `Graylog2/graylog2-server#9124 <https://github.com/Graylog2/graylog2-server/issues/9124>`_ `Graylog2/graylog2-server#9746 <https://github.com/Graylog2/graylog2-server/issues/9746>`_
+- Replace sigar library with OSHI for collecting system stats. `Graylog2/graylog2-server#6056 <https://github.com/Graylog2/graylog2-server/issues/6056>`_ `Graylog2/graylog2-server#9840 <https://github.com/Graylog2/graylog2-server/issues/9840>`_ (Thanks `@desiderantes <https://github.com/desiderantes>`_!)
+- Due to the sigar to OSHI migration, the ``disable_sigar`` config option has been renamed to ``disable_native_system_stats_collector``.
+- Creating users is now using separate fields for firstname and lastname. `Graylog2/graylog2-server#10074 <https://github.com/Graylog2/graylog2-server/issues/10074>`_
+- Use more secure TLS default ciphers. `Graylog2/graylog2-server#10653 <https://github.com/Graylog2/graylog2-server/issues/10653>`_
+- Use relative URLs for web interface assets served by the Graylog server to improve reverse proxy setups. `Graylog2/graylog2-server#10632 <https://github.com/Graylog2/graylog2-server/issues/10632>`_ `Graylog2/graylog2-server#10267 <https://github.com/Graylog2/graylog2-server/issues/10267>`_ `Graylog2/graylog2-server#10726 <https://github.com/Graylog2/graylog2-server/issues/10726>`_
+- Graylog doesn't stop on startup anymore but tries to reconnect when Elasticsearch version probing is enabled but the cluster is unreachable.
+
+**Fixed**
+
+- Fix behavior of "Apply" for new pipeline rules. `Graylog2/graylog2-server#9340 <https://github.com/Graylog2/graylog2-server/issues/9340>`_
+- Improved authentication failure messages. `Graylog2/graylog2-server#9500 <https://github.com/Graylog2/graylog2-server/issues/9500>`_
+- Return HTTP 400 when modifying a user with invalid role names. `Graylog2/graylog2-server#9722 <https://github.com/Graylog2/graylog2-server/issues/9722>`_ `Graylog2/graylog2-server#5082 <https://github.com/Graylog2/graylog2-server/issues/5082>`_ `Graylog2/graylog2-server#4655 <https://github.com/Graylog2/graylog2-server/issues/4655>`_ (Thanks `@radykal-com <https://github.com/radykal-com>`_!)
+- Fix notification when updating a user. `Graylog2/graylog2-server#9731 <https://github.com/Graylog2/graylog2-server/issues/9731>`_
+- Fix issue when re-using a pipeline stage number. `Graylog2/graylog2-server#6806 <https://github.com/Graylog2/graylog2-server/issues/6806>`_ `Graylog2/graylog2-server#9911 <https://github.com/Graylog2/graylog2-server/issues/9911>`_
+- Improved indexing retries. `Graylog2/graylog2-server#9852 <https://github.com/Graylog2/graylog2-server/issues/9852>`_ `Graylog2/graylog2-server#9961 <https://github.com/Graylog2/graylog2-server/issues/9961>`_
+- Fix race condition when loading pipeline rule editor. `Graylog2/graylog2-server#9341 <https://github.com/Graylog2/graylog2-server/issues/9341>`_ `Graylog2/graylog2-server#10070 <https://github.com/Graylog2/graylog2-server/issues/10070>`_
+- Avoid triggering duplicate search executions when focusing widgets. `Graylog2/graylog2-server#8421 <https://github.com/Graylog2/graylog2-server/issues/8421>`_ `Graylog2/graylog2-server#9467 <https://github.com/Graylog2/graylog2-server/issues/9467>`_ `Graylog2/graylog2-server#10053 <https://github.com/Graylog2/graylog2-server/issues/10053>`_
+- Show warning when moving away from the pipeline rule editor without saving. `Graylog2/graylog2-server#8650 <https://github.com/Graylog2/graylog2-server/issues/8650>`_ `Graylog2/graylog2-server#10073 <https://github.com/Graylog2/graylog2-server/issues/10073>`_
+- Improve server startup speed. `Graylog2/graylog2-server#10005 <https://github.com/Graylog2/graylog2-server/issues/10005>`_
+- Keep title when copying widget from search to dashboard. `Graylog2/graylog2-server#10003 <https://github.com/Graylog2/graylog2-server/issues/10003>`_ `Graylog2/graylog2-server#10189 <https://github.com/Graylog2/graylog2-server/issues/10189>`_
+- Improve Java 11 compatibility. `Graylog2/graylog2-server#7223 <https://github.com/Graylog2/graylog2-server/issues/7223>`_ `Graylog2/graylog2-server#9802 <https://github.com/Graylog2/graylog2-server/issues/9802>`_ `Graylog2/graylog2-server#10194 <https://github.com/Graylog2/graylog2-server/issues/10194>`_
+- Improve readybility of numeric values in data tables. `Graylog2/graylog2-server#7831 <https://github.com/Graylog2/graylog2-server/issues/7831>`_ `Graylog2/graylog2-server#10195 <https://github.com/Graylog2/graylog2-server/issues/10195>`_
+- Fix content-pack auto installation. `Graylog2/graylog-docker#153 <https://github.com/Graylog2/graylog-docker/issues/153>`_ `Graylog2/graylog2-server#10216 <https://github.com/Graylog2/graylog2-server/issues/10216>`_
+- Improve buffer draining during server shutdown. `Graylog2/graylog2-server#10247 <https://github.com/Graylog2/graylog2-server/issues/10247>`_
+- Fix message table scrolling on smaller screens. `Graylog2/graylog2-server#8920 <https://github.com/Graylog2/graylog2-server/issues/8920>`_ `Graylog2/graylog2-server#10276 <https://github.com/Graylog2/graylog2-server/issues/10276>`_
+- Fix problem with auto-generated TLS certificates. `Graylog2/graylog2-server#9958 <https://github.com/Graylog2/graylog2-server/issues/9958>`_ `Graylog2/graylog2-server#10400 <https://github.com/Graylog2/graylog2-server/issues/10400>`_
+- Improve logging for processing errors. `Graylog2/graylog2-server#10421 <https://github.com/Graylog2/graylog2-server/issues/10421>`_
+- Scope message backlog in aggregation alerts. `Graylog2/graylog2-server#6381 <https://github.com/Graylog2/graylog2-server/issues/6381>`_ `Graylog2/graylog2-server#10483 <https://github.com/Graylog2/graylog2-server/issues/10483>`_
+- Improve search page layout to provide more space for content. `Graylog2/graylog2-server#10518 <https://github.com/Graylog2/graylog2-server/issues/10518>`_
+- Improve saved search overview UI. `Graylog2/graylog2-server#10541 <https://github.com/Graylog2/graylog2-server/issues/10541>`_
+- Improve error messages for errors in pipeline rule execution. `Graylog2/graylog2-server#10526 <https://github.com/Graylog2/graylog2-server/issues/10526>`_ 10528
+- Fix problem where message processing could block when updating outputs. `Graylog2/graylog2-server#10168 <https://github.com/Graylog2/graylog2-server/issues/10168>`_ `Graylog2/graylog2-server#10584 <https://github.com/Graylog2/graylog2-server/issues/10584>`_
+- Improve timezone handling for keyword timerages. `Graylog2/graylog2-server#10290 <https://github.com/Graylog2/graylog2-server/issues/10290>`_
+- Improve search and dashboard tab positioning on smaller screens. `Graylog2/graylog2-server#10371 <https://github.com/Graylog2/graylog2-server/issues/10371>`_
+- Improve HTTP API browser model content. `Graylog2/graylog2-server#10637 <https://github.com/Graylog2/graylog2-server/issues/10637>`_
+- Improve search bar responsiveness. `Graylog2/graylog2-server#10652 <https://github.com/Graylog2/graylog2-server/issues/10652>`_
+- Avoid buffering complete export responses in browser. `Graylog2/graylog2-server#10602 <https://github.com/Graylog2/graylog2-server/issues/10602>`_ `Graylog2/graylog2-server#10617 <https://github.com/Graylog2/graylog2-server/issues/10617>`_
+- Fix lookup table cache purging in distributed setup. `Graylog2/graylog2-server#9554 <https://github.com/Graylog2/graylog2-server/issues/9554>`_ `Graylog2/graylog2-server#10605 <https://github.com/Graylog2/graylog2-server/issues/10605>`_
+- Fix group selection on filtered entities when creating or updating a content-pack. `Graylog2/graylog2-server#10731 <https://github.com/Graylog2/graylog2-server/issues/10731>`_
+- Fix rendering of the traffic graph in "System/Overview". `Graylog2/graylog2-server#10730 <https://github.com/Graylog2/graylog2-server/issues/10730>`_
+- Fix case issue on the user details and edit pages. `Graylog2/graylog2-server#10687 <https://github.com/Graylog2/graylog2-server/issues/10687>`_ `Graylog2/graylog2-server#10700 <https://github.com/Graylog2/graylog2-server/issues/10700>`_
+- Fix sorting on stream overview page. `Graylog2/graylog2-server#10754 <https://github.com/Graylog2/graylog2-server/issues/10754>`_
+- Improve Elasticsearch version probing on server startup. `Graylog2/graylog2-server#10651 <https://github.com/Graylog2/graylog2-server/issues/10651>`_
+- Prevent JSON Path Input from stopping on non-2xx responses. `Graylog2/graylog2-server#9941 <https://github.com/Graylog2/graylog2-server/issues/9941>`_ `Graylog2/graylog2-server#10717 <https://github.com/Graylog2/graylog2-server/issues/10717>`_ (Thanks `@MPreloaded <https://github.com/MPreloaded>`_!)
+- Fix race condition in lookup data adapter and cache lifecycle. `Graylog2/graylog2-server#10753 <https://github.com/Graylog2/graylog2-server/issues/10753>`_ `Graylog2/graylog2-server#10815 <https://github.com/Graylog2/graylog2-server/issues/10815>`_
+- Improve Elasticsearch flood stage handling. `Graylog2/graylog2-server#10889 <https://github.com/Graylog2/graylog2-server/issues/10889>`_
+
+Integrations Plugin
+^^^^^^^^^^^^^^^^^^^
+
+**Added**
+
+- Greynoise data adapter. `Graylog2/graylog-plugin-integrations#760 <https://github.com/Graylog2/graylog-plugin-integrations/issues/760>`_
+
+
 Graylog 4.0.8
 =============
 
