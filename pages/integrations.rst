@@ -43,6 +43,7 @@ For a comprehensive list of available features included, see our  :ref:`Enterpri
 * :ref:`Script Alert Notification<alert_notification_script>`
 * :ref:`Okta Log Events Input<okta_input>`
 * :ref:`Office 365 Log Events Input<o365_input>`
+* :ref:`URLhaus Malware URL Data Adapter<urlhaus>`
 
 .. toctree::
    :hidden:
@@ -51,3 +52,4 @@ For a comprehensive list of available features included, see our  :ref:`Enterpri
    integrations/inputs/okta_input
    integrations/output_framework
    integrations/inputs/o365_input
+   integrations/lookups/urlhaus
