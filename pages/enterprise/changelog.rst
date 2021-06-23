@@ -15,7 +15,7 @@ Enterprise
 - Add theme customization options to allow the usage of custom colors.
 - Add support for global notifications to display announcements and other messages to all users or a selected group of users.
 - Add authentication and team-sync support for the Okta indentity provider.
-- Add support for the Graylog Forwarder. The Graylog Forwarder is a standalone agent for sending send log data to Graylog Cloud or an on-premise Graylog Server cluster.
+- Add support for the Graylog Forwarder. The Graylog Forwarder is a standalone agent for sending log data to Graylog Cloud or an on-premise Graylog Server cluster.
 - Add Log View widget including file export. This allows users to read log messages in a way similar to reading plain text log files.
 - Add support for exporting messages in JSON, NDJSON and plain text formats.
 - Add S3 archiving backend to store archives in AWS S3 compatible object stores.
