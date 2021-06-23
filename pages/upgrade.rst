@@ -2,7 +2,7 @@
 Upgrading Graylog
 *****************
 
-When upgrading from a previous version of Graylog you follow the previous used installation method (ex. from image or package) using the new version numbers. 
+When upgrading from a previous version of Graylog you follow the previous used installation method (e.g. operating system package) using the new version numbers. 
 
 The following Upgrade notes should be read carefully before you start the upgrade process. Breaking changes and dependency upgrades are documented in those upgrade notes.
 
@@ -13,17 +13,6 @@ You should always follow minor versions when updating across multiple versions t
    :glob:
 
    upgrade/graylog-*
-
-Upgrading Graylog Originally Installed from Image
--------------------------------------------------
-
-2.x
-   It is not possible to upgrade previous OVAs to Graylog 3.0.0.
-
-3.x
-   Starting with Graylog 3.0.0, OVAs use the Operating System packages, so
-   you can upgrade your appliance by following
-   :ref:`this update guide <operating_package_upgrade_DEB-APT>`.
 
 Upgrading Graylog Originally Installed from Package
 ---------------------------------------------------
@@ -36,6 +25,8 @@ For .rpm based systems :ref:`this update guide <operating_package_upgrade_rpm-yu
 
 Upgrading Elasticsearch
 -----------------------
+
+.. warning:: We caution you not to install or upgrade Elasticsearch to 7.11 and later! It is not supported. If you do so, it will break your instance!
 
 Since Graylog 2.3 Elasticsearch 5.x is supported. This Graylog version supports Elasticsearch 2.x and 5.x. It is recommended to update Elasticsearch 2.x to the latest stable 5.x version, after you have Graylog 2.3 or later running. This Elasticsearch upgrade does not need to be made during the Graylog update. 
 

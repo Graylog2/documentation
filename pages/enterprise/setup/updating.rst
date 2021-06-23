@@ -8,14 +8,14 @@ If you've been using the repository package to install Graylog before, it has to
 
 The update basically works like a fresh installation. For apt-based systems, run the following commands::
 
-  $ wget https://packages.graylog2.org/repo/packages/graylog-4.0-repository_latest.deb
-  $ sudo dpkg -i graylog-4.0-repository_latest.deb
+  $ wget https://packages.graylog2.org/repo/packages/graylog-{{SERVER_VERSION}}-repository_latest.deb
+  $ sudo dpkg -i graylog-{{SERVER_VERSION}}-repository_latest.deb
   $ sudo apt-get update
   $ sudo apt-get install graylog-enterprise
 
 For rpm-based systems, run the following commands::
 
-  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-4.0-repository_latest.rpm
+  $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-{{SERVER_VERSION}}-repository_latest.rpm
   $ sudo yum clean all
   $ sudo yum install graylog-enterprise
 

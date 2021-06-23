@@ -6,8 +6,6 @@ Once the application is installed, there are a few items that must be configured
 
 This guide will provide you with the essential settings to get Graylog up and running. There are many other important settings in these files and we encourage you to review them once you are up and running. For more details, please see :ref:`server/.conf`.
 
-.. note:: If you are using the virtual appliance, please skip this section and go directly to :ref:`connect`.
-
 server.conf
 -----------
 
