@@ -93,6 +93,9 @@ REST API browser on your Graylog server for details.
 
 .. _archive-create-graylog-object-storage:
 
+Graylog s3
+----------
+
 Graylog offers Archiving built to be used against AWS s3. This doesn't mean it's limited
 to the AWS solution. You can configure S3 compatible solutions like MinIO, CEPH, Digital Ocean 
 Spaces and others.
@@ -128,7 +131,12 @@ On the *Archive* page:
 | s3 Output Base Path         | Creates archive structure                 |
 +-----------------------------+-------------------------------------------+
 
+AWS Authentication Type
+~~~~~~~~~~~~~~~~~~~~~~~
 
+Graylog provides several options for granting access. You can:
+* use the *Automatic* authentication mechanism to putting this in your file system
+* enter credentials manually
 
 
 Restoring Archives
