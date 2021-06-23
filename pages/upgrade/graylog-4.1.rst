@@ -13,7 +13,7 @@ Upgrading to Graylog 4.1.x
 Breaking Changes
 ================
 
-The limit parameter in the legacy search api (``/search/universal/(absolute|keyword|relative)``) semantics has changed
+The semantics of the limit parameter in the legacy search API (``/search/universal/(absolute|keyword|relative)``) have changed
 to fix an inconsistency introduced in ``4.0``: prior to ``4.0``, ``0`` meant "no limit", with ``4.0`` this changed to ``-1``
 and ``0`` for "empty result". With 4.1 this has been fixed to work again like in the past but the underlying
 ``Searches#scroll`` method has been tagged as ``@deprecated`` now, too.
