@@ -40,8 +40,8 @@ Install via DEB
     .. code-block:: bash
 
         $ sudo apt-get install apt-transport-https
-        $ wget https://packages.graylog2.org/repo/packages/graylog-4.0-repository_latest.deb
-        $ sudo dpkg -i graylog-4.0-repository_latest.deb
+        $ wget https://packages.graylog2.org/repo/packages/graylog-forwarder-repository_1-2_all.deb
+        $ sudo dpkg -i graylog-forwarder-repository_1-2_all.deb
         $ sudo apt-get update
         
 #. Install the package:
@@ -69,7 +69,7 @@ RPM Install Instructions
 
     .. code-block:: bash
 
-        $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-4.0-repository_latest.rpm
+        $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-forwarder-repository-1-2.noarch.rpm
 
 #. Install the ``graylog-forwarder`` package:
 
