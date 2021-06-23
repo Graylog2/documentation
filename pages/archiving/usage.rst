@@ -11,6 +11,7 @@ indices.
 * :ref:`Web Interface <archive-create-web-interface>`
 * :ref:`Index Retention <archive-create-index-retention>`
 * :ref:`REST API <archive-create-rest-api>`
+* :ref:`Graylog s3 <archive-create-graylog-object-storage>`
 
 .. _archive-create-web-interface:
 
@@ -89,6 +90,46 @@ progress of the job.
 The REST API can be used to automate other archive related tasks as well, like
 restoring and deleting archives or updating the archive config. See the 
 REST API browser on your Graylog server for details.
+
+.. _archive-create-graylog-object-storage:
+
+Graylog offers Archiving built to be used against AWS s3. This doesn't mean it's limited
+to the AWS solution. You can configure S3 compatible solutions like MinIO, CEPH, Digital Ocean 
+Spaces and others.
+
+On the *Archive* page:
+
+#. Click the *Manage Backends* button on the top right.
+#. Click *Create Backend* under the *Archive Backends*; this takes you to *Edit archive backend configuration options*.
+#. Go to the *Backend configuration* section and on the *Backend Type* dropdown select *S3*.
+#. Fill out the form, completing the fields that best suit your choice of archive.
+
++-----------------------------+-------------------------------------------+
+| Name                        | Description                               | 
++=============================+===========================================+
+| Title                       | A simple title to identify the backend    |     
++-----------------------------+-------------------------------------------+
+| Description                 | Longer description for the backend        |     
++-----------------------------+-------------------------------------------+                                                
+| s3 Endpoint URL             | Only configure this if not using AWS      |                                                
++-----------------------------+-------------------------------------------+
+| AWS Authentication Type     | Choose acces from dropdown menu           |     
++-----------------------------+-------------------------------------------+                                                 
+| AWS Assume Role (ARN)       | This is an optional input for             |
+|                             | alternate authentication mechanisms.      |      
++-----------------------------+-------------------------------------------+     
+| Bucket Name                 | The name of the s3 bucket                 |     
++-----------------------------+-------------------------------------------+     
+| Spool Directory             | Temporary name for the archiving process  |    
++-----------------------------+-------------------------------------------+     
+| AWS Region                  | Choose *Automatic* or configure the       |
+|                             | appropriate option                        |
++-----------------------------+-------------------------------------------+
+| s3 Output Base Path         | Creates archive structure                 |
++-----------------------------+-------------------------------------------+
+
+
+
 
 Restoring Archives
 ==================
