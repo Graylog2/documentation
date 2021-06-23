@@ -56,6 +56,127 @@ The archived indices will be stored in a backend. A backend that stores the data
 when the server starts for the first time but you can create a new backend if you want to store the data in a different
 path.
 
+
+S3 Archiving
+~~~~~~~~~~~~
+
+Graylog provides archiving built to be used against AWS S3. This doesn't mean it's limited
+to the AWS solution. You can configure S3 compatible solutions like MinIO, CEPH, Digital Ocean 
+Spaces and others.
+
+On the *Archive* page:
+
+#. Click the *Manage Backends* button on the top right.
+#. Click *Create Backend* under the *Archive Backends*; this takes you to *Edit archive backend configuration options*.
+#. Go to the *Backend configuration* section and on the *Backend Type* dropdown select *S3*.
+#. Fill out the form, completing the fields that best suit your choice of archive.
+
++-----------------------------+-------------------------------------------+
+| Name                        | Description                               | 
++=============================+===========================================+
+| Title                       | A simple title to identify the backend    |     
++-----------------------------+-------------------------------------------+
+| Description                 | Longer description for the backend        |     
++-----------------------------+-------------------------------------------+                                                
+| S3 Endpoint URL             | Only configure this if not using AWS      |                                                
++-----------------------------+-------------------------------------------+
+| AWS Authentication Type     | Choose access type from the dropdown menu |     
++-----------------------------+-------------------------------------------+                                                 
+| AWS Assume Role (ARN)       | This is an optional input for             |
+|                             | alternate authentication mechanisms.      |      
++-----------------------------+-------------------------------------------+     
+| Bucket Name                 | The name of the S3 bucket                 |     
++-----------------------------+-------------------------------------------+     
+| Spool Directory             | Temporary name for the archiving process  |    
++-----------------------------+-------------------------------------------+     
+| AWS Region                  | Choose *Automatic* or configure the       |
+|                             | appropriate option                        |
++-----------------------------+-------------------------------------------+
+| S3 Output Base Path         | Creates archive structure                 |
++-----------------------------+-------------------------------------------+
+
+AWS Authentication Type
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Graylog provides several options for granting access. You can:
+
+* use the *Automatic* authentication mechanism if you provide AWS credentials through your file
+  system or process environment.
+* enter credentials manually
+
+AWS Assume Role (ARN)
+~~~~~~~~~~~~~~~~~~~~~
+
+This is typically used for buckets that you don’t own. For example, if someone gave you temporary 
+permissions to their bucket, you would need to use this configuration.
+
+Spool Directory
+~~~~~~~~~~~~~~~
+
+The Spool Directory is always writable for the upload process to persist.
+
+Before Graylog upload archives to the S3, it has to write them into the file system. As soon as 
+Graylog writes these segments, they are uploaded. 
+
+Keep in mind you need 5 gigabytes of free disk space in this directory to manage 10 segments at 
+500 megabytes. However, it may use less memory because it deletes files as soon as they upload.
+
+AWS Region
+~~~~~~~~~~
+
+By default, Graylog pulls the region from your file systems. 
+
+If you choose to select a region, you should use the one where you created the bucket. 
+
+If you are not using AWS, you do not need to configure this. 
+
+S3 Output Base Path
+~~~~~~~~~~~~~~~~~~~
+
+This is a prefix to the file name that works similar to a directory. Configuring this will 
+help you organize data. 
+
+You can use the following variable to construct a dynamic value for each archive to give 
+it structure:
+
++-----------------------------+-------------------------------------------+
+| variable                    | Description                               | 
++=============================+===========================================+
+| index-name                  | Name of the index that gets archived      |     
++-----------------------------+-------------------------------------------+
+| year                        | Archival date year                        |     
++-----------------------------+-------------------------------------------+                                                
+| month                       | Archival date month                       |                                                
++-----------------------------+-------------------------------------------+
+| day                         | Archival date day                         |     
++-----------------------------+-------------------------------------------+                                                     
+| hour                        | Archival date hour                        |     
++-----------------------------+-------------------------------------------+     
+| minute                      | Archival date minute                      |     
++-----------------------------+-------------------------------------------+     
+| second                      | Archival date second                      |
++-----------------------------+-------------------------------------------+
+
+Activate Backend
+~~~~~~~~~~~~~~~~
+
+After configuring your bucket, click *Save*.
+
+This will bring you back to the *Edit archive backend configuration* page. 
+
+To activate the backend, you need to:
+
+#. Click on the *Configuration* tab located in the top righthand corner.
+#. Under the *Backend* dropdown menu, select the backend you want to activate. 
+#. You can choose to change configurations or use the defaults provided. 
+#. Click the green *Update configuration* button at the bottom of the screen.
+#. This will return you to the *Archives* screen.
+
+The archiving will run automatically.  
+
+To review your S3 archive, click the *Archive Index* button. 
+
+
 Max Segment Size
 ^^^^^^^^^^^^^^^^^
 
