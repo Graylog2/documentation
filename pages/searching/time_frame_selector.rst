@@ -1,9 +1,31 @@
-Time frame selector
+Time Frame Selector
 -------------------
 
-The time frame selector defines in what time range to search in. It offers three different ways of selecting a time range and
-is vital for search speed: If you know you are only interested in messages of the last hour, only search in that time frame.
-This will make Graylog search in :doc:`relevant indices </pages/configuration/index_model>` only and greatly reduce system load and required resources.
+The Time frame selector allows you to pull specific time ranges from your Graylog data. 
+This feature will help you and other Graylog users analyze issues that affect multiple aspects 
+of your environment. To that end, you’ll find this tool to assist you with such actions as:
+
+* understanding and responding to data breaches, broken processes, and other security incidents
+* troubleshoot systems and networks
+* understand the behaviors of your users
+* conducting forensics activities
+
+
+
+Time Frame Options
+~~~~~~~~~~~~~~~~~~
+You can access Time Frame Selector in the Search menu on the main UI. To access the window, 
+click the panel below sear accessible for a window on the main UI. The window offers the 
+following ranges:
+
+* Relative
+* Absolute
+* Keyword
+
+For example, If you know you are only interested in messages of the last hour, only search in 
+that time frame. This will make Graylog search in relevant indices only and greatly reduce system 
+load and required resources.
+
 
 .. image:: /images/searching/queries_time_range_selector.png
    :align: center
@@ -36,3 +58,7 @@ Here are a few examples for possible values.
 * "yesterday midnight +0200 to today midnight +0200" searches between yesterday midnight and today midnight in timezone +0200 - will be 22:00 in UTC
 
 The time frame is parsed using the `natty natural language parser <http://natty.joestelmach.com/>`_. Please consult its documentation for details.
+
+
+If you know you are only interested in messages of the last hour, only search in that time frame.
+This will make Graylog search in :doc:`relevant indices </pages/configuration/index_model>` only and greatly reduce system load and required resources.
