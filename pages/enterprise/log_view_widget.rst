@@ -30,7 +30,6 @@ To get familiar with Log View, perform the following actions.
 * Create a new Log View widget.
 * Expand your report with additional fields, in the widget.
 * Focus on the widget with an expanded view.
-* Export report details into a sharable report.
 * Build a chart with Log View data.
 
 Create Log View Widget
@@ -84,9 +83,6 @@ When you return to the main Log View UI, identify a x-crossed arrow icon next to
 Click the icon to expand your widget to full view:
 
 .. image:: /images/searching/log_view_widget_focus_UI.png
-
-Build and Export a Report
--------------------------
 
 
 Create a Chart
