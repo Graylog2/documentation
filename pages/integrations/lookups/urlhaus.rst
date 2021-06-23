@@ -46,8 +46,8 @@ Data Adapter Configuration
    - Optional custom TTL for caching erroneous results.  If no value is specified, the default value of 5 seconds will be used.
 - ``URLhaus Feed Type``
 	- This determines which URLhaus feed the data adapter will use
-	- ``Online URLs`` is the smaller data set and includes only URLs that have been detected to be currently online
-  - ``Recently Added URLs`` is the larger data set and includes all URLs added in the last 30 days whether online or offline
+- ``Online URLs`` is the smaller data set and includes only URLs that have been detected to be currently online
+- ``Recently Added URLs`` is the larger data set and includes all URLs added in the last 30 days whether online or offline
 - ``Refresh Interval``
   - Determines how often new data will be fetched.  The minimum refresh interval is 300 seconds (5 minutes) because that is how often the source data can be updated
 - ``Case Insensitive Lookups``
