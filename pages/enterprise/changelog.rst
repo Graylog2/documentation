@@ -20,6 +20,7 @@ Enterprise
 - Add support for exporting messages in JSON, NDJSON and plain text formats.
 - Add S3 archiving backend to store archives in AWS S3 compatible object stores.
 - Add option to make archive batch size configurable for performance tuning.
+- Extend search and dashboard parameters to allow pre-defined values based on static lists or available message field values.
 - Add pagination for reports overview.
 
 **Fixed**
