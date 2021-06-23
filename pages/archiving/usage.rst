@@ -194,6 +194,7 @@ it structure:
 
 Activate Backend
 ~~~~~~~~~~~~~~~~
+
 After configuring your bucket, click *Save*.
 
 This will bring you back to the *Edit archive backend configuration* page. 
