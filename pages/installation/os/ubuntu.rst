@@ -4,7 +4,7 @@
 Ubuntu installation
 *******************
 
-This guide describes the fastest way to install Graylog on Ubuntu 18.04 LTS. All links and packages are present at the time of writing but might need to be updated later on.
+This guide describes the fastest way to install Graylog on Ubuntu 18.04 and 20.04 LTS. All links and packages are present at the time of writing but might need to be updated later on.
 
 .. warning:: This guide **does not cover** security settings! The server administrator must make sure the graylog server is not publicly exposed, and is following security best practices.
 
@@ -47,16 +47,16 @@ The last step is to enable MongoDB during the operating system's startup and ver
 Elasticsearch
 -------------
 
-Graylog can be used with Elasticsearch 6.x, please follow the below instructions to install the open source version of Elasticsearch. ::
+Graylog can be used with Elasticsearch 7.x, please follow the below instructions to install the open source version of Elasticsearch. ::
 
     $ wget -q https://artifacts.elastic.co/GPG-KEY-elasticsearch -O myKey
     $ sudo apt-key add myKey
-    $ echo "deb https://artifacts.elastic.co/packages/oss-6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
+    $ echo "deb https://artifacts.elastic.co/packages/oss-7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
     $ sudo apt-get update && sudo apt-get install elasticsearch-oss
 
-The above instructions are a derivative from the `Elasticsearch install page <https://www.elastic.co/guide/en/elasticsearch/reference/6.7/deb.html>`__
+The above instructions are a derivative from the `Elasticsearch install page <https://www.elastic.co/guide/en/elasticsearch/reference/7.9/deb.html>`__
 
-Modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/6.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``)
+Modify the `Elasticsearch configuration file <https://www.elastic.co/guide/en/elasticsearch/reference/7.x/settings.html#settings>`__  (``/etc/elasticsearch/elasticsearch.yml``)
 and set the cluster name to ``graylog`` and uncomment ``action.auto_create_index: false`` to enable the action::
 
     $ sudo tee -a /etc/elasticsearch/elasticsearch.yml > /dev/null <<EOT
@@ -78,8 +78,8 @@ Graylog
 
 Now install the Graylog repository configuration and Graylog itself with the following commands::
 
-    $ wget https://packages.graylog2.org/repo/packages/graylog-3.3-repository_latest.deb
-    $ sudo dpkg -i graylog-3.3-repository_latest.deb
+    $ wget https://packages.graylog2.org/repo/packages/graylog-{{SERVER_VERSION}}-repository_latest.deb
+    $ sudo dpkg -i graylog-{{SERVER_VERSION}}-repository_latest.deb
     $ sudo apt-get update && sudo apt-get install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins
 
 .. hint:: If you do not want the :ref:`Integrations Plugins <integrations_plugins>` or the :ref:`Enterprise Plugins <enterprise_features>` installed, then simply run ``sudo apt-get install graylog-server``

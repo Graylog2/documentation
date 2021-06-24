@@ -14,10 +14,11 @@ outbound messages.
           version 3.3.3, thus an Enterprise license is required. See the 
           :doc:`Integrations Setup <setup>` page for more info.
 
-Enterprise Framework Outputs
-----------------------------
 
-The Enterprise Output Framework provides a number of new Outputs for the various network 
+About the Framework
+-------------------
+
+The Enterprise Output Framework provides a number of new Outputs for various network 
 transport types. All of these Outputs first write messages to an on-disk journal in the 
 Graylog cluster.  Messages stay in the on-disk journal until the Output is able to 
 successfully send the data to the external receiver.
@@ -38,15 +39,26 @@ Graylog source cluster, at the same time the data is written to Elasticsearch.
 On-Disk Journal
 ^^^^^^^^^^^^^^^
 
-The Output Framework is equipped with a disk journal. This journal immediately persists 
+The Output Framework is equipped with an on-disk journal. This journal immediately persists 
 messages received from the Graylog Output system to disk before attempting to send them to
 the external receiver. This allows the Output Framework to keep receiving and reliably 
 queuing messages, even if the external receiver is temporarily unavailable due to
 network issues. The journal has many configuration options which will be described below.
 
-By default, journal data for Framework Outputs will be stored in the same directory used
-for the Input journal.  This directory is controlled by the ``message_journal_dir`` value
-in your Graylog configuration file.
+The directory in which journal data will be stored is controlled by the ``data_dir`` 
+value in your Graylog configuration file.  Journal data for Framework Outputs will be stored 
+in ``<data_dir>/stream_output/<OutputID>``.  As with the `"Output base path" directory 
+<../archiving/setup.html?highlight=partition#file-system>`__
+or  the `Input Journal <../faq.html?highlight=partition#dedicated-partition-for-the-journal>`__,
+it is recommended to use a separate partition for Output Framework journals to ensure 
+journal growth does not impact overall system performance.
+
+.. note:: While ``Maximum Journal Size`` can be configured for Enterprise Outputs, this is
+          a soft limit and the on-disk journal can grow larger.  If you want to guarantee 
+          journal data is cleaned up in a timely fashion, you should adjust the 
+          ``Maximum Journal Message Age`` and ``Journal Segment Age`` configuration values.
+          Be aware that even unsent messages in the journal will be purged once they are 
+          older than ``Maximum Journal Message Age``.
 
 Pipeline Integration
 ^^^^^^^^^^^^^^^^^^^^
@@ -63,23 +75,35 @@ Outbound Payload Formatting
 Prior to sending data out over the wire, Graylog must format the outgoing payload. Payload
 formatting options include:
 
-- ``JSON``
+- ``JSON Formatter``
     - The Output Framework will convert the message's key-value pairs into a JSON object.
 - ``Pipeline-Generated``
     -  The Output Framework will expect your pipeline to generate the outgoing payload and store it in the ``pipeline_output`` field of the message.  This can be accomplished in the pipeline by using the ``set_field`` :doc:`built-in function<../pipelines/functions>`.
+- ``Full Message``
+    -  Some inputs support storing the full received message in the ``full_message`` field.  When this output formatter is selected, the contents ``full_message`` will be used as the payload of the outgoing message. Messages without a ``full_message`` field or messages where the field is empty will be ignored. The Full Message formatter is available in Graylog version 4.0.3 and above.
+- ``No-op Formatter``
+    - No payload will be generated from the message.  This formatter is currently only intended for use with the ``Google Cloud BigQuery`` output.  If used with any other Output, the Output payloads will be empty.
 
 
-Output Transports
-^^^^^^^^^^^^^^^^^
-
-Output Transport is the configuration of how the message is sent over the wire:
-
-- ``Enterprise STDOUT``
+Framework Outputs
+-----------------
+- :doc:`Enterprise TCP Raw/Plaintext Output<output_framework/output_tcp_raw>`
+    - Formatted messages will be sent as UTF-8 encoded plain text to the configured TCP endpoint (IP address and port). 
+- :doc:`Enterprise TCP Syslog Output<output_framework/output_tcp_syslog>`
+    - Formatted messages will be sent as the ``MSG`` portion of a standard Syslog message per section 6.4 of the `Syslog specification <https://tools.ietf.org/html/rfc5424>`_.  The Syslog message will be sent to the configured TCP endpoint (IP address and port). 
+- :doc:`Enterprise Google Cloud BigQuery Output<output_framework/output_google_bigquery>`
+    - The Output Framework will convert the message's key-value pairs into a new row for insertion into the specified Google BigQuery table. 
+- Enterprise STDOUT Output
     - Formatted messages will be displayed on the system's console.  This is included primarily as a debugging tool for pipeline changes.
-- ``Enterprise TCP Raw/Plaintext``
-    - Formatted messages will be sent as UTF-8 encoded plain text to the configured TCP endpoint (IP address and port).
-- ``Enterprise TCP Syslog``
-    - Formatted messages will be sent as the ``MSG`` portion of a standard Syslog message per section 6.4 of the `Syslog specification <https://tools.ietf.org/html/rfc5424>`_.  The Syslog message will be sent to the configured TCP endpoint (IP address and port).
+
+.. toctree::
+   :titlesonly:
+   :hidden:
+   
+   output_framework/output_tcp_raw
+   output_framework/output_tcp_syslog
+   output_framework/output_google_bigquery
+
 
 
 Output Configuration
@@ -91,8 +115,8 @@ CPU cores, available memory, and network bandwidth). Several Output Framework co
 options are available to help you tune performance for your throughput requirements and 
 environment.
 
-General Configuration
-^^^^^^^^^^^^^^^^^^^^^
+Common Configuration
+^^^^^^^^^^^^^^^^^^^^
 
 - ``Title``
    - The name of the Output
@@ -124,30 +148,3 @@ General Configuration
    - The pipeline which will process all messages sent to the Output
 - ``Outbound Payload Format``
    - The format that will be used for outgoing message payloads
-
-
-
-TCP Configuration
-^^^^^^^^^^^^^^^^^
-
-- ``Destination IP Address``
-   - The IP address of the system which will receive the messages.
-- ``Destination Port``
-   - The port on which the destination system will listen for messages.
-- ``Frame Delimiting Method``
-   - The method which will be used to separate individual messages  in the stream.
-   - Frame delimiting methods are defined in Sections 3.4.1 and 3.4.2 of `IETF RFC 6587 <https://tools.ietf.org/html/rfc6587>`_.
-      - ``Newline Character`` A newline character will be appended to each message to mark the end of the message. Any newline characters within the message will be escaped prior to sending.
-      - ``Null Character`` A null character will be appended to each message to mark the end of  the message. Any null characters within the message will be escaped prior to sending.
-      - ``Octet Counting`` The length of the message (in bytes) and a space character for separation will be prepended to the message.  The contents of the message will not be altered.
-
-TCP Syslog Configuration
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-- ``Syslog Facility``
-   - A numeric value in the range of 0 - 23 (inclusive)
-   - Defined in `Section 6.2.1 <https://tools.ietf.org/html/rfc5424#section-6.2.1>`_ of the Syslog specification.
-- ``Syslog Severity``
-   - A numeric value in the range of 0 - 7 (inclusive)
-   - Defined in `Section 6.2.1 <https://tools.ietf.org/html/rfc5424#section-6.2.1>`_ of the Syslog specification.
-

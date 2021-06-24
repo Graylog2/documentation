@@ -240,17 +240,182 @@ Here is an example of the payload included in a notification::
 .. image:: /images/alerts_http_notification.png
 
 
+.. _alert_notification_pagerduty:
+
+PagerDuty alert notification
+----------------------------
+
+The PagerDuty alert notification allows you create new incidents in PagerDuty in response
+to Events in your Graylog server.
+
+.. note:: PagerDuty alert notifications are intended as a replacement for the PagerDuty
+   integration previously available from 
+   `Graylog Labs <https://github.com/graylog-labs/graylog-plugin-pagerduty>`__.  If you 
+   are using the Graylog Labs PagerDuty integration, you should migrate to the officially
+   supported PagerDuty alert notifications at your earliest convenience.
+
+.. important:: In order to use PagerDuty alert notifications, you will need an integration
+   routing key.  If you do not already have one, you will need to create a new integration
+   in PagerDuty:
+   `PagerDuty Documentation <https://developer.pagerduty.com/docs/events-api-v2/overview/#getting-started>`__ 
+
+These are the supported configuration options:
+
+Routing Key
+    Your PagerDuty integration routing key.
+
+Use Custom Incident Key
+    If enabled, an incident key will be generated using the provided 
+    ``Incident Key Prefix``.  This will prevent PagerDuty from creating multiple 
+    incidents for a single Event.  If not checked, no incident key will 
+    be generated and each event notification will create a new incident in PagerDuty.
+
+Incident Key Prefix
+    If ``Custom Incident Key`` is enabled, this will be used as the prefix for the 
+    incident key.
+
+Client Name
+    The name of the Graylog system that triggered the PagerDuty incident.
+
+Client URL
+    The URL for your Graylog web interface.  If provided, this will be used to construct 
+    links which will be embedded in your PagerDuty incident.
+
+.. image:: /images/alerts_pagerduty_notification.png
+
+
+.. _alert_notification_Slack Notification:
+
+Slack alert notification
+------------------------
+The Slack alert notification allows you to send notifications to your slack workspace in response to events in your Graylog server.
+
+.. note:: Slack alert notifications are intended as a replacement for the Slack
+   integration previously available from
+   `Graylog Labs <https://github.com/graylog-labs/graylog-plugin-slack>`__.  If you
+   are using the Graylog Labs Slack plugin, you should migrate to the officially
+   supported Slack alert notifications at your earliest convenience.
+
+.. image:: /images/alerts_slack_plugin_notification.png
+
+These are the supported configuration options:
+
+Webhook URL
+    The unique `URL <https://api.slack.com/messaging/webhooks>`__ used to send messages to your Slack instance.
+
+Channel
+    A `channel <https://api.slack.com/methods/chat.postMessage#channels>`__ to send message to.
+
+Configuration Color
+    Highlight the custom message with this `color <https://api.slack.com/reference/surfaces/formatting#quotes>`__ .
+
+Custom Message
+    The message that will be sent to Slack.  The data described above can be used in this template.
+
+Message Backlog Limit (optional)
+    Limit the number of backlog messages sent as part of the Slack notification. If set to 0, no limit will be enforced.
+
+User Name (optional)
+    User name of the sender in Slack.
+
+Icon URL
+    Image to use as the icon for this message.
+
+Icon Emoji
+    Emoji to use as the icon for this message (overrides Icon URL).
+
+
+
+
+
+
+
+
+
+
 .. _alert_notification_script:
 
-Legacy Script alert notification
---------------------------------
+Script alert notification [Enterprise]
+--------------------------------------
 
 The Script Alert Notification lets you configure a script that will be executed when the alert is triggered.
 
 .. important:: Script Alert Notification is an Enterprise Integrations plugin feature and thus requires an :ref:`Enterprise license <enterprise_features>`.
 
-
 .. image:: /images/alerts_script_notification.png
+
+These are the supported configuration options.
+
+Script Path
+    The path to where the script is located. Must me within the :ref:`permitted script path<config_script_alert>` (which is customizable).
+
+Script Timeout
+    The maximum time (in milliseconds) the script will be allowed to execute before being forcefully terminated.
+
+Script Arguments
+    Space-delimited string of parameters. Any of the data described above can be used.
+
+Send Alert Data Through STDIN
+    Sends the JSON encoded data described above through standard in. You can use a JSON parser in your script.
+
+Script Alert Notification success is determined by its exit value; success equals zero.
+Any non-zero exit value will cause it to fail.
+Returning any error text through STDERR will also cause the alarm callback to fail.
+
+Here is a sample Python script that shows all of the supported Script Alert Notification
+functionality (argument parsing, STDIN JSON parsing, STDOUT, exit values, and returning an exit value).::
+
+        #!/usr/bin/env python3
+        import json
+        import sys
+        
+        # Function that prints text to standard error
+        def print_stderr(*args, **kwargs):
+            print(*args, file=sys.stderr, **kwargs)
+        
+        # Main function
+        if __name__ == "__main__":
+        
+            # Print out all input arguments.
+            sys.stdout.write("All Arguments Passed In: " + ' '.join(sys.argv[1:]) + "\n")
+        
+            # Turn stdin.readlines() array into a string
+            std_in_string = ''.join(sys.stdin.readlines())
+        
+            # Load JSON
+            event_data = json.loads(std_in_string)
+        
+            # Extract some values from the JSON.
+            sys.stdout.write("Values from JSON: \n")
+            sys.stdout.write("Event Definition ID: " + event_data["event_definition_id"] + "\n")
+            sys.stdout.write("Event Definition Title: " + event_data["event_definition_title"] + "\n")
+            sys.stdout.write("Event Timestamp: " + event_data["event"]["timestamp"] + "\n")
+        
+            # Extract Message Backlog field from JSON.
+            sys.stdout.write("\nBacklog:\n")
+            for message in event_data["backlog"]:
+                for field in message.keys():
+                    sys.stdout.write("Field: " + field + "\t")
+                    sys.stdout.write("Value: " + str(message[field]) + "\n")
+        
+            # Write to stderr if desired
+            # print_stderr("Test return through standard error")
+        
+            # Return an exit value. Zero is success, non-zero indicates failure.
+            exit(0)
+            
+.. _legacy_alert_callback_script:
+
+Legacy Script alert callback
+----------------------------
+
+The Legacy Script Alert Callback lets you configure a script that will be executed when the alert is triggered.
+
+.. warning:: Legacy alarm callbacks are being deprecated.  If you are currently using the Legacy Script Alert Callback, you should migrate to Script Alert Notification as soon as possible.
+
+.. important:: Legacy Script Alert Callback is an Enterprise Integrations plugin feature and thus requires an :ref:`Enterprise license <enterprise_features>`.
+
+.. image:: /images/alerts_legacy_script_callback.png
 
 These are the supported configuration options.
 
@@ -289,57 +454,9 @@ Send Alert Data Through STDIN
     Sends JSON alert data through standard in. You can use a JSON parser in your script. :
 
 
-Script Alert Notification success is determined by its exit value; success equals zero.
+Legacy Script Alert Callback success is determined by its exit value; success equals zero.
 Any non-zero exit value will cause it to fail.
 Returning any error text through STDERR will also cause the alarm callback to fail.
-
-Here is a sample Python script that shows all of the supported Script Alert Notification
-functionality (argument parsing, STDIN JSON parsing, STDOUT, exit values, and returning an exit value).::
-
-        #!/usr/bin/env python3
-        import json
-        import sys
-        import time
-
-
-        # Function that prints text to standard error
-        def print_stderr(*args, **kwargs):
-            print(*args, file=sys.stderr, **kwargs)
-
-        # Main function
-        if __name__ == "__main__":
-
-            # Print out all input arguments.
-            sys.stdout.write("All Arguments Passed In: " + ' '.join(sys.argv[1:]) + "\n")
-            sys.stdout.write("Stream Name: " + sys.argv[2] + "\n")
-            sys.stdout.write("Stream Description: " + sys.argv[3] + "\n")
-            sys.stdout.write("Alert Triggered At: " + sys.argv[6] + "\n")
-
-            # Turn stdin.readlines() array into a string
-            std_in_string = ''.join(sys.stdin.readlines())
-
-            # Load JSON
-            alert_object = json.loads(std_in_string)
-
-            # Extract some values from the JSON.
-            sys.stdout.write("Values from JSON: \n")
-            sys.stdout.write("Stream ID: " + alert_object["stream_id"] + "\n")
-            sys.stdout.write("Stream Name: " + alert_object["stream_name"] + "\n")
-            sys.stdout.write("Alert Triggered At: " + alert_object["alert_triggered_at"] + "\n")
-
-            # Extract Message Backlog field from JSON.
-            sys.stdout.write("\n\nFields:\n")
-            for message in alert_object["message_backlog"]:
-                for field in message.keys():
-                    print("Field: " + field)
-                    print("Value: " + str(message[field]))
-
-            # Write to stderr if desired
-            # print_stderr("Test return through standard error")
-
-            # Return an exit value. Zero is success, non-zero indicates failure.
-            exit(0)
-
 
 
 Event Summary
@@ -348,4 +465,3 @@ When all of the components have been defined the Event Summary will be displayed
 At this time, the user may select a previous point in the Workflow to change a parameter.
 The user may also cancel out of the workflow, select done. The Event may be viewed under
 Alerts>Event Definitions.
-

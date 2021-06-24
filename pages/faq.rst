@@ -10,7 +10,7 @@ Do I need to buy a license to use Graylog?
 
 We believe software should be open and accessible to all.  You should not have to pay to analyze your own data, no matter how much you have.
 
-Graylog is licensed under the `GNU General Public License <http://www.gnu.org/licenses/gpl-3.0.en.html>`__.  We do not require license fees for production or non-production use.
+Graylog is licensed under the `Server Side Public License <https://www.mongodb.com/licensing/server-side-public-license>`__.  We do not require license fees for production or non-production use.
 
 How long do you support older versions of the Graylog product?
 --------------------------------------------------------------
@@ -73,11 +73,6 @@ If you use the pre-build appliances, take a look into
 Installation / Setup
 ====================
 
-Should I download the OVA appliances or the separate packages?
---------------------------------------------------------------
-
-If you are downloading Graylog for the first time to evaluate it, go for the appliance.  It is really easy, and can be quickly setup so you can understand if Graylog is right for you.  If you are wanting to use Graylog at some scale in production, and do things like high availability (Mongo replication) we recommend you go for the separate packages.
-
 How do I find out if a specific log source is supported?
 --------------------------------------------------------
 
@@ -94,12 +89,12 @@ We support many log sources – and more are coming everyday.  For a complete li
 Can I install the Graylog Server on Windows?
 --------------------------------------------
 
-Even though our engineers say it is “technically possible”, don’t do it.  The Graylog server is built using Java, so technically it can run anywhere. But we currently have it optimized to run better on other operating systems. If you don’t feel comfortable running your own Linux system, we recommend you use our Linux virtual appliance which will run under VMWare.
+Running Graylog on Windows is not supported.
 
 Can I run Graylog on Azure?
 ---------------------------
 
-You can `create a Linux VM <https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-portal>`__ and use our :ref:`step-by-step <step_by_step_guides>` to install your customized Graylog. As a second option you can use `this guide <https://cloudbase.it/convert-virtualbox-to-hyper-v/>`__ to convert our :ref:`Appliance <virtual-machine-appliances>` into some Azure compatible virtual machine.
+You can `create a Linux VM <https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-portal>`__ and use our :ref:`step-by-step <step_by_step_guides>` to install your customized Graylog.
 
 
 Functionality
@@ -110,10 +105,10 @@ Can Graylog automatically clean old data?
 
 Absolutely we have :doc:`data retention features <configuration/index_model>`.
 
-Does Graylog support LDAP / AD and its groups?
-----------------------------------------------
+Does Graylog support LDAP / Active Directory and its groups?
+------------------------------------------------------------
 
-Yup, we’re all over this too with read/write roles and group permissions.  To start, see :doc:`this <users_and_roles/external_auth>`.  If you want to get very granular, you can go through the Graylog REST API.
+Yes, Graylog supports user authentication using LDAP and Active Directory. Graylog Enterprise additionally supports sychronization of LDAP and Active Directory groups into Graylog teams. See the :ref:`authentication documentation <permissions>` for details.
 
 Do we have a user audit log for compliance?
 -------------------------------------------
@@ -138,7 +133,7 @@ If you create a dedicated Partition for your Kafka Journal, you need to watch th
 
 Raise the Java Heap
 -------------------
-On Systems that run as virtual appliances or are installed with :ref:`DEB / APT <operating_package_DEB-APT>` this setting can be made in ``/etc/default/graylog-server``. 
+On Systems that are installed with :ref:`DEB / APT <operating_package_DEB-APT>` this setting can be made in ``/etc/default/graylog-server``. 
 
 Systems that are installed with :ref:`RPM / YUM / DNF <operating_package_rpm-yum-dnf>` the file is found in ``/etc/sysconfig/graylog-server``. 
 

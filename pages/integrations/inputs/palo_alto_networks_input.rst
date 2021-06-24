@@ -17,6 +17,11 @@ Example ``SYSTEM`` message::
 To get started, add a new Palo Alto Networks Input (TCP) in the ``System`` > ``Inputs`` area in Graylog. Specify the
 Graylog Node, Bind address, Port, and adjust the field mappings as needed.
 
+Graylog has two different inputs, one is for PAN OS 8 and before, the second is for PAN OS 9. At the time of writing both releases, 9.0 and 9.1 are supported by this input. 
+
+PAN-OS 8 Input
+--------------
+
 This input ships with a field configuration that is compatible with `PAN OS 8.1 <https://www.paloaltonetworks.com/documentation/81/pan-os>`_.
 Other versions can easily be supported by customizing the ``SYSTEM``, ``THREAT`` and ``TRAFFIC`` mappings on the Add/Edit
 input page in Graylog.
@@ -62,8 +67,6 @@ PAN OS 8.1, then there is no need to edit the mappings. However, if you are runn
 please reference the official Palo Alto Networks log fields documentation that that version and customize the mappings
 on the Add/Edit Input page accordingly.
 
-We have included a links to a few recent versions here for reference.
-
 Version 8.1
 
 * `8.1 - Traffic Log Fields <https://www.paloaltonetworks.com/documentation/81/pan-os/pan-os/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/traffic-log-fields>`_
@@ -81,5 +84,35 @@ Version 7.1
 * `7.1 - Traffic Log Fields <https://www.paloaltonetworks.com/documentation/71/pan-os/pan-os/monitoring/syslog-field-descriptions#41809>`_
 * `7.1 - Threat Log Fields <https://www.paloaltonetworks.com/documentation/71/pan-os/pan-os/monitoring/syslog-field-descriptions#67983>`_
 * `7.1 - System Log Fields <https://www.paloaltonetworks.com/documentation/71/pan-os/pan-os/monitoring/syslog-field-descriptions#74679>`_
+
+
+PAN-OS 9 Input
+--------------
+
+This input auto detect if the data that is ingested is from Version 9.0 or 9.1. Since the release of Graylog 3.3.6 the later is supported automatically and will work out of the box.
+
+The previous possible adjustments are not longer needed.
+
+We have included a links to a few recent versions here for reference.
+
+Version 9.1
+
+* `9.1 - Traffic Log Fields <https://docs.paloaltonetworks.com/pan-os/9-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/traffic-log-fields.html>`_
+* `9.1 - Threat Log Fields <https://docs.paloaltonetworks.com/pan-os/9-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html>`_
+* `9.1 - HIP Match Log Fields <https://docs.paloaltonetworks.com/pan-os/9-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/hip-match-log-fields.html>`_
+* `9.1 - GlobalProtect Log Fields <https://docs.paloaltonetworks.com/pan-os/9-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/globalprotect-log-fields.html>`_
+* `9.1 - Config Log Fields <https://docs.paloaltonetworks.com/pan-os/9-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/config-log-fields.html>`_ 
+* `9.1 - System Log Fields <https://docs.paloaltonetworks.com/pan-os/9-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/system-log-fields.html>`_
+* `9.1 - Correlated Events Log Fields <https://docs.paloaltonetworks.com/pan-os/9-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/correlated-events-log-fields.html>`_
+* 
+
+Version 9.0
+
+* `9.0 - Traffic Log Fields <https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/traffic-log-fields.html>`_
+* `9.0 - Threat Log Fields <https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html>`_
+* `9.0 - HIP Match Log Fields <https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/hip-match-log-fields.html>`_
+* `9.0 - Config Log Fields <https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/config-log-fields.html>`_ 
+* `9.0 - System Log Fields <https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/system-log-fields.html>`_
+* `9.0 - Correlated Events Log Fields <https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/correlated-events-log-fields.html>`_
 
 Also see `Documentation for older PAN OS versions <https://www.paloaltonetworks.com/documentation/eol>`_.

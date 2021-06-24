@@ -2,6 +2,354 @@
 Changelog
 *********
 
+Graylog Enterprise 4.1.0
+========================
+
+Released: 2021-06-23
+
+Enterprise
+----------
+
+**Added**
+
+- Add theme customization options to allow the usage of custom colors.
+- Add support for global notifications to display announcements and other messages to all users or a selected group of users.
+- Add authentication and team-sync support for the Okta indentity provider.
+- Add support for the Graylog Forwarder. The Graylog Forwarder is a standalone agent for sending log data to Graylog Cloud or an on-premise Graylog Server cluster.
+- Add Log View widget including file export. This allows users to read log messages in a way similar to reading plain text log files.
+- Add support for exporting messages in JSON, NDJSON and plain text formats.
+- Add S3 archiving backend to store archives in AWS S3 compatible object stores.
+- Add option to make archive batch size configurable for performance tuning.
+- Extend search and dashboard parameters to allow pre-defined values based on static lists or available message field values.
+- Add pagination for reports overview.
+
+**Fixed**
+
+- Improve archiving multiple indices.
+- Fix rendering world map visualization in reports.
+- Improved search and dashboard parameter validation and styling.
+- Use case-insensitive matching for LDAP/AD group sync.
+- Disable confusing traffic warning log messages by default.
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Added**
+
+- Add ActiveDirectory user lookup data adapter.
+- Add Enterprise Greynoise lookup data adapter.
+- Add URLhaus lookup data adapter.
+
+
+Graylog Enterprise 4.0.8
+========================
+
+Released: 2021-06-02
+
+Enterprise
+----------
+
+**Fixed**
+
+- Lower log level for irregular traffic record check.
+
+
+Graylog Enterprise 4.0.7
+========================
+
+Released: 2021-05-05
+
+Enterprise
+----------
+
+**Fixed**
+
+- Fix rendering of the world map visualization in reports.
+
+
+Graylog Enterprise 4.0.6
+========================
+
+Released: 2021-04-07
+
+Enterprise
+----------
+
+**Fixed**
+
+- Change LDAPGroupResolver to use case-insensitive matching
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Added**
+
+- Add "drop sensitive data" option to Microsoft365 input
+
+Graylog Enterprise 4.0.5
+========================
+
+Released: 2021-02-22
+
+Enterprise
+----------
+
+No changes since 4.0.4.
+
+
+Graylog Enterprise 4.0.4
+========================
+
+Released: 2021-02-22
+
+Enterprise
+----------
+
+No changes since 4.0.3.
+
+
+Graylog Enterprise 4.0.3
+========================
+
+Released: 2021-02-16
+
+Enterprise
+----------
+
+No changes since 4.0.2.
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Added**
+
+- Add full-message transformer to Enterprise Output Framework.
+
+
+Graylog Enterprise 4.0.2
+========================
+
+Released: 2021-01-27
+
+Enterprise
+----------
+
+**Added**
+
+- Allow modification of timezone in report scheduling settings.
+
+**Fixed**
+
+- Fix report preview styling when dark mode is active.
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Fixed**
+
+- Reduce noise of legacy script alarm callback notification.
+- Fix timing issue with old checkpoints in Office365 plugin.
+- Properly shut down TCP connections when stopping Enterprise outputs.
+
+
+Graylog Enterprise 4.0.1
+========================
+
+Released: 2020-11-25
+
+Enterprise
+----------
+
+No changes since 4.0.0.
+
+Enterprise Integrations Plugin
+------------------------------
+
+- Do not shut down Okta input on errors.
+- Let Office 365 plugin use configured proxy settings.
+
+
+Graylog Enterprise 4.0.0
+========================
+
+Released: 2020-11-18
+
+Enterprise
+----------
+
+**Added**
+
+- Add support for grouping users in teams.
+
+  - See: :ref:`Permission Management <permissions>`
+- Add support for managing access to streams, searches and dashboards through teams.
+
+  - See: :ref:`Permission Management <permissions>`
+- Add support for syncing groups from LDAP and Active Directory into Graylog teams.
+
+  - See: :ref:`Permission Management <permissions>`
+- Add configurable header badge.
+- Create notification for failed Enterprise outputs.
+- Add cluster resources for archiving to allow archiving to be managed from all server nodes.
+
+**Fixed**
+
+- Don't fail reports migration if a widget is missing.
+- Improve error logging for report generation.
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Added**
+
+- Script event notification plugin to replace the legacy script alarm callback plugin.
+
+
+Graylog Enterprise 3.3.13
+=========================
+
+Released: 2021-05-05
+
+Enterprise
+----------
+
+**Fixed**
+
+- Fix rendering of the world map visualization in reports.
+
+
+Graylog Enterprise 3.3.12
+=========================
+
+Released: 2021-04-14
+
+No changes since 3.3.11.
+
+
+Graylog Enterprise 3.3.11
+=========================
+
+Released: 2021-02-16
+
+No changes since 3.3.10.
+
+
+Graylog Enterprise 3.3.10
+=========================
+
+Released: 2021-01-27
+
+Enterprise
+----------
+
+**Added**
+
+- Allow modification of timezone in report scheduling settings.
+
+
+Graylog Enterprise 3.3.9
+========================
+
+Released: 2020-11-25
+
+Enterprise
+----------
+
+**Fixed**
+
+- Fix audit formatting for file resource.
+- Fix permission issue with reports.
+- Fix logo images in reports.
+- Fix issue with rendering help buttons.
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Fixed**
+
+- Do not shut down Office 365 input on errors.
+- Do not shut down Okta input on errors.
+- Fix issue with Office 365 logon data parsing.
+- Let Office 365 plugin use configured proxy settings.
+
+
+Graylog Enterprise 3.3.8
+========================
+
+Released: 2020-10-12
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Fixed**
+
+- Fixed an issue with the O365 codec where it was not handling the event timestamp correctly.
+
+
+Graylog Enterprise 3.3.7
+========================
+
+Released: 2020-10-08
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Fixed**
+
+- Ensure cleanup of on-disk journal when Enterprise Output is deleted.
+
+
+Graylog Enterprise 3.3.6
+========================
+
+Released: 2020-09-28
+
+Enterprise
+----------
+
+**Fixed**
+
+- Improve error logging during report generation.
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Added**
+
+- Add Google BigQuery output to the enterprise output framework.
+
+**Fixed**
+
+- Fix ``NullPointerException`` and thread-safety issues in the enterprise output framework.
+- Fix retry logic and overall robustness of the office365 input.
+- Improve error detection and error handling in the enterprise output framework.
+
+
+Graylog Enterprise 3.3.5
+========================
+
+Released: 2020-08-17
+
+**Fixed**
+
+- Fix NullPointerException when deleting an output, which caused the on-disk journal to not get cleaned up.
+
+
+Graylog Enterprise 3.3.4
+========================
+
+Released: 2020-08-06
+
+**Changed**
+
+- Fix pipeline selection on output creation to make the pipeline optional rather than required.
+
+**Fixed**
+
+- Fixed a bug which occurred during the setup of the O365 Input.
+- Fix error when starting the Forwarder with the Enterprise Integrations plugin.
+
+
 Graylog Enterprise 3.3.3
 ========================
 

@@ -21,6 +21,7 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/configuration
    pages/secure/securing
    pages/sending_data
+   pages/metrics
    pages/sidecar
    pages/queries
    pages/streams
@@ -31,14 +32,11 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/lookuptables
    pages/geolocation
    pages/indexer_failures
-   pages/users_and_roles
-   pages/integrations
+   pages/permission_management
    pages/plugins
    pages/content_packs
-   pages/external_dashboards
    pages/marketplace
    pages/faq
-   pages/gelf
    pages/ideas_explained
    pages/changelog
 
@@ -50,5 +48,15 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/enterprise/setup
    pages/archiving
    pages/auditlog
+   pages/enterprise/forwarder
    pages/reporting
+   pages/enterprise/setup/license.rst
    pages/enterprise/changelog
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Graylog Content
+   
+   pages/integrations
+   pages/gelf
+   Graylog Schema <https://schema.graylog.org/>

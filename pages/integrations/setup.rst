@@ -46,8 +46,52 @@ Tarballs
 
 If you have done a manual installation, you download the tarballs from the following links.
 
-* :enterprise-integrations-plugins-tar:`3.2.0`
-* :integrations-plugins-tar:`3.2.0`
+
+.. list-table:: Integrations Plugins download
+    :header-rows: 1
+
+    * - Integrations Version
+      - Download URL
+    * - 3.3.0
+      - :integrations-plugins-tar:`3.3.0`
+    * - 3.3.1
+      - :integrations-plugins-tar:`3.3.1`
+    * - 3.3.2
+      - :integrations-plugins-tar:`3.3.2`
+    * - 3.3.3
+      - :integrations-plugins-tar:`3.3.3`       
+    * - 3.3.4
+      - :integrations-plugins-tar:`3.3.4`
+    * - 3.3.5
+      - :integrations-plugins-tar:`3.3.5`
+    * - 3.3.6
+      - :integrations-plugins-tar:`3.3.6`
+    * - 3.3.7
+      - :integrations-plugins-tar:`3.3.7`
+
+
+.. list-table:: Enterprise Integrations Plugins download
+    :header-rows: 1
+
+    * - Enterprise Integrations Version
+      - Download URL
+    * - 3.3.0
+      - :enterprise-integrations-plugins-tar:`3.3.0`
+    * - 3.3.1
+      - :enterprise-integrations-plugins-tar:`3.3.1`
+    * - 3.3.2
+      - :enterprise-integrations-plugins-tar:`3.3.2`
+    * - 3.3.3
+      - :enterprise-integrations-plugins-tar:`3.3.3`       
+    * - 3.3.4
+      - :enterprise-integrations-plugins-tar:`3.3.4`
+    * - 3.3.5
+      - :enterprise-integrations-plugins-tar:`3.3.5`
+    * - 3.3.6
+      - :enterprise-integrations-plugins-tar:`3.3.6`
+    * - 3.3.7
+      - :enterprise-integrations-plugins-tar:`3.3.7`
+
 
 .. note:: The integrations plugins need to be the same version as the Graylog server.
 

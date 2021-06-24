@@ -1053,7 +1053,7 @@ format_date
 ``format_date(value: DateTime, format: string, [timezone: string])``
 
 Returns the given date and time ``value`` formatted according to the ``format`` string. If no timezone is given,
-it defaults to ``UTC``.
+it defaults to ``UTC``. The timezone must be specified as `TZ database name <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones>`
 
 to_date
 -------

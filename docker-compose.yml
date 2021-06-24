@@ -4,6 +4,7 @@ services:
     build: .
     image: graylog/documentation
     container_name: graylog-documentation
+    init: true
     ports:
       - "8000:8000"
     volumes:

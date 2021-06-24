@@ -79,7 +79,7 @@ Supplying external logging configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Graylog is using `Apache Log4j 2 <https://logging.apache.org/log4j/2.x/>`_ for its internal logging and ships with a
-`default log configuration file <https://github.com/Graylog2/graylog2-server/blob/3.3/graylog2-server/src/main/resources/log4j2.xml>`_
+`default log configuration file <https://github.com/Graylog2/graylog2-server/blob/4.0/graylog2-server/src/main/resources/log4j2.xml>`_
 which is embedded within the shipped JAR.
 
 In case you need to modify Graylog's logging configuration, you can supply a Java system property specifying the path to

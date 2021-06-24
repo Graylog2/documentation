@@ -1,0 +1,19 @@
+User-agent: *
+
+Disallow: /en/4.0/
+Disallow: /en/3.3/
+Disallow: /en/3.2/
+Disallow: /en/3.1/
+Disallow: /en/3.0/
+Disallow: /en/2.5/
+Disallow: /en/2.4/
+Disallow: /en/2.3/
+Disallow: /en/2.2/
+Disallow: /en/2.1/
+Disallow: /en/2.0/
+Disallow: /en/1.3/
+Disallow: /en/1.2/
+Disallow: /en/1.1/
+Disallow: /en/1.0/
+
+Sitemap: https://docs.graylog.org/sitemap.xml

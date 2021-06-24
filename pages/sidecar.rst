@@ -7,7 +7,6 @@ Graylog Sidecar
 .. note::
  Graylog 3.0 comes with a new Sidecar implementation.
  We still support the old **Collector Sidecars**, which can be found in the ``System / Collectors (legacy)`` menu entry.
- In case you need to configure legacy **Collector Sidecar** please refer to the `Graylog Collector Sidecar documentation </en/2.5/pages/collector_sidecar.html>`_.
  We encourage users to migrate to the new **Sidecar**, which is covered by this document.
 
 **Graylog Sidecar** is a lightweight configuration management system for different log collectors, also called `Backends`.
@@ -28,15 +27,17 @@ You can get .deb and .rpm packages for Graylog Sidecar in our package repository
 
 Please follow the version matrix to pick the right package:
 
-+-----------------+----------------------------------+
-| Sidecar version | Graylog server version           |
-+=================+==================================+
-| 1.0.x           | 3.0.x,3.1.x,3.2.x                |
-+-----------------+----------------------------------+
-| 0.1.x           | 2.2.x,2.3.x,2.4.x,2.5.x,3.0.x    |
-+-----------------+----------------------------------+
-| 0.0.9           | 2.1.x                            |
-+-----------------+----------------------------------+
++-------------------+-----------------------------------+
+| Sidecar version   | Graylog server version            |
++===================+===================================+
+| 1.1.x             | 3.2.5 or higher                   |
++-------------------+-----------------------------------+
+| 1.0.x             | 3.0 or higher                     |
++-------------------+-----------------------------------+
+| 0.1.x             | 2.2.x,2.3.x,2.4.x,2.5.x,3.0.x     |
++-------------------+-----------------------------------+
+| 0.0.9             | 2.1.x                             |
++-------------------+-----------------------------------+
 
 All following commands should be executed on the **remote machine** where you want to collect log data from.
 
@@ -70,7 +71,7 @@ CentOS
 Install the Graylog Sidecar repository configuration and Graylog Sidecar itself with the following commands::
 
     $ sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-sidecar-repository-1-2.noarch.rpm
-    $ sudo yum update && sudo yum install graylog-sidecar
+    $ sudo yum install graylog-sidecar
 
 
 Edit the configuration (see :ref:`Configuration <sidecar-configuration>`) and
@@ -211,7 +212,7 @@ sidecar.yml Reference
 +-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
 | log_rotate_keep_files               | The maximum number of old log files to retain.                                                                      |
 +-------------------------------------+---------------------------------------------------------------------------------------------------------------------+
-| collector_binaries_whitelist        | A list of binaries which are allowed to be executed by the Sidecar. |br|                                            |
+| collector_binaries_accesslist       | A list of binaries which are allowed to be executed by the Sidecar. |br|                                            |
 |                                     | An empty list disables the white list feature. |br| Default:                                                        |
 |                                     | ``/usr/bin/filebeat, /usr/bin/packetbeat, /usr/bin/metricbeat, /usr/bin/heartbeat,`` |br|                           |
 |                                     | ``/usr/bin/auditbeat, /usr/bin/journalbeat, /usr/share/filebeat/bin/filebeat,`` |br|                                |
@@ -358,7 +359,7 @@ Let's assume you want your sidecar to run `rsyslogd(8)` for you.
   for it and assign it to a Sidecar. Please follow the :ref:`sidecar_step-by-step` accordingly.
 
 - **Note**: Your Sidecar might refuse to start your collector, because it needs
-  to be added to the ``collector_binaries_whitelist`` first. Please edit your
+  to be added to the ``collector_binaries_accesslist`` first. Please edit your
   :ref:`Configuration <sidecar-configuration>` and restart your Sidecar.
 
 Using Configuration Variables
