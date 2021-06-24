@@ -12,6 +12,8 @@ Archiving is part of the Graylog Enterprise plugin, please check the
 :doc:`Graylog Enterprise setup page </pages/enterprise/setup>` for details on
 how to install it.
 
+.. _archive-config-form:
+
 Configuration
 =============
 
@@ -57,12 +59,11 @@ when the server starts for the first time but you can create a new backend if yo
 path.
 
 
-S3 Archiving
-~~~~~~~~~~~~
+S3 Archiving Backend
+~~~~~~~~~~~~~~~~~~~~
 
-Graylog provides archiving built to be used against AWS S3. This doesn't mean it's limited
-to the AWS solution. You can configure S3 compatible solutions like MinIO, CEPH, Digital Ocean 
-Spaces and others.
+The S3 Archiving backend can be used to upload archives to an AWS S3 object storage service. It is built to work 
+with AWS, but should be compatible with other S3 implementations like MinIO, CEPH, Digital Ocean Spaces, etc.
 
 On the *Archive* page:
 
@@ -83,16 +84,17 @@ On the *Archive* page:
 | AWS Authentication Type     | Choose access type from the dropdown menu |     
 +-----------------------------+-------------------------------------------+                                                 
 | AWS Assume Role (ARN)       | This is an optional input for             |
-|                             | alternate authentication mechanisms.      |      
+|                             | alternate authentication mechanisms       |      
 +-----------------------------+-------------------------------------------+     
 | Bucket Name                 | The name of the S3 bucket                 |     
 +-----------------------------+-------------------------------------------+     
-| Spool Directory             | Temporary name for the archiving process  |    
+| Spool Directory             | Directory where archiving data is stored  |    
+|                             | before being uploaded                     |
 +-----------------------------+-------------------------------------------+     
 | AWS Region                  | Choose *Automatic* or configure the       |
 |                             | appropriate option                        |
 +-----------------------------+-------------------------------------------+
-| S3 Output Base Path         | Creates archive structure                 |
+| S3 Output Base Path         | Archives will be stored under this path   |
 +-----------------------------+-------------------------------------------+
 
 AWS Authentication Type
@@ -107,28 +109,25 @@ Graylog provides several options for granting access. You can:
 AWS Assume Role (ARN)
 ~~~~~~~~~~~~~~~~~~~~~
 
-This is typically used for buckets that you don’t own. For example, if someone gave you temporary 
-permissions to their bucket, you would need to use this configuration.
+This is typically used for allowing cross-account access to a bucket. See `ARN <https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html>`_
+for further details.
 
 Spool Directory
 ~~~~~~~~~~~~~~~
 
-The Spool Directory is always writable for the upload process to persist.
+The archiving process needs this directory to store some temporary data, before it can be 
+uploaded to S3.
 
-Before Graylog upload archives to the S3, it has to write them into the file system. As soon as 
-Graylog writes these segments, they are uploaded. 
-
-Keep in mind you need 5 gigabytes of free disk space in this directory to manage 10 segments at 
-500 megabytes. However, it may use less memory because it deletes files as soon as they upload.
+This directory should be writable and have enough space to fit 10 times the *Max Segment Size*.
+You can make adjustments in the form mentioned in :ref:`archive-config-form`.
 
 AWS Region
 ~~~~~~~~~~
 
-By default, Graylog pulls the region from your file systems. 
+Select the AWS region where you archiving bucket resides in. If none is selected, Graylog tries 
+to get the region from your file system or process environment.
 
-If you choose to select a region, you should use the one where you created the bucket. 
-
-If you are not using AWS, you do not need to configure this. 
+If you are not using AWS, you do not need to configure this.  
 
 S3 Output Base Path
 ~~~~~~~~~~~~~~~~~~~
@@ -170,12 +169,7 @@ To activate the backend, you need to:
 #. Under the *Backend* dropdown menu, select the backend you want to activate. 
 #. You can choose to change configurations or use the defaults provided. 
 #. Click the green *Update configuration* button at the bottom of the screen.
-#. This will return you to the *Archives* screen.
-
-The archiving will run automatically.  
-
-To review your S3 archive, click the *Archive Index* button. 
-
+#. This will return you to the *Archives* screen. 
 
 Max Segment Size
 ^^^^^^^^^^^^^^^^^
