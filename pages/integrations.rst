@@ -23,6 +23,8 @@ Open Source
 * :ref:`AWS Kinesis/CloudWatch Input<aws_kinesis_cloudwatch_input>`
 * :ref:`Palo Alto Network Input<palo_alto_network_input>`
 * :ref:`IPFIX Input<ipfix_input>`
+* :ref:`GreyNoise Data Adapter<greynoise_dataadapter>`
+
 
 .. toctree::
    :hidden:
@@ -30,6 +32,7 @@ Open Source
    integrations/inputs/aws_kinesis_cloudwatch_input
    integrations/inputs/palo_alto_networks_input
    integrations/inputs/ipfix_input
+   integrations/greynoise_dataadapter
 
 .. _integrations_enterprise:
 
@@ -44,6 +47,7 @@ For a comprehensive list of available features included, see our  :ref:`Enterpri
 * :ref:`Okta Log Events Input<okta_input>`
 * :ref:`Office 365 Log Events Input<o365_input>`
 * :ref:`URLhaus Malware URL Data Adapter<urlhaus>`
+* :ref:`GreyNoise Enterprise Data Adapter<greynoise__ent_dataadapter>`
 
 .. toctree::
    :hidden:
@@ -53,3 +57,4 @@ For a comprehensive list of available features included, see our  :ref:`Enterpri
    integrations/output_framework
    integrations/inputs/o365_input
    integrations/lookups/urlhaus
+   integrations/greynoise_dataadapter
