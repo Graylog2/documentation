@@ -51,12 +51,18 @@ There are several configuration options to configure archiving.
 
 .. _archive-config-option-backend:
 
-Backend
-^^^^^^^
+Backends
+^^^^^^^^
+The archived indices will be stored in a backend. You can choose from two types:
 
-The archived indices will be stored in a backend. A backend that stores the data in ``/tmp/graylog-archive`` is created
-when the server starts for the first time but you can create a new backend if you want to store the data in a different
-path.
+* File system
+* S3
+
+File System Backend
+~~~~~~~~~~~~~~~~~~~
+
+A backend that stores the data in ``/tmp/graylog-archive`` is created when the server starts for the first 
+time but you can create a new backend if you want to store the data in a different path.
 
 
 S3 Archiving Backend
