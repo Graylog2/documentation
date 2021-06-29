@@ -12,6 +12,8 @@ Archiving is part of the Graylog Enterprise plugin, please check the
 :doc:`Graylog Enterprise setup page </pages/enterprise/setup>` for details on
 how to install it.
 
+.. _archive-config-form:
+
 Configuration
 =============
 
@@ -49,12 +51,131 @@ There are several configuration options to configure archiving.
 
 .. _archive-config-option-backend:
 
-Backend
-^^^^^^^
+Backends
+^^^^^^^^
+The archived indices will be stored in a backend. You can choose from two types:
 
-The archived indices will be stored in a backend. A backend that stores the data in ``/tmp/graylog-archive`` is created
-when the server starts for the first time but you can create a new backend if you want to store the data in a different
-path.
+* File system
+* S3
+
+File System Backend
+~~~~~~~~~~~~~~~~~~~
+
+A backend that stores the data in ``/tmp/graylog-archive`` is created when the server starts for the first 
+time but you can create a new backend if you want to store the data in a different path.
+
+
+S3 Archiving Backend
+~~~~~~~~~~~~~~~~~~~~
+
+The S3 Archiving backend can be used to upload archives to an AWS S3 object storage service. It is built to work 
+with AWS, but should be compatible with other S3 implementations like MinIO, CEPH, Digital Ocean Spaces, etc.
+
+On the *Archive* page:
+
+#. Click the *Manage Backends* button on the top right.
+#. Click *Create Backend* under the *Archive Backends*; this takes you to *Edit archive backend configuration options*.
+#. Go to the *Backend configuration* section and on the *Backend Type* dropdown select *S3*.
+#. Fill out the form, completing the fields that best suit your choice of archive.
+
++-----------------------------+-------------------------------------------+
+| Name                        | Description                               | 
++=============================+===========================================+
+| Title                       | A simple title to identify the backend    |     
++-----------------------------+-------------------------------------------+
+| Description                 | Longer description for the backend        |     
++-----------------------------+-------------------------------------------+                                                
+| S3 Endpoint URL             | Only configure this if not using AWS      |                                                
++-----------------------------+-------------------------------------------+
+| AWS Authentication Type     | Choose access type from the dropdown menu |     
++-----------------------------+-------------------------------------------+                                                 
+| AWS Assume Role (ARN)       | This is an optional input for             |
+|                             | alternate authentication mechanisms       |      
++-----------------------------+-------------------------------------------+     
+| Bucket Name                 | The name of the S3 bucket                 |     
++-----------------------------+-------------------------------------------+     
+| Spool Directory             | Directory where archiving data is stored  |    
+|                             | before being uploaded                     |
++-----------------------------+-------------------------------------------+     
+| AWS Region                  | Choose *Automatic* or configure the       |
+|                             | appropriate option                        |
++-----------------------------+-------------------------------------------+
+| S3 Output Base Path         | Archives will be stored under this path   |
++-----------------------------+-------------------------------------------+
+
+AWS Authentication Type
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Graylog provides several options for granting access. You can:
+
+* use the *Automatic* authentication mechanism if you provide AWS credentials through your file
+  system or process environment.
+* enter credentials manually
+
+AWS Assume Role (ARN)
+~~~~~~~~~~~~~~~~~~~~~
+
+This is typically used for allowing cross-account access to a bucket. See `ARN <https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html>`_
+for further details.
+
+Spool Directory
+~~~~~~~~~~~~~~~
+
+The archiving process needs this directory to store some temporary data, before it can be 
+uploaded to S3.
+
+This directory should be writable and have enough space to fit 10 times the *Max Segment Size*.
+You can make adjustments in the form mentioned in :ref:`archive-config-form`.
+
+AWS Region
+~~~~~~~~~~
+
+Select the AWS region where you archiving bucket resides in. If none is selected, Graylog tries 
+to get the region from your file system or process environment.
+
+If you are not using AWS, you do not need to configure this.  
+
+S3 Output Base Path
+~~~~~~~~~~~~~~~~~~~
+
+This is a prefix to the file name that works similar to a directory. Configuring this will 
+help you organize data. 
+
+You can use the following variable to construct a dynamic value for each archive to give 
+it structure:
+
++-----------------------------+-------------------------------------------+
+| variable                    | Description                               | 
++=============================+===========================================+
+| index-name                  | Name of the index that gets archived      |     
++-----------------------------+-------------------------------------------+
+| year                        | Archival date year                        |     
++-----------------------------+-------------------------------------------+                                                
+| month                       | Archival date month                       |                                                
++-----------------------------+-------------------------------------------+
+| day                         | Archival date day                         |     
++-----------------------------+-------------------------------------------+                                                     
+| hour                        | Archival date hour                        |     
++-----------------------------+-------------------------------------------+     
+| minute                      | Archival date minute                      |     
++-----------------------------+-------------------------------------------+     
+| second                      | Archival date second                      |
++-----------------------------+-------------------------------------------+
+
+Activate Backend
+~~~~~~~~~~~~~~~~
+
+After configuring your bucket, click *Save*.
+
+This will bring you back to the *Edit archive backend configuration* page. 
+
+To activate the backend, you need to:
+
+#. Click on the *Configuration* tab located in the top righthand corner.
+#. Under the *Backend* dropdown menu, select the backend you want to activate. 
+#. You can choose to change configurations or use the defaults provided. 
+#. Click the green *Update configuration* button at the bottom of the screen.
+#. This will return you to the *Archives* screen. 
 
 Max Segment Size
 ^^^^^^^^^^^^^^^^^
