@@ -30,6 +30,7 @@ To access the window, click the clock icon. A dialog pops up, offering the follo
 
 Relative Time Frame Selector
 """"""""""""""""""""""""""""
+
 The *Relative* time frame selector lets you search for messages within time ranges relative to 
 *Now* or another date of your choosing. This selector offers a wide set of relative time frames 
 that fit most of your search needs, including an *All Time* option.
