@@ -1,7 +1,7 @@
 Time Frame Selector
 -------------------
 
-The Time frame selector allows you to pull specific time ranges from your Graylog data. 
+The Time Frame selector allows you to pull specific time ranges from your Graylog data. 
 This feature will help you and other Graylog users analyze issues that affect multiple aspects 
 of your environment. Most importantly, the tool offer multiple ways to filter time ranges 
 you need for success.
@@ -9,7 +9,7 @@ you need for success.
 .. image:: /images/searching/time_frame_selector_wide.png
 
 
-To that end, the tool's ability to help you queries can help you perform such actions as:
+To that end, the tool helps you to build queries that can help you perform such actions as:
 
 * understanding and responding to data breaches, broken processes, and other security incidents
 * troubleshoot systems and networks
@@ -23,16 +23,16 @@ You can access the Selector from the Search menu.
 
 To access the window, click the clock icon. A dialog pops up, offering the following ranges:
 
-* Relative
-* Absolute
-* Keyword
+* *Relative*
+* *Absolute*
+* *Keyword*
 
 
-Relative time frame selector
+Relative Time Frame Selector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The relative time frame selector lets you look for messages from the selected option to the time you 
-hit the search button. The selector offers a wide set of relative time frames that fit most of your 
-search needs, including an *All Time* option.
+The *Relative* time frame selector lets you search for messages within time ranges relative to 
+*Now* or another date of your choosing. This selector offers a wide set of relative time frames 
+that fit most of your search needs, including an *All Time* option.
 
 .. image:: /images/searching/relative_time_frame_revised.png
 
@@ -53,8 +53,8 @@ provides an accordion to separate the Calendar from Timestamp inputs.
 
 This option displays an accordion containing two options:
 
-* Calendar
-* Timestamp
+* *Calendar*
+* *Timestamp*
 
 In the Calendar option, use the hourglass icon to jump from the very beginning of the day (00:00:00.000) to 
 the very end of the day (23:59:59.99).
@@ -69,7 +69,7 @@ To understand, Calender in more detail, consider the functions of *Until* and *F
 You can use the magic wand icon for both Calendar and Timestamp.
 
 * In *Calendar*, the icon updates the *Time* to the current time but does not modify the date in the calendar
-* In *Timestamp*, the icon updates the entire *Timestamp* to the current date and time.
+* In *Timestamp*, the icon updates the entire *Timestamp* to the current date and time
 
 .. image:: /images/searching/absolute_selector_timestamp.png
 
@@ -81,7 +81,7 @@ Graylog offers a keyword time frame selector that allows you to specify the time
 language like *last hour* or *last 90 days*. The web interface shows a preview of the two actual timestamps that 
 will be used for the search.
 
-.. image:: /images/searching/keyword_time_selector.png
+.. image:: /images/searching/keyword_selector.png
    :align: center
 
 Here are a few examples for possible values.
