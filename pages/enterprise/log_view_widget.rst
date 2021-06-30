@@ -97,7 +97,7 @@ Click the icon to expand your widget to full view:
 
 
 Build a Dashboard with Shareable Data
-------------------------------------
+-------------------------------------
 
 In this section, you will determine a format that best suits your message delivery efforts, and download a report. 
 For example, you might pass on:
