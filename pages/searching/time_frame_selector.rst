@@ -28,6 +28,8 @@ To access the window, click the clock icon. A dialog pops up, offering the follo
 * *Keyword*
 
 
+.. _relative-time-frame-selector:
+
 Relative Time Frame Selector
 """"""""""""""""""""""""""""
 
