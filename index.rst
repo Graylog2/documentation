@@ -51,6 +51,7 @@ NOTE: There are multiple options for reading this documentation. See link to the
    pages/auditlog
    pages/enterprise/forwarder
    pages/reporting
+   pages/enterprise/themes
    pages/enterprise/setup/license.rst
    pages/enterprise/changelog
 
