@@ -461,3 +461,8 @@ Others
 * ``content_packs_auto_install``
     * A comma-separated list of content packs (files in "content_packs_dir") which should be applied on the first start of Graylog.
     * Default: none
+* ``allowed_auxiliary_paths = /etc/graylog/data-files,/etc/custom-allowed-path``
+    * Optional allowed paths for Graylog data files. If provided, certain operations in Graylog will only be permitted
+      if the data file(s) are located in the specified paths (for example, with the CSV File lookup adapter).
+      All subdirectories of indicated paths are allowed by default. This Provides an additional layer of security,
+      and allows administrators to control where in the file system Graylog users can select files from.
