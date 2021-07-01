@@ -46,7 +46,7 @@ NOTE: There are multiple options for reading this documentation. See link to the
 
    pages/enterprise/intro
    pages/enterprise/setup
-   pages/single_sign_on/okta_on_prem
+   pages/enterprise/single_sign_on/okta_on_prem
    pages/archiving
    pages/auditlog
    pages/enterprise/forwarder
