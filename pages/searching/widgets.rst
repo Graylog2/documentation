@@ -187,4 +187,4 @@ To expand a widget to the full grid width, click on the arrow in its top-right c
    :align: center
 
 If you want to expand the view of aggregated data in your *Log View* widget, go to :ref:`widget_focus` to 
-perfom those steps.
+perform those steps.

@@ -7,20 +7,20 @@ Overview
 ********
 
 Log View is a widget that presents your log data in a format similar to Common Log Format. 
-In other terms, it has the look and feel of console output. In addition, the Log View widget 
-allows you to scroll through log events and as it populates new lines in real-time.
+In other terms, it has the look and feel of a console output. In addition, the Log View widget 
+allows you to scroll through log events as it populates new lines in real-time.
 
-Of course, the Log View widget will provide you a way to sleuth around your log events, to 
+Of course, the Log View widget will provide you a way to investigate your log events, to 
 accomplish such actions as:
 
 * recording faults to diagnose and debug
 * identifying security breaches and other system and network misuses.
 * auditing
 
-When you build aggregations in the Log View widget expect it to help you to create highly 
+When you build aggregations in the Log View widget expect it to help you create highly 
 customizable reports and infographics. Furthermore, you can add them to your dashboards. 
-Also, you can save and retrieve them, in the the event you need to review that data again. 
-At any time, you can add new values, fields, metrics to build reports that you need.
+Also, you can save and retrieve them, in the event you need to review that data again. 
+At any time, you can add new values, fields, and metrics to build reports that you need.
 
 .. note::
     According to the section :ref:`csv_export`, Graylog Open Source is limited to exports in CSV.
