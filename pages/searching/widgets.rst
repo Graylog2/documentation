@@ -16,37 +16,53 @@ on the chevron on the right side in the head of the widget.
 
 Creating a widget
 ^^^^^^^^^^^^^^^^^
-To add a widget for your search or dashboard, open the sidebar and the "Create" section. You can also open the section directly by
-clicking on the plus sign.
+To add a widget for your search or dashboard:
 
-.. image:: /images/searching/views_widget_create.png
+* Open the sidebar and the *Create* section. 
+* Alternately, you can open the section directly by clicking on the plus sign (*+*).
+
+.. image:: /images/searching/log_view_window.png
    :align: center
 
-You can create an empty ":ref:`widgets-aggregation`". or a predefined widget by selecting the ":ref:`widgets-message-table`" or "Message Count" .
+You can create an empty ":ref:`widgets-aggregation`". or a predefined widget by selecting the ":ref:`widgets-message-table`" or "Message Count".
 
 Empty aggregation widget:
 
-.. image:: /images/searching/views_widget_aggregation_create.png
+.. image:: /images/searching/views_empty_aggregation_edit.png
    :align: center
 
 .. _widgets-aggregation:
 
 Aggregation
 ^^^^^^^^^^^
-The goal of an aggregation is to reduce the number of data points
-in a meaningful way to get an answer from them. Data points can be
-numeric field types in a message (e.g. a took_ms field which contains how
-long a page needed to be rendered).
-Or string values which can be used for grouping the aggregation
+The goal of an aggregation is to reduce the number of data points in a meaningful way to get an answer from them. 
+Data points can be numeric field types in a message (e.g. a ``took_ms`` field which contains how
+long a page needed to be rendered). Or string values which can be used for grouping the aggregation
 (e.g an action field which contains the name of the controller action).
 
 Configuring an aggregation
 """"""""""""""""""""""""""
-As describe in the previous section a click on `+ Create` -> `Aggreatation` will create an empty widget on the very top of the search page.
+As describe in the previous section a click on `+ Create` -> `Aggregation` will create an empty widget on the very top of the search page.
 A click on the `chevron icon -> Edit` on the right side of the head will open the widget edit modal.
 
-.. image:: /images/searching/widget_aggregation_edit.png
+.. image:: /images/searching/aggregation_view.png
    :align: center
+
+:GROUP BY:
+   This option allows you to “group” your chart by rows and columns. 
+   When you create a new group with Group By, the values you select 
+   get rolled up into the result. This result can be presented in a 
+   variety of ways. You may present the data as a table, chart, 
+   or visualization with color.  
+   
+   At a glance, if ``timestamp`` is a field attributed to a row it will 
+   divide the data points into intervals. Otherwise the aggregation will take
+   by default up to 15 elements of the selected field and apply the
+   selected **METRICS** function to the data points.
+   
+   *Example* The ``timestamp`` field is aggregated with ``avg()`` on
+   ``took_ms``. The column ``action`` will give the average loading
+   time for a page per action for every 5 minutes.
 
 :METRICS:
    **METRICS** are a collection of functions to aggregate data points.
@@ -54,16 +70,6 @@ A click on the `chevron icon -> Edit` on the right side of the head will open th
    **COLUMNS**. The data points of a field will be aggregated to the grouping.
    *Example* The ``avg()`` function will find the average of the
    numeric data points ``took_ms`` around the configured grouping. 
-
-:ROWS/COLUMNS:
-   Allows selecting fields whose values will be used to group results into
-   new rows/columns. If the field is a ``timestamp`` for a row it will
-   divide the data points into intervals. Otherwise the aggregation will take
-   by default up to 15 elements of the selected field and apply the
-   selected **METRICS** function to the data points.
-   *Example* The ``timestamp`` field is aggregated with ``avg()`` on
-   ``took_ms``. The column ``action`` will give the average loading
-   time for a page per action for every 5 minutes.
 
 :VISUALIZATION:
    To display the result of an aggregation it is often easier to
@@ -177,5 +183,8 @@ Widgets can be freely placed inside the search result grid. You can drag and dro
 left to the widget name or you resize them by using the gray arrow in their bottom-right corner.
 To expand a widget to the full grid width, click on the arrow in its top-right corner.
 
-.. image:: /images/searching/widget_repositioning_and_resizing.png
+.. image:: /images/searching/widget_repositioning_resizing.png
    :align: center
+
+If you want to expand the view of aggregated data in your *Log View* widget, go to :ref:`widget_focus` to 
+perform those steps.
