@@ -2,6 +2,24 @@
 Changelog
 *********
 
+Graylog 4.1.1
+=============
+
+Released: 2021-07-07
+
+Core
+^^^^
+
+**Fixed**
+
+- Fix loading of streams page in some edge cases. `Graylog2/graylog2-server#10514 <https://github.com/Graylog2/graylog2-server/issues/10514>`_ `Graylog2/graylog2-server#10943 <https://github.com/Graylog2/graylog2-server/issues/10943>`_
+- Fix forwarder metrics definitions for Prometheus exporter. `Graylog2/graylog2-server#10976 <https://github.com/Graylog2/graylog2-server/issues/10976>`_
+- Fix API browser for some setups. `Graylog2/graylog2-server#10952 <https://github.com/Graylog2/graylog2-server/issues/10952>`_ `Graylog2/graylog2-server#10981 <https://github.com/Graylog2/graylog2-server/issues/10981>`_
+- Allow usage of insecure TLS ciphers for communication with legacy systems when setting ``enabled_tls_protocols`` to TLS versions < 1.2. `Graylog2/graylog2-server#10944 <https://github.com/Graylog2/graylog2-server/issues/10944>`_ `Graylog2/graylog2-server#10985 <https://github.com/Graylog2/graylog2-server/issues/10985>`_
+- Fix pretty printing JSON responses when requested. `Graylog2/graylog2-server#10906 <https://github.com/Graylog2/graylog2-server/issues/10906>`_ `Graylog2/graylog2-server#10993 <https://github.com/Graylog2/graylog2-server/issues/10993>`_
+- Fix issue when trying to modify heatmap widgets that have been created with older versions of Graylog. `Graylog2/graylog2-server#10928 <https://github.com/Graylog2/graylog2-server/issues/10928>`_ `Graylog2/graylog2-server#10967 <https://github.com/Graylog2/graylog2-server/issues/10967>`_ `Graylog2/graylog2-server#10987 <https://github.com/Graylog2/graylog2-server/issues/10987>`_
+
+
 Graylog 4.1.0
 =============
 
@@ -86,6 +104,21 @@ Integrations Plugin
 **Added**
 
 - Greynoise data adapter. `Graylog2/graylog-plugin-integrations#760 <https://github.com/Graylog2/graylog-plugin-integrations/issues/760>`_
+
+
+Graylog 4.0.9
+=============
+
+Released: 2021-07-07
+
+Core
+^^^^
+
+**Fixed**
+
+- Fix Elasticsearch flood-stage handling.  `Graylog2/graylog2-server#10887 <https://github.com/Graylog2/graylog2-server/issues/10887>`_ `Graylog2/graylog2-server#10897 <https://github.com/Graylog2/graylog2-server/issues/10897>`_
+- Fixing shared entities overview filter for saved searches. `Graylog2/graylog2-server#10878 <https://github.com/Graylog2/graylog2-server/issues/10878>`_ `Graylog2/graylog2-server#10893 <https://github.com/Graylog2/graylog2-server/issues/10893>`_
+- Fix loading of streams page in some edge cases. `Graylog2/graylog2-server#10514 <https://github.com/Graylog2/graylog2-server/issues/10514>`_ `Graylog2/graylog2-server#10942 <https://github.com/Graylog2/graylog2-server/issues/10942>`_
 
 
 Graylog 4.0.8
