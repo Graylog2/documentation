@@ -2,6 +2,21 @@
 Changelog
 *********
 
+Graylog 4.0.9
+=============
+
+Released: 2021-07-07
+
+Core
+^^^^
+
+**Fixed**
+
+- Fix Elasticsearch flood-stage handling.  `Graylog2/graylog2-server#10887 <https://github.com/Graylog2/graylog2-server/issues/10887>`_ `Graylog2/graylog2-server#10897 <https://github.com/Graylog2/graylog2-server/issues/10897>`_
+- Fixing shared entities overview filter for saved searches. `Graylog2/graylog2-server#10878 <https://github.com/Graylog2/graylog2-server/issues/10878>`_ `Graylog2/graylog2-server#10893 <https://github.com/Graylog2/graylog2-server/issues/10893>`_
+- Fix loading of streams page in some edge cases. `Graylog2/graylog2-server#10514 <https://github.com/Graylog2/graylog2-server/issues/10514>`_ `Graylog2/graylog2-server#10942 <https://github.com/Graylog2/graylog2-server/issues/10942>`_
+
+
 Graylog 4.0.8
 =============
 
