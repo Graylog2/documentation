@@ -5,7 +5,7 @@ backports-abc==0.5
 backports.ssl-match-hostname==3.7.0.1
 certifi==2020.12.5
 chardet==4.0.0
-docutils==0.16
+docutils==0.17.1
 futures==3.1.1
 idna==3.1
 imagesize==1.2.0
