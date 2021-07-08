@@ -2,6 +2,27 @@
 Changelog
 *********
 
+Graylog Enterprise 4.1.1
+========================
+
+Released: 2021-07-07
+
+Enterprise
+----------
+
+**Fixed**
+
+- Add default value for the spool directory in the UI configuration for the S3 archiving backend.
+- Improve Forwarder request/response handling when server has high load.
+
+Enterprise Integrations Plugin
+------------------------------
+
+**Added**
+
+- Add lookup data adapter for abuse.ch ThreadDox IOC.
+
+
 Graylog Enterprise 4.1.0
 ========================
 
@@ -39,6 +60,14 @@ Enterprise Integrations Plugin
 - Add ActiveDirectory user lookup data adapter.
 - Add Enterprise Greynoise lookup data adapter.
 - Add URLhaus lookup data adapter.
+
+
+Graylog Enterprise 4.0.9
+========================
+
+Released: 2021-07-07
+
+No changes since 4.0.8.
 
 
 Graylog Enterprise 4.0.8
