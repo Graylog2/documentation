@@ -1,4 +1,4 @@
-.. _urlhaus:
+.. _lookups_urlhaus:
 
 ********************************
 URLhaus Malware URL Data Adapter
