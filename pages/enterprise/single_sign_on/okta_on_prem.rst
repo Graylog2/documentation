@@ -17,8 +17,8 @@ This is a test
     :header-rows: 1
     :widths: 7 20
 
-    * - Name
-      - Description
+    * - New name
+      - Here's a Description
     * - Backend
       - Backend on the **master** node where the archive files will be stored.
     * - Max Segment Size
