@@ -10,6 +10,19 @@ Upgrading to Graylog 4.1.x
 
 .. warning:: Please make sure to create a MongoDB database backup before starting the upgrade to Graylog 4.1!
 
+TLS Changes
+===========
+
+Graylog is now using only ciphers that considered secure (at this time of writing) when TLS v1.2 or greater is enabled. (see `#10653 <https://github.com/Graylog2/graylog2-server/pull/10653>`__ and `#10985 <https://github.com/Graylog2/graylog2-server/pull/10985>`__) Only TLSv1.2 and TLSv1.3 are enabled in the default Graylog configuration.
+
+This could lead to problems with legacy TLS implementations connecting to Graylog. (e.g. older Syslog daemon versions connecting to a Graylog Syslog input)
+
+To enable older ciphers again and work around problems with legacy TLS implementations, the ``enabled_tls_protocols`` option can be adjusted to include TLS v1.1.
+
+Example::
+
+    enabled_tls_protocols = TLSv1.1,TLSv1.2
+
 Breaking Changes
 ================
 
