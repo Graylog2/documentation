@@ -29,18 +29,23 @@ Authentication
 
 Graylog had pluggable authentication providers for a long time, but we have updated them for 4.0. In 4.0 only one external authentication provider can be active. We have removed the UI around changing the order these providers run, as there was practically no usage of this feature and it made reasoning about what happened in the background very difficult for the user.
 
+Enterprise Graylog adds support for Okta, as well as OIDC-compliant authentication provider. 
+
 Both LDAP and Active Directory continue to be available out of the box for Graylog Open Source and we have no plans on changing this. We believe that user access control is an essential feature of a logging solution.
 We have also added the “trusted HTTP header” authentication method to Graylog. This feature, in conjunction with a proxy server, is sometimes used to enable authentication providers that Graylog does not have support for, such as keycard systems, Kerberos, and others.
 
-Both LDAP and Active Directory now support the synchronization of teams. Because teams are only available in Graylog Enterprise, the Open Source product no longer has Group Mapping.
+Okta, LDAP and Active Directory all support the synchronization of teams. Because teams are only available in Graylog Enterprise, the Open Source product no longer has Group Mapping.
 
-
-In Enterprise Graylog will synchronize chosen LDAP/AD groups to teams when an authentication service is activated.
+Enterprise Graylog will synchronize chosen Okta or LDAP/AD groups to teams when an authentication service is activated.
 Graylog will then keep the team members up to date as they log into the system.
 
 .. image:: /images/permissions/permissions_06.png
 
 Teams created in this way cannot be manually managed in Graylog, they have to be managed in the original identity provider. This means you cannot add or remove members from the team, but you can (and should) configure the roles the team brings with it.
+
+Okta Single Sign-on
+^^^^^^^^^^^^^^^^^^^
+If you are using Okta and have already authenticated yourself on the external Okta site, Graylog can use the same session and will not prompt you to re-authenticate. However, this requires use of third-party cookies, which are typically disabled in modern browsers. Make sure third-party cookies are enabled in your browser settings to avoid re-authentication.
 
 Users
 -----
