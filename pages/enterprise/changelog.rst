@@ -2,6 +2,29 @@
 Changelog
 *********
 
+Graylog Enterprise 4.1.2
+========================
+
+Released: 2021-07-28
+
+Enterprise
+----------
+
+**Security**
+
+Session ID leak in Graylog DEBUG log file and audit log.
+
+We recently discovered a session ID leak in the Graylog DEBUG log file as well as the audit log. A user can use a session ID to authenticate against Graylog and then this user has access to all the permissions associated with the owner of the session ID.
+
+The ID was printed in DEBUG level log messages (DEBUG is not enabled by default) as well as the Graylog Enterprise Audit Log. By default, the Graylog Audit Log is only logging to the local database and only accessible by Graylog administrators.
+
+We would like to thank David Herbstmann for discovering and responsibly disclosing this vulnerability.
+
+**Fixed**
+
+- Fix license check issue in LogView widget. `Graylog2/graylog2-server#10940 <https://github.com/Graylog2/graylog2-server/issues/10940>`_ `Graylog2/graylog-plugin-enterprise#2449 <https://github.com/Graylog2/graylog-plugin-enterprise/issues/2449>`_
+
+
 Graylog Enterprise 4.1.1
 ========================
 
@@ -60,6 +83,25 @@ Enterprise Integrations Plugin
 - Add ActiveDirectory user lookup data adapter.
 - Add Enterprise Greynoise lookup data adapter.
 - Add URLhaus lookup data adapter.
+
+
+Graylog Enterprise 4.0.10
+=========================
+
+Released: 2021-07-28
+
+Enterprise
+----------
+
+**Security**
+
+Session ID leak in Graylog DEBUG log file and audit log.
+
+We recently discovered a session ID leak in the Graylog DEBUG log file as well as the audit log. A user can use a session ID to authenticate against Graylog and then this user has access to all the permissions associated with the owner of the session ID.
+
+The ID was printed in DEBUG level log messages (DEBUG is not enabled by default) as well as the Graylog Enterprise Audit Log. By default, the Graylog Audit Log is only logging to the local database and only accessible by Graylog administrators.
+
+We would like to thank David Herbstmann for discovering and responsibly disclosing this vulnerability.
 
 
 Graylog Enterprise 4.0.9
@@ -232,6 +274,25 @@ Enterprise Integrations Plugin
 **Added**
 
 - Script event notification plugin to replace the legacy script alarm callback plugin.
+
+
+Graylog Enterprise 3.3.14
+=========================
+
+Released: 2021-07-28
+
+Enterprise
+----------
+
+**Security**
+
+Session ID leak in Graylog DEBUG log file and audit log.
+
+We recently discovered a session ID leak in the Graylog DEBUG log file as well as the audit log. A user can use a session ID to authenticate against Graylog and then this user has access to all the permissions associated with the owner of the session ID.
+
+The ID was printed in DEBUG level log messages (DEBUG is not enabled by default) as well as the Graylog Enterprise Audit Log. By default, the Graylog Audit Log is only logging to the local database and only accessible by Graylog administrators.
+
+We would like to thank David Herbstmann for discovering and responsibly disclosing this vulnerability.
 
 
 Graylog Enterprise 3.3.13
