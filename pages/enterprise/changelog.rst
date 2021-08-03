@@ -20,6 +20,8 @@ The ID was printed in DEBUG level log messages (DEBUG is not enabled by default)
 
 We would like to thank David Herbstmann for discovering and responsibly disclosing this vulnerability.
 
+The following CVE IDs have been assigned: `CVE-2021-37759 <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37759>`_, `CVE-2021-37760 <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37760>`_
+
 
 Graylog Enterprise 4.0.9
 ========================
@@ -210,6 +212,8 @@ We recently discovered a session ID leak in the Graylog DEBUG log file as well a
 The ID was printed in DEBUG level log messages (DEBUG is not enabled by default) as well as the Graylog Enterprise Audit Log. By default, the Graylog Audit Log is only logging to the local database and only accessible by Graylog administrators.
 
 We would like to thank David Herbstmann for discovering and responsibly disclosing this vulnerability.
+
+The following CVE IDs have been assigned: `CVE-2021-37759 <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37759>`_, `CVE-2021-37760 <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37760>`_
 
 
 Graylog Enterprise 3.3.13
