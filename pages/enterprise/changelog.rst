@@ -2,6 +2,17 @@
 Changelog
 *********
 
+Graylog Enterprise 4.1.3
+========================
+
+Released: 2021-08-04
+
+Enterprise
+----------
+
+No changes since 4.1.2.
+
+
 Graylog Enterprise 4.1.2
 ========================
 
@@ -85,6 +96,17 @@ Enterprise Integrations Plugin
 - Add ActiveDirectory user lookup data adapter.
 - Add Enterprise Greynoise lookup data adapter.
 - Add URLhaus lookup data adapter.
+
+
+Graylog Enterprise 4.0.11
+=========================
+
+Released: 2021-08-04
+
+Enterprise
+----------
+
+No changes since 4.0.10.
 
 
 Graylog Enterprise 4.0.10
