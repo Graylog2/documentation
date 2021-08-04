@@ -2,6 +2,19 @@
 Changelog
 *********
 
+Graylog 4.1.3
+=============
+
+Released: 2021-08-04
+
+Core
+^^^^
+
+**Fixed**
+
+- Fix pagination and search on the streams overview page. `Graylog2/graylog2-server#11091 <https://github.com/Graylog2/graylog2-server/issues/11091>`_ `Graylog2/graylog2-server#11100 <https://github.com/Graylog2/graylog2-server/issues/11100>`_
+
+
 Graylog 4.1.2
 =============
 
@@ -130,6 +143,19 @@ Integrations Plugin
 **Added**
 
 - Greynoise data adapter. `Graylog2/graylog-plugin-integrations#760 <https://github.com/Graylog2/graylog-plugin-integrations/issues/760>`_
+
+
+Graylog 4.0.11
+==============
+
+Released: 2021-08-04
+
+Core
+^^^^
+
+**Fixed**
+
+- Fix ``count`` and ``grant_total`` values in search/dashboard pagination. `Graylog2/graylog2-server#11034 <https://github.com/Graylog2/graylog2-server/issues/11034>`_
 
 
 Graylog 4.0.10
