@@ -2,6 +2,17 @@
 Changelog
 *********
 
+Graylog Enterprise 4.0.11
+=========================
+
+Released: 2021-08-04
+
+Enterprise
+----------
+
+No changes since 4.0.10.
+
+
 Graylog Enterprise 4.0.10
 =========================
 
