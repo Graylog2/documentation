@@ -45,7 +45,7 @@ Teams created in this way cannot be manually managed in Graylog, they have to be
 
 Okta Single Sign-on
 ^^^^^^^^^^^^^^^^^^^
-If you are using Okta and have already authenticated yourself on the external Okta site, Graylog can use the same session and will not prompt you to re-authenticate. However, this requires use of third-party cookies, which are typically disabled in modern browsers. Make sure third-party cookies are enabled in your browser settings to avoid re-authentication.
+If you are using Okta and have already authenticated yourself on the external Okta site, Graylog can use the same session and will not prompt you to re-authenticate. However, this requires use of `third-party cookies <https://support.okta.com/help/s/article/FAQ-How-Blocking-Third-Party-Cookies-Can-Potentially-Impact-Your-Okta-Environment?language=en_US>`__, which are typically disabled in modern browsers. Make sure third-party cookies are enabled in your browser settings to avoid re-authentication.
 
 Users
 -----
