@@ -2,6 +2,38 @@
 Changelog
 *********
 
+Graylog Enterprise 4.0.11
+=========================
+
+Released: 2021-08-04
+
+Enterprise
+----------
+
+No changes since 4.0.10.
+
+
+Graylog Enterprise 4.0.10
+=========================
+
+Released: 2021-07-28
+
+Enterprise
+----------
+
+**Security**
+
+Session ID leak in Graylog DEBUG log file and audit log.
+
+We recently discovered a session ID leak in the Graylog DEBUG log file as well as the audit log. A user can use a session ID to authenticate against Graylog and then this user has access to all the permissions associated with the owner of the session ID.
+
+The ID was printed in DEBUG level log messages (DEBUG is not enabled by default) as well as the Graylog Enterprise Audit Log. By default, the Graylog Audit Log is only logging to the local database and only accessible by Graylog administrators.
+
+We would like to thank David Herbstmann for discovering and responsibly disclosing this vulnerability.
+
+The following CVE IDs have been assigned: `CVE-2021-37759 <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37759>`_, `CVE-2021-37760 <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37760>`_
+
+
 Graylog Enterprise 4.0.9
 ========================
 
@@ -172,6 +204,27 @@ Enterprise Integrations Plugin
 **Added**
 
 - Script event notification plugin to replace the legacy script alarm callback plugin.
+
+
+Graylog Enterprise 3.3.14
+=========================
+
+Released: 2021-07-28
+
+Enterprise
+----------
+
+**Security**
+
+Session ID leak in Graylog DEBUG log file and audit log.
+
+We recently discovered a session ID leak in the Graylog DEBUG log file as well as the audit log. A user can use a session ID to authenticate against Graylog and then this user has access to all the permissions associated with the owner of the session ID.
+
+The ID was printed in DEBUG level log messages (DEBUG is not enabled by default) as well as the Graylog Enterprise Audit Log. By default, the Graylog Audit Log is only logging to the local database and only accessible by Graylog administrators.
+
+We would like to thank David Herbstmann for discovering and responsibly disclosing this vulnerability.
+
+The following CVE IDs have been assigned: `CVE-2021-37759 <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37759>`_, `CVE-2021-37760 <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37760>`_
 
 
 Graylog Enterprise 3.3.13

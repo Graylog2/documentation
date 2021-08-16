@@ -2,6 +2,40 @@
 Changelog
 *********
 
+Graylog 4.0.11
+==============
+
+Released: 2021-08-04
+
+Core
+^^^^
+
+**Fixed**
+
+- Fix ``count`` and ``grant_total`` values in search/dashboard pagination. `Graylog2/graylog2-server#11034 <https://github.com/Graylog2/graylog2-server/issues/11034>`_
+
+
+Graylog 4.0.10
+==============
+
+Released: 2021-07-28
+
+Core
+^^^^
+
+**Security**
+
+Session ID leak in Graylog DEBUG log file and audit log.
+
+We recently discovered a session ID leak in the Graylog DEBUG log file as well as the audit log. A user can use a session ID to authenticate against Graylog and then this user has access to all the permissions associated with the owner of the session ID.
+
+The ID was printed in DEBUG level log messages (DEBUG is not enabled by default) as well as the Graylog Enterprise Audit Log. By default, the Graylog Audit Log is only logging to the local database and only accessible by Graylog administrators.
+
+We would like to thank David Herbstmann for discovering and responsibly disclosing this vulnerability.
+
+The following CVE IDs have been assigned: `CVE-2021-37759 <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37759>`_, `CVE-2021-37760 <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37760>`_
+
+
 Graylog 4.0.9
 =============
 
@@ -312,6 +346,27 @@ Integrations Plugin
 
 - Add Slack event notification plugin. `Graylog2/graylog-plugin-integrations#569 <https://github.com/Graylog2/graylog-plugin-integrations/pull/569>`_
 - Add PagerDuty event notification plugin. `Graylog2/graylog-plugin-integrations#606 <https://github.com/Graylog2/graylog-plugin-integrations/pull/606>`_
+
+
+Graylog 3.3.14
+==============
+
+Released: 2021-07-28
+
+Core
+^^^^
+
+**Security**
+
+Session ID leak in Graylog DEBUG log file and audit log.
+
+We recently discovered a session ID leak in the Graylog DEBUG log file as well as the audit log. A user can use a session ID to authenticate against Graylog and then this user has access to all the permissions associated with the owner of the session ID.
+
+The ID was printed in DEBUG level log messages (DEBUG is not enabled by default) as well as the Graylog Enterprise Audit Log. By default, the Graylog Audit Log is only logging to the local database and only accessible by Graylog administrators.
+
+We would like to thank David Herbstmann for discovering and responsibly disclosing this vulnerability.
+
+The following CVE IDs have been assigned: `CVE-2021-37759 <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37759>`_, `CVE-2021-37760 <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37760>`_
 
 
 Graylog 3.3.13
