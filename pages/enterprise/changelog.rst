@@ -12,7 +12,7 @@ Enterprise
 
 **Fixed**
 
- - Fixed an issue when adding a widget with an option dropdown parameter in reports. (Graylog2/graylog-plugin-enterprise#2586)
+ - Fixed an issue when adding a widget with an option dropdown parameter in reports. (`Graylog2/graylog-plugin-enterprise#2586 <https://github.com/Graylog2/graylog-plugin-enterprise/pull/2586>`_)
 
 Graylog Enterprise 4.1.3
 ========================
