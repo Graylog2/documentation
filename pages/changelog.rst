@@ -2,6 +2,16 @@
 Changelog
 *********
 
+Graylog 4.2.0
+=============
+
+Search
+^^^^^^
+
+- Keyword From/To search breaking change to prior semantics: alignment of the interval for e.g. "last monday" to the start/end of the day instead of a time in the day. Also interval ends at the next day at 00:00:00. `Graylog2/graylog2-server#10291 <https://github.com/Graylog2/graylog2-server/issues/10291>`
+
+
+
 Graylog 4.1.3
 =============
 

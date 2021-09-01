@@ -89,7 +89,8 @@ will be used for the search.
 
 Here are a few examples for possible values.
 
-* "last month" searches between one month ago and now
+
+* "last month" searches in between the 1st day of last month to the last day of the current month
 * "4 hours ago" searches between four hours ago and now
 * "1st of april to 2 days ago" searches between 1st of April and 2 days ago
 * "yesterday midnight +0200 to today midnight +0200" searches between yesterday midnight and today midnight in 
@@ -97,3 +98,7 @@ Here are a few examples for possible values.
 
 The time frame is parsed using the `natty natural language parser <http://natty.joestelmach.com/>`_. Please consult its 
 documentation for details.
+From 4.2 on, some errors/irregularities with natty have been addressed. When natty interferes the time part of a query
+string (e.g. "last monday"), it uses the reference time. This creates timestamps in the mid of the day which is counterintuitive
+and not really expected. Instead, from now on, when natty interferes the time part in a query, this time part get's aligned
+to the start and end of the day.
