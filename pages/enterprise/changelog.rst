@@ -3,6 +3,7 @@ Changelog
 *********
 
 Graylog Enterprise 4.1.4
+========================
 
 Released: 2021-09-01
 
