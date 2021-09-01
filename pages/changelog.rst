@@ -2,6 +2,22 @@
 Changelog
 *********
 
+Graylog 4.1.4
+=============
+
+Released: 2021-09-01
+
+Core
+^^^^
+
+**Fixed**
+
+- Do not set 'to' when setting TimeRange to 'All Time', fixes an error when changing time ranges. `Graylog2/graylog2-server#11017 <https://github.com/Graylog2/graylog2-server/pull/11017>`_ `Graylog2/graylog2-server#11090 <https://github.com/Graylog2/graylog2-server/pull/11090>`_
+- Exclude non-data nodes from ES floodgate checks `Graylog2/graylog2-server#11106 <https://github.com/Graylog2/graylog2-server/pull/11106>`_ `Graylog2/graylog2-server#11125 <https://github.com/Graylog2/graylog2-server/pull/11125>_`
+- Fixing resolving alias target for index sets with plus in prefix on ES6. `Graylog2/graylog2-server#11142 <https://github.com/Graylog2/graylog2-server/issues/11142>`_ `Graylog2/graylog2-server#11153 <https://github.com/Graylog2/graylog2-server/issues/11153>`_
+- Display Tooltips by default `Graylog2/graylog2-server#11130 <https://github.com/Graylog2/graylog2-server/issues/11130>`_ `Graylog2/graylog2-server#11138 <https://github.com/Graylog2/graylog2-server/issues/11138>`_
+- Fix race condition in message details related to uninitialized nodes store. `Graylog2/graylog2-server#11226 <https://github.com/Graylog2/graylog2-server/issues/11226>`_
+
 Graylog 4.1.3
 =============
 
@@ -143,6 +159,18 @@ Integrations Plugin
 **Added**
 
 - Greynoise data adapter. `Graylog2/graylog-plugin-integrations#760 <https://github.com/Graylog2/graylog-plugin-integrations/issues/760>`_
+
+Graylog 4.0.12
+==============
+
+Released: 2021-09-01
+
+Core
+^^^^
+
+**Fixed**
+
+- Fixing resolving alias target for index sets with plus in prefix on ES6. `Graylog2/graylog2-server#11142 <https://github.com/Graylog2/graylog2-server/issues/11142>`_ `Graylog2/graylog2-server#11153 <https://github.com/Graylog2/graylog2-server/issues/11153>`_
 
 
 Graylog 4.0.11
