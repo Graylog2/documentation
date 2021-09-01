@@ -2,6 +2,18 @@
 Changelog
 *********
 
+Graylog Enterprise 4.1.4
+========================
+
+Released: 2021-09-01
+
+Enterprise
+----------
+
+**Fixed**
+
+ - Fixed an issue when adding a widget with an option dropdown parameter in reports. (Graylog2/graylog-plugin-enterprise#2586)
+
 Graylog Enterprise 4.1.3
 ========================
 
@@ -96,6 +108,17 @@ Enterprise Integrations Plugin
 - Add ActiveDirectory user lookup data adapter.
 - Add Enterprise Greynoise lookup data adapter.
 - Add URLhaus lookup data adapter.
+
+
+Graylog Enterprise 4.0.12
+=========================
+
+Released: 2021-09-01
+
+Enterprise
+----------
+
+No changes since 4.0.11.
 
 
 Graylog Enterprise 4.0.11
