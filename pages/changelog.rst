@@ -2,6 +2,19 @@
 Changelog
 *********
 
+Graylog 4.0.12
+==============
+
+Released: 2021-09-01
+
+Core
+^^^^
+
+**Fixed**
+
+- Fixing resolving alias target for index sets with plus in prefix on ES6. `Graylog2/graylog2-server#11142 <https://github.com/Graylog2/graylog2-server/issues/11142>`_ `Graylog2/graylog2-server#11153 <https://github.com/Graylog2/graylog2-server/issues/11153>`_
+
+
 Graylog 4.0.11
 ==============
 
