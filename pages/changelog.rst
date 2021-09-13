@@ -2,17 +2,24 @@
 Changelog
 *********
 
-Graylog 4.0.12
+Graylog 4.0.13
 ==============
 
-Released: 2021-09-01
+Released: 2021-09-13
 
 Core
 ^^^^
 
 **Fixed**
 
-- Fixing resolving alias target for index sets with plus in prefix on ES6. `Graylog2/graylog2-server#11142 <https://github.com/Graylog2/graylog2-server/issues/11142>`_ `Graylog2/graylog2-server#11153 <https://github.com/Graylog2/graylog2-server/issues/11153>`_
+- Fix resolving alias target for index sets with plus in prefix on ES6. `Graylog2/graylog2-server#11142 <https://github.com/Graylog2/graylog2-server/issues/11142>`_ `Graylog2/graylog2-server#11153 <https://github.com/Graylog2/graylog2-server/issues/11153>`_
+- Cleanup permission grants for deleted users. `Graylog2/graylog2-server#10385 <https://github.com/Graylog2/graylog2-server/issues/10385>`_ `Graylog2/graylog2-server#11265 <https://github.com/Graylog2/graylog2-server/issues/11265>`_
+
+
+Graylog 4.0.12
+==============
+
+The 4.0.12 release has been skipped due to build errors.
 
 
 Graylog 4.0.11
