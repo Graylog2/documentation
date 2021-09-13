@@ -2,17 +2,25 @@
 Changelog
 *********
 
-Graylog Enterprise 4.1.4
+Graylog Enterprise 4.1.5
 ========================
 
-Released: 2021-09-01
+Released: 2021-09-13
 
 Enterprise
 ----------
 
 **Fixed**
 
- - Fixed an issue when adding a widget with an option dropdown parameter in reports. (`Graylog2/graylog-plugin-enterprise#2586 <https://github.com/Graylog2/graylog-plugin-enterprise/pull/2586>`_)
+- Fix an issue when adding a widget with an option dropdown parameter in reports.
+- Fix Graylog Forwarder documentation URLs.
+
+
+Graylog Enterprise 4.1.4
+========================
+
+The 4.1.4 release has been skipped due to build errors.
+
 
 Graylog Enterprise 4.1.3
 ========================
@@ -110,15 +118,21 @@ Enterprise Integrations Plugin
 - Add URLhaus lookup data adapter.
 
 
-Graylog Enterprise 4.0.12
+Graylog Enterprise 4.0.13
 =========================
 
-Released: 2021-09-01
+Released: 2021-09-13
 
 Enterprise
 ----------
 
 No changes since 4.0.11.
+
+
+Graylog Enterprise 4.0.12
+=========================
+
+The 4.1.12 release has been skipped due to build errors.
 
 
 Graylog Enterprise 4.0.11
