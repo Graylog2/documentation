@@ -17,6 +17,15 @@ How long do you support older versions of the Graylog product?
 
 For our commercial support customers, we support older versions of Graylog up to 12 months after the next major release is available. So if you’re using 1.X, you will continue to receive 1.X support up to a full year after 2.0 has been released.
 
+When do bugfix releases happen?
+-------------------------------
+Graylog produces a bugfix release once a month, on the first Wednesday of each month or the first business day following that day. All bug fixes that have been backported during the previous 4 weeks will be included in it.
+
+For critical bug fixes, this schedule can be expedited. We trigger a release as soon as possible after a fix for the critical bug is available and tested.
+
+
+
+
 Architecture
 ============
 
@@ -50,7 +59,7 @@ You can use any.  We have clients running AWS ELB, HAProxy, F5 BIG-IP, and KEMP.
 Isn’t Java slow? Does it need a lot of memory?
 ----------------------------------------------
 
-This is a concern that we hear from time to time. We understand Java has a bad reputation from slow and laggy desktop/GUI applications that eat a lot of memory. However, we are usually able to prove this assumption wrong. Well written Java code for server systems is very efficient and does not need a lot of memory resources.  
+This is a concern that we hear from time to time. We understand Java has a bad reputation from slow and laggy desktop/GUI applications that eat a lot of memory. However, we are usually able to prove this assumption wrong. Well written Java code for server systems is very efficient and does not need a lot of memory resources.
 
 Give it a try, you might be surprised!
 
@@ -133,9 +142,9 @@ If you create a dedicated Partition for your Kafka Journal, you need to watch th
 
 Raise the Java Heap
 -------------------
-On Systems that are installed with :ref:`DEB / APT <operating_package_DEB-APT>` this setting can be made in ``/etc/default/graylog-server``. 
+On Systems that are installed with :ref:`DEB / APT <operating_package_DEB-APT>` this setting can be made in ``/etc/default/graylog-server``.
 
-Systems that are installed with :ref:`RPM / YUM / DNF <operating_package_rpm-yum-dnf>` the file is found in ``/etc/sysconfig/graylog-server``. 
+Systems that are installed with :ref:`RPM / YUM / DNF <operating_package_rpm-yum-dnf>` the file is found in ``/etc/sysconfig/graylog-server``.
 
 How can I start an input on a port below 1024?
 ----------------------------------------------
@@ -188,7 +197,7 @@ Send a POST request via the Graylog API Browser or curl to the ``/roles`` resour
    }
 
 The following curl command will create the required role (modify the URL of the Graylog REST API, here ``http://127.0.0.1:9000/api/``, and the user credentials, here ``admin``/``admin``, according to your setup)::
-  
+
   $ curl -u admin:admin -H "Content-Type: application/json" -H 'X-Requested-By: cli' -X POST -d '{"name": "Metrics Access", "description": "Provides read access to all system metrics", "permissions": ["metrics:*"], "read_only": false}' 'http://127.0.0.1:9000/api/roles'
 
 
@@ -202,11 +211,11 @@ A common reason for this issue is that the timestamp in the message is wrong. Fi
 
 I have configured an SMTP server or an output with TLS connection and receive handshake errors. What should I do?
 -----------------------------------------------------------------------------------------------------------------
- 
+
 Outbound TLS connections have CA (*certification authority*) certificate verification enabled by default. In case the target server's certificate is not signed by a CA found from trust store, the connection will fail. A typical symptom for this is the following error message in the server logs::
- 
+
   Caused by: javax.mail.MessagingException: Could not convert socket to TLS; nested exception is: javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
- 
+
 This should be corrected by either adding the missing CA certificates to the Java default trust store (typically found at ``$JAVA_HOME/jre/lib/security/cacerts``), or a custom store that is configured (by using ``-Djavax.net.ssl.trustStore``) for the Graylog server process. The same procedure applies for both missing valid CAs and self-signed certificates.
 
 For Debian/Ubuntu-based systems using OpenJDK JRE, CA certificates may be added to the systemwide trust store. After installing the JRE (including ``ca-certificates-java``, ergo ``ca-certificates`` packages), place ``name-of-certificate-dot-crt`` (in PEM format) into ``/usr/local/share/ca-certificates/`` and run ``/usr/sbin/update-ca-certificates``. The hook script in ``/etc/ca-certificates/update.d/`` should automatically generate ``/etc/ssl/certs/java/cacerts``.
@@ -258,7 +267,7 @@ is healthy and fast enough. You may also want to review your Graylog journal set
 This can happen when Graylog is not able to connect to Elasticsearch or the Elasticsearch Cluster is not able to process the ingested messages in time. Add more resources to Elasticsearch or adjust :ref:`the output settings <output_batch_size>` from Graylog to Elasticsearch.
 
 
-How do I fix the "Deflector exists as an index and is not an alias" error message? 
+How do I fix the "Deflector exists as an index and is not an alias" error message?
 ----------------------------------------------------------------------------------
 
 Graylog is using an Elasticsearch index alias per index set pointing to the active write index, the so-called "deflector", to write messages into Elasticsearch such as ``graylog_deflector`` in the default index set.
