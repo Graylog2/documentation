@@ -65,9 +65,9 @@ copyright = (u'2015-%d Graylog, Inc.' % datetime.date.today().year)
 # built documents.
 #
 # The short X.Y version.
-version = '4.1'
+version = '4.2'
 # The full version, including alpha/beta/rc tags.
-release = '4.1.0'
+release = '4.2.0'
 
 # Our custom value replacements, mainly used in code blocks.
 # See custom_replace function at the end of the file on how this will be used.
