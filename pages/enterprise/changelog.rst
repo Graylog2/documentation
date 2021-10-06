@@ -2,6 +2,19 @@
 Changelog
 *********
 
+Graylog Enterprise 4.1.6
+========================
+
+Released: 2021-10-06
+
+Enterprise
+----------
+
+**Added**
+
+- Add support for custom auth servers in Okta authentication backend.
+
+
 Graylog Enterprise 4.1.5
 ========================
 
