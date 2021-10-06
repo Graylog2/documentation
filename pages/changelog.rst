@@ -2,6 +2,22 @@
 Changelog
 *********
 
+Graylog 4.1.6
+=============
+
+Released: 2021-10-06
+
+Core
+^^^^
+
+**Fixed**
+
+- Fix potential race condition in traffic accounting. `Graylog2/graylog2-server#11248 <https://github.com/Graylog2/graylog2-server/issues/11248>`_ `Graylog2/graylog2-server#11296 <https://github.com/Graylog2/graylog2-server/issues/11296>`_
+- Fix permissions for alert events when event definitions don't select streams. `Graylog2/graylog2-server#11301 <https://github.com/Graylog2/graylog2-server/issues/11301>`_ `Graylog2/graylog2-server#11303 <https://github.com/Graylog2/graylog2-server/issues/11303>`_
+- Fix system stats with MongoDB >= 4.4. `Graylog2/graylog2-server#11357 <https://github.com/Graylog2/graylog2-server/issues/11357>`_
+- Fix index counts on index sets page. `Graylog2/graylog2-server#11375 <https://github.com/Graylog2/graylog2-server/issues/11375>`_ `Graylog2/graylog2-server#11357 <https://github.com/Graylog2/graylog2-server/issues/11357>`_
+
+
 Graylog 4.1.5
 =============
 
