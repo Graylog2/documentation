@@ -16,6 +16,7 @@ Core
 - Fix permissions for alert events when event definitions don't select streams. `Graylog2/graylog2-server#11301 <https://github.com/Graylog2/graylog2-server/issues/11301>`_ `Graylog2/graylog2-server#11303 <https://github.com/Graylog2/graylog2-server/issues/11303>`_
 - Fix system stats with MongoDB >= 4.4. `Graylog2/graylog2-server#11357 <https://github.com/Graylog2/graylog2-server/issues/11357>`_
 - Fix index counts on index sets page. `Graylog2/graylog2-server#11375 <https://github.com/Graylog2/graylog2-server/issues/11375>`_ `Graylog2/graylog2-server#11357 <https://github.com/Graylog2/graylog2-server/issues/11357>`_
+- Fix race condition with multiple search executions. `Graylog2/graylog2-server#11428 <https://github.com/Graylog2/graylog2-server/issues/11428>`_
 
 
 Graylog 4.1.5
