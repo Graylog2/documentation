@@ -1,0 +1,20 @@
+{% extends "!layout.html" %}
+
+<div role="main" data-yolo="1">
+  {% block document %}
+    <div class="admonition note">
+      <p class="admonition-title">Deprecation Note</p>
+      <p>
+        We published the last version of Graylog Documentation before the release of Graylog 4.2.
+        Now, all documentation and help content for Graylog products are available at
+        <a target="_blank" href="https://docs.graylog.org/">https://docs.graylog.org/</a>.
+      </p>
+      <p><strong>There will be no further updates to these pages as of October 2021.</strong></p>
+      <p>
+        Do you have questions about our documentation? You may place comments or start discussions
+        about documentation here:
+        <a target="_blank" href="https://community.graylog.org/c/documentation-campfire/30">https://community.graylog.org/c/documentation-campfire/30</a></p>
+    </div>
+    {% block body %}{% endblock %}
+  {% endblock %}
+</div>
