@@ -1,6 +1,6 @@
 alabaster==0.7.12
 argh==0.26.2
-Babel==2.9.0
+Babel==2.9.1
 backports-abc==0.5
 backports.ssl-match-hostname==3.7.0.1
 certifi==2020.12.5
