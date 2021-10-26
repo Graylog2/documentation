@@ -1,21 +1,10 @@
-## The Graylog documentation
+# The Graylog Documentation
 
-#### Building locally
+Note
+====
 
-Install [Sphinx](http://sphinx-doc.org)
+We published the last version of Graylog Documentation before the release of Graylog 4.2. Now, all documentation and help content for Graylog products are available at https://docs.graylog.org/. If you are looking for previous versions of the Graylog documentation, go to: https://archivedocs.graylog.org/
 
-    $ easy_install -U Sphinx
+**There will be no further updates to this repository as of October 2021.**
 
-Install [the theme we are using](https://github.com/snide/sphinx_rtd_theme):
-
-    $ pip install sphinx_rtd_theme
-
-On Fedora 22:
-
-    $ sudo dnf install -y python-sphinx python-sphinx_rtd_theme
-    
-Build the docs and open them in your browser:
-
-    $ cd documentation
-    $ make html
-    $ open _build/html/index.html
+Do you have questions about our documentation? You can no longer post issues in this repository. However, you may place comments or start discussions about documentation here: https://community.graylog.org/c/documentation-campfire/30
