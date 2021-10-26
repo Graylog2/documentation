@@ -1,27 +1,10 @@
-# The Graylog documentation
-[![Build Status](https://travis-ci.org/Graylog2/documentation.svg?branch=2.2)](https://travis-ci.org/Graylog2/documentation)
+# The Graylog Documentation
 
-## Building locally
+Note
+====
 
-Create and enter the Python virtual environment:
+We published the last version of Graylog Documentation before the release of Graylog 4.2. Now, all documentation and help content for Graylog products are available at https://docs.graylog.org/. If you are looking for previous versions of the Graylog documentation, go to: https://archivedocs.graylog.org/
 
-    # virtualenv .
-    # source ./bin/activate
+**There will be no further updates to this repository as of October 2021.**
 
-Install [Sphinx](http://sphinx-doc.org), [the theme we are using](https://github.com/snide/sphinx_rtd_theme), and [sphinx-autobuild](https://github.com/GaretJax/sphinx-autobuild):
-
-    # pip install -r requirements.txt
-
-Build the static documentation and open them in your browser:
-
-    # make html
-    # open _build/html/index.html
-
-Build the documentation and automatically build them on any change:
-
-    # make livehtml
-    # open http://127.0.0.1:8000/
-
-### Fedora Linux 22 and higher
-
-    # sudo dnf install -y python-sphinx python-sphinx_rtd_theme
+Do you have questions about our documentation? You can no longer post issues in this repository. However, you may place comments or start discussions about documentation here: https://community.graylog.org/c/documentation-campfire/30
