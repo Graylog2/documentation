@@ -150,6 +150,7 @@ html_static_path = ['_static']
 # .htaccess) here, relative to this directory. These files are copied
 # directly to the root of the documentation.
 #html_extra_path = []
+html_extra_path = ['robots.txt']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -212,25 +213,25 @@ htmlhelp_basename = 'Graylogdoc'
 # -- Options for LaTeX output ---------------------------------------------
 
 latex_elements = {
-# The paper size ('letterpaper' or 'a4paper').
-#'papersize': 'letterpaper',
+    # The paper size ('letterpaper' or 'a4paper').
+    # 'papersize': 'letterpaper',
 
-# The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
+    # The font size ('10pt', '11pt' or '12pt').
+    # 'pointsize': '10pt',
 
-# Additional stuff for the LaTeX preamble.
-#'preamble': '',
+    # Additional stuff for the LaTeX preamble.
+    # 'preamble': '',
 
-# Latex figure (float) alignment
-#'figure_align': 'htbp',
+    # Latex figure (float) alignment
+    # 'figure_align': 'htbp',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'Graylog.tex', u'Graylog Documentation',
-   u'Graylog, Inc.', 'manual'),
+    ('index', 'Graylog.tex', u'Graylog Documentation',
+     u'Graylog, Inc.', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -273,9 +274,9 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'Graylog', u'Graylog Documentation',
-   u'Graylog, Inc.', 'Graylog', 'One line description of project.',
-   'Miscellaneous'),
+    ('index', 'Graylog', u'Graylog Documentation',
+     u'Graylog, Inc.', 'Graylog', 'One line description of project.',
+     'Miscellaneous'),
 ]
 
 # Documents to append as an appendix to all manuals.
@@ -361,7 +362,7 @@ epub_exclude_files = ['search.html']
 #epub_use_index = True
 
 extlinks = {
-    'enterprise-plugins-tar': ( 'https://downloads.graylog.org/releases/graylog-enterprise/graylog-enterprise-plugins-%s.tgz', None),
-    'enterprise-integrations-plugins-tar': ( 'https://downloads.graylog.org/releases/graylog-integrations/graylog-integrations-plugins-%s.tgz', None),
-    'integrations-plugins-tar': ( 'https://downloads.graylog.org/releases/graylog-enterprise-integrations/graylog-enterprise-integrations-plugins-%s.tgz', None)
+    'enterprise-plugins-tar': ('https://downloads.graylog.org/releases/graylog-enterprise/graylog-enterprise-plugins-%s.tgz', None),
+    'enterprise-integrations-plugins-tar': ('https://downloads.graylog.org/releases/graylog-integrations/graylog-integrations-plugins-%s.tgz', None),
+    'integrations-plugins-tar': ('https://downloads.graylog.org/releases/graylog-enterprise-integrations/graylog-enterprise-integrations-plugins-%s.tgz', None)
 }
