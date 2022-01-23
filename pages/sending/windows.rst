@@ -11,7 +11,7 @@ The collector can be configured manually, with any software configuration utilit
 
 To be able to ingest the messages to Graylog, one input is needed. That input needs to match the collector. For NXLog, it is much likely the GELF input, and for winlogbeat, it needs to be the :ref:`beats input <beats_input>`. 
 
-One example winlogbeat configuration that reduce the noise. But still give enough insides::
+One example winlogbeat configuration that reduce the noise. But still give enough insights::
 
 			fields_under_root: true
 			fields.collector_node_id: ${sidecar.nodeName}
