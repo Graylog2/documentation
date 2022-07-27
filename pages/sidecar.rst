@@ -24,7 +24,7 @@ On its first run, or when a configuration change has been detected, Sidecar will
 
 Installation
 ============
-You can get .deb and .rpm packages for Graylog Sidecar in our package repository. For Windows, you can download the installer from `here <https://github.com/Graylog2/collector-sidecar/releases>`_.
+You can get .deb and .rpm packages for Graylog Sidecar in our :doc:`package repository <installation/operating_system_packages>`. The Windows installer, along with all packages, are available in `Releases <https://github.com/Graylog2/collector-sidecar/releases>`_.
 
 Please follow the version matrix to pick the right package:
 

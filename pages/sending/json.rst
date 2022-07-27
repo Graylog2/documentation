@@ -49,5 +49,4 @@ from a list of releases where the field ``state`` has the value ``uploaded``::
 
     $.releases[0].download_count
 
-
-You can `learn more about JSONPath here <http://goessner.net/articles/JsonPath/>`__.
+Stefan Goessner has some `informative posts on JSONPath <http://goessner.net/articles/JsonPath/>`__.

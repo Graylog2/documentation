@@ -6,7 +6,7 @@ Elasticsearch Rolling Upgrade Notes
 
 This page contains a few notes and a recommended procedure to perform a rolling upgrade for a Elasticsearch cluster utilized by Graylog.
 
-Elasticsearch supports rolling upgrades to avoid downtimes during upgrades. Detailed information about the procedures and limitations are provided `here <https://www.elastic.co/guide/en/elasticsearch/reference/master/rolling-upgrades.html>`__.
+Elasticsearch supports `rolling upgrades <https://www.elastic.co/guide/en/elasticsearch/reference/master/rolling-upgrades.html>`__ to avoid downtimes during upgrades.
 
 Graylog supports rolling upgrades without restarting any Graylog node for Elasticsearch upgrades *between minor versions*. While Elasticsearch supports upgrading from e.g. 6.8 to 7.0, Graylog requires a restart when the major version of the Elasticsearch cluster is changed.
 
