@@ -128,7 +128,7 @@ The certificates for the Graylog stack and all of its components need some prett
 
 Be careful: 
 
-* Defining a new certicate template will require elevated privileges in your Active Directory domain. 
+* Defining a new certificate template will require elevated privileges in your Active Directory domain. 
 * PKI and certificates are a matter of trust! Do not break your organization's *Certificate Policy* or its *Certificate practice Statement*. Stick to your standard procedures and do not simply start messing with the PKI!
 
 Defining the new template is done through the ADCS management tool "*Certification Authority*". 
